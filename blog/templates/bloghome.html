@@ -1,0 +1,158 @@
+{% extends 'new_base.html' %}
+
+{% load static %}
+
+{% block content %}
+		<!--Wrapper Content Start-->
+		<div class="tj-wrapper">
+
+			<!--Inner Banner Section Start-->
+	    	<div class="tj-inner-banner">
+	    		<div class="container">
+	    			<h2>Blog Listing</h2>
+	    		</div>
+	    	</div>
+			<!--Inner Banner Section End-->
+
+
+			<!--Blog Listing Section Start-->
+			<section class="blog-list">
+				<div class="container">
+					<div class="row">
+
+						<!--Blog List Column Start-->
+						<div class="col-md-8 col-sm-8 col-xs-12">
+
+                            {% for post in posts %}
+                            {% if post.published %}
+							<!--Blog Article Start-->
+							<article class="blog-item">
+								<div class="blog-outer">
+									<div class="blog-post slider-post">
+										<!--Blog Slider Start-->
+										<div id="blog-slider" class="owl-carousel">
+											<div class="item">
+												<img src="{{ post.main_image.url }}" alt="">
+											</div>
+
+                                            {% if post.image1 %}
+											<div class="item">
+												<img src="{{ post.image1.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image2 %}
+											<div class="item">
+												<img src="{{ post.image2.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image3 %}
+											<div class="item">
+												<img src="{{ post.image3.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image4 %}
+											<div class="item">
+												<img src="{{ post.image4.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+										</div>
+										<!--Blog Slider End-->
+										<ul class="blog_meta">
+											<li><i class="far fa-comments"></i> {{ post.count_comments }}</li>
+											<li><i class="far fa-eye"></i> {{ post.views }}</li>
+										</ul>
+										<h3>{{ post.title|upper }}</h3>
+										<div class="blog-text">
+											<p>{{ post.get_short_content|escape|linebreaks }}</p>
+											<a href="{% url 'blog:post' post.id %}" class="tj-btn2">Read More <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+										</div>
+									</div>
+								</div>
+							</article>
+							<!--Blog Article End-->
+                            {% endif %}
+                            {% endfor %}
+
+						</div>
+						<!--Blog List Column End-->
+
+                        {% include 'widgets.html' %}
+
+                        {% if posts.has_other_pages %}
+						<!--Pagination Box Section Start-->
+						<div class="pagination-box">
+							<nav aria-label="navigation">
+								<ul class="pagination">
+
+                                    {% if posts.has_previous %}
+									<li>
+									  <a href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+										<i class="fas fa-angle-double-left"></i>
+									  </a>
+									</li>
+                                    {% endif %}
+
+									<li class="active"><a href="">{{ posts.number }}</a></li>
+									<li><a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a></li>
+
+                                    {% if posts.has_next %}
+									<li>
+									  <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+										<i class="fas fa-angle-double-right"></i>
+									  </a>
+									</li>
+                                    {% endif %}
+								</ul>
+							</nav>
+						</div>
+						<!--Pagination Box Section End-->
+                        {% endif %}
+
+					</div>
+				</div>
+			</section>
+			<!--Blog Listing Section End-->
+
+			<!--Call To Action Content Start-->
+			<section class="tj-cal-to-action">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="{% static 'images/cta-icon1.png' %}" alt="">
+								<div class="cta-text">
+									<strong>Best Price Guaranteed</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="{% static 'images/cta-icon2.png' %}" alt="">
+								<div class="cta-text">
+									<strong>24/7 Customer Care</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="cta-box">
+								<img src="{% static 'images/cta-icon3.png' %}" alt="">
+								<div class="cta-text">
+									<strong>Easy Bookings</strong>
+									<p>A more recently with desktop softy  like aldus page maker.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Call To Action Content End-->
+
+		</div>
+		<!--Wrapper Content End-->
+{% endblock content %}

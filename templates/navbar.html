@@ -1,0 +1,335 @@
+<!--Style Switcher Section End-->
+{% load static %}
+
+<style type="text/css">
+	.dropdownlist{
+		text-align: center;
+		color: #bcced8!important;
+		border-bottom: none !important;
+	}
+	.dropdownlist:hover{
+		color: #ffc000 !important;
+		border-left: 4px solid #ffc000;
+	}
+	.nav-width{
+		width: 18%!important;
+	}
+
+	.img-height{
+		height: 52px;
+	}
+	.display{
+		display: flex;
+	}
+	.right-float{
+		float: right;    
+	}
+	.remove-padding{
+		padding-left: 0px;
+        padding-right: 0px;
+	}
+	@media (max-width: 750px){
+        .nav-width{
+        	width: 50%!important;
+        }
+		.remove-padding{
+		padding-right: 15px;
+        padding-left: 15px;
+		}
+.tj-nav-row .navbar-default .navbar-collapse{
+    z-index: 999;
+    position: absolute;
+    background-color: #1c2b39;
+    right: 0%;
+
+	}
+	
+	/*@media (max-width: 400px){.container .col-md-3{
+    width: 100%;}*/
+   @media (max-width: 500px){.tj-banner-form2 {
+    margin-top: -55px;}  
+}}
+ /* @media (max-width: 767px){
+.tj-form2-tabs .nav-tabs .active a{
+    font-size: 12px;
+    padding: 13px 12px;
+    width: auto;
+}}*/
+@media (max-width: 767px){
+.tj-form2-tabs .nav-tabs  li.active  a  {
+    font-size: 12px;
+    
+}}
+.bg-custom-1 {
+  background-color: #85144b;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+.navbar-nav .active > a{
+	background-color: #1c2b39 !important;
+}
+</style>
+			<header class="tj-header">
+				<!--Header Content Start-->
+				<div class="container" >
+					<div class="row">
+						<!--Toprow Content Start-->
+						<div class="col-md-3 col-sm-3 ">
+							<!--Logo Start-->
+							<div class="tj-logo">
+								<img style="width: inherit;" src="{% static 'images/logo.png' %}" alt="">
+							</div>
+							<!--Logo End-->
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 right-float nav-width" >
+							<div class="info_box display"><a href="tel:9650818563">
+								<img class="img-height" src="{% static 'images/icons/call.png' %}">
+			                       </a>
+								<div class="info_text" >
+									<span class="info_title display"><a style="color: #ffc000;" href="tel:9650818563">Contact-Us</a>
+									<span><a href="tel:9650818563">+91-9650818563</a></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-3 col-xs-6 right-float nav-width" >
+							<div class="info_box display"><a href="https://api.whatsapp.com/send?phone=919650818563">
+								<img class="img-height" src="{% static 'images/icons/whatsapp.png' %}">
+								</a>
+								<div class="info_text" >
+									<span class="info_title display"><a style="color: #ffc000;" href="https://wa.me/919650818563">Whatsapp</a>
+									<span><a href="https://api.whatsapp.com/send?phone=919650818563">+91-9650818563</a></span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-3 right-float" >
+							<div class="display info_box ">
+								<img class="img-height" src="{% static 'images/icons/Add.png' %}">
+								<!-- <i class="fa fa-home"></i> -->
+								<div class=" info_text " >
+									<span class="info_title " style="display: flex;"><a style="color: #ffc000;" href="">Register as Vendor</a><a style="color: #ffc000;" href="">/ Agent</a></span>
+									<span><a href="">Attach your Vehicle</a></span>
+								</div>
+							</div>
+						</div>
+						
+						
+						<!-- <div class="col-md-1 co-sm-2" >
+							<div class="phone_info">
+								<div class="phone_icon">
+									<span><a href="https://api.whatsapp.com/send?phone=9650818563"><i style="color: white;background-color: #4FCE5D;" class="fab fa-whatsapp"></i></a>
+									</span>
+									
+								</div></div></div> -->
+						<!-- <div class="col-md-3 col-sm-3 remove-padding">
+							<div class="phone_info">
+								<div class="phone_icon">
+									<span><a href="tel:9650818563"><i class="fas fa-phone-volume"></i></a>
+									</span>
+									
+								</div>
+								
+								<div class="phone_text">
+									<span><a href="tel:9650818563">9650818563</a></span>
+								</div>
+							</div>
+							
+						</div> -->
+						<!--Toprow Content End-->
+					</div>
+				</div>
+
+				<div class="tj-nav-row">
+					<div class="container">
+						<div class="row">
+							<!--Nav Holder Start-->
+							<div class="tj-nav-holder">
+								<!--Menu Holder Start-->
+
+								<nav class="navbar navbar-default"  style="width: 100%; margin-bottom:0px;">
+									<div class="navbar-header">
+										
+								<!-- <img src="{% static 'images/logo.png' %}" alt=""> -->
+							            
+									  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#tj-navbar-collapse" aria-expanded="false">
+										  <span class="sr-only">Menu</span>
+										  <span class="icon-bar"></span>
+										  <span class="icon-bar"></span>
+										  <span class="icon-bar"></span>
+									  </button>
+									</div>
+									<!-- Navigation Content Start -->
+									<div class="collapse navbar-collapse" id="tj-navbar-collapse">
+									  <ul class="nav navbar-nav" style="width: 100%">
+
+
+                                        <li id="nav-home" >
+											<a href="#one-way" data-toggle="tab">Home</a>
+										</li>
+										<li id="nav-oneway">
+											<a href="#one-way" data-toggle="tab">One Way</a>	
+										</li>
+										<li id="nav-airport">
+											<a href="#airport" data-toggle="tab">Airport</a>
+										</li>
+
+										<li id="nav-roundtrip">
+											<a href="#round-trip" data-toggle="tab">Round Trip</a>
+										</li>
+
+										<li id="nav-multiway">
+											<a  href="#multi-way" data-toggle="tab">Multi Way</a>
+										</li>
+
+										<li>
+											<a href="">Tour Package</a>
+										</li>
+
+										<li>
+											<a href="">Daily Rental</a>
+										</li>
+
+										<li>
+											<a href="#nav-destinations">Exciting Offers</a>
+										</li>
+
+										<li>
+											<a href="{% url 'blog:home' %}">Blog</a>
+										</li>
+
+
+										<li>
+											<a href="{% url 'core:contact' %}">Contact Us</a>
+										</li>  
+									  <li class="nav-item dropdown" style="max-height: 59px;float: right;">
+                                          {% if request.user.is_authenticated %}
+                                
+                                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex;"> 
+                                          	<canvas id="user-icon" width="35" height="35" style="border-radius: 20px;"></canvas>
+                                          	{% comment %}<img class="rounded-circle" src="{% static 'images/comment_img1.jpg' %}" width="35" height="35" style="border-radius: 20px;" > {% endcomment %}
+                                              <span>&ensp;{% if request.user.first_name %}{{ request.user.first_name }}{% else %}Guest{% endif %}
+                                                  <i class="fas fa-chevron-down"></i>
+                                              </span>
+                                          </a>
+
+                                          	 <ul id="nav_dropdown" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid rgb(28, 43, 57);border-radius: 0px 0px 6px 6px;
+    background-color: #1c2b39;">  
+                                          	 	<li><a class="dropdownlist"  href="{% url 'core:dashboard' %}">My Dashboard</a> </li>
+                                          	 <li>	<a class="dropdownlist" href="{% url 'core:logout' %}">Log Out</a> </li>
+                                          	 </ul> 
+                                          	 {% else %} 
+                                          	 <a href="{% url 'core:login' %}"> Register/Login <i class="fa fa-arrow-circle-right" aria-hidden="true">
+                                          	 	
+                                          	 </i>
+                                          	 </a>
+                                          	  {% endif %}                          
+                                    </li>
+                                 </ul>
+									</div>
+									<!-- Navigation Content Start -->
+								</nav>
+								<!--Menu Holder End-->
+                                   
+							</div><!--Nav Holder End-->
+						</div>
+					</div>
+				</div>
+				<script
+				src="https://code.jquery.com/jquery-3.5.0.min.js"
+				integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+				crossorigin="anonymous"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+                <script>
+					var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
+
+                    var name = '{{ request.user.first_name }} {{ request.user.last_name }}';
+
+                    var nameSplit = name.split(" "),
+                        initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();
+
+
+                    var charIndex = initials.charCodeAt(0) - 65,
+                        colourIndex = charIndex % 19;
+
+                    var canvas = document.getElementById("user-icon");
+                    var context = canvas.getContext("2d");
+
+                    var canvasWidth = $(canvas).attr("width"),
+                        canvasHeight = $(canvas).attr("height"),
+                        canvasCssWidth = canvasWidth,
+                        canvasCssHeight = canvasHeight;
+
+                    if (window.devicePixelRatio) {
+                        $(canvas).attr("width", canvasWidth * window.devicePixelRatio);
+                        $(canvas).attr("height", canvasHeight * window.devicePixelRatio);
+                        $(canvas).css("width", canvasCssWidth);
+                        $(canvas).css("height", canvasCssHeight);
+                        context.scale(window.devicePixelRatio, window.devicePixelRatio);
+                    }
+
+                    context.fillStyle = colours[colourIndex];
+                    context.fillRect (0, 0, canvas.width, canvas.height);
+                    context.font = "14px 'Montserrat', sans-serif";
+                    context.textAlign = "center";
+                    context.fillStyle = "#FFF";
+                    context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
+
+
+
+
+					$(document).ready(function(){
+						console.log(window.location.href);
+						const decider = window.location.href.slice(-1);
+						if( decider === "1"){
+							$("#AIRPORT").addClass("active");
+							$("#ONEWAY").removeClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").removeClass("active");
+						}else if( decider === "2"){
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").removeClass("active");
+							$("#ROUNDTRIP").addClass("active");
+							$("#MULTIWAY").removeClass("active");
+						}else if(decider === "3"){
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").removeClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").addClass("active");
+						}else if( decider === "4"){
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").addClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").removeClass("active");
+						}else if( decider === "5"){
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").addClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").removeClass("active");
+						}
+						$("#nav-airport").click(function(){
+							location.href = `http://www.taxotaxi.com/?id=1`							
+						});
+						
+						$("#nav-roundtrip").click(function(){
+							location.href = `http://www.taxotaxi.com/?id=2`
+							
+						});
+						$("#nav-multiway").click(function(){
+							location.href = `http://www.taxotaxi.com/?id=3`
+							
+						});
+						$("#nav-home").click(function(){
+							location.href = `http://www.taxotaxi.com/?id=4`
+							
+						});
+						$("#nav-oneway").click(function(){
+							location.href = `http://www.taxotaxi.com/?id=5`
+							
+						});
+					});
+				</script>
+			</header>
+			<!--Header Content End-->

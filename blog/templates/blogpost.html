@@ -1,0 +1,206 @@
+{% extends 'new_base.html' %}
+
+{% load static %}
+
+{% block content %}
+		<!--Wrapper Content Start-->
+		<div class="tj-wrapper">
+
+			<!--Inner Banner Section Start-->
+	    	<div class="tj-inner-banner">
+	    		<div class="container">
+	    			<h2>Blog Detail</h2>
+	    		</div>
+	    	</div>
+			<!--Inner Banner Section End-->
+
+
+
+			<section class="tj-blog-detail">
+				<div class="container">
+					<div class="row">
+
+
+						<div class="blog-detail-outer">
+							<div class="col-md-9 col-sm-8 col-xs-12">
+								<div class="blog-outer">
+                                    <!--Blog Slider Start-->
+										<div id="blog-slider" class="owl-carousel">
+											<div class="item">
+												<img src="{{ post.main_image.url }}" alt="">
+											</div>
+
+                                            {% if post.image1 %}
+											<div class="item">
+												<img src="{{ post.image1.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image2 %}
+											<div class="item">
+												<img src="{{ post.image2.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image3 %}
+											<div class="item">
+												<img src="{{ post.image3.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+                                            {% if post.image4 %}
+											<div class="item">
+												<img src="{{ post.image4.url }}" alt="">
+											</div>
+                                            {% endif %}
+
+										</div>
+
+										<!--Blog Slider End-->
+                                    {% comment %}
+									<figure class="blog-thumb">
+										<img src="images\blog_img1.jpg" alt="">
+										<div class="blog-date">
+											<strong>11/20/2018</strong>
+										</div>
+									</figure>
+									{% endcomment %}
+
+									<ul class="blog_meta">
+                                        <div class="blog-date">
+											<strong>{{ post.date| date:"d M Y" }}</strong>
+										</div>
+										<li><i class="far fa-comments"></i> {{ post.count_comments }}</li>
+										<li><i class="far fa-eye"></i> {{ post.views }}</li>
+									</ul>
+									<h3>{{ post.title }}</h3>
+									<div class="blog-text">
+										<p>{{ post.content|escape|linebreaks }}</p>
+                                        {% comment %}
+										<div class="quote">
+											<blockquote>
+												<p>I have a driver's licence, but the truth is that I hardly ever drive. I always prefer to get around by a taxi.</p>
+												<strong class="quote-author">Ferran Adria</strong>
+											</blockquote>
+										</div>
+										{% endcomment %}
+										<div class="social_sharing">
+											<div class="row">
+												<div class="col-md-8 col-sm-7 col-xs-12">
+													<h4>Do You Like To Share This Post</h4>
+												</div>
+												<div class="col-md-4 col-sm-5 col-xs-12">
+													<ul class="sharing_links">
+														<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+														<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+														<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+														<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="tj-comment-outer">
+
+											<h3>Comments</h3>
+											<!--Comments Listed Start-->
+											<ul class="comments-listed">
+                                                {% for comment in comments %}
+												<li>
+													<div class="comments-info">
+														<div class="img-box">
+															<img src="{% static 'images/comment_img2.jpg' %}" alt="">
+														</div>
+														<div class="text-holder">
+															<div class="top">
+																<h5>{{ comment.name|upper }}</h5>
+															</div>
+															<span class="date">{{ comment.date|date:'d M Y' }}</span>
+															<p>{{ comment.comment_text|escape|linebreaks }}</p>
+														</div>
+													</div>
+												</li>
+                                                {% endfor %}
+											</ul>
+                                            <!--Comments Listed End-->
+
+
+										</div>
+										<div class="tj-comment-form">
+											<h3>Leave Comment</h3>
+											<div class="row">
+												<form class="comment-frm" method="post">
+                                                    {% csrf_token %}
+
+													<div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="text" name="name" required id="id_name" placeholder="Your Name">
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="email" name="email" required id="id_email" placeholder="Your Email">
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <textarea name="comment_text" required id="id_comment_text" placeholder="Your Comment"></textarea>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                        <button type="submit" class="comment-btn"> Submit <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+												</form>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+                        {% include 'widgets.html' %}
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+
+
+
+				<!--Call To Action Content Start-->
+				<section class="tj-cal-to-action">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<div class="cta-box">
+									<img src="{% static 'images/cta-icon1.png' %}" alt="">
+									<div class="cta-text">
+										<strong>Best Price Guaranteed</strong>
+										<p>A more recently with desktop softy  like aldus page maker.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="cta-box">
+									<img src="{% static 'images/cta-icon2.png' %}" alt="">
+									<div class="cta-text">
+										<strong>24/7 Customer Care</strong>
+										<p>A more recently with desktop softy  like aldus page maker.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="cta-box">
+									<img src="{% static 'images/cta-icon3.png' %}" alt="">
+									<div class="cta-text">
+										<strong>Easy Bookings</strong>
+										<p>A more recently with desktop softy  like aldus page maker.</p>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+			</section>
+			<!--Call To Action Content End-->
+
+		</div>
+		<!--Wrapper Content End-->
+{% endblock content %}

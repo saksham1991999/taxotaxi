@@ -1,0 +1,101 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+		<!--Wrapper Content Start-->
+		<div class="tj-wrapper">
+
+			<!--Login Section Start-->
+			<section class="tj-login">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<!--Tabs Nav Start-->
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#login" data-toggle="tab">OTP Verification</a></li>
+								</ul>
+							</div>
+							<!--Tabs Nav End-->
+							<!--Tabs Content Start-->
+							<div class="tab-content">
+								<!--Login Tabs Content Start-->
+								<div class="tab-pane active" id="login">
+
+									<div class="col-md-6 col-sm-6">
+										<div class="login-cta">
+											<ul class="cta-list">
+												<li>
+                                                    <span class="icon"><img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="" style="height: 30px"></span>
+													<div class="cta-info">
+														<strong>Best Price Guaranteed</strong>
+														<p>A more recently with desktop softy like.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img src="{% static 'images/icons/customer-care.png' %}" alt="" style="height: 30px"></span>
+													<div class="cta-info">
+														<strong>24/7 Customer Care</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img src="{% static 'images/icons/home-pickups.png' %}" alt="" style="height: 30px"></span>
+													<div class="cta-info">
+														<strong>Home Pickups</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img src="{% static 'images/icons/instant-booking.png' %}" alt="" style="height: 30px"></span>
+													<div class="cta-info">
+														<strong>Instant Booking</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img src="{% static 'images/icons/easy-cancelation.png' %}" alt="" style="height: 30px"></span>
+													<div class="cta-info">
+														<strong>Easy Cancellation</strong>
+														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="col-md-6 col-sm-6">
+										<!--Register Tabs Form Start-->
+										<form class="reg-frm" method="POST">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="type" value="register">
+
+                                            <div class="field-holder">
+												<label style="text-align: center">OTP sent to {{ mobile }}</label>
+                                                <label style="text-align: center"><a onclick="goBack()">Change Mobile Number or Details</a></label>
+											</div>
+											<div class="field-holder">
+												<span class="fas fa-lock"></span>
+												<input type="text" name="otp" placeholder="OTP">
+											</div>
+                                            <div class="field-holder">
+												<label><a href="">Resend OTP</a></label>
+											</div>
+											<button type="submit" class="reg-btn">Verify<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+
+                                        </form>
+										<!--Register Tabs Form End-->
+									</div>
+								</div>
+								<!--Login Tabs Content End-->
+							</div>
+							<!--Tabs Content End-->
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Login Section End-->
+
+
+		</div>
+		<!--Wrapper Content End-->
+{% endblock content %}

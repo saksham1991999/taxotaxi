@@ -1,0 +1,55 @@
+{% load static %}
+						<!--Widgets Column Start-->
+						<div class="col-md-3 col-sm-2">
+							<div class="tj-sidebar-outer">
+								<div class="search_widget widget">
+									<h3>Search</h3>
+									<form class="search-form">
+										<input type="search" placeholder="Search.." id="search-field" name='search' value="{{search_term}}">
+										<button type="submit"><i class="fas fa-search"></i></button>
+									</form>
+								</div>
+								<div class="fleet-ad widget">
+									<h3>Special Offer</h3>
+									<div class="fleet-box">
+										<img src="{% static 'images/fleet-banner.jpg' %}" alt="">
+										<div class="ad-info" style="margin-top: auto; margin-bottom: auto">
+											<h4>Get Benifits worth</h4>
+											<strong class="price">Rs 250</strong>
+											<h5>on booking Prime Cab</h5>
+											<div class="book_fleet">
+												<a href="{% url 'core:contact' %}">Grab Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tagCloud widget">
+									<h3>Categories</h3>
+									<div class="tags">
+                                        {% for category in categories %}
+										<a href="?category={{ category.title }}&{{ params }}">{{ category.title }}</a>
+                                        {% endfor %}
+									</div>
+								</div>
+								<div class="recent-post widget">
+									<h3>Recent News</h3>
+									<div class="recent-news">
+										<ul>
+                                            {% for post in popularposts %}
+											<li>
+
+												<figure>
+													<a href="{% url 'blog:post' post.id %}"><img src="{{ post.main_image.url }}" style="width: 100px; height: 70px; margin-top: auto; margin-bottom: auto;" alt=""></a>
+												</figure>
+
+												<div class="detail-box">
+													<h4><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a></h4>
+													<span><i class="far fa-calendar-alt"></i> {{ post.date|date:'d M Y' }}</span>
+												</div>
+											</li>
+                                            {% endfor %}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>

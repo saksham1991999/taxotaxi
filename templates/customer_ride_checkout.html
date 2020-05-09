@@ -1,0 +1,371 @@
+ {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_stylesheet %}
+{% endblock extra_stylesheet %}
+  
+
+
+{% block content %}
+
+<style type="text/css">
+ @media (max-width: 768px){
+    .container1{
+      margin-top: 685px !important;
+    }
+  }
+.inputlayout{
+  width: 100%;
+padding: 8px 8px;
+font-size: 14px;
+line-height: 24px;
+/*color: #d3d1d0;*/
+border: 1px solid #e8e8e8;
+display: flex;
+margin-bottom: 10px;
+border-radius: 4px;
+text-align: left;
+background-color: white;
+}
+
+.icon1 .fair-breakdown {
+  visibility: hidden;
+    width:max-content;
+    background-color: #eee;
+    color: #233545;
+    text-align: left;
+    border-radius: 8px;
+    padding: 8px 11px;
+    position: absolute;
+    z-index: 1;
+    font-size: small;
+    box-shadow: 0px 0px 13px #000000;
+}
+
+.icon1:hover .fair-breakdown {
+  visibility: visible;
+}
+
+ .checkout-frm input[type="text"]{
+  width: 100%;
+    padding: 8px 8px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #a6a6a6;
+    border: 1px solid #e8e8e8;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: left;
+
+ }
+
+.button0{
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    margin: auto;
+    background-color:  #4CAF50;
+    border-radius: 0%;
+    border-color:  #4CAF50;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    border: 0px;
+}
+.input-icons i { 
+    position: absolute; 
+} 
+
+/*.button0:hover{
+    background-color: #4CAF50 ;
+}*/
+  
+.input-icons { 
+    width: 100%; 
+    
+} 
+  
+.icon { 
+    margin-left: 75%;
+    padding: 10px; 
+    color: rgb(76, 82, 76); 
+    min-width: 50px; 
+    text-align: center; 
+} 
+  
+.input-field {
+    width: 100%; 
+    padding: 10px; 
+    text-align: center; 
+} 
+
+
+.header2{
+    background-color: #b2b2b2;
+    color: #1b233e;
+    margin-bottom: 13px;
+}
+
+.container1{
+  margin-top: 170px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.col-form-label{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+     text-align: right;
+     margin-top: 14px;
+}
+
+
+.check-text{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+}
+
+.address1{
+    background-color: #eee;
+}
+
+input:focus{
+    border: none;
+}
+
+
+</style>
+
+  <div class="container container1 mt-5 checkout-frm ">
+        
+    <div class="row header2 text-center">
+        <div class="col text-center">
+            <h4 ><span>{{ request.user.first_name }}</span>'s Booking Summary</h4>
+        </div>
+    </div>
+    
+    <div class="row">
+       <div class="col-md-12" style="padding-left: 0px;padding-right: 0px">
+         
+           <div class="col-md-6">
+            <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
+            <div class="col-sm-8">
+              <div class="inputlayout">{{ pickup }}</div>
+            </div></div>
+        </div>
+         <div class="col-md-6">
+          <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
+            <div class="col-sm-8">
+              <div class="inputlayout">{{ drop }}</div>
+            </div></div>
+        </div>
+         
+       </div>
+        <div class="col-md-6">
+         <!--  <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
+            <div class="col-sm-8">
+              <div class="inputlayout">{{ pickup }}</div>
+                    
+            </div>
+        </div> -->
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">PickUp DateTime</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                         type="text" readonly
+                         placeholder="{{ pickup_datetime }}">
+                        
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Journey Type</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ ride_type }}">
+                </div>
+            </div>
+            
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Ride Fair</label>
+                <div class="col-sm-8"> 
+                     <div class="inputlayout " >
+                      <div style="width: 80%">{{ ride_total }}</div>
+                        <div class="icon1" style="width: 20%;text-align: right;font-size: 18px;">
+                           <span class="fas fa-info-circle">
+                           </span>
+                            <!-- Ride Fair BreakDown -->
+                           <span class="fair-breakdown">
+
+
+                                Inital Charges : {{ inital_charges }}<br>
+                               {% if additional_charges %}
+                                Additional Taxes : {{ additional_charges }}
+                               {% endif %}<br>
+                               {% if early_pickup_charges %}
+                                Early Pickup Charges : {{ early_pickup_charges }}
+                               {% endif %}<br>
+                               {% if late_drop_charges %}
+                                Late Drop Charges : {{ late_drop_charges }}
+                               {% endif %}<br>
+                               {% if night_charges %}
+                                Night Charges : {{ night_charges }}
+                               {% endif %}<br>
+                               {% if gst_charges %}
+                                GST : {{ gst_charges }}
+                               {% endif %}<br>
+                                Total : {{ ride_total }}
+
+
+
+                           </span>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
+                <div class="col-sm-8"> 
+                     <div class="inputlayout " >
+                      <div style="width: 80%">{{ ride_total }}</div>
+                        <div class="icon1" style="width: 19%;text-align: right;font-size: 19px;">
+                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
+                <div class="col-sm-6">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="0">
+                </div>
+                <div class="col-sm-2"><input type="checkbox" class="my-auto" style=" display: inline-blocks;"></div>
+            </div> -->
+          
+            <div class="row">
+                <form method="post">
+                    {% csrf_token %}
+
+                <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
+                <div class="col-sm-4">
+                  <input type="hidden"  name="type" value="coupon">
+                  <input type="text"  name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
+                </div>
+                <div class="col-sm-4">
+                    <button class="button0" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                </div>
+                    </form>
+            </div>
+
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Final Fare</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ final_ride_fair }}">
+                </div>
+               
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Advance (15%)</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ advance }}">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ///////////////////////////////Second column/////////////////////// -->
+        <div class="col-md-6">
+          <!-- <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
+            <div class="col-sm-8">
+              <div class="inputlayout">{{ drop }}</div>
+            </div>
+        </div> -->
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">DropOff DateTime</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ drop_datetime }}">
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Expected Distance:</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ distance_text }}">
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Expected Duration:</label>
+                <div class="col-sm-8">
+                  <input class="input-field " 
+                  type="text" readonly
+                  placeholder="{{ duration_text }}">
+                </div>
+            </div>
+            <form method="post">
+            {% csrf_token %}
+                <input type="hidden" value="details" name="type">
+            <div class="row">
+
+                <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
+                <div class="col-sm-8">                 
+                        <input class="input-field " type="text" name="name" placeholder="Full Name">
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
+                <div class="col-sm-8">               
+                        <input class="input-field " type="text" name="mobile" placeholder="Phone"> 
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Exact Pickup:</label>
+                <div class="col-sm-8">
+                        <input class="input-field " type="text" name="pickup_location" placeholder="Enter pickup location">              
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Exact Drop:</label>
+                <div class="col-sm-8">
+                        <input class="input-field " 
+                               type="text"
+                               name="drop_location"
+                               placeholder="Enter drop Location"> 
+                </div>
+            </div>
+            <div class="row booking-frm ">
+                <button class="book-btn" type="submit" style="margin-left: 36%;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+            
+
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+{% endblock content %}
+
+
+{% block extra_scripts %}
+{% endblock extra_scripts %}
+ 

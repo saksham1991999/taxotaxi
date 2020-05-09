@@ -1,0 +1,1466 @@
+/*
+	Project: Prime Cab
+	Responsive CSS File
+*/
+ /*for navbar header*/
+@media (max-width: 500px){.container .col-md-3{
+    width: 100%;}
+   
+}
+@media (max-width: 500px){.tj-banner-form2 {
+    margin-top: -58px;}
+   
+}
+@media(max-width: 500px){.banner-hover{
+	margin-left: 1%;
+	}}
+@media (max-width: 767px){.tj-form2-tabs .nav-tabs li a {
+    font-size: 12px;
+    padding: 13px 12px;
+    width: auto;
+}}
+@media (min-width: 1920px){
+	
+	.slide-item .slide-caption{
+		bottom:380px;
+	}
+	.slide-item .slide-caption strong{
+		font-size:24px;
+		line-height:28px;
+	}
+	.slide-item .slide-caption h2{
+		font-size:52px;
+		line-height:62px;
+	}
+	
+}
+
+
+
+/* Responsive CSS For Gallery Carousel */
+
+@media(min-width: 1024px) {
+	.gallery-carousel .left-outer {
+		position: relative;
+		width: calc(100% - 230px);
+		margin-bottom: 0;
+	}
+	.gallery-carousel .right-outer {
+		width: 210px;
+	}
+	.gallery-carousel .gallery-thumb .slick-slide {
+		margin: 0 0 20px 0;
+	}
+	.gallery-carousel .gallery-thumb .slick-list {
+		margin: 0;
+	}
+}
+@media(min-width:992px) and (max-width:1024px){
+	
+	/*Header Styles */
+	
+	.info_box i{
+		font-size: 18px;
+		width: 40px;
+		line-height: 38px;
+		height: 40px;
+		margin-right: 10px;
+	}
+	.info_box .info_text .info_title{
+		font-size:16px;
+	}
+	.info_box .info_text span{
+		font-size:14px;
+	}
+	.phone_info .phone_text span a{
+		margin-left: 70px;
+		padding:0;
+	}
+	/* End Header Styles */
+	
+	/* Inner Banner Styles */
+	.tj-inner-banner h2{
+		padding:100px 0 100px;
+	}
+	/* End Inner Banner Styles */
+	
+	/* Homepage 1 Styles */
+	.trip-type-tabs .nav-tabs li a{
+		padding:15px 25px;
+	}
+	.trip-outer .tab-content{
+		width:100%;
+		padding:40px 20px
+	}
+	.trip-type-frm input[type="text"]{
+		width:100%;
+	}
+	.trip-type-frm .search-btn{
+		width:100%;
+	}
+	.offer-box h4{
+		font-size:16px;
+	}
+	.offer-box img{
+		margin-right: 10px;
+	}
+	.about-info .facts-list li{
+		margin-right: 40px;
+		margin-bottom: 0;
+	}
+	.deal-thumb img{
+		width:100%;
+		height:auto;
+	}
+	.deal-box .deal-thumb:after{
+		top: 0;
+		left: 0;
+		width:0;
+		height: 100%;
+	}
+	.deal-box .deal-thumb:hover:after{
+		width:100%;
+	}
+	.cab-service-box .service-desc h4{
+		font-size:20px;
+	}
+	.news-box figure img{
+		width:100%;
+		height:auto;
+	}
+	/*End Homepage 1 Styles*/
+	
+	/* Homepage 2 Styles*/
+	.slide-item .slide-caption h2{
+		font-size:40px;
+		line-height:50px;
+	}
+	.slide-item .slide-caption{
+		bottom:35%;
+	}
+	.tj-slider .owl-prev{
+		left:10px;
+	}
+	.tj-slider .owl-next{
+		right:10px;
+	}
+	.open_hours{
+		padding: 30px 30px;
+	}
+	.tj-services .service-item{
+		width:285px;
+		margin:0 20px 50px 0
+	}
+	.tj-services .service-item img{
+		margin-right: 20px;
+	}
+	.tj-faq-clients .faq-outer{
+		width:100%;
+		margin-right:0;
+	}
+	.faq-outer .tj-accordion-holder .panel-title a:after {
+		right: 12px;
+	}
+	/* End Homepage 2 Styles*/
+	
+	/* Homepage 3 Styles*/
+	
+	.cab-box figure img{
+		width:100%;
+		height:auto;
+	}
+	.member-img img{
+		width:100%;
+		height:auto;
+	}
+	.tj-app{
+		overflow:hidden;
+	}
+	.inner-circle2 img{
+		top: -8px;
+	}
+	.tj-form-map .form-box{
+		padding:21px 35px;
+	}
+	.contact_frm .frm-field input[type="text"]{
+		width:100%;
+		margin-bottom:10px;
+	}
+	.contact_frm .frm-field input[type="email"]{
+		width:100%;
+		margin-left:0;
+	}
+	/* End Homepage 3 Styles*/
+	
+	/* Booking Form 3 Styles */
+	.booking-summary .journey-info{
+		width:290px;
+	}
+	.booking-summary .fare-box{
+		float:none;
+		clear:both;
+		margin:0 20px 35px 20px;
+		width:auto;
+	}
+	/* End Booking Form 3 Styles */
+	
+	/* Contact Styles*/
+	.address-box{
+		width:100%;
+		margin:60px 0 0 0;
+	}
+	/* End Contact Styles*/
+	
+	.text-box .service-list, .text-box .feature-list{
+		width:330px;
+	}
+	.fleet-box .ad-info{
+		text-align:center;
+		width:100%;
+		padding:10px 20px;
+	}
+	.fleet-box .ad-info .book_fleet a{
+		margin-top:20px;
+	}
+	.fleet-features{
+		padding:25px 14px;
+	}
+	.fleet-features ul li i{
+		margin-right: 10px;
+	}
+	.fleet-features ul li{
+		font-size:14px;
+		line-height:25px;
+		text-transform:capitalize;
+	}
+	.fleet-list-box img{
+		width:100%;
+		height:auto;
+	}
+	.fleet-list-box .fleet-text{
+		border-left:1px solid #eaeaea;
+		border-top:transparent;
+	}
+	
+
+}
+
+@media(min-width:768px) and (max-width:991px){
+	
+	/* Header Styles */
+	.phone_info{
+		display:none;
+	}
+	.info_box i{
+		margin-right: 7px;
+		font-size: 18px;
+		width: 42px;
+		line-height: 42px;
+		height: 42px;
+	}
+	.tj-nav-holder .navbar{
+		width:85%;
+	}
+	.tj-nav-holder .navbar-default .navbar-nav > li > a{
+		padding: 14px 0 17px 0;
+		margin: 0 14px;
+	}
+	.book_btn a{
+		width: 112px;
+		font-size: 13px;
+	}
+	/* End Header Styles */
+	
+	/* Inner Banner Styles */
+	.tj-inner-banner h2{
+		padding:100px 0 100px;
+	}
+	/* End Inner Banner Styles */
+	
+	/* Homepage 1 Styles */
+	.tj-banner-form .banner-caption{
+		padding-top:0;
+	}
+	.trip-type-tabs .nav-tabs li a{
+		padding:15px 20px;
+	}
+	.trip-type-frm input[type="text"]{
+		width:100%;
+	}
+	.trip-outer .tab-content{
+		padding:30px 20px
+	}
+	.trip-type-frm .search-btn{
+		width: 200px;
+	}
+	.about-info .facts-list li .fact-count{
+		font-size:30px;
+	}
+	.about-info .facts-list li {
+		margin-right: 35px;
+		margin-bottom:0;
+	}
+	.cab-service-box .service-desc h4{
+		font-size:18px;
+	}
+	.cab-service-box .service-desc{
+		padding:35px 25px
+	}
+	.deal-thumb img{
+		width:100%;
+		height:auto;
+	}
+	.deal-box .deal-thumb:after{
+		top: 0;
+		left: 0;
+		width:0;
+		height: 100%;
+	}
+	.deal-box .deal-thumb:hover:after{
+		width:100%;
+	}
+	.news-box figure img{
+		width:100%;
+		height:auto;
+	}
+	/* End Homepage 1 Styles */
+	
+	/* Homepage 2 Styles */
+	.fleet-box .ad-info{
+		padding: 10px 20px;
+	}
+	.service-ad-box .fleet-box img{
+		width:100%;
+		height:auto;
+	}
+	.fleet-box .ad-info .book_fleet a{
+		margin-top:20px;
+	}
+	.tj-services .tj-service-outer{
+		margin:50px 0 0;
+	}
+	.tj-services .service-item{
+		margin:0 30px 30px 0;
+		width:auto;
+	}
+	.tj-promo-offer .promo-box{
+		width:auto;
+	}
+	.trip-cabs-outer{
+		padding-left:0;
+	}
+	.open_hours{
+		padding: 30px 30px;
+	}
+	.cta-box img{
+		padding-right:15px;
+	}
+	.fleet-info-box .fleet-info{
+		width:auto;
+	}
+	.cab-col-outer .fleet-info-box .fleet-info ul li:first-child {
+		padding: 0 10px 0 0;
+	}
+	.cab-col-outer .fleet-info-box .fleet-info ul li{
+		padding: 0 10px;
+	}
+	.cab-col-outer .fleet-grid-box a{
+		padding: 15px 25px;
+	}
+	.cab-col-outer .fleet-info-box a{
+		margin-top: 20px;
+	}
+	.fact-box .fact-counter{
+		font-size: 30px;
+	}
+	.testimonial-outer{
+		width:100%;
+		margin-left:0;
+	}
+	.faq-outer .tj-accordion-holder .panel-title a::after {
+		right:15px;
+	}
+	.tj-faq-clients .faq-outer{
+		width:100%;
+		margin-right:0;
+	}
+	.faq-outer .tj-accordion-holder .panel-body .panel-text{
+		padding-right:0;
+	}
+	.slide-item .slide-caption{
+		bottom:100px;
+	}
+	.slide-item .slide-caption h2{
+		font-size: 30px;
+		line-height: 40px;
+	}
+	.tj-cab-slider .owl-prev{
+		left: 10px;
+	}
+	.tj-cab-slider .owl-next{
+		right:10px;
+	}
+	/* End Homepage 2 Styles */
+	
+	/* Homepage 3 Styles */
+	.tj-facts2 .fact-outer{
+		width:auto;
+		padding: 30px 32px;
+	}
+	.tj-facts2 .fact-desc span{
+		font-size: 13px;
+	}
+	.service-box .service-caption h3{
+		font-size: 20px;
+		line-height:25px;
+	}
+	.member-img img {
+		width: 100%;
+		height: auto;
+	}
+	.tj-clients{
+		text-align:center;
+	}
+	.app-info{
+		padding:130px 0 0;
+	}
+	.outer-circle {
+		border-radius: 0;
+		border: none;
+		height: auto;
+		width: auto;
+		position: relative;
+		top: 0;
+	}
+	.inner-circle {
+		position: relative;
+		border: none;
+		border-radius: 0;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		margin: 0;
+	}
+	.inner-circle2 {
+		position: relative;
+		border: none;
+		border-radius: 0;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		margin: 0;
+		text-align: center;
+	}
+	.inner-circle2 img {
+		width: 100%;
+		height: auto;
+		position:relative;
+		top:0;
+		right:0;
+		margin-top:125px;
+	}
+	.cab-box figure img{
+		width:100%;
+		height:auto;
+	}
+	.contact_frm .frm-field input[type="text"]{
+		width:100%;
+		margin-bottom:10px;
+	}
+	.contact_frm .frm-field input[type="email"]{
+		width:100%;
+		margin-left:0
+	}
+	.tj-form-map .form-box{
+		padding: 21px 35px;
+	}
+	.tj-footer2 .payment-icons li{
+		padding-right: 10px;
+	}
+	.tj-footer2 .fsocial-links li a{
+		margin-right:0;
+	}
+	.tj-footer2 .copyright_text p{
+		font-size:12px;
+	}
+	/* End Homepage 3 Styles */
+	
+	/* About Us Styles */
+	.tj-aboutus .about-info{
+		padding:90px 0 0;
+	}
+	.about-info .facts-list{
+		padding:50px 0 50px;
+	}
+	.about-banner img{
+		width:100%;
+		height:auto;
+		margin-left:0;
+		margin-top:110px;
+	}
+	.reviews-slider .review-item{
+		padding: 0 40px 45px 40px;
+	}
+	/* End About Us Styles */
+	
+	/* Register And Login Styles */
+	.reg-cta{
+		padding-left:0;
+		padding:90px 0 70px;
+	}
+	.login-cta{
+		padding-left:0;
+		padding:90px 0 30px;
+	}
+	/* End Register And Login Styles */
+	
+	/* Booking Form Styles */
+	.tj-booking-frm .booking-frm{
+		padding: 45px 25px;
+	}
+	.tj-booking-frm .tj-tabs .nav > li > a{
+		font-size: 14px;
+		padding: 20px 20px 15px 20px;
+	}
+	.booking-summary .booking-info{
+		padding: 35px 20px 15px 20px
+	}
+	.booking-summary .booking-info li{
+		width:auto;
+		font-size: 13px;
+	}
+	.booking-summary .booking-info li span{
+		float:none;
+		height:auto;
+	}
+	.booking-summary .journey-info{
+		width:auto;
+		padding:0 20px 0 20px
+	}
+	.journey-info i{
+		padding-left:10px;
+	}
+	.booking-summary .service-info{
+		padding-left:20px;
+		padding-right:20px;
+	}
+	.booking-summary .service-info li{
+		width:auto;
+	}
+	.booking-summary .fare-box{
+		padding: 18px 10px;
+		float:none;
+		clear:both;
+		width:auto;
+		margin:0 20px 35px 20px;
+	}
+	/* End Booking Form Styles */
+	
+	/* Contact Us Styles */
+	.address-box{
+		width:100%;
+		margin: 60px 0 0 0;
+	}
+	/* End Contact Us Styles */
+	
+	/* Fleet Grid And List Styles */
+	.car-filter .select-list{
+		font-size: 13px;
+	}
+	.price-filter .text-left span{
+		display:none;
+	}
+	.fleet-info-box .fleet-info ul li:first-child {
+		padding: 0 10px 0 0;
+	}
+	.fleet-info-box .fleet-info ul li{
+		padding: 0 10px;
+	}
+	.fleet-info-box a{
+		float:left;
+		margin-top:20px;
+	}
+	.fleet-grid-box .price-box{
+		top: 10px;
+		right: 15px;
+	}
+	.fleet-grid-box .rated{
+		top:15px;
+		left:10px;
+	}
+	.fleet-grid-box .price-box strong{
+		font-size: 26px;
+	}
+	.fleet-list-box img{
+		width:100%;
+	}
+	.fleet-list-box .fleet-text{
+		border-left:1px solid #eaeaea;
+		border-top:transparent;
+	}
+	/* End Fleet Grid And List Styles */
+	
+	.fleet-features{
+		padding:30px 18px;
+	}
+	.fleet-features ul li i {
+		margin-right: 10px;
+	}
+	.fleet-features ul li{
+		font-size:14px;
+		text-transform:capitalize;
+		line-height:30px;
+	}
+	.fleet-box .ad-info{
+		width:100%;
+		text-align:center;
+	}
+	.fleet-box .ad-info h4{
+		font-size:18px;
+	}
+	.fleet-box .ad-info h5{
+		font-size:15px;
+	}
+	.text-box .service-list, .text-box .feature-list{
+		width:100%;
+	}
+	
+	/* Payment Styles */
+	.payment-frm .back-btn,.payment-frm .book-btn,
+	.cb-frm .back-btn,.cb-frm .book-btn{
+		width:155px;
+	}
+	.tj-user-bfrm .tab-content{
+		padding:50px 25px;
+	}
+	.success-msg{
+		padding:60px 50px;
+	}
+	
+	/* User Account Styles */
+	.tj-account-frm .tj-tabs .nav > li{
+		float:none;
+	}
+	.tj-account-frm .tj-tabs .nav > li > a{
+		width:100%;
+	}
+	
+	/* Blog Detail Styles */
+	.sharing_links li a{
+		margin: 0 0 10px;
+	}
+	.social_sharing h4{
+		font-size:16px;
+	}
+	.post-nav-control img{
+		margin-right:15px;
+	}
+	.post-nav-control .post-left-nav,
+	.post-nav-control .post-right-nav{
+		width:100%;
+	}
+	.post-nav-control .post-left-nav{
+		margin-bottom:20px;
+	}
+	.post-nav-control .post-title{
+		overflow:hidden;
+		float:none;
+		margin-left:0;
+	}
+	.post-nav-control .post-title h4{
+		font-size:14px;
+		line-height:20px;
+	}
+	.post-nav-control a{
+		padding: 6px 0;
+		font-size: 12px;
+	}
+	.booking-summary {
+		margin-top: 50px;
+	}
+	.booking-summary .service-info{
+		float:none;
+		clear:both;
+	}
+	
+}
+
+@media(max-width:767px){
+	
+	/* Header Styles */
+	.tj-logo{
+		padding: 25px 0 15px;
+		text-align:center;
+	}
+	.tj-logo h1 a:after{
+		width:130px;
+		margin:0 auto 0;
+	}
+	.phone_info{
+		padding:10px 0 15px;
+		text-align:center;
+	}
+	.phone_info i{
+		top:0;
+		left:0;
+		float:none;
+	}
+	.phone_info .phone_text{
+		float:none;
+	}
+	.phone_icon:before{
+		display:none;
+		content:'';
+	}
+	.info_box {
+		padding: 10px 0 15px;
+		text-align:center;
+	}
+	.info_box i{
+		margin-right:15px;
+		width:100%;
+		height:auto;
+		line-height:40px;
+		float:none;
+		border-radius:0;
+		font-size:22px;
+	}
+	.info_box .info_text{
+		float:none;
+		/*margin-top:20px;*/
+	}
+	.info_box .info_text .info_title{
+		line-height:25px;
+	}
+	.phone_info .phone_text span a{
+		padding:10px 0 30px;
+		margin-left:0;
+	}
+	.tj-nav-holder .navbar{
+		width:100%;
+		float:none;
+	}
+	.book_btn a{
+		float:none;
+		margin:0 auto 0;
+		padding:14px 0;
+		display:none;
+	}
+	.tj-nav-holder .navbar-default .navbar-nav > li:first-child a{
+		margin-left:10px;
+	}
+	.tj-nav-holder .navbar-default .navbar-nav > li > a{
+		padding:0px 0 15px 0;
+		border-top:none;
+	}
+	
+	.tj-nav-holder .navbar-nav{
+		margin:0;
+	}
+	.tj-nav-holder .navbar-nav li ul{
+		display:none;
+	}
+	.tj-nav-holder .navbar-nav li ul{
+		opacity:1;
+		visibility:visible;
+	}
+	.tj-nav-holder .open > .dropdown-menu{
+		display:block;
+	}
+	.tj-header .tj-nav-holder .navbar-default .navbar-nav > li:hover > ul{
+		top:100%;
+	}
+	.tj-header .tj-nav-holder .navbar-nav li ul{
+		background-color:#f9f9f9;
+	}
+	.tj-nav-holder .navbar-nav .dropdown-menu > li > a{
+		padding:12px 20px;
+		color:#444;
+	}
+	.tj-nav-holder .navbar-nav li ul li:hover ul{
+		left:0;
+		display:block;
+	}
+	.tj-header .sticky{
+		position:fixed;
+		padding:0;
+	}
+	/* End Header Styles */
+	
+	/*Inner Banner Styles */
+	.tj-inner-banner h2{
+		padding:60px 0;
+	}
+	.tj-inner-banner h2{
+		font-size:30px;
+	}
+	/* End Inner Banner Styles */
+	
+	/* Contact Styles */
+	.tj-contact-section .tj-heading-style h3{
+		font-size:28px;
+	}
+	.tj-contact-form .no-pad{
+		padding-left:15px;
+	}
+	.tj-contact-form .inner-holder{
+		float:none;
+	}
+	.inner-holder label[for="email"]:before{
+		left:30px;
+	}
+	.tj-contact-section .tj-heading-style,
+	.tj-team .tj-heading-style{
+		width:auto;
+		margin:0;
+	}
+	.address-box{
+		width:100%;
+		margin-left:0;
+	}
+	/* End Contact Styles */
+	
+	/* 404 Styles */
+	.tj-p404-section h2{
+		margin:0;
+		font-size:28px;
+		padding-top:25px;
+	}
+	.tj-p404-section .p404-title{
+		line-height:inherit;
+		font-size:90px;
+	}
+	/* End 404 Styles */
+	
+	/* Register Styles */
+	.tj-tabs .nav > li > a{
+		padding:20px 25px 15px 25px;
+	}
+	.reg-cta{
+		padding-left:0;
+		padding:80px 0 40px;
+	}
+	.reg-frm{
+		padding:0 0 80px;
+	}
+	.login-cta{
+		padding-left:0;
+		padding: 80px 0 40px;
+	}
+	.login-frm{
+		float:left;
+		padding: 0 0 80px;
+	}
+	/* .login-frm .field-holder{
+		float:left;
+	} */
+	/* End Register Styes */
+	
+	.tj-app .tj-heading-style h3{
+		font-size:30px;
+	}
+	
+	/* FAQ Styles */
+	.outer-circle {
+		border-radius: 0;
+		border: none;
+		height: auto;
+		width: auto;
+		position: relative;
+		top: 0;
+	}
+	.inner-circle {
+		position: relative;
+		border: none;
+		border-radius: 0;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		margin: 0;
+	}
+	.inner-circle2 {
+		position: relative;
+		border: none;
+		border-radius: 0;
+		height: auto;
+		width: auto;
+		top: 0;
+		left: 0;
+		margin: 0;
+		text-align: center;
+	}
+	.inner-circle2 img {
+		position: relative;
+		top: 0;
+		right: 0;
+		width: 100%;
+		height: auto;
+	}
+	.tj-accordion-holder .panel-title a{
+		line-height:25px;
+		font-size:18px;
+	}
+	/* End FAQ Styles */
+	
+	/* Booking Form Styles */
+	.tj-booking-frm .tj-tabs .nav-tabs > li{
+		float:none;
+		margin-bottom:0;
+	}
+	.booking-frm .ride-terms {
+		width: 96%;
+	}
+	.booking-summary .service-info{
+		float:none;
+		clear:both;
+	}
+	.tj-tabs .nav > li > a{
+		margin-right:0;
+	}
+	.booking-summary{
+		margin-top:50px;
+	}
+	.tj-booking-frm .booking-frm{
+		padding:45px 0;
+	}
+	.booking-summary .booking-info{
+		padding: 25px 20px 15px 20px;
+	}
+	.booking-summary .journey-info{
+		width: 290px;
+		padding: 0 20px 0 20px;
+	}
+	.booking-summary .service-info{
+		padding-left:20px;
+	}
+	.booking-summary .fare-box{
+		margin:0 20px 35px 20px;
+	}
+	/* End Booking Form Styles */
+	
+	/* Fleet Grid Styles */
+	.car-fleet .result-count{
+		width:auto;
+	}
+	.car-fleet .result-count span{
+		font-size:14px;
+	}
+	.fleet-info-box .fleet-info{
+		width:auto;
+	}
+	.fleet-info-box a{
+		float:left;
+		width:100%
+	}
+	.fleet-grid-box .price-box{
+		top: 0;
+		right: 15px;
+	}
+	.fleet-grid-box .rated{
+		top: 9px;
+		left: 10px;
+	}
+	.fleet-grid-box .price-box strong{
+		font-size: 26px;
+	}
+	.car-filter .select-list{
+		float:none;
+	}
+	/* End Fleet Grid Styles */
+	
+	/* Fleet List Styles */
+	.fleet-list-box img{
+		width:100%;
+	}
+	.fleet-list-box .fleet-text{
+		border-left:1px solid #eaeaea;
+		padding:35px 25px 35px 25px;
+		border-top:transparent;
+	}
+	/* End Fleet List Styles */
+	
+	/* Fleet Detail Styles */
+	.book_fleet a{
+		margin:15px 0 0;
+	}
+	.fleet-box .ad-info{
+		width:100%;
+		text-align:center;
+		padding:0;
+		top:30%;
+	}
+	.fleet-box .ad-info .book_fleet a{
+		margin: 25px auto 0;
+	}
+	.text-box .feature-list{
+		margin-left:0;
+	}
+	.text-box .service-list, 
+	.text-box .feature-list{
+		width:auto;
+	}
+	.video-tour figure .video-caption a{
+		left:43%;
+	}
+	/* End Fleet Detail Styles */
+	
+	/* Services Styles */
+	.cab-services .tj-heading-style{
+		width:auto;
+	}
+	.cab-services .tj-heading-style h3{
+		font-size:28px;
+	}
+	/* End Services Styles */
+	
+	/* About Styles */
+	.about-info .tj-heading-style h3,
+	.tj-reviews .tj-heading-style h3,
+	.tj-team .tj-heading-style h3{
+		font-size:28px;
+	}
+	.about-info .facts-list li{
+		width:100%;
+		display:block;
+		margin-right:0;
+		text-align:center;
+		border: 1px solid #e0e0e0;
+		padding: 25px 0;
+		border-radius:5px;
+		margin-bottom:30px;
+	}
+	.about-banner img{
+		margin-left:0;
+		width:100%;
+		height:auto;
+	}
+	.reviews-slider .owl-controls{
+		right: -10px;
+		margin-top: -27px !important;
+	}
+	.reviews-slider .review-item{
+		padding:0 25px 45px 25px;
+	}
+	.tj-reviews .owl-theme .owl-controls .owl-nav [class*="owl-"]{
+		margin:0 5px 0 0;
+		width:40px;
+	}
+	.tj-clients{
+		text-align:center;
+	}
+	.tj-team .member-box{
+		margin-top: 50px;
+	}
+	.tj-team .member-box figure{
+		width:100%;
+	}
+	.tj-team .member-box img{
+		width:100%;
+		height:auto;
+	}
+	/* End About Styles */
+	
+	/* Homepage 1 Styles */
+	
+	.tj-banner-form{
+		padding:150px 0;
+	}
+	.tj-banner-form .banner-caption{
+		padding-top:0;
+	}
+	.banner-caption .banner-inner h2{
+		font-size: 40px;
+		line-height: 50px;
+	}
+	.banner-caption .banner-inner .banner-btns .btn-style-2{
+		margin:15px 0 0 0;
+	}
+	.trip-outer{
+		margin-top:50px;
+	}
+	.trip-outer .tab-content{
+		width:100%;
+	}
+	.trip-type-frm input[type="text"]{
+		width:100%;
+	}
+	.trip-type-frm .search-btn{
+		width:200px;
+	}
+	.trip-type-tabs .nav-tabs li a{
+		padding:15px 25px
+	}
+	.fleet-carousel .carousel-outer{
+		margin-left:0;
+		margin-right:0;
+	}
+	.fleet-inner ul li{
+		line-height:25px;
+	}
+	.cab-carousel .owl-nav .owl-prev{
+		right:90px;
+	}
+	.cab-carousel .owl-nav .owl-next{
+		left:90px;
+	}
+	.tj-deals .tj-heading-style h3,
+	.tj-cal-to-action2 .cta-tagline h2,
+	.fleet-carousel .tj-heading-style h3{
+		font-size:28px;
+	}
+	.tj-deals .tj-heading-style{
+		width:auto;
+		margin-bottom:50px;
+	}
+	.deal-thumb img{
+		width:100%;
+		height:auto;
+	}
+	.deal-box .deal-thumb:after{
+		top: 0;
+		left: 0;
+		width:0;
+		height: 100%;
+	}
+	.deal-box .deal-thumb:hover:after{
+		width:100%;
+	}
+	.tj-cal-to-action2 .cta-btn a{
+		float:left;
+		margin-top:30px;
+	}
+	.tj-offers .offer-box{
+		text-align:center;
+	}
+	.offer-box img{
+		float:none;
+		margin-right:0;
+		margin-bottom:20px;
+	}
+	/* End Homepage 1 Styles */
+	
+	/* Homepage 2 Styles */
+	
+	.tj-facts .tj-heading-style h3,
+	.tj-cab-collection .tj-heading-style h3,
+	.tj-promo-offer h3,.tj-services .tj-heading-style h3,
+	.faq-outer .tj-heading-style h3,.testimonial-outer .tj-heading-style h3{
+		font-size:28px;
+	}
+	/* .slide-item .slide-caption{
+		display:none;
+	} */
+	.slide-item .slide-caption{
+		bottom:30%;
+	}
+	.slide-item .slide-caption h2{
+		display:none;
+	}
+	.slide-item .slide-caption strong{
+		margin-bottom:15px;
+		font-size:15px;
+		line-height:24px;
+	}
+	.slide-caption .slide-btns .btn-style-1{
+		width:115px;
+		padding:12px 0;
+	}
+	.slide-item .slide-caption .slide-btns .btn-style-2{
+		width:115px;
+		padding:10px 0;
+	}
+	.tj-cab-slider .owl-prev {
+		position: absolute;
+		top: 30%;
+		left: 5px;
+	}
+	.tj-cab-slider .owl-next {
+		position: absolute;
+		top: 30%;
+		right: 5px;
+	}
+	.tj-slider .owl-dots {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+		text-align: center;
+	}
+	.service-ad-box .fleet-box img{
+		width:100%;
+		height:auto;
+	}
+	.tj-services .tj-service-outer{
+		margin-top:50px;
+	}
+	.tj-services .service-item{
+		width:auto;
+		margin:0 0 30px;
+	}
+	.open_hours{
+		padding:30px 30px;
+	}
+	.trip-cabs-outer{
+		padding-left:0;
+	}
+	.trip-frm-tabs .nav-tabs li a{
+		margin:0 10px 0 0;
+	}
+	.trip-cabs-outer .trip_form{
+		float:none;
+	}
+	.trip_form label{
+		margin:0 0 0 8px;
+	}
+	.faq-outer .tj-accordion-holder .panel-title a:after{
+		right:10px;
+	}
+	.tj-faq-clients .faq-outer{
+		margin-left:0;
+		width:100%;
+	}
+	.faq-outer .tj-accordion-holder .panel-body .panel-text{
+		padding-right: 20px;
+	}
+	.testimonial-outer{
+		margin-left:0;
+		width:100%;
+		margin-top:30px;
+	}
+	.testimonial-slider .testimonial-item{
+		padding:35px 20px;
+	}
+	.tj-promo-offer .promo-box{
+		width:auto;
+	}
+	/* End Homepage 2 Styles */
+	
+	.tj-banner .banner-caption{
+		width:auto;
+	}
+	/*.tj-banner-form2 .tab-content{
+		padding: 45px 0;
+	}*/
+	.tab-content .trip-frm2 .search-btn{
+		float:none;
+		margin-top:15px;
+	}
+	.tj-form2-tabs .nav-tabs li a{
+		font-size:12px;
+		padding: 13px 12px;
+		width:auto;
+	}
+	.tj-book-services .tj-heading-style h3,
+	.tj-cab-filter .tj-heading-style h3{
+		font-size:28px;
+	}
+	.tj-book-services .tj-heading-style{
+		width:auto;
+		margin:0 auto 50px;
+	}
+	.tj-book-services .service-box:hover {
+		-webkit-transform: translateY(10px);
+		-moz-transform: translateY(10px);
+		-ms-transform: translateY(10px);
+		-o-transform: translateY(10px);
+		transform: translateY(10px);
+	}
+	.tj-facts2 .fact-outer{
+		width:100%;
+	}
+	.app-info{
+		padding:130px 0 80px;
+	}
+	.cab-box figure img{
+		width:100%;
+		height:auto;
+	}
+	.cab-filter-nav a{
+		margin-right:15px;
+		line-height:26px;
+	}
+	.tj-form-map .form-box{
+		padding: 50px 20px;
+	}
+	.tj-form-map .no-padl{
+		padding-left:15px;
+	}
+	.tj-form-map .no-padr{
+		padding-right:15px;
+	}
+	.contact_frm .frm-field input[type="text"]{
+		margin-right: 0;
+		margin-bottom: 10px;
+		width:100%;
+	}
+	.contact_frm .frm-field input[type="email"]{
+		width:100%;
+		margin-left: 0;
+	}
+	.tj-footer2 .payment-icons,.tj-footer2 .fsocial-links{
+		text-align:center;
+		margin-bottom:15px;
+	}
+	.tj-footer2 .copyright_text p{
+		text-align:center;
+	}
+	
+	/* Payment Styles */
+	
+	.tj-payment .tab-content,
+	.tj-user-bfrm .tab-content{
+		padding:50px 25px;
+	}
+	.payment-frm .payment-field img{
+		width:100%;
+		height:auto;
+	}
+	.payment-frm .book-btn,.tj-user-bfrm .book-btn{
+		margin-left:0;
+	}
+	.cb-frm .info-field{
+		float:none;
+	}
+	/* End Payment Styles */
+	.tj-breadcrumb .breadcrumb-list li{
+		padding:10px 0;
+	}
+	.success-msg{
+		padding:50px 50px;
+	}
+	
+	/* User Account Styles */
+	
+	.tj-account-frm .tab-content{
+		padding:55px 20px
+	}
+	.tj-account-frm .nav-tabs > li{
+		float:none;
+	}
+	.tj-account-frm .tj-tabs .nav > li > a{
+		width:100%;
+	}
+	.account-frm .account-field .file-btn{
+		float:none;
+		margin-right:0;
+		width:100%;
+	}
+	.account-frm .save-btn{
+		float:none;
+		margin-top:20px;
+		width:100%;
+	}
+	
+	/* End User Account Styles */
+	
+	/* Blog Styles */
+	.tj-cab-collection .tj-heading-style,
+	.tj-news .tj-heading-style {
+		margin: 0 auto 50px;
+		width: auto;
+	}
+	.tj-news .tj-heading-style h3{
+		font-size:28px;
+	}
+	.news-box figure{
+		width:100%;
+	}
+	.news-box figure img{
+		width:100%;
+		height:auto;
+	}
+	/* End Blog Styles */
+	
+	/* Blog Detail Styles */
+	.blog-outer h3{
+		font-size:26px;
+	}
+	.post-nav-control{
+		padding:30px 20px;
+	}
+	.social_sharing h4{
+		margin:0 0 20px;
+		text-align:center;
+	}
+	.sharing_links {
+		float: none;
+		text-align: center;
+	}
+	.tj-comment-outer .comments-sub-listed{
+		padding: 0 0 0 40px;
+	}
+	.comments-info .text-holder h5{
+		width:100%;
+	}
+	.comments-info .text-holder .top .reply {
+		float: left;
+		width: 60px;
+		display: block;
+		text-align: center;
+		margin-bottom: 10px;
+		font-size:12px;
+	}
+	.post-nav-control img{
+		margin-right:15px;
+	}
+	.post-nav-control .post-left-nav,
+	.post-nav-control .post-right-nav{
+		width:100%;
+	}
+	.post-nav-control .post-left-nav{
+		margin-bottom:20px;
+	}
+	.post-nav-control .post-title{
+		overflow:hidden;
+		float:none;
+		margin-left:0;
+	}
+	.post-nav-control .post-title h4{
+		font-size:14px;
+		line-height:20px;
+	}
+	.post-nav-control a{
+		padding: 6px 0;
+		font-size: 12px;
+	}
+	/* End Blog Detail Styles */
+	
+	/* Footer Styles */
+	.tj-copyright p{
+		float:none;
+		text-align:center;
+		margin-bottom:15px;
+	}
+	.tj-copyright .payment-icons{
+		text-align:center;
+		float:none;
+	}
+	/* End Footer Styles */
+	
+	.blog-outer .blog-thumb .thumb-inner a{
+		font-size:48px;
+	}
+	.blog-outer .blog-thumb .thumb-inner{
+		top:35%;
+	}
+}
+
+/* Responsive CSS For Gallery Carousel */
+@media (min-width: 480px) {
+	.gallery-carousel .left-outer {
+		margin-bottom: 20px;
+	}
+
+	.gallery-carousel .gallery-thumb {
+		display: block;
+	}
+}
+/* Responsive CSS Fix For Booking Form Terms */
+@media ( min-width:320px ) and ( max-width:480px ){
+	.booking-frm .ride-terms {
+		width: 93%;
+	}
+}
+		

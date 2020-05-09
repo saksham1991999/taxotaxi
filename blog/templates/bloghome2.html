@@ -1,0 +1,173 @@
+{% extends 'new_base.html' %}
+
+
+
+{% block content %}
+
+<!-- Wrapper -->
+<div id="wrapper" class="mm-page mm-slideout">
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Blog</h2>
+				<span>Keep up to date with the latest news</span>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+
+	<!-- Blog Posts -->
+	<div class="blog-page">
+	<div class="row">
+		<div class="col-md-8">
+
+        {% for post in posts %}
+            {% if post.published %}
+			<!-- Blog Post -->
+			<div class="blog-post">
+
+				<!-- Img -->
+				<a href="{% url 'blog:post' post.id %}" class="post-img">
+					<img src="{{ post.main_image.url }}" alt="">
+				</a>
+
+				<!-- Content -->
+				<div class="post-content">
+					<h3><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a></h3>
+
+					<ul class="post-meta">
+						<li>{{ post.date }}</li>
+						<li><a href="#">{{ post.category }}</a></li>
+					</ul>
+
+					<p>{{ post.get_short_content }}</p>
+
+					<a href="{% url 'blog:post' post.id %}" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+				</div>
+
+			</div>
+			<!-- Blog Post / End -->
+            {% endif %}
+        {% endfor %}
+
+
+
+
+            {% if posts.has_other_pages %}
+			<!-- Pagination -->
+			<div class="pagination-container margin-top-20">
+				<nav class="pagination">
+					<ul>
+                        <li><a href="" class="current-page">{{ posts.number }}</a></li>
+						<li class="blank">...</li>
+						<li><a href="?page={{ posts.paginator.num_pages }}">{{ posts.paginator.num_pages }}</a></li>
+					</ul>
+				</nav>
+
+				<nav class="pagination-next-prev">
+					<ul>
+                        {% if posts.has_previous %}
+						<li><a href="?page={{ posts.previous_page_number }}" class="prev">Previous</a></li>
+                        {% endif %}
+                        {% if posts.has_next %}
+						<li><a href="?page={{ posts.next_page_number }}" class="next">Next</a></li>
+                        {% endif %}
+					</ul>
+				</nav>
+			</div>
+			<!-- Pagination / End -->
+        {% endif %}
+
+			<div class="clearfix"></div>
+
+		</div>
+
+	<!-- Blog Posts / End -->
+
+
+	<!-- Widgets -->
+	<div class="col-md-4">
+		<div class="sidebar right">
+
+			<!-- Widget -->
+			<div class="widget">
+				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
+				<div class="search-blog-input">
+                <form>
+                  <input type="search" class="search-field" placeholder="Search Current Affairs" aria-label="Search" name='search' value="{{search_term}}">
+                </form>
+                </div>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Widget / End -->
+
+			<!-- Widget -->
+			<div class="widget">
+
+				<h3>Popular Posts</h3>
+				<ul class="widget-tabs">
+
+                    {% for post in popularposts %}
+					<!-- Post #1 -->
+					<li>
+						<div class="widget-content">
+								<div class="widget-thumb">
+								<a href="{% url 'blog:post' post.id %}"><img src="{{ post.main_image.url }}" alt=""></a>
+							</div>
+
+							<div class="widget-text">
+								<h5><a href="{% url 'blog:post' post.id %}">{{ post.title }}</a></h5>
+								<span>{{ post.date|date }}</span>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</li>
+                    {% endfor %}
+
+				</ul>
+
+			</div>
+			<!-- Widget / End-->
+
+
+			<!-- Widget -->
+			<div class="widget">
+				<h3 class="margin-top-0 margin-bottom-25">Social</h3>
+				<ul class="social-icons rounded">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+
+			</div>
+			<!-- Widget / End-->
+
+			<div class="clearfix"></div>
+			<div class="margin-bottom-40"></div>
+		</div>
+	</div>
+	</div>
+	<!-- Sidebar / End -->
+
+
+</div>
+</div>
+
+</div>
+<!-- Wrapper / End -->
+
+<div id="mm-blocker" class="mm-slideout"></div>
+{% endblock content %}

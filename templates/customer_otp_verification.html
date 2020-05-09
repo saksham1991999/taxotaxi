@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_stylesheet %}
+    <style type="text/css">
+            b{
+                font-weight: bolder;
+                color: #1c2b39
+            }
+            .tj-user-bfrm .cb-frm .book-btn:hover{
+            background-color: #4CAF50 !important;
+        }
+         button:hover{
+            background-color: #4CAF50 !important;
+         }
+    </style>
+{% endblock extra_stylesheet %}
+
+
+
+
+{% block content %}
+
+			<!--Booking Form Section Start-->
+			<section class="tj-user-bfrm">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#register" data-toggle="tab">OTP Verification</a></li>
+								</ul>
+							</div>
+							<div class="tab-content">
+
+								<div class="tab-pane active" id="register">
+									<form class="cb-frm" method="POST">
+                                        {% csrf_token %}
+                                        <input value="register" name="type" hidden>
+                                        <div class="col-md-12 col-sm-12">
+											<div class="info-field">
+												<label style="text-align: center">OTP sent to {{ mobile }}</label>
+                                                <label style="text-align: center"><a onclick="goBack()">Change Mobile Number or Details</a></label>
+                                                <br>
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-12">
+											<div class="info-field">
+												<label>Enter OTP</label>
+												<span class="far fa-user"></span>
+												<input type="text" name="otp" placeholder="Enter OTP" required>
+											</div>
+										</div>
+                                        <div class="col-md-12 col-sm-12">
+											<div class="info-field">
+                                                <label><a href="">Resend OTP</a></label>
+											</div>
+										</div>
+										<div class="col-md-12 col-sm-12">
+											<button type="submit" class="book-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+										</div>
+									</form>
+                                </div>
+								</div>
+                        </div>
+
+						<div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="booking-summary" style="background-color: #f9f9f9;">
+								<h3>Booking Summary</h3>
+								<ul class="booking-info">
+									
+									<li><span><b>From: </b></span><div class="startup_loc inputlayout">{{ pickup }}</div></li>
+									<li><span><b>To:</b> </span><div class="end_loc inputlayout">{{ drop }}</div></li>
+									<li><span><b>Journey Type:</b></span>
+									<div class="service_type">{{ ride_type }}</div></li>
+									<li><span><b>Car Type:</b></span>
+									<div class="service_type">{{ car_type }}</div></li>
+									<li><span><b>Expected Distance:</b> </span><div class="end_loc info-outer">&ensp;{{ distance_text }}</div></li>
+									<li><span><b>Expected Duration:</b> </span><div class="end_loc info-outer">&ensp;{{ duration_text }}</div></li>
+									<li><span><b>Pickup Date-Time:</b> </span><div class="pick_date info-outer">&ensp;{{ pickup_datetime}}</div></li>
+									<li><span><b>Dropoff Date-Time:</b> </span><div class="drop_date info-outer">&ensp;{{ drop_datetime }}</div></li>
+                                </ul>
+								<div class="fare-box">
+									<strong>Trip Estimation</strong>
+									<span class="trip_est">{{ ride_total }}</span>
+								</div>
+							</div>
+						</div>
+                      </div>
+					</div>
+                </div>
+            </section>
+
+			<!--Booking Form Section End-->
+
+
+
+
+{% endblock content %}
+
+
+{% block extra_scripts %}
+<script>
+    function goBack() {
+      window.history.back();
+    }
+</script>
+{% endblock extra_scripts %}

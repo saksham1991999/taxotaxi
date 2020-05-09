@@ -1,0 +1,203 @@
+{% extends 'new_base.html' %}
+
+{% block content %}
+
+<!-- Wrapper -->
+<div id="wrapper" class="mm-page mm-slideout">
+
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Blog</h2>
+				<span>Keep up to date with the latest news</span>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+
+	<!-- Blog Posts -->
+	<div class="blog-page">
+	<div class="row">
+
+
+		<!-- Post Content -->
+		<div class="col-md-8">
+
+
+			<!-- Blog Post -->
+			<div class="blog-post single-post">
+
+				<!-- Img -->
+				<img class="post-img" src="{{ post.main_image.url }}" alt="">
+
+
+				<!-- Content -->
+				<div class="post-content">
+					<h3>{{ post.title }}</h3>
+
+					<ul class="post-meta">
+						<li>{{ post.date }}</li>
+						<li><a href="#">{{ post.category|upper }}</a></li>
+					</ul>
+
+                    <p>{{ post.content|escape|linebreaks }}</p>
+
+					<!-- Share Buttons -->
+					<ul class="share-buttons margin-top-40 margin-bottom-0">
+						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
+						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
+						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
+						<li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li>
+					</ul>
+					<div class="clearfix"></div>
+
+				</div>
+			</div>
+			<!-- Blog Post / End -->
+
+			<div class="margin-top-50"></div>
+
+			<!-- Reviews -->
+			<section class="comments">
+			<h4 class="headline margin-bottom-35">Comments <span class="comments-amount">{{ comments.count }}</span></h4>
+
+				<ul>
+                    {% for comment in comments %}
+					<li>
+						<div class="avatar"><img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=70" alt=""></div>
+						<div class="comment-content"><div class="arrow-comment"></div>
+							<div class="comment-by">{{ comment.name }}<span class="date">{{ comment.date|date }}</span>
+							</div>
+							<p>{{ comment.comment_text }}</p>
+						</div>
+					</li>
+                    {% endfor %}
+				 </ul>
+
+			</section>
+			<div class="clearfix"></div>
+			<div class="margin-top-55"></div>
+
+
+			<!-- Add Comment -->
+			<h4 class="headline">Add Comment</h4>
+			<div class="margin-top-15"></div>
+
+			<!-- Add Comment Form -->
+			<form id="add-comment" class="add-comment" method="post">
+                {% csrf_token %}
+
+				<fieldset>
+                    {% for field in commentform %}
+					<div>
+						<label>{{ field.label }}</label>
+						{{ field }}
+					</div>
+                    {% endfor %}
+
+				</fieldset>
+                <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+
+				<div class="clearfix"></div>
+				<div class="margin-bottom-20"></div>
+
+			</form>
+
+	</div>
+	<!-- Content / End -->
+
+
+
+	<!-- Sidebar
+	================================================== -->
+
+	<!-- Widgets -->
+	<div class="col-md-4">
+		<div class="sidebar right">
+
+			<!-- Widget -->
+			<div class="widget">
+				<h3 class="margin-top-0 margin-bottom-25">Search Blog</h3>
+				<div class="search-blog-input">
+                <form action="{% url 'exams:currentaffairs' %}">
+                  <input type="search" class="search-field" placeholder="Search Current Affairs" aria-label="Search" name='search' value="{{search_term}}">
+                </form>
+                </div>
+				<div class="clearfix"></div>
+			</div>
+			<!-- Widget / End -->
+
+			<!-- Widget -->
+			<div class="widget">
+
+				<h3>Popular Posts</h3>
+				<ul class="widget-tabs">
+
+                    {% for currentaffair in currentaffairs %}
+					<!-- Post #1 -->
+					<li>
+						<div class="widget-content">
+								<div class="widget-thumb">
+								<a href="{% url 'exams:currentaffair' currentaffair.id %}"><img src="{{ currentaffair.image.url }}" alt=""></a>
+							</div>
+
+							<div class="widget-text">
+								<h5><a href="{% url 'exams:currentaffair' currentaffair.id %}">{{ currentaffair.title }}</a></h5>
+								<span>{{ currentaffair.postedon|date }}</span>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</li>
+                    {% endfor %}
+
+				</ul>
+
+			</div>
+			<!-- Widget / End-->
+
+
+			<!-- Widget -->
+			<div class="widget">
+				<h3 class="margin-top-0 margin-bottom-25">Social</h3>
+				<ul class="social-icons rounded">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="linkedin" href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+
+			</div>
+			<!-- Widget / End-->
+
+			<div class="clearfix"></div>
+			<div class="margin-bottom-40"></div>
+		</div>
+	</div>
+	</div>
+	<!-- Sidebar / End -->
+
+
+</div>
+</div>
+
+</div>
+<!-- Wrapper / End -->
+
+
+<div id="mm-blocker" class="mm-slideout">
+
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+  {% endblock content %}
+

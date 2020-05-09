@@ -1,0 +1,129 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html style="background-color: white;" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="TaxoTaxi">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Travel Channels</title>
+
+        <!-- Css Files Start -->
+		<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		<link href="{% static 'css/fontawesome-all.min.css' %}" rel="stylesheet">
+		<link id="switcher" href="{% static 'css/color.css' %}" rel="stylesheet">
+		<link href="{% static 'css/color-switcher.css' %}" rel="stylesheet">
+		<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+		<link href="{% static 'css/animate.css' %}" rel="stylesheet">
+		<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+        <link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
+		<!-- Css Files End -->
+
+
+
+        <!-- Favicon -->
+        <link href="{% static 'images/logo.png' %}" rel="shortcut icon"/>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        {% block extra_stylesheet %}
+        {% endblock extra_stylesheet %}
+
+        <!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+           <style type="text/css">
+                .alert {
+                  position: absolute;
+                  padding: 10px;
+                  background-color: #1c2b39;
+                  color: white;
+                  z-index: 999;
+                  right: 2%;
+                    bottom: 3%;
+                }
+                .closebtn {
+                  margin-left: 15px;
+                  color: white !important;
+                  font-weight: bold;
+                  float: right;
+                  font-size: 22px;
+                  line-height: 20px;
+                  cursor: pointer;
+                  transition: 0.3s;
+                }
+                .closebtn:hover {
+                  color: white !important;
+                }
+               .close{
+                   color: white !important;
+               }
+            </style>
+    </head>
+
+
+
+<body>
+    <!--Wrapper Content Start-->
+    <div class="tj-wrapper">
+        <div class="loader-outer">
+            <div class="tj-loader">
+                <div class='loader loader2'>
+                  <div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% comment %}
+                <img src="{% static 'images/pre-loader.gif' %}" alt="">
+                {% endcomment %}
+                <h2>Loading...</h2>
+            </div>
+        </div>
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>{{ message }}</strong>  &ensp;
+            </div>
+        {% endfor %}
+    {% endif %}
+
+	{% include "navbar.html" %}
+
+    <!-- Wrapper -->
+
+    {% block content %}
+    {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock extra_body %}
+
+    {% block footer %}
+    {% include "footer.html" %}
+    {% endblock footer %}
+
+    </div>
+    <!--Wrapper Content End-->
+
+    {% include "scripts.html" %}
+  
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+
+</body>
+</html>

@@ -1,0 +1,1143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block extra_stylesheet %}
+<style type="text/css">
+
+  .customer-tab{
+    text-decoration: overline;
+    border-bottom: 1px #333232 solid;
+    list-style-type:none;
+    color: #7f7f7f;
+  }
+  .tab-content>.active {
+    display: block;
+    border-bottom: none;
+    background-color: white;
+  }
+
+  .inline-collapse {
+    font-size: smaller;
+
+  }
+
+  .item-pagination {
+    background-color: white;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+  }
+
+  .pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+
+  #customer-header .active {
+    border-bottom: 1px solid black;
+    background-color: #eee;
+    color: black !important;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #map {
+    height: 100%;
+    float: left;
+    width: 70%;
+    height: 100%;
+  }
+
+  .label-right-allign {
+    padding-right: 0px;
+    text-align: right;
+    padding-left: 0px;
+    font-weight: 600;
+    color: black;
+    margin-top: 7px;
+  }
+
+  .placeCard {
+    margin-top: 18px;
+    background-color: #eee;
+    padding: 0px 0px 0px;
+  }
+
+  .placeCard:hover {
+    font-weight: bold;
+  }
+
+  .row2 a {
+    color: inherit;
+    font-size: larger;
+    text-decoration: none;
+  }
+
+  .row2 a:active,
+  a:focus {
+    color: black;
+  }
+
+  .row1 a {
+    font-size: medium;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .row1 .active{
+    /*border-bottom: 1px solid black;*/
+    /*background-color: #eee;*/
+    color: black !important;
+    font-weight: bold;
+  }
+
+  /*.row1:active {
+    font-weight: bold;
+  }*/
+
+  .styletext {
+    color: #ffb100 !important;
+  }
+
+  .CardHeader {
+    padding: 7px;
+    background: #fff0ba
+  }
+
+  .glyphicon {
+    margin-right: 5px;
+  }
+
+  .thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+  }
+
+  .item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: white;
+    margin-bottom: 10px;
+    padding: 0px 15px 0px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .item.list-group-item:nth-of-type(odd):hover,
+  .item.list-group-item:hover {
+    background: white;
+  }
+
+  .item.list-group-item .list-group-image {
+    margin-right: 10px;
+  }
+
+  .item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+  }
+
+  .item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+  }
+
+  .item.list-group-item:nth-of-type(odd) {
+    background: white;
+  }
+
+  .item.list-group-item:before,
+  .item.list-group-item:after {
+    display: table;
+    content: " ";
+  }
+
+  .item.list-group-item img {
+    float: left;
+  }
+
+  .item.list-group-item:after {
+    clear: both;
+  }
+
+  .list-group-item-text {
+    margin: 0 0 11px;
+  }
+
+
+
+
+  .input-icons i {
+    position: absolute;
+  }
+
+  .input-icons {
+    width: 100%;
+
+  }
+
+  .icon {
+    margin-left: 70%;
+    padding: 10px;
+    color: rgb(76, 82, 76);
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+
+
+  .row1 {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*border-style: solid;*/
+    border-width: 1px;
+    border-color: #84a9ac;
+  }
+
+  .row1 li:hover {
+    /*color: black;*/
+    font-weight: bold;
+  }
+
+  .container1 {
+    /*margin-top: 80px;*/
+    padding: 4px 2px 27px 23px;
+    border: 1px #eee solid;
+
+  }
+
+  .container2 {
+    margin-top: 10px;
+  }
+
+  .input1 {
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .btn1 {
+    background-color: rgb(252, 236, 19);
+  }
+
+  .btn1:hover {
+    color: aliceblue;
+    background-color: #3c763d;
+  }
+
+  .tab-heading {
+    margin: 0px;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    padding: 12px;
+    background-color: #b2b2b2;
+    color: #1b233e;
+  }
+
+  .drag-drop1 input {
+    outline: none;
+    opacity: 0;
+
+  }
+
+  .drag-drop {
+
+    position: relative;
+    /* top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -250px; */
+    width: 300px;
+    height: 160px;
+    border: 2px dashed #e6e3e3;
+  }
+
+  .drag-drop p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /*line-height: 40px;*/
+    color: #e6e3e3;
+    font-family: inherit;
+  }
+
+  .drag-drop input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+  }
+
+  .drag-drop button {
+    margin: 0;
+    color: #07e4d0;
+    border: 2px solid #07e4d0;
+    background: white;
+    font-weight: bold;
+    /*border: none;*/
+    width: 124px;
+    height: 35px;
+    /*margin-top: -20px;*/
+    /*margin-left: -4px;*/
+    border-radius: 4px;
+    /*border-bottom: 4px solid #117A60;*/
+    transition: all .2s ease;
+    /*outline: none;*/
+  }
+  @media (max-width: 768px){
+    .col-sm-8,.col-sm-6,.col-sm-5{
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+    .customer-tab{
+      text-decoration: none!important;
+      border: 4px solid #eee;
+    }
+    .adjustDashboard{
+    margin-top: 30px !important;
+    display: inline-block;
+    }
+    .adjustButton{
+      margin-bottom: 70px;
+      /*left: -21px;*/
+      display: flex;
+    }
+    .adjustYellowButtons{
+    /*margin-top: 270px !important;
+    margin-bottom: 40px;*/
+    margin-left: -32px;
+  }
+  .adjustYellowButtonsSecond{
+    margin-bottom: 40px;
+  }
+  }
+</style>
+{% endblock extra_stylesheet %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+
+{% block content %}
+
+<div class="container" style="margin-top: 170px;">
+
+  <div class="row">
+    <div></div>
+    <div class="col-md-12 col-sm-12">
+      <!-- s/////////////////Side dashboard////////////////////////////// -->
+      <div class="col-md-3 adjustDashboard" style="margin-top: 80px">
+        <!-- <div class="container1">
+          <div class="row row1 active">
+            <a href="#customerProfile" data-toggle="tab"><i class="far fa-user"></i>&nbsp;&nbsp;Profile</a>
+          </div>
+          <div class="row row1">
+            <a href="{% url 'core:home' %}"><i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a>
+          </div>
+          <div class="row row1" style="font-size: medium;" data-toggle="collapse" data-target="#collapseBooking"
+            aria-expanded="false" aria-controls="collapseBooking">
+            <a> <i class="fas fa-laptop-code"></i>&nbsp;&nbsp;My Booking&nbsp;&nbsp;<i class="fas fa-sort-down"></i></a>
+
+            <div class="collapse" id="collapseBooking" style="padding-left: 34px;">
+              <div class="row inline-collapse">
+                <a href="#upcomingRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming
+                  Rides</a>
+              </div>
+              <div class="row inline-collapse">
+                <a href="#rideHistory" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride
+                  History</a>
+              </div>
+              <div class="row inline-collapse">
+                <a href="#canceledRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled
+                  Rides</a>
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="row row1"><a href="#yourPlaces" data-toggle="tab"><i
+                class="far fa-share-square"></i>&nbsp;&nbsp;Your Places</a></div> -->
+        <!--   <div class="row row1"><a href="#yourPlaces" data-toggle="tab"><i
+                class="fas fa-user-plus"></i>&nbsp;&nbsp;Reffer a Friend</a></div>
+          <div class="row row1" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false"
+            aria-controls="collapseExample1"><i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;My Wallet&nbsp;&nbsp;<i
+              class="fas fa-sort-down"></i></div>
+          <div class="collapse" id="collapseExample1">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, e ea proident.
+            </div>
+          </div> -->
+
+    <div class=" container1">
+      <ul class="row row1" style="list-style-type: none;">
+        <li class="active row1"><a href="#customerProfile" data-toggle="tab"><i class="far fa-user"></i>&nbsp;&nbsp;Profile</a></li>
+        <li class="row row1"><a href="{% url 'core:home' %}"><i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a></li>
+        <li  class="row row1" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample"><a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
+            <div class="collapse" id="collapseExample">
+          <div class="row row1"><a href="#upcomingRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming
+                  Rides</a></div>
+          <div class="row row1"><a href="#rideHistory" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a></div>
+          <div class="row row1"><a href="#canceledRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled
+                  Rides</a></div>
+        </div>
+
+        </li>
+        <li class="row row1"><a href="#yourPlaces" data-toggle="tab"><i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a></li>
+        <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1"><a><i class="fas fa-rupee-sign"></i>&nbsp;My Wallet</a>
+            <div class="collapse" id="collapseExample1">
+        <div class="card card-body">
+          Your Wallet Balance Is : Rs {{ request.user.wallet_balance }}
+        </div>
+      </div>
+        </li>
+      </ul>
+    </div>
+        <!-- </div> -->
+      </div>
+      <!-- ///////////////////End Of Side dashBoard///////////// -->
+      <div class="col-md-9 container2">
+        <div class="tab-content">
+
+          <div class="tab-pane active " id="customerProfile" role="tabpanel">
+            <div class="col-md-12 col-sm-12">
+              <h4 class="text-center tab-heading">Customer Profile</h4>
+            </div>
+            <div class="col-sm-12 col-md-12">
+              <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
+                <li class="col-sm-4 text-center row2 active">
+                  <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
+                </li>
+                <li class="col-sm-4 text-center row2">
+                  <a href="#changePassword" style="font-weight: bold;" data-toggle="tab">&nbsp;Change Password</a>
+                </li>
+                <li class="col-sm-4 text-center row2">
+                  <a href="#referral" style="font-weight: bold;" data-toggle="tab">&nbsp;Referral</a>
+                </li>
+              </ul>
+              <!-- //////////togable Content pannel start///////////////// -->
+              <div class="tab-content">
+                <div class="tab-pane active" id="editProfile">
+                  <form class="booking-frm" method="POST" id="edit-profileform">
+                      {% csrf_token %}
+
+                      <input type="hidden" name="type" value="profile">
+
+                    <div class="col-sm-7" style="margin-top: 24px;">
+                        <div class=" row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">First Name</label>
+                        <div class="col-sm-8">
+                            {% render_field userform.first_name class="form-control" type="text" %}
+                        </div>
+                      </div>
+                      <div class=" row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Last Name</label>
+                        <div class="col-sm-8">
+                          {% render_field userform.last_name class="form-control" type="text" %}
+                        </div>
+                      </div>
+                      <div class="row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Email</label>
+                        <div class="col-sm-8">
+                          {% render_field userform.email class="form-control" type="email" %}
+                        </div>
+                      </div>
+                      <div class="row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Phone</label>
+                        <div class="col-sm-8">
+                          {% render_field userform.mobile class="form-control" type="email" readonly='' %}
+                        </div>
+                      </div>
+                      <div class="row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Address</label>
+                        <div class="col-sm-8">
+                          {% render_field profileform.address class="form-control" type="text" %}
+                        </div>
+                      </div>
+                      <div class="row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Password</label>
+                        <div class="col-sm-8">
+                          <input type="password" class="form-control" id="inputPassword" name="password">
+                        </div>
+                      </div>
+                      <div class=" row input1">
+                        <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
+                        <div class="col-sm-8 drag-drop1">
+                          <div class="form-control">
+                          {% render_field profileform.document type="file" class="input-file" %}
+                            <p style="margin-top: -19px; font-style: italic; color: #e6e3e3;"><i
+                                class="far fa-file"></i> Drop file here</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                      <div class="drag-drop">
+                        {% render_field userform.profile_pic type="file" class="input-file" %}
+                        <p class="p23"><i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x"></i><br>
+                          Drag&Drop files here <br> or<br>
+                          <button type="submit" class="btn btn-outline-primary">Browse Files</button> </p>
+                        <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 adjustYellowButtons col-sm-12" style=" text-align: -webkit-center; margin-top : 40px">
+
+                      <div style="display: flex;width: fit-content;">
+                        <button class="book-btn" type="submit">Update</button>&nbsp;&nbsp;<button class="book-btn"
+                          type="Cancel">Cancel</button><br>
+                      </div><br>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="tab-pane" id="changePassword" role="tabpanel">
+                  <form class="booking-frm" method="POST" id="change-passwordform">
+                      {% csrf_token %}
+
+                      <input type="hidden" name="type" value="change_password">
+
+                    <div class="col-sm-7" style="margin-top: 10px;">
+                      <div class="form-group row input1">
+                        <label class="col-sm-6 col-form-label label-right-allign">Enter Current Password</label>
+                        <div class="col-sm-6">
+                          <input type="password" class="form-control" name="current_password">
+                        </div>
+                      </div>
+                      <div class="form-group row input1">
+                        <label class="col-sm-6 col-form-label label-right-allign">Enter New Password</label>
+                        <div class="col-sm-6">
+                          <input type="password" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group row input1">
+                        <label class="col-sm-6 col-form-label label-right-allign">Confirm New Password</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control" name="new_password">
+                        </div>
+                      </div>
+                      <div class="col-md-12 adjustYellowButtonsSecond col-sm-12">
+                        <button type="submit" class="book-btn">Update</button>
+
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+
+                <div class="tab-pane" id="referral" role="tabpanel">
+                  <div class="col-md-12 col-sm-12">
+                    <div class="adjustYellowButtonsSecond row input1">
+                      <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
+                      <div class="col-sm-5">
+                        <input type="text" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <!-- /////////////////end of customer profile//////////////////// -->
+
+
+          <!-- /////////////////start of Create Request////////////////// -->
+          <div class="tab-pane" id="createRequest" role="tabpanel">
+            <h4 class="text-center tab-heading">Create Request</h4>
+            <div class="col-sm-8 col-md-8">
+              <div id="map"></div>
+              <div id="right-panel">
+                <div>
+                  <input id="start" hidden value="Miami, FL">
+                  <br>
+                  <input id="end" value="Los Angeles, CA" hidden>
+                  <br>
+                  <input type="submit" id="submit">
+                </div>
+
+                <!-- Replace the value of the key parameter with your own API key. -->
+                <script async defer
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.4794970397215!2d77.08694511464053!3d28.495217982472216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19386394df05%3A0x2f2805b9b4942a41!2sDLF%20CyberHub!5e0!3m2!1sen!2sin!4v1585036224348!5m2!1sen!2sin">
+                </script>
+
+              </div>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <h4 style="background-color: #eee;
+    text-align: center;
+    padding: 11px;">SUMMARY</h4>
+                  <P><span>Booking Reference: TOOO233</span><br>
+                    <span>Journey Type: Two Way</span><br>
+                    <span>Distance & Time: 3:30hr</span><br>
+                    <span>Two Way Fare: 4299</span> </P>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                  <h4 style="background-color: #eee;
+    text-align: center;
+    padding: 11px;">ONE WAY FARE</h4>
+                  <P><span>From : Delhi</span>&nbsp;<span>To : Agra</span><br>
+                    <span>Pickup Date: Two Way</span><br>
+                    <span>Pickup Time: 3:30hr</span><br>
+                    <span>Fair Details: 4299</span><br>
+                    <span>Total Amount: 5000</span> </P>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- ////////////////////end of create request //////////////////// -->
+
+
+          <!--////////////////////////start of new Booking/////////////////////// -->
+
+          <div class="tab-pane" id="upcomingRides" role="tabpanel">
+            <div class="row">
+              <h4 class="text-center tab-heading">Upcoming Booking</h4><br>
+            </div>
+            <div class="col-sm-12 col-md-12 container2">
+              <!--  <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
+              <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
+              </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                  class="glyphicon glyphicon-th"></span>Grid</a>
+          </div> -->
+              <!-- <div class="row"> -->
+              <div id="products" class="row list-group ">
+
+                  {% for ride in upcoming_rides %}
+                    <div class="item  col-xs-4 col-lg-4">
+                  <div class="row CardHeader">
+                    <div class="col-xs-8 col-md-8 col-sm-8">
+                      <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
+                          class="styletext fas fa-map-marker-alt"></span></strong>
+
+                    </div>
+                    <!-- <div class="col-md-4 col-xs-4 col-sm-4" >
+                            <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                              <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star styletext"></span>
+                            <span class="fa fa-star styletext"></span></span>
+                          </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                      <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                    </div>
+                    <div class="col-md-5 col-xs-12 col-sm-12">
+                      <h4>
+                        {{ ride.name }}</h4>
+                      <p>
+                        <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                        <span class="trip_est">Email : {{ request.user.email }}</span><br>
+                        <span class="trip_est">Booked On : {{ ride.booking_datetime }}</span><br>
+                        <span class="trip_est">Pickup Date : {{ ride.pickup_datetime }}</span>
+
+                      </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                      <p>
+                        <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                            class="trip_est styletext">{{ ride.get_advance }}</span></strong><br>
+                        <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
+                        <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance }}</span></strong><br>
+                        <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                        <a style="color: green;" href="">Download Invoice</a>
+
+                      </p>
+                    </div>
+                  </div>
+                    {% comment %}
+                      <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                          <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                          <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                          <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                        </div>
+                      </div>
+                  {% endcomment %}
+
+                </div>
+                      {% empty %}
+                      <div>
+                      <h1>IF EMPTY EDIT OVER HERE #upcomingbookingempty</h1>
+                      </div>
+                 {% endfor %}
+              </div>
+
+              <!-- </div> -->
+
+            </div>
+          </div>
+
+
+          <!--///////////////////////////////////////////end of new Booking///////////////////////////////////////////////////////  -->
+
+
+          <!-- ////////////////////////////////////////start of history//////////////////////////////// -->
+          <div class="tab-pane" id="rideHistory" role="tabpanel">
+            <div class="row">
+              <h4 class="text-center tab-heading">My Booking History</h4>
+            </div>
+            <div class="col-sm-12 col-md-12 container2">
+              <!--  <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
+               <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
+               </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                  class="glyphicon glyphicon-th"></span>Grid</a>
+            </div> -->
+
+              <div id="products" class="row list-group ">
+
+                    {% for ride in cancelled_rides %}
+                      <div class="item  col-xs-4 col-lg-4">
+                  <div class="row CardHeader">
+                    <div class="col-xs-8 col-md-8 col-sm-8">
+                      <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
+                          class="styletext fas fa-map-marker-alt"></span></strong>
+
+                    </div>
+                    <!-- <div class="col-md-4 col-xs-4 col-sm-4" >
+                            <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                              <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star styletext"></span>
+                            <span class="fa fa-star styletext"></span></span>
+                          </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                      <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                    </div>
+                    <div class="col-md-5 col-xs-12 col-sm-12">
+                      <h4>
+                        {{ ride.name }}</h4>
+                      <p>
+                        <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                        <span class="trip_est">Email : {{ request.user.email }}</span><br>
+                        <span class="trip_est">Booked On : {{ ride.booking_datetime }}</span><br>
+                        <span class="trip_est">Pickup Date : {{ ride.pickup_datetime }}</span>
+
+                      </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                      <p>
+                        <strong>Total Amount:&nbsp;&nbsp;<span
+                            class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
+
+                        <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
+                        <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance }}</span></strong><br>
+                        <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                        <a style="color: green;" href="">Proceed to Payment</a>
+
+                      </p>
+                    </div>
+                  </div>
+
+                      <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                          <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                          <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                          <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                        </div>
+                      </div>
+
+                </div>
+                        {% empty %}
+                      <div>
+                      <h1>IF EMPTY EDIT OVER HERE #cancelledridesempty</h1>
+                      </div>
+                    {% endfor %}
+                  {% comment %}
+                <div class="containe-pagination">
+                  <div class="tab-content">
+
+                    <div id="1" class="tab-pane active" role="tabpanel">
+                      <div class="item-pagination">
+
+                        <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-xs-8 col-md-8 col-sm-8">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                                  Airport(del.), Delhi-Agra </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                              <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star styletext"></span>
+                                <span class="fa fa-star styletext"></span></span>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Prakash Ponia</h4>
+                              <p>
+                                <span class="trip_est">Mobile : 8213133322</span><br>
+                                <span class="trip_est">Email : Poniaprakash@gmail.com </span><br>
+                                <span class="trip_est">Booked On : 01/12/2019,10:00 AM </span><br>
+                                <span class="trip_est">Pickup Date : 19/02/2020 12:00 PM</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1700.50</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">3000.00</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1000.00</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">2000.00</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div id="2" class="tab-pane" role="tabpanel">
+                      <div class="item-pagination">
+
+                        <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-xs-8 col-md-8 col-sm-8">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                                  Airport(del.), Delhi-Agra </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                              <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star styletext"></span>
+                                <span class="fa fa-star styletext"></span></span>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Ravi Jain</h4>
+                              <p>
+                                <span class="trip_est">Mobile : 8213133322</span><br>
+                                <span class="trip_est">Email : Poniaprakash@gmail.com </span><br>
+                                <span class="trip_est">Booked On : 01/12/2019,10:00 AM </span><br>
+                                <span class="trip_est">Pickup Date : 19/02/2020 12:00 PM</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1700.50</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">3000.00</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1000.00</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">2000.00</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"> <a data-toggle="tab" href="#1">1</a></li>
+                    <li> <a class="" data-toggle="tab" href="#2">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li> <a href="#">4</a></li>
+                    <li> <a href="#">5</a></li>
+                    <li> <a href="#">6</a></li>
+                    <li> <a href="#">&raquo;</a></li>
+                  </ul>
+                </div>
+                  {% endcomment %}
+              </div> <!-- </div> -->
+
+            </div>
+
+          </div>
+
+          <!-- ///////////////////////////////////end of history////////////////////////////////////// -->
+          <div class="tab-pane" id="canceledRides" role="tabpanel">
+            <div class="row">
+              <h4 class="text-center tab-heading">Canceled Booking</h4><br>
+            </div>
+            <div class="col-sm-12 col-md-12 container2">
+              <!-- <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
+             <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
+              </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                  class="glyphicon glyphicon-th"></span>Grid</a>
+          </div> -->
+              <!-- <div class="row"> -->
+              <div id="products" class="row list-group ">
+
+                  {% for ride in cancelled_rides %}
+                      <div class="item  col-xs-4 col-lg-4">
+                  <div class="row CardHeader">
+                    <div class="col-xs-8 col-md-8 col-sm-8">
+                      <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
+                          class="styletext fas fa-map-marker-alt"></span></strong>
+
+                    </div>
+                    <!-- <div class="col-md-4 col-xs-4 col-sm-4" >
+                            <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                              <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star checked styletext"></span>
+                            <span class="fa fa-star styletext"></span>
+                            <span class="fa fa-star styletext"></span></span>
+                          </div> -->
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3 col-xs-12">
+                      <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                    </div>
+                    <div class="col-md-5 col-xs-12 col-sm-12">
+                      <h4>
+                        {{ ride.name }}</h4>
+                      <p>
+                        <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                        <span class="trip_est">Email : {{ request.user.email }}</span><br>
+                        <span class="trip_est">Booked On : {{ ride.booking_datetime }}</span><br>
+                        <span class="trip_est">Pickup Date : {{ ride.pickup_datetime }}</span>
+
+                      </p>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                      <p>
+                        <strong>Total Amount:&nbsp;&nbsp;<span
+                            class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
+
+                        <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
+                        <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance }}</span></strong><br>
+                        <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+
+{#                          <a style="color: green;" href="">Proceed to Payment</a>#}
+
+                      </p>
+                    </div>
+                  </div>
+                    {% comment %}
+                      <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                          <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                          <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                          <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                        </div>
+                      </div>
+                  {% endcomment %}
+
+                </div>
+                      {% empty %}
+                      <div>
+                      <h1>IF EMPTY EDIT OVER HERE #cancelledbookingempty</h1>
+                      </div>
+                    {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!--////////////////// End of Cancel Ride ////////////// -->
+
+          <!-- ////////////////////////////////start of your places//////////////////////////////////////////////// -->
+          <div class="tab-pane" id="yourPlaces" role="tabpanel">
+            <h4 class="text-center tab-heading">Refer a friend</h4><br>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px; ">
+              <a href="" style="color: #2cb930;"><i class="fas fa-plus-circle"></i>&nbsp;Generate a referal link</a><br><br>
+
+            </div>
+            <!-- <div class="col-sm-12 col-md-12 col-lg-12" style="min-height: 400px;">
+              <div class="col-md-12 col-lg-12 col-sm-12 placeCard">
+                <div class="col-md-3 col-xs-12" style="padding-left: 0px;">
+                  <img style="max-height: 110px" src="http://placehold.it/400x250/000/fff" alt="" />
+                </div>
+                <div class="col-md-9 col-xs-9 col-sm-9">
+
+                  <p>
+                    <span>Prakash Ponia</span><br>
+                    <span class="trip_est">Agra</span><br>
+                    <span class="trip_est">Delhi to Mcleodganj</span><br>
+                    <span class="trip_est">Date: 01/12/2019 </span><br>
+                    <span class="trip_est">Location: Noida</span>
+
+                  </p>
+                </div>
+
+              </div>
+            </div> -->
+
+
+          </div>
+
+
+          <!--/////////////////////////////////////////end of your places///////////////////////////////////////  -->
+
+          <!-- /////////////////////////////////////start of refer a friend////////////////////////////////////////// -->
+          <div class="tab-pane" id="referFriend" role="tabpanel">
+
+            <h1 class="text-center" style="margin: 0px; margin-top: 20px; margin-bottom: 20px">Refer a Friend</h1>
+          </div>
+
+          <!-- end of refer s frnd//////////////////////////////////////////////////////////// -->
+
+
+          <div class="tab-pane" id="settings" role="tabpanel">jjjjjjjjjjjjjjjjjjjjjjjjjjjjj</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+<script type="text/javascript">
+  function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsRenderer = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: {
+        lat: 41.85,
+        lng: -87.65
+      }
+    });
+    directionsRenderer.setMap(map);
+
+    document.getElementById('submit').addEventListener('click', function () {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    });
+  }
+
+  function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+    var waypts = [];
+
+    directionsService.route({
+      origin: document.getElementById('start').value,
+      destination: document.getElementById('end').value,
+      waypoints: waypts,
+      optimizeWaypoints: true,
+      travelMode: 'DRIVING'
+    }, function (response, status) {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(response);
+        var route = response.routes[0];
+        var summaryPanel = document.getElementById('directions-panel');
+        summaryPanel.innerHTML = '';
+        // For each route, display summary information.
+        for (var i = 0; i < route.legs.length; i++) {
+          var routeSegment = i + 1;
+          summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment +
+            '</b><br>';
+          summaryPanel.innerHTML += route.legs[i].start_address + ' to ';
+          summaryPanel.innerHTML += route.legs[i].end_address + '<br>';
+          summaryPanel.innerHTML += route.legs[i].distance.text + '<br><br>';
+        }
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+</script>
+
+
+{% block extra_scripts %}
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#products .item').addClass('list-group-item');
+    $('#list').click(function (event) {
+      event.preventDefault();
+      $('#products .item').addClass('list-group-item');
+    });
+    // $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('.input-file').change(function () {
+      $('.p23').text(this.files.length + " file(s) selected");
+    });
+  });
+</script>
+{% endblock extra_scripts %}

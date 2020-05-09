@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!--User Account Section Start-->
+<section class="tj-account-frm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="tj-tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#user_account" data-toggle="tab"><i class="far fa-user"></i> My Account</a></li>
+                        <li><a href="#add_car" data-toggle="tab">Add Car</a></li>
+                        <li><a href="#add_driver" data-toggle="tab">Add Driver</a></li>
+                        <li><a href="#booking_history" data-toggle="tab"><i class="far fa-chart-bar"></i> Booking History</a></li>
+                        <li><a href="#payment_history" data-toggle="tab"><i class="far fa-credit-card"></i> Payment History</a></li>
+                        {% comment %}
+                        <li><a href="#cancel_booking" data-toggle="tab"><i class="fas fa-times"></i> Cancel Booking</a></li>
+                        <li><a href="#Logout" data-toggle="tab"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        {% endcomment %}
+                    </ul>
+                </div>
+
+                <div class="tab-content">
+
+
+                    <div class="tab-pane active" id="user_account">
+                        <form class="account-frm" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" name="type" value="profile" hidden>
+                            {% for field in profileform %}
+                            <div class="col-md-6 col-sm-6">
+                                <div class="account-field">
+                                    <label>{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% comment %}
+                            <div class="col-md-6 col-sm-6">
+                                <div class="account-field">
+                                    <label>Profile Image</label>
+                                    <button class="file-btn"><i class="fas fa-download"></i> Upload Photo</button>
+                                    <span class="limit">Maximum file size : 6MB </span>
+                                </div>
+                            </div>
+                            {% endcomment %}
+                            <div class="col-md-6 col-sm-6">
+                                <button type="submit" class="save-btn">Save <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="add_car">
+                        <form class="account-frm" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" name="type" value="addcar" hidden>
+                            {% for field in addcarform %}
+                            <div class="col-md-6 col-sm-6">
+                                <div class="account-field">
+                                    <label>{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="col-md-6 col-sm-6">
+                                <button type="submit" class="save-btn">Save <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="add_driver" >
+                        <form class="account-frm" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <input type="text" name="type" value="adddriver" hidden>
+                            {% for field in adddriverform %}
+                            <div class="col-md-6 col-sm-6">
+                                <div class="account-field">
+                                    <label>{{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="col-md-6 col-sm-6">
+                                <button type="submit" class="save-btn">Save <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--User Account Section End-->
+
+
+
+
+
+<!--Call To Action Content Start-->
+<section class="tj-cal-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div class="cta-box">
+                    <img src="images\cta-icon1.png" alt="">
+                    <div class="cta-text">
+                        <strong>Best Price Guaranteed</strong>
+                        <p>A more recently with desktop softy  like aldus page maker.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="cta-box">
+                    <img src="images\cta-icon2.png" alt="">
+                    <div class="cta-text">
+                        <strong>24/7 Customer Care</strong>
+                        <p>A more recently with desktop softy  like aldus page maker.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="cta-box">
+                    <img src="images\cta-icon3.png" alt="">
+                    <div class="cta-text">
+                        <strong>Easy Bookings</strong>
+                        <p>A more recently with desktop softy  like aldus page maker.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Call To Action Content End-->
+
+{% endblock content %}

@@ -1,0 +1,408 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load template_tag %}
+{% block extra_stylesheet %}
+<style>
+  @media (max-width: 768px){
+    .display-change{
+      display: grid !important;
+    }
+  }
+  .display-change{
+    display: flex;
+  }
+.color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    /*background-color: #ccc;*/
+    position: inherit;
+    margin-right: 14px;
+    margin-left: 4px;
+    
+}
+
+.option-card.choice {
+    box-shadow: 0px 0px 13px #000000;
+    text-decoration: none;
+}
+.option-card :hover{ 
+    box-shadow: 0px 0px 13px #000000;
+}
+b{
+    color: black;
+}
+.p-yel button {
+    color: white;
+    padding: 9px 15px;
+    cursor: pointer;
+    min-width: 70%;
+
+}
+.p-yel big{
+  color: #ffc000;
+  font-size: large;
+}
+
+ul li::before {
+
+  color: #ffc000;
+  font-weight: bold;
+
+  width: 1em;
+  margin-left: -1em;
+}
+
+
+</style>
+
+
+    <!-- Price Car Comparison Table Style Sheets CSS-->
+
+    <style>
+.btn-style{
+  min-width: 160px;
+    color: #fff;
+    text-transform: capitalize;
+    text-align: center;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    border: none;
+    padding: 15px 0;
+    background-color: #ffc000;
+}
+/* ------------- PRICING TABLES BOOTSTRAP CSS ---------------*/
+
+
+/* This top margin is only for code pen display - delete it for your own personal use */
+.container{
+    margin-top:0px;
+}
+/*  Delete above margin   */
+
+
+.pricing {
+      text-align: center;
+      border-left: 2px solid #eee;
+      color: #777;
+      font-size: 14px;
+      padding-left: 0;
+      margin-bottom: 0px;
+
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.pricing li:first-child{
+  border-bottom: 2px solid #eee;
+  font-weight: bolder;
+}
+
+
+.pricing li:first-child,
+.pricing li:last-child {
+      padding: 20px 13px;
+      height: 64px;
+}
+}
+.pricing li {
+      list-style: none;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      padding-left: 20px;
+
+}
+/*.pricing li + li {
+      border-top: 1px solid #f0f0f0;
+}*/
+.pricing big {
+      font-size: medium;
+}
+.pricing h3 {
+      margin-bottom: 0;
+    font-size: medium;
+}
+.pricing span {
+      font-size: small;
+      color: #999;
+      font-weight: normal;
+}
+.pricing li:nth-last-child(2) {
+      padding: 30px 13px;
+}
+
+
+
+
+
+/* Glyphicon Green */
+span.glyphicon-leaf {
+    font-size: 2.9em;
+    color: #5cb85c;
+      display: block;
+      margin: auto;
+    margin-bottom:7px;
+}
+/* Pricing Color Green*/
+.p-green big,
+.p-green h3 {
+      font-weight: bolder;
+font-size: large;
+color: #1c2b39;
+}
+/* Button Color Green*/
+.p-green button {
+      background: #05da05;
+}
+
+
+/* Glyphicon Yellow */
+span.glyphicon-send {
+    font-size: 2.9em;
+    color: #f0ad4e;
+      display: block;
+      margin: auto;
+    margin-bottom:7px;
+
+}
+/* Button Color Yellow */
+.p-yel button {
+      background: #f0ad4e;
+}
+/* Pricing Color Yellow */
+.p-yel big
+.p-yel h3 {
+    font-weight: bolder;
+font-size: large;
+color: black;
+      /*color: #f0ad4e;*/
+}
+
+
+
+/* Glyphicon blue */
+span.glyphicon-globe {
+    font-size: 2.9em;
+    color: #428bca;
+      display: block;
+      margin: auto;
+    margin-bottom:7px;
+}
+/* Button Color blue */
+.p-red button {
+      background: #428bca;
+}
+/* Pricing Color blue */
+.p-red h3 {
+      color: #428bca;
+ }
+
+
+
+/* Glyphicon Blue */
+span.glyphicon-stats{
+    font-size: 2.9em;
+    color: #d9534f;
+      display: block;
+      margin: auto;
+    margin-bottom:7px;
+}
+    </style>
+    <!-- END PRICE CAR COMPARISON CSS -->
+{% endblock extra_stylesheet %}
+{% block content %}
+
+
+    <!--Slider Section Start-->
+			<div class="tj-slider">
+				<div class="tj-cab-slider" id="cab-slider">
+
+                    {% for banner in banners %}
+					<!--Slider Item Content Start-->
+					<div class="slide-item">
+						<img src="{{ banner.image.url }}" alt="" style="height:395px">
+						<div class="slide-caption" style="bottom: 138px!important;">
+							<div class="container">
+								<div class="slide-inner">
+									<strong>{{ banner.h5|linebreaks|escape }}</strong>
+									<h2>{{ banner.h2|linebreaks|escape }}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--Slider Item Content End-->
+                    {% endfor %}
+				</div>
+			</div>
+			<!--Slider Section End-->
+
+    <form method="post" class="booking-frm">
+    {% csrf_token %}
+    <!--Banner Form 2 Content Start-->
+    <section class="tj-banner-form2" style="z-index:999; margin-top: 16px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="tab-content">
+
+                        <p ><b>{{ pickup }} &ensp;<i class="fas fa-chevron-circle-right"></i> &ensp;{{ drop }} </b>
+                            <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
+                        <input type="hidden" name="car_type" id="car_type" value="Sedan" required>
+                        <section >
+                            <div class="row white" style="border: 2px solid #eee;">
+                            <div class="block">
+                            <div  class="col-xs-12 col-sm-6 col-md-3" style="padding-right: 0px;padding-left: 0px;">
+                            <ul class="pricing p-green"  style="list-style-type:none;text-align: left;border-left: none;">
+                                <li><big>Specifications</big></li>
+                                {% for attr in car_attrs %}
+                                    <li style="height:35px !important;box-shadow: none;color: #1c2b39;padding: 19px 17px;">{{ attr.name }}</li>
+                                {% endfor %}
+                                <li style="height:0px;box-shadow: none;"></li>
+                                <li style="height:0px;box-shadow: none;"></li>
+                            </ul>
+                            </div>
+                            {% for type in car_types %}
+                                <div  class="col-xs-12 col-sm-6 col-md-3" style="padding-right: 0px;padding-left: 0px;">
+                                   <div class="option-card">
+                                    <ul class="pricing p-yel" style="list-style-type:none;text-align: left;">
+                                        <li style="box-shadow: none;padding: 19px 17px;"><img style="box-shadow: none;" src="{{ type|car_type_image }}" height="35px" width="80px"> <big style="box-shadow: none;color:#ffc000; " >{{ type.name }}</big></li>
+                                        {% for attr in car_attrs %}
+                                            {% comment %}
+                                            <li style="height:35px;box-shadow: none;padding: 19px 17px;">{{ type|attr_value:attr.name }}</li>
+                                            {% endcomment %}
+                                            <li style="height:35px;box-shadow: none;padding: 19px 17px;">{{ type|attr_value:attr.name|price_km:city_price_km }}</li>
+                                            {% endfor %}
+                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;">&#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ inital_charges|final_price_type:type }}</span></p>
+                                    </li><br>
+                                    </ul>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            </div>
+                            <!-- /block --></div>
+                            <!-- /row --></section>
+                    </div>
+                   <div class="booking-summary">
+                                <h3 style="background-color: #1c2b39;
+color: white;">*Price does not include toll tax,state tax & GST</h3>
+                            </div>
+                </div>
+            </div>
+
+
+            <div class="row display-change" ><br>
+              
+                 <div class="col-md-6 col-sm-12">
+                     <div class="tab-content" style="padding: 16px 1px;">
+                            <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
+                              <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Additional Information Required (if any)</h5></li>
+                              <li><h6  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h6></li>
+
+                             {% for checkbox in ridecheckboxes %}
+                                {% if checkbox.value > 0 %}
+                              <li>  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
+                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span></li>
+                                {% endif %}
+                             {% endfor %}
+
+                            <li><h6  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h6></li>
+                            {% for checkbox in ridecheckboxes %}
+                                {% if checkbox.value == 0 %}
+                              <li>  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
+                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span></li>
+                                {% endif %}
+                             {% endfor %}
+                            </ul>
+                      </div>
+                   </div>
+                        <div class="col-md-6 col-sm-12" style="display: flex;padding-left: 0px;">
+                           <div class="tab-content" style="padding: 16px 1px;">
+                            <!-- <h5 style=" font-weight: bolder;color: #233545;text-align: justify;">Terms & Conditions</h5> -->
+                            <ul style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
+                                  <li><h5 style=" font-weight: bolder;color: #233545;text-align: justify;">Terms & Conditions</h5></li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Parking charges will be Extra as Actual**</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Airport parking charges will be Extra as Actual**</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Total Tax willbe Extra as Actual*</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Night charges at Rs.300 (from 10pm-6am)*</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Extra KM will per chargeat the rate of?? Per Km</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Early Pick-up charges will be Extra Rs.180 (4:00am-6:00am)</li>
+                            </ul>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+    <div class="p-green" style="margin-left: 43%;">
+        <div class="col-md-4 col-sm-4" id="btn-hov">
+            <button type="submit" class="book-btn" >Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button><br>
+        </div>
+        
+    </div>
+    <!--Banner Form 2 Content End-->
+    </form>
+
+{% endblock content %}
+
+    {% block extra_scripts %}
+
+        <script>//Table select
+            $('.option-card').click(function() {
+                   $(".choice").removeClass("choice");
+                   $(this).addClass("choice");
+                   var ads=$(".choice ul li big").text();
+                   $('#car_type').val(ads);
+                   console.log(ads);
+                   // var ads=$(".choice ul li big").text();
+                   // alert(ads);
+                                    });
+
+           $('.btn-success').click(function(){
+                 var ads=$(".choice ul li big").text();
+                   // alert(ads);
+           });
+
+    $( document ).ready(function () {
+        {% for checkbox in ridecheckboxes %}
+            $('#checkbox{{ checkbox.id }}').prop("checked", false);
+        {% endfor %}
+    });
+
+
+
+
+    $(document).ready(function(){
+
+        {% for checkbox in ridecheckboxes %}
+            $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
+                price = $('#checkbox{{ checkbox.id }}').val();
+                price = parseInt({{ checkbox.value }});
+                console.log('CheckBox Price');
+                console.log(price);
+
+                 if ($(this).is(':checked')){
+                    {% for type in car_types %}
+                        type_price = $('#finalprice{{ type.id }} .price').text();
+                        type_price = parseInt(type_price);
+                        console.log('Car Type Price');
+                        console.log(type_price);
+                        $('#finalprice{{ type.id }} .price').text((type_price + price));
+                    {% endfor %}
+                }
+                 if ($(this).is(':not(:checked')){
+                    {% for type in car_types %}
+                        type_price = $('#finalprice{{ type.id }} .price').text();
+                        type_price = parseInt(type_price);
+                        console.log(type_price);
+                        $('#finalprice{{ type.id }} .price').text((type_price - price));
+                    {% endfor %}
+                }
+            });
+
+        {% endfor %}
+         });
+
+        </script>
+    {% endblock extra_scripts %}
