@@ -321,7 +321,7 @@ h1,h2,h3,h4,h5,h6{
     z-index: 99999;
 }
 .tj-header .sticky .navbar-default .navbar-nav > li:hover > ul{
-	top:117%;
+	top:90%;
 }
 .tj-header .sticky .navbar-nav li ul{
 	background: #f9f9f9;
