@@ -43,3 +43,4 @@ whitenoise
 six
 django-widget-tweaks
 django-import-export
+django-fullurl

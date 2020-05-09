@@ -1,3 +1,6 @@
+
+{% load fullurl %}
+
 <html>
     <head>
         <title>Loading...</title>
@@ -14,8 +17,8 @@
             <input type="hidden" name="email" id="email" value="{{ posted.email|default:'' }}" /></td>
             <input type="hidden" name="phone" value="{{ posted.phone|default:'' }}" /></td>
             <textarea type="hidden" name="productinfo" style="display:none;">{{ posted.productinfo|default:'' }}</textarea></td>
-            <input type="hidden" name="surl" value="{% url 'core:payu_success' %}" /></td>
-            <input type="hidden" name="furl" value="{% url 'core:payu_failure' %}" /></td>
+            <input type="hidden" name="surl" value="{% fullurl 'core:payu_success' %}" /></td>
+            <input type="hidden" name="furl" value="{% fullurl 'core:payu_failure' %}" /></td>
             <input type="hidden" name="service_provider" value="{{posted.service_provider}}" size="64" />
             <input type="hidden" name="lastname" id="lastname" value="{{ posted.lastname }}" /></td>
             <input type="hidden" name="address1" value="{{ posted.address1 }}" /></td>

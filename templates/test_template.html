@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load fullurl %}
 {% block extra_stylesheet %}
 {% endblock extra_stylesheet %}
 
@@ -13,7 +13,7 @@
     <div style="width: 100%;height: 350px;text-align: center;">
       
       <h2 style="color: #eac022;font-weight: bold;margin-top: 20%;"><img style="width: inherit;" src="{% static 'images/logo.png' %}" alt=""> Is Comming Soon......</h2>
-      <h4>Please check back with us in the near future for updates.</h4>
+      <h4>Please check back with us in the near future for updates. {% fullurl 'core:payu_success' %}</h4>
     </div>
   </div>
 </div>

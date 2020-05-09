@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'import_export',
-
+    'fullurl',
+    
     'core',
     'blog',
     'vendor',
