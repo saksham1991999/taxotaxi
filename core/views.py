@@ -104,6 +104,9 @@ def places():
 
 
 
+def ComingSoonView(request):
+    context = {}
+    return render(request, 'coming_soon.html', context)
 
 def HomeView(request):
     if request.method == 'POST':
