@@ -107,14 +107,15 @@ def places():
 
 def HomeView(request):
     if request.method == 'POST':
-        form_type = request.POST['form_type']
-        if form_type == 'contact-us':
-            contactform = forms.ContactForm[request.POST]
+        if 'form_type' in request.POST:
+            form_type = request.POST['form_type']
+            if form_type == 'contact-us':
+                contactform = forms.ContactForm(request.POST)
 
-            if contactform.is_valid():
-                contactform.save()
-                messages.success(request, 'Details sent successfully !!')
-            redirect()
+                if contactform.is_valid():
+                    contactform.save()
+                    messages.success(request, 'Details sent successfully !!')
+                return redirect('core:home')
         else:
             ride_type = request.POST['type']
             request.session['ride_type'] = ride_type
@@ -227,11 +228,13 @@ def HomeView(request):
         pickup_cities = models.city.objects.filter(pickup=True)
         drop_cities = models.city.objects.filter(drop=True)
         banners = models.banner.objects.all()
+        contactform = forms.ContactForm()
         context = {
             'testimonials':testimonials,
             'pickup_cities':pickup_cities,
             'drop_cities':drop_cities,
             'banners':banners,
+            'contactform':contactform,
         }
         return render(request, 'index.html', context)
 
