@@ -443,7 +443,7 @@
               <!-- //////////togable Content pannel start///////////////// -->
               <div class="tab-content">
                 <div class="tab-pane active" id="editProfile">
-                  <form class="booking-frm" method="POST" id="edit-profileform">
+                  <form class="booking-frm" method="POST" id="edit-profileform" enctype="multipart/form-data">
                       {% csrf_token %}
 
                       <input type="hidden" name="type" value="profile">
@@ -499,10 +499,10 @@
 
                     <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                       <div class="drag-drop">
-                        {% render_field userform.profile_pic type="file" class="input-file" %}
+                        {% render_field userform.profile_pic class="input-file" %}
                         <p class="p23"><i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x"></i><br>
                           Drag&Drop files here <br> or<br>
-                          <button type="submit" class="btn btn-outline-primary">Browse Files</button> </p>
+                          <button type="button" class="btn btn-outline-primary">Browse Files</button> </p>
                         <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
                           <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
                         </div>

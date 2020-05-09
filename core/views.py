@@ -232,11 +232,14 @@ def HomeView(request):
         drop_cities = models.city.objects.filter(drop=True)
         banners = models.banner.objects.all()
         contactform = forms.ContactForm()
+        popular_destinations = models.popular_destinations.objects.all()
         context = {
             'testimonials':testimonials,
             'pickup_cities':pickup_cities,
             'drop_cities':drop_cities,
             'banners':banners,
+            'popular_destinations':popular_destinations,
+
             'contactform':contactform,
         }
         return render(request, 'index.html', context)

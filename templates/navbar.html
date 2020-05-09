@@ -206,8 +206,13 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
                                           {% if request.user.is_authenticated %}
                                 
                                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex;"> 
-                                          	<canvas id="user-icon" width="35" height="35" style="border-radius: 20px;"></canvas>
-                                          	{% comment %}<img class="rounded-circle" src="{% static 'images/comment_img1.jpg' %}" width="35" height="35" style="border-radius: 20px;" > {% endcomment %}
+
+                                          	{% if request.user.profile_pic %}
+                                                <img class="rounded-circle" src="{{ request.user.profile_pic.url }}" width="35" height="35" style="border-radius: 20px;" >
+                                            {% else %}
+                                                <canvas id="user-icon" width="35" height="35" style="border-radius: 20px;"></canvas>
+                                            {% endif %}
+
                                               <span>&ensp;{% if request.user.first_name %}{{ request.user.first_name }}{% else %}Guest{% endif %}
                                                   <i class="fas fa-chevron-down"></i>
                                               </span>

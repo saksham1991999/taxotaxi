@@ -513,80 +513,23 @@ margin: 10px; !important
           <div class="col-md-9 col-sm-12 col-xs-12"id="owl-one">
 
             <div class="owl-carousel" >
-                <div class=" item" style="padding-left: 0px;">
-                    <img style="position: absolute;" class="img-responsive" src="https://images.unsplash.com/photo-1486663845017-3eedaa78617f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"  alt="">
-                    <article class="text-center carousel_article col-xs-2" >
-                       <h5 class="txt-left"><strong>Delhi To jaipur</strong></h5>
-                        <h5 class="txt-right"> 270 Km</h5>
-                        <h6 class="text-left">Galtaji Temple</h6>
-                        <h7 class="txt-left">Starting from &#8377 1799/-</h7>
-                       <button type="submit" class="carousel-btn book-btn btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                    </article>
-                    <div class="ver_mas text-center">
-                        <span  class="lnr lnr-eye"></span>
-                     </div>
-                 </div>
 
-                     <!-- travel item -->
-                     <div class="item" style="padding-left: 0px;">
-                        <img style="position: absolute;" class="img-responsive" src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"  alt="">
+                {% for destination in popular_destinations %}
+                    <div class=" item" style="padding-left: 0px;">
+                        <img style="position: absolute;" class="img-responsive" src="{{ destination.image.url }}"  alt="">
                         <article class="text-center carousel_article col-xs-2" >
-                           <h5 class="txt-left"><strong>Mumbai To Goa</strong></h5>
-                            <h5 class="txt-right"> 370 Km</h5>
-                            <h6 class="text-left">Gamma Temple</h6>
-                            <h7 class="txt-left">Starting from &#8377 1799/-</h7>
-                           <button type="submit" class="book-btn btn carousel-btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                           <h5 class="txt-left"><strong>{{ destination.from_place }} To {{ destination.to_place }}</strong></h5>
+                            <h5 class="txt-right">{{ destination.distance }}</h5>
+                            <h6 class="text-left">{{ destination.popular_place }}</h6>
+                            <h7 class="txt-left">Starting from &#8377 {{ destination.starting_from_price }}/-</h7>
+                           <button type="submit" class="carousel-btn book-btn btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                         </article>
                         <div class="ver_mas text-center">
                             <span  class="lnr lnr-eye"></span>
                          </div>
                      </div>
-                   <!-- // travel item -->
+                {% endfor %}
 
-                   <!-- travel item -->
-                    <div class="item" style="padding-left: 0px;">
-                       <img style="position: absolute;" class="img-responsive" src="https://images.unsplash.com/photo-1502230831726-fe5549140034?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"  alt="">
-                       <article class="text-center carousel_article col-xs-2" >
-                        <h5 class="txt-left"><strong>Mumbai To Pune</strong></h5>
-                         <h5 class="txt-right"> 370 Km</h5>
-                         <h6 class="text-left">Gamma Temple</h6>
-                         <h7 class="txt-left">Starting from &#8377 1799/-</h7>
-                        <button type="submit" class="book-btn btn carousel-btn"> Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                        </article>
-                       <div class="ver_mas text-center">
-                          <span  class="lnr lnr-eye"></span>
-                       </div>
-                   </div>
-             <!-- // travel item -->
-
-               <!-- travel item -->
-               <div class=" item" style="padding-left: 0px;">
-                   <img style="position: absolute;" class="img-responsive" src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"  alt="">
-                    <article class="text-center carousel_article col-xs-2" >
-                          <h5 class="txt-left"><strong>Delhi To Shimla</strong></h5>
-                           <h5 class="txt-right"> 720 Km</h5>
-                           <h6 class="text-left">Beta Temple</h6>
-                          <h7 class="txt-left">Starting from &#8377 1799/-</h7>
-                          <button type="submit" class="book-btn btn carousel-btn"> Book Now      <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                    </article>
-                   <div class="ver_mas text-center">
-                       <span  class="lnr lnr-eye"></span>
-                    </div>
-               </div>
-                 <!-- travel item -->
-                 <div class="item" style="padding-left: 0px;">
-                      <img style="position: absolute;" class="img-responsive" src="https://images.unsplash.com/photo-1502230831726-fe5549140034?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"  alt="">
-                      <article class="text-center carousel_article col-xs-2" >
-                           <h5 class="txt-left"><strong>Shimla To Manali</strong></h5>
-                            <h5 class="txt-right"> 720 Km</h5>
-                             <h6 class="text-left">Alpha Temple</h6>
-                             <h7 class="txt-left">Starting from &#8377 1799/-</h7>
-                            <button type="submit" class="book-btn btn carousel-btn" >Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                        </article>
-                       <div class="ver_mas text-center">
-                           <span  class="lnr lnr-eye"></span>
-                        </div>
-                 </div>
               </div>
           </div>
         </div>

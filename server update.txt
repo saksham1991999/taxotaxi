@@ -10,3 +10,19 @@ sudo systemctl restart gunicorn
 
 yeh server 2-3 min baad disconnect ho jata hai 
 yahan side m aa raha hai yahan drag and drop karo 
+
+
+
+
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=saksham
+Group=www-data
+WorkingDirectory=/home/saksham/taxotaxi
+ExecStart=/home/saksham/taxotaxi/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/saksham/taxotaxi/taxotaxi.sock myproject.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
