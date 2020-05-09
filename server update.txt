@@ -1,0 +1,12 @@
+cd taxotaxi/
+source venv/bin/activate
+python manage.py collectstatic --noinput
+
+deactivate
+sudo systemctl daemon-reload
+s2ksh2m19
+sudo systemctl restart gunicorn
+
+
+yeh server 2-3 min baad disconnect ho jata hai 
+yahan side m aa raha hai yahan drag and drop karo 
