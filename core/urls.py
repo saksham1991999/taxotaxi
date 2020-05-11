@@ -9,7 +9,7 @@ urlpatterns = [
     path('test/', views.TestView, name='test'),
     path('cars/', views.CarSpecificationsView, name='cars'),
     path('checkbox-adder/', views.CheckBoxesAdder, name='checkbox-adder'),
-
+    
 
     path('faq/', views.FAQView, name='faq'),
     path('contact-us/', views.ContactView, name='contact'),

@@ -3860,9 +3860,9 @@ background-color: white;
 	color:#777777;
 }
 .reg-frm{
-	max-width:444px;
-	float:left;
-	padding:74px 0;
+	/*max-width:444px;
+	float:left;*/
+	padding: 79px 0px 0px 25px;
 }
 .login-frm{
 	max-width:444px;

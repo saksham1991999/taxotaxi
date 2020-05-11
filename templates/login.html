@@ -1,6 +1,14 @@
 {% extends 'base.html'%}
 {% load static %}
+
 {% block content %}
+<style type="text/css">
+	.login-icon{
+		height: 44px; 
+		/*font-weight: bolder;*/ 
+		vertical-align: text-bottom;
+	}
+</style>
 		<!--Wrapper Content Start-->
 		<div class="tj-wrapper">
 
@@ -22,47 +30,6 @@
 								<!--Login Tabs Content Start-->
 								<div class="tab-pane active" id="login">
 									<div class="col-md-6 col-sm-6">
-										<div class="login-cta">
-											<ul class="cta-list">
-												<li>
-                                                    <span class="icon"><img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="" style="height: 30px"></span>
-													<div class="cta-info">
-														<strong>Best Price Guaranteed</strong>
-														<p>A more recently with desktop softy like.</p>
-													</div>
-												</li>
-												<li>
-													<span class="icon"><img src="{% static 'images/icons/customer-care.png' %}" alt="" style="height: 30px"></span>
-													<div class="cta-info">
-														<strong>24/7 Customer Care</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
-													</div>
-												</li>
-												<li>
-													<span class="icon"><img src="{% static 'images/icons/home-pickups.png' %}" alt="" style="height: 30px"></span>
-													<div class="cta-info">
-														<strong>Home Pickups</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
-													</div>
-												</li>
-												<li>
-													<span class="icon"><img src="{% static 'images/icons/instant-booking.png' %}" alt="" style="height: 30px"></span>
-													<div class="cta-info">
-														<strong>Instant Booking</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
-													</div>
-												</li>
-												<li>
-													<span class="icon"><img src="{% static 'images/icons/easy-cancelation.png' %}" alt="" style="height: 30px"></span>
-													<div class="cta-info">
-														<strong>Easy Cancellation</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-6">
 										<!--Register Tabs Form Start-->
 										<form class="reg-frm" method="POST">
                                             {% csrf_token %}
@@ -83,51 +50,52 @@
                                         </form>
 										<!--Register Tabs Form End-->
 									</div>
-								</div>
-								<!--Login Tabs Content End-->
-								<!--Register Tabs Content Start-->
-								<div class="tab-pane" id="register">
 									<div class="col-md-6 col-sm-6">
 										<div class="login-cta">
 											<ul class="cta-list">
 												<li>
-                                                    <span class="icon"><img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="" style="height: 30px"></span>
+                                                    <span class="icon"><img class="login-icon" src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="" ></span>
 													<div class="cta-info">
 														<strong>Best Price Guaranteed</strong>
-														<p>A more recently with desktop softy like.</p>
+														<p>A more recently with desktop softy like aldus page maker.</p>
 													</div>
 												</li>
 												<li>
-													<span class="icon"><img src="{% static 'images/icons/customer-care.png' %}" alt="" style="height: 30px"></span>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/customer-care.png' %}" alt="" ></span>
 													<div class="cta-info">
 														<strong>24/7 Customer Care</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+														<p>A more recently with desktop softy like aldus page maker.</p>
 													</div>
 												</li>
 												<li>
-													<span class="icon"><img src="{% static 'images/icons/home-pickups.png' %}" alt="" style="height: 30px"></span>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/home-pickups.png' %}" alt="" ></span>
 													<div class="cta-info">
 														<strong>Home Pickups</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+														<p>A more recently with desktop softy like aldus page maker.</p>
 													</div>
 												</li>
 												<li>
-													<span class="icon"><img src="{% static 'images/icons/instant-booking.png' %}" alt="" style="height: 30px"></span>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/instant-booking.png' %}" alt="" ></span>
 													<div class="cta-info">
 														<strong>Instant Booking</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+														<p>A more recently with desktop softy like aldus page maker.</p>
 													</div>
 												</li>
 												<li>
-													<span class="icon"><img src="{% static 'images/icons/easy-cancelation.png' %}" alt="" style="height: 30px"></span>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/easy-cancelation.png' %}" alt=""></span>
 													<div class="cta-info">
 														<strong>Easy Cancellation</strong>
-														<p>A more recently with desktop softy like aldus pages maker still versions have evolved.</p>
+														<p>A more recently with desktop softy like aldus page maker.</p>
 													</div>
 												</li>
 											</ul>
 										</div>
 									</div>
+									
+								</div>
+								<!--Login Tabs Content End-->
+								<!--Register Tabs Content Start-->
+								<div class="tab-pane" id="register">
 									<div class="col-md-6 col-sm-6">
 										<!--Register Tabs Form Start-->
 										<form class="reg-frm" method="POST">
@@ -148,7 +116,7 @@
 											</div>
 											<div class="field-holder">
 												<span class="fas fa-lock"></span>
-												<input type="password" name="password" placeholder="Password" required>
+												<input type="password" name="password" placeholder="Choose your password" required>
 											</div>
 
 											<label for="terms">
@@ -160,6 +128,48 @@
                                         </form>
 										<!--Register Tabs Form End-->
 									</div>
+									<div class="col-md-6 col-sm-6">
+										<div class="login-cta">
+											<ul class="cta-list">
+												<li>
+                                                    <span class="icon"><img class="login-icon" src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="" ></span>
+													<div class="cta-info">
+														<strong>Best Price Guaranteed</strong>
+														<p>A more recently with desktop softy like aldus page maker.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/customer-care.png' %}" alt="" ></span>
+													<div class="cta-info">
+														<strong>24/7 Customer Care</strong>
+														<p>A more recently with desktop softy like aldus page maker.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/home-pickups.png' %}" alt="" ></span>
+													<div class="cta-info">
+														<strong>Home Pickups</strong>
+														<p>A more recently with desktop softy like aldus page maker.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/instant-booking.png' %}" alt="" ></span>
+													<div class="cta-info">
+														<strong>Instant Booking</strong>
+														<p>A more recently with desktop softy like aldus page maker.</p>
+													</div>
+												</li>
+												<li>
+													<span class="icon"><img class="login-icon" src="{% static 'images/icons/easy-cancelation.png' %}" alt="" ></span>
+													<div class="cta-info">
+														<strong>Easy Cancellation</strong>
+														<p>A more recently with desktop softy like aldus page maker.</p>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+									
 								</div>
 								<!--Register Tabs Content End-->
 							</div>
