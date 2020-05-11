@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54c75697-5650-410f-8c84-598c9e23b836" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/taxotaxi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/taxotaxi/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/car_specifications.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/car_specifications.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,10 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
+            <state relative-caret-position="621">
               <caret line="221" column="52" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
               <folding>
                 <element signature="e#874#912#0" />
@@ -36,13 +36,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/car_specifications.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="275" column="390" selection-start-line="275" selection-start-column="390" selection-end-line="275" selection-end-column="390" />
+            <state relative-caret-position="248">
+              <caret line="249" column="283" selection-start-line="249" selection-start-column="283" selection-end-line="249" selection-end-column="283" />
               <folding>
                 <element signature="e#68#96#0#DjangoTemplate" />
                 <element signature="e#97#855#0#HTML" />
                 <element signature="e#919#3398#0#HTML" />
+                <element signature="e#4759#4765#0#HTML" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/taxotaxi/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="93" selection-start-line="27" selection-start-column="93" selection-end-line="27" selection-end-column="93" />
             </state>
           </provider>
         </entry>
@@ -65,13 +75,13 @@
         <option value="$PROJECT_DIR$/core/urls.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/templates/test_template.html" />
-        <option value="$PROJECT_DIR$/taxotaxi/settings.py" />
         <option value="$PROJECT_DIR$/templates/payments/payu_checkout.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/templates/Customer Dashboard/customer_dashboard.html" />
-        <option value="$PROJECT_DIR$/templates/car_specifications.html" />
         <option value="$PROJECT_DIR$/core/views.py" />
+        <option value="$PROJECT_DIR$/templates/car_specifications.html" />
+        <option value="$PROJECT_DIR$/taxotaxi/settings.py" />
       </list>
     </option>
   </component>
@@ -100,6 +110,11 @@
               <item name="taxotaxi" type="b2602c69:ProjectViewProjectNode" />
               <item name="taxotaxi" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taxotaxi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taxotaxi" type="462c0819:PsiDirectoryNode" />
+              <item name="taxotaxi" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="taxotaxi" type="b2602c69:ProjectViewProjectNode" />
@@ -177,18 +192,18 @@
       <workItem from="1589038595070" duration="930000" />
       <workItem from="1589040174804" duration="67000" />
       <workItem from="1589054643111" duration="1223000" />
-      <workItem from="1589187895756" duration="1165000" />
+      <workItem from="1589187895756" duration="2210000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8473000" />
+    <option name="totallyTimeSpent" value="9518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.34266263" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34266263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -257,13 +272,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="39" column="17" lean-forward="true" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/taxotaxi/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="48" column="11" lean-forward="true" selection-start-line="48" selection-start-column="11" selection-end-line="48" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -394,21 +402,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/car_specifications.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="275" column="390" selection-start-line="275" selection-start-column="390" selection-end-line="275" selection-end-column="390" />
-          <folding>
-            <element signature="e#68#96#0#DjangoTemplate" />
-            <element signature="e#97#855#0#HTML" />
-            <element signature="e#919#3398#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
+        <state relative-caret-position="621">
           <caret line="221" column="52" selection-start-line="221" selection-start-column="52" selection-end-line="221" selection-end-column="52" />
           <folding>
             <element signature="e#874#912#0" />
@@ -420,6 +416,26 @@
             <element signature="e#2984#3562#0" />
             <element signature="e#3470#3562#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/car_specifications.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="249" column="283" selection-start-line="249" selection-start-column="283" selection-end-line="249" selection-end-column="283" />
+          <folding>
+            <element signature="e#68#96#0#DjangoTemplate" />
+            <element signature="e#97#855#0#HTML" />
+            <element signature="e#919#3398#0#HTML" />
+            <element signature="e#4759#4765#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taxotaxi/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="93" selection-start-line="27" selection-start-column="93" selection-end-line="27" selection-end-column="93" />
         </state>
       </provider>
     </entry>

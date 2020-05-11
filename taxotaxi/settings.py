@@ -25,7 +25,7 @@ SECRET_KEY = '9tg5nv*d)i7m6q*dzhdn!ls54f-az=3mf*!5$=jn3_c4(gj5^+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '167.71.235.69', 'taxotaxi.com', 'www.taxotaxi.com']
+ALLOWED_HOSTS = ['127.0.0.1', '167.71.235.69', 'taxotaxi.com', 'www.taxotaxi.com', 'localhost']
 
 
 # Application definition
