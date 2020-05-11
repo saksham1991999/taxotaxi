@@ -5279,15 +5279,15 @@ background-color: ##4CAF50 !important;
 	background-color: ##4CAF50  !important;
 }
 .set-image{
-    height: 500px;
-}
-@media (max-width: 720px)
-{.set-image{
     height: auto;
 }
-@media (max-width: 2500px){
+@media (max-width: 720px)
+{.set-image {
+    height: auto;
+}
+@media (max-width: 2000px){
 	.set-image{
-    height: 395px;
+    height: 530px !important;
 }
 
 
