@@ -210,6 +210,9 @@ input:focus{
                                 {% if driver_allowances %}
                                 Driver Allowances : {{ driver_allowances }}<br>
                                 {% endif %}
+                                {% if checkbox_charges %}
+                                    Chargeable Additions : {{ checkbox_charges }}<br>
+                                {% endif %}
                                {% if gst_charges %}
                                 GST : {{ gst_charges }}<br>
                                {% endif %}
