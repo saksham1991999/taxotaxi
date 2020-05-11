@@ -20,7 +20,6 @@ urlpatterns = [
 
     path('dashboard/', views.DashboardView, name='dashboard'),
 
-    path('pickuplocations/', views.pickuplocations, name='pickup'),
     path('populatedata/', views.populate_data, name='populatedata'),
 
     path('booking/login/', views.CustomerLoginView, name='booking-login'),

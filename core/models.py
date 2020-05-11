@@ -229,7 +229,7 @@ class ride_booking(models.Model):
     exact_pickup = models.CharField(max_length=512)
     exact_drop = models.CharField(max_length=512)
 
-    inital_charges = models.IntegerField()
+    initial_charges = models.IntegerField()
     additional_charges = models.PositiveSmallIntegerField()
     early_pickup_charges = models.PositiveSmallIntegerField()
     late_drop_charges = models.PositiveSmallIntegerField()
@@ -237,8 +237,8 @@ class ride_booking(models.Model):
     gst_charges = models.PositiveSmallIntegerField()
     final_fare = models.PositiveSmallIntegerField()
 
-    coupon = models.ForeignKey('customer.customer_promotional', on_delete=models.PROTECT)
-    balance_used = models.PositiveSmallIntegerField()
+    coupon = models.ForeignKey('customer.customer_promotional', on_delete=models.PROTECT, null=True, blank=True)
+    balance_used = models.PositiveSmallIntegerField(default=0)
 
     final_ride_fare = models.PositiveSmallIntegerField()
     advance = models.PositiveSmallIntegerField()

@@ -2,13 +2,7 @@
 {% load static %}
 
 {% block extra_stylesheet %}
-{% endblock extra_stylesheet %}
-  
-
-
-{% block content %}
-
-<style type="text/css">
+    <style type="text/css">
  @media (max-width: 768px){
     .container1{
       margin-top: 685px !important;
@@ -74,32 +68,32 @@ background-color: white;
     font-weight: bolder;
     border: 0px;
 }
-.input-icons i { 
-    position: absolute; 
-} 
+.input-icons i {
+    position: absolute;
+}
 
 /*.button0:hover{
     background-color: #4CAF50 ;
 }*/
-  
-.input-icons { 
-    width: 100%; 
-    
-} 
-  
-.icon { 
+
+.input-icons {
+    width: 100%;
+
+}
+
+.icon {
     margin-left: 75%;
-    padding: 10px; 
-    color: rgb(76, 82, 76); 
-    min-width: 50px; 
-    text-align: center; 
-} 
-  
+    padding: 10px;
+    color: rgb(76, 82, 76);
+    min-width: 50px;
+    text-align: center;
+}
+
 .input-field {
-    width: 100%; 
-    padding: 10px; 
-    text-align: center; 
-} 
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
 
 
 .header2{
@@ -137,6 +131,12 @@ input:focus{
 
 
 </style>
+{% endblock extra_stylesheet %}
+  
+
+
+{% block content %}
+
 
   <div class="container container1 mt-5 checkout-frm ">
         
@@ -203,26 +203,17 @@ input:focus{
                             <!-- Ride Fair BreakDown -->
                            <span class="fair-breakdown">
 
-
-                                Inital Charges : {{ inital_charges }}<br>
+                                Initial Charges : {{ initial_charges }}<br>
                                {% if additional_charges %}
-                                Additional Taxes : {{ additional_charges }}
-                               {% endif %}<br>
-                               {% if early_pickup_charges %}
-                                Early Pickup Charges : {{ early_pickup_charges }}
-                               {% endif %}<br>
-                               {% if late_drop_charges %}
-                                Late Drop Charges : {{ late_drop_charges }}
-                               {% endif %}<br>
-                               {% if night_charges %}
-                                Night Charges : {{ night_charges }}
-                               {% endif %}<br>
+                                Additional Taxes : {{ additional_charges }}<br>
+                               {% endif %}
+                                {% if driver_allowances %}
+                                Driver Allowances : {{ driver_allowances }}<br>
+                                {% endif %}
                                {% if gst_charges %}
-                                GST : {{ gst_charges }}
-                               {% endif %}<br>
+                                GST : {{ gst_charges }}<br>
+                               {% endif %}
                                 Total : {{ ride_total }}
-
-
 
                            </span>
                         </div>
@@ -233,7 +224,7 @@ input:focus{
                 <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
                 <div class="col-sm-8"> 
                      <div class="inputlayout " >
-                      <div style="width: 80%">{{ ride_total }}</div>
+                      <div style="width: 80%">{{ request.user.wallet_balance }}</div>
                         <div class="icon1" style="width: 19%;text-align: right;font-size: 19px;">
                            <input type="checkbox" class="my-auto" style="display: inline-blocks;">
                         </div>
@@ -324,13 +315,13 @@ input:focus{
 
                 <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
                 <div class="col-sm-8">                 
-                        <input class="input-field " type="text" name="name" placeholder="Full Name">
+                        <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}>
                 </div>
             </div>
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
                 <div class="col-sm-8">               
-                        <input class="input-field " type="text" name="mobile" placeholder="Phone"> 
+                        <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}>
                 </div>
             </div>
             <div class="row">

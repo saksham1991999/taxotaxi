@@ -247,7 +247,7 @@ span.glyphicon-stats{
                     <div class="tab-content">
 
                         <p><b>{{ pickup }} &ensp;<i class="fas fa-chevron-circle-right"></i> &ensp;{{ drop }} </b>
-                            <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime|date:"D d M Y" }} {{ pickup_datetime }}{{ pickup_datetime|time:"H:i" }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
+                            <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime|date:"j M Y" }} {{ pickup_datetime }}{{ pickup_datetime|time:"H:i" }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
                         <input type="hidden" name="car_type" id="car_type" value="Sedan" required>
                         <section >
                             <div class="row white" style="border: 2px solid #eee;">
@@ -273,7 +273,7 @@ span.glyphicon-stats{
                                             {% endcomment %}
                                             <li style="height:35px;box-shadow: none;padding: 19px 17px;">{{ type|attr_value:attr.name|price_km:city_price_km }}</li>
                                             {% endfor %}
-                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;">Base Fare - &#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ request.session.inital_charges_list|final_price_type:type }}</span></p>
+                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;">Base Fare - &#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ request.session.initial_charges_list|final_price_type:type }}</span></p>
                                     </li><br>
                                     </ul>
                                     </div>

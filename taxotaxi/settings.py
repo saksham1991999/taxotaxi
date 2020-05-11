@@ -168,3 +168,13 @@ PAYU_CONFIG = {
         "success_url": "http://127.0.0.1:8000/payu/success",
         "failure_url": "http://127.0.0.1:8000/payu/failure"
     }
+
+
+
+# PAYU_CONFIG = {
+#         "merchant_key": "wr25YBco",
+#         "merchant_salt": "yJaoj8wo39",
+#         "mode": "LIVE",
+#         "success_url": "http://127.0.0.1:8000/payu/success",
+#         "failure_url": "http://127.0.0.1:8000/payu/failure"
+#     }

@@ -150,7 +150,7 @@ def HomeView(request):
                 distance, duration, distance_text, duration_text = distance_time(pickup, drop)
 
                 # Calculator Called
-                final_prices, price_km, drop_datetime, inital_charges, additional_charges, early_pickup_charges, late_drop_charges, night_charges, gst_charges = oneway_calculator(pickup_city, drop_city, distance, duration,
+                final_prices, price_km, drop_datetime, initial_charges, additional_charges, early_pickup_charges, late_drop_charges, night_charges, gst_charges = oneway_calculator(pickup_city, drop_city, distance, duration,
                                                                           pickup_datetime)
 
                 # ride_type = 'One Way'
@@ -183,8 +183,8 @@ def HomeView(request):
 
                 request.session['final_prices'] = final_prices
                 request.session['price_km'] = price_km
-                request.session['inital_charges'] = inital_charges
-                request.session['inital_charges_list'] = inital_charges
+                request.session['initial_charges'] = initial_charges
+                request.session['initial_charges_list'] = initial_charges
                 request.session['additional_charges'] = additional_charges
                 request.session['early_pickup_charges'] = early_pickup_charges
                 request.session['late_drop_charges'] = late_drop_charges
@@ -202,7 +202,7 @@ def HomeView(request):
 
                 distance, duration, distance_text, duration_text = distance_time(pickup, drop)
 
-                final_prices, price_km, drop_datetime, inital_charges, additional_charges, early_pickup_charges, late_drop_charges, night_charges, gst_charges = airport_calculator(pickup_city, drop_city, distance, duration,
+                final_prices, price_km, drop_datetime, initial_charges, additional_charges, early_pickup_charges, late_drop_charges, night_charges, gst_charges = airport_calculator(pickup_city, drop_city, distance, duration,
                                                                           pickup_datetime)
                 request.session['ride_type'] = ride_type
                 request.session['pickup_city'] = pickup_city.name
@@ -218,8 +218,8 @@ def HomeView(request):
 
                 request.session['final_prices'] = final_prices
                 request.session['price_km'] = price_km
-                request.session['inital_charges'] = inital_charges
-                request.session['inital_charges_list'] = inital_charges
+                request.session['initial_charges'] = initial_charges
+                request.session['initial_charges_list'] = initial_charges
                 request.session['additional_charges'] = additional_charges
                 request.session['early_pickup_charges'] = early_pickup_charges
                 request.session['late_drop_charges'] = late_drop_charges
@@ -260,9 +260,8 @@ def CarSpecificationsView(request):
     distance_text = request.session['distance_text']
     duration_text = request.session['duration_text']
 
-
     price_km = request.session['price_km']
-    inital_charges = request.session['inital_charges']
+    initial_charges = request.session['initial_charges']
 
 
     if request.method == 'POST':
@@ -273,7 +272,7 @@ def CarSpecificationsView(request):
         final_prices = request.session['final_prices']
         ride_total = final_prices[car_type_id - 1]
 
-        inital_charges = request.session['inital_charges'][car_type_id - 1]
+        initial_charges = request.session['initial_charges'][car_type_id - 1]
         additional_charges = request.session['additional_charges'][car_type_id - 1]
         early_pickup_charges = request.session['early_pickup_charges'][car_type_id - 1]
         late_drop_charges = request.session['late_drop_charges'][car_type_id - 1]
@@ -305,7 +304,7 @@ def CarSpecificationsView(request):
 
         request.session['final_prices'] = final_prices
         request.session['price_km'] = price_km
-        request.session['inital_charges'] = inital_charges
+        request.session['initial_charges'] = initial_charges
         request.session['additional_charges'] = additional_charges
         request.session['early_pickup_charges'] = early_pickup_charges
         request.session['late_drop_charges'] = late_drop_charges
@@ -336,7 +335,7 @@ def CarSpecificationsView(request):
             'car_attrs': car_attrs,
             'car_types': car_types,
 
-            'inital_charges': inital_charges,
+            'initial_charges': initial_charges,
             'city_price_km': price_km,
             'banners': banners,
         }
@@ -464,21 +463,6 @@ def FAQView(request):
         'questions':faqs,
     }
     return render(request, 'faq.html', context)
-
-def pickuplocations(request):
-    pickuplocations = []
-    pickuplocations_model = models.location.objects.all().values_list('name', flat=True)
-    pickuplocations_model2 = models.location.objects.all()
-
-
-    pickup_cities = models.city.objects.filter(pickup=True)
-    drop_cities = models.city.objects.filter(drop=True)
-    context = {
-        'pickup_cities':pickup_cities,
-        'drop_cities':drop_cities,
-    }
-
-    return render(request, 'autocomplete.html', context)
 
 def CheckBoxesAdder(request):
     print('------------------------------ REQUEST -----------------------------------')
@@ -700,11 +684,12 @@ def CheckoutView(request):
 
         final_prices = request.session['final_prices']
         price_km = request.session['price_km']
-        inital_charges = request.session['inital_charges']
+        initial_charges = request.session['initial_charges']
         additional_charges = request.session['additional_charges']
         early_pickup_charges = request.session['early_pickup_charges']
         late_drop_charges = request.session['late_drop_charges']
         night_charges = request.session['night_charges']
+        driver_allowances = early_pickup_charges + late_drop_charges + night_charges
         gst_charges = request.session['gst_charges']
 
         final_ride_fair = ride_total
@@ -735,11 +720,12 @@ def CheckoutView(request):
             'final_ride_fair':final_ride_fair,
             'coupon_code':coupon_code,
 
-            'inital_charges':inital_charges,
+            'initial_charges':initial_charges,
             'additional_charges':additional_charges,
             'early_pickup_charges':early_pickup_charges,
             'late_drop_charges':late_drop_charges,
             'night_charges':night_charges,
+            'driver_allowances':driver_allowances,
             'gst_charges':gst_charges,
         }
         return render(request, 'customer_ride_checkout.html', context)
@@ -764,11 +750,14 @@ def PaymentView(request):
     final_ride_fair = request.session['final_ride_fair']
     ride_total = request.session['ride_total']
     price_km = request.session['price_km']
-    inital_charges = request.session['inital_charges']
+    initial_charges = request.session['initial_charges']
     additional_charges = request.session['additional_charges']
+
     early_pickup_charges = request.session['early_pickup_charges']
     late_drop_charges = request.session['late_drop_charges']
     night_charges = request.session['night_charges']
+    driver_allowances = early_pickup_charges + late_drop_charges + night_charges
+
     gst_charges = request.session['gst_charges']
     advance = int(final_ride_fair * 0.15)
 
@@ -804,7 +793,7 @@ def PaymentView(request):
         exact_pickup =pickup_location,
         exact_drop = drop_location,
 
-        inital_charges = inital_charges,
+        initial_charges = initial_charges,
         additional_charges =additional_charges,
         early_pickup_charges =early_pickup_charges,
         late_drop_charges =late_drop_charges,
@@ -857,6 +846,7 @@ def checkout2(request):
     hash_string += SALT
     hashh = hashlib.sha512(hash_string).hexdigest().lower().encode('utf-8')
     action = PAYU_BASE_URL
+
     if (posted.get("key") != None and posted.get("txnid") != None and posted.get(
             "productinfo") != None and posted.get("firstname") != None and posted.get("email") != None):
         return render_to_response('current_datetime.html', RequestContext(request,
