@@ -1,0 +1,138 @@
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.bank-wire-popup{
+  min-height: 300px;
+  max-width: 820px;
+  margin: 0 auto;
+  border: 1px solid green;
+  padding: 15px 80px;
+}
+
+.wire-menu-item{
+  margin-bottom: 25px;
+  line-height: 1.8em;
+  font-family: "Open-sans", sans-serif;
+  font-size: 22px;
+  text-align: center;
+  display: inline-block;
+  margin-right: -4px;
+  width: 50%;
+  border-bottom: 2px solid #bbbcbd;
+  color: #bbbcbd;
+  text-decoration: none;
+  transition: all 300ms;
+}
+
+.wire-menu-item.current-wire{
+  color: #71c6a4;
+  border-color: #71c6a4;
+}
+
+.wire-menu-item:not(.current-wire):hover{
+  color: #888;
+  border-color: #888;
+}
+.wire-menu-item.current-wire:hover{
+  cursor: default;
+}
+
+
+.bank-wire-table-row:last-child span{
+  border-bottom: none;
+}
+
+.bank-wire-table-row span{
+  display: inline-block;
+  color: #333333;
+  border-bottom: 1px solid #dadde3;
+  margin-right: -4px;
+  line-height: 1.8em;
+  font-size: 15px;
+  padding-top: 10px;
+}
+
+.bank-wire-table-row span:first-child{
+  position: relative;
+  font-weight: bold;
+  padding-left: 4%;
+  margin-right: 1%;
+  width: 46%;
+}
+
+.bank-wire-table-row:first-child span:last-child:after{
+  top: 12px;
+}
+
+.bank-wire-table-row:last-child span:last-child:after{
+  top: -12px;
+}
+
+.bank-wire-table-row span:last-child:after{
+  content: "";
+  position: absolute;
+  left: -2%;
+  top: 0;
+  height: 104%;
+  width: 1px;
+  background-color: #dadde3;
+}
+
+.bank-wire-table-row span:last-child{
+  margin-left: 1%;
+  width: 52%;
+  position: relative;
+  padding-left: 6%;
+}
+
+.bank-wire-description{
+  margin-top: 40px;
+   font-size: 15px;
+  color: #333;
+}
+
+.attention-rect{
+  top: 25px;
+  left: 5%;
+  position: absolute;
+}
+
+
+.bank-wire-send{
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 1px solid #dadde3;
+  margin-bottom: 15px;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  padding: 10px 10px 10px 15%;
+}
+
+.bank-wire-send a{
+  color: #71c6a4;
+  text-decoration: none;
+}
+
+.bank-wire-send a:hover{
+  color: #65b696;
+}
+
+.bank-wire-attention{
+  color: #737373;
+  border: 1px solid #dadde3;
+  position: relative;
+  line-height: 1.4em;
+  padding: 10px 10px 10px 15%;
+}
+
+@media screen and (max-width:900px){
+  .bank-wire-popup{
+    padding: 0 20px;
+  }
+
+  .attention-rect{
+    left: 2%;
+  }
+}
