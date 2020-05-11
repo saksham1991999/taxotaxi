@@ -246,7 +246,7 @@ span.glyphicon-stats{
                 <div class="col-md-12 col-sm-12">
                     <div class="tab-content">
 
-                        <p ><b>{{ pickup }} &ensp;<i class="fas fa-chevron-circle-right"></i> &ensp;{{ drop }} </b>
+                        <p><b>{{ pickup }} &ensp;<i class="fas fa-chevron-circle-right"></i> &ensp;{{ drop }} </b>
                             <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
                         <input type="hidden" name="car_type" id="car_type" value="Sedan" required>
                         <section >
@@ -273,7 +273,7 @@ span.glyphicon-stats{
                                             {% endcomment %}
                                             <li style="height:35px;box-shadow: none;padding: 19px 17px;">{{ type|attr_value:attr.name|price_km:city_price_km }}</li>
                                             {% endfor %}
-                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;">&#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ inital_charges|final_price_type:type }}</span></p>
+                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;">Base Fare - &#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ request.session.inital_charges_list|final_price_type:type }}</span></p>
                                     </li><br>
                                     </ul>
                                     </div>

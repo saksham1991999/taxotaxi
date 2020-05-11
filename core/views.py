@@ -184,6 +184,7 @@ def HomeView(request):
                 request.session['final_prices'] = final_prices
                 request.session['price_km'] = price_km
                 request.session['inital_charges'] = inital_charges
+                request.session['inital_charges_list'] = inital_charges
                 request.session['additional_charges'] = additional_charges
                 request.session['early_pickup_charges'] = early_pickup_charges
                 request.session['late_drop_charges'] = late_drop_charges
@@ -218,6 +219,7 @@ def HomeView(request):
                 request.session['final_prices'] = final_prices
                 request.session['price_km'] = price_km
                 request.session['inital_charges'] = inital_charges
+                request.session['inital_charges_list'] = inital_charges
                 request.session['additional_charges'] = additional_charges
                 request.session['early_pickup_charges'] = early_pickup_charges
                 request.session['late_drop_charges'] = late_drop_charges
