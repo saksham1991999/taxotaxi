@@ -125,6 +125,8 @@ def HomeView(request):
 
             # DateTime
             pickup_datetime = request.POST['pickup_datetime']
+
+
             pickup_date, pickup_time = pickup_datetime.split()
             d, m, y = pickup_date.split('-')
 
@@ -179,15 +181,16 @@ def HomeView(request):
                 request.session['distance_text'] = distance_text
                 request.session['duration_text'] = duration_text
 
-                request.session['final_prices_list'] = final_prices
-                request.session['price_km_list'] = price_km
+                request.session['final_prices'] = final_prices
+                request.session['price_km'] = price_km
+                request.session['initial_charges'] = initial_charges
                 request.session['initial_charges_list'] = initial_charges
-                request.session['initial_charges_list'] = initial_charges
-                request.session['additional_charges_list'] = additional_charges
-                request.session['early_pickup_charges_list'] = early_pickup_charges
-                request.session['late_drop_charges_list'] = late_drop_charges
-                request.session['night_charges_list'] = night_charges
-                request.session['gst_charges_list'] = gst_charges
+                request.session['additional_charges'] = additional_charges
+                request.session['early_pickup_charges'] = early_pickup_charges
+                request.session['late_drop_charges'] = late_drop_charges
+                request.session['night_charges'] = night_charges
+                request.session['gst_charges'] = gst_charges
+
 
             elif ride_type == 'Airport':
                 pickup_city = request.POST['pickup_city']
@@ -213,15 +216,15 @@ def HomeView(request):
                 request.session['distance_text'] = distance_text
                 request.session['duration_text'] = duration_text
 
-                request.session['final_prices_list'] = final_prices
-                request.session['price_km_list'] = price_km
+                request.session['final_prices'] = final_prices
+                request.session['price_km'] = price_km
+                request.session['initial_charges'] = initial_charges
                 request.session['initial_charges_list'] = initial_charges
-                request.session['initial_charges_list'] = initial_charges
-                request.session['additional_charges_list'] = additional_charges
-                request.session['early_pickup_charges_list'] = early_pickup_charges
-                request.session['late_drop_charges_list'] = late_drop_charges
-                request.session['night_charges_list'] = night_charges
-                request.session['gst_charges_list'] = gst_charges
+                request.session['additional_charges'] = additional_charges
+                request.session['early_pickup_charges'] = early_pickup_charges
+                request.session['late_drop_charges'] = late_drop_charges
+                request.session['night_charges'] = night_charges
+                request.session['gst_charges'] = gst_charges
 
             return redirect('core:cars')
 
@@ -257,8 +260,8 @@ def CarSpecificationsView(request):
     distance_text = request.session['distance_text']
     duration_text = request.session['duration_text']
 
-    price_km = request.session['price_km_list']
-    initial_charges = request.session['initial_charges_list']
+    price_km = request.session['price_km']
+    initial_charges = request.session['initial_charges']
 
 
     if request.method == 'POST':
@@ -266,15 +269,18 @@ def CarSpecificationsView(request):
         car_type_id = models.car_types.objects.get(name=car_type).id
 
         ride_checkboxes = []
-        final_prices = request.session['final_prices_list']
+        final_prices = request.session['final_prices']
         ride_total = final_prices[car_type_id - 1]
 
-        initial_charges = request.session['initial_charges_list'][car_type_id - 1]
-        additional_charges = request.session['additional_charges_list'][car_type_id - 1]
-        early_pickup_charges = request.session['early_pickup_charges_list'][car_type_id - 1]
-        late_drop_charges = request.session['late_drop_charges_list'][car_type_id - 1]
-        night_charges = request.session['night_charges_list'][car_type_id - 1]
-        gst_charges = request.session['gst_charges_list'][car_type_id - 1]
+        initial_charges = request.session['initial_charges'][car_type_id - 1]
+        additional_charges = request.session['additional_charges'][car_type_id - 1]
+        early_pickup_charges = request.session['early_pickup_charges'][car_type_id - 1]
+        late_drop_charges = request.session['late_drop_charges'][car_type_id - 1]
+        night_charges = request.session['night_charges'][car_type_id - 1]
+        gst_charges = request.session['gst_charges'][car_type_id - 1]
+
+
+
 
         checkbox_charges = 0
         try:
@@ -693,15 +699,6 @@ def CheckoutView(request):
             coupon_code = customermodels.customer_promotional.objects.get(id=int(coupon_code_id))
             final_ride_fair = ride_total - coupon_code.customerbenefit
             coupon_code = coupon_code.promotional_code
-
-        checkbox_charges = 0
-        if 'ride_checkboxes' in request.session:
-            ride_checkboxes = request.session['ride_checkboxes']
-            for checkbox_id in ride_checkboxes:
-                checkbox_charge = int(models.ride_choices.objects.get(id=checkbox_id).value)
-                print(checkbox_charge)
-                checkbox_charges += checkbox_charge
-
         request.session['final_ride_fair'] = final_ride_fair
         advance = int(ride_total*0.15)
         context = {
@@ -729,7 +726,6 @@ def CheckoutView(request):
             'late_drop_charges':late_drop_charges,
             'night_charges':night_charges,
             'driver_allowances':driver_allowances,
-            'checkbox_charges':checkbox_charges,
             'gst_charges':gst_charges,
         }
         return render(request, 'customer_ride_checkout.html', context)
@@ -812,13 +808,6 @@ def PaymentView(request):
         advance =advance,
         ride_status='Cancelled'
     )
-
-    if 'ride_checkboxes' in request.session:
-        ride_checkboxes = request.session['ride_checkboxes']
-        for checkbox_id in ride_checkboxes:
-            choice = models.ride_choices.objects.get(id=checkbox_id)
-            booking.additional_choices.add(choice)
-            booking.save()
 
     data = {
         'txnid': payu.generate_txnid(), 'amount': str(int(advance)), 'productinfo': str(ride_type),
