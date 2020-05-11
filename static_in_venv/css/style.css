@@ -1734,7 +1734,8 @@ background-color: white;
 .blog-list{
 	width:100%;
 	float:left;
-	padding:130px 0 120px;
+	/*padding:130px 0 120px;*/
+	padding: 35px 0px 0px 50px;
 }
 .blog-item,.blog-outer,
 .blog-post{
@@ -4652,7 +4653,7 @@ font-weight: 500;
 .tj-contact-section .form-holder{
 	float:left;
 	width:100%;
-	margin-top:60px;
+	margin-top:10px;
 }
 .tj-contact-form .inner-holder{
 	float:left;
@@ -4744,7 +4745,8 @@ font-weight: 500;
 	float:left;
 	background:#fafafa;
 	text-align:center;
-	margin:60px 0 0 40px;
+	/*margin:60px 0 0 40px;*/
+	margin: 9px 0 0 40px;
 }
 .address-box .add-info{
 	width:100%;

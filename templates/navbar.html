@@ -29,8 +29,12 @@
         padding-right: 0px;
 	}
 	@media (max-width: 750px){
+		.right-float{
+		padding-left: 5px;    
+	}
         .nav-width{
         	width: 50%!important;
+        	
         }
 		.remove-padding{
 		padding-right: 15px;
@@ -83,7 +87,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							</div>
 							<!--Logo End-->
 						</div>
-						<div class="col-md-2 col-sm-3 col-xs-6 right-float nav-width" >
+						<div class="col-md-3 col-sm-3 col-xs-6 right-float nav-width" >
 							<div class="info_box display"><a href="tel:9650818563">
 								<img class="img-height" src="{% static 'images/icons/call.png' %}">
 			                       </a>
@@ -93,7 +97,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2 col-sm-3 col-xs-6 right-float nav-width" >
+						<div class="col-md-3 col-sm-3 col-xs-6 right-float nav-width" >
 							<div class="info_box display"><a href="https://api.whatsapp.com/send?phone=919650818563">
 								<img class="img-height" src="{% static 'images/icons/whatsapp.png' %}">
 								</a>
@@ -171,7 +175,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 										</li>
 
 										<li>
-											<a href="//www.taxotaxi.com/#nav-destinations">Exciting Offers</a>
+											<a href="//localhost:8000/#nav-destinations">Exciting Offers</a>
 										</li>
 
 										<li>
@@ -228,6 +232,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 
 
                 <script>
+					
 					var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
 
                     var name = '{{ request.user.first_name }} {{ request.user.last_name }}';
@@ -262,56 +267,87 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
                     context.fillStyle = "#FFF";
                     context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.5);
 
-
-
-
+					
+				</script>
+				<script>
 					$(document).ready(function(){
+						console.log("hiiiiiiiiiiiiiiii");
 						console.log(window.location.href);
 						const decider = window.location.href.slice(-1);
 						if( decider === "1"){
+							$("#one-way").removeClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").addClass("active");
 							$("#AIRPORT").addClass("active");
 							$("#ONEWAY").removeClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
 						}else if( decider === "2"){
+							$("#one-way").removeClass("active");
+							$("#round-trip").addClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").removeClass("active");
 							$("#AIRPORT").removeClass("active");
 							$("#ONEWAY").removeClass("active");
 							$("#ROUNDTRIP").addClass("active");
 							$("#MULTIWAY").removeClass("active");
 						}else if(decider === "3"){
+							$("#one-way").removeClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").addClass("active");
+							$("#airport").removeClass("active");
 							$("#AIRPORT").removeClass("active");
 							$("#ONEWAY").removeClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").addClass("active");
 						}else if( decider === "4"){
+							$("#one-way").addClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").removeClass("active");
 							$("#AIRPORT").removeClass("active");
 							$("#ONEWAY").addClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
 						}else if( decider === "5"){
+							$("#one-way").addClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").removeClass("active");
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").addClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").removeClass("active");
+						}else{
+							$("#one-way").addClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").removeClass("active");
 							$("#AIRPORT").removeClass("active");
 							$("#ONEWAY").addClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
 						}
 						$("#nav-airport").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=1`							
+							console.log("ABHINAV");
+							location.href = `http://localhost:8000/?id=1`							
 						});
 						
 						$("#nav-roundtrip").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=2`
+							location.href = `http://localhost:8000/?id=2`
 							
 						});
 						$("#nav-multiway").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=3`
+							location.href = `http://localhost:8000/?id=3`
 							
 						});
 						$("#nav-home").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=4`
+							location.href = `http://localhost:8000/?id=4`
 							
 						});
 						$("#nav-oneway").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=5`
+							location.href = `http://localhost:8000/?id=5`
 							
 						});
 					});
