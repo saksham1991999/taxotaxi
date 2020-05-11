@@ -31,6 +31,7 @@ Table of Content For Page Sections CSS
 22. User Account/Cancel Booking
 23. Contact Us
 24. Widgets
+25. css which will be same on all pages if used
 	
 (Typography And Color Codes)
 
@@ -5284,3 +5285,10 @@ background-color: ##4CAF50 !important;
 {.set-image{
     height: auto;
 }
+@media (max-width: 2500px){
+	.set-image{
+    height: 395px;
+}
+
+
+/*-----css which will be same on all pages if used*/
