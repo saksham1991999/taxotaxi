@@ -7,6 +7,7 @@
     </head>
     <body onload="document.payuForm.submit()" >
         <form action='https://sandboxsecure.payu.in/_payment' method="post" name="payuForm">
+            <!--https://secure.payu.in/_payment-->
             <input type="hidden" name="key" value="{{posted.key}}" />
             <input type="hidden" name="hash_string" value="{{ posted.hash_string }}" />
             <input type="hidden" name="hash" value="{{ posted.hashh }}"/>

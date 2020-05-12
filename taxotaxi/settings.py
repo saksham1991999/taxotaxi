@@ -161,20 +161,20 @@ EMAIL_HOST_PASSWORD = 's2ksh2m19'
 
 AUTH_USER_MODEL = 'core.User'
 
-PAYU_CONFIG = {
-        "merchant_key": "8n6elxOQ",
-        "merchant_salt": "B5Uh58bhu5",
-        "mode": "LIVE",
-        "success_url": "http://127.0.0.1:8000/payu/success",
-        "failure_url": "http://127.0.0.1:8000/payu/failure"
-    }
-
-
-
 # PAYU_CONFIG = {
-#         "merchant_key": "wr25YBco",
-#         "merchant_salt": "yJaoj8wo39",
+#         "merchant_key": "8n6elxOQ",
+#         "merchant_salt": "B5Uh58bhu5",
 #         "mode": "LIVE",
 #         "success_url": "http://127.0.0.1:8000/payu/success",
 #         "failure_url": "http://127.0.0.1:8000/payu/failure"
 #     }
+
+
+
+PAYU_CONFIG = {
+        "merchant_key": "wr25YBco",
+        "merchant_salt": "yJaoj8wo39",
+        "mode": "LIVE",
+        "success_url": "http://127.0.0.1:8000/payu/success",
+        "failure_url": "http://127.0.0.1:8000/payu/failure"
+    }
