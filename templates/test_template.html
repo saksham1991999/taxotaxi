@@ -2,48 +2,63 @@
 {% load static %}
 
 {% block extra_stylesheet %}
-<style type="text/css">
-  
-
-
-
-input[type=checkbox]:checked~ .content {
-  display: inline-block;
-float: right;
-margin-right: 20px;
-  
-}
-
-.content { 
-/*   opacity: 0;
-  height: 0; */
-  display: none;
-}
-</style>
-
 {% endblock extra_stylesheet %}
-<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
+
 
 
 
 {% block content %}
-<div class="tab-content">
-<div class="field-holder">
-     
-<input type="checkbox" id="toggle">
-<div class="content">
-  <input type="text" step="none">
-</div>
-</div>
+    <!--Booking Form Section Start-->
+			<section class="tj-payment" id="success-payment">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-sm-8">
+							<div class="success-msg">
+								<span class="fas fa-check"></span>
+								<h3>Payment Successfull!</h3>
+								<p>Your payment of Rs {{ amount }} to Taxotechnosoft ID:{{ txnid }} has been  proceeded Successfully!.We’ll send you a confirmation Email and SMS shortly.</p>
+								<a href="{% url 'core:dashboard' %}">
+                                    {% comment %}
+                                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                                    {% endcomment %}
+                                    DashBoard
+                                </a>
+							</div>
+						</div>
 
-</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="booking-summary">
+								<h3>Booking Summary</h3>
+								<ul class="booking-info">
+									<li><span>Booking Reference: </span>PRIM00023</li>
+									<li><span>Journey Type: </span>One Way</li>
+									<li><span>Distance & Time: </span>2,522 km &         23 hours 7 mins</li>
+									<li><span>One Way Fare: </span>$450</li>
+								</ul>
+								<div class="journey-info">
+									<h4>One Way Journey</h4>
+									<i class="far fa-edit"></i>
+								</div>
+								<ul class="service-info">
+									<li><span>From: </span>San Francisco, USA</li>
+									<li><span>To: </span>New York, USA</li>
+									<li><span>Pickup Date: </span>20-05-2017</li>
+									<li><span>Pickup Time: </span>02.30PM</li>
+									<li><span>Fare Details: </span>Basic Amount: $450.00</li>
+								</ul>
+								<div class="fare-box">
+									<strong>Total Fare: <span>$450.00</span></strong>
+									<span>( inclusive of All Taxes )</span>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<!--Booking Form Section End-->
 {% endblock content %}
 
 
-
-
 {% block extra_scripts %}
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-
-
 {% endblock extra_scripts %}

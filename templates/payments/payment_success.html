@@ -1,3 +1,4 @@
+{% extends 'base.html' %}
 {% load static %}
 
 {% block extra_stylesheet %}
@@ -15,8 +16,13 @@
 							<div class="success-msg">
 								<span class="fas fa-check"></span>
 								<h3>Payment Successfull!</h3>
-								<p>Your payment of Rs {{ amount }} to TravelChannels ID:{{ txnid }} has been  proceeded Successfully!.We’ll send you a confirmation Email and SMS shortly.</p>
-								<a href="{% url 'customer:dashboard' %}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>DashBoard</a>
+								<p>Your payment of Rs {{ amount }} to Taxotechnosoft ID: &ensp;{{ txnid }} has been  proceeded Successfully!. We’ll send you a confirmation Email and SMS shortly.</p>
+								<a href="{% url 'core:dashboard' %}">
+                                    {% comment %}
+                                    <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                                    {% endcomment %}
+                                    DashBoard
+                                </a>
 							</div>
 						</div>
 
@@ -24,24 +30,26 @@
 							<div class="booking-summary">
 								<h3>Booking Summary</h3>
 								<ul class="booking-info">
-									<li><span>Booking Reference: </span>PRIM00023</li>
-									<li><span>Journey Type: </span>One Way</li>
-									<li><span>Distance & Time: </span>2,522 km &         23 hours 7 mins</li>
-									<li><span>One Way Fare: </span>$450</li>
+									<li><span>Booking Reference: </span>{{ booking.id }}</li>
+									<li><span>Journey Type: </span>{{ booking.ride_type }}</li>
+									<li><span>Distance & Time: </span>{{ booking.distance }} km &  {{ duration }}</li>
+
 								</ul>
+                                {% comment %}
 								<div class="journey-info">
 									<h4>One Way Journey</h4>
 									<i class="far fa-edit"></i>
 								</div>
+								{% endcomment %}
 								<ul class="service-info">
-									<li><span>From: </span>San Francisco, USA</li>
-									<li><span>To: </span>New York, USA</li>
-									<li><span>Pickup Date: </span>20-05-2017</li>
-									<li><span>Pickup Time: </span>02.30PM</li>
-									<li><span>Fare Details: </span>Basic Amount: $450.00</li>
+									<li><span>From: </span>{{ booking.pickup }}</li>
+									<li><span>To: </span>{{ booking.drop }}</li>
+									<li><span>Pickup Date: </span>{{ booking.pickup_datetime|date }}</li>
+									<li><span>Pickup Time: </span>{{ booking.pickup_datetime|time }}</li>
+									<li><span>Fare Details: </span>Basic Amount: {{ booking.final_fare }}</li>
 								</ul>
 								<div class="fare-box">
-									<strong>Total Fare: <span>$450.00</span></strong>
+									<strong>Total Fare: {{ booking.final_ride_fare }} <span></span></strong>
 									<span>( inclusive of All Taxes )</span>
 								</div>
 							</div>

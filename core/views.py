@@ -883,7 +883,7 @@ def payu_success(request):
     booking_id = data['udf1']
     booking_qs = models.ride_booking.objects.get(id=booking_id)
     booking_qs.advance_payment_received = True
-    booking_qs.ride_status_choices = 'Booked'
+    booking_qs.ride_status = 'Booked'
     booking_qs.save()
     amount = data['amount']
     txn_id = data['txnid']
@@ -893,13 +893,14 @@ def payu_success(request):
     message = 'Your Ride is Successfully Booked (Booking ID: T2T-' + booking_id + ') You will receive the car and driver details shortly.'
     SMS(booking_qs.phone_no, message)
     context = response['data']
-    return render(request, 'payments/payu_success.html', context)
+    context['booking'] = booking_qs
+    return render(request, 'payments/payment_success.html', context)
 
 # Payu failure page
 @csrf_exempt
 def payu_failure(request):
     data = dict(zip(request.POST.keys(), request.POST.values()))
-    response = payu.check_hash(data)
+    # response = payu.check_hash(data)
     context = response['data']
     return render(request, 'payments/payu_success.html', context)
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from . import models
 # Register your models here.
-admin.site.site_header = 'Travel Channels'
+admin.site.site_header = 'TaxoTaxi'
 from import_export.admin import ImportExportModelAdmin
 
 class car_attr_comparison_admin(ImportExportModelAdmin):
