@@ -9,20 +9,21 @@
 
 <div class="bank-wire-popup">
   <div class="bank-wire-head-menu">
-    <h1 style = "text-align:center;color:limegreen;">Payment Status</h1>
+    <h1 style = "text-align:center;color:#233545;;">Payment Status</h1>
   </div>
   <div class="bank-wire-table">
     <div class="bank-wire-table-row"><span>Status</span><span>{{ status }}</span></div>
     <div class="bank-wire-table-row"><span>Amount</span><span>{{ amount }}</span></div>
     <div class="bank-wire-table-row"><span>Transaction ID</span><span>{{ txnid }}</span></div>
-    <div class="bank-wire-table-row"><span>Payment Mode</span><span style="word-wrap:break-word">{{ mode }}</span></div>
+    <div class="bank-wire-table-row"><span>Payment Mode</span><span style="word-wrap:break-word">  &nbsp;{{ mode }}</span></div>
     <div class="bank-wire-table-row"><span>Date Time</span><span>{{ createdon }}</span></div>
   </div>
   <div class="bank-wire-description">
     <div class="bank-wire-send" style = "text-align:center;">TaxoTaxi Pvt. Ltd.</div>
-      <div class = "col-lg-2 mx-md-auto" style = "margin-left: auto; margin-right: auto;">
-        <a href="{% url 'core:dashboard'%}"><button type="button" class="btn btn-outline-success" >Dashboard</button></a>
+      <div class = "col-lg-2 mx-md-auto btn-col">
+        <a href="{% url 'core:dashboard'%}"><button type="button" class="btn2 btn btn-outline-success" >Dashboard</button></a>
       </div>
   </div>
 </div>
+
 {% endblock content %}

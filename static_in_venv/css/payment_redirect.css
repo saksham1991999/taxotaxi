@@ -1,13 +1,15 @@
 *{
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;;
 }
 
 .bank-wire-popup{
+  /* margin-top: 176px;
+    margin-bottom: 30px;*/
   min-height: 300px;
   max-width: 820px;
-  margin: 0 auto;
-  border: 1px solid green;
+  margin:173px auto 30px auto;
+  border: 1px solid #233545;
   padding: 15px 80px;
 }
 
@@ -107,7 +109,7 @@
   margin-bottom: 15px;
   font-size: 14px;
   letter-spacing: -0.2px;
-  padding: 10px 10px 10px 15%;
+  padding: 10px;
 }
 
 .bank-wire-send a{
@@ -127,9 +129,26 @@
   padding: 10px 10px 10px 15%;
 }
 
+.btn-col{
+  left: 266px;
+}
+.btn2{
+    background-color:  #233545;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+.btn2:hover{
+  color: white;
+}
 @media screen and (max-width:900px){
   .bank-wire-popup{
     padding: 0 20px;
+    display: grid;
+  }
+  
+  .btn-col{
+    left: 105px;
+    top: 17px;
   }
 
   .attention-rect{
