@@ -4690,7 +4690,7 @@ font-weight: 500;
 	padding:0 35px;
 }
 .tj-contact-form .inner-holder input[type="text"],
-.tj-contact-form .inner-holder input[type="email"]{
+.tj-contact-form .inner-holder input[type="email"],.tj-contact-form .inner-holder select{
 	width:100%;
 	height:45px;
 	border:1px solid #e8e8e8;
