@@ -1,29 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load fullurl %}
+
 {% block extra_stylesheet %}
+<style type="text/css">
+  
+
+
+
+input[type=checkbox]:checked~ .content {
+  display: inline-block;
+float: right;
+margin-right: 20px;
+  
+}
+
+.content { 
+/*   opacity: 0;
+  height: 0; */
+  display: none;
+}
+</style>
+
 {% endblock extra_stylesheet %}
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
 
 
 
 {% block content %}
-
-<div class="container">
-  <div class="row">
-    <div style="width: 100%;height: 350px;text-align: center;">
-      
-      <h2 style="color: #eac022;font-weight: bold;margin-top: 20%;"><img style="width: inherit;" src="{% static 'images/logo.png' %}" alt=""> Is Comming Soon......</h2>
-      <h4>Please check back with us in the near future for updates. {% fullurl 'core:payu_success' %}</h4>
-    </div>
-  </div>
+<div class="tab-content">
+<div class="field-holder">
+     
+<input type="checkbox" id="toggle">
+<div class="content">
+  <input type="text" step="none">
+</div>
 </div>
 
+</div>
 {% endblock content %}
 
 
 
 
 {% block extra_scripts %}
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 
 
 {% endblock extra_scripts %}
