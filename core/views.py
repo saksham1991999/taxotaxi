@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt,csrf_protect
 from django.utils import timezone
 from django.template import Context, Template,RequestContext
 from . import models, forms
@@ -875,6 +875,7 @@ def checkout2(request):
                                                                            "action": "."}))
 
 # Payu success return page
+@csrf_protect
 @csrf_exempt
 def payu_success(request):
     data = dict(zip(request.POST.keys(), request.POST.values()))
@@ -897,10 +898,11 @@ def payu_success(request):
     return render(request, 'payments/payment_success.html', context)
 
 # Payu failure page
+@csrf_protect
 @csrf_exempt
 def payu_failure(request):
     data = dict(zip(request.POST.keys(), request.POST.values()))
-    # response = payu.check_hash(data)
+    response = payu.check_hash(data)
     context = response['data']
     return render(request, 'payments/payu_success.html', context)
 
