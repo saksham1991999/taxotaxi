@@ -69,7 +69,10 @@ def DashboardView(request):
         cancelled_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Cancelled')
         completed_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Completed')
 
-        referral_code = models.customer_promotional.objects.filter(customer__user=request.user, is_activated=True)[0]
+        try:
+            referral_code = models.customer_promotional.objects.filter(customer__user=request.user, is_activated=True)[0]
+        except:
+            referral_code = None
 
         user = coremodels.User.objects.get(username = request.user.username)
         userform = coreforms.UserProfileForm(instance = user)

@@ -357,7 +357,7 @@ def LoginView(request):
                     request.session['password'] = password
                     request.session['otp'] = otp
                     text = 'T2T Hi ' + str(user.first_name) + ', Please use OTP ' + str(
-                        otp) + ' to complete the registration process on travelchannels.in'
+                        otp) + ' to complete the registration process on taxotaxi.com'
                     SMS(mobile, text)
                     print('-----------------------OTP--------------------------')
                     print(otp)
@@ -370,7 +370,10 @@ def LoginView(request):
                 email = request.POST['email_id']
                 full_name = request.POST['full_name']
                 user = models.User.objects.create_user(username=mobile, email=email, password=password)
-                user.first_name = full_name
+                lname = ''
+                fname, lname = full_name.split()
+                user.first_name = fname
+                user.last_name = lname
                 user.mobile = mobile
                 user.save()
 
@@ -379,12 +382,15 @@ def LoginView(request):
                 request.session['password'] = password
                 request.session['otp'] = otp
                 text = 'T2T Hi ' + str(full_name) + ', Please use OTP ' + str(
-                    otp) + ' to complete the registration process on travelchannels.in'
+                    otp) + ' to complete the registration process on taxotaxi.com'
                 SMS(mobile, text)
                 print('-----------------------OTP--------------------------')
                 print(otp)
 
-                referal_code = customermodels.customer_promotional.objects.create(customer = user, promotional_code=mobile, referralbenefit=50, customerbenefit=50, is_activated=True)
+                customerprofile = customermodels.customerprofile.objects.create(user = user)
+                referal_code = customermodels.customer_promotional.objects.create(customer = customerprofile, promotional_code=str(mobile), referralbenefit=50, customerbenefit=50, is_activated=True)
+
+
                 return redirect('core:register_otp_verification')
             except:
                 messages.error(request, 'Mobile Already Registered')
@@ -557,7 +563,10 @@ def CustomerAuthenticationView(request):
                     email = request.POST['email_id']
                     full_name = request.POST['full_name']
                     user = models.User.objects.create_user(username=mobile, email=email, password=password)
-                    user.first_name = full_name
+                    lname = ''
+                    fname, lname = full_name.split()
+                    user.first_name = fname
+                    user.last_name = lname
                     user.mobile = mobile
                     user.save()
                     otp = random.randint(1000,9999)
@@ -568,8 +577,9 @@ def CustomerAuthenticationView(request):
                     SMS(mobile, text)
                     print('-----------------------OTP--------------------------')
                     print(otp)
-                    referal_code = customermodels.customer_promotional.objects.create(customer=user,
-                                                                                      promotional_code=mobile,
+                    customerprofile = customermodels.customerprofile.objects.create(user=user)
+                    referal_code = customermodels.customer_promotional.objects.create(customer=customerprofile,
+                                                                                      promotional_code=str(mobile),
                                                                                       referralbenefit=50,
                                                                                       customerbenefit=50,
                                                                                       is_activated=True)
