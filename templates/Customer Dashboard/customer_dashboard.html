@@ -349,294 +349,213 @@
 {% block content %}
 
 <div class="container" style="margin-top: 170px;">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+             <!-- s/////////////////Side dashboard///////////////////////// -->
+            <div class="col-md-3 adjustDashboard" style="margin-top: 80px">
+                <div class=" container1">
+                    <ul class="row row1" style="list-style-type: none;">
+                      <li class="active row1">
+                        <a href="#customerProfile" data-toggle="tab">
+                          <i class="far fa-user"></i>&nbsp;&nbsp;Profile</a>
+                      </li>
+                      <li class="row row1">
+                        <a href="{% url 'core:home' %}">
+                          <i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a>
+                      </li>
+                      <li  class="row row1" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample">
+                        <a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
+                         <div class="collapse" id="collapseExample">
+                             <div class="row row1">
+                                <a href="#upcomingRides" data-toggle="tab">
+                                  <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming Rides</a>
+                             </div>
+                             <div class="row row1">
+                                <a href="#rideHistory" data-toggle="tab">
+                                  <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a>
+                             </div>
+                             <div class="row row1">
+                                <a href="#canceledRides" data-toggle="tab">
+                                  <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled Rides</a>
+                             </div>
+                         </div>
 
-  <div class="row">
-    <div></div>
-    <div class="col-md-12 col-sm-12">
-      <!-- s/////////////////Side dashboard////////////////////////////// -->
-      <div class="col-md-3 adjustDashboard" style="margin-top: 80px">
-        <!-- <div class="container1">
-          <div class="row row1 active">
-            <a href="#customerProfile" data-toggle="tab"><i class="far fa-user"></i>&nbsp;&nbsp;Profile</a>
-          </div>
-          <div class="row row1">
-            <a href="{% url 'core:home' %}"><i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a>
-          </div>
-          <div class="row row1" style="font-size: medium;" data-toggle="collapse" data-target="#collapseBooking"
-            aria-expanded="false" aria-controls="collapseBooking">
-            <a> <i class="fas fa-laptop-code"></i>&nbsp;&nbsp;My Booking&nbsp;&nbsp;<i class="fas fa-sort-down"></i></a>
-
-            <div class="collapse" id="collapseBooking" style="padding-left: 34px;">
-              <div class="row inline-collapse">
-                <a href="#upcomingRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming
-                  Rides</a>
-              </div>
-              <div class="row inline-collapse">
-                <a href="#rideHistory" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride
-                  History</a>
-              </div>
-              <div class="row inline-collapse">
-                <a href="#canceledRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled
-                  Rides</a>
-              </div>
+                      </li>
+                      <li class="row row1">
+                        <a href="#yourPlaces" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a>
+                      </li>
+                      <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
+                        <a><i class="fas fa-rupee-sign"></i>&nbsp;My Wallet</a>
+                           <div class="collapse" id="collapseExample1">
+                              <div class="card card-body">
+                                   Your Wallet Balance Is : Rs {{ request.user.wallet_balance }}
+                              </div>
+                           </div>
+                       </li>
+                    </ul>
+                </div>
             </div>
-          </div> -->
-          <!-- <div class="row row1"><a href="#yourPlaces" data-toggle="tab"><i
-                class="far fa-share-square"></i>&nbsp;&nbsp;Your Places</a></div> -->
-        <!--   <div class="row row1"><a href="#yourPlaces" data-toggle="tab"><i
-                class="fas fa-user-plus"></i>&nbsp;&nbsp;Reffer a Friend</a></div>
-          <div class="row row1" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false"
-            aria-controls="collapseExample1"><i class="fas fa-rupee-sign"></i>&nbsp;&nbsp;My Wallet&nbsp;&nbsp;<i
-              class="fas fa-sort-down"></i></div>
-          <div class="collapse" id="collapseExample1">
-            <div class="card card-body">
-              Anim pariatur cliche reprehenderit, e ea proident.
-            </div>
-          </div> -->
+     <!-- ///////////////////End Of Side dashBoard///////////// -->
+        <div class="col-md-9 container2">
+           <div class="tab-content">
 
-    <div class=" container1">
-      <ul class="row row1" style="list-style-type: none;">
-        <li class="active row1"><a href="#customerProfile" data-toggle="tab"><i class="far fa-user"></i>&nbsp;&nbsp;Profile</a></li>
-        <li class="row row1"><a href="{% url 'core:home' %}"><i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a></li>
-        <li  class="row row1" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample"><a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
-            <div class="collapse" id="collapseExample">
-          <div class="row row1"><a href="#upcomingRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming
-                  Rides</a></div>
-          <div class="row row1"><a href="#rideHistory" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a></div>
-          <div class="row row1"><a href="#canceledRides" data-toggle="tab"><i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled
-                  Rides</a></div>
-        </div>
+                <div class="tab-pane active " id="customerProfile" role="tabpanel">
+                    <div class="col-md-12 col-sm-12">
+                        <h4 class="text-center tab-heading">Customer Profile</h4>
+                    </div>
+                  <div class="col-sm-12 col-md-12">
+                    <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
+                       <li class="col-sm-4 text-center row2 active">
+                          <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
+                       </li>
+                       <li class="col-sm-4 text-center row2">
+                          <a href="#changePassword" style="font-weight: bold;" data-toggle="tab">&nbsp;Change Password</a>
+                       </li>
+                       <li class="col-sm-4 text-center row2">
+                          <a href="#referral" style="font-weight: bold;" data-toggle="tab">&nbsp;Referral</a>
+                       </li>
+                    </ul>
+               <!-- //////////togable Content pannel start///////////////// -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="editProfile">
+                            <form class="booking-frm" method="POST" id="edit-profileform" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="type" value="profile">
 
-        </li>
-        <li class="row row1"><a href="#yourPlaces" data-toggle="tab"><i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a></li>
-        <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1"><a><i class="fas fa-rupee-sign"></i>&nbsp;My Wallet</a>
-            <div class="collapse" id="collapseExample1">
-        <div class="card card-body">
-          Your Wallet Balance Is : Rs {{ request.user.wallet_balance }}
-        </div>
-      </div>
-        </li>
-      </ul>
-    </div>
-        <!-- </div> -->
-      </div>
-      <!-- ///////////////////End Of Side dashBoard///////////// -->
-      <div class="col-md-9 container2">
-        <div class="tab-content">
+                                <div class="col-sm-7" style="margin-top: 24px;">
+                                   <div class=" row input1">
+                                       <label class="col-sm-4 col-form-label label-right-allign">First Name</label>
+                                          <div class="col-sm-8">
+                                          {% render_field userform.first_name class="form-control" type="text" %}
+                                          </div>
+                                    </div>
+                                   <div class=" row input1">
+                                       <label class="col-sm-4 col-form-label label-right-allign">Last Name</label>
+                                       <div class="col-sm-8">
+                                         {% render_field userform.last_name class="form-control" type="text" %}
+                                       </div>
+                                   </div>
+                                   <div class="row input1">
+                                      <label class="col-sm-4 col-form-label label-right-allign">Email</label>
+                                      <div class="col-sm-8">
+                                          {% render_field userform.email class="form-control" type="email" %}
+                                      </div>
+                                   </div>
+                                   <div class="row input1">
+                                       <label class="col-sm-4 col-form-label label-right-allign">Phone</label>
+                                       <div class="col-sm-8">
+                                          {% render_field userform.mobile class="form-control" type="email" readonly='' %}
+                                       </div>
+                                   </div>
+                                   <div class="row input1">
+                                      <label class="col-sm-4 col-form-label label-right-allign">Address</label>
+                                      <div class="col-sm-8">
+                                         {% render_field profileform.address class="form-control" type="text" %}
+                                      </div>
+                                   </div>
+                                   <div class="row input1">
+                                      <label class="col-sm-4 col-form-label label-right-allign">Password</label>
+                                      <div class="col-sm-8">
+                                          <input type="password" class="form-control" id="inputPassword" name="password">
+                                      </div>
+                                   </div>
+                                   <div class=" row input1">
+                                     <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
+                                     <div class="col-sm-8 drag-drop1">
+                                        <div class="form-control">
+                                          {% render_field profileform.document type="file" class="input-file" %}
+                                          <p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Drop file here</p>
+                                        </div>
+                                     </div>
+                                   </div>
+                                </div>
 
-          <div class="tab-pane active " id="customerProfile" role="tabpanel">
-            <div class="col-md-12 col-sm-12">
-              <h4 class="text-center tab-heading">Customer Profile</h4>
-            </div>
-            <div class="col-sm-12 col-md-12">
-              <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
-                <li class="col-sm-4 text-center row2 active">
-                  <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
-                </li>
-                <li class="col-sm-4 text-center row2">
-                  <a href="#changePassword" style="font-weight: bold;" data-toggle="tab">&nbsp;Change Password</a>
-                </li>
-                <li class="col-sm-4 text-center row2">
-                  <a href="#referral" style="font-weight: bold;" data-toggle="tab">&nbsp;Referral</a>
-                </li>
-              </ul>
-              <!-- //////////togable Content pannel start///////////////// -->
-              <div class="tab-content">
-                <div class="tab-pane active" id="editProfile">
-                  <form class="booking-frm" method="POST" id="edit-profileform" enctype="multipart/form-data">
-                      {% csrf_token %}
+                                <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                                   <div class="drag-drop">
+                                      {% render_field userform.profile_pic class="input-file" %}
+                                      <p class="p23">
+                                       <i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x">
+                                       </i><br> Drag&Drop files here <br> or<br>
+                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
+                                      </p>
+                                      <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                      </div>
+                                   </div>
+                                </div>
 
-                      <input type="hidden" name="type" value="profile">
+                                <div class="col-md-12 adjustYellowButtons col-sm-12" style=" text-align: -webkit-center; margin-top : 40px">
+                                    <div style="display: flex;width:fit-content;">
+                                      <button class="book-btn" type="submit">Update</button>&nbsp;&nbsp;
+                                      <button class="book-btn" type="Cancel">Cancel</button><br>
+                                    </div><br>
+                                </div>
+                            </form>
+                        </div>
 
-                    <div class="col-sm-7" style="margin-top: 24px;">
-                        <div class=" row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">First Name</label>
-                        <div class="col-sm-8">
-                            {% render_field userform.first_name class="form-control" type="text" %}
+                        <div class="tab-pane" id="changePassword" role="tabpanel">
+                            <form class="booking-frm" method="POST" id="change-passwordform">
+                                 {% csrf_token %}
+
+                                 <input type="hidden" name="type" value="change_password">
+
+                                <div class="col-sm-7" style="margin-top: 10px;">
+                                   <div class="form-group row input1">
+                                      <label class="col-sm-6 col-form-label label-right-allign">Enter Current Password</label>
+                                      <div class="col-sm-6">
+                                         <input type="password" class="form-control" name="current_password">
+                                      </div>
+                                   </div>
+                                   <div class="form-group row input1">
+                                      <label class="col-sm-6 col-form-label label-right-allign">Enter New Password</label>
+                                      <div class="col-sm-6">
+                                         <input type="password" class="form-control" id="new-pass" keydown="remove1(this.Element)">
+                                         <span class="form-text" id="password_strength"></span>
+                                      </div>
+                                    </div>
+                                    <div class="form-group row input1">
+                                       <label class="col-sm-6 col-form-label label-right-allign">Confirm New Password</label>
+                                       <div class="col-sm-6">
+                                          <input type="text" class="form-control" name="new_password" id="new-pass-cnf" onkeydown="remove2(this.Element)">
+                                          <small class="form-text" id="password" style="font-weight:600;padding-left: 30px;">
+                                          </small>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 adjustYellowButtonsSecond col-sm-12">
+                                        <button type="submit" class="book-btn">Update</button>
+
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </div>
-                      <div class=" row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Last Name</label>
-                        <div class="col-sm-8">
-                          {% render_field userform.last_name class="form-control" type="text" %}
-                        </div>
-                      </div>
-                      <div class="row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Email</label>
-                        <div class="col-sm-8">
-                          {% render_field userform.email class="form-control" type="email" %}
-                        </div>
-                      </div>
-                      <div class="row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Phone</label>
-                        <div class="col-sm-8">
-                          {% render_field userform.mobile class="form-control" type="email" readonly='' %}
-                        </div>
-                      </div>
-                      <div class="row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Address</label>
-                        <div class="col-sm-8">
-                          {% render_field profileform.address class="form-control" type="text" %}
-                        </div>
-                      </div>
-                      <div class="row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Password</label>
-                        <div class="col-sm-8">
-                          <input type="password" class="form-control" id="inputPassword" name="password">
-                        </div>
-                      </div>
-                      <div class=" row input1">
-                        <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
-                        <div class="col-sm-8 drag-drop1">
-                          <div class="form-control">
-                          {% render_field profileform.document type="file" class="input-file" %}
-                            <p style="margin-top: -19px; font-style: italic; color: #e6e3e3;"><i
-                                class="far fa-file"></i> Drop file here</p>
+
+                        <div class="tab-pane" id="referral" role="tabpanel">
+                          <div class="col-md-12 col-sm-12">
+                            <div class="adjustYellowButtonsSecond row input1">
+                              <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
+                              <div class="col-sm-5">
+                                <input type="text" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                              </div>
+                            </div>
+
                           </div>
                         </div>
-                      </div>
                     </div>
-
-                    <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                      <div class="drag-drop">
-                        {% render_field userform.profile_pic class="input-file" %}
-                        <p class="p23"><i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x"></i><br>
-                          Drag&Drop files here <br> or<br>
-                          <button type="button" class="btn btn-outline-primary">Browse Files</button> </p>
-                        <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 adjustYellowButtons col-sm-12" style=" text-align: -webkit-center; margin-top : 40px">
-
-                      <div style="display: flex;width: fit-content;">
-                        <button class="book-btn" type="submit">Update</button>&nbsp;&nbsp;<button class="book-btn"
-                          type="Cancel">Cancel</button><br>
-                      </div><br>
-                    </div>
-                  </form>
-                </div>
-
-                <div class="tab-pane" id="changePassword" role="tabpanel">
-                  <form class="booking-frm" method="POST" id="change-passwordform">
-                      {% csrf_token %}
-
-                      <input type="hidden" name="type" value="change_password">
-
-                    <div class="col-sm-7" style="margin-top: 10px;">
-                      <div class="form-group row input1">
-                        <label class="col-sm-6 col-form-label label-right-allign">Enter Current Password</label>
-                        <div class="col-sm-6">
-                          <input type="password" class="form-control" name="current_password">
-                        </div>
-                      </div>
-                      <div class="form-group row input1">
-                        <label class="col-sm-6 col-form-label label-right-allign">Enter New Password</label>
-                        <div class="col-sm-6">
-                          <input type="password" class="form-control">
-                        </div>
-                      </div>
-                      <div class="form-group row input1">
-                        <label class="col-sm-6 col-form-label label-right-allign">Confirm New Password</label>
-                        <div class="col-sm-6">
-                          <input type="text" class="form-control" name="new_password">
-                        </div>
-                      </div>
-                      <div class="col-md-12 adjustYellowButtonsSecond col-sm-12">
-                        <button type="submit" class="book-btn">Update</button>
-
-                      </div>
-                    </div>
-                  </form>
-
-                </div>
-
-                <div class="tab-pane" id="referral" role="tabpanel">
-                  <div class="col-md-12 col-sm-12">
-                    <div class="adjustYellowButtonsSecond row input1">
-                      <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
-                      <div class="col-sm-5">
-                        <input type="text" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
-                      </div>
-                    </div>
-
                   </div>
-                </div>
+               </div>
+
+          <!-- /////////////end of customer profile///////////////// -->
 
 
-              </div>
-            </div>
-          </div>
-
-          <!-- /////////////////end of customer profile//////////////////// -->
-
-
-          <!-- /////////////////start of Create Request////////////////// -->
-          <div class="tab-pane" id="createRequest" role="tabpanel">
-            <h4 class="text-center tab-heading">Create Request</h4>
-            <div class="col-sm-8 col-md-8">
-              <div id="map"></div>
-              <div id="right-panel">
-                <div>
-                  <input id="start" hidden value="Miami, FL">
-                  <br>
-                  <input id="end" value="Los Angeles, CA" hidden>
-                  <br>
-                  <input type="submit" id="submit">
-                </div>
-
-                <!-- Replace the value of the key parameter with your own API key. -->
-                <script async defer
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.4794970397215!2d77.08694511464053!3d28.495217982472216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19386394df05%3A0x2f2805b9b4942a41!2sDLF%20CyberHub!5e0!3m2!1sen!2sin!4v1585036224348!5m2!1sen!2sin">
-                </script>
-
-              </div>
-            </div>
-            <div class="col-sm-4 col-md-4">
-              <div class="row">
-                <div class="col-md-12 col-sm-12">
-                  <h4 style="background-color: #eee;
-    text-align: center;
-    padding: 11px;">SUMMARY</h4>
-                  <P><span>Booking Reference: TOOO233</span><br>
-                    <span>Journey Type: Two Way</span><br>
-                    <span>Distance & Time: 3:30hr</span><br>
-                    <span>Two Way Fare: 4299</span> </P>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                  <h4 style="background-color: #eee;
-    text-align: center;
-    padding: 11px;">ONE WAY FARE</h4>
-                  <P><span>From : Delhi</span>&nbsp;<span>To : Agra</span><br>
-                    <span>Pickup Date: Two Way</span><br>
-                    <span>Pickup Time: 3:30hr</span><br>
-                    <span>Fair Details: 4299</span><br>
-                    <span>Total Amount: 5000</span> </P>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- ////////////////////end of create request //////////////////// -->
-
-
-          <!--////////////////////////start of new Booking/////////////////////// -->
+          <!--/////////////start of new Booking//////////// -->
 
           <div class="tab-pane" id="upcomingRides" role="tabpanel">
             <div class="row">
               <h4 class="text-center tab-heading">Upcoming Booking</h4><br>
             </div>
             <div class="col-sm-12 col-md-12 container2">
-              <!--  <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
-              <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
-              </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                  class="glyphicon glyphicon-th"></span>Grid</a>
-          </div> -->
-              <!-- <div class="row"> -->
               <div id="products" class="row list-group ">
 
                   {% for ride in upcoming_rides %}
@@ -707,10 +626,10 @@
           </div>
 
 
-          <!--///////////////////////////////////////////end of new Booking///////////////////////////////////////////////////////  -->
+          <!--///////////end of new Booking///////////////////  -->
 
 
-          <!-- ////////////////////////////////////////start of history//////////////////////////////// -->
+          <!-- //////////start of history//////////// -->
           <div class="tab-pane" id="rideHistory" role="tabpanel">
             <div class="row">
               <h4 class="text-center tab-heading">My Booking History</h4>
@@ -1139,5 +1058,116 @@
       $('.p23').text(this.files.length + " file(s) selected");
     });
   });
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#new-pass").bind("keyup", function () {
+            //TextBox left blank.
+            if ($(this).val().length == 0) {
+                $("#password_strength").html("");
+                return;
+            }
+ 
+            //Regular Expressions.
+            var regex = new Array();
+            regex.push("[A-Z]"); //Uppercase Alphabet.
+            regex.push("[a-z]"); //Lowercase Alphabet.
+            regex.push("[0-9]"); //Digit.
+            regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+            var passed = 0;
+ 
+            //Validate for each Regular Expression.
+            for (var i = 0; i < regex.length; i++) {
+                if (new RegExp(regex[i]).test($(this).val())) {
+                    passed++;
+                }
+            }
+ 
+ 
+            //Validate for length of Password.
+            if (passed > 2 && $(this).val().length > 8) {
+                passed++;
+            }
+            console.log(passed)
+            //Display status.
+            var color = "";
+            var strength = "";
+            switch (passed) {
+                case 0:
+                case 1:
+                    strength = "Weak";
+                    color = "red";
+                    break;
+                case 2:
+                    strength = "Good";
+                    color = "darkorange";
+                    break;
+                case 3:
+                case 4:
+                    strength = "Strong";
+                    color = "green";
+                    break;
+                case 5:
+                    strength = "Very Strong";
+                    color = "darkgreen";
+                    break;
+            }
+            $("#password_strength").html(strength);
+            $("#password_strength").css("color", color);
+        });
+    });
+</script>
+<script>
+    function remove1(req){
+      const PasswordConfirm = document.getElementById('password2');
+      PasswordConfirm.classList = "form-text";
+
+    }
+    function remove2(req){
+      const Password = document.getElementById('password');
+      Password.classList = "form-text";
+
+    }
+
+    const password = document.getElementById('new-pass')
+    const Password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('new-pass-cnf');
+    const PasswordConfirm = document.getElementById('password2');
+    const button = document.getElementById('button1');
+
+
+    //////show Error message/////
+    function showError(input,input1,message){
+        input.className = "fail";
+        input1.innerHTML = message
+        input1.className = "fail2"
+    }
+
+
+
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+
+
+
+
+     if(password.value.trim() === ""){
+         showError(password, Password,'Please enter a password');
+     }
+     // else if(password.value.trim().length > 5){
+     //     password.className = "success"
+     // }else{
+     //     showError(password, Password,'please enter a password of atlest six digits')
+     // }
+
+      if(passwordConfirm.value.trim() === ""){
+          showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
+      }else if(password.value.trim() === passwordConfirm.value.trim()){
+          passwordConfirm.className = "success"
+      }else{
+          showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
+      }
+      })
 </script>
 {% endblock extra_scripts %}
