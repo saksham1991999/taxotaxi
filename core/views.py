@@ -260,6 +260,7 @@ def CarSpecificationsView(request):
     price_km = request.session['price_km_list']
     initial_charges = request.session['initial_charges_list']
 
+    pickup_datetime = datetime.datetime.fromisoformat(pickup_datetime)
 
     if request.method == 'POST':
         car_type = request.POST['car_type']
