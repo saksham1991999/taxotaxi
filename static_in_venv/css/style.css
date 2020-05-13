@@ -4230,6 +4230,7 @@ background-color: white;
 	width:100%;
 	float:left;
 	background-color:#f9f9f9;
+	margin-bottom: 10px;
 }
 .booking-summary h3{
 	text-align:center;
@@ -4471,11 +4472,6 @@ font-weight: 500;
 }
 .booking-padding{
 	padding:25px;
-}
-.booking-summary{
-	/*margin: 1%;*/
-	background-color: #eaeaea;
-	margin-bottom: 10px;
 }
 
 /* End Payment, Confirm Booking, Confirm Payment CSS Styles */

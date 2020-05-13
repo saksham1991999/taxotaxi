@@ -1119,9 +1119,11 @@ margin: 10px; !important
                 allowInputToggle: true,
                 useCurrent: true,
                 ignoreReadonly: true,
-                minDate: gfg_Run(),
+                minDate: min_date(),
                 toolbarPlacement: 'top',
                 sideBySide: true,
+                maxDate:max_date(),
+
                 icons: {
                     time: 'fa fa-clock-o',
                     date: 'fa fa-calendar',
@@ -1146,12 +1148,20 @@ margin: 10px; !important
             });
              
 
-            function gfg_Run() { 
+            function min_date() { 
                var a = new Date();  
                a.setTime(a.getTime() + 
                      (4 * 60 * 60 * 1000)); 
                return a; 
                  } 
+            function max_date() { 
+               var expireDate = new Date();
+               // expireDate.setFullYear(expireDate.getFullYear() + 2);
+               expireDate.setMonth(expireDate.getMonth() + 6)
+               // expireDate.setDate(expireDate.getDate() -1);
+               return expireDate;
+                           //     a; 
+                                }      
 
 
               ////////// Code for expandable testimonials//////////
