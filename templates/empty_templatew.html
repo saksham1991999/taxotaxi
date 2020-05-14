@@ -1,15 +1,186 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load fullurl %}
 {% block extra_stylesheet %}
+
+<style>
+    .reset-window{
+        padding: 23px 210px 0px 210px;
+    }
+  @media(max-width: 1200px) {
+    .reset-window{
+        padding: 23px ;
+    }
+  }
+
+  @media(max-width: 768px) {
+   
+  }
+  small{
+    visibility: hidden;
+}
+
+
+.fail2{
+    visibility: visible;
+    color: red;
+}
+</style>
 {% endblock extra_stylesheet %}
 
 
 
-
 {% block content %}
+<div class="tj-wrapper">
+<div class="container" style="margin-bottom: 50px;">
+  <!-- <div class="row"> -->
+    <form class="reset-window reg-frm" method="" >
+    <div class="booking-summary" style="text-align: center;">
+      <h3 ><i class="fas fa-exchange-alt"></i>
+        Reset Password</h3>
+           <div class="col-sm-10" style="margin: auto;float: initial;">
+              
+				      			<div class="field-holder">
+                        <span class="fas fa-lock"></span>
+                        <input type="password" style="margin-bottom: 0px; margin-top: 10px;" name="password" id="password1" onkeydown="remove1(this.Element)"placeholder="Enter new password"  required>
+                        
+                        <span class="form-text" id="password_strength"></span>
+                        <small class="form-text" id="password">Error message</small>
+				      			</div>
+				      			<div class="field-holder">
+				      				<span class="fas fa-lock"></span>
+                      <input type="password" style="margin-bottom: 0px; margin-top: 10px;" onkeydown="remove2(this.Element)" name="confirmPassword"id="passwordConfirm1" placeholder="Confirm new password" required>
+                      <small class="form-text" id="password2">Error message</small>
+				      		</div>
+				      	<button type="submit" id="button1" style="margin-top: 20px;" class="reg-btn">Submit <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+              
+           </div>
+    </div>
+    </form>
+  <!-- </div> -->
+</div>
+</div>
+
 {% endblock content %}
 
 
+
+
 {% block extra_scripts %}
+
+<script>
+    function remove1(req){
+      const PasswordConfirm = document.getElementById('password2');
+      PasswordConfirm.classList = "form-text";
+
+    }
+    function remove2(req){
+      const Password = document.getElementById('password');
+      Password.classList = "form-text";
+
+    }
+
+    const password = document.getElementById('password1')
+    const Password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('passwordConfirm1');
+    const PasswordConfirm = document.getElementById('password2');
+    const button = document.getElementById('button1');
+
+
+    //////show Error message/////
+    function showError(input,input1,message){
+        input.className = "fail";
+        input1.innerHTML = message
+        input1.className = "fail2"
+    }
+
+    
+
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+
+
+
+
+    if(password.value.trim() === ""){
+        showError(password, Password,'Please enter a password');
+    }
+    // else if(password.value.trim().length > 5){
+    //     password.className = "success"
+    // }else{
+    //     showError(password, Password,'please enter a password of atlest six digits')
+    // }
+
+    if(passwordConfirm.value.trim() === ""){
+        showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
+    }else if(password.value.trim() === passwordConfirm.value.trim()){
+        passwordConfirm.className = "success"
+    }else{
+        showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
+    }
+   })
+</script>
+
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+<script type="text/javascript">
+    $(function () {
+        $("#password1").bind("keyup", function () {
+            //TextBox left blank.
+            if ($(this).val().length == 0) {
+                $("#password_strength").html("");
+                return;
+            }
+ 
+            //Regular Expressions.
+            var regex = new Array();
+            regex.push("[A-Z]"); //Uppercase Alphabet.
+            regex.push("[a-z]"); //Lowercase Alphabet.
+            regex.push("[0-9]"); //Digit.
+            regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+            var passed = 0;
+ 
+            //Validate for each Regular Expression.
+            for (var i = 0; i < regex.length; i++) {
+                if (new RegExp(regex[i]).test($(this).val())) {
+                    passed++;
+                }
+            }
+ 
+ 
+            //Validate for length of Password.
+            if (passed > 2 && $(this).val().length > 8) {
+                passed++;
+            }
+            console.log(passed)
+            //Display status.
+            var color = "";
+            var strength = "";
+            switch (passed) {
+                case 0:
+                case 1:
+                    strength = "Weak";
+                    color = "red";
+                    break;
+                case 2:
+                    strength = "Good";
+                    color = "darkorange";
+                    break;
+                case 3:
+                case 4:
+                    strength = "Strong";
+                    color = "green";
+                    break;
+                case 5:
+                    strength = "Very Strong";
+                    color = "darkgreen";
+                    break;
+            }
+            $("#password_strength").html(strength);
+            $("#password_strength").css("color", color);
+        });
+    });
+</script>
 {% endblock extra_scripts %}
+
+

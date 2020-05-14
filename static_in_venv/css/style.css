@@ -259,14 +259,14 @@ h1,h2,h3,h4,h5,h6{
 	text-transform:capitalize;
 	margin:0 11px;
 	border-top:3px solid transparent;*/
-	font-size: 14px;
+	font-size: 16px;
     line-height: 35px;
     display: block;
     color: #cdd3d8;
     padding: 6px 0 7px 0;
     font-weight: 500;
     text-transform: capitalize;
-    margin: 0 11px;
+    margin: 0 12px;
     border-top: 3px solid transparent;
 }
 .tj-nav-holder .navbar-default .navbar-nav .dropdown a i{
@@ -997,12 +997,12 @@ h1,h2,h3,h4,h5,h6{
 .cab-service-box .service-desc{
 	width:100%;
 	float:left;
-	padding:35px 48px;
+	padding:35px 40px;
 }
 .cab-service-box .service-desc h4{
-	font-weight:500;
+	font-weight:600;
 	font-size:22px;
-	line-height:25px;
+	line-height:22px;
 	font-family:'Montserrat',sans-serif;
 	color:#444444;
 }
@@ -2343,7 +2343,7 @@ background-color: white;
 	margin-top: 60px;
 }
 .tj-form-map #tj-map2{
-	height:440px;
+	height:100%;
 	float: left;
 	width: 100%;
 	box-shadow: -5px 0px 10px 0px rgba(0, 0, 0, 0.1); 
@@ -2499,6 +2499,7 @@ background-color: white;
 	line-height:22px;
 	color:#444444;
 	text-transform:capitalize;
+	margin-bottom: 10px;
 }
 .service-box  .service-caption p{
 	font-size:15px;
@@ -5275,14 +5276,14 @@ background-color: ##4CAF50 !important;
 	background-color: ##4CAF50  !important;
 }
 .set-image{
-    height: auto;
+    height: 530px !important;
 }
-@media (max-width: 720px)
+@media (max-width: 1200px)
 {.set-image {
-    height: auto;
+    height: auto !important;
 }
-@media (max-width: 2000px){
-	.set-image{
+@media (min-width: 2000px){
+	.tj-cab-slider .slider-item img{
     height: 530px !important;
 }
 

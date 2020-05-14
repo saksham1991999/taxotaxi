@@ -10,6 +10,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
 <style type="text/css">
+  @media (max-width: 768px){
+    .display-change{
+      display: grid !important;
+    }
+  }
+  .display-change{
+    display: flex;
+  }
 @media(max-width:767px){
 .airport-section{
 margin-top: 20px !important;
@@ -77,6 +85,7 @@ color: black;
 .txt-right{
 display: inline;
 float: right;
+margin: 0;
 }
 .carousel-btn{
 background-color: #ffc000;
@@ -87,6 +96,7 @@ float: right;
 .txt-left{
 display:inline;
 float:left;
+margin: 0;
 }
 .carousel_article{
 position: relative;
@@ -174,8 +184,8 @@ margin: 10px; !important
                         <ul class="nav nav-tabs">
                             <li class="active"  id="ONEWAY"><a href="#one-way" data-toggle="tab">One Way</a></li>
                             <li id="AIRPORT"><a href="#airport" data-toggle="tab">Airport</a></li>
-                            <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
-                            <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li>
+                            <!-- <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
+                            <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li> -->
                         </ul>
                     </div>
                     <!--Banner Form 2 Nav End-->
@@ -209,7 +219,9 @@ margin: 10px; !important
                                        <span class="fas fa-map-marker-alt"></span>
                                     </div>
                                </div>
-                              <div class="col-md-3 col-sm-3" style="margin-top: 35px">     <div class="field-holder datetimepicker">
+                              <div class="col-md-3 col-sm-3" > 
+                                  <strong>Date & Time</strong>
+                                  <div class="field-holder datetimepicker">
                                        <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
                                        <input type="text" name="pickup_datetime">
                                    </div>
@@ -282,7 +294,7 @@ margin: 10px; !important
                                        </div>
                                     </div>
 
-                                 <div class="col-md-3 col-sm-3 airport-date-col">
+                                 <div class="col-md-3 col-sm-3 ">    <strong>Date & Time</strong>
                                       <div class="field-holder datetimepicker">
                                        <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
                                        <input type="text">
@@ -340,7 +352,8 @@ margin: 10px; !important
                                                     <span class="fas fa-map-marker-alt"></span>
                                               </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3 airport-date-col">
+                                        <div class="col-md-3 col-sm-3 ">
+                                            <strong>Date & Time</strong>
                                             <div class="field-holder datetimepicker">
                                                 <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
                                                 <input type="text">
@@ -456,7 +469,7 @@ margin: 10px; !important
                 <div class="col-md-4 col-sm-4">
                     <div class="service-box">
                         <div class="icon-outer">
-                            <span>01</span>
+                            <!-- <span>01</span> -->
                             <i class="far fa-edit"></i>
                         </div>
                         <div class="service-caption">
@@ -471,7 +484,7 @@ margin: 10px; !important
                 <div class="col-md-4 col-sm-4">
                     <div class="service-box">
                         <div class="icon-outer">
-                            <span>02</span>
+                            <!-- <span>02</span> -->
                             <i class="fas fa-taxi"></i>
                         </div>
                         <div class="service-caption">
@@ -486,7 +499,7 @@ margin: 10px; !important
                 <div class="col-md-4 col-sm-4" id="nav-destinations">
                     <div class="service-box">
                         <div class="icon-outer">
-                            <span>03</span>
+                            <!-- <span>03</span> -->
                             <i class="far fa-thumbs-up"></i>
                         </div>
                         <div class="service-caption">
@@ -505,10 +518,12 @@ margin: 10px; !important
     <div class="container">
         <div class="row" id="exciting-offers">
             <a name="anchor" id="anchor"></a>
-          <div class="col-md-3 col-sm-3" style="margin-top: 8%; position: static;">
-            <strong><h3 class="text-left" >Destinations</h3></strong>
+          <div class="col-md-3 col-sm-3 service-box " style="margin-top: 8%; position: static;">
+            <div class="service-caption">
+            <h3  >Destinations</h3>
             <p>Popular destinations for your lifetime memories </p><br>
             <p>Amazing  Destinations to cherish  your memories life long </p>
+          </div>
           </div>
           <div class="col-md-9 col-sm-12 col-xs-12"id="owl-one">
 
@@ -519,8 +534,8 @@ margin: 10px; !important
                         <img style="position: absolute;" class="img-responsive" src="{{ destination.image.url }}"  alt="">
                         <article class="text-center carousel_article col-xs-2" >
                            <h5 class="txt-left"><strong>{{ destination.from_place }} To {{ destination.to_place }}</strong></h5>
-                            <h5 class="txt-right">{{ destination.distance }}</h5>
-                            <h6 class="text-left">{{ destination.popular_place }}</h6>
+                            <h5 class="txt-right">{{ destination.distance }} KM</h5><br>
+                            <h6 class="txt-left">{{ destination.popular_place }}<br></h6>
                             <h7 class="txt-left">Starting from &#8377 {{ destination.starting_from_price }}/-</h7>
                            <button type="submit" class="carousel-btn book-btn btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                         </article>
@@ -548,8 +563,8 @@ margin: 10px; !important
                         </figure>
                         <!--Cab Services Thumb End-->
                         <!--Cab Services Info Start-->
-                        <div class="service-desc" style="padding:35px 48px">
-                            <h4>Best Price Guaramteed</h4>
+                        <div class="service-desc" >
+                            <h4>Best Price Guaranteed</h4>
                             <p>A more recently with desktop softy  like aldus page maker.</p>
                         </div>
                         <!--Cab Services Info End-->
@@ -673,10 +688,11 @@ margin: 10px; !important
 
    <section class="tj-form-map">
         <div class="container">
-          <div class="row">
+          <div class="row display-change">
             <div class="col-md-6 col-sm-6 no-padr">
               <div id="tj-map2" class="tj-map2">
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.4794970397215!2d77.08694511464053!3d28.495217982472216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19386394df05%3A0x2f2805b9b4942a41!2sDLF%20CyberHub!5e0!3m2!1sen!2sin!4v1585036224348!5m2!1sen!2sin" width="575" height="425" frameborder="0" style="border:0;width: inherit;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.847375535673!2d77.26619671463781!3d28.393677432512636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cde8befccfca9%3A0xc3d9da8426781523!2sIP%20Extension%20II%2C%20Nawada%20Village%2C%20Sector%2049%2C%20Faridabad%2C%20Haryana%20121004!5e0!3m2!1sen!2sin!4v1589448181477!5m2!1sen!2sin" width="575" height="100%" frameborder="0" style="border:0;width: inherit;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                             </div>
             </div>
             <div class="col-md-6 col-sm-6 no-padl">
@@ -729,12 +745,12 @@ margin: 10px; !important
                         <ul class="flinks-list">
                             <!-- <li><i class="far fa-folder"></i><a href="">One Way</a></li>
                             <li><i class="far fa-folder"></i><a href="">Multi-Way/Round Trip</a></li> -->
-                            <li><i class="far fa-folder"></i>About Us</li>
+                            <li><i class="far fa-folder"></i><a href="">About Us</a></li>
                             <li><i class="far fa-folder"></i><a href="{% url 'blog:home' %}">Blog</a></li>
                             <li><i class="far fa-folder"></i><a href="{% url 'core:faq' %}">F.A.Q.</a></li>
                             <li><i class="far fa-folder"></i><a href="{% url 'core:contact' %}">Contact-Us</a></li>
-                            <li><i class="far fa-folder"></i>Refund Policy</li>
-                            <li><i class="far fa-folder"></i>Company Policy</li>
+                            <li><i class="far fa-folder"></i><a href=""> Refund Policy</a></li>
+                            <li><i class="far fa-folder"></i><a href=""> Company Policy</a></li>
                         </ul>
                     </div>
                 </div>
