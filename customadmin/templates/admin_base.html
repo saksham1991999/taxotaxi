@@ -1,0 +1,57 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>TaxoTaxi | Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="TaxoTaxi" name="description">
+        <meta content="Themesbrand" name="author">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'admin/images/favicon.ico' %}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'admin/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <!-- Icons Css -->
+        <link href="{% static 'admin/css/icons.min.css' %}" rel="stylesheet" type="text/css">
+        <!-- App Css-->
+        <link href="{% static 'admin/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css">
+
+        {% block extra_stylesheet %}
+        {% endblock extra_stylesheet %}
+    </head>
+
+    <body data-sidebar="dark">
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            {% include "admin_navbar.html" %}
+            {% include "admin_sidebar.html" %}
+
+            {% block content %}
+            {% endblock content %}
+
+            {% block extra_body %}
+            {% endblock extra_body %}
+
+            {% block footer %}
+            {% endblock footer %}
+
+
+
+        </div>
+        <!-- END layout-wrapper -->
+
+    {% include "admin_scripts.html" %}
+
+    {% block extra_scripts %}
+    {% endblock extra_scripts %}
+
+
+    </body>
+
+</html>

@@ -13,6 +13,11 @@ import requests
 from django.contrib.auth import authenticate, login, logout
 import datetime
 
+def HomeView(request):
+    context = {}
+    return render(request, 'custom_admin/index.html',context)
+
+
 
 def DashboardView(request):
     assign_vendors = coremodels.booking.objects.filter(advance_payment_received=True, assigned_vendors=False)
@@ -40,7 +45,7 @@ def AssignVendorsView(request, id):
                 vendorbid = coremodels.vendorbids.objects.create(booking=booking)
                 vendorbid.max_bid = booking.ride_fare*(1-(new_form.commission/100))
                 vendorbid.save()
-        return redirect('admin:dashboard')
+        return redirect('custom_admin:dashboard')
     else:
         form = forms.AssignVendors()
         context = {

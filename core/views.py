@@ -442,9 +442,12 @@ def ContactView(request):
         print(request.POST)
         if form.is_valid():
             form.save()
+            name = 'Guest'
+            if request.user.is_authenticated:
+                name = request.user.first_name
             messages.success(
                 request,
-                'Message sent Successfully',
+                'Dear' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
                 extra_tags='alert alert-success alert-dismissible fade show'
             )
         else:
