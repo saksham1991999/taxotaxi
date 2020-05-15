@@ -3956,11 +3956,11 @@ background-color: white;
 .tj-facts .tj-heading-style h3:after,.faq-outer .tj-heading-style h3:after,
 .tj-heading-style h3:after{
 	content:'';
-	background:url("../images/heading-style-border.png") no-repeat;
+	/*background:url("../images/heading-style-border.png") no-repeat;*/
 	display:block;
 	height:22px;
 	width:43px;
-	margin-top:10px;
+	/*margin-top:10px;*/
 	margin-left: 47%;
 }
 /*Testimonial change*/
@@ -4634,11 +4634,11 @@ font-weight: 500;
 .tj-news .tj-heading-style h3:after,.tj-book-services .tj-heading-style h3:after,
 .cab-services .tj-heading-style h3:after,.tj-cab-filter .tj-heading-style h3:after{
 	content:'';
-	background:url("../images/heading-style-border.png") no-repeat;
+	/*background:url("../images/heading-style-border.png") no-repeat;*/
 	display:block;
 	height: 22px;
 	width: 43px;
-	margin: 10px auto;
+	/*margin: 10px auto;*/
 }
 .tj-contact-section .tj-heading-style p,
 .tj-team .tj-heading-style p,.tj-cab-collection .tj-heading-style p,
@@ -5278,7 +5278,7 @@ background-color: ##4CAF50 !important;
 .set-image{
     height: 530px !important;
 }
-@media (max-width: 1200px)
+@media (max-width: 1400px)
 {.set-image {
     height: auto !important;
 }
