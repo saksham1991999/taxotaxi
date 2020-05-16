@@ -983,7 +983,7 @@ h1,h2,h3,h4,h5,h6{
 .cab-service-box .service-thumb{
 	background-color:#f9f9f9;
 	padding:30px 0;
-	height:167px;
+	/*height:167px;*/
 	overflow:hidden;
 }
 .cab-service-box .service-thumb:hover img,
@@ -2462,7 +2462,7 @@ background-color: white;
 .tj-book-services .service-box{
 	text-align:center;
 	width:100%;
-	margin-bottom:40px;
+	/*margin-bottom:40px;*/
 }
 .service-box .icon-outer{
 	width:84px;
@@ -2530,11 +2530,11 @@ background-color: white;
 	visibility:visible;
 }
 .tj-book-services .service-box:hover{
-	-webkit-transform: translateY(40px);
+	/*-webkit-transform: translateY(40px);
 	-moz-transform: translateY(40px);
 	-ms-transform: translateY(40px);
 	-o-transform: translateY(40px);
-	transform: translateY(40px);
+	transform: translateY(40px);*/
 }
 .tj-facts2{
 	float:left;
@@ -4964,7 +4964,7 @@ font-weight: 500;
 .tj-team .member-box figure:hover .member-overlay,
 .tj-team .member-box figure img,
 .tj-nav-holder .navbar-default .navbar-nav > li:hover > ul,
-.news-box figure:hover:after,.tj-book-services .service-box:hover,
+.news-box figure:hover:after,/*.tj-book-services .service-box:hover,*/
 .tj-book-services .service-box,.news-outer figure:hover:after,.cab-services .cab-service-box:hover,.cab-services .cab-service-box:hover:after,.cab-services .cab-service-box,.tj-cab-filter .isotope,.tj-cab-filter .isotope .isotope-item,
 .partner-item img:hover,.cab-service-box .service-thumb:hover img,.cab-service-box .service-thumb img,.news-box figure:hover img,.news-outer figure:hover img,.news-box figure img,.news-outer figure img,.tj-btn:hover:after,.tj-btn,.deal-box .deal-thumb:hover:after,
 .fleet-grid-box .fleet-thumb:hover img,.fleet-grid-box .fleet-thumb img,.fleet-list-box .fleet-thumb img,.fleet-list-box .fleet-thumb:hover img,.cab-services .cab-service-box:after,.tj-header .sticky,.tj-header .tj-nav-row,.cab-box figure:hover img,.cab-box figure img,.gallery .slick-prev,.gallery .slick-next,.gallery-carousel .gallery:hover .slick-prev,.gallery-carousel .gallery:hover .slick-next,.cab-col-outer .fleet-grid-box .tj-btn2:before,.cab-col-outer .fleet-grid-box .tj-btn2:after,.tj-nav-holder .navbar-nav li ul li:hover ul,.tj-nav-holder .navbar-default .navbar-nav > li > a:hover,.cab-box .cab-desc a:after,.cab-box .cab-desc a:hover:after,.blog-outer .blog-thumb:hover img,.blog-outer .blog-thumb img,.blog-text .tj-btn2:hover:after,.blog-text .tj-btn2:hover:before{
