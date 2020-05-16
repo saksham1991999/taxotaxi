@@ -2228,6 +2228,7 @@ background-color: white;
 }
 
 .tj-banner-form2 .tab-content{
+	
 	width:100%;
 	background-color:#f9f9f9;
 	/*padding:45px 65px;*/
@@ -2445,12 +2446,12 @@ background-color: white;
 .tj-book-services{
 	float:left;
 	width:100%;
-	padding:0 0 100px;
+	padding:0 0 40px;
 }
 .tj-book-services .tj-heading-style{
 	text-align:center;
 	width:620px;
-	margin:0 auto 70px;
+	margin:0 auto 30px;
 }
 .tj-book-services .tj-heading-style p{
 	line-height:26px;
