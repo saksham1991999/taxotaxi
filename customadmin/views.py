@@ -7,17 +7,53 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 
+import requests, datetime
+from django.contrib.auth import authenticate, login, logout
+
 from . import models, forms
 from core import models as coremodels
-import requests
-from django.contrib.auth import authenticate, login, logout
-import datetime
+from blog import models as blogmodels
+from customer import models as customermodels
+from vendor import models as vendormodels
+
 
 def HomeView(request):
     context = {}
     return render(request, 'custom_admin/index.html',context)
 
+def TestView1(request):
+    context = {}
+    return render(request, 'test/1.html',context)
 
+
+def TestView2(request):
+    context = {}
+    return render(request, 'test/2.html',context)
+
+
+def TestView3(request):
+    context = {}
+    return render(request, 'test/3.html',context)
+
+
+def TestView4(request):
+    context = {}
+    return render(request, 'test/4.html',context)
+
+
+def TestView5(request):
+    context = {}
+    return render(request, 'test/5.html',context)
+
+
+def BlogsView(request):
+    categories = blogmodels.categories.objects.all()
+
+
+    context = {
+        'categories':categories,
+    }
+    return render(request, 'custom_admin/blog/index.html', context)
 
 def DashboardView(request):
     assign_vendors = coremodels.booking.objects.filter(advance_payment_received=True, assigned_vendors=False)
