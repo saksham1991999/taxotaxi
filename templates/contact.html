@@ -5,54 +5,49 @@
 {% block content %}
 
 			<!--Contact Section Start-->
-			<section class="tj-contact-section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<div class="tj-heading-style">
-								<h3>Contact Us</h3>
-								<!-- <p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions of all the Lorem Ipsum generators</p> -->
-							</div>
-						</div>
-						<div class="col-md-8 col-sm-8">
-							<div class="form-holder">
-
-
-								<form method="POST" class="tj-contact-form">
-                                    {% csrf_token %}
-									<div class="row">
-										<div class="col-md-6 col-sm-6">
-
-
-
+   <section class="tj-contact-section">
+		  <div class="container">
+			 <div class="row">
+				 <div class="col-md-12 col-sm-12">
+					 <div class="tj-heading-style">
+						 <h3>Contact Us</h3>
+							<!-- <p>Lorem Ipsum passages, and more recently with desktop publishing software like aldus pageMaker including versions of all the Lorem Ipsum generators</p> -->
+					 </div>
+				 </div>
+				 <div class="col-md-8 col-sm-8">
+					<div class="form-holder">
+						<form method="POST" class="tj-contact-form">
+                             {% csrf_token %}
+							<div class="row">
+								<div class="col-md-6 col-sm-6">
 											<!--Inner Holder Start-->
-											<div class="inner-holder">
-												<label for="name">Name</label>
-												<input placeholder="Enter Your Name" name="name" type="text" maxlength="100" required id="id_name">
-											</div>
+									<div class="inner-holder">
+									    <label for="name">Name</label>
+										<input placeholder="Enter Your Name" name="name" type="text" maxlength="100" required id="id_name">
+									</div>
 											<!--Inner Holder End-->
-										</div>
-										<div class="col-md-6 col-sm-6 no-pad">
+								</div>
+								<div class="col-md-6 col-sm-6 no-pad">
 											<!--Inner Holder Start-->
-											<div class="inner-holder">
-												<label for="email">Email</label>
-												<input placeholder="Enter Your Email" name="email" type="email" maxlength="254" required id="id_email">
-											</div>
+									<div class="inner-holder">
+										<label for="email">Email</label>
+										<input placeholder="Enter Your Email" name="email" type="email" maxlength="254" required id="id_email">
+									</div>
 											<!--Inner Holder End-->
-										</div>
+								</div>
 
-										<div class="col-md-12 col-sm-12">
+								<div class="col-md-12 col-sm-12">
 											<!--Inner Holder. Start-->
-                                            <div class="row">
-                                                <!-- country codes (ISO 3166) and Dial codes. -->
-                                             <div class="col-md-4 col-sm-4">
-                                                 <div class="inner-holder">
-                                                        <label for="subject">Country Code</label>
-                                                  <select name="countryCode" id="">
-	                                                <option data-countryCode="IN" value="91"Selected>India (+91)</option>
-	                                                <option data-countryCode="GB" value="44" >UK (+44)</option>
-	                                                <option data-countryCode="US" value="1">USA (+1)</option>
-	                                                    <optgroup label="Other countries">
+                                    <div class="row">
+                                     <!-- country codes (ISO 3166) and Dial codes. -->
+                                       <div class="col-md-4 col-sm-4">
+                                          <div class="inner-holder">
+                                              <label for="subject">Country Code</label>
+                                              <select name="countryCode" id="">
+	                                              <option data-countryCode="IN" value="91"Selected>India (+91)</option>
+	                                              <option data-countryCode="GB" value="44" >UK (+44)</option>
+	                                              <option data-countryCode="US" value="1">USA (+1)</option>
+	                                              <optgroup label="Other countries">
 		<option data-countryCode="DZ" value="213">Algeria (+213)</option>
 		<option data-countryCode="AD" value="376">Andorra (+376)</option>
 		<option data-countryCode="AO" value="244">Angola (+244)</option>
@@ -274,7 +269,7 @@
                                                 <div class="col-md-8 col-sm-8">
                                                     <div class="inner-holder">
                                                         <label for="subject">Mobile</label>
-                                                        <input placeholder="Your Mobile" type="text" pattern="[1-9]{1}[0-9]{9}" name="mobile" maxlength="200" required id="id_mobile">
+                                                        <input placeholder="Your Mobile" type="text" pattern="[1-9]{1}[0-9]{9}" name="mobile" maxlength="10" required id="id_mobile">
                                                     </div>
                                                 </div>
                                             </div>
@@ -285,7 +280,18 @@
 											<!--Inner Holder Start-->
 											<div class="inner-holder">
 												<label for="subject">Subject</label>
-												<input placeholder="Your Subject" name="subject" type="text" maxlength="200" required id="id_subject">
+												<select name="subject" id="">
+												  <option Selected>--Select the subject to contact us--</option>
+	                                              <option value="0" > Booking Request
+                                                  </option>
+	                                              <option value="1">Service related issues/Complain</option>
+	                                              <option value="2">Payment/Refund related issues</option>
+	                                              <option value="3">Feedback/Suggestion</option>
+	                                              <option value="4">Blogs and Testimony</option>
+	                                              <option value="5">Investment related query</option>
+	                                              <option value="6">For Recruitment</option>
+	                                              <option value="7">Becoming Vendor/Agent related query</option>
+												</select>
 											</div>
 											<!--Inner Holder End-->
 										</div>
@@ -391,4 +397,50 @@
 
 			<!--Call To Action Content End-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+      (function (exports) {
+          function valOrFunction(val, ctx, args) {
+              if (typeof val == "function") {
+                  return val.apply(ctx, args);
+              } else {
+                  return val;
+              }
+          }
+
+          function InvalidInputHelper(input, options) {
+              input.setCustomValidity(valOrFunction(options.defaultText, window, [input]));
+      
+              function changeOrInput() {
+                  if (input.value == "") {
+                      input.setCustomValidity(valOrFunction(options.emptyText, window,       [input]));
+            } else {
+                input.setCustomValidity("");
+            }
+        }
+
+        function invalid() {
+            if (input.value == "") {
+                input.setCustomValidity(valOrFunction(options.emptyText, window, [input]));
+            } else {
+               input.setCustomValidity(valOrFunction(options.invalidText, window, [input]));
+            }
+        }
+
+        input.addEventListener("change", changeOrInput);
+        input.addEventListener("input", changeOrInput);
+        input.addEventListener("invalid", invalid);
+    }
+    exports.InvalidInputHelper = InvalidInputHelper;
+})(window);
+
+
+
+InvalidInputHelper(document.getElementById("id_mobile"), {
+    defaultText: "Please provide valid phone number!",
+    emptyText: "Please provide valid phone number!",
+    invalidText: function (input) {
+        return 'The phone number "' + input.value + '" is invalid!';
+    }
+});
+</script>
 {% endblock content %}

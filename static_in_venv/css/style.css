@@ -942,6 +942,7 @@ h1,h2,h3,h4,h5,h6{
 	text-align:center;
 	border:1px solid #ececec;
 	margin-bottom:60px;
+	min-height: 386px;
 }
 .cab-services .cab-service-box:after {
     font-family: 'Font Awesome 5 Free';
