@@ -27,23 +27,21 @@ def DashboardView(request):
         type = request.POST['type']
         print(request.POST)
         if type == 'profile':
-            password = request.POST['password']
-            user = authenticate(username = request.user.username, password = password)
-            if user is not None:
-                form = forms.CustomerProfileForm(request.POST, request.FILES, instance=customerprofile)
-                userform = coreforms.UserProfileForm(request.POST, request.FILES, instance=user)
 
-                if form.is_valid() and userform.is_valid():
-                    new_form = form.save(commit=False)
-                    new_form.user = user
-                    new_form.save()
 
-                    userform.save()
-                    messages.error(request, 'Details Saved Successfully')
-                    return redirect('customer:dashboard')
+            form = forms.CustomerProfileForm(request.POST, request.FILES, instance=customerprofile)
+            userform = coreforms.UserProfileForm(request.POST, request.FILES, instance=request.user)
 
-                messages.error(request, 'Invalid Password')
+            if form.is_valid() and userform.is_valid():
+                new_form = form.save(commit=False)
+                new_form.user = request.user
+                new_form.save()
+
+                userform.save()
+                messages.error(request, 'Details Saved Successfully')
                 return redirect('customer:dashboard')
+
+            return redirect('customer:dashboard')
 
         elif type == 'change_password':
             password = request.POST['current_password']

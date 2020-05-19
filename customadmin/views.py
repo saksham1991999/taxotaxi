@@ -45,15 +45,196 @@ def TestView5(request):
     context = {}
     return render(request, 'test/5.html',context)
 
+# Ride Bookings View
 
+
+# MAIN PAGE VIEWS
+def GeneralModelsView(request):
+    context = {}
+    return render(request, 'general/index.html', context)
+
+def AddCityView(request):
+    context = {}
+    return render(request, 'general/city_form.html', context)
+
+def EditCityView(request):
+    context = {}
+    return render(request, 'general/city_form.html', context)
+
+def DeleteCityView(request):
+    context = {}
+    return render(request, 'custom_admin/general/index.html', context)
+
+def AddTestimonialView(request):
+    context = {}
+    return render(request, 'general/testimonial_form.html', context)
+
+def EditTestimonialView(request, id):
+    context = {}
+    return render(request, 'general/testimonial_form.html', context)
+
+def DeleteTestimonialView(request, id):
+    context = {}
+    return render(request, 'custom_admin/general/index.html', context)
+
+def AddMainPageBannersView(request):
+    context = {}
+    return render(request, 'general/banners_form.html', context)
+
+def EditMainPageBannersView(request, id):
+    context = {}
+    return render(request, 'general/banners_form.html', context)
+
+def DeleteMainPageBannersView(request, id):
+    context = {}
+    return render(request, 'custom_admin/general/index.html', context)
+
+def UpdateFAQsView(request):
+    context = {}
+    return render(request, 'general/faqs_formset.html', context)
+
+def ContactUsView(request):
+    context = {}
+    return render(request, 'general/contact_us.html', context)
+
+
+# CAR SELECTION PAGE VIEWS
+def CarTypePageViews(request):
+    context = {}
+    return render(request, 'car_type/index.html', context)
+
+def UpdateCarAttributes(request):
+    context = {}
+    return render(request, 'car_type/car_attribute_formset.html', context)
+
+def UpdateCarAttributeValueView(request, id):
+    context = {}
+    return render(request, 'car_type/car_attribute_value_form.html', context)
+
+def UpdateRideAdditionalChoices(request):
+    context = {}
+    return render(request, 'car_type/additional_choices_formset.html', context)
+
+def UpdateCityRideAttributeValues(request, id):
+    context = {}
+    return render(request, 'car_type/city_ride_attributes_form.html', context)
+
+
+# Popular Destinations View
+def PopularDestinationsView(request):
+    context = {}
+    return render(request, 'custom_admin/popular_destinations/index.html', context)
+
+def AddPopularDestinationView(request):
+    context = {}
+    return render(request, 'custom_admin/popular_destinations/index.html', context)
+
+def EditPopularDestinationView(request):
+    context = {}
+    return render(request, 'custom_admin/popular_destinations/index.html', context)
+
+def DeletePopularDestinationView(request):
+    context = {}
+    return render(request, 'custom_admin/popular_destinations/index.html', context)
+
+
+# BLOG VIEWS
 def BlogsView(request):
     categories = blogmodels.categories.objects.all()
-
-
     context = {
         'categories':categories,
     }
+    return render(request, 'blogs/index.html', context)
+
+def UpdateBlogCategoriesView(request):
+
+    context = {}
     return render(request, 'custom_admin/blog/index.html', context)
+
+def AddBlogPostView(request):
+    context = {}
+    return render(request, 'custom_admin/blog/index.html', context)
+
+def EditBlogPostView(request, id):
+    context = {}
+    return render(request, 'custom_admin/blog/index.html', context)
+
+def DeleteBlogPostView(request, id):
+
+    return redirect('')
+
+
+# CUSTOMER VIEWS
+def CustomersView(request):
+    context = {}
+    return render(request, 'customers/index.html', context)
+
+def AddCustomerView(request):
+    context = {}
+    return render(request, 'customers/customer_form.html', context)
+
+def EditCustomerView(request, id):
+    context = {}
+    return render(request, 'customers/customer_form.html', context)
+
+def DeleteCustomerView(request, id):
+    context = {}
+    return render(request, 'customers/', context)
+
+def UpdateCustomerPromotionalView(request, id):
+    context = {}
+    return render(request, 'customers/promotionals_formset.html', context)
+
+
+# Vendor Views
+def VendorsView(request):
+    context = {}
+    return render(request, 'vendors/index.html', context)
+
+def VendorView(request):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def AddVendorView(request):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def EditVendorView(request):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def DeleteVendorView(request):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def AddVendorCarView(request, id):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def EditVendorCarView(request, id):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def DeleteVendorCarView(request, id):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def AddVendorDriver(request):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def EditVendorDriver(request, id):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+def DeleteVendorDriver(request, id):
+    context = {}
+    return render(request, 'custom_admin/customers/index.html', context)
+
+
+
+
+
 
 def DashboardView(request):
     assign_vendors = coremodels.booking.objects.filter(advance_payment_received=True, assigned_vendors=False)
