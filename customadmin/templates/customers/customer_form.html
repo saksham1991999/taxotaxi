@@ -21,12 +21,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-flex align-items-center justify-content-between">
-                                    <h4 class="mb-0 font-size-18">Form Elements</h4>
+                                    <h4 class="mb-0 font-size-18">Customer Form</h4>
 
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                            <li class="breadcrumb-item active">Form Elements</li>
+                                            <li class="breadcrumb-item active">Customer Form</li>
                                         </ol>
                                     </div>
 
@@ -40,9 +40,8 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="card-title">Textual inputs</h4>
-                                        <p class="card-title-desc">Here are examples of <code>.form-control</code> applied to each
-                                            textual HTML5 <code>&lt;input&gt;</code> <code>type</code>.</p>
+                                        <h4 class="card-title"></h4>
+                                        <p class="card-title-desc"></p>
 
                                         <div class="form-group row">
                                             <label for="example-text-input" class="col-md-2 col-form-label">First Name</label>
@@ -51,318 +50,69 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-search-input" class="col-md-2 col-form-label">Search</label>
+                                            <label for="example-search-input" class="col-md-2 col-form-label">Last Name</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
+                                                {% render_field userform.last_name class="form-control" %}
+                                                <!-- <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> -->
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
+                                            <label for="example-email-input" class="col-md-2 col-form-label">Username</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
+                                                {% render_field userform.username class="form-control" %}
+                                                <!-- <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> -->
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-url-input" class="col-md-2 col-form-label">URL</label>
+                                            <label for="example-url-input" class="col-md-2 col-form-label">Mobile No.</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
+                                                {% render_field userform.mobile class="form-control" %}
+                                                <!-- <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> -->
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="example-tel-input" class="col-md-2 col-form-label">Telephone</label>
                                             <div class="col-md-10">
-                                                <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+                                                {% render_field userform.email class="form-control" %}
+                                                <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="password" value="hunter2" id="example-password-input">
-                                            </div>
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-lg btn-success waves-effect waves-light">
+                                                <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
+                                            </button>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="number" value="42" id="example-number-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-datetime-local-input" class="col-md-2 col-form-label">Date and time</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-date-input" class="col-md-2 col-form-label">Date</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="date" value="2019-08-19" id="example-date-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-month-input" class="col-md-2 col-form-label">Month</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="month" value="2019-08" id="example-month-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-week-input" class="col-md-2 col-form-label">Week</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="week" value="2019-W33" id="example-week-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-time-input" class="col-md-2 col-form-label">Time</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-color-input" class="col-md-2 col-form-label">Color</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="color" value="#556ee6" id="example-color-input">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-md-2 col-form-label">Select</label>
-                                            <div class="col-md-10">
-                                                <select class="form-control">
-                                                    <option>Select</option>
-                                                    <option>Large select</option>
-                                                    <option>Small select</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row mb-0">
-                                            <label class="col-md-2 col-form-label">Custom Select</label>
-                                            <div class="col-md-10">
-                                                <select class="custom-select">
-                                                    <option selected="">Open this select menu</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                        
+                                  
+                                       
                                     </div>
                                 </div>
                             </div> <!-- end col -->
                         </div>
                         <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Sizing</h4>
-                                        <p class="card-title-desc">Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.</p>
-                                        <div>
-                                            <div class="mb-4">
-                                                <input class="form-control" type="text" placeholder="Default input">
-                                            </div>
-                                            <div class="mb-4">
-                                                <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
-                                            </div>
-                                            <div>
-                                                <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Range Inputs</h4>
-                                        <p class="card-title-desc">Set horizontally scrollable range inputs using <code>.form-control-range</code>.</p>
-
-                                        <div>
-                                            <h5 class="font-size-14">Example</h5>
-                                            <input type="range" class="form-control-range" id="formControlRange">
-                                        </div>
-                                        <div class="mt-4">
-                                            <h5 class="font-size-14">Custom Range</h5>
-                                            <input type="range" class="custom-range" id="customRange1">
-
-                                            <input type="range" class="custom-range mt-4" min="0" max="5" id="customRange2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- end row -->
 
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Checkboxes</h4>
-
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div>
-                                                    <h5 class="font-size-14 mb-4">Default Checkboxes</h5>
-                                                    <div class="form-check mb-3">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                        <label class="form-check-label" for="defaultCheck1">
-                                                            Default checkbox
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-right">
-                                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked="">
-                                                        <label class="form-check-label" for="defaultCheck2">
-                                                            Default checkbox Right
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 ml-auto">
-                                                <div class="mt-4 mt-lg-0">
-                                                    <h5 class="font-size-14 mb-4">Custom Checkboxes</h5>
-                                                    <div class="custom-control custom-checkbox mb-3">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                                                        <label class="custom-control-label" for="customCheck1">Custom checkbox</label>
-                                                    </div>
-                                                    <div class="custom-control custom-checkbox custom-control-right">
-                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                        <label class="custom-control-label" for="customCheck2">Custom checkbox Right</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Radios</h4>
-
-                                        <div class="row">
-                                            <div class="col-md-5">
-                                                <div>
-                                                    <h5 class="font-size-14 mb-4">Default Radios</h5>
-                                                    <div class="form-check mb-3">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked="">
-                                                        <label class="form-check-label" for="exampleRadios1">
-                                                            Default radio
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-right">
-                                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                                        <label class="form-check-label" for="exampleRadios2">
-                                                            Default radio Right
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 ml-auto">
-                                                <div class="mt-4 mt-lg-0">
-                                                    <h5 class="font-size-14 mb-4">Custom Radios</h5>
-                                                    <div class="custom-control custom-radio mb-3">
-                                                        <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                                        <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-right">
-                                                        <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" checked="">
-                                                        <label class="custom-control-label" for="customRadio2">Or toggle this Right custom radio</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Switches</h4>
-                                        <p class="card-title-desc">A switch has the markup of a custom checkbox but uses the <code>.custom-switch</code> class to render a toggle switch. Switches also support the <code>disabled</code> attribute.</p>
-
-                                        <div class="custom-control custom-switch mb-2" dir="ltr">
-                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
-                                            <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-                                        </div>
-                                        <div class="custom-control custom-switch" dir="ltr">
-                                            <input type="checkbox" class="custom-control-input" disabled="" id="customSwitch2">
-                                            <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">File browser</h4>
-                                        <p class="card-title-desc">The file input is the most gnarly of the bunch and requires additional JavaScript if you’d like to hook them up with functional <em>Choose file…</em> and selected file name text.</p>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Choose file</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-                    </div> <!-- container-fluid -->
+                        
+                          
+                           
+                                                  
                 </div>
                 <!-- End Page-content -->
 
-
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Skote.
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-sm-right d-none d-sm-block">
-                                    Design & Develop by Themesbrand
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                </div>
+             
             </div>
             <!-- end main content-->
 
 
 
 
-    <form>
-    {% csrf_token %}
+  
 
-    {% render_field userform.first_name %}
-    {% render_field userform.last_name %}
-    {% render_field userform.username %}
-    {% render_field userform.mobile %}
-    {% render_field userform.email %}
 
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-&{{ userform }}
-    {{ customerform }}
 
 {% endblock content %}
 
