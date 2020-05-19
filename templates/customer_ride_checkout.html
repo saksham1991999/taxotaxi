@@ -5,9 +5,37 @@
     <style type="text/css">
  @media (max-width: 768px){
     .container1{
-      margin-top: 685px !important;
+      display: grid;
+      /*margin-top: 50px !important;*/
+      padding-top: 20px;
     }
   }
+  @media (max-width: 999px){
+    .container1{
+      /*margin-top: 275px ;*/
+       display: grid;
+      /*margin-top: 50px !important;*/
+      padding-top: 20px;
+    }
+  }
+
+  .bookingsummaryinfo .fair-breakdown {
+    visibility: hidden;
+    width: max-content;
+    background-color: white;
+    color: #233545;
+    text-align: left;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 1;
+    font-size: small;
+    box-shadow: 0px 0px 8px #2b2929;
+    border: 2px solid #ffc000;
+}
+
+.bookingsummaryinfo:hover .fair-breakdown {
+  visibility: visible;
+}
 .inputlayout{
   width: 100%;
 padding: 8px 8px;
@@ -128,7 +156,11 @@ background-color: white;
 input:focus{
     border: none;
 }
-
+.hover-text-style{
+  color: #ce0c0c;
+  text-decoration: underline;
+  margin: 10px;
+}
 
 </style>
 {% endblock extra_stylesheet %}
@@ -140,12 +172,46 @@ input:focus{
 
   <div class="container container1 mt-5 checkout-frm ">
         
-    <div class="row header2 text-center">
-        <div class="col text-center">
+    <div class="row header2">
+        <div class="col-sm-6">
             <h4 ><span>{{ request.user.first_name }}</span>'s Booking Summary</h4>
         </div>
+        <div class="col-sm-6">
+           <div class="bookingsummaryinfo" style="float: right;">
+                           <p class="hover-text-style">booking summary info</p>
+                            <!-- Ride Fair BreakDown -->
+                           <span class="fair-breakdown " style="right: 75px;max-width: 550px;">
+                               
+                          <div class="col-sm-12" style="background-color: #eee;">
+                             <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5></div>
+                             <div class="col-sm-8" style="width: 70%">
+                             <ul style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 3px;">
+                                  <li>&nbsp;</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Parking charges will be Extra as Actual**</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Airport parking charges will be Extra as Actual**</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Total Tax will be Extra as Actual*</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Night charges at Rs.300 (from 10pm-6am)*</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Extra KM will per charge at the rate of ?? Per Km*</li>
+                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Early Pick-up charges will be Extra Rs.180 (4:00am-6:00am)</li>
+                            </ul>
+                            </div>
+                            <div class="col-sm-4 square-box" style="width: 30%">
+                              <p style="margin: 76px 20px 0px 0px;
+                                        background-color: #eee;
+                                        height: 85px;
+                                        padding: 33px;"> ₹ 453 </p>
+                            </div>
+                            
+                            <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
+                              <button class="book-btn" type="submit">&nbsp; Update booking Summary &nbsp;</button>
+                           </div>
+                      
+                   
+
+                           </span>
+                        </div></div>
     </div>
-    
+    <div></div>
     <div class="row">
        <div class="col-md-12" style="padding-left: 0px;padding-right: 0px">
          
@@ -166,13 +232,6 @@ input:focus{
          
        </div>
         <div class="col-md-6">
-         <!--  <div class="row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
-            <div class="col-sm-8">
-              <div class="inputlayout">{{ pickup }}</div>
-                    
-            </div>
-        </div> -->
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">PickUp DateTime</label>
                 <div class="col-sm-8">
@@ -193,7 +252,7 @@ input:focus{
             </div>
             
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Ride Fair</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Final Fare</label>
                 <div class="col-sm-8"> 
                      <div class="inputlayout " >
                       <div style="width: 80%">{{ ride_total }}</div>
@@ -233,17 +292,7 @@ input:focus{
                         </div>
                      </div>
                 </div>
-            </div>
-            <!-- <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
-                <div class="col-sm-6">
-                  <input class="input-field " 
-                  type="text" readonly
-                  placeholder="0">
-                </div>
-                <div class="col-sm-2"><input type="checkbox" class="my-auto" style=" display: inline-blocks;"></div>
-            </div> -->
-          
+            </div>          
             <div class="row">
                 <form method="post">
                     {% csrf_token %}
@@ -361,5 +410,46 @@ input:focus{
 
 
 {% block extra_scripts %}
+<script type="text/javascript">
+   $( document ).ready(function () {
+        {% for checkbox in ridecheckboxes %}
+            $('#checkbox{{ checkbox.id }}').prop("checked", false);
+        {% endfor %}
+    });
+
+
+
+
+    $(document).ready(function(){
+
+        {% for checkbox in ridecheckboxes %}
+            $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
+                price = $('#checkbox{{ checkbox.id }}').val();
+                price = parseInt({{ checkbox.value }});
+                console.log('CheckBox Price');
+                console.log(price);
+
+                 if ($(this).is(':checked')){
+                    {% for type in car_types %}
+                        type_price = $('#finalprice{{ type.id }} .price').text();
+                        type_price = parseInt(type_price);
+                        console.log('Car Type Price');
+                        console.log(type_price);
+                        $('#finalprice{{ type.id }} .price').text((type_price + price));
+                    {% endfor %}
+                }
+                 if ($(this).is(':not(:checked')){
+                    {% for type in car_types %}
+                        type_price = $('#finalprice{{ type.id }} .price').text();
+                        type_price = parseInt(type_price);
+                        console.log(type_price);
+                        $('#finalprice{{ type.id }} .price').text((type_price - price));
+                    {% endfor %}
+                }
+            });
+
+        {% endfor %}
+         });
+</script>
 {% endblock extra_scripts %}
  
