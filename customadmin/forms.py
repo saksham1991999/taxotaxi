@@ -38,3 +38,20 @@ class CityRideAttributeForm(forms.ModelForm):
     class Meta:
         model = coremodels.calc_city_attr_value
         exclude = []
+
+
+class BlogPostForm(forms.ModelForm):
+    class Meta:
+        model = blogmodels.post
+        exclude = []
+
+
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = customermodels.customerprofile
+        exclude = []
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = coremodels.User
+        fields = ['first_name', 'last_name', 'email', 'mobile', 'username']

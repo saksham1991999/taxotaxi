@@ -21,7 +21,7 @@ def BlogHomeView(request):
     
     if 'search' in request.GET:
         search_term = request.GET['search']
-        print(search_term)
+        # print(search_term)
         all_posts = all_posts.filter(Q(title__icontains = search_term)| Q(content__contains=search_term))
 
     paginator = Paginator(all_posts, 5)
@@ -50,23 +50,23 @@ def BlogPostView(request, id):
     if request.method == "POST":
         if request.user.is_authenticated:
             form = CommentForm(request.POST)
-            print(request.POST)
-            print(form.errors)
-            print(form.cleaned_data)
-            print(form.is_valid())
+            # print(request.POST)
+            # print(form.errors)
+            # print(form.cleaned_data)
+            # print(form.is_valid())
 
             if form.is_valid():
-                print('---------------------VALID FORM-------------------------------')
+                # print('---------------------VALID FORM-------------------------------')
                 new_comment = comment()
                 new_comment.comment_text = form.cleaned_data.get('comment_text')
-                print(form.cleaned_data.get('comment_text'))
+                # print(form.cleaned_data.get('comment_text'))
 
                 new_comment.post = slug_post
                 new_comment.date = date.today()
                 new_comment.user = request.user
                 new_comment.email = form.cleaned_data.get('email')
                 new_comment.name = form.cleaned_data.get('name')
-                print(new_comment)
+                # print(new_comment)
                 new_comment.save()
                 messages.success(
                                 request,
@@ -77,7 +77,7 @@ def BlogPostView(request, id):
         else:
             messages.success(
                                 request,
-                                'Login to add a comment',
+                                'Login to Leave a comment',
                                 extra_tags='alert alert-success alert-dismissible fade show'
                                 )
             return redirect('blog:post', id)

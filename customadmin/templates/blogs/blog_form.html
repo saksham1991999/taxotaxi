@@ -1,6 +1,6 @@
 {% extends 'admin_base.html' %}
 {% load static %}
-
+{% load widget_tweaks %}
 
 {% block extra_stylesheet %}
 
@@ -10,6 +10,17 @@
 
 {% block content %}
 
+
+    {% render_field form.title %}
+    {% render_field form.category %}
+    {% render_field form.content %}
+    {% render_field form.date %}
+    {% render_field form.published %}
+    {% render_field form.main_image %}
+    {% render_field form.image1 %}
+    {% render_field form.image2 %}
+    {% render_field form.image3 %}
+    {% render_field form.image4 %}
 
 {% endblock content %}
 

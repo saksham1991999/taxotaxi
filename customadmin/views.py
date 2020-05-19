@@ -150,11 +150,18 @@ def BlogsView(request):
 def UpdateBlogCategoriesView(request):
 
     context = {}
-    return render(request, 'custom_admin/blog/index.html', context)
+    return render(request, 'blogs/categories_formset.html', context)
 
 def AddBlogPostView(request):
-    context = {}
-    return render(request, 'custom_admin/blog/index.html', context)
+
+    if request.method == 'POST':
+        pass
+    else:
+        form = forms.BlogPostForm()
+        context = {
+            'form':form,
+        }
+        return render(request, 'blogs/blog_form.html', context)
 
 def EditBlogPostView(request, id):
     context = {}
@@ -167,12 +174,25 @@ def DeleteBlogPostView(request, id):
 
 # CUSTOMER VIEWS
 def CustomersView(request):
-    context = {}
+
+    customers = customermodels.customerprofile.objects.all()
+
+    context = {
+        'customers':customers,
+    }
     return render(request, 'customers/index.html', context)
 
 def AddCustomerView(request):
-    context = {}
-    return render(request, 'customers/customer_form.html', context)
+    if request.method == 'POST':
+        pass
+    else:
+        userform = forms.UserForm()
+        profileform = forms.CustomerForm()
+        context = {
+            'profileform':profileform,
+            'userform':userform,
+        }
+        return render(request, 'customers/customer_form.html', context)
 
 def EditCustomerView(request, id):
     context = {}
