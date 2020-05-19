@@ -170,6 +170,7 @@ class calc_city_attr_value(models.Model):
 
 class testimonials(models.Model):
     image = models.ImageField()
+    # rating = models.PositiveSmallIntegerField()
     name = models.CharField(max_length=100)
     message = models.TextField()
 

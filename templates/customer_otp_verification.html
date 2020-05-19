@@ -77,8 +77,8 @@
 									<div class="service_type">{{ car_type }}</div></li>
 									<li><span><b>Expected Distance:</b> </span><div class="end_loc info-outer">&ensp;{{ distance_text }}</div></li>
 									<li><span><b>Expected Duration:</b> </span><div class="end_loc info-outer">&ensp;{{ duration_text }}</div></li>
-									<li><span><b>Pickup Date-Time:</b> </span><div class="pick_date info-outer">&ensp;{{ pickup_datetime}}</div></li>
-									<li><span><b>Dropoff Date-Time:</b> </span><div class="drop_date info-outer">&ensp;{{ drop_datetime }}</div></li>
+									<li><span><b>Pickup Date-Time:</b> </span><div class="pick_date info-outer">&ensp;{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}</div></li>
+									<li><span><b>Dropoff Date-Time:</b> </span><div class="drop_date info-outer">&ensp;{{ drop_datetime|date:"j-M-Y" }} &ensp;{{ drop_datetime|time:"h:i A" }}</div></li>
                                 </ul>
 								<div class="fare-box">
 									<strong>Trip Estimation</strong>

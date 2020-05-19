@@ -50,6 +50,7 @@ def TestView5(request):
 
 # MAIN PAGE VIEWS
 def GeneralModelsView(request):
+
     context = {}
     return render(request, 'general/index.html', context)
 

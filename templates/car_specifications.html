@@ -256,7 +256,7 @@ span.glyphicon-stats{
                     <div class="tab-content">
 
                         <p><b>{{ pickup }} &ensp;<i class="fas fa-chevron-circle-right"></i> &ensp;{{ drop }} </b>
-                            <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime|date:"j M Y" }} &ensp;{{ pickup_datetime|time:"H:i" }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
+                            <br>{{ ride_type }}&ensp; | &ensp;<i class="far fa-calendar-alt"></i> &ensp;{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}&ensp; | &ensp; <i class="fas fa-road"></i>&ensp;{{ distance_text }}&ensp;| &ensp;<i class="far fa-clock"></i>&ensp;{{ duration_text }}<br><br></p>
                         <input type="hidden" name="car_type" id="car_type" value="Sedan" required>
                         <section >
                             <div class="row white" style="border: 2px solid #eee;">

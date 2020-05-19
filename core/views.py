@@ -17,7 +17,7 @@ from .airport_calc import airport_calculator
 import datetime, hashlib, random, requests
 from core.payu import PAYU
 payu = PAYU()
-
+import dateutil.parser
 MERCHANT_KEY = 'QxL9PGUue%ZdByvX'
 
 # def distanceapi(placeid1, placeid2):
@@ -42,6 +42,9 @@ MERCHANT_KEY = 'QxL9PGUue%ZdByvX'
 #
 #     r = requests.get(url + 'origins=place_id:' + placeid1 + '&destinations=place_id:' + placeid2 + '&type='
 #                                                                                                    '&units=metric' + '&key=' + api_key)
+
+
+
 def TestView(request):
     context = {}
     return render(request, 'test_template.html', context)
@@ -260,7 +263,9 @@ def CarSpecificationsView(request):
     price_km = request.session['price_km_list']
     initial_charges = request.session['initial_charges_list']
 
-    pickup_datetime = datetime.datetime.fromisoformat(pickup_datetime)
+    pickup_datetime = dateutil.parser.parse(pickup_datetime)
+    drop_datetime = dateutil.parser.parse(drop_datetime)
+    # pickup_datetime = datetime.datetime.fromisoformat(pickup_datetime)
 
     if request.method == 'POST':
         car_type = request.POST['car_type']
@@ -398,7 +403,6 @@ def LoginView(request):
         return redirect('core:login')
     else:
         context = {
-
         }
         return render(request, 'login.html', context)
 
@@ -515,6 +519,8 @@ def CustomerLoginView(request):
     if request.user.is_authenticated:
         return redirect('core:checkout')
     else:
+        pickup_datetime = dateutil.parser.parse(pickup_datetime)
+        drop_datetime = dateutil.parser.parse(drop_datetime)
         context = {
             'ride_type': ride_type,
             'pickup_city': pickup_city,
@@ -625,6 +631,8 @@ def OTPVerificationView(request):
         distance_text = request.session['distance_text']
         duration_text = request.session['duration_text']
         mobile = request.session['mobile']
+        pickup_datetime = dateutil.parser.parse(pickup_datetime)
+        drop_datetime = dateutil.parser.parse(drop_datetime)
         context = {
             'ride_type': ride_type,
             'pickup_city': pickup_city,
@@ -699,6 +707,9 @@ def CheckoutView(request):
         night_charges = request.session['night_charges']
         driver_allowances = early_pickup_charges + late_drop_charges + night_charges
         gst_charges = request.session['gst_charges']
+
+        pickup_datetime = dateutil.parser.parse(pickup_datetime)
+        drop_datetime = dateutil.parser.parse(drop_datetime)
 
         final_ride_fair = ride_total
         coupon_code = ''
