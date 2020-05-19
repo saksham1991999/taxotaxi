@@ -49,6 +49,11 @@ border-radius: 4px;
 text-align: left;
 background-color: white;
 }
+.icon-style{
+  width: 19%;
+  text-align: right;
+  font-size: 19px;
+}
 
 .icon1 .fair-breakdown {
   visibility: hidden;
@@ -73,7 +78,21 @@ background-color: white;
     padding: 8px 8px;
     font-size: 14px;
     line-height: 24px;
-    color: #a6a6a6;
+    color: #000;
+    border: 1px solid #e8e8e8;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: left;
+
+ }
+
+ .checkout-frm select{
+  width: 50%;
+    padding: 8px 8px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #000;
     border: 1px solid #e8e8e8;
     display: block;
     margin-bottom: 10px;
@@ -233,7 +252,7 @@ input:focus{
        </div>
         <div class="col-md-6">
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">PickUp DateTime</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Pick-Up Date & Time</label>
                 <div class="col-sm-8">
                   <input class="input-field " 
                          type="text" readonly
@@ -287,7 +306,7 @@ input:focus{
                 <div class="col-sm-8"> 
                      <div class="inputlayout " >
                       <div style="width: 80%">{{ request.user.wallet_balance }}</div>
-                        <div class="icon1" style="width: 19%;text-align: right;font-size: 19px;">
+                        <div class="icon1 icon-style">
                            <input type="checkbox" class="my-auto" style="display: inline-blocks;">
                         </div>
                      </div>
@@ -309,7 +328,7 @@ input:focus{
             </div>
 
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Final Fare</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Payable Amount</label>
                 <div class="col-sm-8">
                   <input class="input-field " 
                   type="text" readonly
@@ -318,26 +337,35 @@ input:focus{
                
             </div>
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Advance (15%)</label>
-                <div class="col-sm-8">
-                  <input class="input-field " 
-                  type="text" readonly
-                  placeholder="{{ advance }}">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Pay Booking Amount</label>
+                <div class="col-sm-8"> 
+                     <div class="inputlayout " >
+                      <div style="width: 80%">{{ advance }}</div>
+                        <div class="icon1 icon-style">
+                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                        </div>
+                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Pay Full Amount</label>
+                <div class="col-sm-8"> 
+                     <div class="inputlayout " >
+                      <div style="width: 80%">{{ final_ride_fair }}</div>
+                        <div class="icon1 icon-style">
+                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                        </div>
+                     </div>
+                </div>
+               
             </div>
         </div>
 
 
         <!-- ///////////////////////////////Second column/////////////////////// -->
         <div class="col-md-6">
-          <!-- <div class="row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
-            <div class="col-sm-8">
-              <div class="inputlayout">{{ drop }}</div>
-            </div>
-        </div> -->
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">DropOff DateTime</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Drop-Off Date & Time</label>
                 <div class="col-sm-8">
                   <input class="input-field " 
                   type="text" readonly
@@ -345,7 +373,47 @@ input:focus{
                 </div>
             </div>
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Expected Distance:</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Halt, If Required 
+                          <span class="icon1"> <span class="fas fa-info-circle">
+                           </span>
+                            <!-- Ride Fair BreakDown -->
+                           <span class="fair-breakdown">
+
+                                Initial Charges : {{ initial_charges }}<br>
+                               {% if additional_charges %}
+                                Additional Taxes : {{ additional_charges }}<br>
+                               {% endif %}
+                                {% if driver_allowances %}
+                                Driver Allowances : {{ driver_allowances }}<br>
+                                {% endif %}
+                                {% if checkbox_charges %}
+                                    Chargeable Additions : {{ checkbox_charges }}<br>
+                                {% endif %}
+                               {% if gst_charges %}
+                                GST : {{ gst_charges }}<br>
+                               {% endif %}
+                                Total : {{ ride_total }}
+
+                           </span>
+                           </span>
+                        </label>
+                <div class="col-sm-8" style="display: flex;">
+                  <select name="subject" id="" style="">
+                          <option Selected>--Select City--</option>
+                          <option value="0" > Gurgaon </option>
+                          <option value="1">Faridabad</option>
+                          <option value="2">Delhi</option>                     
+                        </select>
+                 <select name="subject" id="">
+                          <option Selected>--Time Duration--</option>
+                          <option value="0" > 30 min </option>
+                          <option value="1"> 1 hour </option>
+                          <option value="2"> 2 hour </option>                     
+                 </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Travel Distance</label>
                 <div class="col-sm-8">
                   <input class="input-field " 
                   type="text" readonly
@@ -353,7 +421,7 @@ input:focus{
                 </div>
             </div>
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Expected Duration:</label>
+                <label for="staticEmail" class="col-sm-4 col-form-label">Travel Duration</label>
                 <div class="col-sm-8">
                   <input class="input-field " 
                   type="text" readonly
@@ -366,14 +434,22 @@ input:focus{
             <div class="row">
 
                 <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
-                <div class="col-sm-8">                 
-                        <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}>
+                <div class="col-sm-8" style="display: flex;">                 
+                        <!-- <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}> -->
+                     <div class="inputlayout " style="width: 40%" >
+                      <div >{{ request.user.first_name }}</div>
+                     </div>
+                     <input style="width: 60%" class="input-field " type="text" name="name" placeholder="Traveler Name (optional)">   
                 </div>
             </div>
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
-                <div class="col-sm-8">               
-                        <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}>
+                <div class="col-sm-8" style="display: flex;">               
+                        <!-- <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}> -->
+                     <div class="inputlayout " style="width: 40%">
+                      <div >{{ request.user.mobile }}</div>
+                     </div>
+                     <input style="width: 60%" class="input-field " type="text" name="name" placeholder="Traveler Phone No. (optional)">   
                 </div>
             </div>
             <div class="row">
