@@ -10,22 +10,27 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
  <style type="text/css">
-  @media (max-width: 768px){
+  .tj-destinations{
+    float: left;
+    width: 100%;
+    padding: 0;
+  }
+    @media (max-width: 768px){
     .display-change{
       display: grid !important;
+     }
     }
-  }
-  .display-change{
-    display: flex;
-  }
-  @media(max-width:767px){
-  .airport-section{
+    .display-change{
+     display: flex;
+    }
+    @media(max-width:767px){
+    .airport-section{
     margin-top: 20px !important;
-   }
-  .res-padding{
+    }
+   .res-padding{
     padding-left: 0px;
     padding-right: 0px;
-   }
+    }
    .airport-btn{
      margin-top: 0px !important;
      padding-left: 0px;
@@ -199,7 +204,7 @@
                             <form class="booking-frm" method="POST" id="ride-bform" >
                                     {% csrf_token %}
 
-                                <div class="col-md-3 col-sm-3">
+                                <div class="col-md-3 col-sm-6">
                                    <input type="hidden" name="type" value="One Way" required>
                                    <strong>Pickup City</strong>
                                    <div class="field-holder">
@@ -219,7 +224,7 @@
                                        <span class="fas fa-map-marker-alt"></span>
                                     </div>
                                </div>
-                              <div class="col-md-3 col-sm-3" > 
+                              <div class="col-md-3 col-sm-6" > 
                                   <strong>Date & Time</strong>
                                   <div class="field-holder datetimepicker">
                                        <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
@@ -227,7 +232,7 @@
                                    </div>
                              </div>
 
-                               <div class="col-md-3 col-sm-3">
+                               <div class="col-md-3 col-sm-6">
                                     <strong>Drop City</strong>
                                     <div class="field-holder">
                                         <select class="selectpicker" data-live-search="true" list="drop_cities" id="one_way_drop_city" name="drop_city" placeholder="--Select--" required>
@@ -238,7 +243,7 @@
                                         </select>
                                     </div>
                                </div>
-                             <div class="col-md-6 col-sm-6">
+                             <div class="col-md-6 col-sm-12">
                                  <strong>Drop Off Address</strong>
                                  <div class="field-holder">
                                      <input type="text" id="one_way_drop_location" name="drop" placeholder="To" required>
@@ -247,7 +252,7 @@
                                  
                                   
                              </div>
-                             <div class="col-md-3 col-sm-3" style="margin-top: 15px" id="btn-hov"><br>
+                             <div class="col-md-3 col-sm-6" style="margin-top: 15px" id="btn-hov"><br>
                                 <button type="submit" style="width: 100%;" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                               </div>                     
                              </form>
@@ -260,7 +265,7 @@
                         <!--Banner Form 2 Tab Airport Section Start-->
               <div class="tab-pane" id="airport">
                             <!--Banner Form 2 Content Start-->
-                  <section class="airport-section" style="margin-top: 48px">
+                  <section class="airport-section" style="margin-top: 48px" >
                           <div class="tj-form2-tabs">
                              <ul class="nav nav-tabs">
                                <li class="active"><a style="padding: 10px;" href="#from-airport" data-toggle="tab">From Airport</a></li>
@@ -274,7 +279,7 @@
                             <form class="booking-frm" method="POST" id="ride-bform">
                                     {% csrf_token %}
                                 <input type="hidden" name="type" value="Airport" required>
-                                   <div class="col-md-3 col-sm-3 remove-padding-left" >
+                                   <div class="col-md-3 col-sm-6 remove-padding-left" >
                                        <strong>Pick Up City</strong>
                                        <div class="field-holder">
                                           <select class="selectpicker" data-live-search="true" id="from_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
@@ -294,14 +299,14 @@
                                        </div>
                                     </div>
 
-                                 <div class="col-md-3 col-sm-3 res-padding">    <strong>Date & Time</strong>
+                                 <div class="col-md-3 col-sm-6 res-padding">    <strong>Date & Time</strong>
                                       <div class="field-holder datetimepicker">
                                        <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
                                        <input type="text">
                                    </div>
                                  </div> 
 
-                                  <div class="col-md-3 col-sm-3 remove-padding-left" >
+                                  <div class="col-md-3 col-sm-6 remove-padding-left" >
                                         <strong>Drop City</strong>
                                           <div class="field-holder">
 
@@ -314,7 +319,7 @@
                                                    </div>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-6 res-padding">
+                                            <div class="col-md-6 col-sm-12 res-padding">
                                                   <strong>Drop Off Address</strong>
                                                   <div class="field-holder">
                                                        <input type="text" id="from_airport_drop_location" name="drop" placeholder="To" required>
@@ -333,7 +338,7 @@
                                  <form class="booking-frm" method="POST" id="ride-bform" >
                                         {% csrf_token %}
                                         <input type="hidden" name="type" value="Airport" required>
-                                        <div class="col-md-3 col-sm-3 remove-padding-left">
+                                        <div class="col-md-3 col-sm-6 remove-padding-left">
                                             <strong>Pick Up City</strong>
                                              <div class="field-holder">  
                                                  <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
@@ -352,7 +357,7 @@
                                                     <span class="fas fa-map-marker-alt"></span>
                                               </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3 res-padding">
+                                        <div class="col-md-3 col-sm-6 res-padding">
                                             <strong>Date & Time</strong>
                                             <div class="field-holder datetimepicker">
                                                 <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
@@ -360,7 +365,7 @@
                                              </div>
                                         </div>
 
-                                        <div class="col-md-3 col-sm-3 remove-padding-left">
+                                        <div class="col-md-3 col-sm-6 remove-padding-left">
                                                <strong>Drop City</strong>
                                                <div class="field-holder">
                                                 <select class="selectpicker" data-live-search="true" list="drop_cities" id="to_airport_drop_city" name="drop_city" placeholder="--Select--" required>                                  
@@ -372,7 +377,7 @@
                                                </div>
                                         </div>
 
-                                        <div class="col-md-6 col-sm-6 res-padding">
+                                        <div class="col-md-6 col-sm-12 res-padding">
                                               <strong>Drop Off Address</strong>
                                               <div class="field-holder">
                                                    <input type="text" id="to_airport_drop_location" name="drop" placeholder="To Airport" required>
@@ -453,7 +458,7 @@
     <!--Banner Form 2 Content End-->
 
     <!--Booking Services Section Start-->
-    <section class="tj-book-services">
+    <section class="tj-book-services" >
         <div class="container">
             <div class="row">
                 <!--Booking Services Heading Start-->
@@ -559,7 +564,7 @@
                 </div>
                 <!--Cab Services Outer End-->
                 <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-4 col-sm-4" >
                     <div class="cab-service-box">
                         <!--Cab Services Thumb Start-->
                         <figure class="service-thumb service-box">
@@ -579,20 +584,20 @@
                     </div>
                 </div>
                 <!--Cab Services Outer End-->
-               
-               
 
             </div>
         </div>
           </div>
                   </div>
               </div>
+           
     </section>
     <!--Booking Services Section End-->
+    <section class="tj-destinations" id="nav-destinations">
 
-    <div class="container">
-        <div class="row" id="exciting-offers">
-            <a name="anchor" id="anchor"></a>
+    <div class="container" >
+        <div class="row" >
+            
           <div class="col-md-3 col-sm-3 service-box " style="margin-top: 8%; position: static;">
             <div class="service-caption">
             <h3  >Destinations</h3>
@@ -624,7 +629,7 @@
           </div>
         </div>
       </div>
-
+    </section>
     <!--Cab Services Section Start-->
     <section class="cab-services">
         <div class="container">
