@@ -37,13 +37,15 @@
 	    <![endif]-->
            <style type="text/css">
                 .alert {
-                  position: absolute;
-                  padding: 10px;
-                  background-color: #1c2b39;
+                  /*position: absolute;*/
+                  /*padding: 10px;*/
+                 /* background-color: #1c2b39;
                   color: white;
                   z-index: 999;
                   right: 2%;
-                    bottom: 3%;
+                    bottom: 3%;*/
+                     display: flow-root;
+                     margin: 0;
                 }
                 .closebtn {
                   margin-left: 15px;
@@ -59,7 +61,7 @@
                   color: white !important;
                 }
                .close{
-                   color: white !important;
+                   color: #cdd3d8 !important;
                }
             </style>
     </head>
@@ -67,6 +69,7 @@
 
 
 <body>
+
     <!--Wrapper Content Start-->
     <div class="tj-wrapper">
         <div class="loader-outer">
@@ -94,19 +97,22 @@
 
 
 
-    {% if messages %}
+   <!--  {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <strong>{{ message }}</strong>  &ensp;
             </div>
         {% endfor %}
-    {% endif %}
+    {% endif %} -->
 
 	{% include "navbar.html" %}
 
     <!-- Wrapper -->
-
+<div class="alert alert-warning alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
     {% block content %}
     {% endblock content %}
 
