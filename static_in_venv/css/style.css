@@ -5291,3 +5291,10 @@ background-color: ##4CAF50 !important;
 
 
 /*-----css which will be same on all pages if used*/
+.field-icon {
+  float: right;
+ margin-top: -47px;
+ position: relative;
+ z-index: 2;
+ margin-right: 8px;
+ }

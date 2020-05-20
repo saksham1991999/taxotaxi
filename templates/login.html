@@ -8,6 +8,13 @@
 		/*font-weight: bolder;*/ 
 		vertical-align: text-bottom;
 	}
+	.field-icon {
+  float: right;
+ margin-top: -47px;
+ position: relative;
+ z-index: 2;
+ margin-right: 8px;
+ }
 </style>
 		<!--Wrapper Content Start-->
 		<div class="tj-wrapper">
@@ -43,7 +50,8 @@
 											</div>
 											<div class="field-holder">
 												<span class="fas fa-lock"></span>
-												<input type="password" name="password" placeholder="Password" required>
+												<input type="password" name="password" id="password-field" placeholder="Password" required>
+												<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 												<a href=""><b>Forgot Password ?</b></a>
 												
 											</div>
@@ -125,6 +133,7 @@ font-size: 13px;" class="icon-phone icomoon"></span>
 											<div class="field-holder">
 												<span class="fas fa-lock"></span>
 												<input type="password" id="pass" name="password" placeholder="Choose your password" required>
+												<span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 												<small id="password_strength" style="font-weight:600;padding-left: 30px;">&nbsp; </small>
 												
 											</div>
@@ -255,4 +264,17 @@ font-size: 13px;" class="icon-phone icomoon"></span>
         });
     });
 </script>
+<script type="text/javascript">
+	$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 {% endblock extra_scripts %}

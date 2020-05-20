@@ -15,6 +15,13 @@
  button:hover{
  	background-color: #4CAF50 !important;
  }
+ .field-icon {
+  float: right !important;
+ margin-top: -47px !important;
+ position: relative !important;
+ z-index: 2 !important;
+ margin-right: 8px !important;
+ }
 </style>
 
 
@@ -62,8 +69,8 @@
                                         <div class="col-md-12 col-sm-12">
 											<div class="info-field" style="height: 95px">
 												<label>Password</label>
-												<span class="fas fa-lock"></span>
-												<input type="password" id="pass" name="password" placeholder="Choose Your Password" style="margin-bottom: 1px" required>
+												<!-- <span class="fas fa-lock"></span> -->
+												<input type="password" id="pass" name="password" placeholder="Choose Your Password" style="margin-bottom: 1px" required><span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 												<label id="password_strength" style="font-weight:600;padding-left: 30px;">&nbsp; </label>
 											</div>
 										</div>
@@ -94,8 +101,9 @@
                                     <div class="col-md-12 col-sm-12">
                                         <div class="info-field">
                                             <label>Password</label>
-                                            <span class="fas fa-lock"></span>
-                                            <input type="password" id="pass" name="password" placeholder="Enter Password" required>
+                                            <!-- <span class="fas fa-lock"></span> -->
+                                            <input type="password" id="loginpass" name="password" placeholder="Enter Password" required>
+                                            <span toggle="#loginpass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
                                         <a href=""><b>Forgot Password ?</b></a>
                                     	<br>
@@ -202,5 +210,17 @@
             $("#password_strength").css("color", color);
         });
     });
+</script>
+<script type="text/javascript">
+	$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
 </script>
 {% endblock extra_scripts %}
