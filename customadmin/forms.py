@@ -55,3 +55,19 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = coremodels.User
         fields = ['first_name', 'last_name', 'email', 'mobile', 'username']
+
+class VendorForm(forms.ModelForm):
+    class Meta:
+        model = vendormodels.vendorprofile
+        exclude = []
+
+class VendorCarForm(forms.ModelForm):
+    class Meta:
+        model = vendormodels.vendor_cars
+        exclude = ['vendor']
+
+class VendorDriverForm(forms.ModelForm):
+    class Meta:
+        model = vendormodels.driver
+        exclude = ['vendor']
+

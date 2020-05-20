@@ -214,43 +214,54 @@ def VendorsView(request):
 
 def VendorView(request):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, 'vendors/vendor.html', context)
 
 def AddVendorView(request):
-    context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    userform = forms.UserForm()
+    profileform = forms.VendorForm()
+    context = {
+        'userform':userform,
+        'profileform':profileform,
+    }
+    return render(request, 'vendors/vendor_form.html', context)
 
 def EditVendorView(request):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, 'vendors/vendor_form.html', context)
 
 def DeleteVendorView(request):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, '', context)
 
 def AddVendorCarView(request, id):
-    context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    form = forms.VendorCarForm()
+    context = {
+        'form':form,
+    }
+    return render(request, 'vendors/vendor_car_form.html', context)
 
 def EditVendorCarView(request, id):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, 'vendors/vendor_car_form.html', context)
 
 def DeleteVendorCarView(request, id):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, '', context)
 
 def AddVendorDriver(request):
-    context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    form = forms.VendorDriverForm()
+    context = {
+        'form':form,
+    }
+    return render(request, 'vendors/vendor_driver_form.html', context)
 
 def EditVendorDriver(request, id):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, 'vendors/vendor_driver_form.html', context)
 
 def DeleteVendorDriver(request, id):
     context = {}
-    return render(request, 'custom_admin/customers/index.html', context)
+    return render(request, '', context)
 
 
 
