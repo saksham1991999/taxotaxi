@@ -10,6 +10,25 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
  <style type="text/css">
+    .tj-form2-tabs .nav-tabs > li.active > a, .tj-form2-tabs .nav-tabs > li.active > a:hover, .tj-form2-tabs .nav-tabs > li.active > a:focus{
+    background-color:#ffc000;
+      height: 69px;
+font-size: 18px;
+bottom: 0px;
+    }
+    .airport-section .tj-form2-tabs .nav-tabs > li.active > a,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:hover,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:focus{
+    background-color:#ffc000;
+      padding: 12px;
+height: auto;
+font-size: 18px;
+bottom: -3px;
+    }
+    @media (max-width: 1180px){
+      /*.tj-banner-form2{
+      margin-top: -190px !important;
+     }*/
+    }
+
   .tj-destinations{
     float: left;
     width: 100%;
@@ -74,7 +93,6 @@
     }
     
     .tj-reviews .reviews-slider .review-item{
-     {#ax-height: 341px;#}
      min-height: 341px;
      }
      
@@ -110,6 +128,9 @@
       color:#fff;
       padding: 3%;
       background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.09) 0%, rgba(0, 0, 0, .9) 100%);
+      }
+      #cab-slider .owl-controls .owl-nav{
+       display: none !important;
       }
       #owl-one .owl-carousel .owl-controls .owl-nav .owl-prev{
       left: -2%;
@@ -167,8 +188,8 @@
             <div class="slide-caption">
               <div class="container">
                 <div class="slide-inner">
-                  <strong>{{ banner.h5|linebreaks|escape }}</strong>
-                  <h2>{{ banner.h2|linebreaks|escape }}</h2>
+                  <h2>{{ banner.h5|linebreaks|escape }}</h2>
+                  <!-- <h2>{{ banner.h2|linebreaks|escape }}</h2> -->
                 </div>
               </div>
             </div>
@@ -185,7 +206,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12">
                     <!--Banner Form 2 Nav Start-->
-                     <div class="tj-form2-tabs">
+                     <div id="maintab" class="tj-form2-tabs">
                         <ul class="nav nav-tabs">
                             <li class="active"  id="ONEWAY"><a href="#one-way" data-toggle="tab">One Way</a></li>
                             <li id="AIRPORT"><a href="#airport" data-toggle="tab">Airport</a></li>
@@ -465,8 +486,7 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="tj-heading-style">
                         <h3>Get Booking in Easy Steps</h3>
-                        <p>Now, Schedule for later. We need your location.<br>
-                        Allow location access on the next step for accurate picture & fast cab booking</p>
+                        <p>We are here to make your road trip booking hassle free with three easy clicks i.e. fill details, confirm itinerary and make payment.</p>
                     </div>
                 </div>
                 <!--Booking Services Heading End-->
@@ -536,7 +556,7 @@
                         <!--Cab Services Info Start-->
                         <div class="service-desc" >
                             <h4>Make Reservation</h4>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p>
+                            <p>We are here to make your road trip booking hassle free with three easy clicks i.e. fill details, confirm itinerary and make payment.</p>
                         </div>
                         <!--Cab Services Info End-->
                     </div>
@@ -557,7 +577,7 @@
                         <!--Cab Services Info Start-->
                         <div class="service-desc" >
                             <h4>Vehicle Confirmation</h4>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p>
+                            <p>Confirmed vehicle provided as per itinerary for your luxury </p>
                         </div>
                         <!--Cab Services Info End-->
                     </div>
@@ -578,7 +598,7 @@
                         <!--Cab Services Info Start-->
                         <div class="service-desc" >
                             <h4>Enjoy your Trips</h4>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p>
+                            <p>Comfortable vehicle of your choice to enjoy memorable journey</p>
                         </div>
                         <!--Cab Services Info End-->
                     </div>

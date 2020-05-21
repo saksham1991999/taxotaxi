@@ -1049,13 +1049,14 @@ h1,h2,h3,h4,h5,h6{
 	left:0;
 	width:100%;
 	float:left;
-	bottom:271px;
+	/*bottom:336px;*/
 	z-index:999;
+	top: 36px;
 }
 .slide-item .slide-inner{
 	float:left;
 	width:100%;
-	text-align:center;
+	text-align:left;
 }
 .slide-item .slide-caption strong{
 	font-size:22px;
@@ -1066,12 +1067,14 @@ h1,h2,h3,h4,h5,h6{
 	font-weight:normal;
 }
 .slide-item .slide-caption h2{
-	font-size:50px;
-	line-height:60px;
-	color:#fafafa;
-	font-weight:600;
-	font-family:'Montserrat',sans-serif;
-	margin-bottom:25px;
+    font-size: 2.4vw;
+    line-height: 3vw;
+    color: #fafafa;
+    font-weight: 800;
+    font-family: 'Montserrat',sans-serif;
+    /*margin-bottom: 71px;*/
+    padding-right: 27%;
+}
 }
 
 .slide-item img{
@@ -2191,7 +2194,10 @@ background-color: white;
 	position:relative;
 	padding:0 0 31px;
 	z-index: 3;
-	margin-top: -222px;
+	margin-top: -250px;
+}
+.airport-section .tj-banner-form2{
+	margin-top: -60px;
 }
 .tj-form2-tabs{
 	float:left;
@@ -2203,7 +2209,7 @@ background-color: white;
 	border:none;
 }
 .tj-form2-tabs .nav-tabs li a {
-    font-family: 'Montserrat',sans-serif;
+    /*font-family: 'Montserrat',sans-serif;
     line-height:22px;
     display: block;
     font-size: 18px;
@@ -2214,13 +2220,41 @@ background-color: white;
 	width:180px;
 	border:none;
 	border-radius:0;
-	background-color:#fff;
+	background-color:#fff;*/
+	font-family: 'Montserrat',sans-serif;
+line-height: 22px;
+display: block;
+font-size: 17px;
+color: #44444482;
+font-weight: 800;
+padding: 19px 0;
+text-align: center;
+width: 180px;
+border: none;
+border-radius: 0;
+background-color: #eee;
+bottom: -6px
+}
+.airport-section .tj-form2-tabs .nav-tabs li a { 
+	font-family: 'Montserrat',sans-serif;
+    line-height: 22px;
+    display: block;
+    font-size: 17px;
+    color: #44444482;
+    font-weight: 800;
+    padding: 19px 0;
+    text-align: center;
+    width: 180px;
+    border: none;
+    border-radius: 0;
+    background-color: #eee;
+    
 }
 .tj-form2-tabs .nav-tabs > li.active > a,
 .tj-form2-tabs .nav-tabs > li.active > a:hover,
 .tj-form2-tabs .nav-tabs > li.active > a:focus{
 	border:none;
-	color:#fff;
+	color:#000;
 }
 .banner-hover{
 	z-index: 999;
@@ -2240,7 +2274,7 @@ background-color: white;
 	font-family: 'Montserrat',sans-serif;
     line-height:22px;
 	font-size:18px;
-	color:#444444;
+	color:#fff;
 	margin:0 0 15px;
 	display:block
 }
@@ -5280,14 +5314,7 @@ background-color: ##4CAF50 !important;
 .set-image{
     height: 530px !important;
 }
-@media (max-width: 1400px)
-{.set-image {
-    height: auto !important;
-}
-@media (min-width: 2000px){
-	.tj-cab-slider .slider-item img{
-    height: 530px !important;
-}
+
 
 
 /*-----css which will be same on all pages if used*/

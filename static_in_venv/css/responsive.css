@@ -1,24 +1,27 @@
 /*
-	Project: Prime Cab
+	Project: Taxotaxi
 	Responsive CSS File
 */
  /*for navbar header*/
-@media (max-width: 500px){.container .col-md-3{
-    width: 100%;}
+@media (max-width: 500px){
+	.container .col-md-3{
+    width: 100%;
+}
+.tj-form2-tabs .nav-tabs li a{
+		font-size:13px !;
+		/*padding: 13px 12px;*/
+		width:90px;
+	}
+
    
 }
-@media (max-width: 500px){.tj-banner-form2 {
+@media (max-width: 992px){.tj-banner-form2 {
     margin-top: -58px;}
    
 }
 @media(max-width: 500px){.banner-hover{
 	margin-left: 1%;
 	}}
-@media (max-width: 767px){.tj-form2-tabs .nav-tabs li a {
-    font-size: 12px;
-    padding: 13px 12px;
-    width: auto;
-}}
 @media (min-width: 1920px){
 	
 	/*.slide-item .slide-caption{
@@ -29,8 +32,8 @@
 		line-height:28px;
 	}
 	.slide-item .slide-caption h2{
-		font-size:52px;
-		line-height:62px;
+		/*font-size:52px;
+		line-height:62px;*/
 	}
 	
 }
@@ -131,11 +134,15 @@
 		width:100%;
 		height:auto;
 	}
+	.tj-banner-form2{
+		margin-top: -50px;
+	}
+
 	/*End Homepage 1 Styles*/
 	
 	/* Homepage 2 Styles*/
 	.slide-item .slide-caption h2{
-		font-size:40px;
+		/*font-size:40px;*/
 		line-height:50px;
 	}
 	.slide-item .slide-caption{
@@ -391,11 +398,12 @@
 		padding-right:0;
 	}
 	.slide-item .slide-caption{
-		bottom:100px;
+		bottom:145px;
 	}
 	.slide-item .slide-caption h2{
-		font-size: 30px;
-		line-height: 40px;
+		/*font-size: 30px;*/
+		line-height: inherit;
+		padding-right: 25%;
 	}
 	.tj-cab-slider .owl-prev{
 		left: 10px;
@@ -1157,10 +1165,12 @@
 		display:none;
 	} */
 	.slide-item .slide-caption{
-		bottom:30%;
+		bottom:45%;
 	}
 	.slide-item .slide-caption h2{
-		display:none;
+		/*font-size: inherit;*/
+        line-height: inherit;
+        padding-right: inherit;
 	}
 	.slide-item .slide-caption strong{
 		margin-bottom:15px;
@@ -1251,9 +1261,9 @@
 		margin-top:15px;
 	}
 	.tj-form2-tabs .nav-tabs li a{
-		font-size:12px;
-		padding: 13px 12px;
-		width:auto;
+		font-size:15px;
+		/*padding: 13px 12px;*/
+		width:125px;
 	}
 	.tj-book-services .tj-heading-style h3,
 	.tj-cab-filter .tj-heading-style h3{
@@ -1448,6 +1458,9 @@
 	.blog-outer .blog-thumb .thumb-inner{
 		top:35%;
 	}
+.airport-section .tj-form2-tabs{
+	margin-top: -44px;
+}
 }
 
 /* Responsive CSS For Gallery Carousel */
@@ -1464,6 +1477,45 @@
 @media ( min-width:320px ) and ( max-width:480px ){
 	.booking-frm .ride-terms {
 		width: 93%;
+	}
+}
+@media(min-width:1026px) and (max-width:1285px){
+    .tj-banner-form2 {
+    margin-top: -15%;
+
+	}
+	.tj-banner-form2 {
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 0 0 31px;
+    z-index: 3;
+    margin-top: -15%;
+    }
+
+}
+@media(min-width: 1350px){
+	.slide-item .slide-caption h2{
+    font-size: 28px;
+    line-height: 36px;
+    color: #fafafa;
+    font-weight: 800;
+    font-family: 'Montserrat',sans-serif;
+    margin-bottom: 71px;
+    padding-right: 390px;
+}
+}
+@media (max-width: 1400px)
+{.set-image {
+    height: auto !important;
+}
+@media (min-width: 2000px){
+	.tj-cab-slider .slider-item img{
+    height: 530px !important;
+}
+@media (min-width: 3300px){
+	.nav-width{
+		width: 25% !important;
 	}
 }
 		
