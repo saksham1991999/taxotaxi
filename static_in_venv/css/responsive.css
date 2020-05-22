@@ -1513,9 +1513,9 @@ line-height: 1vw;
 		width: 93%;
 	}
 }
-@media(min-width:1024px) {
+@media(min-width:1024px) and (max-width:1195px) {
     .nav-width{
-    	width: 22%;
+    	width: 22%!important;
     }
 }
 @media(min-width:1026px) and (max-width:1285px){
