@@ -342,7 +342,7 @@ input:focus{
                      <div class="inputlayout " >
                       <div style="width: 80%">{{ advance }}</div>
                         <div class="icon1 icon-style">
-                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                           <input type="checkbox" class="check" style="display: inline-blocks;">
                         </div>
                      </div>
                 </div>
@@ -353,7 +353,7 @@ input:focus{
                      <div class="inputlayout " >
                       <div style="width: 80%">{{ final_ride_fair }}</div>
                         <div class="icon1 icon-style">
-                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                           <input type="checkbox" class="check" style="display: inline-blocks;">
                         </div>
                      </div>
                 </div>
@@ -491,6 +491,11 @@ input:focus{
 
 {% block extra_scripts %}
 <script type="text/javascript">
+  $(document).ready(function(){
+    $('.check').click(function() {
+        $('.check').not(this).prop('checked', false);
+    });
+});
    $( document ).ready(function () {
         {% for checkbox in ridecheckboxes %}
             $('#checkbox{{ checkbox.id }}').prop("checked", false);

@@ -234,8 +234,8 @@ span.glyphicon-stats{
 						<div class="slide-caption" style="bottom: 138px!important;">
 							<div class="container">
 								<div class="slide-inner">
-									<strong>{{ banner.h5|linebreaks|escape }}</strong>
-									<h2>{{ banner.h2|linebreaks|escape }}</h2>
+									<h2>{{ banner.h5|linebreaks|escape }}</h2>
+									<!-- <h2>{{ banner.h2|linebreaks|escape }}</h2> -->
 								</div>
 							</div>
 						</div>
@@ -311,7 +311,7 @@ color: white;">*Price does not include toll tax,state tax & GST</h3>
                      <div class="tab-content" style="padding: 16px 1px;">
                             <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
                               <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Additional Information Required (if any)</h5></li>
-                              <li><h6  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h6></li>
+                              <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5></li>
 
                              {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value > 0 %}
@@ -320,7 +320,7 @@ color: white;">*Price does not include toll tax,state tax & GST</h3>
                                 {% endif %}
                              {% endfor %}
 
-                            <li><h6  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h6></li>
+                            <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5></li>
                             {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value == 0 %}
                               <li >  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">

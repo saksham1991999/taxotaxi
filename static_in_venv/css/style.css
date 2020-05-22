@@ -184,6 +184,10 @@ h1,h2,h3,h4,h5,h6{
 	text-decoration:none;
 }
 
+#cab-slider .owl-controls .owl-nav{
+       display: none !important;
+      }
+
 /* 04. Preloader */
 .loader-outer{
 	position:fixed;
