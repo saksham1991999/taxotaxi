@@ -5,13 +5,6 @@
 
 {% block extra_stylesheet %}
 <style type="text/css">
-  .fail2 {
-    visibility: visible;
-    color: red;
-}
-  small{
-    visibility: hidden;
-}
 
   .customer-tab{
     text-decoration: overline;
@@ -62,13 +55,6 @@
     height: 100%;
     margin: 0;
     padding: 0;
-  }
-
-  #map {
-    height: 100%;
-    float: left;
-    width: 70%;
-    height: 100%;
   }
 
   .label-right-allign {
@@ -389,7 +375,7 @@
 
                       </li>
                       <li class="row row1">
-                        <a href="#yourPlaces" data-toggle="tab">
+                        <a href="#referFriend" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a>
                       </li>
                       <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
@@ -461,12 +447,12 @@
                                          {% render_field profileform.address class="form-control" type="text" %}
                                       </div>
                                    </div>
-                                   <div class="row input1">
+                                   <!-- <div class="row input1">
                                       <label class="col-sm-4 col-form-label label-right-allign">Password</label>
                                       <div class="col-sm-8">
                                           <input type="password" class="form-control" id="inputPassword" name="password">
                                       </div>
-                                   </div>
+                                   </div> -->
                                    <div class=" row input1">
                                      <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
                                      <div class="col-sm-8 drag-drop1">
@@ -512,13 +498,14 @@
                                    <div class="form-group row input1">
                                       <label class="col-sm-4 col-form-label label-right-allign">Enter Current Password</label>
                                       <div class="col-sm-8">
-                                         <input type="password" class="form-control" name="current_password">
+                                         <input type="password" id="current-pass" class="form-control" name="current_password">
                                       </div>
                                    </div>
                                    <div class="form-group row input1">
                                       <label class="col-sm-4 col-form-label label-right-allign">Enter New Password</label>
                                       <div class="col-sm-8">
-                                         <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" keydown="remove1(this.Element)">
+                                         <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
+                                         <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                          <span class="form-text" id="password_strength"></span>
                                          <small class="form-text" id="password">Error message</small>
                                       </div>
@@ -527,6 +514,7 @@
                                        <label class="col-sm-4 col-form-label label-right-allign">Confirm New Password</label>
                                        <div class="col-sm-8">
                                           <input type="Password" class="form-control" name="new_password" id="passwordConfirm1" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                          <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                           <small class="form-text" id="password2">Error message</small>
                                        </div>
                                     </div>
@@ -542,8 +530,15 @@
                           <div class="col-md-12 col-sm-12">
                             <div class="adjustYellowButtonsSecond row input1">
                               <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
-                              <div class="col-sm-5">
-                                <input type="text" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                              <div class="col-sm-5" style="display: flex;">
+                                <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                                <div class="copytooltip button1">
+                                    <button style="width: 88px;
+    height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
+                                      <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                            Copy text
+                                      </button>
+                                 </div>
                               </div>
                             </div>
 
@@ -932,7 +927,7 @@
           <!--////////////////// End of Cancel Ride ////////////// -->
 
           <!-- //////////start of Reffer a friend//////////////////// -->
-          <div class="tab-pane" id="yourPlaces" role="tabpanel">
+          <div class="tab-pane" id="referFriend" role="tabpanel">
             <h4 class="text-center tab-heading">Refer a friend</h4><br>
             <div class="col-sm-12 col-md-12 col-lg-12">
 
@@ -945,15 +940,6 @@
 
           <!--/////////////end of your reffer your friends///////////  -->
 
-          <!-- /////////start of refer a friend////////////// -->
-          <div class="tab-pane" id="referFriend" role="tabpanel">
-
-            <h1 class="text-center" style="margin: 0px; margin-top: 20px; margin-bottom: 20px">Refer a Friend</h1>
-          </div>
-
-          <!-- end of refer s frnds/////////////////// -->
-
-
           <div class="tab-pane" id="settings" role="tabpanel">jjjjjjjjjjj</div>
         </div>
 
@@ -965,22 +951,22 @@
 {% endblock content %}
 
 <script type="text/javascript">
-  function initMap() {
-    var directionsService = new google.maps.DirectionsService;
-    var directionsRenderer = new google.maps.DirectionsRenderer;
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6,
-      center: {
-        lat: 41.85,
-        lng: -87.65
-      }
-    });
-    directionsRenderer.setMap(map);
+  // function initMap() {
+  //   var directionsService = new google.maps.DirectionsService;
+  //   var directionsRenderer = new google.maps.DirectionsRenderer;
+  //   var map = new google.maps.Map(document.getElementById('map'), {
+  //     zoom: 6,
+  //     center: {
+  //       lat: 41.85,
+  //       lng: -87.65
+  //     }
+  //   });
+  //   directionsRenderer.setMap(map);
 
-    document.getElementById('submit').addEventListener('click', function () {
-      calculateAndDisplayRoute(directionsService, directionsRenderer);
-    });
-  }
+  //   document.getElementById('submit').addEventListener('click', function () {
+  //     calculateAndDisplayRoute(directionsService, directionsRenderer);
+  //   });
+  // }
 
   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     var waypts = [];
@@ -1145,5 +1131,34 @@
         showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
     }
    })
+
+
+    //code for copy input button for referral 
+    function copyFunction() {
+  var copyText = document.getElementById("refferral-input");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+
+//Toggle password icon code
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
 </script>
 {% endblock extra_scripts %}

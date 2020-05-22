@@ -468,7 +468,7 @@ input:focus{
                 </div>
             </div>
             
-            </form>
+            
         </div>
       <div class="col-sm-12">
         <div class="row booking-frm " style="display: flex;padding: 17px 0px 15px 399px;">
@@ -476,7 +476,7 @@ input:focus{
                        font-weight: 700;background-color: #233545;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;Back</button>
                 <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                 </div>
-      </div>
+      </div></form>
     </div>
 </div>
 
@@ -491,16 +491,17 @@ input:focus{
 
 {% block extra_scripts %}
 <script type="text/javascript">
+  //Code to chose one checkbox betweent he given options(payment full or 15 %)
   $(document).ready(function(){
     $('.check').click(function() {
         $('.check').not(this).prop('checked', false);
     });
 });
-   $( document ).ready(function () {
-        {% for checkbox in ridecheckboxes %}
-            $('#checkbox{{ checkbox.id }}').prop("checked", false);
-        {% endfor %}
-    });
+   // $( document ).ready(function () {
+   //      {% for checkbox in ridecheckboxes %}
+   //          $('#checkbox{{ checkbox.id }}').prop("checked", false);
+   //      {% endfor %}
+   //  });
 
      function goBack() {
   window.history.back();

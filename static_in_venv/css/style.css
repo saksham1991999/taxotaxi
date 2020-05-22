@@ -31,7 +31,8 @@ Table of Content For Page Sections CSS
 22. User Account/Cancel Booking
 23. Contact Us
 24. Widgets
-25. css which will be same on all pages if used
+25. Customer Dashboard
+26. css which will be same on all pages if used
 	
 (Typography And Color Codes)
 
@@ -5319,7 +5320,54 @@ background-color: ##4CAF50 !important;
     height: 530px !important;
 }
 
+/*--------Customer Dashboard starts------*/
+.copytooltip {
+  position: relative;
+  display: inline-block;
+}
 
+.copytooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copytooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.copytooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+  .fail2 {
+    visibility: visible;
+    color: red;
+}
+  small{
+    visibility: hidden;
+}
+
+/*--------Customer Dashboard ends------*/
 
 /*-----css which will be same on all pages if used*/
 .field-icon {
