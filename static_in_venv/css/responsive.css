@@ -3,25 +3,56 @@
 	Responsive CSS File
 */
  /*for navbar header*/
-@media (max-width: 500px){
-	.container .col-md-3{
-    width: 100%;
+@media (max-width: 534px){
+	
+ .airport-section .tj-form2-tabs .nav-tabs > li.active > a{
+ 	width: 118px!important;
+ 	bottom: 0px;
+ 	padding: 10px!important;
+ }
+.airport-section .tj-form2-tabs .nav-tabs li a{
+	padding: 8px !important;
+width: 118px !important;
+bottom: -3px;
 }
+	/*.container .col-md-3{
+    width: 100%;
+}*/
 .tj-form2-tabs .nav-tabs li a{
-		font-size:13px !;
+		font-size:13px !important;
 		/*padding: 13px 12px;*/
-		width:90px;
+		width:90px!important;
+		bottom: -6px;
+line-height: 1vw;
 	}
 
-   
+	.tj-form2-tabs .nav-tabs li.active a {
+    /*font-size: 15px;*/
+    bottom: -3px !important;
+    height: 48px!important;
 }
-@media (max-width: 992px){.tj-banner-form2 {
-    margin-top: -58px;}
-   
+
+.tj-banner-form2 
+{
+    margin-top: 5px ;
 }
-@media(max-width: 500px){.banner-hover{
+.banner-hover{
 	margin-left: 1%;
-	}}
+	}
+   
+}
+@media (max-width: 992px)
+{
+	.tj-banner-form2 {
+    margin-top: 8px;}
+    #nav-destinations .service-box{
+    	text-align: center;
+        width: 100%;
+    }
+   .cab-services .cab-service-box{
+   	min-height: 435px;
+   }
+}
 @media (min-width: 1920px){
 	
 	/*.slide-item .slide-caption{
@@ -701,6 +732,9 @@
 @media(max-width:767px){
 	
 	/* Header Styles */
+	.full-width{
+		width: 100%!important;
+	}
 	.tj-logo{
 		padding: 25px 0 15px;
 		text-align:center;
@@ -1479,6 +1513,11 @@
 		width: 93%;
 	}
 }
+@media(min-width:1024px) {
+    .nav-width{
+    	width: 22%;
+    }
+}
 @media(min-width:1026px) and (max-width:1285px){
     .tj-banner-form2 {
     margin-top: -15%;
@@ -1513,7 +1552,7 @@
 	.tj-cab-slider .slider-item img{
     height: 530px !important;
 }
-@media (min-width: 3300px){
+@media (min-width: 3000px){
 	.nav-width{
 		width: 25% !important;
 	}
