@@ -1,10 +1,37 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% load widget_tweaks %}
 
 {% block extra_stylesheet %}
 <style type="text/css">
+  /*Css for star rating/feedback*/
+.rating-box {
+  display: inline-block;
+}
+.rating-box .rating-container {
+    direction: rtl !important;
+  }
+.rating-box .rating-container label {
+      display: inline-block;
+      /*margin: 15px 0;*/
+      color: #d4d4d4;
+      cursor: pointer;
+      font-size: 23px;
+      transition: color 0.2s;
+    }
+   .rating-box .rating-container input {
+      display: none;
+    }
+  .rating-box .rating-container  label:hover,.rating-box .rating-container label:hover ~ label,.rating-box .rating-container input:checked ~ label  {
+      color: gold;
+    }
+/*Feedback End*/
+  .CardFooter{
+    background-color: #eee;
+    padding: 7px;
+  }
 
   .customer-tab{
     text-decoration: overline;
@@ -563,7 +590,7 @@
                   {% for ride in upcoming_rides %}
                     <div class="item  col-xs-4 col-lg-4">
                   <div class="row CardHeader">
-                    <div class="col-xs-8 col-md-8 col-sm-8">
+                    <div class="col-md-12 col-sm-12">
                       <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
                           class="styletext fas fa-map-marker-alt"></span></strong>
 
@@ -644,6 +671,77 @@
             </div> -->
 
               <div id="products" class="row list-group ">
+                  <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-md-12 col-sm-12">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                                  Airport(del.), Delhi-Agra </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Prakash Ponia</h4>
+                              <p>
+                                <span class="trip_est">Mobile : 8213133322</span><br>
+                                <span class="trip_est">Email : Poniaprakash@gmail.com </span><br>
+                                <span class="trip_est">Booked On : 01/12/2019,10:00 AM </span><br>
+                                <span class="trip_est">Pickup Date : 19/02/2020 12:00 PM</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1700.50</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">3000.00</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1000.00</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">2000.00</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                            </div>
+                          </div>
+                          <div class="row CardFooter">
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                              <div class="rating-box">
+                              <div class="rating-container">
+                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+                              <strong>Review</strong>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                            <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
+                              <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button>
+                                
+                            </div>
+
+                          </div>
+                        </div>
+
 
                     {% for ride in completed_rides %}
                       <div class="item  col-xs-4 col-lg-4">
@@ -705,7 +803,7 @@
                       <h1>You have no booking history.</h1>
                       </div>
                     {% endfor %}
-                  {% comment %}
+           {% comment %}
                 <div class="containe-pagination">
                   <div class="tab-content">
 
@@ -846,7 +944,7 @@
                     <li> <a href="#">&raquo;</a></li>
                   </ul>
                 </div>
-                  {% endcomment %}
+          {% endcomment %}
               </div> <!-- </div> -->
 
             </div>
@@ -937,7 +1035,53 @@
             </div>
           </div>
 
+    <div class="modal fade" id="myModal" role="dialog">
+       <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <input type="text" name="modelid" id="ridemodalvalue">
+          <h4 class="modal-title">Please Rate Us:</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="rating-box">
+                              <div class="rating-container">
+                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+                              <strong>Ride Comfort</strong>
+                            </div>
+                            </div>
 
+                   <div class="rating-box">
+                              <div class="rating-container">
+                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
+                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+  
+                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+                              <strong>Driver Experience</strong>
+                            </div>
+                            </div>         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
           <!--/////////////end of your reffer your friends///////////  -->
 
           <div class="tab-pane" id="settings" role="tabpanel">jjjjjjjjjjj</div>
@@ -951,22 +1095,22 @@
 {% endblock content %}
 
 <script type="text/javascript">
-  // function initMap() {
-  //   var directionsService = new google.maps.DirectionsService;
-  //   var directionsRenderer = new google.maps.DirectionsRenderer;
-  //   var map = new google.maps.Map(document.getElementById('map'), {
-  //     zoom: 6,
-  //     center: {
-  //       lat: 41.85,
-  //       lng: -87.65
-  //     }
-  //   });
-  //   directionsRenderer.setMap(map);
+  function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsRenderer = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: {
+        lat: 41.85,
+        lng: -87.65
+      }
+    });
+    directionsRenderer.setMap(map);
 
-  //   document.getElementById('submit').addEventListener('click', function () {
-  //     calculateAndDisplayRoute(directionsService, directionsRenderer);
-  //   });
-  // }
+    document.getElementById('submit').addEventListener('click', function () {
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
+    });
+  }
 
   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
     var waypts = [];
@@ -1015,6 +1159,13 @@
   });
 </script>
 <script type="text/javascript">
+function passRide(val){
+      document.getElementById('ridemodalvalue').value = val;
+      console.log(val);
+       rideID=val;
+  }
+  
+
   $(document).ready(function () {
     $('.input-file').change(function () {
       $('.p23').text(this.files.length + " file(s) selected");
@@ -1160,5 +1311,48 @@ $(".toggle-password").click(function() {
     input.attr("type", "password");
   }
 });
+
+
+var valueHover = 0;
+    function calcSliderPos(e,maxV) {
+          return (e.offsetX / e.target.clientWidth) *  parseInt(maxV,10);
+      }
+      
+    $(".starrate").on("click",function(){
+      $(this).data('val',valueHover);
+      $(this).addClass('saved')
+      });
+      
+    $(".starrate").on("mouseout",function(){
+      upStars($(this).data('val'));
+      }); 
+
+      
+    $(".starrate span.ctrl").on("mousemove",function(e) { 
+      var maxV = parseInt($(this).parent("div").data('max'))
+      valueHover = Math.ceil(calcSliderPos(e,maxV)*2)/2;
+      upStars(valueHover);
+      });
+  
+
+function upStars(val) {
+  
+  var val = parseFloat(val);
+  $("#test").html( val.toFixed(1) );
+  
+  var full = Number.isInteger(val);
+  val = parseInt(val);
+  var stars = $("#starrate i");
+  
+  stars.slice(0,val).attr("class" , "fas fa-fw fa-star" );
+  if(!full)  { stars.slice(val,val+1).attr("class" , "fas fa-fw fa-star-half-alt" ); val++ }
+  stars.slice(val,5).attr("class" , "far fa-fw fa-star" );  
+  }  
+      $(document).ready(function() {
+      $(".starrate span.ctrl").width($(".starrate span.cont").width());
+      $(".starrate span.ctrl").height($(".starrate span.cont").height());
+      });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 {% endblock extra_scripts %}
