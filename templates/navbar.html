@@ -2,6 +2,10 @@
 {% load static %}
 
 <style type="text/css">
+	.nav-active a{
+		border-color: #ffc000 !important;
+color: #ffc000!important;
+	}
 	.dropdownlist{
 		text-align: center;
 		color: #bcced8!important;
@@ -153,13 +157,13 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 									  <ul class="nav navbar-nav" style="width: 100%">
 
 
-                                        <li id="nav-home" >
-											<a href="#one-way" data-toggle="tab">Home</a>
+                                        <li id="nav-home" class="nav-active">
+											<a  href="#one-way" data-toggle="tab">Home</a>
 										</li>
-										<li id="nav-oneway">
+										<li id="nav-oneway" class="nav-active">
 											<a href="#one-way" data-toggle="tab">One Way</a>	
 										</li>
-										<li id="nav-airport">
+										<li id="nav-airport" class="nav-active">
 											<a href="#airport" data-toggle="tab">Airport</a>
 										</li>
 
@@ -179,16 +183,16 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 											<a href="{% url 'core:coming_soon' %}">Daily Rental</a>
 										</li>
  -->
-										<li>
+										<li class="nav-active">
 											<a href="http://www.taxotaxi.com/#nav-destinations">Exciting Offers</a>
 										</li>
 
-										<li>
+										<li class="nav-active">
 											<a href="{% url 'blog:home' %}">Blog</a>
 										</li>
 
 
-										<li>
+										<li class="nav-active">
 											<a href="{% url 'core:contact' %}">Contact Us</a>
 										</li>  
 									  <li class="nav-item dropdown" style="max-height: 59px;float: right;">
@@ -207,8 +211,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
                                               </span>
                                           </a>
 
-                                          	 <ul id="nav_dropdown" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid rgb(28, 43, 57);border-radius: 0px 0px 6px 6px;
-    background-color: #1c2b39;">  
+                                          	 <ul id="nav_dropdown" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border: 1px solid rgb(28, 43, 57);border-radius: 0px 0px 6px 6px;background-color: #1c2b39;">  
                                           	 	<li><a class="dropdownlist"  href="{% url 'core:dashboard' %}">My Dashboard</a> </li>
                                           	 <li>	<a class="dropdownlist" href="{% url 'core:logout' %}">Log Out</a> </li>
                                           	 </ul> 
