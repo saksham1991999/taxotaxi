@@ -360,6 +360,7 @@
     margin-bottom: 40px;
   }
   }
+  #my-file { visibility: hidden; }
 </style>
 {% endblock extra_stylesheet %}
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -443,7 +444,7 @@
                                 {% csrf_token %}
                                 <input type="hidden" name="type" value="profile">
 
-                                <div class="col-sm-7" style="margin-top: 24px;">
+                                <div class="col-sm-7" style="margin-top: 24px;margin-bottom: 24px;">
                                    <div class=" row input1">
                                        <label class="col-sm-4 col-form-label label-right-allign">First Name</label>
                                           <div class="col-sm-8">
@@ -480,7 +481,7 @@
                                           <input type="password" class="form-control" id="inputPassword" name="password">
                                       </div>
                                    </div> -->
-                                   <div class=" row input1">
+                                   <div class="row input1">
                                      <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
                                      <div class="col-sm-8 drag-drop1">
                                         <div class="form-control">
@@ -492,9 +493,23 @@
                                    </div>
                                 </div>
 
-                                <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                                   <div class="drag-drop">
+                                <div class="col-sm-5" style="margin-top: 24px;">
+                                  <div class="row text-center" class="">
+                                    <img src="{% static 'images/comment_img1.jpg' %}" width="50%" alt="">  
+                                  </div>
+                                  <div class="row text-center" style="margin-top: 20px;">
+                                    <input type="file" class="input-file" id="my-file">
+                                    <button type="button" id="my-button" class="btn btn-outline-primary">Browse Files</button>
+                                    <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                                      <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                  </div>
+                                  </div>
+                                </div>
+                                <!-- <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                                  <div class="drag-drop">
+                                    <img src="{% static 'images/icons/Add.png' %}" alt="">
                                       {% render_field userform.profile_pic class="input-file" %}
+
                                       <p class="p23">
                                        <i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x">
                                        </i><br> Drag&Drop files here <br> or<br>
@@ -504,7 +519,7 @@
                                           <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
                                       </div>
                                    </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-12 adjustYellowButtons col-sm-12" style=" text-align: -webkit-center; margin-top : 40px">
                                     <div style="display: flex;width:fit-content;">
@@ -1352,6 +1367,11 @@ function upStars(val) {
       $(".starrate span.ctrl").width($(".starrate span.cont").width());
       $(".starrate span.ctrl").height($(".starrate span.cont").height());
       });
+</script>
+<script>
+  $('#my-button').click(function(){
+    $('#my-file').click();
+});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
