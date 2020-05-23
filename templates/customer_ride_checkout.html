@@ -196,29 +196,45 @@ input:focus{
             <h4 ><span>{{ request.user.first_name }}</span>'s Booking Summary</h4>
         </div>
         <div class="col-sm-6">
+            <form method="post" action="{% url 'core:cars' %}">
+                {% csrf_token %}
+
            <div class="bookingsummaryinfo" style="float: right;">
                            <p class="hover-text-style">booking summary info</p>
                             <!-- Ride Fair BreakDown -->
                            <span class="fair-breakdown " style="right: 75px;max-width: 550px;">
-                               
-                          <div class="col-sm-12" style="background-color: #eee;">
+
+                           <input type="hidden" name="car_type" id="car_type" value="{{ request.session.car_type }}" required>
+
+                               <div class="col-sm-12" style="background-color: #eee;">
                              <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5></div>
-                             <div class="col-sm-8" style="width: 70%">
-                             <ul style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 3px;">
-                                  <li>&nbsp;</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Parking charges will be Extra as Actual**</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Airport parking charges will be Extra as Actual**</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Total Tax will be Extra as Actual*</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Night charges at Rs.300 (from 10pm-6am)*</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Extra KM will per charge at the rate of ?? Per Km*</li>
-                                  <li><div class="color-box" style="background-color: #ffc000;"></div>   Early Pick-up charges will be Extra Rs.180 (4:00am-6:00am)</li>
-                            </ul>
-                            </div>
+                                 <div class="col-sm-8" style="width: 70%">
+                                     <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
+                                      <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5></li>
+
+                                     {% for checkbox in ride_checkboxes_qs %}
+                                        {% if checkbox.value > 0 %}
+                                      <li>
+                                          <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
+                                         <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value}}/-</span>
+                                      </li>
+                                        {% endif %}
+                                     {% endfor %}
+
+                                    <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5></li>
+                                    {% for checkbox in ride_checkboxes_qs %}
+                                        {% if checkbox.value == 0 %}
+                                      <li >  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
+                                         <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value}}/-</span></li>
+                                        {% endif %}
+                                     {% endfor %}
+                                    </ul>
+                                </div>
                             <div class="col-sm-4 square-box" style="width: 30%">
                               <p style="margin: 76px 20px 0px 0px;
                                         background-color: #eee;
                                         height: 85px;
-                                        padding: 33px;"> ₹ 453 </p>
+                                        padding: 33px;"> ₹ {{ checkbox_charges }} </p>
                             </div>
                             
                             <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
@@ -228,7 +244,8 @@ input:focus{
                    
 
                            </span>
-                        </div></div>
+           </div></form>
+        </div>
     </div>
     <div></div>
     <div class="row">

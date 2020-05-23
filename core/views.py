@@ -120,7 +120,14 @@ def HomeView(request):
 
                 if contactform.is_valid():
                     contactform.save()
-                    messages.success(request, 'Details sent successfully !!')
+                    name = 'Guest'
+                    if request.user.is_authenticated:
+                        name = request.user.first_name
+                    messages.success(
+                        request,
+                        'Dear' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
+                        extra_tags='alert alert-success alert-dismissible'
+                    )
                 return redirect('core:home')
         else:
             ride_type = request.POST['type']
@@ -369,7 +376,7 @@ def LoginView(request):
                     print(otp)
                     return redirect('core:register_otp_verification')
             except:
-                messages.error(request, 'Invalid Credentials')
+                messages.error(request, 'Invalid Credentials', extra_tags = 'alert alert-warning alert-dismissible')
                 return redirect('core:login')
         elif type == 'register':
             try:
@@ -399,7 +406,7 @@ def LoginView(request):
 
                 return redirect('core:register_otp_verification')
             except:
-                messages.error(request, 'Mobile Already Registered')
+                messages.error(request, 'Mobile Already Registered', extra_tags='alert alert-warning alert-dismissible')
         return redirect('core:login')
     else:
         context = {
@@ -419,7 +426,7 @@ def RegisterOTPVerification(request):
             user.save()
             return redirect('core:home')
         else:
-            messages.error(request, "Inavlid OTP")
+            messages.error(request, "Inavlid OTP", extra_tags='alert alert-warning alert-dismissible')
             return redirect('core:register_otp_verification')
     else:
         mobile = request.session['mobile']
@@ -452,7 +459,7 @@ def ContactView(request):
             messages.success(
                 request,
                 'Dear' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
-                extra_tags='alert alert-success alert-dismissible fade show'
+                extra_tags='alert alert-success alert-dismissible'
             )
         else:
             print(form.errors)
@@ -566,7 +573,7 @@ def CustomerAuthenticationView(request):
                         print(otp)
                         return redirect('core:booking-otp-verification')
                 except:
-                    messages.error(request, 'Invalid Credentials')
+                    messages.error(request, 'Invalid Credentials', extra_tags='alert alert-warning alert-dismissible')
                     return redirect('core:booking-login')
             elif type == 'register':
                 try:
@@ -596,7 +603,7 @@ def CustomerAuthenticationView(request):
 
                     return redirect('core:booking-otp-verification')
                 except:
-                    messages.error(request, 'User Already Exists')
+                    messages.error(request, 'User Already Exists', extra_tags='alert alert-warning alert-dismissible')
         return redirect('core:booking-login')
 
 def OTPVerificationView(request):
@@ -613,7 +620,7 @@ def OTPVerificationView(request):
             print('OTP VERIFIED', user.mobile_verified)
             return redirect('core:checkout')
         else:
-            messages.error(request, 'Invalid OTP')
+            messages.error(request, 'Invalid OTP', extra_tags='alert alert-warning alert-dismissible')
             return redirect('core:booking-otp-verification')
     else:
         ride_type = request.session['ride_type']
@@ -669,7 +676,7 @@ def CheckoutView(request):
                 print('--------------------COUPON----------------------')
                 print(final_ride_fair)
             except:
-                messages.error(request, 'Invalid Coupon')
+                messages.error(request, 'Invalid Coupon', extra_tags='alert alert-warning alert-dismissible')
         elif type == 'details':
             name = request.POST['name']
             mobile = request.POST['mobile']
@@ -729,6 +736,9 @@ def CheckoutView(request):
 
         request.session['final_ride_fair'] = final_ride_fair
         advance = int(ride_total*0.15)
+
+        ride_type_qs = models.ride_types.objects.get(name=ride_type)
+        ride_checkboxes_qs = models.ride_choices.objects.filter(ride_type__in=[ride_type_qs])
         context = {
             'ride_type': ride_type,
             'pickup_city': pickup_city,
@@ -756,6 +766,7 @@ def CheckoutView(request):
             'driver_allowances':driver_allowances,
             'checkbox_charges':checkbox_charges,
             'gst_charges':gst_charges,
+            'ride_checkboxes_qs':ride_checkboxes_qs,
         }
         return render(request, 'customer_ride_checkout.html', context)
 
