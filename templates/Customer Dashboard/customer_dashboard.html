@@ -120,7 +120,7 @@
     text-decoration: none;
   }
 
-  .row1 .active{
+  .row1 .active a{
     /*border-bottom: 1px solid black;*/
     /*background-color: #eee;*/
     color: black !important;
@@ -240,7 +240,7 @@
     border-color: #84a9ac;
   }
 
-  .row1 li:hover {
+  .row1 li a:hover {
     /*color: black;*/
     font-weight: bold;
   }
@@ -373,7 +373,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
              <!-- s/////////////////Side dashboard///////////////////////// -->
-            <div class="col-md-3 adjustDashboard" style="margin-top: 80px">
+            <div class="col-md-3 adjustDashboard" id="left-nav-tab" style="margin-top: 80px">
                 <div class=" container1">
                     <ul class="row row1" style="list-style-type: none;">
                       <li class="active row1">
@@ -386,20 +386,20 @@
                       </li>
                       <li  class="row row1" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample">
                         <a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
-                         <div class="collapse" id="collapseExample">
-                             <div class="row row1">
+                         <ul class="collapse" id="collapseExample" style="list-style-type: none;padding-inline-start: 10px;">
+                             <li class=" row1">
                                 <a href="#upcomingRides" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming Rides</a>
-                             </div>
-                             <div class="row row1">
+                             </li>
+                             <li class="row row1">
                                 <a href="#rideHistory" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a>
-                             </div>
-                             <div class="row row1">
+                             </li>
+                             <li class="row row1">
                                 <a href="#canceledRides" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled Rides</a>
-                             </div>
-                         </div>
+                             </li>
+                         </ul>
 
                       </li>
                       <li class="row row1">
@@ -408,11 +408,11 @@
                       </li>
                       <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
                         <a><i class="fas fa-rupee-sign"></i>&nbsp;My Wallet</a>
-                           <div class="collapse" id="collapseExample1">
-                              <div class="card card-body">
+                           <ul class="collapse" id="collapseExample1">
+                              <li class="card card-body">
                                    Your Wallet Balance Is : Rs {{ request.user.wallet_balance }}
-                              </div>
-                           </div>
+                              </li>
+                           </ul>
                        </li>
                     </ul>
                 </div>
