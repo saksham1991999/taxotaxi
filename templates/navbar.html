@@ -157,13 +157,13 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 									  <ul class="nav navbar-nav" style="width: 100%">
 
 
-                                        <li id="nav-home" class="nav-active">
+                                        <li id="nav-home" {% if request.resolver_match.view_name == 'core:home' %}class="nav-active"{% endif %}>
 											<a  href="#one-way" data-toggle="tab">Home</a>
 										</li>
-										<li id="nav-oneway" class="nav-active">
+										<li id="nav-oneway" >
 											<a href="#one-way" data-toggle="tab">One Way</a>	
 										</li>
-										<li id="nav-airport" class="nav-active">
+										<li id="nav-airport" >
 											<a href="#airport" data-toggle="tab">Airport</a>
 										</li>
 
@@ -183,16 +183,16 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 											<a href="{% url 'core:coming_soon' %}">Daily Rental</a>
 										</li>
  -->
-										<li class="nav-active">
+										<li>
 											<a href="http://www.taxotaxi.com/#nav-destinations">Exciting Offers</a>
 										</li>
 
-										<li class="nav-active">
+										<li {% if request.resolver_match.view_name == 'blog:home' %}class="nav-active"{% endif %}>
 											<a href="{% url 'blog:home' %}">Blog</a>
 										</li>
 
 
-										<li class="nav-active">
+										<li {% if request.resolver_match.view_name == 'core:contact' %}class="nav-active"{% endif %}>
 											<a href="{% url 'core:contact' %}">Contact Us</a>
 										</li>  
 									  <li class="nav-item dropdown" style="max-height: 59px;float: right;">
