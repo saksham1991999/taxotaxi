@@ -447,6 +447,10 @@ def DashboardView(request):
     else:
         return redirect('customer:dashboard')
 
+def RegisterVendorAgentView(request):
+    context = {}
+    return render(request, 'vendor/registration.html', context)
+
 def ContactView(request):
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)

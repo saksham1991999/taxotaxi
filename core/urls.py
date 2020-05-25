@@ -23,6 +23,7 @@ urlpatterns = [
     path('reset-password', views.ForgotPasswordOTPView, name='forgot_password_otp'),
 
     path('dashboard/', views.DashboardView, name='dashboard'),
+    path('register-vendor-design/', views.RegisterVendorAgentView, name='register_vendor_agent'),
 
     path('populatedata/', views.populate_data, name='populatedata'),
 

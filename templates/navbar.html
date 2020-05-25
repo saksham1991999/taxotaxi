@@ -121,8 +121,8 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 								<a href=""> <img class="img-height" src="{% static 'images/icons/Add.png' %}"></a>
 								<!-- <i class="fa fa-home"></i> -->
 								<div class=" info_text " >
-									<span class="info_title " style="display: flex;"><a style="color: #ffc000;" href="">Register as Vendor/ Agent</a></span>
-									<span><a href="">Attach your taxi</a></span>
+									<span class="info_title " style="display: flex;"><a style="color: #ffc000;" href="{% url 'core:register_vendor_agent' %}">Register as Vendor/ Agent</a></span>
+									<span><a href="{% url 'core:register_vendor_agent' %}">Attach your taxi</a></span>
 								</div>
 							</div>
 						</div>
