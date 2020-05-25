@@ -717,8 +717,14 @@ def CheckoutView(request):
             except:
                 messages.error(request, 'Invalid Coupon', extra_tags='alert alert-warning alert-dismissible')
         elif type == 'details':
-            name = request.POST['name']
-            mobile = request.POST['mobile']
+            if 'name' in request.POST:
+                name = request.POST['name']
+            else:
+                name = request.user.get_full_name()
+            if 'mobile' in request.POST:
+                mobile = request.POST['mobile']
+            else:
+                mobile = request.user.mobile
             pickup_location = request.POST['pickup_location']
             drop_location = request.POST['drop_location']
             request.session['name'] = name
