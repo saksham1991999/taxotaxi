@@ -9,11 +9,13 @@ from vendor import models as vendormodels
 from customer import models as customermodels
 from blog import models as blogmodels
 
+
 class AssignVendors(forms.ModelForm):
     class Meta:
         model = coremodels.assign_vendor
         exclude = ['booking', 'datetime']
 
+# General
 class CityForm(forms.ModelForm):
     class Meta:
         model = coremodels.city
@@ -45,17 +47,18 @@ class BlogPostForm(forms.ModelForm):
         model = blogmodels.post
         exclude = []
 
-
+# Customer Forms
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = customermodels.customerprofile
-        exclude = []
+        exclude = ['user']
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = coremodels.User
         fields = ['first_name', 'last_name', 'email', 'mobile', 'username']
 
+# Vendor Forms
 class VendorForm(forms.ModelForm):
     class Meta:
         model = vendormodels.vendorprofile
@@ -71,3 +74,8 @@ class VendorDriverForm(forms.ModelForm):
         model = vendormodels.driver
         exclude = ['vendor']
 
+# Popular Destinations Form
+class PopularDestinationsForm(forms.ModelForm):
+    class Meta:
+        model = coremodels.popular_destinations
+        fields = '__all__'

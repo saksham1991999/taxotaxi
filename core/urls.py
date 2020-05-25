@@ -12,11 +12,15 @@ urlpatterns = [
     
 
     path('faq/', views.FAQView, name='faq'),
+    path('terms-and-conditions/', views.TermsAndConditionsView, name='terms&conditions'),
     path('contact-us/', views.ContactView, name='contact'),
 
     path('login/', views.LoginView, name='login'),
     path('register/otp-verification', views.RegisterOTPVerification, name='register_otp_verification'),
     path('logout/', views.LogoutView, name='logout'),
+
+    path('forgot-password', views.ForgotPasswordView, name='forgot_password'),
+    path('reset-password', views.ForgotPasswordOTPView, name='forgot_password_otp'),
 
     path('dashboard/', views.DashboardView, name='dashboard'),
 

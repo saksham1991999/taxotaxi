@@ -178,7 +178,7 @@ class testimonials(models.Model):
         return self.name
 
 class faq(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=512)
     answer = models.TextField()
 
     def str(self):
@@ -186,6 +186,9 @@ class faq(models.Model):
 
     class Meta:
         verbose_name_plural = 'FAQs'
+
+class TermsAndConditions(models.Model):
+    term = models.TextField()
 
 class contact(models.Model):
     name = models.CharField(max_length=100)

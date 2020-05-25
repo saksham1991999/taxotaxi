@@ -31,20 +31,17 @@
                 </div>
             </div>
             <!-- end page title -->
-            <button type="button" class="btn btn-success waves-effect waves-light mb-3">
-                <i class="bx bx-add-to-queue font-size-16 align-middle mr-2"></i> Add
-            </button>
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Vendor Details<button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
-                            </button>
-                            <button type="button" style="float: right;" class="btn btn-primary mr-2 waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button>   </h4>
+                            <h4 class="card-title">Vendor Details
+                                <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                                </button>
+                            </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -53,19 +50,11 @@
                                 <tr>
                                     <th>#</th>
                                     <th>First Name</th>
-                                    <th>Middle Name</th>
                                     <th>Last Name</th>
-                                    <th>Father Name</th>
-                                    <th>Date of Birth</th>
+                                    <th>Mobile</th>
+                                    <th>Alternate Mobile</th>
                                     <th>Email</th>
-                                    <th>Contact Number</th>
-                                    <th>Address</th>
-                                    <th>Account Number</th>
-                                    <th>Account Name</th>
-                                    <th>Bank Name</th>
-                                    <th>Account Type</th>
-                                    <th>IFSC</th>
-                                    <th></th>
+                                    <th>Company Name</th>
                                     <th></th>
                                     
                                 </tr>
@@ -73,27 +62,26 @@
 
 
                                 <tbody>
+                                {% for vendor in vendors %}
                                 <tr>
-                                    <td>1</td>
-                                    <td>saksham</td>
-                                    <td></td>
-                                    <td>Mittal</td>
-                                    <td>Abcd Singh</td>
-                                    <td>20/2/2000</td>
-                                    <td>abc@gmail.com</td>
-                                    <td>9876543210</td>
-                                    <td>Delhi</td>
-                                    <td>SBI200000148965</td>
-                                    <td>Saksham</td>
-                                    <td>SBI</td>
-                                    <td>Savings</td>
-                                    <td>45132154684</td>
-                                    <td style="width: 20% !important;"><button type="button" class="btn btn-warning waves-effect waves-light">
-                                        <i class="bx bx-edit-alt font-size-16 align-middle"></i></button></td>
-                                     <td>   <button type="button" class="btn btn-danger waves-effect waves-light">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ vendor.user.first_name }}</td>
+                                    <td>{{ vendor.user.last_name }}</td>
+                                    <td>{{ vendor.user.mobile }}</td>
+                                    <td>{{ vendor.user.contact2 }}</td>
+                                    <td>{{ vendor.user.email }}</td>
+                                    <td>{{ vendor.company_name }}</td>
+
+                                    <td>
+                                        <a href="{% url 'customadmin:vendor_edit' %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:vendor_edit' %}">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                        </button></td>
+                                        </a>
+                                    </td>
                                 </tr>
+                                {% endfor %}
                          
                               
                                 </tbody>
@@ -104,17 +92,19 @@
                 </div> <!-- end col -->
             </div> <!-- end row -->
 
+        {% for vendor in vendors %}
             <div class="row">
                 <div class="col-4">
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Vendor Cars <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
-                            </button>
-                            <button type="button" style="float: right;" class="btn btn-primary mr-2 waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button></h4>
+                            <h4 class="card-title">Vendor Cars
+                                <a href="{% url 'customadmin:vendor_cars_update' vendor.id %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                    </button>
+                                    </a>
+                            </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -127,25 +117,20 @@
                                     <th>Image Front</th>
                                     <th>Image Rear</th>
                                     <th></th>
-                                    <th></th>
                                     
                                 </tr>
                                 </thead>
 
 
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>SUV</td>
-                                    <td>DL57 6799</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td style="width: 20% !important;"><button type="button" class="btn btn-warning waves-effect waves-light">
-                                        <i class="bx bx-edit-alt font-size-16 align-middle"></i></button></td>
-                                     <td>   <button type="button" class="btn btn-danger waves-effect waves-light">
-                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                        </button></td>
-                                </tr>
+                                {% for car in vendor.vendor_cars_set.all %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ car.car_type }}</td>
+                                        <td>{{ car.registration_no }}</td>
+                                        <td>{{ car.dateofregistration }}</td>
+                                    </tr>
+                                {% endfor %}
                          
                               
                                 </tbody>
@@ -159,12 +144,11 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title">Drivers<button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
-                            </button>
+                            <h4 class="card-title">Drivers
+                                <a href="{% url 'customadmin:vendor_drivers_update' vendor.id %}">
                             <button type="button" style="float: right;" class="btn btn-primary mr-2 waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button></h4>
+                            </button></a></h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -173,37 +157,25 @@
                                 <tr>
                                     <th>#</th>
                                     <th>First Name</th>
-                                    <th>Middle Name</th>
                                     <th>Last Name</th>
-                                    <th>Father Name</th>
-                                    <th>Date of Birth</th>
+                                    <th>Mobile</th>
+                                    <th>Alternate Mobile</th>
                                     <th>Email</th>
-                                    <th>Contact Number</th>
-                                    <th>Address</th>
-                                    <th></th>
-                                    <th></th>
                                 </tr>
                                 </thead>
 
 
                                 <tbody>
+                                {% for driver in vendor.driver_set %}
                                 <tr>
-                                    <td>1</td>
-                                    <td>saksham</td>
-                                    <td></td>
-                                    <td>Mittal</td>
-                                    <td>Abcd Singh</td>
-                                    <td>20/2/2000</td>
-                                    <td>abc@gmail.com</td>
-                                    <td>9876543210</td>
-                                    <td>Delhi</td>
-                                    <td style="width: 20% !important;"><button type="button" class="btn btn-warning waves-effect waves-light">
-                                        <i class="bx bx-edit-alt font-size-16 align-middle"></i></button></td>
-                                     <td>   <button type="button" class="btn btn-danger waves-effect waves-light">
-                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                        </button></td>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ driver.first_name }}</td>
+                                    <td>{{ driver.last_name }}</td>
+                                    <td>{{ driver.contact1 }}</td>
+                                    <td>{{ driver.contact2 }}</td>
+                                    <td>{{ driver.email }}</td>
                                 </tr>
-                         
+                                {% endfor %}
                               
                                 </tbody>
                             </table>
@@ -212,7 +184,7 @@
                     </div>
                 </div>
             </div> 
-            
+        {% endfor %}
 
            <!-- end row -->
 

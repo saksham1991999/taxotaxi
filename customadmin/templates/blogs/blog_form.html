@@ -35,12 +35,17 @@
             <!-- end page title -->
 
             <div class="row">
+                <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="col-6">
                     <div class="card">
                         <div class="card-body">
 
                             <h4 class="card-title"></h4>
                             <p class="card-title-desc"></p>
+
+
+
 
                             <div class="form-group row">
                                 <label for="example-text-input" class="col-md-2 col-form-label">Title</label>
@@ -120,13 +125,14 @@
                                     <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-block btn-lg btn-success waves-effect waves-light">
+                            <button type="submit" class="btn btn-block btn-lg btn-success waves-effect waves-light">
                                 <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
                             </button>
                       
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
             <!-- end row -->
 

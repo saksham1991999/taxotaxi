@@ -198,6 +198,12 @@ class ride_types_admin(ImportExportModelAdmin):
                     'comment',
                     ]
 
+class faq_admin(ImportExportModelAdmin):
+    pass
+
+class terms_and_conditions_admin(ImportExportModelAdmin):
+    pass
+
 admin.site.register(models.ride_types, ride_types_admin)
 admin.site.register(models.User)
 admin.site.register(models.city, city_admin)
@@ -218,7 +224,8 @@ admin.site.register(models.calc_attr, calc_attr_admin)
 
 admin.site.register(models.calc_city_attr_value, calc_city_attr_value_admin)
 admin.site.register(models.testimonials)
-admin.site.register(models.faq)
+admin.site.register(models.faq, faq_admin)
+admin.site.register(models.TermsAndConditions, terms_and_conditions_admin)
 admin.site.register(models.contact)
 admin.site.register(models.ride_booking)
 admin.site.register(models.final_ride_detail)

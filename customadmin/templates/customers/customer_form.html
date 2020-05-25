@@ -71,12 +71,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="example-tel-input" class="col-md-2 col-form-label">Telephone</label>
+                                            <label for="example-tel-input" class="col-md-2 col-form-label">Email</label>
                                             <div class="col-md-10">
                                                 {% render_field userform.email class="form-control" %}
                                                 <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
                                             </div>
                                         </div>
+
+                                        {{ profileform }}
+
                                         <div class="text-center">
                                             <button type="button" class="btn btn-lg btn-success waves-effect waves-light">
                                                 <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit

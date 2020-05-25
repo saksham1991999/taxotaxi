@@ -15,6 +15,7 @@ from customer import models as customermodels
 from .oneway_calc import oneway_calculator
 from .airport_calc import airport_calculator
 import datetime, hashlib, random, requests
+from django.forms import ValidationError
 from core.payu import PAYU
 payu = PAYU()
 import dateutil.parser
@@ -435,7 +436,6 @@ def RegisterOTPVerification(request):
         }
         return render(request, 'register_otp.html', context)
 
-
 def LogoutView(request):
     logout(request)
     return redirect('core:home')
@@ -478,6 +478,45 @@ def FAQView(request):
         'questions':faqs,
     }
     return render(request, 'faq.html', context)
+
+def TermsAndConditionsView(request):
+    termsandconditions = models.TermsAndConditions.objects.all()
+    context = {
+        'termsandconditions':termsandconditions,
+    }
+    return render(request, 'terms&conditions.html' ,context)
+
+def ForgotPasswordView(request):
+    if request.method == 'POST':
+        mobile = request.POST['mobile']
+        otp = random.randint(1000, 9999)
+        request.session['mobile'] = mobile
+        request.session['otp'] = otp
+        message = 'HI, ' + str(mobile) + '. Please use' + str(otp) + "to complete your change password request. If you haven't requested, please ignore"
+        SMS(str(mobile), message)
+        return redirect()
+    else:
+        context = {}
+        return render(request, '', context)
+
+def ForgotPasswordOTPView(request):
+    if request.method == 'POST':
+        mobile = request.session['mobile']
+        generated_otp = request.session['otp']
+        otp_entered = request.POST['otp']
+        new_password = request.POST['new_password']
+        if otp_entered == generated_otp:
+            user = get_object_or_404(models.User, username = mobile)
+            user.set_password(new_password)
+            user.save()
+            login(request, user)
+            messages.error(request, 'Password Updated')
+            return redirect('core:home')
+        else:
+            raise ValidationError(_("Entered OTP is wrong !! Please enter correct OTP"))
+    else:
+        context = {}
+        return redirect(request, 'reset-paassword-otp' , context)
 
 def CheckBoxesAdder(request):
     print('------------------------------ REQUEST -----------------------------------')

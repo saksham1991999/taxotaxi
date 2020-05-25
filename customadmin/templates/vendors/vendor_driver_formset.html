@@ -9,6 +9,7 @@
 
 
 {% block content %}
+
 <div class="main-content">
 
     <div class="page-content">
@@ -41,10 +42,10 @@
                             <p class="card-title-desc"></p>
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-                                    {% for form in formset %}
+                                {% for form in formset %}
                                     {{ form }}
                                     <br>
-                                    {% endfor %}
+                                {% endfor %}
                                 <input type="submit">
                             </form>
                         </div>
@@ -59,6 +60,7 @@
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
+
 </div>
 
 
