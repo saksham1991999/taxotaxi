@@ -71,7 +71,7 @@
     background-color: #ddd;
   }
 
-  #customer-header .active {
+  #customer-header .active .row2{
     border-bottom: 1px solid black;
     background-color: #eee;
     color: black !important;
@@ -120,7 +120,7 @@
     text-decoration: none;
   }
 
-  .row1 .active a{
+  #left-nav-tab .row1 .active a{
     color: black !important;
     font-weight: bold;
   }
@@ -425,7 +425,7 @@
                     </div>
                   <div class="col-sm-12 col-md-12">
                     <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
-                       <li class="col-sm-4 text-center row2 active">
+                       <li class="col-sm-4 text-center row2 ">
                           <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
                        </li>
                        <li class="col-sm-4 text-center row2">
@@ -735,22 +735,152 @@
                           </div>
                           <div class="row CardFooter">
                             <div class="col-xs-6 col-md-4 col-sm-4">
+                             <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star styletext"></span>
+                                <span class="fa fa-star styletext"></span></span>
+                            </div>
+                            <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                            <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
+                              <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button>
+                                
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                        <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-md-12 col-sm-12">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                                  Airport(del.), Delhi-Agra </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Prakash Ponia</h4>
+                              <p>
+                                <span class="trip_est">Mobile : 8213133322</span><br>
+                                <span class="trip_est">Email : Poniaprakash@gmail.com </span><br>
+                                <span class="trip_est">Booked On : 01/12/2019,10:00 AM </span><br>
+                                <span class="trip_est">Pickup Date : 19/02/2020 12:00 PM</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1700.50</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">3000.00</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1000.00</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">2000.00</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                            </div>
+                          </div>
+                          <div class="row CardFooter">
+                            <div class="col-xs-6 col-md-4 col-sm-4">
+                             <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star styletext"></span>
+                                <span class="fa fa-star styletext"></span></span>
+                            </div>
+                            <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                            <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
+                             <!--  <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button> -->
+                                
+                            </div>
+
+                          </div>
+                        </div>
+
+
+                        <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-md-12 col-sm-12">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                                  Airport(del.), Delhi-Agra </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Prakash Ponia</h4>
+                              <p>
+                                <span class="trip_est">Mobile : 8213133322</span><br>
+                                <span class="trip_est">Email : Poniaprakash@gmail.com </span><br>
+                                <span class="trip_est">Booked On : 01/12/2019,10:00 AM </span><br>
+                                <span class="trip_est">Pickup Date : 19/02/2020 12:00 PM</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1700.50</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">3000.00</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">1000.00</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">2000.00</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                            </div>
+                          </div>
+                          <div class="row CardFooter">
+                            <div class="col-xs-6 col-md-4 col-sm-4">
                               <div class="rating-box">
                               <div class="rating-container">
-                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
-                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
+                              <input type="radio" name="rating" value="5" id="star-5"readonly> <label for="star-5">&#9733;</label>
+                              <input type="radio" name="rating" value="4" id="star-4" checked="false" readonly> <label for="star-4">&#9733;</label>
   
-                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
+                              <input type="radio" name="rating" value="3" id="star-3" checked="true" readonly> <label for="star-3">&#9733;</label>
   
-                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
+                              <input type="radio" name="rating" value="2" id="star-2" checked="true" readonly> <label for="star-2">&#9733;</label>
   
-                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
+                              <input type="radio" name="rating" value="1" id="star-1" checked="true" readonly> <label for="star-1">&#9733;</label>
                               <strong>Review</strong>
                             </div>
                             </div>
                             </div>
                             <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
-                            <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
+                            <!-- <strong>Feedback</strong>&nbsp;&nbsp;Test feedback -->
                               <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button>
                                 
                             </div>
@@ -1057,38 +1187,39 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <input type="text" name="modelid" id="ridemodalvalue">
-          <h4 class="modal-title">Please Rate Us:</h4>
+          <input type="hidden" name="modelid" id="ridemodalvalue">
+          <h4 class="modal-title">Kindly share your experience:</h4>
         </div>
         <div class="modal-body">
-          
-          <div class="rating-box">
-                              <div class="rating-container">
-                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
-                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
-                              <strong>Ride Comfort</strong>
-                            </div>
-                            </div>
-
-                   <div class="rating-box">
-                              <div class="rating-container">
-                              <input type="radio" name="rating" value="5" id="star-5"> <label for="star-5">&#9733;</label>
-                              <input type="radio" name="rating" value="4" id="star-4"> <label for="star-4">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="3" id="star-3"> <label for="star-3">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="2" id="star-2"> <label for="star-2">&#9733;</label>
-  
-                              <input type="radio" name="rating" value="1" id="star-1"> <label for="star-1">&#9733;</label>
-                              <strong>Driver Experience</strong>
-                            </div>
-                            </div>         
+            <p>Online booking with our platform was easy ? 
+              <span style="float: right;">
+                 <input type="radio" name="yes_no1" checked>Yes</input>
+                 <input type="radio" name="yes_no1">No</input></span>
+          </p>
+          <p>Did you timely receive all details about booking?
+          <span style="float: right;"> 
+           <input type="radio" name="yes_no2" checked>Yes</input>
+                 <input type="radio" name="yes_no2">No</input></span>
+          </p>
+          <p>Driver's behavior was good throughout journey? 
+          <span style="float: right;"> 
+           <input type="radio" name="yes_no3" checked>Yes</input>
+                 <input type="radio" name="yes_no3">No</input></span>
+          </p>
+          <p>You are happy with the car provided ? 
+            <span style="float: right;">
+           <input type="radio" name="yes_no4" checked>Yes</input>
+                 <input type="radio" name="yes_no4">No</input></span>
+          </p>
+          <p>You are satisfied with the service offered to you?
+           <span style="float: right;"><input type="radio" name="yes_no5" checked>Yes</input>
+                 <input type="radio" name="yes_no5">No</input></span>
+          </p>
+          <p>Would you recommend us to your family and friends for future rides?&
+            <span style="float: right;">
+           <input type="radio" name="yes_no6" checked>Yes</input>
+                 <input type="radio" name="yes_no6">No</input></span>
+          </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
