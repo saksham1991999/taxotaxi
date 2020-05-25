@@ -317,17 +317,6 @@ input:focus{
                         </div>
                      </div>
                 </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
-                <div class="col-sm-8"> 
-                     <div class="inputlayout " >
-                      <div style="width: 80%">{{ request.user.wallet_balance }}</div>
-                        <div class="icon1 icon-style">
-                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
-                        </div>
-                     </div>
-                </div>
             </div>          
             <div class="row">
                 <form method="post">
@@ -341,6 +330,20 @@ input:focus{
                         <button class="button0" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </div>
                 </form>
+            </div>
+            <form method="post">
+            {% csrf_token %}
+                <input type="hidden" value="details" name="type">
+            <div class="row">
+                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
+                <div class="col-sm-8"> 
+                     <div class="inputlayout " >
+                      <div style="width: 80%">{{ request.user.wallet_balance }}</div>
+                        <div class="icon1 icon-style">
+                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
+                        </div>
+                     </div>
+                </div>
             </div>
 
             <div class="row">
@@ -358,7 +361,7 @@ input:focus{
                      <div class="inputlayout " >
                       <div style="width: 80%">{{ advance }}</div>
                         <div class="icon1 icon-style">
-                           <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=15>
+                           <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=15 checked>
                         </div>
                      </div>
                 </div>
@@ -444,9 +447,7 @@ input:focus{
                   placeholder="{{ duration_text }}">
                 </div>
             </div>
-            <form method="post">
-            {% csrf_token %}
-                <input type="hidden" value="details" name="type">
+            
             <div class="row">
 
                 <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
