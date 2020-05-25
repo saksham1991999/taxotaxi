@@ -32,10 +32,10 @@
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="tj-tab-10">
 											<div class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#tj-tab-collapse10" aria-expanded="false" aria-controls="tj-tab-collapse10" class="collapsed">{{ forloop.counter }}. {{ question.title|capfirst }}</a>
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#tj-tab-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="tj-tab-collapse{{ forloop.counter }}" class="collapsed">{{ forloop.counter }}. {{ question.title|capfirst }}</a>
 											</div>
 										</div>
-										<div id="tj-tab-collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tj-tab-10">
+										<div id="tj-tab-collapse{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tj-tab-10">
 											<div class="panel-body">
 												<div class="panel-text">
 													<p>
