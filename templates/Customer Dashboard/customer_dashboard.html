@@ -374,37 +374,37 @@
             <div class="col-md-3 adjustDashboard" id="left-nav-tab" style="margin-top: 80px">
                 <div class=" container1">
                     <ul class="row row1" style="list-style-type: none;">
-                      <li class="active row1">
+                      <li class="active row1" id="list1">
                         <a href="#customerProfile" data-toggle="tab">
                           <i class="far fa-user"></i>&nbsp;&nbsp;Profile</a>
                       </li>
-                      <li class="row row1">
+                      <li class="row row1" id="list2">
                         <a href="{% url 'core:home' %}">
                           <i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a>
                       </li>
-                      <li  class="row row1" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample">
+                      <li  class="row row1" id="list3" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample">
                         <a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
                          <ul class="collapse" id="collapseExample" style="list-style-type: none;padding-inline-start: 10px;">
-                             <li class=" row1">
+                             <li class=" row1" id="list3-1">
                                 <a href="#upcomingRides" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming Rides</a>
                              </li>
-                             <li class="row row1">
+                             <li class="row row1" id="list3-2">
                                 <a href="#rideHistory" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a>
                              </li>
-                             <li class="row row1">
+                             <li class="row row1" id="list3-3">
                                 <a href="#canceledRides" data-toggle="tab">
                                   <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled Rides</a>
                              </li>
                          </ul>
 
                       </li>
-                      <li class="row row1">
+                      <li class="row row1" id="list4">
                         <a href="#referFriend" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a>
                       </li>
-                      <li class="row row1" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
+                      <li class="row row1" id="list5" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
                         <a><i class="fas fa-rupee-sign"></i>&nbsp;My Wallet</a>
                            <ul class="collapse" id="collapseExample1">
                               <li class="card card-body">
@@ -1372,4 +1372,62 @@ function upStars(val) {
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    console.log("Abhinav");
+    $("#list1").click(function(){
+      $("#list3-1").removeClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-3").removeClass("active");
+    });
+    $("#list2").click(function(){
+      $("#list3-1").removeClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-3").removeClass("active");
+    });
+    $("#list4").click(function(){
+      $("#list3-1").removeClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-3").removeClass("active");
+    });
+    $("#list5").click(function(){
+      $("#list3-1").removeClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-3").removeClass("active");
+    });
+    $("#list3-1").click(function(){
+      console.log("clicked");
+      $("#list1").removeClass("active");
+      $("#list2").removeClass("active");
+      // $("#list3").removeClass("active");
+      $("#list3-1").addClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-3").removeClass("active");
+      $("#list4").removeClass("active");
+      $("#list5").removeClass("active");
+    })
+    $("#list3-2").click(function(){
+      console.log("clicked");
+      $("#list1").removeClass("active");
+      $("#list2").removeClass("active");
+      // $("#list3").removeClass("active");
+      $("#list3-2").addClass("active");
+      $("#list3-1").removeClass("active");
+      $("#list3-3").removeClass("active");
+      $("#list4").removeClass("active");
+      $("#list5").removeClass("active");
+    })
+    $("#list3-3").click(function(){
+      console.log("clicked"); 
+      $("#list1").removeClass("active");
+      $("#list2").removeClass("active");
+      // $("#list3").removeClass("active");
+      $("#list3-3").addClass("active");
+      $("#list3-2").removeClass("active");
+      $("#list3-1").removeClass("active");
+      $("#list4").removeClass("active");
+      $("#list5").removeClass("active");
+    })
+  })
+</script>
 {% endblock extra_scripts %}
