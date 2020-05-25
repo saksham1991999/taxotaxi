@@ -34,3 +34,18 @@ class AssignDriverCar(forms.ModelForm):
     class Meta:
         model = models.final_ride_detail
         fields = ['car', 'driver']
+
+
+
+
+class ForgotPasswordForm(forms.Form):
+    mobile = forms.CharField(label='Mobile Number')
+
+class ResetPasswordForm(forms.Form):
+    otp = forms.CharField(max_length=4, label='Enter OTP')
+    password1 = forms.CharField()
+    password2 = forms.CharField()
+    widgets = {
+        'password1': forms.PasswordInput(),
+        'password2': forms.PasswordInput(),
+    }

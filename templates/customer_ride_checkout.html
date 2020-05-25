@@ -332,16 +332,15 @@ input:focus{
             <div class="row">
                 <form method="post">
                     {% csrf_token %}
-
-                <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
-                <div class="col-sm-4">
-                  <input type="hidden"  name="type" value="coupon">
-                  <input type="text"  name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
-                </div>
-                <div class="col-sm-4">
-                    <button class="button0" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                </div>
-                    </form>
+                    <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
+                    <div class="col-sm-4">
+                      <input type="hidden"  name="type" value="coupon">
+                      <input type="text"  name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="button0" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                    </div>
+                </form>
             </div>
 
             <div class="row">

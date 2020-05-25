@@ -38,7 +38,7 @@ def DashboardView(request):
                 new_form.save()
 
                 userform.save()
-                messages.error(request, 'Details Saved Successfully')
+                messages.success(request, 'Details Saved Successfully',  extra_tags='alert alert-success alert-dismissible')
                 return redirect('customer:dashboard')
 
             return redirect('customer:dashboard')
@@ -51,10 +51,10 @@ def DashboardView(request):
                 user.set_password(new_password)
                 user.save()
                 login(request, user)
-                messages.error(request, 'Password Updated')
+                messages.success(request, 'Password Updated',  extra_tags='alert alert-success alert-dismissible')
                 return redirect('customer:dashboard')
             else:
-                messages.error(request, 'Invalid Password')
+                messages.error(request, 'Invalid Password',  extra_tags='alert alert-error alert-dismissible')
                 return redirect('customer:dashboard')
 
         return redirect('customer:dashboard')

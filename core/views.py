@@ -16,6 +16,7 @@ from .oneway_calc import oneway_calculator
 from .airport_calc import airport_calculator
 import datetime, hashlib, random, requests
 from django.forms import ValidationError
+from django.utils.translation import ugettext_lazy as _
 from core.payu import PAYU
 payu = PAYU()
 import dateutil.parser
@@ -492,35 +493,55 @@ def TermsAndConditionsView(request):
 
 def ForgotPasswordView(request):
     if request.method == 'POST':
-        mobile = request.POST['mobile']
-        otp = random.randint(1000, 9999)
-        request.session['mobile'] = mobile
-        request.session['otp'] = otp
-        message = 'HI, ' + str(mobile) + '. Please use' + str(otp) + "to complete your change password request. If you haven't requested, please ignore"
-        SMS(str(mobile), message)
-        return redirect()
+        form = forms.ForgotPasswordForm(request.POST)
+        if form.is_valid():
+            mobile = form.cleaned_data['mobile']
+            try:
+                user = get_object_or_404(models.User, username=mobile)
+            except:
+                messages.error(request, 'This Mobile Number is not Registered with us.',  extra_tags='alert alert-error alert-dismissible' )
+                # raise ValidationError(_("This Mobile Number is not Registered"))
+                return redirect('core:forgot_password')
+            otp = random.randint(1000, 9999)
+            request.session['mobile'] = mobile
+            request.session['otp'] = otp
+            message = 'HI, ' + str(mobile) + '. Please use' + str(otp) + "to complete your change password request. If you haven't requested, please ignore"
+            SMS(str(mobile), message)
+            return redirect('core:forgot_password_otp')
+        else:
+            raise ValidationError(_('Please Enter a Valid Phone Number'))
     else:
-        context = {}
-        return render(request, '', context)
+        form = forms.ForgotPasswordForm()
+        context = {
+            'form':form,
+        }
+        return render(request, 'Reset Password/forgot_password.html', context)
 
 def ForgotPasswordOTPView(request):
     if request.method == 'POST':
-        mobile = request.session['mobile']
-        generated_otp = request.session['otp']
-        otp_entered = request.POST['otp']
-        new_password = request.POST['new_password']
-        if otp_entered == generated_otp:
-            user = get_object_or_404(models.User, username = mobile)
-            user.set_password(new_password)
-            user.save()
-            login(request, user)
-            messages.error(request, 'Password Updated')
-            return redirect('core:home')
-        else:
-            raise ValidationError(_("Entered OTP is wrong !! Please enter correct OTP"))
+        form = forms.ResetPasswordForm(request.POST)
+        if form.is_valid():
+            mobile = request.session['mobile']
+            generated_otp = request.session['otp']
+            otp_entered = form.cleaned_data['otp']
+            new_password = form.cleaned_data['password1']
+            if otp_entered == generated_otp:
+                user = get_object_or_404(models.User, username = mobile)
+                user.set_password(new_password)
+                user.save()
+                login(request, user)
+                messages.success(request, 'Password Updated',  extra_tags='alert alert-success alert-dismissible')
+                return redirect('core:home')
+            else:
+                messages.error(request, "Entered OTP is wrong !! Please enter correct OTP",  extra_tags='alert alert-error alert-dismissible')
+                return redirect('core:forgot_password_otp')
+                raise ValidationError(_("Entered OTP is wrong !! Please enter correct OTP"))
     else:
-        context = {}
-        return redirect(request, 'reset-paassword-otp' , context)
+        form = forms.ResetPasswordForm()
+        context = {
+            'form':form,
+        }
+        return render(request, 'Reset Password/reset_password.html', context)
 
 def CheckBoxesAdder(request):
     print('------------------------------ REQUEST -----------------------------------')
