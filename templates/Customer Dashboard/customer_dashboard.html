@@ -359,6 +359,11 @@
   }
   }
   #my-file { visibility: hidden; }
+  .active1{
+    border-bottom: 1px solid black;
+    background-color: #eee;
+    color: black !important;
+}
 </style>
 {% endblock extra_stylesheet %}
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -425,13 +430,13 @@
                     </div>
                   <div class="col-sm-12 col-md-12">
                     <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
-                       <li class="col-sm-4 text-center row2 ">
+                       <li class="col-sm-4 text-center row2 active1 " id="side-list-1">
                           <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
                        </li>
-                       <li class="col-sm-4 text-center row2">
+                       <li class="col-sm-4 text-center row2" id="side-list-2">
                           <a href="#changePassword" style="font-weight: bold;" data-toggle="tab">&nbsp;Change Password</a>
                        </li>
-                       <li class="col-sm-4 text-center row2">
+                       <li class="col-sm-4 text-center row2" id="side-list-3">
                           <a href="#referral" style="font-weight: bold;" data-toggle="tab">&nbsp;Referral</a>
                        </li>
                     </ul>
@@ -1563,5 +1568,28 @@ function upStars(val) {
       $("#list5").removeClass("active");
     })
   })
+</script>
+<script>
+  $(document).ready(function(){
+   console.log("Abhinav");
+   $("#side-list-1").click(function(){
+     
+     $("#side-list-1").addClass("active1");
+     $("#side-list-2").removeClass("active1");
+     $("#side-list-3").removeClass("active1");
+   })
+   $("#side-list-2").click(function(){
+     
+     $("#side-list-2").addClass("active1");
+     $("#side-list-1").removeClass("active1");
+     $("#side-list-3").removeClass("active1");
+   })
+   $("#side-list-3").click(function(){
+     
+     $("#side-list-3").addClass("active1");
+     $("#side-list-2").removeClass("active1");
+     $("#side-list-1").removeClass("active1");
+   })
+  });
 </script>
 {% endblock extra_scripts %}
