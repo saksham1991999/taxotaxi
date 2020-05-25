@@ -10,6 +10,11 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
 
  <style type="text/css">
+  .timeWithText:before{
+    font-weight: bolder;
+    color: #1c2b39;
+    content: "Date and Time";
+}
     .tj-form2-tabs .nav-tabs > li.active > a, .tj-form2-tabs .nav-tabs > li.active > a:hover, .tj-form2-tabs .nav-tabs > li.active > a:focus{
     background-color:#ffc000;
       height: 69px;
@@ -1251,10 +1256,11 @@ bottom: -3px;
                     previous: 'fa fa-angle-left',
                     next: 'fa fa-angle-right',
                     today: 'fa fa-dot-circle-o',
-                    clear: 'fa fa-trash',
+                    clear: 'timeWithText',
                     close: 'fa fa-times'
                 }
             };
+
             
             $(function() {
                 var optionsDatetime = $.extend({}, defaults, {format:'DD-MM-YYYY HH:mm'});
