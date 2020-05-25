@@ -312,7 +312,7 @@ color: white;">            </h3>
                              {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value > 0 %}
                               <li>  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
-                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">{{checkbox.value}}/-</span></li>
+                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value}}/-</span></li>
                                 {% endif %}
                              {% endfor %}
 
