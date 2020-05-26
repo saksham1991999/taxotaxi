@@ -28,6 +28,129 @@
 
 {% block content %}
 
+    			<!--Login Section Start-->
+			<section class="tj-login">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-sm-12">
+							<!--Tabs Nav Start-->
+							<div class="tj-tabs">
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+									<li><a href="#register" data-toggle="tab">Register</a></li>
+								</ul>
+							</div>
+							<!--Tabs Nav End-->
+							<!--Tabs Content Start-->
+							<div class="tab-content">
+								<!--Login Tabs Content Start-->
+								<div class="tab-pane active" id="login">
+									<div class="col-md-12 col-sm-12">
+										<!--Register Tabs Form Start-->
+										<form class="reg-frm" method="post" action="{% url 'core:booking-authentication' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="type" value="login">
+
+
+											<div class="field-holder">
+												<span style="position: absolute;
+                                                             top: 18px;left: 12px;color: #a6a6a6;font-size: 13px;" class="icon-phone icomoon"></span>
+												<input type="text" name="phone_num" placeholder="Mobile Number" pattern="[5-9]{1}[0-9]{9}" required>
+											</div>
+											<div class="field-holder">
+												<span class="fas fa-lock"></span>
+												<input type="password" name="password" id="password-field" placeholder="Password" required>
+												<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+												<a href="{% url 'core:forgot_password' %}"><b>Forgot Password ?</b></a>
+
+											</div>
+                                             <br>
+											<button type="submit" class="reg-btn">Login<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+
+                                        </form>
+										<!--Register Tabs Form End-->
+									</div>
+
+
+								</div>
+								<!--Login Tabs Content End-->
+								<!--Register Tabs Content Start-->
+								<div class="tab-pane" id="register">
+									<div class="col-md-12 col-sm-12">
+										<!--Register Tabs Form Start-->
+										<form class="reg-frm" method="POST" action="{% url 'core:booking-authentication' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="type" value="register">
+
+                                            <div class="field-holder">
+												<span class="far fa-user"></span>
+												<input type="text" name="full_name" placeholder="Full Name" required>
+											</div>
+											<div class="field-holder">
+												<span style="position: absolute;
+top: 18px;
+left: 12px;
+color: #a6a6a6;
+font-size: 13px;" class="icon-phone icomoon"></span>
+												<input type="text" name="phone_num" placeholder="Mobile Number" pattern="[5-9]{1}[0-9]{9}" required>
+											</div>
+											<div class="field-holder">
+												<span class="far fa-envelope"></span>
+												<input type="email" name="email_id" placeholder="Enter your Email Address" required>
+											</div>
+											<div class="field-holder">
+												<span class="fas fa-lock"></span>
+												<input type="password" id="pass" name="password" placeholder="Choose your password" required>
+												<span toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+												<small id="password_strength" style="font-weight:600;padding-left: 30px;">&nbsp; </small>
+
+											</div>
+
+											<label for="terms">
+												<input type="checkbox" name="terms" id="terms" required>
+												I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a>
+											</label>
+											<button type="submit" class="reg-btn">Signup <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+
+                                        </form>
+										<!--Register Tabs Form End-->
+									</div>
+
+
+								</div>
+								<!--Register Tabs Content End-->
+							</div>
+							<!--Tabs Content End-->
+						</div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+							<div class="booking-summary" style="background-color: #f9f9f9; ">
+								<h3>Booking Summary</h3>
+								<ul class="booking-info">
+
+									<li><span><b>From: </b></span><div class="startup_loc inputlayout">{{ pickup }}</div></li>
+									<li><span><b>To:</b> </span><div class="end_loc inputlayout">{{ drop }}</div></li>
+									<li><span><b>Journey Type:</b></span>
+									<div class="service_type">{{ ride_type }}</div></li>
+									<li><span><b>Car Type:</b></span>
+									<div class="service_type">{{ car_type }}</div></li>
+									<li><span><b>Expected Distance:</b> </span><div class="end_loc info-outer">&ensp;{{ distance_text }}</div></li>
+									<li><span><b>Expected Duration:</b> </span><div class="end_loc info-outer">&ensp;{{ duration_text }}</div></li>
+									<li><span><b>Pickup Date-Time:</b> </span><div class="pick_date info-outer">&ensp;{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}</div></li>
+									<li><span><b>Dropoff Date-Time:</b> </span><div class="drop_date info-outer">&ensp;{{ drop_datetime|date:"j-M-Y" }} &ensp;{{ drop_datetime|time:"h:i A" }}</div></li>
+                                </ul>
+								<div class="fare-box">
+									<strong>Trip Estimation</strong>
+									<span class="trip_est">{{ request.session.initial_charges }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--Login Section End-->
+
+    {% comment %}
 			<!--Booking Form Section Start-->
 			<section class="tj-user-bfrm" style=" padding: 17px 0;">
 				<div class="container">
@@ -70,7 +193,7 @@
 											<div class="info-field" style="height: 95px">
 												<label>Password</label>
 												<!-- <span class="fas fa-lock"></span> -->
-												<input type="password" id="pass" name="password" placeholder="Choose Your Password" style="margin-bottom: 1px" required><span style="top: 90px" toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+												<input type="password" id="pass" name="password" placeholder="Choose Your Password" style="margin-bottom: 1px" required><span style="top: 90px; left: 570px;" toggle="#pass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 												<label id="password_strength" style="font-weight:600;padding-left: 30px;">&nbsp; </label>
 											</div>
 										</div>
@@ -103,9 +226,9 @@
                                             <label>Password</label>
                                             <!-- <span class="fas fa-lock"></span> -->
                                             <input type="password" id="loginpass" name="password" placeholder="Enter Password" required>
-                                            <span style="top: 90px" toggle="#loginpass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                            <span style="top: 90px; left: 570px;" toggle="#loginpass" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                         </div>
-                                        <a href=""><b>Forgot Password ?</b></a>
+                                        <a href="{% url 'core:forgot_password' %}"><b>Forgot Password ?</b></a>
                                     	<br>
                                     </div>
 
@@ -144,7 +267,7 @@
 				</div>
 			</section>
 			<!--Booking Form Section End-->
-
+{% endcomment %}
 
 
 

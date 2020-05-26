@@ -619,7 +619,7 @@ def CustomerAuthenticationView(request):
             type = request.POST['type']
             mobile = request.POST['phone_num']
             password = request.POST['password']
-
+            print(request.POST)
             if type == 'login':
                 try:
                     user = authenticate(request, username=mobile, password=password)

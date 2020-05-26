@@ -125,6 +125,9 @@ def GeneralModelsView(request):
 
     context = {
         'cities':cities,
+        'testimonials':testimonials,
+        'banners':banners,
+        'faqs':faqs,
     }
     return render(request, 'general/index.html', context)
 
