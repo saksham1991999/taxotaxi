@@ -525,10 +525,11 @@ def ForgotPasswordOTPView(request):
             generated_otp = request.session['otp']
             otp_entered = form.cleaned_data['otp']
             new_password = form.cleaned_data['password1']
-            if otp_entered == generated_otp:
+            if int(otp_entered) == int(generated_otp):
                 user = get_object_or_404(models.User, username = mobile)
                 user.set_password(new_password)
                 user.save()
+                user = authenticate(username=mobile, password=new_password)
                 login(request, user)
                 messages.success(request, 'Password Updated',  extra_tags='alert alert-success alert-dismissible')
                 return redirect('core:home')
