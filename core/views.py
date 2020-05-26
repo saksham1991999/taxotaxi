@@ -450,7 +450,7 @@ def DashboardView(request):
 
 def RegisterVendorAgentView(request):
     context = {}
-    return render(request, 'vendor/registration.html', context)
+    return render(request, 'Vendor/registration.html', context)
 
 def ContactView(request):
     if request.method == 'POST':
