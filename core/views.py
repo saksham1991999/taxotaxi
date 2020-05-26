@@ -127,7 +127,7 @@ def HomeView(request):
                         name = request.user.first_name
                     messages.success(
                         request,
-                        'Dear' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
+                        'Dear ' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
                         extra_tags='alert alert-success alert-dismissible'
                     )
                 return redirect('core:home')
@@ -463,7 +463,7 @@ def ContactView(request):
                 name = request.user.first_name
             messages.success(
                 request,
-                'Dear' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
+                'Dear ' + str(name) + ', Thank you for contacting TaxoTaxi, we will get back to you soon.',
                 extra_tags='alert alert-success alert-dismissible'
             )
         else:
@@ -505,7 +505,7 @@ def ForgotPasswordView(request):
             otp = random.randint(1000, 9999)
             request.session['mobile'] = mobile
             request.session['otp'] = otp
-            message = 'HI, ' + str(mobile) + '. Please use' + str(otp) + "to complete your change password request. If you haven't requested, please ignore"
+            message = 'HI, ' + str(mobile) + '. Please use ' + str(otp) + " to complete your change password request. If you haven't requested, please ignore"
             SMS(str(mobile), message)
             return redirect('core:forgot_password_otp')
         else:
