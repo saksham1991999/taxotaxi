@@ -132,7 +132,7 @@ def GeneralModelsView(request):
     return render(request, 'general/index.html', context)
 
 def UpdateCityView(request):
-    CityFormset = modelformset_factory(coremodels.city, extra=2)
+    CityFormset = modelformset_factory(coremodels.city, extra=2, fields = '__all__')
     if request.method == 'POST':
         formset = CityFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -210,7 +210,7 @@ def DeleteMainPageBannersView(request, id):
     return redirect( 'customadmin:general')
 
 def UpdateFAQsView(request):
-    FAQFormset = modelformset_factory(coremodels.faq)
+    FAQFormset = modelformset_factory(coremodels.faq, fields = '__all__')
     if request.method == 'POST':
         formset = FAQFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -231,7 +231,7 @@ def ContactUsView(request):
     return render(request, 'general/contact_us.html', context)
 
 def UpdateTermsAndConditionsView(request):
-    TermsAndConditionsFormset = modelformset_factory(coremodels.TermsAndConditions)
+    TermsAndConditionsFormset = modelformset_factory(coremodels.TermsAndConditions, fields = '__all__')
     if request.method == 'POST':
         formset = TermsAndConditionsFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -250,7 +250,7 @@ def CarTypePageViews(request):
     return render(request, 'car_type/index.html', context)
 
 def UpdateCarAttributes(request):
-    CarAtrributeFormset = modelformset_factory(coremodels.car_attr)
+    CarAtrributeFormset = modelformset_factory(coremodels.car_attr, fields = '__all__')
     if request.method == 'POST':
         formset = CarAtrributeFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -264,7 +264,7 @@ def UpdateCarAttributes(request):
         return render(request, 'car_type/car_attribute_formset.html', context)
 
 def UpdateCarAttributeValueView(request, id):
-    CarAtrributeValueFormset = modelformset_factory(coremodels.car_attr_comparison)
+    CarAtrributeValueFormset = modelformset_factory(coremodels.car_attr_comparison, fields = '__all__')
     if request.method == 'POST':
         formset = CarAtrributeValueFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -278,7 +278,7 @@ def UpdateCarAttributeValueView(request, id):
         return render(request, 'car_type/car_attribute_value_formset.html', context)
 
 def UpdateRideAdditionalChoices(request):
-    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices)
+    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices, fields='__all__')
     if request.method == 'POST':
         formset = RideAdditionalChoicesFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -292,7 +292,7 @@ def UpdateRideAdditionalChoices(request):
     return render(request, 'car_type/additional_choices_formset.html', context)
 
 def UpdateCityRideAttributeValues(request):
-    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices)
+    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices, fields= '__all__')
     if request.method == 'POST':
         formset = RideAdditionalChoicesFormset(request.POST, request.FILES)
         if formset.is_valid():
