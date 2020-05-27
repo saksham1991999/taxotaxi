@@ -368,11 +368,6 @@ h1,h2,h3,h4,h5,h6{
 /* End Header CSS Styles */
 
 /* 01. Inner Banner */
-@media (max-width: 767px)
-.container .col-md-3 {
-    width: 100%;
-   
-}
 
 .tj-inner-banner {
     float: left;
@@ -2207,7 +2202,7 @@ background-color: white;
 .tj-form2-tabs{
 	float:left;
 	width:100%;
-	margin-top: -5%;
+	margin-top: -58.5px;
 }
 
 .tj-form2-tabs .nav-tabs{
@@ -2247,12 +2242,13 @@ bottom: -6px
     font-size: 17px;
     color: #44444482;
     font-weight: 800;
-    padding: 19px 0;
+    padding: 10px;
     text-align: center;
     width: 180px;
     border: none;
     border-radius: 0;
     background-color: #eee;
+    bottom: 0px;
     
 }
 .tj-form2-tabs .nav-tabs > li.active > a,
@@ -2504,6 +2500,9 @@ bottom: -6px
 	width:100%;
 	/*margin-bottom:40px;*/
 }
+.tj-book-services .cab-services .cab-service-box{
+   	min-height: 345px;
+   }
 .service-box .icon-outer{
 	width:84px;
 	height:84px;

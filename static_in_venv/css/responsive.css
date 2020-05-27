@@ -3,17 +3,33 @@
 	Responsive CSS File
 */
  /*for navbar header*/
+@media(max-width: 355px){
+	.airport-section .tj-form2-tabs .nav-tabs > li.active > a{
+        font-size: 12px !important;
+	}
+	.airport-section .tj-form2-tabs .nav-tabs li a{
+		font-size: 12px !important;
+	}
+}
+
 @media (max-width: 534px){
+	.airport-section .tabwidth{
+		width: 50%;
+	}
+	.info_box .info_text span{
+		font-size: 12px;
+	}
 	
  .airport-section .tj-form2-tabs .nav-tabs > li.active > a{
- 	width: 118px!important;
- 	bottom: 0px;
- 	padding: 10px!important;
+ 	width: 100%!important;
+ 	bottom: 3px !important;
+ 	padding: 14px 3px !important;
+ 	height: 45px !important
  }
 .airport-section .tj-form2-tabs .nav-tabs li a{
-	padding: 8px !important;
-width: 118px !important;
-bottom: -3px;
+	padding: 10px 3px !important;
+width: 100% !important;
+bottom: 0px !important;
 }
 	/*.container .col-md-3{
     width: 100%;
@@ -22,14 +38,14 @@ bottom: -3px;
 		font-size:13px !important;
 		/*padding: 13px 12px;*/
 		width:90px!important;
-		bottom: -6px;
+		bottom: -14px !important;
 line-height: 1vw;
 	}
 
 	.tj-form2-tabs .nav-tabs li.active a {
     /*font-size: 15px;*/
-    bottom: -3px !important;
-    height: 48px!important;
+    bottom: -10px !important;
+    height: 50px!important;
 }
 
 .tj-banner-form2 
@@ -42,7 +58,10 @@ line-height: 1vw;
    
 }
 @media (max-width: 992px)
-{
+{    
+	.tj-form2-tabs .nav-tabs li.active a {
+    padding: 24px 0px;
+   }
 	.tj-banner-form2 {
     margin-top: 8px;}
     #nav-destinations .service-box{
@@ -51,6 +70,9 @@ line-height: 1vw;
     }
    .cab-services .cab-service-box{
    	min-height: 435px;
+   }
+   .tj-book-services .cab-services .cab-service-box{
+   	min-height: 370px;
    }
 }
 @media (min-width: 1920px){
@@ -1295,7 +1317,7 @@ line-height: 1vw;
 		margin-top:15px;
 	}
 	.tj-form2-tabs .nav-tabs li a{
-		font-size:15px;
+		font-size:16px!important;
 		/*padding: 13px 12px;*/
 		width:125px;
 	}
@@ -1493,7 +1515,7 @@ line-height: 1vw;
 		top:35%;
 	}
 .airport-section .tj-form2-tabs{
-	margin-top: -44px;
+	margin-top: -23px;
 }
 }
 
@@ -1517,6 +1539,8 @@ line-height: 1vw;
     .nav-width{
     	width: 22%!important;
     }
+    
+}
 }
 @media(min-width:1026px) and (max-width:1285px){
     .tj-banner-form2 {
