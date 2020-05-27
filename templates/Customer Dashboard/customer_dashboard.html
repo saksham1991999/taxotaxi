@@ -406,7 +406,7 @@
 
                       </li>
                       <li class="row row1" id="list4">
-                        <a href="#referFriend" data-toggle="tab">
+                        <a href="#referral" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend</a>
                       </li>
                       <li class="row row1" id="list5" data-toggle="collapse" data-target="#collapseExample1"  aria-expanded="false" aria-controls="collapseExample1">
@@ -429,7 +429,7 @@
                         <h4 class="text-center tab-heading">Customer Profile</h4>
                     </div>
                   <div class="col-sm-12 col-md-12">
-                    <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab " style="padding: 0;">
+                    <ul id="customer-header" class="col-sm-12 col-md-12 customer-tab nav-tab" style="padding: 0;">
                        <li class="col-sm-4 text-center row2 active1 " id="side-list-1">
                           <a href="#editProfile" style="font-weight: bold; " data-toggle="tab">&nbsp;Edit Profile</a>
                        </li>
@@ -575,14 +575,24 @@
                         </div>
 
                         <div class="tab-pane" id="referral" role="tabpanel">
-                          <div class="col-md-12 col-sm-12">
+                          <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px;padding: 25px ">
+                               <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                   <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a></div>
+                                   <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                       <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" ><button class="btn btn-default" style="color: #1971bf;font-weight: bolder;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                                       </a>&nbsp;&nbsp;
+                                     </div>
+                                    <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                         <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
+                                       </div>
+                                </div>
+                        <!--   <div class="col-md-12 col-sm-12">
                             <div class="adjustYellowButtonsSecond row input1">
                               <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
                               <div class="col-sm-5" style="display: flex;">
                                 <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
                                 <div class="copytooltip button1">
-                                    <button style="width: 88px;
-    height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
+                                    <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
                                       <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                                             Copy text
                                       </button>
@@ -590,7 +600,7 @@
                               </div>
                             </div>
 
-                          </div>
+                          </div> -->
                         </div>
                     </div>
                   </div>
@@ -1513,7 +1523,6 @@ function upStars(val) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <script>
   $(document).ready(function(){
-    console.log("Abhinav");
     $("#list1").click(function(){
       $("#list3-1").removeClass("active");
       $("#list3-2").removeClass("active");
@@ -1528,6 +1537,9 @@ function upStars(val) {
       $("#list3-1").removeClass("active");
       $("#list3-2").removeClass("active");
       $("#list3-3").removeClass("active");
+      $("#side-list-3").addClass("active1");
+     $("#side-list-2").removeClass("active1");
+     $("#side-list-1").removeClass("active1");
     });
     $("#list5").click(function(){
       $("#list3-1").removeClass("active");
@@ -1571,7 +1583,6 @@ function upStars(val) {
 </script>
 <script>
   $(document).ready(function(){
-   console.log("Abhinav");
    $("#side-list-1").click(function(){
      
      $("#side-list-1").addClass("active1");

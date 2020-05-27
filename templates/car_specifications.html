@@ -383,36 +383,36 @@ color: white;">            </h3>
 
 
 
-    $(document).ready(function(){
+    // $(document).ready(function(){
 
-        {% for checkbox in ridecheckboxes %}
-            $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
-                price = $('#checkbox{{ checkbox.id }}').val();
-                price = parseInt({{ checkbox.value }});
-                console.log('CheckBox Price');
-                console.log(price);
+    //     {% for checkbox in ridecheckboxes %}
+    //         $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
+    //             price = $('#checkbox{{ checkbox.id }}').val();
+    //             price = parseInt({{ checkbox.value }});
+    //             console.log('CheckBox Price');
+    //             console.log(price);
 
-                 if ($(this).is(':checked')){
-                    {% for type in car_types %}
-                        type_price = $('#finalprice{{ type.id }} .price').text();
-                        type_price = parseInt(type_price);
-                        console.log('Car Type Price');
-                        console.log(type_price);
-                        $('#finalprice{{ type.id }} .price').text((type_price + price));
-                    {% endfor %}
-                }
-                 if ($(this).is(':not(:checked')){
-                    {% for type in car_types %}
-                        type_price = $('#finalprice{{ type.id }} .price').text();
-                        type_price = parseInt(type_price);
-                        console.log(type_price);
-                        $('#finalprice{{ type.id }} .price').text((type_price - price));
-                    {% endfor %}
-                }
-            });
+    //              if ($(this).is(':checked')){
+    //                 {% for type in car_types %}
+    //                     type_price = $('#finalprice{{ type.id }} .price').text();
+    //                     type_price = parseInt(type_price);
+    //                     console.log('Car Type Price');
+    //                     console.log(type_price);
+    //                     $('#finalprice{{ type.id }} .price').text((type_price + price));
+    //                 {% endfor %}
+    //             }
+    //              if ($(this).is(':not(:checked')){
+    //                 {% for type in car_types %}
+    //                     type_price = $('#finalprice{{ type.id }} .price').text();
+    //                     type_price = parseInt(type_price);
+    //                     console.log(type_price);
+    //                     $('#finalprice{{ type.id }} .price').text((type_price - price));
+    //                 {% endfor %}
+    //             }
+    //         });
 
-        {% endfor %}
-         });
+    //     {% endfor %}
+    //      });
 
         </script>
     {% endblock extra_scripts %}
