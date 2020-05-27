@@ -1535,6 +1535,12 @@ line-height: 1vw;
 		width: 93%;
 	}
 }
+@media(min-width:1024px) and (max-width:1290px){
+	 .tj-banner-form2{
+    	margin-top: -135px;
+    }
+}
+
 @media(min-width:1024px) and (max-width:1195px) {
     .nav-width{
     	width: 22%!important;
