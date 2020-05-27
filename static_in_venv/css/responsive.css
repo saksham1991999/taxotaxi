@@ -59,6 +59,7 @@ line-height: 1vw;
 }
 @media (max-width: 992px)
 {    
+
 	.tj-form2-tabs .nav-tabs li.active a {
     padding: 24px 0px;
    }
@@ -310,6 +311,10 @@ line-height: 1vw;
 
 @media(min-width:768px) and (max-width:991px){
 	
+
+	.remove-padding-left{
+		padding-left: 15px!important;
+	}
 	/* Header Styles */
 	.phone_info{
 		display:none;
