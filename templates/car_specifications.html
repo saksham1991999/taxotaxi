@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% load template_tag %}
 {% block extra_stylesheet %}
 <style>
@@ -282,7 +283,7 @@ span.glyphicon-stats{
                                             {% endcomment %}
                                             <li style="height:35px;box-shadow: none;padding: 19px 17px;">{{ type|attr_value:attr.name|price_km:city_price_km }}</li>
                                             {% endfor %}
-                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;"> &#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ request.session.initial_charges_list|final_price_type:type }}</span></p>
+                                        <li style="box-shadow: none;" ><p style="background: #ffc000;box-shadow: none;" class="btn-style" value="" id="finalprice{{ type.id }}" disabled><span style="color: white;font-size: larger;box-shadow: none;"> &#x20b9 </span><span class="price" style="color: white;font-size: larger;box-shadow: none;">{{ request.session.initial_charges_list|final_price_type:type|intcomma }}</span></p>
                                     </li><br>
                                     </ul>
                                     </div>
@@ -312,7 +313,7 @@ color: white;">            </h3>
                              {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value > 0 %}
                               <li>  <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
-                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value}}/-</span></li>
+                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span></li>
                                 {% endif %}
                              {% endfor %}
 
@@ -320,7 +321,7 @@ color: white;">            </h3>
                             {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value == 0 %}
                               <li >  <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
-                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value}}/-</span></li>
+                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span></li>
                                 {% endif %}
                              {% endfor %}
                             </ul>

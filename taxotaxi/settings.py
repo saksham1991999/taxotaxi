@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'import_export',
     'fullurl',
-    
+    'django.contrib.humanize',
     'core',
     'blog',
     'vendor',
