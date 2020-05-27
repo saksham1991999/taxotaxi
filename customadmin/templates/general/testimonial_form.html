@@ -32,25 +32,39 @@
             </div>
             <!-- end page title -->
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <h4 class="card-title"></h4>
-                            <p class="card-title-desc"></p>
-                            <form method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-
-                                    {{ form }}
-                                    <br>
-
-                                <input type="submit">
-                            </form>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"></h4>
+                        <p class="card-title-desc"></p>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-md-2 col-form-label">Image</label>
+                            <div class="col-md-10">
+                                
+                                <input class="form-control" type="file" value="" id="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
+                            <div class="col-md-10">
+                                
+                                <input class="form-control" type="text" value="" id="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-md-2 col-form-label">Message</label>
+                            <div class="col-md-10">
+                                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+                                <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                            </div>
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-lg btn-success waves-effect waves-light">
+                            <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
+                        </button>
                         </div>
                     </div>
-                </div> <!-- end col -->
-
+                </div>
             </div>
             <!-- end row -->
 
