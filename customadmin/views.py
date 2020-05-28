@@ -110,7 +110,7 @@ def AssignVendorsView(request, id):
         }
         return render(request, '', context)
 
-def VendorBidsView(request):
+def VendorBidsView(request, id):
     pass
 
 def AssignFinalVendorView(request, id):
@@ -122,12 +122,13 @@ def GeneralModelsView(request):
     testimonials = coremodels.testimonials.objects.all()
     banners = coremodels.banner.objects.all()
     faqs = coremodels.faq.objects.all()
-
+    terms_and_conditions = coremodels.TermsAndConditions.objects.all()
     context = {
         'cities':cities,
         'testimonials':testimonials,
         'banners':banners,
         'faqs':faqs,
+        'terms_and_conditions':terms_and_conditions,
     }
     return render(request, 'general/index.html', context)
 
@@ -137,13 +138,13 @@ def UpdateCityView(request):
         formset = CityFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
-        return redirect( 'customadmin:general')
+        return redirect('customadmin:general')
     else:
         formset = CityFormset()
         context = {
             'formset':formset,
         }
-        return render( 'general/city_form.html', context)
+        return render(request, 'general/city_formset.html', context)
 
 def AddTestimonialView(request):
     if request.method == 'POST':
@@ -223,13 +224,6 @@ def UpdateFAQsView(request):
         }
         return render(request, 'general/faqs_formset.html', context)
 
-def ContactUsView(request):
-    contact_us = coremodels.contact.objects.all()
-    context = {
-        'contact_us':contact_us,
-    }
-    return render(request, 'general/contact_us.html', context)
-
 def UpdateTermsAndConditionsView(request):
     TermsAndConditionsFormset = modelformset_factory(coremodels.TermsAndConditions, fields = '__all__')
     if request.method == 'POST':
@@ -243,6 +237,21 @@ def UpdateTermsAndConditionsView(request):
             'formset':formset,
         }
         return render(request, 'general/terms&conditions_formset.html', context)
+
+def ContactUsView(request):
+    contact_us = coremodels.contact.objects.all()
+    context = {
+        'contact_us':contact_us,
+    }
+    return render(request, 'general/contact_us.html', context)
+
+def PaymentsView(request):
+    payments = coremodels.payment.objects.all()
+    context = {
+        'payments':payments,
+    }
+    return render(request, 'general/payments.html', context)
+
 
 # CAR SELECTION PAGE VIEWS
 def CarTypePageViews(request):
@@ -408,6 +417,12 @@ def DeleteBlogPostView(request, id):
     post = get_object_or_404(blogmodels.post, id=id)
     post.delete()
     messages.success(request, 'Blog Post Deleted successfully')
+    return redirect( 'customadmin:blogs')
+
+def DeleteBlogPostCommentView(request, id):
+    comment = get_object_or_404(blogmodels.comment, id=id)
+    comment.delete()
+    messages.success(request, 'Blog Post Comment Deleted successfully')
     return redirect( 'customadmin:blogs')
 
 

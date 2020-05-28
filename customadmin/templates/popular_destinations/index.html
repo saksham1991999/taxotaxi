@@ -10,7 +10,67 @@
 
 {% block content %}
 
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
 
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Cities
+                                <a href="{% url 'customadmin:popular_destinations_add' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>From Place</th>
+                                    <th>To Place</th>
+                                    <th>Popular Place</th>
+                                    <th>Distance</th>
+                                    <th>Starting From Price</th>
+{#                                    <th>Image</th>#}
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for popular_destination in popular_destinations %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ popular_destination.from_place }}</td>
+                                    <td>{{ popular_destination.to_place }}</td>
+                                    <td>{{ popular_destination.popular_place }}</td>
+                                    <td>{{ popular_destination.distance }}</td>
+                                    <td>{{ popular_destination.starting_from_price }}</td>
+{#                                    <td>{{ popular_destination.image }}</td>#}
+                                    <td>
+                                        <a href="{% url 'customadmin:popular_destinations_edit' popular_destination.id %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:popular_destinations_delete' popular_destination.id %}">
+                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+        </div>
+    </div>
+</div>
 {% endblock content %}
 
 

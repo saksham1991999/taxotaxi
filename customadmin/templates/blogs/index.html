@@ -42,9 +42,13 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="card-title"> Category  <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button></h4>
+                            <h4 class="card-title">
+                                Category
+                                <a href="{% url 'customadmin:update_categories' %}">
+                                <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                </button></a>
+                            </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -59,7 +63,7 @@
                                 <tbody>
                                 {% for category in categories %}
                                 <tr>
-                                    <td>{{ category.id }}</td>
+                                    <td>{{ forloop.counter }}</td>
                                     <td>{{ categroy.title }}</td>
                                 </tr>
                                 {% endfor %}
@@ -77,13 +81,13 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Posts
-                              
-                             <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
-                            </button>
-                            <button type="button" style="float: right;" class="btn btn-warning mr-2 waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button>  </h4>
+                                <a href="{% url 'customadmin:post_add' %}">
+                                 <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                                 </button>
+                                    </a>
+
+                            </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -95,7 +99,7 @@
                                     <th>Date</th>
                                     <th>Published</th>
                                     <th>Likes</th>
-                                    <th>Action (Edit/Delete)</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
 
@@ -108,11 +112,12 @@
                                         <td>{{ post.date }}</td>
                                         <td>{% if post.published %}<i class="bx bx-select-multiple font-size-16 align-middle mr-2"></i>{% endif %}</td>
                                         <td>{{ post.count_likes }}</td>
-                                        <td><button type="button" class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i></button>
-                                        <button type="button" class="btn btn-danger waves-effect waves-light">
-                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                        </button></td>
+                                        <td>
+                                            <a href="{% url 'customadmin:post_edit' post.id %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i></a>
+                                            <a href="{% url 'customadmin:post_delete' post.id %}">
+                                            <i class="bx bxs-trash font-size-16 align-middle"></i></a>
+                                       </td>
                                     </tr>
                                 {% endfor %}
                          
@@ -146,7 +151,7 @@
                                         <th>#</th>
                                         <th>User Name</th>
                                         <th>Comment</th>
-                                        <th></th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
 
@@ -158,7 +163,7 @@
                                             <td>{{ comment.name }}</td>
                                             <td>{{ comment.comment_text }}</td>
                                             <td>
-                                                <a href="">
+                                                <a href="{% url 'customadmin:post_comment_delete' post.id %}">
                                                     <i class="bx bxs-trash font-size-16 align-middle"></i>
                                                 </a>
                                             </td>

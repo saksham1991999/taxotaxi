@@ -9,6 +9,228 @@
 
 
 {% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Cities
+                                <a href="{% url 'customadmin:cities_update' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Pickuo</th>
+                                    <th>Drop</th>
+                                    <th>Ride Types</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for city in cities %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ city.name }}</td>
+                                    <td>{{ city.state }}</td>
+                                    <td>{{ city.pickup }}</td>
+                                    <td>{{ city.drop }}</td>
+                                    <td>
+                                        {% for ride_type in city.ride_types.all %}
+                                            {{ ride_type.name }},
+                                        {% endfor %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Carousel Banners
+                                <a href="{% url 'customadmin:banner_add' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Banner Image</th>
+                                    <th>Heading 1</th>
+                                    <th>Heading 2</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for banner in banners %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ banner.image }}</td>
+                                    <td>{{ banner.h2 }}</td>
+                                    <td>{{ banner.h5 }}</td>
+                                    <td>
+                                        <a href="{% url 'customadmin:banner_edit' banner.id %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:banner_delete' banner.id %}">
+                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+             <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Testimonials
+
+                                <a href="{% url 'customadmin:testimonial_add' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Rating</th>
+                                    <th>Message</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for testimonial in testimonials %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ testimonial.name }}</td>
+                                    <td>{{ testimonial.rating }}</td>
+                                    <td>{{ testimonial.message }}</td>
+                                    <td>
+                                        <a href="{% url 'customadmin:testimonial_edit' testimonial.id %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:testimonial_delete' testimonial.id %}">
+                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+            </div> <!-- end row -->
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                F.A.Q.s
+                                <a href="{% url 'customadmin:update_faqs' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Title</th>
+                                    <th>Answer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for faq in faqs %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ faq.title }}</td>
+                                    <td>{{ faq.answer }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+             <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Terms and Conditions
+
+                                <a href="{% url 'customadmin:update_tnc' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Term</th>
+                                </thead>
+                                <tbody>
+                                {% for term in terms_and_conditions %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ term.term }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+            </div> <!-- end row -->
+
+
+
+        </div>
+    </div>
+</div>
 
 
 {% endblock content %}
@@ -17,5 +239,24 @@
 
 
 {% block extra_scripts %}
+        <!-- Required datatable js -->
+        <script src="{% static 'admin/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+        <!-- Buttons examples -->
+        <script src="{% static 'admin/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+        <script src="{% static 'admin/libs/jszip/jszip.min.js' %}"></script>
+        <script src="{% static 'admin/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+        <script src="{% static 'admin/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+
+        <!-- Responsive examples -->
+        <script src="{% static 'admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+        <!-- Datatable init js -->
+        <script src="{% static 'admin/js/pages/datatables.init.js' %}"></script>
 
 {% endblock extra_scripts %}

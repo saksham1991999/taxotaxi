@@ -25,6 +25,7 @@
           <!-- Responsive datatable examples -->
           <link href="{% static 'admin/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css" />   
         <link rel="stylesheet" type="text/css" href="{% static 'admin/libs/toastr/build/toastr.min.css' %}">
+
         <!-- Bootstrap Css -->
         <link href="{% static 'admin/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css">
         <!-- Icons Css -->
@@ -36,7 +37,7 @@
         {% endblock extra_stylesheet %}
     </head>
 
-    <body data-sidebar="dark">
+    <body data-sidebar="dark" data-keep-enlarged="true" class="vertical-collpsed">
         <!-- Begin page -->
         <div id="layout-wrapper">
 

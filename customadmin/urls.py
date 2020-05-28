@@ -17,7 +17,21 @@ urlpatterns = [
     path('home-page-banners/delete/<int:id>/', views.DeleteMainPageBannersView, name='banner_delete'),
     path('update-faqs/', views.UpdateFAQsView, name='update_faqs'),
     path('update-t&c/', views.UpdateTermsAndConditionsView, name='update_tnc'),
+
     path('contact-us/', views.ContactUsView, name='contact_us'),
+    path('payments/', views.PaymentsView, name='payments'),
+
+    # Ride Bookings Urls
+    path('cancelled-rides/', views.CancelledRidesView, name='cancelled_rides'),
+    path('booked-rides/', views.BookedRidesView, name='booked_rides'),
+    path('assign-vendor-rides/', views.AssignVendorRidesView, name='assign_vendor_rides'),
+    path('upcoming-rides/', views.UpcomingRidesView, name='upcoming_rides'),
+    path('ongoing-rides/', views.OngoingRidesView, name='ongoing_rides'),
+    path('completed-rides/', views.CompletedRidesView, name='completed_rides'),
+
+    path('assign-vendors/<int:id>', views.AssignVendorRidesView, name='assign_vendors'),
+    path('vendor-bids/', views.VendorBidsView, name='vendor_bids'),
+    path('assign-final-vendor/', views.AssignFinalVendorView, name='final_vendor'),
 
     # Popular Destinations Urls
     path('popular-destinations/', views.PopularDestinationsView, name = 'popular_destinations'),
@@ -26,14 +40,18 @@ urlpatterns = [
     path('popular-destinations/delete/<int:id>', views.DeletePopularDestinationView, name = 'popular_destinations_delete'),
 
     # Car Type Urls
-    path('car-type/', views.CarTypePageViews, name = 'car_type'),
+    path('car-type/', views.CarTypePageViews, name='car_type'),
+    path('update-car-attributes/', views.UpdateCarAttributes, name='update_car_attributes'),
+    path('update-ride-additional-choices/', views.UpdateRideAdditionalChoices, name='update_ride_additional_choices'),
+    path('update-city-ride-attributes/', views.UpdateCityRideAttributeValues, name='update_city_ride_attributes'),
 
     # Blog Urls
     path('blogs/',views.BlogsView, name="blogs"),
     path('update-categories/', views.UpdateBlogCategoriesView, name="update_categories"),
     path('post/add/',views.AddBlogPostView, name="post_add"),
-    path('post/edit/<int:id>/',views.EditBlogPostView, name="post_delete"),
+    path('post/edit/<int:id>/',views.EditBlogPostView, name="post_edit"),
     path('post/delete/<int:id>/',views.DeleteBlogPostView, name="post_delete"),
+    path('post/delete-comment/<int:id>/',views.DeleteBlogPostCommentView, name="post_comment_delete"),
 
     # Customer Urls
     path('customers/',views.CustomersView, name="customers"),

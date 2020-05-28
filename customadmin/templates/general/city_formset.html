@@ -42,8 +42,9 @@
                             <p class="card-title-desc"></p>
                             <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
-
-                                    {{ form }}
+                                    {% for form in formset %}
+                                        {{ form }}
+                                    {% endfor %}
                                     <br>
 
                                 <input type="submit">
