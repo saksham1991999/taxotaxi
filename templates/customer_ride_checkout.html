@@ -181,6 +181,91 @@ input:focus{
   margin: 10px;
 }
 
+@media (max-width: 761px) and ( min-width: 700px){
+  .inputlayout{
+    width: 690px;
+  }
+  .input-field{
+    width: 690px !important;
+  }
+  .btn-width{
+    width: 690px !important;
+  }
+  .input-field1{
+    width: 350px !important;
+  }
+  .input-field2{
+    width: 340px !important;
+  }
+}
+@media (max-width: 700px) and ( min-width: 600px){
+  .inputlayout{
+    width: 590px;
+  }
+  .input-field{
+    width: 590px !important;
+  }
+  .btn-width{
+    width: 590px !important;
+  }
+  .input-field1{
+    width: 300px !important;
+  }
+  .input-field2{
+    width: 290px !important;
+  }
+}
+@media (max-width: 600px) and ( min-width: 500px){
+  .inputlayout{
+    width: 490px;
+  }
+  .input-field{
+    width: 490px !important;
+  }
+  .btn-width{
+    width: 490px !important;
+  }
+  .input-field1{
+    width: 250px !important;
+  }
+  .input-field2{
+    width: 240px !important;
+  }
+}
+@media (max-width: 500px) and ( min-width: 400px){
+  .inputlayout{
+    width: 390px;
+  }
+  .input-field{
+    width: 390px !important;
+  }
+  .btn-width{
+    width: 390px !important;
+  }
+  .input-field1{
+    width: 200px !important;
+  }
+  .input-field2{
+    width: 190px !important;
+  }
+}
+@media (max-width: 400px) and ( min-width: 300px){
+  .inputlayout{
+    width: 290px;
+  }
+  .input-field{
+    width: 290px !important;
+  }
+  .btn-width{
+    width: 290px !important;
+  }
+  .input-field1{
+    width: 150px !important;
+  }
+  .input-field2{
+    width: 140px !important;
+  }
+}
 </style>
 {% endblock extra_stylesheet %}
   
@@ -248,30 +333,33 @@ input:focus{
         </div>
     </div>
     <div></div>
+    
     <div class="row">
        <div class="col-md-12" style="padding-left: 0px;padding-right: 0px">
-         
+          
            <div class="col-md-6">
             <div class="row">
             <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
             <div class="col-sm-8">
               <div class="inputlayout">{{ pickup }}</div>
             </div></div>
-        </div>
+          </div>
+          
          <div class="col-md-6">
           <div class="row">
             <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
             <div class="col-sm-8">
               <div class="inputlayout">{{ drop }}</div>
             </div></div>
-        </div>
-         
+        
+      </div>
        </div>
+       
         <div class="col-md-6">
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Pick-Up Date & Time</label>
                 <div class="col-sm-8">
-                  <input class="input-field " 
+                  <input class="input-field" 
                          type="text" readonly
                          placeholder="{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}">
                 </div>
@@ -280,7 +368,7 @@ input:focus{
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Journey Type</label>
                 <div class="col-sm-8">
-                  <input class="input-field " 
+                  <input class="input-field" 
                   type="text" readonly
                   placeholder="{{ ride_type }}">
                 </div>
@@ -323,10 +411,10 @@ input:focus{
                     <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
                     <div class="col-sm-4">
                       <input type="hidden"  name="type" value="coupon">
-                      <input type="text"  name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
+                      <input type="text" class="input-field" name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
                     </div>
                     <div class="col-sm-4">
-                        <button class="button0" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                        <button class="button0 btn-width" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                     </div>
                 </form>
             </div>
@@ -417,13 +505,13 @@ input:focus{
                            </span>
                         </label>
                 <div class="col-sm-8" style="display: flex;">
-                  <select name="subject" id="halt" style="">
+                  <select name="subject" class="input-field1" id="halt" style="">
                           <option Selected>--Select City--</option>
                           <option value="0" > Gurgaon </option>
                           <option value="1">Faridabad</option>
                           <option value="2">Delhi</option>                     
                         </select>
-                 <select name="subject" id="halt">
+                 <select name="subject" class="input-field2" id="halt">
                           <option Selected>--Time Duration--</option>
                           <option value="0" > 30 min </option>
                           <option value="1"> 1 hour </option>
@@ -453,20 +541,20 @@ input:focus{
                 <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
                 <div class="col-sm-8" style="display: flex;">                 
                         <!-- <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}> -->
-                     <div class="inputlayout " style="width: 40%" >
+                     <div class="inputlayout input-field1" style="width: 40%" >
                       <div >{{ request.user.first_name }}</div>
                      </div>
-                     <input style="width: 60%" class="input-field " type="text" name="name" placeholder="Traveler Name (optional)">   
+                     <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Name (optional)">   
                 </div>
             </div>
             <div class="row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
                 <div class="col-sm-8" style="display: flex;">               
                         <!-- <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}> -->
-                     <div class="inputlayout " style="width: 40%">
+                     <div class="inputlayout input-field1" style="width: 40%">
                       <div >{{ request.user.mobile }}</div>
                      </div>
-                     <input style="width: 60%" class="input-field " type="text" name="name" placeholder="Traveler Phone No. (optional)">   
+                     <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Phone No. (optional)">   
                 </div>
             </div>
             <div class="row">
@@ -487,8 +575,8 @@ input:focus{
             
             
         </div>
-      <div class="col-sm-12">
-        <div class="row booking-frm " style="display: flex;padding: 17px 0px 15px 399px;">
+      <div class="col-sm-12" style="margin-left: 25%;">
+      <div class="row booking-frm" style="display: flex;@media (min-width: 458px){ display: block;}">
                 <a href="{% url 'core:cars' %}"><button type="button" class="book-btn" style="margin-right: 15px;
                        font-weight: 700;background-color: #233545;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;Back</button></a>
                 <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
