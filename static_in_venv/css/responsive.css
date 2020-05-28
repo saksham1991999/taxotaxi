@@ -13,6 +13,11 @@
 }
 
 @media (max-width: 534px){
+    .aditionalinfo-list{
+       padding-inline-start: 10px;
+       display: grid; 
+      }
+
 	.airport-section .tabwidth{
 		width: 50%;
 	}
@@ -757,6 +762,9 @@ line-height: 1vw;
 }
 
 @media(max-width:767px){
+	.paddingleft-list{
+    padding-left: 15px !important;
+  }
 	
 	/* Header Styles */
 	.full-width{

@@ -4,6 +4,23 @@
 {% load template_tag %}
 {% block extra_stylesheet %}
 <style>
+  .paddingleft-list{
+    padding-left: 0px;
+  }
+   .aditionalinfo-list{
+    display: grid;
+    list-style-type: none;
+    line-height: 27px;
+    color: #233545;
+    font-family: inherit;
+     font-weight: 600;
+   }
+   .aditionalinfo-list h5{
+    font-weight: bolder;
+    color: #233545;
+    text-align: justify;
+
+   }
   input[type=checkbox]:checked~ .hidden-price {
   display: inline-block;
 float: right;
@@ -295,8 +312,7 @@ span.glyphicon-stats{
                             <!-- /row --></section>
                     </div>
                    <div class="booking-summary">
-                                <h3 style="background-color: #1c2b39;
-color: white;">            </h3>
+                                <h3 style="background-color: #1c2b39;color: white;">            </h3>
                             </div>
                 </div>
             </div>
@@ -305,10 +321,10 @@ color: white;">            </h3>
             <div class="row display-change" ><br>
               
                  <div class="col-md-6 col-sm-12">
-                     <div class="tab-content" style="padding: 16px 1px;">
-                            <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
-                              <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Additional Information Required (if any)</h5></li>
-                              <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5></li>
+                     <div class="tab-content" style="padding: 16px 1px;background-color: #f9f9f9">
+                            <ul class="aditionalinfo-list">
+                              <li><h5>Additional Information Required (if any)</h5></li>
+                              <li><h5>Chargeable:</h5></li>
 
                              {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value > 0 %}
@@ -317,7 +333,7 @@ color: white;">            </h3>
                                 {% endif %}
                              {% endfor %}
 
-                            <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5></li>
+                            <li><h5>Non-Chargeable:</h5></li>
                             {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value == 0 %}
                               <li >  <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
@@ -327,11 +343,10 @@ color: white;">            </h3>
                             </ul>
                       </div>
                    </div>
-                        <div class="col-md-6 col-sm-12" style="display: flex;padding-left: 0px;">
-                           <div class="tab-content" style="padding: 16px 1px;">
-                            <!-- <h5 style=" font-weight: bolder;color: #233545;text-align: justify;">Terms & Conditions</h5> -->
-                            <ul style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
-                                  <li><h5 style=" font-weight: bolder;color: #233545;text-align: justify;">Terms & Conditions</h5></li>
+                        <div class="col-md-6 col-sm-12 paddingleft-list display-change">
+                           <div class="tab-content" style="padding: 16px 1px;background-color: #f9f9f9">
+                            <ul class="aditionalinfo-list">
+                                  <li><h5>Terms & Conditions</h5></li>
                                   <li><div class="color-box" style="background-color: #ffc000;"></div>   Parking charges will be Extra as Actual**</li>
                                   <li><div class="color-box" style="background-color: #ffc000;"></div>   Airport parking charges will be Extra as Actual**</li>
                                   <li><div class="color-box" style="background-color: #ffc000;"></div>   Total Tax will be Extra as Actual*</li>
@@ -358,15 +373,14 @@ color: white;">            </h3>
 
     {% block extra_scripts %}
 
-        <script>//Table select
+        <script>
+        //Table select
             $('.option-card').click(function() {
                    $(".choice").removeClass("choice");
                    $(this).addClass("choice");
                    var ads=$(".choice ul li big").text();
                    $('#car_type').val(ads);
                    console.log(ads);
-                   // var ads=$(".choice ul li big").text();
-                   // alert(ads);
                                     });
 
            $('.btn-success').click(function(){
