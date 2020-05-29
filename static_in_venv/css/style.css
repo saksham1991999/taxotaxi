@@ -2933,10 +2933,10 @@ bottom: -6px
 }
 .reviews-slider .owl-controls{
 	margin: 0;
-	position: absolute;
+	/*position: absolute;
 	z-index: 11;
 	right: 0;
-	top: -135px;
+	top: -135px;*/
 }
 .reviews-slider .owl-prev:before {
     content: '\f104';
@@ -2957,6 +2957,18 @@ bottom: -6px
     line-height: 40px;
 	border-radius:4px;
 	padding:0;
+
+}
+.tj-reviews .owl-theme .owl-controls .owl-nav .owl-next{
+	right: -3%;
+     position: absolute; 
+     top: 39%;
+}
+
+.tj-reviews .owl-theme .owl-controls .owl-nav .owl-prev{
+	left: -3%;
+     position: absolute; 
+     top: 39%;
 }
 
 .tj-team{
@@ -3033,7 +3045,7 @@ bottom: -6px
 	line-height:28px;
 	color:#777777;
 }
-/* End Aboutus CSS Styles */
+/* End Aboutus CSS Styles 
 
 /* 12. Fleet Grid And Fleet List */
 
@@ -4882,6 +4894,7 @@ font-weight: 500;
 	line-height:26px;
 	color:#fff;
 	text-transform:capitalize;
+	text-align: left;
 }
 .about-widget p{
 	font-size:15px;
