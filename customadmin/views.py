@@ -47,6 +47,13 @@ def TestView5(request):
     return render(request, 'test/5.html',context)
 
 # Ride Bookings View
+def RideBookingView(request, id):
+    booking = get_object_or_404(coremodels.ride_booking, id=id)
+    context = {
+        'booking':booking,
+    }
+    return render(request, 'ride_bookings/ride_booking.html', context)
+
 def CancelledRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(ride_status = 'Cancelled')
     context = {
@@ -59,7 +66,7 @@ def BookedRidesView(request):
     context = {
         'bookings':bookings,
     }
-    return render(request, 'ride_bookings/cancelled_rides.html', context)
+    return render(request, 'ride_bookings/booked_rides.html', context)
 
 def AssignVendorRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(assigned_vendors = True)
@@ -90,16 +97,19 @@ def CompletedRidesView(request):
     return render(request, 'ride_bookings/cancelled_rides.html', context)
 
 def AssignVendorsView(request, id):
+    booking = coremodels.ride_booking.objects.get(booking_id=id)
     if request.method == 'POST':
         form = forms.AssignVendors(request.POST)
         if form.is_valid():
             new_form = form.save(commit=False)
-            booking = coremodels.ride_booking.objects.get(booking_id=id)
             new_form.booking = booking
+            booking.assign_vendor = True
             new_form.datetime = datetime.datetime.now()
             new_form.save()
-            for vendor in new_form.vendors:
-                vendorbid = coremodels.vendorbids.objects.create(booking=booking)
+            booking.save()
+            form.save_m2m()
+            for vendor in new_form.vendors.all:
+                vendorbid = coremodels.vendorbids.objects.create(booking=booking, vendor = vendor)
                 vendorbid.max_bid = booking.ride_fare*(1-(new_form.commission/100))
                 vendorbid.save()
         return redirect('custom_admin:dashboard')
@@ -108,7 +118,7 @@ def AssignVendorsView(request, id):
         context = {
             'form':form,
         }
-        return render(request, '', context)
+        return render(request, 'ride_bookings/assign_vendors_form.html', context)
 
 def VendorBidsView(request, id):
     pass
@@ -255,7 +265,20 @@ def PaymentsView(request):
 
 # CAR SELECTION PAGE VIEWS
 def CarTypePageViews(request):
-    context = {}
+    car_attrs = coremodels.car_attr.objects.all()
+    car_types = coremodels.car_types.objects.all()
+    ride_additional_choices = coremodels.ride_choices.objects.all()
+    city_ride_attribute_values = coremodels.calc_city_attr_value.objects.all()
+    pickup_cities = coremodels.city.objects.all()
+    drop_cities = coremodels.city.objects.all()
+    context = {
+        'car_attrs':car_attrs,
+        'car_types':car_types,
+        'ride_additional_choices':ride_additional_choices,
+        'city_ride_attribute_values':city_ride_attribute_values,
+        'pickup_cities':pickup_cities,
+        'drop_cities':drop_cities,
+    }
     return render(request, 'car_type/index.html', context)
 
 def UpdateCarAttributes(request):

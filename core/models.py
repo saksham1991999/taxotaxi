@@ -217,6 +217,8 @@ class ride_booking(models.Model):
 
     ride_type = models.ForeignKey('core.ride_types', on_delete=models.PROTECT)
     car_type = models.ForeignKey('core.car_types', on_delete=models.PROTECT)
+    pickup_city = models.ForeignKey('core.city', on_delete=models.PROTECT, related_name='pickup_city')
+    drop_city = models.ForeignKey('core.city', on_delete=models.PROTECT, related_name='drop_city')
     pickup = models.CharField(max_length=512)
     drop = models.CharField(max_length=512)
     distance = models.FloatField()

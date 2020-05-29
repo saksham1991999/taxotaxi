@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load template_tag %}
 {% block extra_stylesheet %}
 {% endblock extra_stylesheet %}
 <style type="text/css">
@@ -141,7 +142,7 @@ font-size: 13px;" class="icon-phone icomoon"></span>
                                 </ul>
 								<div class="fare-box">
 									<strong>Trip Estimation</strong>
-									<span class="trip_est">{{ request.session.initial_charges|intcomma }}</span>
+									<span class="trip_est">{{ request.session.initial_charges|adder:request.session.checkbox_charges|intcomma }}</span>
 								</div>
 							</div>
 						</div>

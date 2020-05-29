@@ -43,3 +43,17 @@ def car_type_image(type):
 @register.filter
 def ride_choice_value(choice_id):
     pass
+
+@register.filter
+def adder(var1, var2):
+    ans = int(var1) + int(var2)
+    return ans
+
+@register.filter
+def car_attr_value(type, attr):
+    attr = models.car_attr.objects.get(name=attr)
+    try:
+        value = models.car_attr_comparison.objects.get(car_type=type, attr_name=attr).value
+        return value
+    except:
+        return ' '

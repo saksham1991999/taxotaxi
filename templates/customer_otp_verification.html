@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load template_tag %}
 {% block extra_stylesheet %}
     <style type="text/css">
             b{
@@ -82,7 +83,7 @@
                                 </ul>
 								<div class="fare-box">
 									<strong>Trip Estimation</strong>
-									<span class="trip_est">{{ request.session.initial_charges|intcomma }}</span>
+									<span class="trip_est">{{ request.session.initial_charges|adder:request.session.checkbox_charges|intcomma }}</span>
 								</div>
 							</div>
 						</div>

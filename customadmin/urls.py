@@ -29,15 +29,15 @@ urlpatterns = [
     path('ongoing-rides/', views.OngoingRidesView, name='ongoing_rides'),
     path('completed-rides/', views.CompletedRidesView, name='completed_rides'),
 
-    path('assign-vendors/<int:id>', views.AssignVendorRidesView, name='assign_vendors'),
+    path('assign-vendors/<int:id>/', views.AssignVendorsView, name='assign_vendors'),
     path('vendor-bids/', views.VendorBidsView, name='vendor_bids'),
     path('assign-final-vendor/', views.AssignFinalVendorView, name='final_vendor'),
 
     # Popular Destinations Urls
     path('popular-destinations/', views.PopularDestinationsView, name = 'popular_destinations'),
     path('popular-destinations/add/', views.AddPopularDestinationView, name = 'popular_destinations_add'),
-    path('popular-destinations/edit/<int:id>', views.EditPopularDestinationView, name = 'popular_destinations_edit'),
-    path('popular-destinations/delete/<int:id>', views.DeletePopularDestinationView, name = 'popular_destinations_delete'),
+    path('popular-destinations/edit/<int:id>/', views.EditPopularDestinationView, name = 'popular_destinations_edit'),
+    path('popular-destinations/delete/<int:id>/', views.DeletePopularDestinationView, name = 'popular_destinations_delete'),
 
     # Car Type Urls
     path('car-type/', views.CarTypePageViews, name='car_type'),
@@ -62,7 +62,7 @@ urlpatterns = [
 
     # Vendor Urls
     path('vendors/',views.VendorsView, name="vendors"),
-    path('vendor/<int:id>',views.VendorView, name="vendor"),
+    path('vendor/<int:id>/',views.VendorView, name="vendor"),
     path('vendor/add/',views.VendorsView, name="vendor_add"),
     path('vendor/edit/<int:id>/',views.EditVendorView, name="vendor_edit"),
     path('vendor/delete/<int:id>/',views.DeleteVendorView, name="vendor_delete"),

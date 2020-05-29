@@ -1,6 +1,6 @@
 {% extends 'admin_base.html' %}
 {% load static %}
-
+{% load template_tag %}
 
 {% block extra_stylesheet %}
 
@@ -9,7 +9,136 @@
 
 
 {% block content %}
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
 
+            <div class="row">
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Car Type Attributes
+                                <a href="{% url 'customadmin:update_car_attributes' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                    </button>
+                                </a>
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    {% for car_type in car_types %}
+                                        <th>{{ car_type.name }}</th>
+                                    {% endfor %}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for car_attr in car_attrs %}
+                                <tr>
+                                    <td>{{ car_attr.name }}</td>
+                                    {% for car_type in car_types %}
+                                        <td>{{ car_type|car_attr_value:car_attr }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+
+                <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Ride Additional Choices
+                                    <a href="{% url 'customadmin:update_ride_additional_choices' %}">
+                                        <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        </button>
+                                    </a>
+                                </h4>
+
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Value</th>
+                                        <th>Ride Types</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for ride_additional_choice in ride_additional_choices %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ ride_additional_choice.name }}</td>
+                                            <td>{{ ride_additional_choice.value }}</td>
+                                            <td>
+                                            {% for ride_type in ride_additional_choice.ride_type.all %}
+                                                {{ ride_type.name }},
+                                            {% endfor %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+            </div> <!-- end row -->
+
+
+            <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    City Ride Attributes
+                                    <a href="{% url 'customadmin:update_city_ride_attributes' %}">
+                                        <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        </button>
+                                    </a>
+                                </h4>
+
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        {% for pickup_city in pickup_cities %}
+                                            <th>{{ pickup_city.name }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for drop_city in drop_cities %}
+                                    <tr>
+                                        <td>{{ drop_city.name }}</td>
+                                        {% for pickup_city in pickup_cities %}
+                                            <td> - </td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div> <!-- end col -->
+            </div> <!-- end row -->
+
+
+
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 

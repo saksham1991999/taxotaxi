@@ -885,6 +885,8 @@ def PaymentView(request):
         coupon_code_id = request.session['coupon_code_id']
         coupon_qs = customermodels.customer_promotional.objects.get(id = coupon_code_id)
 
+    pickup_city = models.city.objects.get(name=pickup_city)
+    drop_city = models.city.objects.get(name=drop_city)
     booking = models.ride_booking.objects.create(
         user = request.user,
         name = name,
@@ -892,11 +894,12 @@ def PaymentView(request):
 
         ride_type = ride_type_qs,
         car_type = car_type_qs,
+        pickup_city = pickup_city,
+        drop_city = drop_city,
         pickup=pickup,
         drop=drop,
         distance = distance,
         duration = duration,
-
 
         booking_datetime=datetime.datetime.now(),
         pickup_datetime = pickup_datetime,
