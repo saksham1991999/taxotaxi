@@ -308,7 +308,7 @@ def CarSpecificationsView(request):
 
         request.session['car_type'] = car_type
         request.session['ride_checkboxes'] = ride_checkboxes
-
+        request.session['checkbox_charges'] = checkbox_charges
         request.session['ride_total'] = ride_total
 
         request.session['final_prices'] = final_prices
@@ -570,6 +570,7 @@ def CheckBoxesAdder(request):
     request.session['car_type'] = car_type
     request.session['ride_total'] = ride_total
     request.session['ride_checkboxes'] = ride_checkboxes
+    request.session['checkbox_charges'] = checkbox_charges
     return redirect('core:booking-login')
 
 def CustomerLoginView(request):
@@ -587,6 +588,7 @@ def CustomerLoginView(request):
     ride_total = request.session['ride_total']
     distance_text = request.session['distance_text']
     duration_text = request.session['duration_text']
+    checkbox_charges = request.session['checkbox_charges']
 
     if request.user.is_authenticated:
         return redirect('core:checkout')
@@ -608,6 +610,7 @@ def CustomerLoginView(request):
             'ride_total': ride_total,
             'distance_text': distance_text,
             'duration_text': duration_text,
+            'checkbox_charges':checkbox_charges,
         }
         return render(request, 'customer_login_booking.html', context)
 
