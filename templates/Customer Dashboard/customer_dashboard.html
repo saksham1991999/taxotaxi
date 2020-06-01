@@ -399,7 +399,7 @@
 
                       </li>
                       <li class="row row1" id="list4">
-                        <a href="#referral" data-toggle="tab">
+                        <a href="#customerProfile" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend
                         </a>
                       </li>
@@ -1521,6 +1521,14 @@ function upStars(val) {
       $("#list3-1").removeClass("active");
       $("#list3-2").removeClass("active");
       $("#list3-3").removeClass("active");
+
+      $("#editProfile").addClass("active");
+      $("#changePassword").removeClass("active");
+      $("#referral").removeClass("active");
+       
+     $("#side-list-3").removeClass("active1");
+     $("#side-list-2").removeClass("active1");
+     $("#side-list-1").addClass("active1");
     });
     $("#list2").click(function(){
       $("#list3-1").removeClass("active");
@@ -1531,7 +1539,12 @@ function upStars(val) {
       $("#list3-1").removeClass("active");
       $("#list3-2").removeClass("active");
       $("#list3-3").removeClass("active");
-      $("#side-list-3").addClass("active1");
+
+      $("#editProfile").removeClass("active");
+      $("#changePassword").removeClass("active");
+      $("#referral").addClass("active");
+       
+     $("#side-list-3").addClass("active1");
      $("#side-list-2").removeClass("active1");
      $("#side-list-1").removeClass("active1");
     });
@@ -1545,9 +1558,9 @@ function upStars(val) {
       $("#list1").removeClass("active");
       $("#list2").removeClass("active");
       // $("#list3").removeClass("active");
-      $("#list3-1").addClass("active");
-      $("#list3-2").removeClass("active");
-      $("#list3-3").removeClass("active");
+      // $("#list3-1").addClass("active");
+      // $("#list3-2").removeClass("active");
+      // $("#list3-3").removeClass("active");
       $("#list4").removeClass("active");
       $("#list5").removeClass("active");
     })
@@ -1556,9 +1569,9 @@ function upStars(val) {
       $("#list1").removeClass("active");
       $("#list2").removeClass("active");
       // $("#list3").removeClass("active");
-      $("#list3-2").addClass("active");
-      $("#list3-1").removeClass("active");
-      $("#list3-3").removeClass("active");
+      // $("#list3-2").addClass("active");
+      // $("#list3-1").removeClass("active");
+      // $("#list3-3").removeClass("active");
       $("#list4").removeClass("active");
       $("#list5").removeClass("active");
     })
@@ -1567,9 +1580,9 @@ function upStars(val) {
       $("#list1").removeClass("active");
       $("#list2").removeClass("active");
       // $("#list3").removeClass("active");
-      $("#list3-3").addClass("active");
-      $("#list3-2").removeClass("active");
-      $("#list3-1").removeClass("active");
+      // $("#list3-3").addClass("active");
+      // $("#list3-2").removeClass("active");
+      // $("#list3-1").removeClass("active");
       $("#list4").removeClass("active");
       $("#list5").removeClass("active");
     })
