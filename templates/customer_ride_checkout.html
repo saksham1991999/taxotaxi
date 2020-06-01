@@ -4,12 +4,22 @@
 {% load template_tag %}
 {% block extra_stylesheet %}
     <style type="text/css">
+      @media (min-width: 770px){
+        .checkout-button{
+        padding: 0 35%;
+        display: flex;
+      }
+      }
+      
  @media (max-width: 768px){
     .container1{
       display: grid;
       /*margin-top: 50px !important;*/
       padding-top: 20px;
     }
+    .checkout-button{
+        padding: 0 5%;
+      }
   }
   @media (max-width: 999px){
     .container1{
@@ -576,8 +586,8 @@ input:focus{
             
             
         </div>
-      <div class="col-sm-12" style="margin-left: 25%;">
-      <div class="row booking-frm" style="display: flex;@media (min-width: 458px){ display: block;}">
+      <div class="col-sm-12">
+      <div class="booking-frm checkout-button" style="display: flex">
                 <a href="{% url 'core:cars' %}"><button type="button" class="book-btn" style="margin-right: 15px;
                        font-weight: 700;background-color: #233545;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;Back</button></a>
                 <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
