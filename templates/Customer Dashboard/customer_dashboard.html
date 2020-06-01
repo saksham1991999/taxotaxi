@@ -294,7 +294,7 @@
     height: 100%;
     text-align: center;
     /*line-height: 40px;*/
-    color: #e6e3e3;
+    color: #1c2b39;
     font-family: inherit;
   }
 
@@ -481,7 +481,7 @@
                                    <div class="row input1">
                                      <label class="col-sm-4 col-form-label label-right-allign">Uplaod Documents</label>
                                      <div class="col-sm-8 drag-drop1">
-                                        <div class="form-control">
+                                        <div class="form-control" style="height: auto;">
                                           {% render_field profileform.document type="file" class="input-file" %}
                                           <p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
                                             <i class="far fa-file"></i> Drop file here</p>
@@ -511,7 +511,7 @@
                                       {% render_field userform.profile_pic class="input-file" %}
 
                                       <p class="p23">
-                                       <i style="margin-top: 10px;" class="fas fa-cloud-upload-alt fa-4x">
+                                       <i style="margin-top: 10px;color: #e6e3e3;font-family: inherit;" class="fas fa-cloud-upload-alt fa-4x">
                                        </i><br> Drag&Drop files here <br> or<br>
                                        <button type="button" class="btn btn-outline-primary">Browse Files</button> 
                                       </p>
