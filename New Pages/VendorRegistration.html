@@ -4,7 +4,7 @@
 {% block extra_stylesheet %}
 
 <style>
-	.drag-drop p {
+    .drag-drop p {
     width: 100%;
     height: 100%;
     text-align: center;
@@ -12,7 +12,7 @@
     color: #1c2b39;
     font-family: inherit;
     }
-	.drag-drop input {
+    .drag-drop input {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -21,7 +21,7 @@
     outline: none;
     opacity: 0;
     }
-	.label-right-allign {
+    .label-right-allign {
     padding-right: 0px;
     text-align: right;
     padding-left: 0px;
@@ -34,7 +34,7 @@
         padding: 25px 15px;
     }
     .vendorfrm h3{
-    	background-color: #f9f9f9;
+        background-color: #f9f9f9;
         padding: 10px;
         color: #1c2b39;
     }
@@ -43,29 +43,29 @@
         text-decoration: overline;
         border-bottom: 1px #c5c1c1 solid;
         list-style-type:none;
-        color: #7f7f7f;
+        color: #a7a1a1;
         margin-bottom: 25px;
     }
     .customer-tab a{
-    	color: inherit;
+        color: inherit;
         font-size: large;
         font-weight: bold;
     }
     .customer-tab .active{
-    	color: #1c2b39;
+        color: #1c2b39;
     }
     
     .foam-field{
-    	display: flex;
-    	margin-bottom: 15px;
+        display: flex;
+        margin-bottom: 15px;
     }
     .foam-field label{
-    	width: 80%;
+        width: 80%;
         text-align: right;
         padding-right: 28px;
     }
-    .foam-field input,.foam-field textarea{
-    	width: 100%;
+    .foam-field input,.foam-field select,.foam-field textarea{
+        width: 100%;
     }
 
     .drag-drop {
@@ -83,11 +83,11 @@
 
 {% block content %}
 <div class="container">
-	<div class="row">
-		<div class="col-sm-12 vendorfrm">
-			<h3> Vendor Regestration </h3>
-		</div>
-		<div class="col-sm-12 col-md-12">
+    <div class="row">
+        <div class="col-sm-12 vendorfrm">
+            <h3> Vendor Regestration </h3>
+        </div>
+        <div class="col-sm-12 col-md-12">
                     <ul class="customer-tab col-sm-12">
                        <li class="col-sm-4 active" >
                           <a href="#vendorInformation" data-toggle="tab">Vendor Information</a>
@@ -105,81 +105,85 @@
                             <form class="vendor-frm" method="" enctype="multipart/form-data">
                                 <input type="hidden" name="type" value="vendorprofile">
                                 <div class="col-sm-7">
-                                	<div class="foam-field">
-                                	<label>Full Name</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Father's Name</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Date Of Birth</label>
-                                	<input type="date" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Email address*</label>
-                                	<input type="email" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Phone No 1*</label>
-                                	<input type="tel" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Phone No 2*</label>
-                                	<input type="tel" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Address*</label>
-                                	<textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                                	</div>
-                                	<div class="foam-field">
-                                	<label style="width: 46%;color: black;">	KYC Proof*</label>
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>PAN Card*</label>
-                                	<input type="file" name="vendorName" placeholder="Pan Card">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Aadhar Card*</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Voter Card</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Driving Licence</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
-                                	</div>
+                                    <div class="foam-field">
+                                    <label>Full Name</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Father's Name</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Date Of Birth</label>
+                                    <input type="date" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Email address*</label>
+                                    <input type="email" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Phone No 1*</label>
+                                    <input type="tel" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Phone No 2*</label>
+                                    <input type="tel" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Address*</label>
+                                    <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                    </div>
+                                    <div class="foam-field">
+                                    <label style="width: 46%;color: black;">    KYC Proof*</label>
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>PAN Card*</label>
+                                    <input type="file" name="vendorName" placeholder="Pan Card">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Aadhar Card*</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Voter Card</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Driving Licence</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                    </div>
 
-                                	<div class="foam-field">
-                                	<label style="width: 46%;color: black;">	Bank Details*</label>
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Bank Name<p>(Holder Name</p> </label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Bank Account Number</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Saving/ Current</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Bank Name</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>IFSC code</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
-                                	<div class="foam-field">
-                                	<label>Bank Address</label>
-                                	<input type="text" name="vendorName">
-                                	</div>
+                                    <div class="foam-field">
+                                    <label style="width: 46%;color: black;">    Bank Details*</label>
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Bank Name<p>(Holder Name</p> </label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Bank Account Number</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Saving/ Current</label>
+                                    <select name="subject" id="">
+                                          <option Selected>--Select Account Type--</option>
+                                          <option value="0" >Saving</option>
+                                          <option value="1">Current</option>
+                                    </select>
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Bank Name</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>IFSC code</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Bank Address</label>
+                                    <input type="text" name="vendorName">
+                                    </div>
 
 
 
@@ -222,8 +226,8 @@
                         </div>
                     </div>
                   </div>
-		
-	</div>
+        
+    </div>
 </div>
 {% endblock content %}
 

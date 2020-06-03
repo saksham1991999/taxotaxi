@@ -43,7 +43,7 @@
         text-decoration: overline;
         border-bottom: 1px #c5c1c1 solid;
         list-style-type:none;
-        color: #7f7f7f;
+        color: #a7a1a1;
         margin-bottom: 25px;
     }
     .customer-tab a{
@@ -64,7 +64,7 @@
         text-align: right;
         padding-right: 28px;
     }
-    .foam-field input,.foam-field textarea{
+    .foam-field input,.foam-field select,.foam-field textarea{
     	width: 100%;
     }
 
@@ -166,7 +166,11 @@
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Saving/ Current</label>
-                                	<input type="text" name="vendorName">
+                                	<select name="subject" id="">
+										  <option Selected>--Select Account Type--</option>
+	                                      <option value="0" >Saving</option>
+	                                      <option value="1">Current</option>
+                                    </select>
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Bank Name</label>
