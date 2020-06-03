@@ -304,8 +304,8 @@ input:focus{
 
                                <div class="col-sm-12" style="background-color: #eee;">
                              <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5></div>
-                                 <div class="col-sm-8" style="width: 70%">
-                                     <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;">
+                                 <div class="col-sm-8" >
+                                     <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 15px;">
                                       <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5></li>
 
                                      {% for checkbox in ride_checkboxes_qs %}
@@ -326,11 +326,11 @@ input:focus{
                                      {% endfor %}
                                     </ul>
                                 </div>
-                            <div class="col-sm-4 square-box" style="width: 30%">
+                            <div class="col-sm-4 square-box" >
                               <p style="margin: 76px 20px 0px 0px;
                                         background-color: #eee;
                                         height: 85px;
-                                        padding: 33px;"> ₹ {{ checkbox_charges|intcomma  }} </p>
+                                        padding: 33px 0;text-align: center;"> ₹ {{ checkbox_charges|intcomma  }} </p>
                             </div>
                             
                             <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
