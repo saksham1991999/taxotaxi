@@ -118,6 +118,8 @@
 #datepicker2 > span:hover{cursor: pointer;}
 #datepicker3{ width: 100%;}
 #datepicker3 > span:hover{cursor: pointer;}
+#datepicker4{ width: 100%;}
+#datepicker4 > span:hover{cursor: pointer;}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -233,11 +235,11 @@
                                     <!-- /////////////if Yes is selected/////////////////// -->
                                     <div style="display: none;" id="yesDisplay">
                                     <div class="foam-field">
-                                        <label>Company Name*</label>
+                                        <label style="color: #e61616;">Company Name*</label>
                                         <input type="text" name="vendorName">
                                         </div>
                                         <div class="foam-field">
-                                	<label>GST NUMBER*</label>
+                                	<label style="color: #e61616;">GST NUMBER*</label>
                                 	<input type="text" name="vendorName">
                                     </div>
                                       </div>
@@ -466,7 +468,10 @@
                                 </div>
                                 <div class="foam-field">
                                 <label>Date Of Birth</label>
-                                <input type="date" name="vendorName">
+                                <div id="datepicker4" class="input-group date" data-date-format="mm-dd-yyyy">
+                                    <input class="" type="text" readonly />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
                                 </div>
                                 <div class="foam-field">
                                 <label>Email address*</label>
@@ -668,7 +673,7 @@
                 format: "dd/mm/yyyy",
                 autoclose: true, 
                 todayHighlight: true,
-                startDate: req_date
+                endDate: req_date
             })
         });
         
@@ -685,6 +690,14 @@
                 autoclose: true, 
                 todayHighlight: true
                 // startDate: req_date
+            })
+        });
+        $(function () {
+            $("#datepicker4").datepicker({ 
+                format: "dd/mm/yyyy",
+                autoclose: true, 
+                todayHighlight: true,
+                endDate: req_date
             })
         });
     })
