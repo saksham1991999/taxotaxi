@@ -5,6 +5,27 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style>
+    @media(max-width: 500px){
+        .customer-tab{
+            text-decoration: overline;
+        }
+    }
+    @media(min-width: 660px){
+        .headerWidth{
+            width: 33.33%
+        }
+        .customer-tab{
+            display: flex;
+        }
+    }
+    @media(max-width: 770px){
+        .headerAlign{
+            text-align: center!important;
+        }
+        .drag-drop{
+            width: 100%!important;
+        }
+    }
     .drag-drop p {
     width: 100%;
     height: 100%;
@@ -38,14 +59,17 @@
         background-color: #f9f9f9;
         padding: 10px;
         color: #1c2b39;
+        margin: 0;
     }
 
     .customer-tab{
-        text-decoration: overline;
+        /*text-decoration: overline;*/
         border-bottom: 1px #c5c1c1 solid;
         list-style-type:none;
         color: #a7a1a1;
         margin-bottom: 25px;
+        font-family: 'Montserrat', sans-serif;
+
     }
     .customer-tab a{
         color: inherit;
@@ -133,20 +157,20 @@
 
 
 {% block content %}
-<div class="container">
+<div class="container" style="display: grid;">
     <div class="row">
         <div class="col-sm-12 vendorfrm">
             <h3> Vendor Registration </h3>
         </div>
         <div class="col-sm-12 col-md-12">
                     <ul class="customer-tab col-sm-12">
-                       <li class="col-sm-4 active" >
+                       <li class="col-sm-4 headerWidth active headerAlign" >
                           <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information</a>
                        </li>
-                       <li class="col-sm-4" style="text-align: center;">
+                       <li class="col-sm-4 headerWidth" style="text-align: center;">
                           <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details</a>
                        </li>
-                       <li class="col-sm-4" style="text-align: center;">
+                       <li class="col-sm-4 headerWidth" style="text-align: center;">
                           <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details</a>
                        </li>
                     </ul>
@@ -429,7 +453,7 @@
                                 <div class="booking-frm" >
                                     <!-- <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button> -->
                                     <button class="book-btn" style="
-                                    background-color: #4CAF50;float: right;
+                                    background-color: #4CAF50;float: right;margin-bottom: 5px;
                                     " class="add-cars">Add more Cars </button>
                                 </div>
                             </div>
