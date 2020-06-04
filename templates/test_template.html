@@ -78,6 +78,7 @@
     /* padding-right: 28px;*/
     }
 
+
     .drag-drop {
     position: relative;
     width: 300px;
@@ -120,6 +121,12 @@
 #datepicker3 > span:hover{cursor: pointer;}
 #datepicker4{ width: 100%;}
 #datepicker4 > span:hover{cursor: pointer;}
+#datepicker5{ width: 100%;}
+#datepicker5 > span:hover{cursor: pointer;}
+#datepicker6{ width: 100%;}
+#datepicker6 > span:hover{cursor: pointer;}
+#datepicker7{ width: 100%;}
+#datepicker7 > span:hover{cursor: pointer;}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -129,18 +136,18 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 vendorfrm">
-			<h3> Vendor Regestration </h3>
+			<h3> Vendor Registration </h3>
 		</div>
 		<div class="col-sm-12 col-md-12">
                     <ul class="customer-tab col-sm-12">
                        <li class="col-sm-4 active" >
-                          <a href="#vendorInformation" data-toggle="tab">Vendor Information</a>
+                          <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information</a>
                        </li>
                        <li class="col-sm-4" style="text-align: center;">
-                          <a href="#carDetails" data-toggle="tab">Car Details</a>
+                          <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details</a>
                        </li>
                        <li class="col-sm-4" style="text-align: center;">
-                          <a href="#driverDetails " data-toggle="tab">Driver Details</a>
+                          <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details</a>
                        </li>
                     </ul>
                <!------------togable Content pannel start----------->
@@ -312,28 +319,23 @@
                                     
                             </form> -->
                             <div class="col-sm-7">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                     <div class="foam-field">
-                                     	<label>No of cars</label>
-                                     	<select name="subject" id="">
-								     		  <option Selected>1</option>
-	                                           <option value="0" >Saving</option>
-	                                           <option value="1">Current</option>
-                                         </select>
-                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                         <div class="foam-field">
-                                     	<label>Car type</label>
-                                     	<select name="subject" id="">
-								     		  <option Selected>Sedan</option>
-	                                           <option value="0" >Saving</option>
-	                                           <option value="1">Current</option>
-                                         </select>
-                                         </div>
-                                        </div>
-                                </div>
+                                
+                                <div class="foam-field">
+                                	<label>No of cars</label>
+                                	<select name="subject" id="" style="width: 20%;">
+                                        <option Selected>1</option>
+                                        <option value="0" >1</option>
+                                        <option value="1">2</option>
+                                  </select>
+                                              <div class="foam-field" style="width: 80%; margin-bottom: 0px;">
+                                                <label>Car type</label>
+                                                <select name="subject" id="">
+                                                      <option Selected>Sedan</option>
+                                                      <option value="0" >Saving</option>
+                                                      <option value="1">Current</option>
+                                                </select>
+                                                </div>
+                                	</div>
                                 <div class="foam-field">
                                 	<label>Upload Car photo*</label>
                                 	<div class="vendorFile" style="width: 49%;">
@@ -358,7 +360,10 @@
                                 	</div>
                                 <div class="foam-field">
                             	<label>RC valid upto</label>
-                            	<input type="date" name="vendorName">
+                            	<div id="datepicker5" class="input-group date" data-date-format="mm-dd-yyyy">
+                                    <input class="" type="text" readonly />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
                                 </div>
                                  <div class="foam-field ">
                                 <label>Upload Tourists Permit*</label>
@@ -373,7 +378,10 @@
                                 </div>
                                 <div class="foam-field">
                             	<label>Tourist Permit valid upto</label>
-                            	<input type="date" name="vendorName">
+                            	<div id="datepicker6" class="input-group date" data-date-format="mm-dd-yyyy">
+                                    <input class="" type="text" readonly />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
                                 </div>
                                 <div class="foam-field ">
                                 <label>Upload Permit A*</label>
@@ -406,7 +414,10 @@
                                 </div>
                                 <div class="foam-field">
                             	<label>Insurance valid upto</label>
-                            	<input type="date" name="vendorName">
+                            	<div id="datepicker7" class="input-group date" data-date-format="mm-dd-yyyy">
+                                    <input class="" type="text" readonly />
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
                                 </div>
                                 <div class="foam-field ">
                                 <label>Upload Pollution Certificate</label>
@@ -668,11 +679,12 @@
         var month = d.getMonth();
         var date = d.getDate();
         var req_date = date + "/" + month + "/" + req_year;
+        var today_date = date + "/" + month + "/" + current_year;
         $(function () {
             $("#datepicker1").datepicker({ 
                 format: "dd/mm/yyyy",
                 autoclose: true, 
-                todayHighlight: true,
+                todayHighlight: false,
                 endDate: req_date
             })
         });
@@ -681,14 +693,14 @@
             $("#datepicker2").datepicker({ 
                 format: "dd/mm/yyyy",
                 autoclose: true, 
-                todayHighlight: true
+                todayHighlight: false
             })
         });
         $(function () {
             $("#datepicker3").datepicker({ 
                 format: "dd/mm/yyyy",
                 autoclose: true, 
-                todayHighlight: true
+                todayHighlight: false
                 // startDate: req_date
             })
         });
@@ -696,8 +708,32 @@
             $("#datepicker4").datepicker({ 
                 format: "dd/mm/yyyy",
                 autoclose: true, 
-                todayHighlight: true,
+                todayHighlight: false,
                 endDate: req_date
+            })
+        });
+        $(function () {
+            $("#datepicker5").datepicker({ 
+                format: "dd/mm/yyyy",
+                autoclose: true, 
+                todayHighlight: false,
+                startDate: today_date
+            })
+        });
+        $(function () {
+            $("#datepicker6").datepicker({ 
+                format: "dd/mm/yyyy",
+                autoclose: true, 
+                todayHighlight: false,
+                startDate: today_date
+            })
+        });
+        $(function () {
+            $("#datepicker7").datepicker({ 
+                format: "dd/mm/yyyy",
+                autoclose: true, 
+                todayHighlight: false,
+                startDate: today_date
             })
         });
     })
