@@ -426,20 +426,11 @@
                                     <i class="far fa-file"></i> Drop file here</p>
                                 </div>
                                 </div>
-                                <div style="display: flex ;align-items: flex-end;">
+                                <div class="booking-frm" >
                                     <!-- <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button> -->
-                                    <button style="
-                                    width: 30%;
-                                    background-color: #f84949 ;
-                                    color: #fff;
-                                    text-transform: capitalize;
-                                    text-align: center;
-                                    display: block;
-                                    font-family: 'Open Sans', sans-serif;
-                                    font-weight: 500;
-                                    border: none;
-                                    padding: 15px 0;
-                                    margin-left: 70%;" class="add-cars">Add more Cars </button>
+                                    <button class="book-btn" style="
+                                    background-color: #4CAF50;float: right;
+                                    " class="add-cars">Add more Cars </button>
                                 </div>
                             </div>
                             <!-- <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
@@ -700,8 +691,8 @@
             $("#datepicker3").datepicker({ 
                 format: "dd/mm/yyyy",
                 autoclose: true, 
-                todayHighlight: false
-                // startDate: req_date
+                todayHighlight: false,
+                startDate: new Date(),
             })
         });
         $(function () {
@@ -717,7 +708,7 @@
                 format: "dd/mm/yyyy",
                 autoclose: true, 
                 todayHighlight: false,
-                startDate: today_date
+                startDate: new Date(),
             })
         });
         $(function () {
@@ -725,7 +716,7 @@
                 format: "dd/mm/yyyy",
                 autoclose: true, 
                 todayHighlight: false,
-                startDate: today_date
+                startDate: new Date(),
             })
         });
         $(function () {
@@ -733,7 +724,7 @@
                 format: "dd/mm/yyyy",
                 autoclose: true, 
                 todayHighlight: false,
-                startDate: today_date
+                startDate: new Date(),
             })
         });
     })
