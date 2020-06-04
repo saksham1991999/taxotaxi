@@ -66,6 +66,15 @@
     }
     .foam-field input,.foam-field select,.foam-field textarea{
     	width: 100%;
+    padding: 6px 10px;
+    font-size: 12px;
+    line-height: 19px;
+    color: #a6a6a6;
+    border: 1px solid #e8e8e8;
+    display: block;
+    /* margin-bottom: 13px; */
+    border-radius: 4px;
+    /* padding-right: 28px;*/
     }
 
     .drag-drop {
@@ -73,7 +82,30 @@
     width: 300px;
     height: 160px;
     border: 2px dashed #e6e3e3;
-}
+    }
+
+    .vendorFile{
+       width: 100%;
+       padding: 6px 10px;
+       font-size: 12px;
+       line-height: 19px;
+       color: #a6a6a6;
+       border: 1px solid #e8e8e8;
+       display: block;
+       border-radius: 4px;
+    }
+    .vendorFile input{
+        outline: none;
+        opacity: 0;
+        padding: 0;
+    }
+
+    .vendorFile p{
+        margin-top:-19px;
+        font-style: italic; 
+        color:#e6e3e3;
+        margin-bottom: 0px;
+    }
   
 
 </style>
@@ -115,7 +147,7 @@
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Date Of Birth</label>
-                                	<input type="date" name="vendorName">
+                                	<input type="date" name="vendorName" max=new Date()>
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Email address*</label>
@@ -136,28 +168,52 @@
                                 	<div class="foam-field">
                                 	<label style="width: 46%;color: black;">	KYC Proof*</label>
                                 	</div>
-                                	<div class="foam-field">
-                                	<label>PAN Card*</label>
-                                	<input type="file" name="vendorName" placeholder="Pan Card">
+                                	<div class="foam-field ">
+                                	    <label>PAN Card*</label>
+                                        <div class="vendorFile">
+                                	       <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Drop file here</p>
+                                        </div>
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Aadhar Card*</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	<div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Front side</p>
+                                        </div>
+                                        <div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Back side</p>
+                                        </div>
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Voter Card</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	<div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Front side</p>
+                                        </div>
+                                        <div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Back side</p>
+                                        </div>
                                 	</div>
                                 	<div class="foam-field">
                                 	<label>Driving Licence</label>
-                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	<div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p style="margin-top:-19px;font-style: italic; color:#e6e3e3;">
+                                            <i class="far fa-file"></i> Front Side</p>
+                                        </div>
+                                        <div class="vendorFile" style="width: 49%;">
+                                           <input type="file" name="vendorName" placeholder="Pan Card"><p>
+                                            <i class="far fa-file"></i> Back side</p>
+                                        </div>
                                 	</div>
 
                                 	<div class="foam-field">
                                 	<label style="width: 46%;color: black;">	Bank Details*</label>
                                 	</div>
                                 	<div class="foam-field">
-                                	<label>Bank Name<p>(Holder Name</p> </label>
+                                	<label>Account Holder Name</label>
                                 	<input type="text" name="vendorName">
                                 	</div>
                                 	<div class="foam-field">
