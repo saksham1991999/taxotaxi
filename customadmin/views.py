@@ -388,12 +388,16 @@ def BlogsView(request):
     return render(request, 'blogs/index.html', context)
 
 def UpdateBlogCategoriesView(request):
-    CategoriesFormset = modelformset_factory(blogmodels.categories, fields='__all__', extra=2)
+    CategoriesFormset = modelformset_factory(blogmodels.categories, fields='__all__', extra=2, can_delete=True)
     if request.method == 'POST':
         formset = CategoriesFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
             return redirect( 'customadmin:blogs')
+        else:
+            print(formset.errors)
+            print(formset.non_form_errors())
+            return redirect('customadmin:blogs')
     else:
         formset = CategoriesFormset()
         context = {

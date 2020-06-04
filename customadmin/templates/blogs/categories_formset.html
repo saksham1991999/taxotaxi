@@ -19,12 +19,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Blog Categories Forms</h4>
+                        <h4 class="mb-0 font-size-18">Blog Categories Form</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Blogs</a></li>
-                                <li class="breadcrumb-item active">Blog Categories Forms</li>
+                                <li class="breadcrumb-item active">Blog Categories Form</li>
                             </ol>
                         </div>
 
@@ -34,24 +34,65 @@
             <!-- end page title -->
 
             <div class="row">
-                <div class="col-6">
+            <div class="col-12">
                     <div class="card">
                         <div class="card-body">
 
                             <h4 class="card-title"></h4>
                             <p class="card-title-desc"></p>
                             <form method="post" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                {% for form in formset %}
-                                    {% render_field form.title %}
-                                    {% render_field form.keywords %}
-                                {% endfor %}
-                                <input type="submit">
+                            {% csrf_token %}
+                            {{ formset.management_form }}
+                                <div data-repeater-list="group-a" id="form_set">
+                                    {% for form in formset %}
+                                    <div data-repeater-item="" class="row">
+                                        <div class="form-group col-lg-4">
+                                            <label for="name">Title</label>
+                                            {% render_field form.title class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="name">Keywords</label>
+                                            {% render_field form.keywords class="form-control" rows="2" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Delete</label>
+                                            {% render_field form.DELETE %}
+                                        </div>
+
+                                        {% for field in form.hidden_fields %}
+                                            {{ field }}
+                                        {% endfor %}
+                                    </div>
+                                        {{ form.errors }}
+                                    {% endfor %}
+                                </div>
+                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">
+                            <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
+
                             </form>
                         </div>
                     </div>
-                </div> <!-- end col -->
+            </div>
 
+                <div hidden id="empty_form">
+                    <div data-repeater-item="" class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="name">Title</label>
+                            {% render_field formset.empty_form.title class="form-control" %}
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="name">Keywords</label>
+                            {% render_field formset.empty_form.keywords class="form-control" rows="2" %}
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="name">Delete</label>
+                            {% render_field formset.empty_form.DELETE %}
+                        </div>
+                        {% for field in form.hidden_fields %}
+                            {{ field }}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
             <!-- end row -->
 
@@ -71,5 +112,19 @@
 
 
 {% block extra_scripts %}
+<script>
+    $('#add_more').click(function() {
+        var form_idx = $('#id_form-TOTAL_FORMS').val();
+        console.log(form_idx);
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_quotation-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
 
+    $( document ).ready(function() {
+        $( "input[name*='date']" ).datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+        });
+    });
+</script>
 {% endblock extra_scripts %}
