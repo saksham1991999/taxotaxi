@@ -1934,7 +1934,7 @@ background-color: white;
 .blog-detail-outer{
 	width:100%;
 	float:left;
-	padding:140px 0 90px;
+	padding:35px 0px 0px 50px;
 }
 .quote {
     width: 100%;
@@ -2547,6 +2547,7 @@ bottom: -6px
 	font-weight:400;
 	color:#777777;
 	margin:0;
+	text-align: justify;
 }
 .service-box  .service-caption a{
 	display:block;
