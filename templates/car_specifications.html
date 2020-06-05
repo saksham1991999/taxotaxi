@@ -330,10 +330,16 @@ span.glyphicon-stats{
 
                              {% for checkbox in ridecheckboxes %}
                                 {% if checkbox.value > 0 %}
-                              <li>  <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
-                                 <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span><span class="hidden-price">
-                                   <input type="number" name="hault">
-                                 </span> </li>
+                                    <li>
+                                        <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
+                                        <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span><span class="hidden-price">
+                                        {% if 'additional' in checkbox.name %}
+                                            {% if 'pickup' in checkbox.name or 'pick up' in checkbox.name or 'pick-up' in checkbox.name %}
+                                                <input type="text" name="additional_pickup">
+                                            {% endif %}
+                                        {% endif %}
+                                        </span>
+                                    </li>
                                 {% endif %}
                              {% endfor %}
 

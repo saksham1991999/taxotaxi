@@ -1,0 +1,370 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fullurl %}
+{% block extra_stylesheet %}
+
+<style>
+	.drag-drop p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /* line-height: 40px; */
+    color: #1c2b39;
+    font-family: inherit;
+    }
+	.drag-drop input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    }
+	.label-right-allign {
+    padding-right: 0px;
+    text-align: right;
+    padding-left: 0px;
+    font-weight: 600;
+    color: black;
+    margin-top: 7px;
+    }
+
+    .vendorfrm{
+        padding: 25px 15px;
+    }
+    .vendorfrm h3{
+    	background-color: #f9f9f9;
+        padding: 10px;
+        color: #1c2b39;
+    }
+
+    .customer-tab{
+        text-decoration: overline;
+        border-bottom: 1px #c5c1c1 solid;
+        list-style-type:none;
+        color: #a7a1a1;
+        margin-bottom: 25px;
+    }
+    .customer-tab a{
+    	color: inherit;
+        font-size: large;
+        font-weight: bold;
+    }
+    .customer-tab .active{
+    	color: #1c2b39;
+    }
+
+    .foam-field{
+    	display: flex;
+    	margin-bottom: 15px;
+    }
+    .foam-field label{
+    	width: 80%;
+        text-align: right;
+        padding-right: 28px;
+    }
+    .foam-field input,.foam-field select,.foam-field textarea{
+    	width: 100%;
+    }
+
+    .drag-drop {
+    position: relative;
+    width: 300px;
+    height: 160px;
+    border: 2px dashed #e6e3e3;
+}
+
+
+</style>
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 vendorfrm">
+			<h3> Vendor Regestration </h3>
+		</div>
+		<div class="col-sm-12 col-md-12">
+                    <ul class="customer-tab col-sm-12">
+                       <li class="col-sm-4 active" >
+                          <a href="#vendorInformation" data-toggle="tab">Vendor Information</a>
+                       </li>
+                       <li class="col-sm-4" style="text-align: center;">
+                          <a href="#carDetails" data-toggle="tab">Car Details</a>
+                       </li>
+                       <li class="col-sm-4" style="text-align: center;">
+                          <a href="#driverDetails " data-toggle="tab">Driver Details</a>
+                       </li>
+                    </ul>
+               <!------------togable Content pannel start----------->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="vendorInformation">
+                            <form class="vendor-frm" method="" enctype="multipart/form-data">
+                                <input type="hidden" name="type" value="vendorprofile">
+                                <div class="col-sm-7">
+                                	<div class="foam-field">
+                                	<label>Full Name</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Father's Name</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Date Of Birth</label>
+                                	<input type="date" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Email address*</label>
+                                	<input type="email" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Phone No 1*</label>
+                                	<input type="tel" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Phone No 2*</label>
+                                	<input type="tel" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Address*</label>
+                                	<textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                	</div>
+                                	<div class="foam-field">
+                                	<label style="width: 46%;color: black;">	KYC Proof*</label>
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>PAN Card*</label>
+                                	<input type="file" name="vendorName" placeholder="Pan Card">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Aadhar Card*</label>
+                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Voter Card</label>
+                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Driving Licence</label>
+                                	<input type="file" name="vendorName" placeholder="Front side/Back">
+                                	</div>
+
+                                	<div class="foam-field">
+                                	<label style="width: 46%;color: black;">	Bank Details*</label>
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Bank Name<p>(Holder Name</p> </label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Bank Account Number</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Saving/ Current</label>
+                                	<select name="subject" id="">
+										  <option Selected>--Select Account Type--</option>
+	                                      <option value="0" >Saving</option>
+	                                      <option value="1">Current</option>
+                                    </select>
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Bank Name</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>IFSC code</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+                                	<div class="foam-field">
+                                	<label>Bank Address</label>
+                                	<input type="text" name="vendorName">
+                                	</div>
+
+
+
+
+                                </div>
+
+
+
+
+
+                                <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                                  <div class="drag-drop">
+                                      <p class="p23">
+                                       <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                                       </i><br> Drag&Drop files here <br> or<br>
+                                       <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                                      </p>
+                                      <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                                    <div style="display: flex;width:fit-content;">
+                                      <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                      <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button><br>
+                                    </div><br>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="carDetails" role="tabpanel">
+                            <form class="booking-frm" method="" id="">
+                                 <input type="hidden" name="type" value="change_password">
+
+                            </form>
+                        </div>
+
+                        <div class="tab-pane" id="driverDetails" role="tabpanel">
+                            <div>
+                                <input type="checkbox">
+                                <label for="">Is vendor/driver same</label>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="foam-field">
+                                <label>Full Name</label>
+                                <input type="text" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Father's Name</label>
+                                <input type="text" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Date Of Birth</label>
+                                <input type="date" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Email address*</label>
+                                <input type="email" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Phone No 1*</label>
+                                <input type="tel" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Phone No 2*</label>
+                                <input type="tel" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Address*</label>
+                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                </div>
+                                <div class="foam-field">
+                                <label style="width: 46%;color: black;">	KYC Proof*</label>
+                                </div>
+                                <div class="foam-field">
+                                    <label>PAN Card*</label>
+                                    <input type="file" name="vendorName" placeholder="Pan Card">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Aadhar Card*</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                    </div>
+                                    <div class="foam-field">
+                                    <label>Voter Card</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                    </div>
+                                    <div class="foam-field">
+                                        <label>Driving Licence</label>
+                                        <input type="file" name="vendorName" placeholder="Front side/Back">
+                                        </div>
+
+                                <div class="foam-field">
+                                <label>Valid From*</label>
+                                <input type="date" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Valid To*</label>
+                                <input type="date" name="vendorName">
+                                </div>
+                                <div class="foam-field">
+                                <label>Total Driving Experience</label>
+                                <select name="subject" id="">
+                                      <option Selected>No. of years</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="foam-field">
+                                <label>Hill Driving Experience</label>
+                                <select name="subject" id="">
+                                      <option Selected>10</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="foam-field">
+                                    <label>Police Verification*</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                </div>
+                                <div class="foam-field">
+                                <label>Hill Driving Experience</label>
+                                <select name="subject" id="">
+                                      <option Selected>10</option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                </select>
+                                </div>
+                                <div class="foam-field">
+                                    <label>Any Legal/Accidental case pending for clearance*</label>
+                                    <input type="file" name="vendorName" placeholder="Front side/Back">
+                                </div>
+
+
+                            </div>
+
+
+
+
+
+                            <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                              <div class="drag-drop">
+                                  <p class="p23">
+                                   <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                                   </i><br> Drag&Drop files here <br> or<br>
+                                   <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                                  </p>
+                                  <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                                      <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                                <div style="display: flex;width:fit-content;">
+                                  <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                  <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button><br>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+	</div>
+</div>
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+
+
+{% endblock extra_scripts %}
+
+

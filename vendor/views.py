@@ -78,4 +78,4 @@ def VendorRegistrationView(request):
         context = {
             'form':form,
         }
-        return render(request, 'vendor_form.html' ,context)
+        return render(request, 'Vendor/registration_form.html' ,context)
