@@ -218,7 +218,7 @@
                                     <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
                                     </div>
                                     <div class="foam-field">
-                                    <label style="width: 46%;color: black;">    KYC Proof*</label>
+                                    <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
                                     </div>
                                     <div class="foam-field ">
                                         <label>PAN Card*</label>
@@ -268,7 +268,7 @@
                                               <option value="1" id="Yes">Yes</option>
                                         </select>
                                     </div>
-                                    <!-- /////////////if Yes is selected/////////////////// -->
+                                    <!-- //////if Yes is selected///////// -->
                                     <div style="display: none;" id="yesDisplay">
                                     <div class="foam-field">
                                         <label style="color: #e61616;">Company Name*</label>
@@ -279,9 +279,9 @@
                                     <input type="text" name="vendorName">
                                     </div>
                                       </div>
-                                    <!-- ////////////////////////////////////////////////// -->
+                                    <!-- //////////////////////////////// -->
                                     <div class="foam-field">
-                                    <label style="width: 46%;color: black;">    Bank Details*</label>
+                                    <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
                                     </div>
                                     <div class="foam-field">
                                     <label>Account Holder Name</label>
@@ -311,6 +311,18 @@
                                     <label>Bank Address</label>
                                     <input type="text" name="vendorName">
                                     </div>
+                                    <div class="foam-field">
+                                    <label>Password</label>
+                                    <input type="password" name="password" id="password1" placeholder="Enter new password" required>
+                                      <span toggle="#password1" style="margin: 10px 7px 0px -23px;" class="fa fa-fw fa-eye field-icon toggle-password"></span>         
+                                    </div>
+                                    <div style="margin: -16px 0px 0px 47%;min-height: 20px;">
+                                      <span class="form-text" id="password_strength"></span>
+                                    </div>
+                                    <div style="text-align: right;" >
+                                    <input type="checkbox" name="terms" id="terms" required>
+                                    <label> I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a> </label>
+                                    </div>
 
 
 
@@ -321,7 +333,7 @@
                                 
 
                              
-                                <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                                <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
                                   <div class="drag-drop">
                                       <p class="p23">
                                        <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
@@ -521,7 +533,7 @@
                                 <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
                                 </div>
                                 <div class="foam-field">
-                                <label style="width: 46%;color: black;">    KYC Proof*</label>
+                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
                                 </div>
                                 <div class="foam-field">
                                     <label>PAN Card*</label>
@@ -757,6 +769,76 @@
             })
         });
     })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#password1").bind("keyup", function () {
+            //TextBox left blank.
+            if ($(this).val().length == 0) {
+                $("#password_strength").html("");
+                return;
+            }
+ 
+            //Regular Expressions.
+            var regex = new Array();
+            regex.push("[A-Z]"); //Uppercase Alphabet.
+            regex.push("[a-z]"); //Lowercase Alphabet.
+            regex.push("[0-9]"); //Digit.
+            regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+            var passed = 0;
+ 
+            //Validate for each Regular Expression.
+            for (var i = 0; i < regex.length; i++) {
+                if (new RegExp(regex[i]).test($(this).val())) {
+                    passed++;
+                }
+            }
+ 
+ 
+            //Validate for length of Password.
+            if (passed > 2 && $(this).val().length > 8) {
+                passed++;
+            }
+            console.log(passed)
+            //Display status.
+            var color = "";
+            var strength = "";
+            switch (passed) {
+                case 0:
+                case 1:
+                    strength = "Weak";
+                    color = "red";
+                    break;
+                case 2:
+                    strength = "Good";
+                    color = "darkorange";
+                    break;
+                case 3:
+                case 4:
+                    strength = "Strong";
+                    color = "green";
+                    break;
+                case 5:
+                    strength = "Very Strong";
+                    color = "darkgreen";
+                    break;
+            }
+            $("#password_strength").html(strength);
+            $("#password_strength").css("color", color);
+        });
+    });
+
+    $(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
 </script>
 
 {% endblock extra_scripts %}
