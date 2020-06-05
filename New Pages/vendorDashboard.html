@@ -10,6 +10,44 @@
     list-style-type: none;
     font-size: medium;
     }
+    .vendorTab li{
+      margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    .vendorTab a{
+        font-size: medium;
+        color: inherit;
+        
+    }
+    .vendorTab .active{
+         color: black;
+         font-weight: bold;
+    }
+    #vendorDashboard h4{
+      font-weight: bold;
+      padding: 10px 0px;
+    }
+    #vendorDashboard h4 p{
+      display: contents;
+      font-weight: 400;
+    }
+    .vendorHeader{
+      background-color: #f9f9f9;
+    padding: 0 0 0 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+
+
+    }
     
 </style>
 {% endblock extra_stylesheet %}
@@ -20,44 +58,106 @@
 <div class="tj-wrapper">
     <div class="container">
         <div class="row">
+          <!-- --------Begning of left navigation tab---------- -->
             <div class="col-md-3 " style="margin-top: 80px">
                     <ul class="vendorTab">
-                      <li >
-                        <a href="" data-toggle="tab">
+                      <li class="active" >
+                        <a href="#vendorProfile" data-toggle="tab">
                           <i class="far fa-user"></i>&nbsp;&nbsp;Vendor Profile</a>
                       </li>
                       <li >
-                        <a href="">
+                        <a href="#carDetail" data-toggle="tab">
                           <i class="far fa-plus-square"></i>&nbsp;&nbsp;Car Detail</a>
                       </li>
                       <li >
-                        <a href="" data-toggle="tab">
+                        <a href="#driverDetails" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Driver Details
                         </a>
                       </li>
                       <li >
-                        <a href="" data-toggle="tab">
+                        <a href="#yourBooking" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Your Booking
                         </a>
                       </li>
                       <li >
-                        <a href="" data-toggle="tab">
+                        <a href="#assignments" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Assignments
                         </a>
                       </li>
                       <li >
-                        <a href="" data-toggle="tab">
+                        <a href="#bookingHistory" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Booking History
                         </a>
                       </li>
                       <li >
-                        <a href="" data-toggle="tab">
+                        <a href="#payments" data-toggle="tab">
                           <i class="fas fa-user-plus"></i>&nbsp;Payments
                         </a>
                       </li>
                     </ul>
                 </div>
-            </div>
+                <!-- --------End of left navigation tab---------- -->
+
+                <!-- --------Begning of navigation tabs---------- -->
+                <div class="col-md-9">
+                    <div class="tab-content" id="vendorDashboard">
+                        <div class="tab-pane active " id="vendorProfile" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Vendor Profile</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="carDetail" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Car Detail</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="driverDetails" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Driver Details</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="yourBooking" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="assignments" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Assignments</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="bookingHistory" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Booking History</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="payments" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Payments</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+                    </div>          
+                </div>
         </div>
     </div>
 </div>
