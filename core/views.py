@@ -46,6 +46,8 @@ MERCHANT_KEY = 'QxL9PGUue%ZdByvX'
 #                                                                                                    '&units=metric' + '&key=' + api_key)
 
 
+def SSLView(request):
+    return HttpResponse('7h6nnz946n5klbywjzw15lvhtnvbzf64')
 
 def TestView(request):
     context = {}

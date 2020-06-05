@@ -143,7 +143,7 @@ def GeneralModelsView(request):
     return render(request, 'general/index.html', context)
 
 def UpdateCityView(request):
-    CityFormset = modelformset_factory(coremodels.city, extra=2, fields = '__all__')
+    CityFormset = modelformset_factory(coremodels.city, extra=2, fields = '__all__', can_delete=True)
     if request.method == 'POST':
         formset = CityFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -221,28 +221,28 @@ def DeleteMainPageBannersView(request, id):
     return redirect( 'customadmin:general')
 
 def UpdateFAQsView(request):
-    FAQFormset = modelformset_factory(coremodels.faq, fields = '__all__')
+    FAQFormset = modelformset_factory(coremodels.faq, fields = '__all__', can_delete=True, extra=1)
     if request.method == 'POST':
         formset = FAQFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
-        redirect( 'customadmin:general')
+        return redirect( 'customadmin:general')
     else:
-        formset = FAQFormset(request.POST, request.FILES)
+        formset = FAQFormset()
         context = {
             'formset':formset,
         }
         return render(request, 'general/faqs_formset.html', context)
 
 def UpdateTermsAndConditionsView(request):
-    TermsAndConditionsFormset = modelformset_factory(coremodels.TermsAndConditions, fields = '__all__')
+    TermsAndConditionsFormset = modelformset_factory(coremodels.TermsAndConditions, fields = '__all__', can_delete=True)
     if request.method == 'POST':
         formset = TermsAndConditionsFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
-        redirect( 'customadmin:general')
+        return redirect( 'customadmin:general')
     else:
-        formset = TermsAndConditionsFormset(request.POST, request.FILES)
+        formset = TermsAndConditionsFormset()
         context = {
             'formset':formset,
         }
@@ -295,8 +295,8 @@ def UpdateCarAttributes(request):
         }
         return render(request, 'car_type/car_attribute_formset.html', context)
 
-def UpdateCarAttributeValueView(request, id):
-    CarAtrributeValueFormset = modelformset_factory(coremodels.car_attr_comparison, fields = '__all__')
+def UpdateCarAttributeValueView(request):
+    CarAtrributeValueFormset = modelformset_factory(coremodels.car_attr_comparison, fields = '__all__', can_delete=False, extra=0)
     if request.method == 'POST':
         formset = CarAtrributeValueFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -310,7 +310,7 @@ def UpdateCarAttributeValueView(request, id):
         return render(request, 'car_type/car_attribute_value_formset.html', context)
 
 def UpdateRideAdditionalChoices(request):
-    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices, fields='__all__')
+    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices, fields='__all__', can_delete=True)
     if request.method == 'POST':
         formset = RideAdditionalChoicesFormset(request.POST, request.FILES)
         if formset.is_valid():
@@ -513,7 +513,7 @@ def DeleteCustomerView(request, id):
 
 def UpdateCustomerPromotionalView(request, id):
     profile = get_object_or_404(customermodels.customerprofile, id=id)
-    CustomerPromotionalFormset = inlineformset_factory(customermodels.customerprofile, customermodels.customer_promotional, exclude=['customer'], extra=1)
+    CustomerPromotionalFormset = inlineformset_factory(customermodels.customerprofile, customermodels.customer_promotional, exclude=['customer'], extra=1, can_delete=True)
     if request.method == 'POST':
         formset = CustomerPromotionalFormset(request.POST, request.FILES, instance = profile)
         if formset.is_valid():

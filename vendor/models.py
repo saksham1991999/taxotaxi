@@ -6,10 +6,8 @@ account_type_choices = (
     ('S', 'Saving'),
 )
 class vendorprofile(models.Model):
-    user = models.ForeignKey('core.User', on_delete=models.DO_NOTHING)
-    first_name = models.CharField(max_length=100)
-    middle_name = models.CharField(max_length=100, blank=True, null=True)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
+    user = models.ForeignKey('core.User', on_delete=models.PROTECT)
+    full_name = models.CharField(max_length=256)
 
     father_name = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField()
@@ -32,8 +30,8 @@ class vendorprofile(models.Model):
     driving_licence_front = models.FileField(blank=True, null=True)
     driving_licence_rear = models.FileField(blank=True, null=True)
 
-    company_name = models.CharField(max_length=100)
-    gst_no = models.CharField(max_length=15)
+    company_name = models.CharField(max_length=100, blank=True, null=True)
+    gst_no = models.CharField(max_length=15, blank=True, null=True)
 
     account_name = models.CharField(max_length=50)
     account_no = models.IntegerField()
@@ -45,7 +43,7 @@ class vendorprofile(models.Model):
     verified = models.BooleanField(default=0)
 
     def __str__(self):
-        return str(self.first_name)
+        return str(self.full_name)
 
     class Meta:
         verbose_name_plural = 'Vendor Details'
@@ -58,17 +56,22 @@ fuel_type_choices = (
 class vendor_cars(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
     car_type = models.ForeignKey('core.car_types', on_delete=models.DO_NOTHING)
+
     registration_no = models.CharField(max_length=50,blank=True, null=True)
     dateofregistration = models.DateField(blank=True, null=True)
+
     image_front = models.ImageField()
     image_rear = models.ImageField()
 
     rc_front = models.FileField()
     rc_rear = models.FileField()
+
     touristpermit_front = models.FileField()
     touristpermit_rear = models.FileField(blank=True, null=True)
+
     permita_front = models.FileField()
     permita_rear = models.FileField(blank=True, null=True)
+
     permitb_front = models.FileField()
     permitb_rear = models.FileField(blank=True, null=True)
 
@@ -85,7 +88,7 @@ class vendor_cars(models.Model):
 class driver(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
     first_name = models.CharField(max_length=100)
-    middle_name = models.CharField(max_length=100, blank=True, null=True)
+    # middle_name = models.CharField(max_length=100, blank=True, null=True)
     last_name = models.CharField(max_length=100, blank=True, null=True)
     father_name = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField()

@@ -42,6 +42,7 @@ urlpatterns = [
     # Car Type Urls
     path('car-type/', views.CarTypePageViews, name='car_type'),
     path('update-car-attributes/', views.UpdateCarAttributes, name='update_car_attributes'),
+    path('update-car-attribute-values/', views.UpdateCarAttributeValueView, name='update_car_attribute_values'),
     path('update-ride-additional-choices/', views.UpdateRideAdditionalChoices, name='update_ride_additional_choices'),
     path('update-city-ride-attributes/', views.UpdateCityRideAttributeValues, name='update_city_ride_attributes'),
 

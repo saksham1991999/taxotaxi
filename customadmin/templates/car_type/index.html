@@ -19,9 +19,14 @@
                         <div class="card-body">
                             <h4 class="card-title">
                                 Car Type Attributes
+                                <a href="{% url 'customadmin:update_car_attribute_values' %}">
+                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update Values
+                                    </button>
+                                </a>
                                 <a href="{% url 'customadmin:update_car_attributes' %}">
                                     <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update Attributes
                                     </button>
                                 </a>
                             </h4>

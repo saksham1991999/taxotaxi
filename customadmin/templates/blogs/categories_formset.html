@@ -56,14 +56,15 @@
                                         </div>
                                         <div class="form-group col-lg-2">
                                             <label for="name">Delete</label>
-                                            {% render_field form.DELETE %}
+                                            {% render_field form.DELETE class="form-control" %}
                                         </div>
 
                                         {% for field in form.hidden_fields %}
                                             {{ field }}
                                         {% endfor %}
+                                    {{ form.errors }}
                                     </div>
-                                        {{ form.errors }}
+
                                     {% endfor %}
                                 </div>
                             <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">
@@ -86,11 +87,12 @@
                         </div>
                         <div class="form-group col-lg-2">
                             <label for="name">Delete</label>
-                            {% render_field formset.empty_form.DELETE %}
+                            {% render_field formset.empty_form.DELETE class="form-control" %}
                         </div>
-                        {% for field in form.hidden_fields %}
+                        {% for field in formset.empty_form.hidden_fields %}
                             {{ field }}
                         {% endfor %}
+                        {{  formset.empty_form.errors }}
                     </div>
                 </div>
             </div>
@@ -117,7 +119,7 @@
         var form_idx = $('#id_form-TOTAL_FORMS').val();
         console.log(form_idx);
         $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-        $('#id_quotation-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
     });
 
     $( document ).ready(function() {
