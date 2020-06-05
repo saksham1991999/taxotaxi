@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fullurl %}
+{% block extra_stylesheet %}
+<style type="text/css">
+    .vendorTab{
+        padding: 8px 0px 28px 0px;
+    border: 1px #eee solid;
+    padding-inline-start: 15px;
+    list-style-type: none;
+    font-size: medium;
+    }
+    
+</style>
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 " style="margin-top: 80px">
+                    <ul class="vendorTab">
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="far fa-user"></i>&nbsp;&nbsp;Vendor Profile</a>
+                      </li>
+                      <li >
+                        <a href="">
+                          <i class="far fa-plus-square"></i>&nbsp;&nbsp;Car Detail</a>
+                      </li>
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Driver Details
+                        </a>
+                      </li>
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Your Booking
+                        </a>
+                      </li>
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Assignments
+                        </a>
+                      </li>
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Booking History
+                        </a>
+                      </li>
+                      <li >
+                        <a href="" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Payments
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+<script type="text/javascript">
+    
+</script>
+
+
+{% endblock extra_scripts %}
+
+
