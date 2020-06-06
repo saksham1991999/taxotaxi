@@ -26,6 +26,17 @@
             width: 100%!important;
         }
     }
+    .errorCount{
+      color: red;
+    background-color: #eee;
+    border-radius: 7px;
+    font-size: medium;
+    }
+    .errorSpace{
+      text-align: center;
+      margin: -15px 0px 2px 33px;;
+      color: red;
+    }
     .drag-drop p {
     width: 100%;
     height: 100%;
@@ -142,19 +153,19 @@
     background-color: #f12b2b !important;
 }
 /* label{margin-left: 20px;} */
-#datepicker1{ width: 100%;}
+#datepicker1{ width: 103%;}
 #datepicker1 > span:hover{cursor: pointer;}
-#datepicker2{ width: 100%;}
+#datepicker2{ width: 103%;}
 #datepicker2 > span:hover{cursor: pointer;}
-#datepicker3{ width: 100%;}
+#datepicker3{ width: 103%;}
 #datepicker3 > span:hover{cursor: pointer;}
-#datepicker4{ width: 100%;}
+#datepicker4{ width: 103%;}
 #datepicker4 > span:hover{cursor: pointer;}
-#datepicker5{ width: 100%;}
+#datepicker5{ width: 103%;}
 #datepicker5 > span:hover{cursor: pointer;}
-#datepicker6{ width: 100%;}
+#datepicker6{ width: 103%;}
 #datepicker6 > span:hover{cursor: pointer;}
-#datepicker7{ width: 100%;}
+#datepicker7{ width: 103%;}
 #datepicker7 > span:hover{cursor: pointer;}
 </style>
 {% endblock extra_stylesheet %}
@@ -170,13 +181,13 @@
         <div class="col-sm-12 col-md-12">
                     <ul class="customer-tab col-sm-12">
                        <li class="col-sm-4 headerWidth active headerAlign" >
-                          <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information</a>
+                          <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">45</span></a>
                        </li>
                        <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details</a>
+                          <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">45</span></a>
                        </li>
                        <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details</a>
+                          <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">45</span></a>
                        </li>
                     </ul>
                <!------------togable Content pannel start----------->
@@ -185,10 +196,12 @@
                             <form class="vendor-frm" method="" enctype="multipart/form-data">
                                 <input type="hidden" name="type" value="vendorprofile">
                                 <div class="col-sm-7">
+                                    <div class="errorSpace"> Error Message</div>
                                     <div class="foam-field">
                                     <label>Full Name</label>
                                     <input type="text" name="vendorName">
                                     </div>
+                                    <div class="errorSpace"> Error Message</div>
                                     <div class="foam-field">
                                     <label>Father's Name</label>
                                     <input type="text" name="vendorName">
@@ -360,7 +373,7 @@
                                     
                             </form> -->
                             <div class="col-sm-7">
-                                
+                                <div class="errorSpace"> Error Message</div>
                                 <div class="foam-field">
                                     <label>No of cars</label>
                                     <select name="subject" id="" style="width: 20%;">
@@ -388,6 +401,7 @@
                                             <i class="far fa-file"></i> Back side</p>
                                         </div>
                                     </div>
+                                    <div class="errorSpace"> Error Message</div>
                                 <div class="foam-field">
                                     <label>Upload RC photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
@@ -499,12 +513,15 @@
                             <div>
                                 <input type="checkbox">
                                 <label for="">Is vendor/driver same</label>
+                                
                             </div>
                             <div class="col-sm-7">
+                                <div class="errorSpace"> Error Message</div>
                                 <div class="foam-field">
                                 <label>Full Name</label>
                                 <input type="text" name="vendorName">
                                 </div>
+                                <div class="errorSpace"> Error Message</div>
                                 <div class="foam-field">
                                 <label>Father's Name</label>
                                 <input type="text" name="vendorName">

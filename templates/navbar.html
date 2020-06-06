@@ -157,7 +157,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 									  <ul class="nav navbar-nav" style="width: 100%">
 
 
-                                        <li id="nav-home" {% if request.resolver_match.view_name == 'core:home' %}class="nav-active"{% endif %}>
+                                        <li id="nav-home" >
 											<a  href="#one-way" data-toggle="tab">Home</a>
 										</li>
 										<li id="nav-oneway" >
@@ -183,8 +183,8 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 											<a href="{% url 'core:coming_soon' %}">Daily Rental</a>
 										</li>
  -->
-										<li>
-											<a href="http://www.taxotaxi.com/#nav-destinations">Exciting Offers</a>
+										<li id="exciting-offer">
+											<a href="http://127.0.0.1:8000/#nav-destinations">Exciting Offers</a>
 										</li>
 
 										<li {% if request.resolver_match.view_name == 'blog:home' %}class="nav-active"{% endif %}>
@@ -291,7 +291,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							$("#ONEWAY").removeClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
-							// $("#nav-airport").addClass("nav-active");
+							$("#nav-airport").addClass("nav-active");
 						}else if( decider === "2"){
 							$("#one-way").removeClass("active");
 							$("#round-trip").addClass("active");
@@ -319,7 +319,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							$("#ONEWAY").addClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
-							// $("#nav-home").addClass("nav-active");
+							$("#nav-home").addClass("nav-active");
 						}else if( decider === "5"){
 							$("#one-way").addClass("active");
 							$("#round-trip").removeClass("active");
@@ -329,7 +329,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							$("#ONEWAY").addClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
-							// $("#nav-oneway").addClass("nav-active");
+							$("#nav-oneway").addClass("nav-active");
 						}else{
 							$("#one-way").addClass("active");
 							$("#round-trip").removeClass("active");
@@ -339,10 +339,11 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							$("#ONEWAY").addClass("active");
 							$("#ROUNDTRIP").removeClass("active");
 							$("#MULTIWAY").removeClass("active");
+							$("#nav-home").addClass("nav-active");
 
 						}
 						$("#nav-airport").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=1`							
+							location.href = `http://127.0.0.1:8000/?id=1`							
 						});
 						
 						$("#nav-roundtrip").click(function(){
@@ -354,11 +355,24 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							
 						});
 						$("#nav-home").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=4`
+							location.href = `http://127.0.0.1:8000/?id=4`
 							
 						});
 						$("#nav-oneway").click(function(){
-							location.href = `http://www.taxotaxi.com/?id=5`
+							location.href = `http://127.0.0.1:8000/?id=5`
+							
+						});
+						$("#exciting-offer").click(function(){
+							location.href = `http://127.0.0.1:8000/#nav-destinations`
+							$("#one-way").addClass("active");
+							$("#round-trip").removeClass("active");
+							$("#multi-way").removeClass("active");
+							$("#airport").removeClass("active");
+							$("#AIRPORT").removeClass("active");
+							$("#ONEWAY").addClass("active");
+							$("#ROUNDTRIP").removeClass("active");
+							$("#MULTIWAY").removeClass("active");
+							$("#exciting-offer").addClass("nav-active");
 							
 						});
 					});
