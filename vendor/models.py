@@ -1,10 +1,7 @@
 from django.db import models
 
 # Create your models here.
-account_type_choices = (
-    ('C', 'Current'),
-    ('S', 'Saving'),
-)
+
 class vendorprofile(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT)
     full_name = models.CharField(max_length=256)
@@ -29,14 +26,8 @@ class vendorprofile(models.Model):
     company_name = models.CharField(max_length=100, blank=True, null=True)
     gst_no = models.CharField(max_length=15, blank=True, null=True)
 
-    account_holder_name = models.CharField(max_length=50)
-    account_no = models.IntegerField()
-    bank_name = models.CharField(max_length=50)
-    account_type = models.CharField(max_length=1, choices=account_type_choices)
-    ifsc = models.CharField(max_length=20)
-    bank_address = models.CharField(max_length=200)
-
     verified = models.BooleanField(default=0)
+    rejection_reason = models.TextField()
 
     date_of_registration = models.DateField(auto_now_add=True)
 
@@ -45,6 +36,22 @@ class vendorprofile(models.Model):
 
     class Meta:
         verbose_name_plural = 'Vendor Details'
+
+account_type_choices = (
+    ('C', 'Current'),
+    ('S', 'Saving'),
+)
+class bank_detail(models.Model):
+    vendor = models.ForeignKey('vendor.vendorprofile', on_delete=models.PROTECT)
+    account_holder_name = models.CharField(max_length=50)
+    account_no = models.IntegerField()
+    bank_name = models.CharField(max_length=50)
+    account_type = models.CharField(max_length=1, choices=account_type_choices)
+    ifsc = models.CharField(max_length=20)
+    bank_address = models.CharField(max_length=200)
+
+    def __str__(self):
+        return str(self.vendor) + str(self.account_holder_name)
 
 fuel_type_choices = (
     ('P', 'Petrol'),

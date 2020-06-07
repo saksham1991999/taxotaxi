@@ -76,9 +76,11 @@ def VendorRegistrationView(request):
         profile_form = forms.VendorProfileForm()
         car_form = forms.VendorProfileForm()
         driver_form = forms.VendorProfileForm()
+        bank_form = forms.BankAccountForm()
         context = {
             'profile_form':profile_form,
             'car_form':car_form,
             'driver_form':driver_form,
+            'bank_form':bank_form,
         }
         return render(request, 'Vendor/registration_form.html' ,context)

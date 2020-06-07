@@ -19,6 +19,11 @@ class VendorProfileForm(forms.ModelForm):
             except:
                 return mobile
 
+class BankAccountForm(forms.ModelForm):
+    class Meta:
+        model = models.bank_detail
+        exclude = ['vendor']
+
 class AddCarForm(forms.ModelForm):
     class Meta:
         model = models.vendor_cars
