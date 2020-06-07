@@ -64,7 +64,6 @@ def DashboardView(request):
         return redirect('vendor:registration')
 
 
-@login_required(login_url='/login/')
 def VendorRegistrationView(request):
     if request.method == 'POST':
         form = forms.VendorProfileForm(request.POST, request.FILES)
@@ -74,8 +73,12 @@ def VendorRegistrationView(request):
             return redirect('vendor:dashboard')
         return redirect('vendor:dashboard')
     else:
-        form = forms.VendorProfileForm()
+        profile_form = forms.VendorProfileForm()
+        car_form = forms.VendorProfileForm()
+        driver_form = forms.VendorProfileForm()
         context = {
-            'form':form,
+            'profile_form':profile_form,
+            'car_form':car_form,
+            'driver_form':driver_form,
         }
         return render(request, 'Vendor/registration_form.html' ,context)

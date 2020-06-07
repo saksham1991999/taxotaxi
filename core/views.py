@@ -47,7 +47,7 @@ MERCHANT_KEY = 'QxL9PGUue%ZdByvX'
 
 
 def SSLView(request):
-    return HttpResponse('7h6nnz946n5klbywjzw15lvhtnvbzf64')
+    return HttpResponse('qfkrdl6qq0znw6n9r382tf8cktsqdnqk')
 
 def TestView(request):
     context = {}
