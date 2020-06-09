@@ -2,880 +2,583 @@
 {% load static %}
 {% load fullurl %}
 {% block extra_stylesheet %}
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-<style>
-    @media(max-width: 500px){
-        .customer-tab{
-            text-decoration: overline;
-        }
-    }
-    @media(min-width: 660px){
-        .headerWidth{
-            width: 33.33%
-        }
-        .customer-tab{
-            display: flex;
-        }
-    }
-    @media(max-width: 770px){
-        .headerAlign{
-            text-align: center!important;
-        }
-        .drag-drop{
-            width: 100%!important;
-        }
-    }
-    .fileUploadtext{
-        margin-top: -19px !important;
-    font-style: italic ;
-    color: #696464 !important;
-    font-size: inherit !important;
-    font-weight: 500;
-    }
-    .errorCount{
-      color: red;
-    background-color: #eee;
-    border-radius: 7px;
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+    .vendorTab{
+        padding: 8px 0px 28px 0px;
+    border: 1px #eee solid;
+    padding-inline-start: 15px;
+    list-style-type: none;
     font-size: medium;
     }
-    .errorSpace{
-      text-align: center;
-      margin: -15px 0px 2px 33px;;
-      color: red;
+    .vendorTab li{
+      margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     }
-    .drag-drop p {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    /* line-height: 40px; */
-    color: #1c2b39;
-    font-family: inherit;
-    }
-    .drag-drop input {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    outline: none;
-    opacity: 0;
-    }
-    .label-right-allign {
-    padding-right: 0px;
-    text-align: right;
-    padding-left: 0px;
-    font-weight: 600;
-    color: black;
-    margin-top: 7px;
-    }
-
-    .vendorfrm{
-        padding: 25px 15px;
-    }
-    .vendorfrm h3{
-        background-color: #f9f9f9;
-        padding: 10px;
-        color: #1c2b39;
-        margin: 0;
-    }
-
-    .customer-tab{
-        /*text-decoration: overline;*/
-        border-bottom: 1px #c5c1c1 solid;
-        list-style-type:none;
-        color: #a7a1a1;
-        margin-bottom: 25px;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-    .customer-tab a{
+    .vendorTab a{
+        font-size: medium;
         color: inherit;
-        font-size: large;
-        font-weight: bold;
+        
     }
-    .customer-tab .active{
-        color: #1c2b39;
+    .vendorTab .active{
+         color: black;
+         font-weight: bold;
     }
-    
-    .foam-field{
-        display: flex;
-        margin-bottom: 15px;
+    #vendorDashboard h4{
+      font-weight: bold;
+      padding: 10px 0px;
+    }
+    #vendorDashboard h4 p{
+      display: contents;
+      font-weight: 400;
+    }
+    .vendorHeader{
+      background-color: #f9f9f9;
+    padding: 0 0 0 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.foam-field{
+    	display: flex;
+    	margin-bottom: 15px;
     }
     .foam-field label{
-        width: 80%;
+    	width: 80%;
         text-align: right;
         padding-right: 28px;
     }
     .foam-field input,.foam-field select,.foam-field textarea{
-        width: 100%;
-    padding: 6px 10px;
-    font-size: 12px;
-    line-height: 19px;
-    color: #a6a6a6;
-    border: 1px solid #e8e8e8;
-    display: block;
-    /* margin-bottom: 13px; */
-    border-radius: 4px;
-    /* padding-right: 28px;*/
+    	width: 100%;
     }
-    .foam-field p{
-        margin: 0;
-        font-size: x-small;
-        color: red;
-        margin-top: -3px;
-    }
+    .pagenumbers button {
+	width: 50px;
+	height: 50px;
 
-    .drag-drop {
-    position: relative;
-    width: 300px;
-    height: 160px;
-    border: 2px dashed #e6e3e3;
-    }
+	appearance: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
 
-    .vendorFile{
-       width: 100%;
-       padding: 6px 10px;
-       font-size: 12px;
-       line-height: 19px;
-       color: #a6a6a6;
-       border: 1px solid #e8e8e8;
-       display: block;
-       border-radius: 4px;
-    }
-    .vendorFile input{
-        outline: none;
-        opacity: 0;
-        padding: 0;
-    }
+	background-color: #44AAEE;
 
-    .vendorFile p{
-        margin-top:-19px;
-        font-style: italic; 
-        color:#e6e3e3;
-        margin-bottom: 0px;
-    }
-  
-.add-cars:hover{
-    background-color: #f12b2b !important;
+	margin: 5px;
+	transition: 0.4s;
+
+	color: #FFF;
+	font-size: 18px;
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
-/* label{margin-left: 20px;} */
-#datepicker1{ width: 103%;}
-#datepicker1 > span:hover{cursor: pointer;}
-#datepicker2{ width: 103%;}
-#datepicker2 > span:hover{cursor: pointer;}
-#datepicker3{ width: 103%;}
-#datepicker3 > span:hover{cursor: pointer;}
-#datepicker4{ width: 103%;}
-#datepicker4 > span:hover{cursor: pointer;}
-#datepicker5{ width: 103%;}
-#datepicker5 > span:hover{cursor: pointer;}
-#datepicker6{ width: 103%;}
-#datepicker6 > span:hover{cursor: pointer;}
-#datepicker7{ width: 103%;}
-#datepicker7 > span:hover{cursor: pointer;}
+
+.pagenumbers button:hover {
+	background-color: #44EEAA;
+}
+
+.pagenumbers button.active {
+	background-color: #44EEAA;
+	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+    
+    
 </style>
 {% endblock extra_stylesheet %}
 
 
 
 {% block content %}
-<div class="container" style="display: grid;">
-    <div class="row">
-        <div class="col-sm-12 vendorfrm">
-            <h3> Vendor Registration </h3>
-        </div>
-        <div class="col-sm-12 col-md-12">
-                    <ul class="customer-tab col-sm-12">
-                       <li class="col-sm-4 headerWidth active headerAlign" >
-                          <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">45</span></a>
-                       </li>
-                       <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">45</span></a>
-                       </li>
-                       <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">45</span></a>
-                       </li>
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+          <!-- --------Begning of left navigation tab---------- -->
+            <div class="col-md-3 " style="margin-top: 80px">
+                    <ul class="vendorTab">
+                      <li class="active" >
+                        <a href="#vendorProfile" data-toggle="tab">
+                          <i class="far fa-user"></i>&nbsp;&nbsp;Vendor Profile</a>
+                      </li>
+                      <li >
+                        <a href="#carDetail" data-toggle="tab">
+                          <i class="far fa-plus-square"></i>&nbsp;&nbsp;Car Detail</a>
+                      </li>
+                      <li >
+                        <a href="#driverDetails" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Driver Details
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#yourBooking" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Your Booking
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#assignments" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Assignments
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#bookingHistory" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Booking History
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#payments" data-toggle="tab">
+                          <i class="fas fa-user-plus"></i>&nbsp;Payments
+                        </a>
+                      </li>
                     </ul>
-               <!------------togable Content pannel start----------->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="vendorInformation">
-                            <form class="vendor-frm" method="" enctype="multipart/form-data">
-                                <input type="hidden" name="type" value="vendorprofile">
-                                <div class="col-sm-7">
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="foam-field">
-                                    <label>Full Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="foam-field">
-                                    <label>Father's Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Date Of Birth</label>
-                                    <div id="datepicker1" class="input-group date" data-date-format="mm-dd-yyyy">
-                                        <input class="" type="text" readonly />
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                    <!-- <input id="datepicker type="date" name="vendorName" max=new Date()> -->
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Email address*</label>
-                                    <input type="email" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Phone No 1*</label>
-                                    <input type="tel" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Phone No 2*</label>
-                                    <input type="tel" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Address*</label>
-                                    <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                                    </div>
-                                    <div class="foam-field ">
-                                        <label>PAN Card*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
-                                        </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Aadhar Card*<p>Size must be 200KB</p></label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Voter Card</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Driving Licence</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front Side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                    <div class="foam-field">
-                                        <label>Do You have a Company?</label>
-                                        <select name="subject" id="companyDetails">
-                                              <option Selected>--Select--</option>
-                                              <option value="0">No</option>
-                                              <option value="1" id="Yes">Yes</option>
-                                        </select>
-                                    </div>
-                                    <!-- //////if Yes is selected///////// -->
-                                    <div style="display: none;" id="yesDisplay">
-                                    <div class="foam-field">
-                                        <label style="color: #e61616;">Company Name*</label>
-                                        <input type="text" name="vendorName">
-                                        </div>
-                                        <div class="foam-field">
-                                    <label style="color: #e61616;">GST NUMBER*</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                      </div>
-                                    <!-- //////////////////////////////// -->
-                                    <div class="foam-field">
-                                    <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Account Holder Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Account Number</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Saving/ Current</label>
-                                    <select name="subject" id="">
-                                          <option Selected>--Select Account Type--</option>
-                                          <option value="0" >Saving</option>
-                                          <option value="1">Current</option>
-                                    </select>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>IFSC code</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Address</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Password</label>
-                                    <input type="password" name="password" id="password1" placeholder="Enter new password" required>
-                                      <span toggle="#password1" style="margin: 10px 7px 0px -23px;" class="fa fa-fw fa-eye field-icon toggle-password"></span>         
-                                    </div>
-                                    <div style="margin: -16px 0px 0px 47%;min-height: 20px;">
-                                      <span class="form-text" id="password_strength"></span>
-                                    </div>
-                                    <div style="text-align: right;" >
-                                    <input type="checkbox" name="terms" id="terms" required>
-                                    <label> I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a> </label>
-                                    </div>
+                </div>
+                <!-- --------End of left navigation tab---------- -->
 
-
-
-
-                                </div>
-
-
-                                
-
-                             
-                                <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
-                                  <div class="drag-drop">
-                                      <p class="p23">
-                                       <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                       </i><br> Drag&Drop files here <br> or<br>
-                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                      </p>
-                                      <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                      </div>
-                                   </div>
-                                </div>
-                                <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
-                                    <div style="display: flex;width:fit-content;">
-                                      <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                      <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button><br>
-                                    </div><br>
-                                </div>
-                            </form>
+                <!-- --------Begning of navigation tabs---------- -->
+                <div class="col-md-9">
+                    <div class="tab-content" id="vendorDashboard">
+                        <div class="tab-pane" id="vendorProfile" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Vendor Profile</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
                         </div>
 
-                        <div class="tab-pane" id="carDetails" role="tabpanel">
-                            <!-- <form class="booking-frm" method="" id="">     
-                                 <input type="hidden" name="type" value="change_password">
-                                    
-                            </form> -->
-                            <div class="col-sm-7">
-                                <div class="errorSpace"> Error Message</div>
-                                <div class="foam-field">
-                                    <label>No of cars</label>
-                                    <select name="subject" id="" style="width: 20%;">
-                                        <option Selected>1</option>
-                                        <option value="0" >1</option>
-                                        <option value="1">2</option>
-                                  </select>
-                                              <div class="foam-field" style="width: 80%; margin-bottom: 0px;">
-                                                <label>Car type</label>
-                                                <select name="subject" id="">
-                                                      <option Selected>Sedan</option>
-                                                      <option value="0" >Saving</option>
-                                                      <option value="1">Current</option>
-                                                </select>
-                                                </div>
-                                    </div>
-                                <div class="foam-field">
-                                    <label>Upload Car photo*</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front Side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                    <div class="errorSpace"> Error Message</div>
-                                <div class="foam-field">
-                                    <label>Upload RC photo*</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front Side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                <div class="foam-field">
-                                <label>RC valid upto</label>
-                                <div id="datepicker5" class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                </div>
-                                 <div class="foam-field ">
-                                <label>Upload Tourists Permit*</label>
-                                <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                </div>
-                                <div class="foam-field">
-                                <label>Tourist Permit valid upto</label>
-                                <div id="datepicker6" class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                </div>
-                                <div class="foam-field ">
-                                <label>Upload Permit A*</label>
-                                <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                </div>
-                                <div class="foam-field ">
-                                <label>Upload Permit B*</label>
-                                <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                </div>
-                                <div class="foam-field ">
-                                <label>Upload Insurance</label>
-                                <div class="vendorFile">
-                                   <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                    <i class="far fa-file"></i> Drop file here</p>
-                                </div>
-                                </div>
-                                <div class="foam-field">
-                                <label>Insurance valid upto</label>
-                                <div id="datepicker7" class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                </div>
-                                <div class="foam-field ">
-                                <label>Upload Pollution Certificate</label>
-                                <div class="vendorFile">
-                                   <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                    <i class="far fa-file"></i> Drop file here</p>
-                                </div>
-                                </div>
-                                <div class="booking-frm" >
-                                    <!-- <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button> -->
-                                    <button class="book-btn" style="
-                                    background-color: #4CAF50;float: right;margin-bottom: 5px;
-                                    " class="add-cars">Add more Cars </button>
-                                </div>
+                        <div class="tab-pane" id="carDetail" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Car Detail</h4>
                             </div>
-                            <!-- <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                                <div class="drag-drop">
-                                    <p class="p23">
-                                     <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                     </i><br> Drag&Drop files here <br> or<br>
-                                     <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                    </p>
-                                    <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                        <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                    </div>
-                                 </div>
-                              </div> -->
-                              
-                              <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
-                                  <div style="display: flex;width:fit-content;">
-                                    <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                    <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button><br>
-                                  </div><br>
-                              </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
                         </div>
 
                         <div class="tab-pane" id="driverDetails" role="tabpanel">
-                            <div>
-                                <input type="checkbox">
-                                <label for="">Is vendor/driver same</label>
-                                
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Driver Details</h4>
                             </div>
-                            <div class="col-sm-7">
-                                <div class="errorSpace"> Error Message</div>
-                                <div class="foam-field">
-                                <label>Full Name</label>
-                                <input type="text" name="vendorName">
-                                </div>
-                                <div class="errorSpace"> Error Message</div>
-                                <div class="foam-field">
-                                <label>Father's Name</label>
-                                <input type="text" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Date Of Birth</label>
-                                <div id="datepicker4" class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                </div>
-                                <div class="foam-field">
-                                <label>Email address*</label>
-                                <input type="email" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Phone No 1*</label>
-                                <input type="tel" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Phone No 2*</label>
-                                <input type="tel" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Address*</label>
-                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                                </div>
-                                <div class="foam-field">
-                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                                </div>
-                                <div class="foam-field">
-                                    <label>PAN Card*</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Front Side</p>
-                                     </div>
-                                     <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Back side</p>
-                                     </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Aadhar Card* <p>Size must be 200KB</p></label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Voter Card</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                    </div>
-                                    <div class="foam-field">
-                                        <label>Driving Licence</label>
-                                        <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                        </div>
-                                 
-                                <div class="foam-field">
-                                <label>Valid From*</label>
-                                <div id="datepicker2" onchange="new_setter(this.innerHtml)"  class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                <!-- <input type="date" name="vendorName"> -->
-                                </div>
-                                <div class="foam-field">
-                                <label>Valid To*</label>
-                                <div id="datepicker3" class="input-group date" data-date-format="mm-dd-yyyy">
-                                    <input class="" type="text" readonly />
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                <!-- <input type="date" name="vendorName"> -->
-                                </div>
-                                <div class="foam-field">
-                                <label>Total Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>No. of years</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                    <label>Police Verification*<p>With in 15days or 6 months old</p></label>
-                                    <div class="vendorFile">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Drop file here</p>
-                                     </div>
-                                </div>
-                                <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                    <label>Any Legal/Accidental case pending for clearance*</label>
-                                    <div class="vendorFile">
-                                        <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Drop file here</p>
-                                     </div>
-                                </div>
-
-
-                            </div>
-
-
-                            
-
-                         
-                            <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                              <div class="drag-drop">
-                                  <p class="p23">
-                                   <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                   </i><br> Drag&Drop files here <br> or<br>
-                                   <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                  </p>
-                                  <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                      <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                  </div>
-                               </div>
-                            </div>
-                            <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
-                                <div style="display: flex;width:fit-content;">
-                                  <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                  <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Edit</button><br>
-                                </div><br>
+                            <div class="col-sm-12 col-md-12">
                             </div>
                         </div>
-                    </div>
-                  </div>
-        
+
+                        <div class="tab-pane active " id="yourBooking" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
+                                <div class="col-sm-3">
+                                    <div class="foam-field">
+                                        <!-- <label>Saving/ Current</label> -->
+                                        <select name="subject" id="">
+                                              <option Selected>Search By Date</option>
+                                              <option value="0" >Saving</option>
+                                              <option value="1">Current</option>
+                                        </select>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="foam-field">
+                                        <!-- <label>Saving/ Current</label> -->
+                                        <select name="subject" id="">
+                                              <option Selected>Search By Booking</option>
+                                              <option value="0" >Saving</option>
+                                              <option value="1">Current</option>
+                                        </select>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <div style="font-size: large;">&#8635 Refresh Info</div>
+                                </div>
+                            </div>
+                            <div class="list" id="list"></div>
+                            <div id="listitem1" style="display: none;">
+                            
+                            
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-1" class="listNumber">
+                                    01
+                                </div>
+                                <div class="col-sm-7">
+                                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                                            <span class="from">sadfsdf</span>
+                                             To 
+                                            <span class="to">sdfsdfsdf</span>
+                                        </h4>
+                                    </a>
+                                    
+                                    <h5 style="color: blue;">Booking Id: <span class="bookingId"></span></h5 style="color: blue;">
+                                    <h5>One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance"></span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance"></span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance"></span></h5>
+                                    
+                                    <h5><span class="cngAllowed"> CNG Allowed</span>
+                                        <span class="dieselAllowed"> Diesel Only</span>
+                                        <span class="electricAllowed"> Electric Allowed</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date"></span>, <span id="day"></span></h4>
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time"></span></h4>
+                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
+                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
+                                    <h5 style="visibility: visible;">Recommended Amount <br> 
+                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                            <div class="col-sm-4">
+                                                <h4>Pickup Location</h4>
+                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4>Drop Location</h4>
+                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
+                                            <div class="col-sm-4">
+                                                <h4>Special Requirements</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                                        </div>
+                                      
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-11 booking-frm">
+                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Bid Your Amount</button>
+                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-bottom: 10px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </div>
+                            </div>
+                            <div class="pagenumbers" id="pagination"></div>
+                        </div>
+
+                        <div class="tab-pane" id="assignments" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Assignments</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="bookingHistory" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Booking History</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="payments" role="tabpanel">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Payments</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+        </div>
     </div>
 </div>
+
 {% endblock content %}
 
 
 
 
 {% block extra_scripts %}
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-<script>
-    function new_setter(val){
-        }
-    $("#companyDetails").change(function(){
-        var selected = $("#companyDetails").children("option:selected").val();
-        // console.log(selected);
-        if( selected == "1"){
-            $("#yesDisplay").css({"display":"block"})
-        }
-        else if( selected == "0"){
-            $("#yesDisplay").css({"display":"none"})
-        }else{
-            $("#yesDisplay").css({"display":"none"})
-        }
-    })
-    function yes_func(){
-        // console.log("abhinav");
-        // $("#companyDetails").css({"display":"block"});
-    }
-    $(document).ready(function(){
-        var d = new Date();
-        var current_year = d.getFullYear();
-        // ///////////////////////set age restrictions here////////////////////////////////
-        var req_year = current_year - 18;
-        var month = d.getMonth();
-        var date = d.getDate();
-        var req_date = date + "/" + month + "/" + req_year;
-        var today_date = date + "/" + month + "/" + current_year;
-        $(function () {
-            $("#datepicker1").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                endDate: req_date
-            })
-        });
-        
-        $(function () {
-            $("#datepicker2").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false
-            })
-        });
-        $(function () {
-            $("#datepicker3").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                startDate: new Date(),
-            })
-        });
-        $(function () {
-            $("#datepicker4").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                endDate: req_date
-            })
-        });
-        $(function () {
-            $("#datepicker5").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                startDate: new Date(),
-            })
-        });
-        $(function () {
-            $("#datepicker6").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                startDate: new Date(),
-            })
-        });
-        $(function () {
-            $("#datepicker7").datepicker({ 
-                format: "dd/mm/yyyy",
-                autoclose: true, 
-                todayHighlight: false,
-                startDate: new Date(),
-            })
-        });
-    })
-</script>
+
 <script type="text/javascript">
-    $(function () {
-        // Function to return file name to the input field
-         $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            
-                $('.fileUploadtext').text(fileName);
-            // $(this).fileUploadtext.text(fileName);
-           
-        });
+//     const list_items = [
+// 	"Item 1",
+// 	"Item 2",
+// 	"Item 3",
+// 	"Item 4",
+// 	"Item 5",
+// 	"Item 6",
+// 	"Item 7",
+// 	"Item 8",
+// 	"Item 9"
+// ];
 
-         $('.input-file').change(function () {
-      $('.p23').text(this.files.length + " file(s) selected");
-    });
+const list_items = [
+    {from : "Chandigarh",
+     to : "Faridabad",
+     date : "24-May-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "10:50",
+     bookindId: 1656565,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Faridabad",
+     date : "24-June-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "12:30",
+     bookindId : 6519878,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Mumbai",
+     date : "24-Jan-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "4:30",
+     bookindId : 123798465,
+     nightPickAllowance : "&#10004",
+     nightDropAllowance : "&#10008",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"}
+     
+]
 
-        $("#password1").bind("keyup", function () {
-            //TextBox left blank.
-            if ($(this).val().length == 0) {
-                $("#password_strength").html("");
-                return;
-            }
- 
-            //Regular Expressions.
-            var regex = new Array();
-            regex.push("[A-Z]"); //Uppercase Alphabet.
-            regex.push("[a-z]"); //Lowercase Alphabet.
-            regex.push("[0-9]"); //Digit.
-            regex.push("[$@$!%*#?&]"); //Special Character.
- 
-            var passed = 0;
- 
-            //Validate for each Regular Expression.
-            for (var i = 0; i < regex.length; i++) {
-                if (new RegExp(regex[i]).test($(this).val())) {
-                    passed++;
-                }
-            }
- 
- 
-            //Validate for length of Password.
-            if (passed > 2 && $(this).val().length > 8) {
-                passed++;
-            }
-            console.log(passed)
-            //Display status.
-            var color = "";
-            var strength = "";
-            switch (passed) {
-                case 0:
-                case 1:
-                    strength = "Weak";
-                    color = "red";
-                    break;
-                case 2:
-                    strength = "Good";
-                    color = "darkorange";
-                    break;
-                case 3:
-                case 4:
-                    strength = "Strong";
-                    color = "green";
-                    break;
-                case 5:
-                    strength = "Very Strong";
-                    color = "darkgreen";
-                    break;
-            }
-            $("#password_strength").html(strength);
-            $("#password_strength").css("color", color);
-        });
-    });
 
-    $(".toggle-password").click(function() {
+const list_element = document.getElementById('list');
+const pagination_element = document.getElementById('pagination');
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
+let current_page = 1;
+let rows = 2;
+
+function DisplayList (items, wrapper, rows_per_page, page) {
+	wrapper.innerHTML = "";
+	page--;
+
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
+
+	for (let i = 0; i < paginatedItems.length; i++) {
+		let item = paginatedItems[i];
+
+		let item_element = document.createElement('div');
+		item_element.classList.add('item');
+		// item_element.innerText = item;
+        // let item_element = document.createElement('div');
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+        // console.log(item_element);
+        // item_element.classList.add(`list${i+1}`);
+        // console.log(item_element.classList);
+        // var temp2 = document.getElementsByClassName(`list${i+1}`).innerHTML;
+        // var temp = document.querySelector(`#listitem1 > div > div > h4 > .from`).innerHTML;
+        // console.log(temp);
+        // $(temp).innerText = list_items[i].from ;
+        // console.log( $(`list${i+1} .from`).innerText);
+        // console.log(i);
+
+        
+
+        let text = `<div>
+                            
+                            
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-1" class="listNumber">
+                                    01
+                                </div>
+                                <div class="col-sm-7">
+                                    <a data-toggle="collapse" href="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample${i}">
+                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                                            <span class="from"> ${paginatedItems[i].from}</span>
+                                             To 
+                                            <span class="to">${paginatedItems[i].to}</span>
+                                        </h4>
+                                    </a>
+                                    
+                                    
+                                    <h5 style="color: blue;">Booking Id: <span class="bookingId">${paginatedItems[i].bookindId}</span></h5 style="color: blue;">
+                                    <h5>${paginatedItems[i].type}/ <span style="font-weight: 800; color: red;">${paginatedItems[i].carType}</span> </h5 style="color: blue;">
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
+                                    <h5><span class="cngAllowed">${paginatedItems[i].cngAllowed} CNG Allowed</span>
+                                        <span class="dieselAllowed">${paginatedItems[i].dieselAllowed} Diesel Only</span>
+                                        <span class="electricAllowed">${paginatedItems[i].electricAllowed} Electric Allowed</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date">${paginatedItems[i].date}</span>, <span id="day">${paginatedItems[i].day}</span></h4>
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time">${paginatedItems[i].time}</span></h4>
+                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
+                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
+                                    <h5 style="visibility: visible;">Recommended Amount <br> 
+                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="collapse" id="collapseExample${i}">
+                                    <div class="card card-body">
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                            <div class="col-sm-4">
+                                                <h4>Pickup Location</h4>
+                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4>Drop Location</h4>
+                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
+                                            <div class="col-sm-4">
+                                                <h4>Special Requirements</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                                        </div>
+                                      
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-11 booking-frm">
+                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Bid Your Amount</button>
+                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-bottom: 10px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </div>
+                            </div>`;
+        // console.log(froms.length); 
+        // froms[i].innerHTML = list_items[i].from;
+        // console.log( list_items[i].from);
+
+
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+		item_element.innerHTML = text;
+		wrapper.appendChild(item_element);
+	}
+}
+
+function SetupPagination (items, wrapper, rows_per_page) {
+	wrapper.innerHTML = "";
+
+	let page_count = Math.ceil(items.length / rows_per_page);
+	for (let i = 1; i < page_count + 1; i++) {
+		let btn = PaginationButton(i, items);
+		wrapper.appendChild(btn);
+	}
+}
+
+function PaginationButton (page, items) {
+	let button = document.createElement('button');
+	button.innerText = page;
+
+	if (current_page == page) button.classList.add('active');
+
+	button.addEventListener('click', function () {
+		current_page = page;
+		DisplayList(items, list_element, rows, current_page);
+
+		let current_btn = document.querySelector('.pagenumbers button.active');
+		current_btn.classList.remove('active');
+
+		button.classList.add('active');
+	});
+
+	return button;
+}
+
+DisplayList(list_items, list_element, rows, current_page);
+SetupPagination(list_items, pagination_element, rows);
 </script>
+
 
 {% endblock extra_scripts %}
 
