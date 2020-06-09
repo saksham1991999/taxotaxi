@@ -2,6 +2,9 @@
 {% load static %}
 {% load fullurl %}
 {% block extra_stylesheet %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style type="text/css">
     .vendorTab{
         padding: 8px 0px 28px 0px;
@@ -43,11 +46,50 @@
     text-align: center;
 }
 
-
-
-
-
+.foam-field{
+      display: flex;
+      margin-bottom: 15px;
     }
+    .foam-field label{
+      width: 80%;
+        text-align: right;
+        padding-right: 28px;
+    }
+    .foam-field input,.foam-field select,.foam-field textarea{
+      width: 100%;
+    }
+    .pagenumbers button {
+  width: 50px;
+  height: 50px;
+
+  appearance: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  background-color: #44AAEE;
+
+  margin: 5px;
+  transition: 0.4s;
+
+  color: #FFF;
+  font-size: 18px;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pagenumbers button:hover {
+  background-color: #44EEAA;
+}
+
+.pagenumbers button.active {
+  background-color: #44EEAA;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+
+    
     
 </style>
 {% endblock extra_stylesheet %}
@@ -101,7 +143,7 @@
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
                     <div class="tab-content" id="vendorDashboard">
-                        <div class="tab-pane active " id="vendorProfile" role="tabpanel">
+                        <div class="tab-pane" id="vendorProfile" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Vendor Profile</h4>
                             </div>
@@ -125,12 +167,140 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="yourBooking" role="tabpanel">
+                        <div class="tab-pane active " id="yourBooking" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
                             </div>
-                            <div class="col-sm-12 col-md-12">
+                            <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
+                                <div class="col-sm-3">
+                                    <div class="foam-field">
+                                        <!-- <label>Saving/ Current</label> -->
+                                        <select name="subject" id="">
+                                              <option Selected>Search By Date</option>
+                                              <option value="0" >Saving</option>
+                                              <option value="1">Current</option>
+                                        </select>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="foam-field">
+                                        <!-- <label>Saving/ Current</label> -->
+                                        <select name="subject" id="">
+                                              <option Selected>Search By Booking</option>
+                                              <option value="0" >Saving</option>
+                                              <option value="1">Current</option>
+                                        </select>
+                                        </div>
+                                </div>
+                                <div class="col-sm-3">
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <div style="font-size: large;">&#8635 Refresh Info</div>
+                                </div>
                             </div>
+                            <div class="list" id="list"></div>
+                            <div id="listitem1" style="display: none;">
+                            
+                            
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-1" class="listNumber">
+                                    01
+                                </div>
+                                <div class="col-sm-7">
+                                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                                            <span class="from">sadfsdf</span>
+                                             To 
+                                            <span class="to">sdfsdfsdf</span>
+                                        </h4>
+                                    </a>
+                                    
+                                    <h5 style="color: blue;">Booking Id: <span class="bookingId"></span></h5 style="color: blue;">
+                                    <h5>One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance"></span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance"></span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance"></span></h5>
+                                    
+                                    <h5><span class="cngAllowed"> CNG Allowed</span>
+                                        <span class="dieselAllowed"> Diesel Only</span>
+                                        <span class="electricAllowed"> Electric Allowed</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date"></span>, <span id="day"></span></h4>
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time"></span></h4>
+                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
+                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
+                                    <h5 style="visibility: visible;">Recommended Amount <br> 
+                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                            <div class="col-sm-4">
+                                                <h4>Pickup Location</h4>
+                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4>Drop Location</h4>
+                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
+                                            <div class="col-sm-4">
+                                                <h4>Special Requirements</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                                        </div>
+                                      
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-11 booking-frm">
+                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Bid Your Amount</button>
+                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-bottom: 10px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </div>
+                            </div>
+                            <div class="pagenumbers" id="pagination"></div>
                         </div>
 
                         <div class="tab-pane" id="assignments" role="tabpanel">
@@ -168,8 +338,245 @@
 
 
 {% block extra_scripts %}
+
 <script type="text/javascript">
-    
+//     const list_items = [
+//  "Item 1",
+//  "Item 2",
+//  "Item 3",
+//  "Item 4",
+//  "Item 5",
+//  "Item 6",
+//  "Item 7",
+//  "Item 8",
+//  "Item 9"
+// ];
+
+const list_items = [
+    {from : "Chandigarh",
+     to : "Faridabad",
+     date : "24-May-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "10:50",
+     bookindId: 1656565,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Faridabad",
+     date : "24-June-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "12:30",
+     bookindId : 6519878,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Mumbai",
+     date : "24-Jan-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "4:30",
+     bookindId : 123798465,
+     nightPickAllowance : "&#10004",
+     nightDropAllowance : "&#10008",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"}
+     
+]
+
+
+const list_element = document.getElementById('list');
+const pagination_element = document.getElementById('pagination');
+
+let current_page = 1;
+let rows = 2;
+
+function DisplayList (items, wrapper, rows_per_page, page) {
+  wrapper.innerHTML = "";
+  page--;
+
+  let start = rows_per_page * page;
+  let end = start + rows_per_page;
+  let paginatedItems = items.slice(start, end);
+
+  for (let i = 0; i < paginatedItems.length; i++) {
+    let item = paginatedItems[i];
+
+    let item_element = document.createElement('div');
+    item_element.classList.add('item');
+    // item_element.innerText = item;
+        // let item_element = document.createElement('div');
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+        // console.log(item_element);
+        // item_element.classList.add(`list${i+1}`);
+        // console.log(item_element.classList);
+        // var temp2 = document.getElementsByClassName(`list${i+1}`).innerHTML;
+        // var temp = document.querySelector(`#listitem1 > div > div > h4 > .from`).innerHTML;
+        // console.log(temp);
+        // $(temp).innerText = list_items[i].from ;
+        // console.log( $(`list${i+1} .from`).innerText);
+        // console.log(i);
+
+        
+
+        let text = `<div>
+                            
+                            
+                            <div class="col-sm-12 col-md-12">
+                                <div class="col-sm-1" class="listNumber">
+                                    01
+                                </div>
+                                <div class="col-sm-7">
+                                    <a data-toggle="collapse" href="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample${i}">
+                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                                            <span class="from"> ${paginatedItems[i].from}</span>
+                                             To 
+                                            <span class="to">${paginatedItems[i].to}</span>
+                                        </h4>
+                                    </a>
+                                    
+                                    
+                                    <h5 style="color: blue;">Booking Id: <span class="bookingId">${paginatedItems[i].bookindId}</span></h5 style="color: blue;">
+                                    <h5>${paginatedItems[i].type}/ <span style="font-weight: 800; color: red;">${paginatedItems[i].carType}</span> </h5 style="color: blue;">
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
+                                    <h5><span class="cngAllowed">${paginatedItems[i].cngAllowed} CNG Allowed</span>
+                                        <span class="dieselAllowed">${paginatedItems[i].dieselAllowed} Diesel Only</span>
+                                        <span class="electricAllowed">${paginatedItems[i].electricAllowed} Electric Allowed</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date">${paginatedItems[i].date}</span>, <span id="day">${paginatedItems[i].day}</span></h4>
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time">${paginatedItems[i].time}</span></h4>
+                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
+                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
+                                    <h5 style="visibility: visible;">Recommended Amount <br> 
+                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                                <div class="collapse" id="collapseExample${i}">
+                                    <div class="card card-body">
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                            <div class="col-sm-4">
+                                                <h4>Pickup Location</h4>
+                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h4>Drop Location</h4>
+                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
+                                            <div class="col-sm-4">
+                                                <h4>Special Requirements</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12">
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <h6>asdjfsdfsdf</h6>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
+                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                                        </div>
+                                      
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-11 booking-frm">
+                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Bid Your Amount</button>
+                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-bottom: 10px;">
+                                        <div style="display: flex;width:fit-content;">
+                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                            </div>
+                            </div>`;
+        // console.log(froms.length); 
+        // froms[i].innerHTML = list_items[i].from;
+        // console.log( list_items[i].from);
+
+
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+    item_element.innerHTML = text;
+    wrapper.appendChild(item_element);
+  }
+}
+
+function SetupPagination (items, wrapper, rows_per_page) {
+  wrapper.innerHTML = "";
+
+  let page_count = Math.ceil(items.length / rows_per_page);
+  for (let i = 1; i < page_count + 1; i++) {
+    let btn = PaginationButton(i, items);
+    wrapper.appendChild(btn);
+  }
+}
+
+function PaginationButton (page, items) {
+  let button = document.createElement('button');
+  button.innerText = page;
+
+  if (current_page == page) button.classList.add('active');
+
+  button.addEventListener('click', function () {
+    current_page = page;
+    DisplayList(items, list_element, rows, current_page);
+
+    let current_btn = document.querySelector('.pagenumbers button.active');
+    current_btn.classList.remove('active');
+
+    button.classList.add('active');
+  });
+
+  return button;
+}
+
+DisplayList(list_items, list_element, rows, current_page);
+SetupPagination(list_items, pagination_element, rows);
 </script>
 
 
