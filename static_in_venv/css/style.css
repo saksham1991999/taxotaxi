@@ -5390,3 +5390,21 @@ background-color: ##4CAF50 !important;
  z-index: 2;
  margin-right: 8px;
  }
+ .toggle-password .tooltiptext {
+    right: 105%;
+    visibility: hidden;
+    width: 150px;
+    background-color: #b2b2b2;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    /* left: 105%; */
+    font-weight: 200;
+}
+
+.toggle-password:hover .tooltiptext {
+  visibility: visible;
+}
