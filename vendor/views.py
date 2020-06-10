@@ -84,3 +84,40 @@ def VendorRegistrationView(request):
             'bank_form':bank_form,
         }
         return render(request, 'Vendor/registration_form.html' ,context)
+
+
+def CarsView(request):
+    context = {}
+    return render(request,'Vendor/cars.html', context)
+
+
+def DriversView(request):
+    context = {}
+    return render(request,'Vendor/drivers.html', context)
+
+
+def PaymentsView(request):
+    context = {}
+    return render(request,'Vendor/payments.html' , context)
+
+
+def BookingsHistoryView(request):
+    context = {}
+    return render(request, 'Vendor/booking_history.html', context)
+
+
+def BookingsView(request):
+    context = {}
+    return render(request, 'Vendor/bookings.html', context)
+
+
+def AssignmentsView(request):
+    context = {}
+    return render(request, 'Vendor/assignments.html', context)
+
+
+def RideDetailsView(request, id):
+    context = {}
+    return render(request, 'Vendor/ride_detail.html', context)
+
+
