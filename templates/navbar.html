@@ -195,7 +195,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 											<a href="http://127.0.0.1:8000/#nav-destinations">Exciting Offers</a>
 										</li>
 
-										<li {% if request.resolver_match.view_name == 'blog:home' %}class="nav-active"{% endif %}>
+										<li id="blog" {% if request.resolver_match.view_name == 'blog:home' %}class="nav-active"{% endif %}>
 											<a href="{% url 'blog:home' %}">Blog</a>
 										</li>
 
@@ -359,7 +359,8 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							/* $("#nav-home").removeClass("nav-active"); */
 							$("#exciting-offer").addClass("nav-active");
 							/* $("#exciting-offer").addClass("active"); */
-						}else if( decider.slice(decider.length-5,decider.length) === "blog/"){
+						}else if( decider.includes("blog") ){
+							$("#blog").addClass("nav-active");
 							$("#one-way").addClass("active");
 							$("#round-trip").removeClass("active");
 							$("#multi-way").removeClass("active");
@@ -381,6 +382,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 							$("#MULTIWAY").removeClass("active");
 							/* $("#nav-home").addClass("nav-active"); */
 						}
+						
 						else{
 							$("#one-way").addClass("active");
 							$("#round-trip").removeClass("active");
