@@ -336,22 +336,18 @@
                                     <label>Bank Address</label>
                                     <input type="text" name="vendorName">
                                     </div>
-                                    <div class="foam-field">
+                                    <!-- <div class="foam-field">
                                     <label>Password</label>
                                     <input type="password" name="password" id="password1" placeholder="Enter new password" required>
                                       <span toggle="#password1" style="margin: 10px 7px 0px -23px;" class="fa fa-fw fa-eye field-icon toggle-password"></span>         
-                                    </div>
-                                    <div style="margin: -16px 0px 0px 47%;min-height: 20px;">
+                                    </div> -->
+                                   <!--  <div style="margin: -16px 0px 0px 47%;min-height: 20px;">
                                       <span class="form-text" id="password_strength"></span>
-                                    </div>
-                                    <div style="text-align: right;" >
+                                    </div> -->
+                                    <!-- <div style="text-align: right;" >
                                     <input type="checkbox" name="terms" id="terms" required>
                                     <label> I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a> </label>
-                                    </div>
-
-
-
-
+                                    </div> -->
                                 </div>
 
 
@@ -360,6 +356,7 @@
                              
                                 <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
                                   <div class="drag-drop">
+                                    <input type="file" class="input-file" name="">
                                       <p class="p23">
                                        <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                        </i><br> Drag&Drop files here <br> or<br>
@@ -682,7 +679,8 @@
                          
                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                               <div class="drag-drop">
-                                  <p class="p23">
+                                <input type="file" class="input-file2" name="">
+                                  <p class="p24">
                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                    </i><br> Drag&Drop files here <br> or<br>
                                    <button type="button" class="btn btn-outline-primary">Browse Files</button> 
@@ -809,8 +807,13 @@
            
         });
 
-         $('.input-file').change(function () {
-      $('.p23').text(this.files.length + " file(s) selected");
+         $('.input-file').change(function (e) {
+            var fileName = e.target.files[0].name;
+      $('.p23').text(fileName);
+    });
+         $('.input-file2').change(function (e) {
+            var fileName = e.target.files[0].name;
+      $('.p24').text(fileName);
     });
 
         $("#password1").bind("keyup", function () {
