@@ -4,14 +4,25 @@
 {% load template_tag %}
 {% block extra_stylesheet %}
     <style type="text/css">
+      @media(max-width: 500px){
+        .bookingsummaryinfo{
+          width: 100%;
+        }
+      }
       @media (min-width: 770px){
         .checkout-button{
         padding: 0 35%;
         display: flex;
       }
+      .icon1 .fair-breakdown {
+    right: 41px;
+  }
       }
       
  @media (max-width: 768px){
+  .icon1 .fair-breakdown {
+    right: 9%;
+  }
     .container1{
       display: grid;
       /*margin-top: 50px !important;*/
@@ -78,6 +89,7 @@ background-color: white;
     z-index: 1;
     font-size: small;
     box-shadow: 0px 0px 13px #000000;
+    right: 6%;
 }
 
 .icon1:hover .fair-breakdown {
