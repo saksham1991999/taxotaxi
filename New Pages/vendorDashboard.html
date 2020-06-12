@@ -59,34 +59,33 @@
       width: 100%;
     }
     .pagenumbers button {
-  width: 50px;
-  height: 50px;
+	width: 40px;
+	height: 40px;
+    font-size: 1.3rem !important;
+	appearance: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
 
-  appearance: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
+	background-color: white;
+    margin: 0px;
+	
+	transition: 0.4s;
 
-  background-color: #44AAEE;
-
-  margin: 5px;
-  transition: 0.4s;
-
-  color: #FFF;
-  font-size: 18px;
-  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+	color: rgb(10, 10, 10);
+	font-size: 18px;
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pagenumbers button:hover {
-  background-color: #44EEAA;
+	background-color: #ffc000;
 }
 
 .pagenumbers button.active {
-  background-color: #44EEAA;
-  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+	background-color: #ffc000;
+	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
-
 
 
     
@@ -305,16 +304,16 @@
                                 
                             </div>
                             </div>
-                            <div>
+                            <div style="float: right; margin-top: 10px; margin-bottom: 10px;">
                                 <span class="pagenumbers" >
-                                    <button id="prevButton"> << </button>
+                                    <button id="prevButton" style="background-color: #ffc000;"> << </button>
                                 </span>
                                 
                                 <span class="pagenumbers" id="pagination">
                                    
                                 </span>
-                                <span class="pagenumbers" >
-                                    <button id="nextButton"> >> </button>
+                                <span class="pagenumbers">
+                                    <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
                                 </span>
                             </div>
                             <!-- <div class="pagenumbers" id="pagination">
@@ -360,15 +359,15 @@
 
 <script type="text/javascript">
 //     const list_items = [
-//  "Item 1",
-//  "Item 2",
-//  "Item 3",
-//  "Item 4",
-//  "Item 5",
-//  "Item 6",
-//  "Item 7",
-//  "Item 8",
-//  "Item 9"
+// 	"Item 1",
+// 	"Item 2",
+// 	"Item 3",
+// 	"Item 4",
+// 	"Item 5",
+// 	"Item 6",
+// 	"Item 7",
+// 	"Item 8",
+// 	"Item 9"
 // ];
 
 const list_items = [
@@ -475,6 +474,51 @@ const list_items = [
      driverAllowance : "&#10008",
      cngAllowed : "&#10008",
      dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Faridabad",
+     date : "24-June-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "12:30",
+     bookindId : 6519878,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Faridabad",
+     date : "24-June-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "12:30",
+     bookindId : 6519878,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
+     electricAllowed : "&#10008"},
+     {
+     from : "Delhi",
+     to : "Faridabad",
+     date : "24-June-2020",
+     day : "Sunday",
+     type : "One-way",
+     carType : "suv",
+     time : "12:30",
+     bookindId : 6519878,
+     nightPickAllowance : "&#10008",
+     nightDropAllowance : "&#10004",
+     driverAllowance : "&#10008",
+     cngAllowed : "&#10008",
+     dieselAllowed : "&#10008",
      electricAllowed : "&#10008"}
      
 ]
@@ -485,21 +529,21 @@ const pagination_element = document.getElementById('pagination');
 
 let current_page = 1;
 let rows = 2;
-
+let count_page;
 function DisplayList (items, wrapper, rows_per_page, page) {
-  wrapper.innerHTML = "";
-  page--;
+	wrapper.innerHTML = "";
+	page--;
 
-  let start = rows_per_page * page;
-  let end = start + rows_per_page;
-  let paginatedItems = items.slice(start, end);
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
 
-  for (let i = 0; i < paginatedItems.length; i++) {
-    let item = paginatedItems[i];
+	for (let i = 0; i < paginatedItems.length; i++) {
+		let item = paginatedItems[i];
 
-    let item_element = document.createElement('div');
-    item_element.classList.add('item');
-    // item_element.innerText = item;
+		let item_element = document.createElement('div');
+		item_element.classList.add('item');
+		// item_element.innerText = item;
         // let item_element = document.createElement('div');
         // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
         // console.log(item_element);
@@ -519,7 +563,7 @@ function DisplayList (items, wrapper, rows_per_page, page) {
                             
                             <div class="col-sm-12 col-md-12">
                                 <div class="col-sm-1" class="listNumber">
-                                    01
+                                    <h4>${i+1}</h4>
                                 </div>
                                 <div class="col-sm-7">
                                     <a data-toggle="collapse" href="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample${i}">
@@ -536,17 +580,33 @@ function DisplayList (items, wrapper, rows_per_page, page) {
                                     <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
                                     <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
                                     <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
-                                    <h5><span class="cngAllowed">${paginatedItems[i].cngAllowed} CNG Allowed</span>
-                                        <span class="dieselAllowed">${paginatedItems[i].dieselAllowed} Diesel Only</span>
-                                        <span class="electricAllowed">${paginatedItems[i].electricAllowed} Electric Allowed</span>
+                                    
+                                    <h5><span class="cngAllowed">
+                                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
+                                        </span>
+                                        <span class="dieselAllowed">
+                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
+                                        <span class="electricAllowed">
+                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
                                     </h5>
                                 </div>
+                                
                                 <div class="col-sm-4">
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date">${paginatedItems[i].date}</span>, <span id="day">${paginatedItems[i].day}</span></h4>
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time">${paginatedItems[i].time}</span></h4>
-                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
-                                    <h5 style="visibility: visible;">Recommended Amount <br> 
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
+                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>${paginatedItems[i].date},${paginatedItems[i].day} <span id="day"></span></h4>
+                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
+                                        <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">${paginatedItems[i].time}</span></h4>
+                                    <div>
+                                        
+                                        <h4>
+                                            <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
+                                            <span style="font-weight: 900;">KM Limit : 350</span>
+                                            <small style="visibility: visible;"> km</small><br>
+                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                                        </h4>
+                                    </div>
+                                    <h5 style="visibility: visible;">
+                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Recommended Amount <br> 
                                         <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
                                     </h5>
                                 </div>
@@ -620,70 +680,115 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 
 
         // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-    item_element.innerHTML = text;
-    wrapper.appendChild(item_element);
-  }
+		item_element.innerHTML = text;
+		wrapper.appendChild(item_element);
+	}
 }
 
 function SetupPagination (items, wrapper, rows_per_page) {
-  wrapper.innerHTML = "";
+	wrapper.innerHTML = "";
 
-  let page_count = Math.ceil(items.length / rows_per_page);
-    if( current_page != page_count){
-        for (let i = current_page; i < current_page + 2; i++) {
-        let btn = PaginationButton(i, items);
-        wrapper.appendChild(btn);
-      }
+	let page_count = Math.ceil(items.length / rows_per_page);
+    count_page = page_count;
+    // if( current_page != page_count){
+    //     for (let i = current_page; i < current_page + 3; i++) {
+	//     	let btn = PaginationButton(i, items);
+	//     	wrapper.appendChild(btn);
+	//     }
+    // }else{
+    //     let btn = PaginationButton(page_count, items);
+    //     wrapper.appendChild(btn);
+    // }
+    console.log(page_count);
+    if( (page_count-current_page) >= 3){
+        for (let i = current_page; i <= current_page + 2; i++) {
+	    	let btn = PaginationButton(i, items);
+	    	wrapper.appendChild(btn);
+	    }
     }else{
-        let btn = PaginationButton(page_count, items);
-        wrapper.appendChild(btn);
+        for (let i = current_page; i <= page_count; i++) {
+	    	let btn = PaginationButton(i, items);
+	    	wrapper.appendChild(btn);
+	    }
     }
-  
-}
+	
+} 
 
-    // let pre = document.getElementById("prevButton");
-    // let next = document.getElementById("nextButton");
-    // $("#prevButton").click(function(){
-    //     pagination_element.innerHTML = "";
-    //     console.log("Previous Button Clicked");
-    //     if( current_page > 1){
-    //         for (let i = current_page-1; i < current_page + 1; i++) {
-  //      let btn = PaginationButton(i, list_items);
-  //      pagination_element.appendChild(btn);
-  //     } 
-    //     }
-    // })
-    // $("#nextButton").click(function(){
-    //     pagination_element.innerHTML = "";
-    //     console.log("Next Button Clicked");
-    //     let page_count = Math.ceil(list_items / rows);
-    //     if( current_page > page_count){
-    //         for (let i = current_page+1; i < current_page + 2; i++) {
-  //      let btn = PaginationButton(i, list_items);
-  //      pagination_element.appendChild(btn);
-  //     } 
-    //     }
-    // })
+    $("#prevButton").click(function(){
+        
+        console.log("Previous Button Clicked");
+        console.log((Math.floor((current_page-1)/3)));
+        if((Math.floor((current_page-1)/3)) > 0){
+            pagination_element.innerHTML = "";
+            let check = 0;
+            for(let i = ((Math.floor((current_page-1)/3)-1)*3)+1  ; i <= (Math.floor((current_page-1)/3)-1)*3 +3 ; i++ ){
+                if( check == 0 ){
+
+                }
+                console.log("forLop");
+                let btn = PaginationButton(i, list_items);
+	        	pagination_element.appendChild(btn);
+                check = 1 ;
+            }
+            current_page = ((Math.floor((current_page-1)/3)-1)*3)+1;
+             DisplayList(list_items, list_element, rows, current_page);
+        }
+    })
+    $("#nextButton").click(function(){
+        
+        console.log("Next Button Clicked");
+        console.log("count_page is " + count_page);
+        // var page_count = Math.ceil(list_items / rows);
+        console.log( "Math.floor((current_page-1)/3) = " + Math.floor((current_page-1)/3) + " Math.floor(count_page/3) = "+ Math.floor(count_page/3) )
+        if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
+        if( (Math.floor((current_page-1)/3)+1) < Math.floor(count_page/3) ){
+            pagination_element.innerHTML = "";
+            console.log(list_items.length);
+            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= (Math.floor((current_page-1)/3)+1)*3 +3 ; i++ ){
+                console.log("forLop");
+                let btn = PaginationButton(i, list_items);
+                // current_page = ((((current_page-1)/3)+1)*3)+1
+                
+	        	pagination_element.appendChild(btn);
+            }
+            
+        }else if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
+            pagination_element.innerHTML = "";
+            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= count_page ; i++  ){
+                // current_page = ((((current_page-1)/3)+1)*3)+1
+                
+                    // console.log("forLop");
+                    let btn = PaginationButton(i, list_items);
+	            	pagination_element.appendChild(btn);
+                
+            }
+        }
+        current_page = ((Math.floor((current_page-1)/3)+1)*3)+1;
+        DisplayList(list_items, list_element, rows, current_page);
+       
+        }
+       
+    })
 
 
 function PaginationButton (page, items) {
-  let button = document.createElement('button');
-  button.innerText = page;
+	let button = document.createElement('button');
+	button.innerText = page;
 
-  if (current_page == page) button.classList.add('active');
+	if (current_page == page) button.classList.add('active');
 
-  button.addEventListener('click', function () {
-    current_page = page;
-        SetupPagination(list_items, pagination_element, rows);
-    DisplayList(items, list_element, rows, current_page);
+	button.addEventListener('click', function () {
+		current_page = page;
+        // SetupPagination(list_items, pagination_element, rows);
+		DisplayList(items, list_element, rows, current_page);
 
-    let current_btn = document.querySelector('.pagenumbers button.active');
-    current_btn.classList.remove('active');
+		let current_btn = document.querySelector('.pagenumbers button.active');
+		current_btn.classList.remove('active');
 
-    button.classList.add('active');
-  });
+		button.classList.add('active');
+	});
 
-  return button;
+	return button;
 }
 
 DisplayList(list_items, list_element, rows, current_page);
