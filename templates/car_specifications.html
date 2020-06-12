@@ -27,7 +27,7 @@
   display: inline-block;
 float: right;
 margin-right: 20px;
-  
+  width: 90%;
 }
   .hidden-price{
     display: none;
@@ -335,7 +335,7 @@ span.glyphicon-stats{
                                         <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span><span class="hidden-price">
                                         {% if 'additional' in checkbox.name %}
                                             {% if 'pickup' in checkbox.name or 'pick up' in checkbox.name or 'pick-up' in checkbox.name %}
-                                                <input type="text" name="additional_pickup">
+                                                <input type="text" name="additional_pickup" placeholder="Enter additional pick up and drop">
                                             {% endif %}
                                         {% endif %}
                                         </span>
