@@ -30,8 +30,9 @@ urlpatterns = [
     path('completed-rides/', views.CompletedRidesView, name='completed_rides'),
 
     path('assign-vendors/<int:id>/', views.AssignVendorsView, name='assign_vendors'),
-    path('vendor-bids/', views.VendorBidsView, name='vendor_bids'),
-    path('assign-final-vendor/', views.AssignFinalVendorView, name='final_vendor'),
+    path('vendor-bids/<int:id>/', views.AssignVendorsView, name='vendor_bids'),
+    path('assign-final-vendor/<int:id>/', views.AssignFinalVendorView, name='assign_final_vendor'),
+    path('final-ride-details/', views.FinalRideDetailsView, name='final_ride_details'),
 
     # Popular Destinations Urls
     path('popular-destinations/', views.PopularDestinationsView, name = 'popular_destinations'),

@@ -45,30 +45,20 @@
                             {{ formset.management_form }}
                                 <div data-repeater-list="group-a" id="form_set">
                                     {% for form in formset %}
+
                                     <div data-repeater-item="" class="row">
-                                        <div class="col-lg-3">
-                                            <div class="row">
-                                                <div class="form-group col-lg-4">
-                                                    <label for="name">Pickup</label>
-                                                    {% render_field form.city1 class="form-control" %}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label for="name">Drop</label>
-                                                    {% render_field form.city2 class="form-control" %}
-                                                </div>
-                                            </div>
+
+                                        <div class="form-group col-lg-4">
+                                            <label for="name">Vendor</label>
+                                            {% render_field form.vendor class="form-control" %}
                                         </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Car Type</label>
-                                            {% render_field form.car_type class="form-control" %}
+                                        <div class="form-group col-lg-4">
+                                            <label for="name">Bid Amount</label>
+                                            {% render_field form.bid class="form-control" rows="2" %}
                                         </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Attribute</label>
-                                            {% render_field form.attr class="form-control" %}
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Value</label>
-                                            {% render_field form.value class="form-control" %}
+                                        <div class="form-group col-lg-4">
+                                            <label for="name">Rejection Reason</label>
+                                            {% render_field form.rejection_reason class="form-control" %}
                                         </div>
 
                                         {% for field in form.hidden_fields %}
@@ -79,7 +69,7 @@
 
                                     {% endfor %}
                                 </div>
-{#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
+                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">
                             <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
 
                             </form>
@@ -90,16 +80,16 @@
                 <div hidden id="empty_form">
                     <div data-repeater-item="" class="row">
                         <div class="form-group col-lg-4">
-                            <label for="name">Title</label>
-                            {% render_field formset.empty_form.title class="form-control" %}
+                            <label for="name">Vendor</label>
+                            {% render_field formset.empty_form.vendor class="form-control" %}
                         </div>
-                        <div class="form-group col-lg-6">
-                            <label for="name">Keywords</label>
-                            {% render_field formset.empty_form.keywords class="form-control" rows="2" %}
+                        <div class="form-group col-lg-4">
+                            <label for="name">Bid Amount</label>
+                            {% render_field formset.empty_form.bid class="form-control" rows="2" %}
                         </div>
-                        <div class="form-group col-lg-2">
-                            <label for="name">Delete</label>
-                            {% render_field formset.empty_form.DELETE class="form-control" %}
+                        <div class="form-group col-lg-4">
+                            <label for="name">Rejection Reason</label>
+                            {% render_field formset.empty_form.rejection_reason class="form-control" %}
                         </div>
                         {% for field in formset.empty_form.hidden_fields %}
                             {{ field }}

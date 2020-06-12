@@ -206,6 +206,9 @@ class contact(models.Model):
 
 ride_status_choices = (
     ('Booked', 'Booked'),
+    ('Rejected', 'Rejected'),
+    ('Selected Vendors', 'Selected Vendors'),
+    ('Assigned Vendor', 'Assigned Vendor'),
     ('Ongoing', 'Ongoing'),
     ('Completed', 'Completed'),
     ('Cancelled', 'Cancelled'),
@@ -249,7 +252,7 @@ class ride_booking(models.Model):
     final_ride_fare = models.PositiveSmallIntegerField()
     advance = models.PositiveSmallIntegerField()
 
-    ride_status = models.CharField(max_length=10, choices=ride_status_choices)
+    ride_status = models.CharField(max_length=16, choices=ride_status_choices)
     extra_remarks = models.TextField(blank=True, null=True)
     advance_payment_received = models.BooleanField(default=False)
     advance_15 = models.BooleanField(default=True)
@@ -284,15 +287,19 @@ class assign_vendor(models.Model):
 class vendorbids(models.Model):
     booking = models.ForeignKey(ride_booking, on_delete=models.DO_NOTHING)
     vendor = models.ForeignKey('vendor.vendorprofile', on_delete=models.CASCADE)
-    max_bid = models.PositiveSmallIntegerField()
     bid = models.FloatField(blank=True, null=True)
-    datetime = models.DateTimeField(blank=True, null=True)
+    datetime = models.DateTimeField(blank=True, null=True, auto_now_add=True)
+    rejection_reason = models.CharField(max_length=256, blank=True, null=True)
 
 class final_ride_detail(models.Model):
     booking = models.OneToOneField('core.ride_booking', on_delete=models.DO_NOTHING)
     bid = models.ForeignKey('core.vendorbids', on_delete=models.DO_NOTHING)
     car = models.ForeignKey('vendor.vendor_cars', on_delete=models.DO_NOTHING, blank=True, null=True)
     driver = models.ForeignKey('vendor.driver', on_delete=models.DO_NOTHING, blank=True, null=True)
+    initial_odometer_reading = models.FloatField()
+    final_odometer_reading = models.FloatField()
+    other_charges = models.PositiveSmallIntegerField()
+    collected_amount = models.PositiveIntegerField()
     start_datetime = models.DateTimeField(blank=True, null=True)
     end_datetime = models.DateTimeField(blank=True, null=True)
 

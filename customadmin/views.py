@@ -69,11 +69,26 @@ def BookedRidesView(request):
     return render(request, 'ride_bookings/booked_rides.html', context)
 
 def AssignVendorRidesView(request):
-    bookings = coremodels.ride_booking.objects.filter(assigned_vendors = True)
+    bookings = coremodels.ride_booking.objects.filter(ride_status = 'Selected Vendors')
     context = {
         'bookings':bookings,
     }
-    return render(request, 'ride_bookings/cancelled_rides.html', context)
+    return render(request, 'ride_bookings/assign_vendor_rides.html', context)
+
+def UpdateVendorBidsView(request, id):
+    booking = get_object_or_404(coremodels.ride_booking, id = id)
+    BidsFormset = inlineformset_factory(coremodels.ride_booking, coremodels.vendorbids, extra=0, can_delete=False, exclude=['booking', 'datetime'])
+    if request.method == 'POST':
+        formset = BidsFormset(request.POST, instance = booking)
+        if formset.is_valid():
+            formset.save()
+        return redirect('customadmin:assign_vendor_rides')
+    else:
+        formset = BidsFormset(instance = booking)
+        context = {
+            'formset':formset,
+        }
+        return render(request, 'ride_bookings/vendor_bids_formset.html', context)
 
 def UpcomingRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(assigned_final_vendor = True)
@@ -97,22 +112,22 @@ def CompletedRidesView(request):
     return render(request, 'ride_bookings/cancelled_rides.html', context)
 
 def AssignVendorsView(request, id):
-    booking = coremodels.ride_booking.objects.get(booking_id=id)
+    booking = coremodels.ride_booking.objects.get(id=id)
     if request.method == 'POST':
         form = forms.AssignVendors(request.POST)
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.booking = booking
-            booking.assign_vendor = True
+            booking.ride_status = 'Selected Vendors'
             new_form.datetime = datetime.datetime.now()
             new_form.save()
             booking.save()
             form.save_m2m()
-            for vendor in new_form.vendors.all:
-                vendorbid = coremodels.vendorbids.objects.create(booking=booking, vendor = vendor)
-                vendorbid.max_bid = booking.ride_fare*(1-(new_form.commission/100))
-                vendorbid.save()
-        return redirect('custom_admin:dashboard')
+            # for vendor in new_form.vendors.all:
+            #     vendorbid = coremodels.vendorbids.objects.create(booking=booking, vendor = vendor)
+            #     vendorbid.max_bid = booking.ride_fare*(1-(new_form.commission/100))
+            #     vendorbid.save()
+        return redirect('customadmin:booked_rides')
     else:
         form = forms.AssignVendors()
         context = {
@@ -120,10 +135,11 @@ def AssignVendorsView(request, id):
         }
         return render(request, 'ride_bookings/assign_vendors_form.html', context)
 
-def VendorBidsView(request, id):
-    pass
 
 def AssignFinalVendorView(request, id):
+    pass
+
+def FinalRideDetailsView(request, id):
     pass
 
 # MAIN PAGE VIEWS
@@ -324,14 +340,14 @@ def UpdateRideAdditionalChoices(request):
     return render(request, 'car_type/additional_choices_formset.html', context)
 
 def UpdateCityRideAttributeValues(request):
-    RideAdditionalChoicesFormset = modelformset_factory(coremodels.ride_choices, fields= '__all__')
+    CityRideAttributesFormset = modelformset_factory(coremodels.calc_city_attr_value, fields= '__all__', extra=0, can_delete=False)
     if request.method == 'POST':
-        formset = RideAdditionalChoicesFormset(request.POST, request.FILES)
+        formset = CityRideAttributesFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
         return redirect( 'customadmin:car_type')
     else:
-        formset = RideAdditionalChoicesFormset()
+        formset = CityRideAttributesFormset()
         context = {
             'formset':formset,
         }
