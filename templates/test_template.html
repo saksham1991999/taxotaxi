@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load fullurl %}
+{% load widget_tweaks %}
 {% block extra_stylesheet %}
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
@@ -181,159 +182,191 @@
 {% block content %}
 <div class="container" style="display: grid;">
     <div class="row">
-        <div class="col-sm-12 vendorfrm">
-            <h3> Vendor Registration </h3>
-        </div>
-        <div class="col-sm-12 col-md-12">
-                    <ul class="customer-tab col-sm-12">
-                       <li class="col-sm-4 headerWidth active headerAlign" >
-                          <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">45</span></a>
-                       </li>
-                       <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">45</span></a>
-                       </li>
-                       <li class="col-sm-4 headerWidth" style="text-align: center;">
-                          <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">45</span></a>
-                       </li>
-                    </ul>
-               <!------------togable Content pannel start----------->
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="vendorInformation">
-                            <form class="vendor-frm" method="" enctype="multipart/form-data">
-                                <input type="hidden" name="type" value="vendorprofile">
-                                <div class="col-sm-7">
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="foam-field">
-                                    <label>Full Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="errorSpace"> Error Message</div>
-                                    <div class="foam-field">
-                                    <label>Father's Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field ">
-                                    <label>Date Of Birth</label>
-                                        <input type="date" id="datepicker1" data-date-format="mm-dd-yyyy"  readonly />
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Email address*</label>
-                                    <input type="email" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Phone No 1*</label>
-                                    <input type="tel" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Phone No 2*</label>
-                                    <input type="tel" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Address*</label>
-                                    <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                                    </div>
-                                    <div class="foam-field ">
-                                        <label>PAN Card*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
+        <form method="post" enctype="multipart/form-data">
+            <div class="col-sm-12 vendorfrm">
+                <h3> Vendor Registration </h3>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                        <ul class="customer-tab col-sm-12">
+                           <li class="col-sm-4 headerWidth active headerAlign" >
+                              <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">45</span></a>
+                           </li>
+                           <li class="col-sm-4 headerWidth" style="text-align: center;">
+                              <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">45</span></a>
+                           </li>
+                           <li class="col-sm-4 headerWidth" style="text-align: center;">
+                              <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">45</span></a>
+                           </li>
+                        </ul>
+                   <!------------togable Content pannel start----------->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="vendorInformation">
+                                <form class="vendor-frm" method="" enctype="multipart/form-data">
+                                    <input type="hidden" name="type" value="vendorprofile">
+                                    <div class="col-sm-7">
+                                        <div class="errorSpace"> Error Message</div>
+                                        <div class="errorSpace"> Error Message</div>
+                                        <div class="foam-field">
+                                            <label>Full Name</label>
+                                            {% render_field profile_form.full_name %}
                                         </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Aadhar Card*<p>Size must be 200KB</p></label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
+                                        <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Father's Name</label>
+                                            {% render_field profile_form.father_name %}
                                         </div>
+                                        <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+                                        <div class="foam-field">
+                                        <label>Date Of Birth</label>
+                                            {% render_field profile_form.dob id="datepicker1" data-date-format="yyyy-mm-dd" readonly='true' %}
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Email address*</label>
+                                            {% render_field profile_form.email %}
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.email.errors }}</div>
+                                        <div class="foam-field">
+                                        <label>Phone No 1*</label>
+                                            {% render_field profile_form.contact1 %}
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Phone No 2*</label>
+                                           {% render_field profile_form.contact2 %}
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Address*</label>
+                                            {% render_field profile_form.address rows="3" cols="50" %}
+    {#                                        <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>#}
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.address.errors }}</div>
+                                        <div class="foam-field">
+                                            <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                                        </div>
+
+                                        <div class="foam-field ">
+                                            <label>PAN Card*</label>
+                                            <div class="vendorFile">
+                                                {% render_field profile_form.pancard placeholder="Pan Card" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Drop file here</p>
+                                            </div>
+                                        </div>
+                                        <div class="errorSpace">{{ profile_form.pancard.errors }}</div>
+
+                                        <div class="foam-field">
+                                        <label>Aadhar Card*<p>Size must be 200KB</p></label>
                                         <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
+                                                {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Front side</p>
+                                            </div>
+                                            <div class="vendorFile" style="width: 49%;">
+                                                {% render_field profile_form.aadharcard_rear placeholder="Back" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Back side</p>
+                                            </div>
+
                                         </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Voter Card</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
+                                        <div class="errorSpace">{{ profile_form.aadharcard_front.errors }}</div>
+                                        <div class="errorSpace">{{ profile_form.aadharcard_rear.errors }}</div>
+
+                                        <div class="foam-field">
+                                        <label>Voter Card</label>
                                         <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
+                                                {% render_field profile_form.votercard_front placeholder="Front" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Front side</p>
+                                            </div>
+                                            <div class="vendorFile" style="width: 49%;">
+                                                {% render_field profile_form.votercard_rear placeholder="Back" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Back side</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Driving Licence</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front Side</p>
-                                        </div>
+                                        <div class="errorSpace">{{ profile_form.votercard_front.errors }}</div>
+                                        <div class="errorSpace">{{ profile_form.votercard_rear.errors }}</div>
+
+                                        <div class="foam-field">
+                                        <label>Driving Licence</label>
                                         <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
+                                                {% render_field profile_form.driving_licence_front placeholder="Front" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Front Side</p>
+                                            </div>
+                                            <div class="vendorFile" style="width: 49%;">
+                                                {% render_field profile_form.driving_licence_rear placeholder="Back" %}
+                                                <p class="fileUploadtext">
+                                                <i class="far fa-file"></i> Back side</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="foam-field">
-                                        <label>Do You have a Company?</label>
-                                        <select name="subject" id="companyDetails">
-                                              <option Selected>--Select--</option>
-                                              <option value="0">No</option>
-                                              <option value="1" id="Yes">Yes</option>
-                                        </select>
-                                    </div>
-                                    <!-- //////if Yes is selected///////// -->
-                                    <div style="display: none;" id="yesDisplay">
-                                    <div class="foam-field">
-                                        <label style="color: #e61616;">Company Name*</label>
-                                        <input type="text" name="vendorName">
+                                        <div class="errorSpace">{{ profile_form.driving_licence_front.errors }}</div>
+                                        <div class="errorSpace">{{ profile_form.driving_licence_rear.errors }}</div>
+
+                                        <div class="foam-field">
+                                            <label>Do You have a Company?</label>
+                                            <select name="subject" id="companyDetails">
+                                                  <option Selected>--Select--</option>
+                                                  <option value="0">No</option>
+                                                  <option value="1" id="Yes">Yes</option>
+                                            </select>
+                                        </div>
+                                        <!-- //////if Yes is selected///////// -->
+                                        <div style="display: none;" id="yesDisplay">
+                                        <div class="foam-field">
+                                            <label style="color: #e61616;">Company Name*</label>
+                                            {% render_field profile_form.company_name %}
+                                        </div>
+                                            <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+                                        <div class="foam-field">
+                                        <label style="color: #e61616;">GST NUMBER*</label>
+                                                {% render_field profile_form.gst_no %}
+                                        </div>
+                                            <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+                                          </div>
+                                        <!-- //////////////////////////////// -->
+                                        <div class="foam-field">
+                                        <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
                                         </div>
                                         <div class="foam-field">
-                                    <label style="color: #e61616;">GST NUMBER*</label>
-                                    <input type="text" name="vendorName">
+                                        <label>Account Holder Name</label>
+                                            {% render_field bank_form.account_holder_name %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.account_holder_name.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Bank Account Number</label>
+                                            {% render_field bank_form.account_no %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.account_no.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Saving/ Current</label>
+                                            {% render_field bank_form.account_type %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.account_type.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Bank Name</label>
+                                            {% render_field bank_form.bank_name %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.bank_name.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>IFSC code</label>
+                                            {% render_field bank_form.ifsc %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.ifsc.errors }}</div>
+                                        <div class="foam-field">
+                                            <label>Bank Address</label>
+                                            {% render_field bank_form.bank_address %}
+                                        </div>
+                                        <div class="errorSpace">{{ bank_form.bank_address.errors }}</div>
+<!--                                         <div style="text-align: right;" >
+                                            <input type="checkbox" name="terms" id="terms" required>
+                                            <label> I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a> </label>
+                                        </div> -->
                                     </div>
-                                      </div>
-                                    <!-- //////////////////////////////// -->
-                                    <div class="foam-field">
-                                    <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Account Holder Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Account Number</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Saving/ Current</label>
-                                    <select name="subject" id="">
-                                          <option Selected>--Select Account Type--</option>
-                                          <option value="0" >Saving</option>
-                                          <option value="1">Current</option>
-                                    </select>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>IFSC code</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Bank Address</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                </div>                            
-                                <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
+                                    <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
                                   <div class="drag-drop">
                                     <input type="file" class="input-file" name="">
                                       <p class="p23">
@@ -776,5 +809,3 @@
 </script>
 
 {% endblock extra_scripts %}
-
-
