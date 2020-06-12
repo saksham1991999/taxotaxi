@@ -4128,8 +4128,8 @@ background-color: white;
 }
 .booking-frm .field-holder .far,.booking-frm .field-holder .fas{
 	position:absolute;
-	top:19px;
-	right:15px;
+	top:16px;
+	right:10px;
 	color:#a6a6a6;
 }
 .booking-frm input[type="text"],.booking-frm input[type="email"],
