@@ -174,6 +174,10 @@
 #datepicker5 > span:hover{cursor: pointer;}
 #datepicker6 > span:hover{cursor: pointer;}
 #datepicker7 > span:hover{cursor: pointer;}
+.middleHeading{
+    border-top: 1px #c5c1c1 solid;
+    padding-bottom: 22px;
+}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -240,7 +244,7 @@
                                         <div class="foam-field">
                                             <label>Address*</label>
                                             {% render_field profile_form.address rows="3" cols="50" %}
-    {#                                        <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>#}
+                                            {#<textarea rows="3" cols="50" name="comment" form="usrform"></textarea>#}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.address.errors }}</div>
                                         <div class="foam-field">
@@ -392,24 +396,61 @@
                                  <input type="hidden" name="type" value="change_password">
                                     
                             </form> -->
-                            <div class="col-sm-7">
+                            <div class="col-sm-5">
                                 <div class="errorSpace"> Error Message</div>
+                                <div class="carTypeHeader">
                                 <div class="foam-field">
-                                    <label>No of cars</label>
-                                    <select name="subject" id="" style="width: 20%;">
-                                        <option Selected>1</option>
-                                        <option value="0" >1</option>
-                                        <option value="1">2</option>
-                                  </select>
-                                              <div class="foam-field" style="width: 80%; margin-bottom: 0px;">
-                                                <label>Car type</label>
-                                                <select name="subject" id="">
-                                                      <option Selected>Sedan</option>
-                                                      <option value="0" >Saving</option>
-                                                      <option value="1">Current</option>
-                                                </select>
-                                                </div>
-                                    </div>
+                                    <label>Total Compact</label>
+                                    <select name="subject" id="">
+                                        <option Selected>0</option>
+                                        <option value="1" >1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <div class="foam-field">
+                                    <label>Total Sedan</label>
+                                    <select name="subject" id="">
+                                        <option Selected>0</option>
+                                        <option value="1" >1</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <div class="foam-field">
+                                    <label>Total SUV</label>
+                                    <select name="subject" id="">
+                                        <option Selected>0</option>
+                                        <option value="1" >1</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                </div>
+                            </div>
+
+                                <div class="col-sm-12 col-md-12 middleHeading">
+                                    <h4>*Share Details of any Vehicle</h4>
+                                </div><br>
+                                <div class="col-sm-7">
+                                <div class="foam-field">
+                                    <label>Owner Name</label>
+                                    <input type="text" name="">
+                                </div>
+                                <div class="foam-field">
+                                    <label>Father's Name</label>
+                                    <input type="text" name="">
+                                </div>
+                                <div class="foam-field">
+                                    <label>Vehicle Type</label>
+                                    <select name="subject" id="">
+                                        <option Selected>Sedan</option>
+                                        <option value="1" >SUV</option>
+                                        <option value="3">Compact</option>
+                                    </select>
+                                </div>
+                                <div class="foam-field">
+                                    <label>Registration No</label>
+                                    <input type="text" name="">
+                                </div>
                                 <div class="foam-field">
                                     <label>Upload Car photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
@@ -495,25 +536,7 @@
                                     <i class="far fa-file"></i> Drop file here</p>
                                 </div>
                                 </div>
-                                <div class="booking-frm" >
-                                    <button class="book-btn" style="
-                                    background-color: #4CAF50;float: right;margin-bottom: 5px;
-                                    " class="add-cars">Add more Cars </button>
-                                </div>
-                            </div>
-                            <!-- <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                                <div class="drag-drop">
-                                    <p class="p23">
-                                     <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                     </i><br> Drag&Drop files here <br> or<br>
-                                     <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                    </p>
-                                    <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                        <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                    </div>
-                                 </div>
-                              </div> -->
-                              
+                            </div>           
                               <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
                                   <div style="display: flex;width:fit-content;">
                                     <button class="book-btn" type="submit">Next</button>&nbsp;&nbsp;
@@ -660,12 +683,22 @@
                                 </select>
                                 </div>
                                 <div class="foam-field">
-                                    <label>Any Legal/Accidental case pending for clearance*</label>
-                                    <div class="vendorFile">
-                                        <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Drop file here</p>
-                                     </div>
-                                </div>
+                                        <label>Any Legal/Accidental case pending for clearance*</label>
+                                        <select name="subject" id="legalCase">
+                                              <option Selected>--Select--</option>
+                                              <option value="0">No</option>
+                                              <option value="1" id="Yes">Yes</option>
+                                        </select>
+                                 </div>
+                                    <!-- //////if Yes is selected///////// -->
+                                 <div style="display: none;" id="caseInput">
+                                    <div class="foam-field">
+                                        <label style="color: #e61616;">Upload any supporting document*</label>
+                                        <div class="vendorFile">
+                                            <input type="file" name="vendorName" ><p class="fileUploadtext">
+                                            <i class="far fa-file"></i> Drop file here</p>
+                                        </div>
+                                    </div>                                         </div>
                             </div>
                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                               <div class="drag-drop">
@@ -714,14 +747,26 @@
             $("#yesDisplay").css({"display":"none"})
         }
     })
+
+    $("#legalCase").change(function(){
+        var selected = $("#legalCase").children("option:selected").val();
+        // console.log(selected);
+        if( selected == "1"){
+            $("#caseInput").css({"display":"block"})
+        }
+        else if( selected == "0"){
+            $("#caseInput").css({"display":"none"})
+        }else{
+            $("#caseInput").css({"display":"none"})
+        }
+    })
+
     function yes_func(){
-        // console.log("abhinav");
-        // $("#companyDetails").css({"display":"block"});
     }
     $(document).ready(function(){
         var d = new Date();
         var current_year = d.getFullYear();
-        // ///////////////////////set age restrictions here////////////////////////////////
+         /////////////set age restrictions here////////////////////
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();

@@ -628,12 +628,23 @@
                                 </select>
                                 </div>
                                 <div class="foam-field">
-                                    <label>Any Legal/Accidental case pending for clearance*</label>
-                                    <div class="vendorFile">
-                                        <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Drop file here</p>
-                                     </div>
-                                </div>
+                                        <label>Any Legal/Accidental case pending for clearance*</label>
+                                        <select name="subject" id="legalCase">
+                                              <option Selected>--Select--</option>
+                                              <option value="0">No</option>
+                                              <option value="1" id="Yes">Yes</option>
+                                        </select>
+                                 </div>
+                                    <!-- //////if Yes is selected///////// -->
+                                 <div style="display: none;" id="caseInput">
+                                    <div class="foam-field">
+                                        <label style="color: #e61616;" >Upload supporing documents*</label>
+                                        <div class="vendorFile">
+                                            <input type="file" name="vendorName" ><p class="fileUploadtext">
+                                            <i class="far fa-file"></i> Drop file here</p>
+                                        </div>
+                                    </div>                                         </div>
+                                    <!-- //////////////////////////////// -->
                             </div>
                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                               <div class="drag-drop">
@@ -682,6 +693,20 @@
             $("#yesDisplay").css({"display":"none"})
         }
     })
+
+    $("#legalCase").change(function(){
+        var selected = $("#legalCase").children("option:selected").val();
+        // console.log(selected);
+        if( selected == "1"){
+            $("#caseInput").css({"display":"block"})
+        }
+        else if( selected == "0"){
+            $("#caseInput").css({"display":"none"})
+        }else{
+            $("#caseInput").css({"display":"none"})
+        }
+    })
+
     function yes_func(){
         // console.log("abhinav");
         // $("#companyDetails").css({"display":"block"});
