@@ -380,7 +380,7 @@ def LoginView(request):
                     print(otp)
                     return redirect('core:register_otp_verification')
             except:
-                messages.error(request, 'Invalid Credentials', extra_tags = 'alert alert-danger alert-dismissible')
+                messages.error(request, 'Invalid Credentials', extra_tags = 'alert alert-warning alert-dismissible')
                 return redirect('core:login')
         elif type == 'register':
             try:
@@ -410,7 +410,7 @@ def LoginView(request):
 
                 return redirect('core:register_otp_verification')
             except:
-                messages.error(request, 'Mobile Already Registered', extra_tags='alert alert-danger alert-dismissible')
+                messages.error(request, 'Mobile Already Registered', extra_tags='alert alert-warning alert-dismissible')
         return redirect('core:login')
     else:
         context = {
@@ -430,7 +430,7 @@ def RegisterOTPVerification(request):
             user.save()
             return redirect('core:home')
         else:
-            messages.error(request, "Inavlid OTP", extra_tags='alert alert-danger alert-dismissible')
+            messages.error(request, "Inavlid OTP", extra_tags='alert alert-warning alert-dismissible')
             return redirect('core:register_otp_verification')
     else:
         mobile = request.session['mobile']
@@ -643,7 +643,7 @@ def CustomerAuthenticationView(request):
                         print(otp)
                         return redirect('core:booking-otp-verification')
                 except:
-                    messages.error(request, 'Invalid Credentials', extra_tags='alert alert-danger alert-dismissible')
+                    messages.error(request, 'Invalid Credentials', extra_tags='alert alert-warning alert-dismissible')
                     return redirect('core:booking-login')
             elif type == 'register':
                 try:
@@ -673,7 +673,7 @@ def CustomerAuthenticationView(request):
 
                     return redirect('core:booking-otp-verification')
                 except:
-                    messages.error(request, 'User Already Exists', extra_tags='alert alert-danger alert-dismissible')
+                    messages.error(request, 'User Already Exists', extra_tags='alert alert-warning alert-dismissible')
         return redirect('core:booking-login')
 
 def OTPVerificationView(request):
@@ -690,7 +690,7 @@ def OTPVerificationView(request):
             print('OTP VERIFIED', user.mobile_verified)
             return redirect('core:checkout')
         else:
-            messages.error(request, 'Invalid OTP', extra_tags='alert alert-danger alert-dismissible')
+            messages.error(request, 'Invalid OTP', extra_tags='alert alert-warning alert-dismissible')
             return redirect('core:booking-otp-verification')
     else:
         ride_type = request.session['ride_type']
@@ -746,7 +746,7 @@ def CheckoutView(request):
                 print('--------------------COUPON----------------------')
                 print(final_ride_fair)
             except:
-                messages.error(request, 'Invalid Coupon', extra_tags='alert alert-danger alert-dismissible')
+                messages.error(request, 'Invalid Coupon', extra_tags='alert alert-warning alert-dismissible')
         elif type == 'details':
             if 'name' in request.POST:
                 name = request.POST['name']

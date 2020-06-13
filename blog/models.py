@@ -2,9 +2,6 @@ from django.db import models
 from django.conf import settings
 from core.models import User
 # Create your models here.
-from django.shortcuts import get_object_or_404
-from vendor import models as vendormodels
-
 
 class categories(models.Model):
     title = models.CharField(max_length = 100)
@@ -61,27 +58,20 @@ class post(models.Model):
 class comment(models.Model):
     post = models.ForeignKey(post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField(auto_now_add=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(blank=True, null=True)
+    image = models.ImageField(blank=True, null = True)
+    date = models.DateField()
     comment_text = models.TextField()
 
     def __str__(self):
         return self.comment_text
 
     def get_username(self):
-        if self.user.is_vendor:
-            username = get_object_or_404(vendormodels.vendorprofile, user=self.user).full_name
-        else:
-            username = self.user.get_full_name()
+        username = self.user.username
         return username
 
     def get_profileimage(self):
-        if self.user.is_vendor:
-            profileimage = get_object_or_404(vendormodels.vendorprofile, user=self.user).image
-            return profileimage.url
-        else:
-            profileimage = self.user.profile_pic
-            if profileimage:
-                return profileimage.url
         profileimage = 'http://placehold.it/50x50'
         return profileimage
 
