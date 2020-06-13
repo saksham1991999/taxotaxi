@@ -66,17 +66,33 @@ def DashboardView(request):
 
 def VendorRegistrationView(request):
     if request.method == 'POST':
-        form = forms.VendorProfileForm(request.POST, request.FILES)
-        print(form.errors)
-        if form.is_valid():
-            form.save()
+        profile_form = forms.VendorProfileForm(prefix = 'vendor')
+        car_form = forms.AddCarForm(prefix = 'car')
+        driver_form = forms.AddDriverForm(prefix = 'driver')
+        bank_form = forms.BankAccountForm(prefix = 'bank')
+
+        if profile_form.is_valid() and bank_form.is_valid() and car_form.is_valid() and driver_form.is_valid():
+            profile_form.save()
+
+            bank_account = bank_form.save(commit=False)
+            bank_account.vendor = profile_form
+            bank_account.save()
+
+            driver = driver_form.save(commit=False)
+            driver.vendor = profile_form
+            driver.save()
+
+            car = car_form.save(commit=False)
+            car.vendor = profile_form
+            car.save()
+
             return redirect('vendor:dashboard')
         return redirect('vendor:dashboard')
     else:
-        profile_form = forms.VendorProfileForm()
-        car_form = forms.VendorProfileForm()
-        driver_form = forms.VendorProfileForm()
-        bank_form = forms.BankAccountForm()
+        profile_form = forms.VendorProfileForm(prefix = 'vendor')
+        car_form = forms.AddCarForm(prefix = 'car')
+        driver_form = forms.AddDriverForm(prefix = 'driver')
+        bank_form = forms.BankAccountForm(prefix = 'bank')
         context = {
             'profile_form':profile_form,
             'car_form':car_form,

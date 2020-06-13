@@ -57,16 +57,8 @@ def BlogPostView(request, id):
 
             if form.is_valid():
                 # print('---------------------VALID FORM-------------------------------')
-                new_comment = comment()
-                new_comment.comment_text = form.cleaned_data.get('comment_text')
-                # print(form.cleaned_data.get('comment_text'))
-
-                new_comment.post = slug_post
-                new_comment.date = date.today()
-                new_comment.user = request.user
-                new_comment.email = form.cleaned_data.get('email')
-                new_comment.name = form.cleaned_data.get('name')
-                # print(new_comment)
+                comment_text = form.cleaned_data.get('comment_text')
+                new_comment = comment.objects.create(post = slug_post, user=request.user, comment_text = comment_text)
                 new_comment.save()
                 messages.success(
                                 request,

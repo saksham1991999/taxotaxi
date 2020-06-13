@@ -1,7 +1,7 @@
 {% extends 'new_base.html' %}
 
 {% load static %}
-
+{% load widget_tweaks %}
 {% block content %}
 		<!--Wrapper Content Start-->
 		<div class="tj-wrapper">
@@ -114,7 +114,7 @@
 														</div>
 														<div class="text-holder">
 															<div class="top">
-																<h5>{{ comment.name|upper }}</h5>
+																<h5>{{ comment.get_username|upper }}</h5>
 															</div>
 															<span class="date">{{ comment.date|date:'d M Y' }}</span>
 															<p>{{ comment.comment_text|escape|linebreaks }}</p>
@@ -124,23 +124,19 @@
                                                 {% endfor %}
 											</ul>
                                             <!--Comments Listed End-->
-
-
 										</div>
+
+                                        {% if request.user.is_authenticated %}
 										<div class="tj-comment-form">
 											<h3>Leave Comment</h3>
 											<div class="row">
 												<form class="comment-frm" method="post">
                                                     {% csrf_token %}
 
-													<div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" name="name" required id="id_name" placeholder="Your Name">
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="email" name="email" required id="id_email" placeholder="Your Email">
-                                                    </div>
+
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
-                                                        <textarea name="comment_text" required id="id_comment_text" placeholder="Your Comment"></textarea>
+                                                        {% render_field commentform.comment_text id="id_comment_text" placeholder="Your Comment" required='true' %}
+{#                                                        <textarea name="comment_text" required id="id_comment_text" placeholder="Your Comment"></textarea>#}
                                                     </div>
                                                     <div class="col-md-12 col-sm-12 col-xs-12">
                                                         <button type="submit" class="comment-btn"> Submit <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
@@ -149,7 +145,11 @@
 												</form>
 											</div>
 										</div>
-
+                                        {% else %}
+                                            <div class="tj-comment-form">
+                                                <h3>Login to Leave Comment</h3>
+                                            </div>
+                                        {% endif %}
 									</div>
 								</div>
 							</div>
