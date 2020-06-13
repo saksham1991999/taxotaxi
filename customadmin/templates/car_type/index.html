@@ -5,7 +5,13 @@
 {% block extra_stylesheet %}
 
 {% endblock extra_stylesheet %}
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+<style>
+    body{
+        font-family: 'Poppins', sans-serif;
+    }
+    
+</style>
 
 
 {% block content %}
@@ -25,7 +31,7 @@
                                     </button>
                                 </a>
                                 <a href="{% url 'customadmin:update_car_attributes' %}">
-                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                    <button type="button" style="float: right; padding-right: 10px;margin-right: 10px;" class="btn btn-warning waves-effect waves-light mb-2">
                                         <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update Attributes
                                     </button>
                                 </a>
@@ -55,7 +61,180 @@
                         </div>
                     </div>
                 </div> <!-- end col -->
+                <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
 
+                                <h4 class="card-title">Filter By</h4>
+                                <p class="card-title-desc"></p>
+
+
+                                <div id="accordion">
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="m-0">
+                                                <a href="#collapseOne" class="text-dark" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseOne">
+                                                    By Pickup City
+                                                </a>
+                                            </h6>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse show"
+                                                aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1" style="font-weight: 800;">All</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1a">
+                                                    <label class="custom-control-label" for="customCheck1a">Delhi</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1b">
+                                                    <label class="custom-control-label" for="customCheck1b">Faridabad</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1c">
+                                                    <label class="custom-control-label" for="customCheck1c">Gurgaon</label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1d">
+                                                    <label class="custom-control-label" for="customCheck1d">Nainital</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingTwo">
+                                            <h6 class="m-0">
+                                                <a href="#collapseTwo" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseTwo">
+                                                    By Drop City
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                        <label class="custom-control-label" for="customCheck2" style="font-weight: 800;">All</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2a">
+                                                        <label class="custom-control-label" for="customCheck2a">Delhi</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2b">
+                                                        <label class="custom-control-label" for="customCheck2b">Faridabad</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2c">
+                                                        <label class="custom-control-label" for="customCheck2c">Gurgaon</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck2d">
+                                                        <label class="custom-control-label" for="customCheck2d">Nainital</label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingThree">
+                                            <h6 class="m-0">
+                                                <a href="#collapseThree" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseThree">
+                                                   By Car Type
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseThree" class="collapse"
+                                                aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck3">
+                                                        <label class="custom-control-label" for="customCheck3" style="font-weight: 800;">All</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck3a">
+                                                        <label class="custom-control-label" for="customCheck3a">Compact</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck3b">
+                                                        <label class="custom-control-label" for="customCheck3b">Sedan</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck3c">
+                                                        <label class="custom-control-label" for="customCheck3c">SUV</label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-0 shadow-none">
+                                        <div class="card-header" id="headingFour">
+                                            <h6 class="m-0">
+                                                <a href="#collapseFour" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                    By Attribute
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseFour" class="collapse"
+                                                aria-labelledby="headingFour" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck4">
+                                                        <label class="custom-control-label" for="customCheck4" style="font-weight: 800;">All</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck4a">
+                                                        <label class="custom-control-label" for="customCheck4a">price_km</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck4b">
+                                                        <label class="custom-control-label" for="customCheck4b">sf1</label>
+                                                    </div>
+                                                    <div class="custom-control custom-checkbox mb-1">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck4c">
+                                                        <label class="custom-control-label" for="customCheck4c">hp1</label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <a href="">
+                                        <button type="button" style="display: flex;align-items: center;margin: auto;" class="btn btn-primary waves-effect waves-light mb-2">
+                                            <i class="bx bx-check-square font-size-16 mr-2 align-middle"></i> Apply
+                                        </button>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12" style="margin: auto 0px; padding: 0px;">
+                            <div class="card">
+                                <div class="card-body" style="display: inline;margin: auto;">
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn   waves-effect waves-light mb-2">
+                                            <i class="bx bx-down-arrow-alt font-size-16 mr-2 align-middle"></i> Import
+                                        </button>
+                                    </a>
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn  waves-effect waves-light mb-2">
+                                            <i class="bx bx-up-arrow-alt font-size-16 mr-2 align-middle"></i> Export
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
                 <div class="col-4">
                         <div class="card">
                             <div class="card-body">
@@ -151,5 +330,64 @@
 
 
 {% block extra_scripts %}
-
+<script>
+    $(document).ready(function(){
+        $("#customCheck1").click(function(){
+            if($(this).prop("checked") == true){
+                $("#customCheck1a").prop("checked",true);
+                $("#customCheck1b").prop("checked",true);
+                $("#customCheck1c").prop("checked",true);
+                $("#customCheck1d").prop("checked",true);
+                
+            }
+            else if($(this).prop("checked") == false){
+                $("#customCheck1a").prop("checked",false);
+                $("#customCheck1b").prop("checked",false);
+                $("#customCheck1c").prop("checked",false);
+                $("#customCheck1d").prop("checked",false);
+            }
+        });
+        $("#customCheck2").click(function(){
+            if($(this).prop("checked") == true){
+                $("#customCheck2a").prop("checked",true);
+                $("#customCheck2b").prop("checked",true);
+                $("#customCheck2c").prop("checked",true);
+                $("#customCheck2d").prop("checked",true);
+                
+            }
+            else if($(this).prop("checked") == false){
+                $("#customCheck2a").prop("checked",false);
+                $("#customCheck2b").prop("checked",false);
+                $("#customCheck2c").prop("checked",false);
+                $("#customCheck2d").prop("checked",false);
+            }
+        });
+        $("#customCheck3").click(function(){
+            if($(this).prop("checked") == true){
+                $("#customCheck3a").prop("checked",true);
+                $("#customCheck3b").prop("checked",true);
+                $("#customCheck3c").prop("checked",true);
+                
+            }
+            else if($(this).prop("checked") == false){
+                $("#customCheck3a").prop("checked",false);
+                $("#customCheck3b").prop("checked",false);
+                $("#customCheck3c").prop("checked",false);
+            }
+        });
+        $("#customCheck4").click(function(){
+            if($(this).prop("checked") == true){
+                $("#customCheck4a").prop("checked",true);
+                $("#customCheck4b").prop("checked",true);
+                $("#customCheck4c").prop("checked",true);
+                
+            }
+            else if($(this).prop("checked") == false){
+                $("#customCheck4a").prop("checked",false);
+                $("#customCheck4b").prop("checked",false);
+                $("#customCheck4c").prop("checked",false);
+            }
+        });
+    });
+</script>
 {% endblock extra_scripts %}
