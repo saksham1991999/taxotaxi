@@ -31,6 +31,10 @@ class vendorprofile(models.Model):
 
     date_of_registration = models.DateField(auto_now_add=True)
 
+    total_compact = models.PositiveSmallIntegerField()
+    total_sedan = models.PositiveSmallIntegerField()
+    total_suv = models.PositiveSmallIntegerField()
+
     def __str__(self):
         return str(self.full_name)
 
@@ -62,6 +66,9 @@ class vendor_cars(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
     car_type = models.ForeignKey('core.car_types', on_delete=models.DO_NOTHING)
 
+    owner_name = models.CharField(max_length=256, blank=True, null=True)
+    father_name = models.CharField(max_length=256, blank=True, null=True)
+
     registration_no = models.CharField(max_length=50,blank=True, null=True)
     dateofregistration = models.DateField(blank=True, null=True)
 
@@ -70,6 +77,7 @@ class vendor_cars(models.Model):
 
     rc_front = models.FileField()
     rc_rear = models.FileField()
+    rc_valid_upto = models.DateField()
 
     touristpermit_front = models.FileField()
     touristpermit_rear = models.FileField(blank=True, null=True)
@@ -104,7 +112,9 @@ class driver(models.Model):
     contact2 = models.CharField(max_length=10, blank=True, null=True)
     address = models.TextField()
 
-    pancard = models.FileField()
+    pancard_front = models.FileField()
+    pancard_rear = models.FileField()
+
     aadharcard_front = models.FileField()
     aadharcard_rear = models.FileField()
     votercard_front = models.FileField(blank=True, null=True)
@@ -112,11 +122,12 @@ class driver(models.Model):
 
     driving_licence_front = models.FileField(blank=True, null=True)
     driving_licence_rear = models.FileField(blank=True, null=True)
-    driving_licence_no = models.CharField(max_length=50)
+    driving_licence_no = models.CharField(max_length=50, blank=True, null=True)
     driving_licence_valid_from = models.DateField()
     driving_licence_valid_till = models.DateField()
-    driving_experience = models.SmallIntegerField()
-    hill_experience = models.SmallIntegerField()
+
+    driving_experience = models.PositiveSmallIntegerField()
+    hill_experience = models.PositiveSmallIntegerField()
 
     police_verification_front = models.FileField(blank=True, null=True)
     police_verification_rear = models.FileField(blank=True, null=True)
