@@ -233,7 +233,7 @@
 
                                         <div class="foam-field">
                                         <label>Date Of Birth</label>
-                                            {% render_field profile_form.dob id="datepicker1" type="date" data-date-format="yyyy-mm-dd" readonly='true' %}
+                                            {% render_field profile_form.dob id="datepicker1" data-date-format="mm-dd-yyyy" readonly='true' %}
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
@@ -790,7 +790,7 @@
 
         $(function () {
             $("#datepicker1").datepicker({ 
-                dateformat: "yy-mm-dd",
+                dateformat: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
