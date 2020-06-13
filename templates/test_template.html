@@ -18,6 +18,9 @@
         .customer-tab{
             display: flex;
         }
+        .buttonallign{
+        padding: 0 40%;
+    }
     }
     @media(max-width: 770px){
         .headerAlign{
@@ -26,6 +29,9 @@
         .drag-drop{
             width: 100%!important;
         }
+    }
+    .buttonallign{
+        margin-top : 40px
     }
     .fileUploadtext{
         margin-top: -19px !important;
@@ -205,48 +211,56 @@
                    <!------------togable Content pannel start----------->
                         <div class="tab-content">
                             <div class="tab-pane active" id="vendorInformation">
-                                <form class="vendor-frm" method="" enctype="multipart/form-data">
-                                    <input type="hidden" name="type" value="vendorprofile">
+
+
                                     <div class="col-sm-7">
                                         <div class="errorSpace"> Error Message</div>
                                         <div class="errorSpace"> Error Message</div>
+
                                         <div class="foam-field">
                                             <label>Full Name</label>
                                             {% render_field profile_form.full_name %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Father's Name</label>
                                             {% render_field profile_form.father_name %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+
                                         <div class="foam-field">
                                         <label>Date Of Birth</label>
-                                            {% render_field profile_form.dob id="datepicker1" data-date-format="yyyy-mm-dd" readonly='true' %}
+                                            {% render_field profile_form.dob id="datepicker1" type="date" data-date-format="yyyy-mm-dd" readonly='true' %}
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Email address*</label>
                                             {% render_field profile_form.email %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.email.errors }}</div>
+
                                         <div class="foam-field">
                                         <label>Phone No 1*</label>
                                             {% render_field profile_form.contact1 %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Phone No 2*</label>
                                            {% render_field profile_form.contact2 %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Address*</label>
                                             {% render_field profile_form.address rows="3" cols="50" %}
                                             {#<textarea rows="3" cols="50" name="comment" form="usrform"></textarea>#}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.address.errors }}</div>
+
                                         <div class="foam-field">
                                             <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
                                         </div>
@@ -273,7 +287,6 @@
                                                 <p class="fileUploadtext">
                                                 <i class="far fa-file"></i> Back side</p>
                                             </div>
-
                                         </div>
                                         <div class="errorSpace">{{ profile_form.aadharcard_front.errors }}</div>
                                         <div class="errorSpace">{{ profile_form.aadharcard_rear.errors }}</div>
@@ -320,17 +333,19 @@
                                         </div>
                                         <!-- //////if Yes is selected///////// -->
                                         <div style="display: none;" id="yesDisplay">
-                                        <div class="foam-field">
-                                            <label style="color: #e61616;">Company Name*</label>
-                                            {% render_field profile_form.company_name %}
-                                        </div>
+                                            <div class="foam-field">
+                                                <label style="color: #e61616;">Company Name*</label>
+                                                {% render_field profile_form.company_name %}
+                                            </div>
                                             <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
-                                        <div class="foam-field">
-                                        <label style="color: #e61616;">GST NUMBER*</label>
+
+                                            <div class="foam-field">
+                                                <label style="color: #e61616;">GST NUMBER*</label>
                                                 {% render_field profile_form.gst_no %}
-                                        </div>
+                                            </div>
                                             <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
-                                          </div>
+                                        </div>
+
                                         <!-- //////////////////////////////// -->
                                         <div class="foam-field">
                                         <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
@@ -340,56 +355,67 @@
                                             {% render_field bank_form.account_holder_name %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.account_holder_name.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Bank Account Number</label>
                                             {% render_field bank_form.account_no %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.account_no.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Saving/ Current</label>
                                             {% render_field bank_form.account_type %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.account_type.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Bank Name</label>
                                             {% render_field bank_form.bank_name %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.bank_name.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>IFSC code</label>
                                             {% render_field bank_form.ifsc %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.ifsc.errors }}</div>
+
                                         <div class="foam-field">
                                             <label>Bank Address</label>
                                             {% render_field bank_form.bank_address %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.bank_address.errors }}</div>
-<!--                                         <div style="text-align: right;" >
+
+                                        {% comment %}
+                                        <div style="text-align: right;" >
                                             <input type="checkbox" name="terms" id="terms" required>
                                             <label> I accept <a href="{% url 'core:terms&conditions' %}"> terms & conditions </a> </label>
-                                        </div> -->
+                                        </div>
+                                        {% endcomment %}
+
                                     </div>
+
                                     <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
-                                  <div class="drag-drop">
-                                    <input type="file" class="input-file" name="">
-                                      <p class="p23">
-                                       <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                       </i><br> Drag&Drop files here <br> or<br>
-                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                      </p>
-                                      <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                      <div class="drag-drop">
+                                          {% render_field profile_form.image class="input-file" %}
+                                          <p class="p23">
+                                           <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                                           </i><br> Drag&Drop files here <br> or<br>
+                                           <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                                          </p>
+                                          <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
+                                              <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                          </div>
                                       </div>
-                                   </div>
-                                </div>
-                                <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
-                                    <div style="display: flex;width:fit-content;">
-                                      <button class="book-btn" type="submit">Next</button>&nbsp;&nbsp;
-                                    </div><br>
-                                </div>
-                            </form>
-                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 booking-frm buttonallign" >
+                                        <div style="display: flex;width:fit-content;">
+                                          <button href="#carDetails" data-toggle="tab" class="book-btn" type="button">Next</button>&nbsp;&nbsp;
+                                        </div><br>
+                                    </div>
+
+                            </div>
 
                         <div class="tab-pane" id="carDetails" role="tabpanel">
                             <!-- <form class="booking-frm" method="" id="">     
@@ -400,29 +426,20 @@
                                 <div class="errorSpace"> Error Message</div>
                                 <div class="carTypeHeader">
                                 <div class="foam-field">
+
                                     <label>Total Compact</label>
-                                    <select name="subject" id="">
-                                        <option Selected>0</option>
-                                        <option value="1" >1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                    {% render_field profile_form.total_compact %}
+
                                 </div>
                                 <div class="foam-field">
                                     <label>Total Sedan</label>
-                                    <select name="subject" id="">
-                                        <option Selected>0</option>
-                                        <option value="1" >1</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                    {% render_field profile_form.total_compact %}
+
                                 </div>
                                 <div class="foam-field">
                                     <label>Total SUV</label>
-                                    <select name="subject" id="">
-                                        <option Selected>0</option>
-                                        <option value="1" >1</option>
-                                        <option value="3">3</option>
-                                    </select>
+                                    {% render_field profile_form.total_compact %}
+
                                 </div>
                                 </div>
                             </div>
@@ -433,114 +450,119 @@
                                 <div class="col-sm-7">
                                 <div class="foam-field">
                                     <label>Owner Name</label>
-                                    <input type="text" name="">
+                                    {% render_field car_form.owner_name %}
                                 </div>
                                 <div class="foam-field">
                                     <label>Father's Name</label>
-                                    <input type="text" name="">
+                                    {% render_field car_form.father_name %}
                                 </div>
                                 <div class="foam-field">
                                     <label>Vehicle Type</label>
-                                    <select name="subject" id="">
-                                        <option Selected>Sedan</option>
-                                        <option value="1" >SUV</option>
-                                        <option value="3">Compact</option>
-                                    </select>
+                                    {% render_field car_form.car_type %}
                                 </div>
                                 <div class="foam-field">
                                     <label>Registration No</label>
-                                    <input type="text" name="">
+                                    {% render_field car_form.registration_no %}
                                 </div>
                                 <div class="foam-field">
                                     <label>Upload Car photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                           {% render_field car_form.image_front %}<p class="fileUploadtext">
                                             <i class="far fa-file"></i> Front Side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
                                     </div>
-                                    <div class="errorSpace"> Error Message</div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field car_form.image_rear %}<p class="fileUploadtext">
+                                        <i class="far fa-file"></i> Back side</p>
+                                    </div>
+                                </div>
+                                <div class="errorSpace"> Error Message</div>
+
+
                                 <div class="foam-field">
                                     <label>Upload RC photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front Side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
+                                       {% render_field car_form.rc_front %}<p class="fileUploadtext">
+                                        <i class="far fa-file"></i> Front Side</p>
                                     </div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field car_form.rc_rear %}<p class="fileUploadtext">
+                                        <i class="far fa-file"></i> Back side</p>
+                                    </div>
+                                </div>
                                 <div class="foam-field">
                                 <label>RC valid upto</label>
-                                    <input type="date" id="datepicker5"data-date-format="mm-dd-yyyy"readonly />
+                                    {% render_field car_form.rc_valid_upto id="datepicker5" type="date" data-date-format="mm-dd-yyyy" readonly='true' %}
+{#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
+
                                  <div class="foam-field ">
                                 <label>Upload Tourists Permit*</label>
                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
+                                    {% render_field car_form.touristpermit_front %}
+                                    <p class="fileUploadtext">
+                                     <i class="far fa-file"></i> Front Side
+                                    </p>
                                  </div>
                                  <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                     {% render_field car_form.touristpermit_rear %}<p class="fileUploadtext">
                                      <i class="far fa-file"></i> Back side</p>
                                  </div>
                                 </div>
                                 <div class="foam-field">
                                 <label>Tourist Permit valid upto</label>
-                                    <input type="date" id="datepicker6" data-date-format="mm-dd-yyyy" readonly />
+                                    {% render_field car_form.touristpermit_valid_upto id="datepicker6" type="date" data-date-format="mm-dd-yyyy" readonly='true' %}
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field ">
                                 <label>Upload Permit A*</label>
                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                     {% render_field car_form.permita_front %}<p class="fileUploadtext">
                                      <i class="far fa-file"></i> Front Side</p>
                                  </div>
                                  <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                     {% render_field car_form.permita_rear %}<p class="fileUploadtext">
                                      <i class="far fa-file"></i> Back side</p>
                                  </div>
                                 </div>
                                 <div class="foam-field ">
-                                <label>Upload Permit B*</label>
-                                <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
+                                    <label>Upload Permit B*</label>
+                                    <div class="vendorFile" style="width: 49%;">
+                                         {% render_field car_form.permitb_front %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Front Side</p>
+                                    </div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                         {% render_field car_form.permitb_rear %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Back side</p>
+                                    </div>
                                 </div>
+
                                 <div class="foam-field ">
-                                <label>Upload Insurance</label>
-                                <div class="vendorFile">
-                                   <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                    <i class="far fa-file"></i> Drop file here</p>
+                                    <label>Upload Insurance</label>
+                                    <div class="vendorFile">
+                                        {% render_field car_form.insurance_front %}<p class="fileUploadtext">
+                                        <i class="far fa-file"></i> Drop file here</p>
+                                    </div>
                                 </div>
-                                </div>
+
                                 <div class="foam-field">
-                                <label>Insurance valid upto</label>
-                                    <input type="date" id="datepicker7"data-date-format="mm-dd-yyyy" readonly />
+                                    <label>Insurance valid upto</label>
+                                    {% render_field car_form.touristpermit_valid_upto id="datepicker7" type="date" data-date-format="mm-dd-yyyy" readonly='true' %}
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
+
                                 <div class="foam-field ">
                                 <label>Upload Pollution Certificate</label>
                                 <div class="vendorFile">
-                                   <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                    {% render_field car_form.pollution_certificate %}<p class="fileUploadtext">
                                     <i class="far fa-file"></i> Drop file here</p>
                                 </div>
                                 </div>
                             </div>           
-                              <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                              <div class="col-sm-12 booking-frm buttonallign">
                                   <div style="display: flex;width:fit-content;">
-                                    <button class="book-btn" type="submit">Next</button>&nbsp;&nbsp;
-                                    <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">back</button><br>
+                                    <button class="book-btn" href="#driverDetails" data-toggle="tab" type="button">Next</button>&nbsp;&nbsp;
+                                    <button style="background-color: #7f7f7f;" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                   </div><br>
                               </div>
                         </div>
@@ -548,91 +570,104 @@
                         <div class="tab-pane" id="driverDetails" role="tabpanel">
                             <div>
                                 <input type="checkbox">
-                                <label for="">Is vendor/driver same</label>
-                                
+                                <label for="">Is Vendor/Driver same</label>
                             </div>
                             <div class="col-sm-7">
                                 <div class="errorSpace"> Error Message</div>
                                 <div class="foam-field">
-                                <label>Full Name</label>
-                                <input type="text" name="vendorName">
+                                    <label>Full Name</label>
+                                    {% render_field driver_form.full_name %}
                                 </div>
                                 <div class="errorSpace"> Error Message</div>
+
                                 <div class="foam-field">
-                                <label>Father's Name</label>
-                                <input type="text" name="vendorName">
+                                    <label>Father's Name</label>
+                                    {% render_field driver_form.father_name %}
                                 </div>
+
                                 <div class="foam-field">
                                 <label>Date Of Birth</label>
-                                    <input type="date" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
+                                    {% render_field driver_form.dob id="datepicker4" type="date" data-date-format="mm-dd-yyyy" readonly='true' %}
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
+
                                 <div class="foam-field">
-                                <label>Email address*</label>
-                                <input type="email" name="vendorName">
+                                    <label>Email address*</label>
+                                    {% render_field driver_form.email %}
                                 </div>
                                 <div class="foam-field">
-                                <label>Phone No 1*</label>
-                                <input type="tel" name="vendorName">
+                                    <label>Phone No 1*</label>
+                                    {% render_field driver_form.contact1 %}
                                 </div>
                                 <div class="foam-field">
-                                <label>Phone No 2*</label>
-                                <input type="tel" name="vendorName">
+                                    <label>Phone No 2*</label>
+                                    {% render_field driver_form.contact2 %}
                                 </div>
+
                                 <div class="foam-field">
-                                <label>Address*</label>
-                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                    <label>Address*</label>
+                                    {% render_field driver_form.address %}
                                 </div>
+
                                 <div class="foam-field">
-                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                                    <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
                                 </div>
+
                                 <div class="foam-field">
                                     <label>PAN Card*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                         {% render_field driver_form.pancard_front %}<p class="fileUploadtext">
                                          <i class="far fa-file"></i> Front Side</p>
-                                     </div>
-                                     <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Back side</p>
-                                     </div>
                                     </div>
-                                    <div class="foam-field">
+                                    <div class="vendorFile" style="width: 49%;">
+                                         {% render_field driver_form.pancard_rear %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i>Back side</p>
+                                    </div>
+                                </div>
+
+                                <div class="foam-field">
                                     <label>Aadhar Card* <p>Size must be 200KB</p></label>
                                     <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                    </div>
-                                    <div class="foam-field">
+                                    {% render_field driver_form.pancard_front %}
+                                        <p class="fileUploadtext">
+                                        <i class="far fa-file"></i> Front Side
+                                        </p>
+                                     </div>
+
+                                     <div class="vendorFile" style="width: 49%;">
+                                         {% render_field driver_form.pancard_rear %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Back side</p>
+                                     </div>
+                                </div>
+
+                                <div class="foam-field">
                                     <label>Voter Card</label>
+
                                     <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
+                                        {% render_field driver_form.votercard_front %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Front Side</p>
+                                     </div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field driver_form.votercard_rear %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Back side</p>
                                     </div>
-                                    <div class="foam-field">
-                                        <label>Driving Licence</label>
-                                        <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                        </div>
+                                </div>
+
+                                <div class="foam-field">
+                                    <label>Driving Licence</label>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field driver_form.driving_licence_front %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Front Side</p>
+                                    </div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                         {% render_field driver_form.driving_licence_rear %}<p class="fileUploadtext">
+                                         <i class="far fa-file"></i> Back side</p>
+                                    </div>
+                                </div>
                                  
                                 <div class="foam-field">
                                 <label>Valid From*</label>
+
                                     <input type="date" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 <!-- <input type="date" name="vendorName"> -->
@@ -643,51 +678,28 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
-                                <label>Total Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>No. of years</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
+                                    <label>Total Driving Experience</label>
+                                    {% render_field driver_form.driving_experience %}
                                 </div>
                                 <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
+                                    <label>Hill Driving Experience</label>
+                                    {% render_field driver_form.hill_experience %}
                                 </div>
                                 <div class="foam-field">
                                     <label>Police Verification*<p>With in 15days or 6 months old</p></label>
                                     <div class="vendorFile">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
+                                         {% render_field driver_form.police_verification_front %}<p class="fileUploadtext">
                                          <i class="far fa-file"></i> Drop file here</p>
                                      </div>
                                 </div>
-                                <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
+
                                 <div class="foam-field">
                                         <label>Any Legal/Accidental case pending for clearance*</label>
-                                        <select name="subject" id="legalCase">
+
+                                        <select name="driver-legal_accidental_case" id="legalCase">
                                               <option Selected>--Select--</option>
-                                              <option value="0">No</option>
-                                              <option value="1" id="Yes">Yes</option>
+                                              <option value=false>No</option>
+                                              <option value=true id="Yes">Yes</option>
                                         </select>
                                  </div>
                                     <!-- //////if Yes is selected///////// -->
@@ -695,14 +707,16 @@
                                     <div class="foam-field">
                                         <label style="color: #e61616;">Upload any supporting document*</label>
                                         <div class="vendorFile">
-                                            <input type="file" name="vendorName" ><p class="fileUploadtext">
+                                            {%  render_field driver_form.legal_accidental_case_document %}<p class="fileUploadtext">
                                             <i class="far fa-file"></i> Drop file here</p>
                                         </div>
-                                    </div>                                         </div>
+                                    </div>
+                                 </div>
                             </div>
+
                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                               <div class="drag-drop">
-                                <input type="file" class="input-file2" name="">
+                                {% render_field driver_form.image %}
                                   <p class="p24">
                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                    </i><br> Drag&Drop files here <br> or<br>
@@ -713,10 +727,10 @@
                                   </div>
                                </div>
                             </div>
-                            <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                            <div class="col-sm-12 booking-frm buttonallign ">
                                 <div style="display: flex;width:fit-content;">
                                   <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                  <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Back</button><br>
+                                  <button style="background-color: #7f7f7f;" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                 </div><br>
                             </div>
                         </div>
@@ -774,7 +788,7 @@
         var today_date = date + "/" + month + "/" + current_year;
         $(function () {
             $("#datepicker1").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
@@ -783,14 +797,14 @@
         
         $(function () {
             $("#datepicker2").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false
             })
         });
         $(function () {
             $("#datepicker3").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -798,7 +812,7 @@
         });
         $(function () {
             $("#datepicker4").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
@@ -806,7 +820,7 @@
         });
         $(function () {
             $("#datepicker5").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -814,7 +828,7 @@
         });
         $(function () {
             $("#datepicker6").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -822,7 +836,7 @@
         });
         $(function () {
             $("#datepicker7").datepicker({ 
-                format: "dd/mm/yyyy",
+                dateformat: "yy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),

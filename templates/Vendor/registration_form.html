@@ -18,6 +18,9 @@
         .customer-tab{
             display: flex;
         }
+        .buttonallign{
+        padding: 0 40%;
+    }
     }
     @media(max-width: 770px){
         .headerAlign{
@@ -26,6 +29,9 @@
         .drag-drop{
             width: 100%!important;
         }
+    }
+    .buttonallign{
+        margin-top : 40px
     }
     .fileUploadtext{
         margin-top: -19px !important;
@@ -165,7 +171,9 @@
 .add-cars:hover{
     background-color: #f12b2b !important;
 }
-/* label{margin-left: 20px;} */
+#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
+     width: 89%;
+}
 /*#datepicker1{ width: 103%;}*/
 #datepicker1 > span:hover{cursor: pointer;}
 #datepicker2 > span:hover{cursor: pointer;}
@@ -225,7 +233,7 @@
 
                                         <div class="foam-field">
                                         <label>Date Of Birth</label>
-                                            {% render_field profile_form.dob id="datepicker1" data-date-format="yyyy-mm-dd" readonly='true' %}
+                                            {% render_field profile_form.dob id="datepicker1" type="date" data-date-format="yyyy-mm-dd" readonly='true' %}
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
@@ -403,9 +411,9 @@
                                       </div>
                                     </div>
 
-                                    <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                                    <div class="col-sm-12 booking-frm buttonallign" style=" text-align: -webkit-center; margin-top : 40px">
                                         <div style="display: flex;width:fit-content;">
-                                          <button class="book-btn" type="button">Next</button>&nbsp;&nbsp;
+                                          <button href="#carDetails" data-toggle="tab" class="book-btn" type="button">Next</button>&nbsp;&nbsp;
                                         </div><br>
                                     </div>
 
@@ -553,10 +561,10 @@
                                 </div>
                                 </div>
                             </div>           
-                              <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                              <div class="col-sm-12 booking-frm buttonallign">
                                   <div style="display: flex;width:fit-content;">
-                                    <button class="book-btn" type="button">Next</button>&nbsp;&nbsp;
-                                    <button style="background-color: #7f7f7f;" class="book-btn" type="button">Back</button><br>
+                                    <button class="book-btn" href="#driverDetails" data-toggle="tab" type="button">Next</button>&nbsp;&nbsp;
+                                    <button style="background-color: #7f7f7f;" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                   </div><br>
                               </div>
                         </div>
@@ -720,10 +728,10 @@
                                   </div>
                                </div>
                             </div>
-                            <div class="col-sm-12 booking-frm" style=" text-align: -webkit-center; margin-top : 40px">
+                            <div class="col-sm-12 booking-frm buttonallign ">
                                 <div style="display: flex;width:fit-content;">
                                   <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                  <button style="background-color: #7f7f7f;" class="book-btn" type="button">Back</button><br>
+                                  <button style="background-color: #7f7f7f;" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                 </div><br>
                             </div>
                         </div>
