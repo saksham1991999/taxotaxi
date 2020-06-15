@@ -87,21 +87,7 @@
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td, th {
-  border: 1px transparent #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
     
     
 </style>
@@ -167,80 +153,42 @@ tr:nth-child(even) {
                             </div>
                             <div class="col-sm-12 col-md-12">
                                 <table>
-                                     <tr>
-                                       <th>S.N0.</th>
-                                       <th>Driver Name</th>
-                                       <th>Phone No</th>
-                                       <th>Oprational</th>
-                                       <th>Status</th>
-                                       <th>Rating</th>
-                                     </tr>
-                                     <tr>
-                                       <td>1</td>
-                                       <td><a>Maria Anders</a></td>
-                                       <td>9991155693</td>
-                                       <td>check</td>
-                                       <td>Approved</td>
-                                       <td>*****</td>
-                                     </tr>
-                                     <tr>
-                                       <td>2</td>
-                                       <td>sakir Hussain</td>
-                                       <td>9991155693</td>
-                                       <td>Cross</td>
-                                       <td>Rejected</td>
-                                       <td>*****</td>
-                                     </tr>
-                                     <tr>
-                                       <td>3</td>
-                                       <td>sakir Hussain</td>
-                                       <td>9991155693</td>
-                                       <td>Cross</td>
-                                       <td>Hold</td>
-                                       <td>*****</td>
-                                     </tr>
-                                 </table>
-                             <div class="modal-content">
-                               <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                 <input type="hidden" name="modelid" id="ridemodalvalue">
-                                 <h4 class="modal-title">Kindly share your experience:</h4>
-                               </div>
-                               <div class="modal-body">
-            <p>Online booking with our platform was easy ? 
-              <span style="float: right;">
-                 <input type="radio" name="yes_no1" checked>Yes</input>
-                 <input type="radio" name="yes_no1">No</input></span>
-          </p>
-          <p>Did you timely receive all details about booking?
-          <span style="float: right;"> 
-           <input type="radio" name="yes_no2" checked>Yes</input>
-                 <input type="radio" name="yes_no2">No</input></span>
-          </p>
-          <p>Driver's behavior was good throughout journey? 
-          <span style="float: right;"> 
-           <input type="radio" name="yes_no3" checked>Yes</input>
-                 <input type="radio" name="yes_no3">No</input></span>
-          </p>
-          <p>You are happy with the car provided ? 
-            <span style="float: right;">
-           <input type="radio" name="yes_no4" checked>Yes</input>
-                 <input type="radio" name="yes_no4">No</input></span>
-          </p>
-          <p>You are satisfied with the service offered to you?
-           <span style="float: right;"><input type="radio" name="yes_no5" checked>Yes</input>
-                 <input type="radio" name="yes_no5">No</input></span>
-          </p>
-          <p>Would you recommend us to your family and friends for future rides?&
-            <span style="float: right;">
-           <input type="radio" name="yes_no6" checked>Yes</input>
-                 <input type="radio" name="yes_no6">No</input></span>
-          </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+</table>
 
                             </div>
                         </div>
@@ -262,9 +210,13 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="tab-pane" id="yourBooking" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
+                            <div class="col-md-12 col-sm-12 vendorHeader booking-frm">
+                                <h4 class="tab-heading">Available Booking<p>(Active Rides)</p>
+                                    <button class="book-btn" style="float: right; font-size: 1.4rem; margin-top: -10px;" type="submit">Your Biddings</button>
+                                </h4>
                             </div>
+                            
+                            
                             <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
                                 <div class="col-sm-3">
                                     <div class="foam-field">
@@ -748,8 +700,8 @@ function DisplayList (items, wrapper, rows_per_page, page) {
                                 <div class="col-sm-11 booking-frm">
                                     <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
                                         <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
+                                            <button class="book-btn" type="submit" onclick="bidFunc(${i+1})">Bid Your Amount</button>
+                                            <input type="text" name="" id="${i+1}" style="margin-bottom: 0px;">
                                         </div>
                                     </div>
                                     <div class="col-sm-6" style="margin-bottom: 10px;">
@@ -885,7 +837,31 @@ DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
 </script>
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function bidFunc(id){
+        var data = $(`#${id}`).val();
+        console.log(data);
+        // ///////////////here data contains the bid amount/////////////////
 
+
+
+    axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+    }
+    // ///////////////here data contains the bid amount/////////////////
+
+
+  
+</script>
 {% endblock extra_scripts %}
 
 
