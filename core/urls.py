@@ -4,7 +4,6 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.HomeView, name='home'),
-    path('.well-known/pki-validation/fileauth.txt', views.SSLView, name='home'),
 
     path('coming-soon', views.ComingSoonView, name='coming_soon'),
     path('test/', views.TestView, name='test'),
