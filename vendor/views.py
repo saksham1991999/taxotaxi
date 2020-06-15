@@ -59,17 +59,17 @@ def DashboardView(request):
                 'addcarform':addcarform,
                 'adddriverform':adddriverform,
             }
-            return render(request, 'vendor_dashboard.html', context)
+            return render(request, 'Vendor/profile.html', context)
     except:
         return redirect('vendor:registration')
 
 
 def VendorRegistrationView(request):
     if request.method == 'POST':
-        profile_form = forms.VendorProfileForm(prefix = 'vendor')
-        car_form = forms.AddCarForm(prefix = 'car')
-        driver_form = forms.AddDriverForm(prefix = 'driver')
-        bank_form = forms.BankAccountForm(prefix = 'bank')
+        profile_form = forms.VendorProfileForm(request.POST, request.FILES, prefix = 'vendor')
+        car_form = forms.AddCarForm(request.POST, request.FILES,prefix = 'car')
+        driver_form = forms.AddDriverForm(request.POST, request.FILES,prefix = 'driver')
+        bank_form = forms.BankAccountForm(request.POST, request.FILES,prefix = 'bank')
 
         if profile_form.is_valid() and bank_form.is_valid() and car_form.is_valid() and driver_form.is_valid():
             profile_form.save()
@@ -86,8 +86,26 @@ def VendorRegistrationView(request):
             car.vendor = profile_form
             car.save()
 
-            return redirect('vendor:dashboard')
-        return redirect('vendor:dashboard')
+            return redirect('core:home')
+        print('--------------------------------')
+        print('--------------------------------')
+        print('--------------------------------')
+        print(request.POST)
+        print(profile_form.errors)
+        print(bank_form.errors)
+        print(car_form.errors)
+        print(driver_form.errors)
+        print(profile_form.non_field_errors())
+        print(bank_form.non_field_errors())
+        print(car_form.non_field_errors())
+        print(driver_form.non_field_errors())
+        context = {
+            'profile_form':profile_form,
+            'car_form':car_form,
+            'driver_form':driver_form,
+            'bank_form':bank_form,
+        }
+        return render(request, 'Vendor/registration_form.html', context)
     else:
         profile_form = forms.VendorProfileForm(prefix = 'vendor')
         car_form = forms.AddCarForm(prefix = 'car')
@@ -99,7 +117,7 @@ def VendorRegistrationView(request):
             'driver_form':driver_form,
             'bank_form':bank_form,
         }
-        return render(request, 'Vendor/registration_form.html' ,context)
+        return render(request, 'Vendor/registration_form.html', context)
 
 
 def CarsView(request):

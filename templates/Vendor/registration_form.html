@@ -195,19 +195,20 @@
 <div class="container" style="display: grid;">
     <div class="row">
         <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
             <div class="col-sm-12 vendorfrm">
                 <h3> Vendor Registration </h3>
             </div>
             <div class="col-sm-12 col-md-12">
                         <ul class="customer-tab col-sm-12">
                            <li class="col-sm-4 headerWidth active headerAlign" >
-                              <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">45</span></a>
+                              <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">{{ profile_form.errors.count }}</span></a>
                            </li>
                            <li class="col-sm-4 headerWidth" style="text-align: center;">
-                              <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">45</span></a>
+                              <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">{{ car_form.errors.count }}</span></a>
                            </li>
                            <li class="col-sm-4 headerWidth" style="text-align: center;">
-                              <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">45</span></a>
+                              <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">{{ driver_form.errors.count }}</span></a>
                            </li>
                         </ul>
                    <!------------togable Content pannel start----------->
@@ -271,7 +272,7 @@
                                             <label>PAN Card*</label>
                                             <div class="vendorFile">
                                                 {% render_field profile_form.pancard placeholder="Pan Card" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-pancard-p">
                                                 <i class="far fa-file"></i> Drop file here</p>
                                             </div>
                                         </div>
@@ -846,25 +847,27 @@
         });
     })
 </script>
+
+
 <script type="text/javascript">
     $(function () {
         // Function to return file name to the input field
          $('input[type="file"]').change(function(e){
-            var fileName = e.target.files[0].name;
-            
-                $('.fileUploadtext').text(fileName);
-            // $(this).fileUploadtext.text(fileName);
-           
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
         });
 
          $('.input-file').change(function (e) {
-            var fileName = e.target.files[0].name;
-      $('.p23').text(fileName);
-    });
-         $('.input-file2').change(function (e) {
-            var fileName = e.target.files[0].name;
-      $('.p24').text(fileName);
-    });
+                var fileName = e.target.files[0].name;
+              $('.p23').text(fileName);
+            });
+                 $('.input-file2').change(function (e) {
+                    var fileName = e.target.files[0].name;
+              $('.p24').text(fileName);
+            }) ;
     });
 
 </script>
