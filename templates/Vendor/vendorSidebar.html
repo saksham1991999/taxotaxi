@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load fullurl %}
+{% block extra_stylesheet %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style type="text/css">
+    .vendorTab{
+        padding: 8px 0px 28px 0px;
+    border: 1px #eee solid;
+    padding-inline-start: 15px;
+    list-style-type: none;
+    font-size: medium;
+    }
+    .vendorTab li{
+      margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+    padding-left: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
+    .vendorTab a{
+        font-size: medium;
+        color: inherit;
+        
+    }
+    .vendorTab .active{
+         color: black;
+         font-weight: bold;
+    }
+    #vendorDashboard h4{
+      font-weight: bold;
+      padding: 10px 0px;
+    }
+    #vendorDashboard h4 p{
+      display: contents;
+      font-weight: 400;
+    }
+    .vendorHeader{
+      background-color: #f9f9f9;
+    padding: 0 0 0 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.foam-field{
+      display: flex;
+      margin-bottom: 15px;
+    }
+    .foam-field label{
+      width: 80%;
+        text-align: right;
+        padding-right: 28px;
+    }
+    .foam-field input,.foam-field select,.foam-field textarea{
+      width: 100%;
+    }
+    .pagenumbers button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem !important;
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    background-color: white;
+    margin: 0px;
+    
+    transition: 0.4s;
+
+    color: rgb(10, 10, 10);
+    font-size: 18px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pagenumbers button:hover {
+    background-color: #ffc000;
+}
+
+.pagenumbers button.active {
+    background-color: #ffc000;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px transparent #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+    
+    
+</style>
+{% endblock extra_stylesheet %}
+{% block content %}
+<div class="col-md-3 " style="margin-top: 80px">
+                    <ul class="vendorTab">
+                      <li class="active" >
+                        <a href="#vendorProfile" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Vendor-Profile-Active.png' %}" alt=""></i>&nbsp;&nbsp;Vendor Profile</a>
+                      </li>
+                      <li >
+                        <a href="#carDetail" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Car-details--Active.png' %}" alt=""></i>&nbsp;&nbsp;Car Detail</a>
+                      </li>
+                      <li >
+                        <a href="#driverDetails" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Driver--Active.png' %}" alt=""></i>&nbsp;Driver Details
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#yourBooking" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Assignment-Active.png' %}" alt=""></i>&nbsp;Your Booking
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#assignments" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;Assignments
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#assignments" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Ride-details-active.png' %}" alt=""></i>&nbsp;Ride Details
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#bookingHistory" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/History-Active.png' %}" alt=""></i>&nbsp;Booking History
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#payments" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Payment-Active.png' %}" alt=""></i>&nbsp;Payments
+                        </a>
+                      </li>
+                    </ul>
+                </div>
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+
+
+{% endblock extra_scripts %}

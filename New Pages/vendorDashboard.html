@@ -59,32 +59,32 @@
       width: 100%;
     }
     .pagenumbers button {
-	width: 40px;
-	height: 40px;
+    width: 40px;
+    height: 40px;
     font-size: 1.3rem !important;
-	appearance: none;
-	border: none;
-	outline: none;
-	cursor: pointer;
+    appearance: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
 
-	background-color: white;
+    background-color: white;
     margin: 0px;
-	
-	transition: 0.4s;
+    
+    transition: 0.4s;
 
-	color: rgb(10, 10, 10);
-	font-size: 18px;
-	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    color: rgb(10, 10, 10);
+    font-size: 18px;
+    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pagenumbers button:hover {
-	background-color: #ffc000;
+    background-color: #ffc000;
 }
 
 .pagenumbers button.active {
-	background-color: #ffc000;
-	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+    background-color: #ffc000;
+    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -147,11 +147,49 @@
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
                     <div class="tab-content" id="vendorDashboard">
-                        <div class="tab-pane" id="vendorProfile" role="tabpanel">
+                        <div class="tab-pane active" id="vendorProfile" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Vendor Profile</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
+                                <table>
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Centro comercial Moctezuma</td>
+    <td>Francisco Chang</td>
+    <td>Mexico</td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+</table>
+
                             </div>
                         </div>
 
@@ -171,7 +209,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane active " id="yourBooking" role="tabpanel">
+                        <div class="tab-pane" id="yourBooking" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
                             </div>
@@ -359,15 +397,15 @@
 
 <script type="text/javascript">
 //     const list_items = [
-// 	"Item 1",
-// 	"Item 2",
-// 	"Item 3",
-// 	"Item 4",
-// 	"Item 5",
-// 	"Item 6",
-// 	"Item 7",
-// 	"Item 8",
-// 	"Item 9"
+//  "Item 1",
+//  "Item 2",
+//  "Item 3",
+//  "Item 4",
+//  "Item 5",
+//  "Item 6",
+//  "Item 7",
+//  "Item 8",
+//  "Item 9"
 // ];
 
 const list_items = [
@@ -531,19 +569,19 @@ let current_page = 1;
 let rows = 2;
 let count_page;
 function DisplayList (items, wrapper, rows_per_page, page) {
-	wrapper.innerHTML = "";
-	page--;
+    wrapper.innerHTML = "";
+    page--;
 
-	let start = rows_per_page * page;
-	let end = start + rows_per_page;
-	let paginatedItems = items.slice(start, end);
+    let start = rows_per_page * page;
+    let end = start + rows_per_page;
+    let paginatedItems = items.slice(start, end);
 
-	for (let i = 0; i < paginatedItems.length; i++) {
-		let item = paginatedItems[i];
+    for (let i = 0; i < paginatedItems.length; i++) {
+        let item = paginatedItems[i];
 
-		let item_element = document.createElement('div');
-		item_element.classList.add('item');
-		// item_element.innerText = item;
+        let item_element = document.createElement('div');
+        item_element.classList.add('item');
+        // item_element.innerText = item;
         // let item_element = document.createElement('div');
         // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
         // console.log(item_element);
@@ -680,21 +718,21 @@ function DisplayList (items, wrapper, rows_per_page, page) {
 
 
         // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-		item_element.innerHTML = text;
-		wrapper.appendChild(item_element);
-	}
+        item_element.innerHTML = text;
+        wrapper.appendChild(item_element);
+    }
 }
 
 function SetupPagination (items, wrapper, rows_per_page) {
-	wrapper.innerHTML = "";
+    wrapper.innerHTML = "";
 
-	let page_count = Math.ceil(items.length / rows_per_page);
+    let page_count = Math.ceil(items.length / rows_per_page);
     count_page = page_count;
     // if( current_page != page_count){
     //     for (let i = current_page; i < current_page + 3; i++) {
-	//     	let btn = PaginationButton(i, items);
-	//     	wrapper.appendChild(btn);
-	//     }
+    //      let btn = PaginationButton(i, items);
+    //      wrapper.appendChild(btn);
+    //     }
     // }else{
     //     let btn = PaginationButton(page_count, items);
     //     wrapper.appendChild(btn);
@@ -702,16 +740,16 @@ function SetupPagination (items, wrapper, rows_per_page) {
     console.log(page_count);
     if( (page_count-current_page) >= 3){
         for (let i = current_page; i <= current_page + 2; i++) {
-	    	let btn = PaginationButton(i, items);
-	    	wrapper.appendChild(btn);
-	    }
+            let btn = PaginationButton(i, items);
+            wrapper.appendChild(btn);
+        }
     }else{
         for (let i = current_page; i <= page_count; i++) {
-	    	let btn = PaginationButton(i, items);
-	    	wrapper.appendChild(btn);
-	    }
+            let btn = PaginationButton(i, items);
+            wrapper.appendChild(btn);
+        }
     }
-	
+    
 } 
 
     $("#prevButton").click(function(){
@@ -727,7 +765,7 @@ function SetupPagination (items, wrapper, rows_per_page) {
                 }
                 console.log("forLop");
                 let btn = PaginationButton(i, list_items);
-	        	pagination_element.appendChild(btn);
+                pagination_element.appendChild(btn);
                 check = 1 ;
             }
             current_page = ((Math.floor((current_page-1)/3)-1)*3)+1;
@@ -749,7 +787,7 @@ function SetupPagination (items, wrapper, rows_per_page) {
                 let btn = PaginationButton(i, list_items);
                 // current_page = ((((current_page-1)/3)+1)*3)+1
                 
-	        	pagination_element.appendChild(btn);
+                pagination_element.appendChild(btn);
             }
             
         }else if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
@@ -759,7 +797,7 @@ function SetupPagination (items, wrapper, rows_per_page) {
                 
                     // console.log("forLop");
                     let btn = PaginationButton(i, list_items);
-	            	pagination_element.appendChild(btn);
+                    pagination_element.appendChild(btn);
                 
             }
         }
@@ -772,23 +810,23 @@ function SetupPagination (items, wrapper, rows_per_page) {
 
 
 function PaginationButton (page, items) {
-	let button = document.createElement('button');
-	button.innerText = page;
+    let button = document.createElement('button');
+    button.innerText = page;
 
-	if (current_page == page) button.classList.add('active');
+    if (current_page == page) button.classList.add('active');
 
-	button.addEventListener('click', function () {
-		current_page = page;
+    button.addEventListener('click', function () {
+        current_page = page;
         // SetupPagination(list_items, pagination_element, rows);
-		DisplayList(items, list_element, rows, current_page);
+        DisplayList(items, list_element, rows, current_page);
 
-		let current_btn = document.querySelector('.pagenumbers button.active');
-		current_btn.classList.remove('active');
+        let current_btn = document.querySelector('.pagenumbers button.active');
+        current_btn.classList.remove('active');
 
-		button.classList.add('active');
-	});
+        button.classList.add('active');
+    });
 
-	return button;
+    return button;
 }
 
 DisplayList(list_items, list_element, rows, current_page);
