@@ -5050,7 +5050,7 @@ a.thumbnail.active {
   color: inherit;
 }
 .alert-success {
- color: #cdd3d8;
+ color: #fff;
  background-color: #429a3c;
  border-color: #429a3c;
 }
@@ -5072,9 +5072,11 @@ a.thumbnail.active {
   color: #245269;
 }
 .alert-warning {
-  color: #cdd3d8;
-  background-color: #ff9800;
-  border-color: #ff9800;
+  color: #fff;
+  /*background-color: #ff9800;
+  border-color: #ff9800;*/
+   background-color: #f44336;
+  border-color: #f44336;
 }
 .alert-warning hr {
   border-top-color: #f7e1b5;
@@ -5083,7 +5085,7 @@ a.thumbnail.active {
   color: #66512c;
 }
 .alert-danger {
-  color: #cdd3d8;
+  color: #fff;
   background-color: #f44336;
   border-color: #f44336;
 }
