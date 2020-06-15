@@ -357,6 +357,34 @@
     background-color: #eee;
     color: black !important;
 }
+.pagenumbers button {
+	width: 40px;
+	height: 40px;
+    font-size: 1.3rem !important;
+	appearance: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+
+	background-color: white;
+    margin: 0px;
+	
+	transition: 0.4s;
+
+	color: rgb(10, 10, 10);
+	font-size: 18px;
+	text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pagenumbers button:hover {
+	background-color: #ffc000;
+}
+
+.pagenumbers button.active {
+	background-color: #ffc000;
+	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
 </style>
 {% endblock extra_stylesheet %}
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -689,11 +717,11 @@
               <h4 class="text-center tab-heading">My Booking History</h4>
             </div>
             <div class="col-sm-12 col-md-12 container2">
-              <!--  <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
-               <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
-               </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
-                  class="glyphicon glyphicon-th"></span>Grid</a>
-            </div> -->
+                <!--  <div class="btn-group" style="top: -40px; right: 9%;position: absolute;">
+                 <a href="#" id="list" class="btn btn-default btn-sm active" ><span class="glyphicon glyphicon-th-list">
+                 </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                    class="glyphicon glyphicon-th"></span>Grid</a>
+              </div> -->
 
               <div id="products" class="row list-group ">
                   <div class="item  col-xs-4 col-lg-4">
@@ -959,6 +987,19 @@
                       </div>
                     {% endfor %}
            {% comment %}
+           <div class="list" id="list"></div>
+           <div style="float: right; margin-top: 10px; margin-bottom: 10px;">
+            <span class="pagenumbers" >
+                <button id="prevButton" style="background-color: #ffc000;"> << </button>
+            </span>
+            
+            <span class="pagenumbers" id="pagination">
+               
+            </span>
+            <span class="pagenumbers">
+                <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
+            </span>
+        </div>
                 <div class="containe-pagination">
                   <div class="tab-content">
 
@@ -1609,5 +1650,243 @@ function upStars(val) {
      $("#side-list-1").removeClass("active1");
    })
   });
+</script>
+<script>
+const list_items = [
+  {
+    from : "Indira Gandhi International Airport(del.), Delhi-Agra",
+    mobile : "8213133322",
+    bookedOn : "01/12/2019,10:00 AM",
+    PickupDate: "19/02/2020 12:00 PM",
+    email : "8213133322",
+    totalAmountPaid : "1700.50",
+    creditUsed : "3000.00",
+    advancePayment : "1000.00",
+    amountDue : "2000.00",
+    carNumber : "HR36-KL-2364",
+    carType : "Toyota Innova",
+    driver: "Chetan Rana"
+
+  }
+  
+
+]  
+
+const list_element = document.getElementById('list');
+const pagination_element = document.getElementById('pagination');
+
+let current_page = 1;
+let rows = 2;
+let count_page;
+function DisplayList (items, wrapper, rows_per_page, page) {
+	wrapper.innerHTML = "";
+	page--;
+
+	let start = rows_per_page * page;
+	let end = start + rows_per_page;
+	let paginatedItems = items.slice(start, end);
+
+	for (let i = 0; i < paginatedItems.length; i++) {
+		let item = paginatedItems[i];
+
+		let item_element = document.createElement('div');
+		item_element.classList.add('item');
+		// item_element.innerText = item;
+        // let item_element = document.createElement('div');
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+        // console.log(item_element);
+        // item_element.classList.add(`list${i+1}`);
+        // console.log(item_element.classList);
+        // var temp2 = document.getElementsByClassName(`list${i+1}`).innerHTML;
+        // var temp = document.querySelector(`#listitem1 > div > div > h4 > .from`).innerHTML;
+        // console.log(temp);
+        // $(temp).innerText = list_items[i].from ;
+        // console.log( $(`list${i+1} .from`).innerText);
+        // console.log(i);
+
+        
+
+        let text = `<div>
+                      <div class="item-pagination">
+
+                        <div class="item  col-xs-4 col-lg-4">
+                          <div class="row CardHeader">
+                            <div class="col-xs-8 col-md-8 col-sm-8">
+                              <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">${paginatedItems[i].from} </span><span
+                                  class="styletext fas fa-map-marker-alt"></span></strong>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4 col-sm-4">
+                              <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star checked styletext"></span>
+                                <span class="fa fa-star styletext"></span>
+                                <span class="fa fa-star styletext"></span></span>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-md-3 col-xs-12">
+                              <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                            </div>
+                            <div class="col-md-5 col-xs-12 col-sm-12">
+                              <h4>
+                                Prakash Ponia</h4>
+                              <p>
+                                <span class="trip_est">Mobile : ${paginatedItems[i].mobile}</span><br>
+                                <span class="trip_est">Email : ${paginatedItems[i].email} </span><br>
+                                <span class="trip_est">Booked On : ${paginatedItems[i].bookedOn} </span><br>
+                                <span class="trip_est">Pickup Date : ${paginatedItems[i].PickupDate}</span>
+
+                              </p>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                              <p>
+                                <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">${paginatedItems[i].totalAmountPaid}</span></strong><br>
+                                <strong>Credit Used:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">${paginatedItems[i].creditUsed}</span></strong><br>
+                                <strong>Advance Payment:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">${paginatedItems[i].advancePayment}</span></strong><br>
+                                <strong>Amount Due:&nbsp;&nbsp;<span
+                                    class="trip_est styletext">${paginatedItems[i].amountDue}</span></strong><br>
+                                <a style="color: green;" href="">Download Invoice</a>
+
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                              <strong>Cab Number:&nbsp;<span class="trip_est">${paginatedItems[i].carNumber}</span></strong>&nbsp;&nbsp;
+                              <strong>Cartype:&nbsp;<span class="trip_est">${paginatedItems[i].carType}</span></strong>&nbsp;&nbsp;
+                              <strong>Driver:&nbsp;<span class="trip_est">${paginatedItems[i].driver}</span></strong>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>`;
+        // console.log(froms.length); 
+        // froms[i].innerHTML = list_items[i].from;
+        // console.log( list_items[i].from);
+
+
+        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
+		item_element.innerHTML = text;
+		wrapper.appendChild(item_element);
+	}
+}
+
+function SetupPagination (items, wrapper, rows_per_page) {
+	wrapper.innerHTML = "";
+
+	let page_count = Math.ceil(items.length / rows_per_page);
+    count_page = page_count;
+    // if( current_page != page_count){
+    //     for (let i = current_page; i < current_page + 3; i++) {
+	//     	let btn = PaginationButton(i, items);
+	//     	wrapper.appendChild(btn);
+	//     }
+    // }else{
+    //     let btn = PaginationButton(page_count, items);
+    //     wrapper.appendChild(btn);
+    // }
+    console.log(page_count);
+    if( (page_count-current_page) >= 3){
+        for (let i = current_page; i <= current_page + 2; i++) {
+	    	let btn = PaginationButton(i, items);
+	    	wrapper.appendChild(btn);
+	    }
+    }else{
+        for (let i = current_page; i <= page_count; i++) {
+	    	let btn = PaginationButton(i, items);
+	    	wrapper.appendChild(btn);
+	    }
+    }
+	
+} 
+
+    $("#prevButton").click(function(){
+        
+        console.log("Previous Button Clicked");
+        console.log((Math.floor((current_page-1)/3)));
+        if((Math.floor((current_page-1)/3)) > 0){
+            pagination_element.innerHTML = "";
+            let check = 0;
+            for(let i = ((Math.floor((current_page-1)/3)-1)*3)+1  ; i <= (Math.floor((current_page-1)/3)-1)*3 +3 ; i++ ){
+                if( check == 0 ){
+
+                }
+                console.log("forLop");
+                let btn = PaginationButton(i, list_items);
+	        	pagination_element.appendChild(btn);
+                check = 1 ;
+            }
+            current_page = ((Math.floor((current_page-1)/3)-1)*3)+1;
+             DisplayList(list_items, list_element, rows, current_page);
+        }
+    })
+    $("#nextButton").click(function(){
+        
+        console.log("Next Button Clicked");
+        console.log("count_page is " + count_page);
+        // var page_count = Math.ceil(list_items / rows);
+        console.log( "Math.floor((current_page-1)/3) = " + Math.floor((current_page-1)/3) + " Math.floor(count_page/3) = "+ Math.floor(count_page/3) )
+        if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
+        if( (Math.floor((current_page-1)/3)+1) < Math.floor(count_page/3) ){
+            pagination_element.innerHTML = "";
+            console.log(list_items.length);
+            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= (Math.floor((current_page-1)/3)+1)*3 +3 ; i++ ){
+                console.log("forLop");
+                let btn = PaginationButton(i, list_items);
+                // current_page = ((((current_page-1)/3)+1)*3)+1
+                
+	        	pagination_element.appendChild(btn);
+            }
+            
+        }else if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
+            pagination_element.innerHTML = "";
+            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= count_page ; i++  ){
+                // current_page = ((((current_page-1)/3)+1)*3)+1
+                
+                    // console.log("forLop");
+                    let btn = PaginationButton(i, list_items);
+	            	pagination_element.appendChild(btn);
+                
+            }
+        }
+        current_page = ((Math.floor((current_page-1)/3)+1)*3)+1;
+        DisplayList(list_items, list_element, rows, current_page);
+       
+        }
+       
+    })
+
+
+function PaginationButton (page, items) {
+	let button = document.createElement('button');
+	button.innerText = page;
+
+	if (current_page == page) button.classList.add('active');
+
+	button.addEventListener('click', function () {
+		current_page = page;
+        // SetupPagination(list_items, pagination_element, rows);
+		DisplayList(items, list_element, rows, current_page);
+
+		let current_btn = document.querySelector('.pagenumbers button.active');
+		current_btn.classList.remove('active');
+
+		button.classList.add('active');
+	});
+
+	return button;
+}
+
+DisplayList(list_items, list_element, rows, current_page);
+SetupPagination(list_items, pagination_element, rows);
+
+
 </script>
 {% endblock extra_scripts %}
