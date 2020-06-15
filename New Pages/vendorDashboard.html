@@ -86,9 +86,43 @@
     background-color: #ffc000;
     box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
 }
+.check{
+  color: #17ee17;
+font-weight: bold;   
+}
+.cross{
+     color: red;
+font-weight: bold;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+td, th {
+  border: 1px transparent #dddddd;
+  text-align: left;
+  padding: 8px;
+}
 
-    
+tr:nth-child(odd) {
+  background-color: #eee;
+}
+  .checked {
+  color: orange;
+} 
+.driver-modal-content{
+    width: 1100px;
+    background-color: white;
+    border-radius: 2px;
+}
+.driver-modal-body{
+    display: flex;
+}
+.vendormodalImages{
+    width: 20%;
+}
     
 </style>
 {% endblock extra_stylesheet %}
@@ -151,46 +185,10 @@
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Vendor Profile</h4>
                             </div>
-                            <div class="col-sm-12 col-md-12">
-                                <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
-
+                            <div class="col-sm-12">
+                                
                             </div>
+                            
                         </div>
 
                         <div class="tab-pane" id="carDetail" role="tabpanel">
@@ -198,6 +196,69 @@
                                 <h4 class="text-center tab-heading">Car Detail</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
+                                                                <table>
+                                     <tr>
+                                       <th>S.N0.</th>
+                                       <th>Car Number</th>
+                                       <th>Car Type</th>
+                                       <th>Owner Name</th>
+                                       <th>Oprational</th>
+                                       <th>Status</th>
+                                     </tr>
+                                     <tr>
+                                       <td>1</td>
+                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                                       <td>Sedan</td>
+                                       <td>Chetain</td>
+                                       <td class="check">&#10004</td>
+                                       <td class="check">Approved</td>
+                                     </tr>
+                                     <tr>
+                                       <td>2</td>
+                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                                       <td>Sedan</td>
+                                       <td>Chetain</td>
+                                       <td class="check">&#10004</td>
+                                       <td class="check">Approved</td>
+                                     </tr>
+                                     <tr>
+                                       <td>3</td>
+                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                                       <td>Sedan</td>
+                                       <td>Chetain</td>
+                                       <td class="check">&#10004</td>
+                                       <td class="check">Approved</td>
+                                     </tr>
+                                 </table>
+                                 <div class="col-sm-12"><button class="vendorAddButton" >Add more Car +</button> </div>
+                         <div class="modal fade" id="carInformation" role="dialog">
+                          <div class="modal-dialog">
+                             <div class="driver-modal-content">
+                               <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                 <input type="hidden" name="modelid" id="ridemodalvalue">
+                               </div>
+                               <div class="driver-modal-body">
+                                <div class="col-sm-12" > 
+                                    <div class="col-sm-3" ><img style="width: 100px;" src="{% static 'images/news_img2.png' %}" alt=""></div>
+                                    <div class="col-sm-6" ><p>Chetan Rana</p>
+                                        <p>Address:<span>12/D, Greenfield colony faridabad-121001</span></p>
+                                        <p>Phone no.: <span>8295359554</span></p></div>
+                                    <div class="col-sm-3" ><span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span></div>
+                                    
+                                </div>
+            
+                               </div>
+                               <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                               </div>
+                             </div>
+                         </div>
+                     </div>
                             </div>
                         </div>
 
@@ -206,6 +267,89 @@
                                 <h4 class="text-center tab-heading">Driver Details</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
+                                <table>
+                                     <tr>
+                                       <th>S.N0.</th>
+                                       <th>Driver Name</th>
+                                       <th>Phone No</th>
+                                       <th>Oprational</th>
+                                       <th>Status</th>
+                                       <th>Rating</th>
+                                     </tr>
+                                     <tr>
+                                       <td>1</td>
+                                       <td><a data-toggle="modal" data-target="#driverInformation">Maria Anders</a></td>
+                                       <td>9991155693</td>
+                                       <td class="check">&#10004</td>
+                                       <td>Approved</td>
+                                       <td><span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star"></span>
+                                           <span class="fa fa-star"></span></td>
+                                     </tr>
+                                     <tr>
+                                       <td>2</td>
+                                       <td>sakir Hussain</td>
+                                       <td>9991155693</td>
+                                       <td class="cross">&#10008</td>
+                                       <td>Rejected</td>
+                                       <td><span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star checked"></span>
+                                           <span class="fa fa-star"></span>
+                                           <span class="fa fa-star"></span></td>
+                                     </tr>
+                                     <tr>
+                                       <td>3</td>
+                                       <td>sakir Hussain</td>
+                                       <td>9991155693</td>
+                                       <td class="cross">&#10008</td>
+                                       <td>Hold</td>
+                                       <td><span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span></td>
+                                     </tr>
+                                 </table>
+                                 <div class="col-sm-12"><button class="vendorAddButton" >Add more Driver +</button> </div>
+                      <div class="modal fade" id="driverInformation" role="dialog">
+                          <div class="modal-dialog" style="width:max-content;">
+                             <div class="driver-modal-content">
+                               <div class="modal-header">
+                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                 <input type="hidden" name="modelid" id="ridemodalvalue">
+                               </div>
+                               <div class="driver-modal-body">
+                                <div class="col-sm-12" > 
+                                    <div class="col-sm-3" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                    <div class="col-sm-6" ><p>Chetan Rana</p>
+                                        <p>Address:<span>12/D, Greenfield colony faridabad-121001</span></p>
+                                        <p>Phone no.: <span>8295359554</span></p></div>
+                                    <div class="col-sm-3" ><span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star checked"></span>
+                                          <span class="fa fa-star"></span>
+                                          <span class="fa fa-star"></span></div>
+                                    
+                                </div><br>
+                                <div class="row">
+                                    <div class="vendormodalImages" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                    <div class="vendormodalImages" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                    <div class="vendormodalImages" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                    <div class="vendormodalImages" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                    <div class="vendormodalImages" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                                </div>
+            
+                               </div>
+                               <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                               </div>
+                             </div>
+                         </div>
+                     </div>
+
                             </div>
                         </div>
 
@@ -238,7 +382,7 @@
 
                                 </div>
                                 <div class="col-sm-3">
-                                    <div style="font-size: large;">&#8635 Refresh Info</div>
+                                    <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
                                 </div>
                             </div>
                             <div class="list" id="list"></div>
@@ -260,9 +404,9 @@
                                     
                                     <h5 style="color: blue;">Booking Id: <span class="bookingId"></span></h5 style="color: blue;">
                                     <h5>One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance"></span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance"></span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance"></span></h5>
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance cross"></span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance check"></span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance cross"></span></h5>
                                     
                                     <h5><span class="cngAllowed"> CNG Allowed</span>
                                         <span class="dieselAllowed"> Diesel Only</span>
@@ -615,9 +759,9 @@ function DisplayList (items, wrapper, rows_per_page, page) {
                                     
                                     <h5 style="color: blue;">Booking Id: <span class="bookingId">${paginatedItems[i].bookindId}</span></h5 style="color: blue;">
                                     <h5>${paginatedItems[i].type}/ <span style="font-weight: 800; color: red;">${paginatedItems[i].carType}</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
+                                    <h5>Night Pick Allowance <span class="nightPickAllowance cross">${paginatedItems[i].nightPickAllowance}</span></h5>
+                                    <h5>Night Drop Allowance <span class="nightDropAllowance check">${paginatedItems[i].nightDropAllowance}</span></h5>
+                                    <h5>Driver Allowance <span class="driverAllowance cross">${paginatedItems[i].driverAllowance}</span></h5>
                                     
                                     <h5><span class="cngAllowed">
                                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
