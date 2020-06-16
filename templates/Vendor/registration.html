@@ -14,6 +14,18 @@
     box-shadow: 0px 0px 13px #000000;
     color: black;
    }
+   .reg-option{
+    margin: 50px 0;
+   } 
+   .reg-option a{
+     color: inherit;
+   }
+   .reg-option h3{
+     color: inherit;
+   }
+   .reg-option h3 i{
+     font-size: xxx-large;
+   }
 </style>
 {% endblock extra_stylesheet %}
 
@@ -21,16 +33,16 @@
 
 {% block content %}
 <div class="tj-wrapper">
-<div class="container" style="margin-bottom: 50px;">
+<div class="container reg-option">
   <div class="col-sm-12 card-base">
-    <a style="color: inherit;" href="{% url 'vendor:registration' %}">
+    <a href="{% url 'vendor:registration' %}">
       <div class="col-sm-6 card-styling" >
-        <h3 style="color: inherit;"><i style="font-size: xxx-large;" class="fas fa-id-card-alt"></i>&nbsp;&nbsp;Register as Vendor</h3>
+        <h3 style=""><i style="" class="fas fa-id-card-alt"></i>&nbsp;&nbsp;Register as Vendor</h3>
       </div>
     </a>
-    <a style="color: inherit;" href="">
+    <a href="">
       <div class="col-sm-6 card-styling">
-        <h3 style="color: inherit;"><i style="font-size: xxx-large;" class="fas fa-user-tie"></i>&nbsp;&nbsp;Register as Agent</h3>
+        <h3><i class="fas fa-user-tie"></i>&nbsp;&nbsp;Register as Agent</h3>
       </div>
     </a>
   </div>
