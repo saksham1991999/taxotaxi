@@ -1,36 +1,98 @@
 /*
-	Project: Prime Cab
+	Project: Taxotaxi
 	Responsive CSS File
 */
  /*for navbar header*/
-@media (max-width: 500px){.container .col-md-3{
-    width: 100%;}
-   
+@media(max-width: 355px){
+	.airport-section .tj-form2-tabs .nav-tabs > li.active > a{
+        font-size: 12px !important;
+	}
+	.airport-section .tj-form2-tabs .nav-tabs li a{
+		font-size: 12px !important;
+	}
 }
-@media (max-width: 500px){.tj-banner-form2 {
-    margin-top: -58px;}
-   
+
+@media (max-width: 534px){
+    .aditionalinfo-list{
+       padding-inline-start: 10px;
+       display: grid; 
+      }
+
+	.airport-section .tabwidth{
+		width: 50%;
+	}
+	.info_box .info_text span{
+		font-size: 12px;
+	}
+	
+ .airport-section .tj-form2-tabs .nav-tabs > li.active > a{
+ 	width: 100%!important;
+ 	bottom: 3px !important;
+ 	padding: 14px 3px !important;
+ 	height: 45px !important
+ }
+.airport-section .tj-form2-tabs .nav-tabs li a{
+	padding: 10px 3px !important;
+width: 100% !important;
+bottom: 0px !important;
 }
-@media(max-width: 500px){.banner-hover{
+	/*.container .col-md-3{
+    width: 100%;
+}*/
+.tj-form2-tabs .nav-tabs li a{
+		font-size:13px !important;
+		/*padding: 13px 12px;*/
+		width:90px!important;
+		bottom: -14px !important;
+line-height: 1vw;
+	}
+
+	.tj-form2-tabs .nav-tabs li.active a {
+    /*font-size: 15px;*/
+    bottom: -10px !important;
+    height: 50px!important;
+}
+
+.tj-banner-form2 
+{
+    margin-top: 5px ;
+}
+.banner-hover{
 	margin-left: 1%;
-	}}
-@media (max-width: 767px){.tj-form2-tabs .nav-tabs li a {
-    font-size: 12px;
-    padding: 13px 12px;
-    width: auto;
-}}
+	}
+   
+}
+@media (max-width: 992px)
+{    
+
+	.tj-form2-tabs .nav-tabs li.active a {
+    padding: 24px 0px;
+   }
+	.tj-banner-form2 {
+    margin-top: 8px;}
+    #nav-destinations .service-box{
+    	text-align: center;
+        width: 100%;
+    }
+   .cab-services .cab-service-box{
+   	min-height: 435px;
+   }
+   .tj-book-services .cab-services .cab-service-box{
+   	min-height: 370px;
+   }
+}
 @media (min-width: 1920px){
 	
-	.slide-item .slide-caption{
+	/*.slide-item .slide-caption{
 		bottom:380px;
-	}
+	}*/
 	.slide-item .slide-caption strong{
 		font-size:24px;
 		line-height:28px;
 	}
 	.slide-item .slide-caption h2{
-		font-size:52px;
-		line-height:62px;
+		/*font-size:52px;
+		line-height:62px;*/
 	}
 	
 }
@@ -40,6 +102,9 @@
 /* Responsive CSS For Gallery Carousel */
 
 @media(min-width: 1024px) {
+	.tj-form-map #tj-map2{
+		height: 100%;
+	}
 	.gallery-carousel .left-outer {
 		position: relative;
 		width: calc(100% - 230px);
@@ -128,11 +193,15 @@
 		width:100%;
 		height:auto;
 	}
+	.tj-banner-form2{
+		margin-top: -50px;
+	}
+
 	/*End Homepage 1 Styles*/
 	
 	/* Homepage 2 Styles*/
 	.slide-item .slide-caption h2{
-		font-size:40px;
+		/*font-size:40px;*/
 		line-height:50px;
 	}
 	.slide-item .slide-caption{
@@ -247,6 +316,10 @@
 
 @media(min-width:768px) and (max-width:991px){
 	
+
+	.remove-padding-left{
+		padding-left: 15px!important;
+	}
 	/* Header Styles */
 	.phone_info{
 		display:none;
@@ -388,11 +461,12 @@
 		padding-right:0;
 	}
 	.slide-item .slide-caption{
-		bottom:100px;
+		bottom:145px;
 	}
 	.slide-item .slide-caption h2{
-		font-size: 30px;
-		line-height: 40px;
+		/*font-size: 30px;*/
+		line-height: inherit;
+		padding-right: 25%;
 	}
 	.tj-cab-slider .owl-prev{
 		left: 10px;
@@ -688,8 +762,14 @@
 }
 
 @media(max-width:767px){
+	.paddingleft-list{
+    padding-left: 15px !important;
+  }
 	
 	/* Header Styles */
+	.full-width{
+		width: 100%!important;
+	}
 	.tj-logo{
 		padding: 25px 0 15px;
 		text-align:center;
@@ -843,7 +923,7 @@
 		padding:80px 0 40px;
 	}
 	.reg-frm{
-		padding:0 0 80px;
+		padding:32px 0 0px;
 	}
 	.login-cta{
 		padding-left:0;
@@ -1154,10 +1234,12 @@
 		display:none;
 	} */
 	.slide-item .slide-caption{
-		bottom:30%;
+		bottom:45%;
 	}
 	.slide-item .slide-caption h2{
-		display:none;
+		/*font-size: inherit;*/
+        line-height: inherit;
+        padding-right: inherit;
 	}
 	.slide-item .slide-caption strong{
 		margin-bottom:15px;
@@ -1248,9 +1330,9 @@
 		margin-top:15px;
 	}
 	.tj-form2-tabs .nav-tabs li a{
-		font-size:12px;
-		padding: 13px 12px;
-		width:auto;
+		font-size:16px!important;
+		/*padding: 13px 12px;*/
+		width:125px;
 	}
 	.tj-book-services .tj-heading-style h3,
 	.tj-cab-filter .tj-heading-style h3{
@@ -1445,6 +1527,9 @@
 	.blog-outer .blog-thumb .thumb-inner{
 		top:35%;
 	}
+.airport-section .tj-form2-tabs{
+	margin-top: -23px;
+}
 }
 
 /* Responsive CSS For Gallery Carousel */
@@ -1461,6 +1546,58 @@
 @media ( min-width:320px ) and ( max-width:480px ){
 	.booking-frm .ride-terms {
 		width: 93%;
+	}
+}
+@media(min-width:1024px) and (max-width:1290px){
+	 .tj-banner-form2{
+    	margin-top: -135px;
+    }
+}
+
+@media(min-width:1024px) and (max-width:1195px) {
+    .nav-width{
+    	width: 22%!important;
+    }
+    
+}
+}
+@media(min-width:1026px) and (max-width:1285px){
+    .tj-banner-form2 {
+    margin-top: -15%;
+
+	}
+	.tj-banner-form2 {
+    float: left;
+    width: 100%;
+    position: relative;
+    padding: 0 0 31px;
+    z-index: 3;
+    margin-top: -15%;
+    }
+
+}
+@media(min-width: 1350px){
+	.slide-item .slide-caption h2{
+    font-size: 28px;
+    line-height: 36px;
+    color: #fafafa;
+    font-weight: 800;
+    font-family: 'Montserrat',sans-serif;
+    margin-bottom: 71px;
+    padding-right: 390px;
+}
+}
+@media (max-width: 1400px)
+{.set-image {
+    height: auto !important;
+}
+@media (min-width: 2000px){
+	.tj-cab-slider .slider-item img{
+    height: 530px !important;
+}
+@media (min-width: 3000px){
+	.nav-width{
+		width: 25% !important;
 	}
 }
 		
