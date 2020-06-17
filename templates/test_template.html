@@ -165,19 +165,16 @@ tr:nth-child(odd) {
     color: #a6a6a6;
     border: 1px solid #e8e8e8;
     display: block;
-    /* margin-bottom: 13px; */
+   margin-bottom: 13px;
     border-radius: 4px;
-    /* padding-right: 28px;
        }
        .drag-drop p {
              width: 100%;
-             height: 100%;
              text-align: center;
-             /* line-height: 40px; */
              color: #1c2b39;
              font-family: inherit;
        }
-       #changePassword label{
+       #changePassword label,#referal label{
         text-align: right;
        }
        .drag-drop input {
@@ -201,15 +198,10 @@ tr:nth-child(odd) {
              border: 2px solid #07e4d0;
              background: white;
              font-weight: bold;
-             /*border: none;*/
              width: 124px;
              height: 35px;
-             /*margin-top: -20px;*/
-             /*margin-left: -4px;*/
              border-radius: 4px;
-             /*border-bottom: 4px solid #117A60;*/
              transition: all .2s ease;
-             /*outline: none;*/
          }
          .p23{
           text-align: center;
@@ -227,6 +219,17 @@ tr:nth-child(odd) {
           color: black;
           margin-top: 7px;
           text-align: center;
+         }
+         .dashButton{
+          margin-top: 25px;
+          display: flex;
+          margin-bottom: 10px;
+         }
+         .dashButton button[type="submit"]{
+            margin-left: 25%;
+         }
+         .dashButton button[type="cancel"]{
+            background-color: #7f7f7f;
          }
     /*Master Dashboard End*/
   
@@ -399,6 +402,11 @@ tr:nth-child(odd) {
                                       </div>
                                    </div>
                                 </div>
+                                <div class="col-sm-12 dashButton"> 
+                                    <button class="book-btn" type="submit">Update
+                                    </button>&nbsp;&nbsp;
+                                    <button class="book-btn" type="Cancel">Cancel</button>
+                              </div>
                                 </form>   
                            </div>
                            <div class="tab-pane" id="changePassword">
@@ -418,7 +426,8 @@ tr:nth-child(odd) {
                                   <label class="col-sm-4">Enter New Password</label>
                                   <div class="col-sm-8">
                                   <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
-                                  <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
+                                  <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password">
+                                    <span class="tooltiptext">Click to see password</span></span>
                                          <span class="form-text" id="password_strength"></span>
                                          <small class="form-text" id="password">Error message</small>
                                   </div>
@@ -431,7 +440,7 @@ tr:nth-child(odd) {
                                           <small class="form-text" id="password2">Error message</small>
                                        </div>
                                     </div>
-                                    <div class="col-md-12  col-sm-12">
+                                    <div class="col-md-12  col-sm-12 dashButton">
                                         <button type="submit" class="book-btn">Update</button>
 
                                     </div>
@@ -439,9 +448,9 @@ tr:nth-child(odd) {
                             </form>   
                            </div>
                            <div class="tab-pane" id="referal">
-                                                                  <div class="col-md-12 col-sm-12">
-                            <div class="adjustYellowButtonsSecond row input1">
-                              <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
+                               <div class="col-md-12 col-sm-12">
+                              <div class="row">
+                              <label class="col-sm-4">Your Referal code</label>
                               <div class="col-sm-5" style="display: flex;">
                                 <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
                                 <div class="copytooltip button1">
@@ -1586,17 +1595,7 @@ function outFunc() {
   tooltip.innerHTML = "Copy to clipboard";
 }
 
-//Toggle password icon code
-$(".toggle-password").click(function() {
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
 </script>
 <script type="text/javascript">
     $(function () {
@@ -1662,6 +1661,32 @@ $(document).ready(function () {
       $('.p23').text(this.files.length + " file(s) selected");
     });
   });
+</script>
+<script type="text/javascript">
+  //Toggle password icon code
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script>
+<script type="text/javascript">
+  //Toggle password icon code
+$(".toggle-password1").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
 </script>
 
 
