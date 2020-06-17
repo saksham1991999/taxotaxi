@@ -95,6 +95,10 @@ font-weight: bold;
      color: red;
 font-weight: bold;
 }
+.wait{
+   color: #ffc000;;
+font-weight: bold;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -232,11 +236,16 @@ tr:nth-child(odd) {
          .dashButton button[type="cancel"]{
             background-color: #7f7f7f;
          }
+         .dateIcon{
+          margin-left: -20px;
+          margin-top: 8px;
+          margin-right: 6px;
+         }
     /*Master Dashboard End*/
   
 
     /* label{margin-left: 20px;} */
-#datepicker > input {
+/*#datepicker > input {
     width: 100%;
             padding: 6px 10px;
     font-size: 12px;
@@ -248,7 +257,7 @@ tr:nth-child(odd) {
     border-radius: 4px;
 }
 #datepicker{width: -webkit-fill-available;}
-#datepicker > span:hover{cursor: pointer;}
+#datepicker > span:hover{cursor: pointer;}*/
 </style>
 {% endblock extra_stylesheet %}
 
@@ -334,14 +343,8 @@ tr:nth-child(odd) {
                                   </div>
                                   <div class="dash_foam">
                                   <label>Date Of Birth</label>
-                                  <input type="date" name="">
-                                  </div>
-                                  <div class="dash_foam">
-                                  <label>Select Date: </label>
-                                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                        <input class="form-control" type="text" />
-                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
+                                  <input id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                  <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                   </div>
                                   <div class="dash_foam">
                                   <label>Email address*</label>
@@ -530,40 +533,112 @@ tr:nth-child(odd) {
                                        <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
                                        <td>Sedan</td>
                                        <td>Chetain</td>
-                                       <td class="check">&#10004</td>
-                                       <td class="check">Approved</td>
+                                       <td class="cross">&#10008</td>
+                                       <td class="cross">Rejected</td>
                                      </tr>
                                      <tr>
                                        <td>3</td>
                                        <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
                                        <td>Sedan</td>
                                        <td>Chetain</td>
-                                       <td class="check">&#10004</td>
-                                       <td class="check">Approved</td>
+                                       <td class="cross">&#10008</td>
+                                       <td class="wait">hold</td>
                                      </tr>
                                  </table>
                                  <div class="col-sm-12"><button class="vendorAddButton" >Add more Car +</button> </div>
                          <div class="modal fade" id="carInformation" role="dialog">
-                          <div class="modal-dialog">
-                             <div class="driver-modal-content">
+                                                    <div class="modal-dialog" style="width:max-content;">
+                             <div class="driver-modal-content" style="width: 80vw;">
                                <div class="modal-header">
                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                                  <input type="hidden" name="modelid" id="ridemodalvalue">
                                </div>
-                               <div class="driver-modal-body">
-                                <div class="col-sm-12" > 
-                                    <div class="col-sm-3" ><img style="width: 100px;" src="{% static 'images/news_img2.png' %}" alt=""></div>
-                                    <div class="col-sm-6" ><p>Chetan Rana</p>
-                                        <p>Address:<span>12/D, Greenfield colony faridabad-121001</span></p>
-                                        <p>Phone no.: <span>8295359554</span></p></div>
-                                    <div class="col-sm-3" ><span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star"></span>
-                                          <span class="fa fa-star"></span></div>
-                                    
+                               <div class="driver-modal-body" style="display: block;">
+                            
+                                <div class="col-sm-12" style="display: block;" > 
+                                    <p>HR 36 AA 4608 Details</p>
+                                    <p>Date Of Registration: 24-May-2020</p>
                                 </div>
-            
+                            
+                                <div class="col-sm-12" style="height: 1px; background-color: #7f7f7f; margin-top: 10px">
+
+                                </div>
+                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                    <h4>Front Pictures</h4>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                        <h5>Car</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    
+                                    <div class="col-sm-2">
+                                        <h5>RC</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Tourist Permit</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Permit A</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Permit B</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Insurance</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
+
+                                </div>
+                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                    <h4>Rear Pictures</h4>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                        <h5>Car</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    
+                                    <div class="col-sm-2">
+                                        <h5>RC</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Tourist Permit</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Permit A</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Permit B</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <h5>Insurance</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
+
+                                </div>
+                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                    <h4>Others</h4>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-2">
+                                        <h5>Pollution</h5>
+                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                    </div>
+                                  </div>
                                </div>
                                <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
