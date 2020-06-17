@@ -123,7 +123,113 @@ tr:nth-child(odd) {
 .vendormodalImages{
     width: 20%;
 }
-    
+      /*Master DashBoard Start*/
+       .masterDashboard .dashboardTab{
+           padding-inline-start: 0;
+           border-bottom: 1px #333232 solid;
+           list-style-type: none;
+           color: #7f7f7f;
+           display: flex;
+       }
+
+       .masterDashboard .dashboardTab li{
+            width: 33%;
+            padding-left: 13px;
+       }
+       .masterDashboard .dashboardTab a{
+            color: inherit;
+            font-size: larger;
+            text-decoration: none;
+            font-weight: bold;
+       }
+       .masterDashboard .dashboardTab .active{
+            color: black;
+       }
+       .masterDashboard .dash_foam {
+             display: flex;
+       }
+       .masterDashboard .dash_foam label{
+             padding-right: 10px;
+    text-align: right;
+    padding-left: 0px;
+    font-weight: 600;
+    color: black;
+    margin-top: 7px;
+    width: 40%;         
+       }
+       .masterDashboard .dash_foam input,.masterDashboard .dash_foam textarea{
+             width: 100%;
+            padding: 6px 10px;
+    font-size: 12px;
+    line-height: 19px;
+    color: #a6a6a6;
+    border: 1px solid #e8e8e8;
+    display: block;
+    /* margin-bottom: 13px; */
+    border-radius: 4px;
+    /* padding-right: 28px;
+       }
+       .drag-drop p {
+             width: 100%;
+             height: 100%;
+             text-align: center;
+             /* line-height: 40px; */
+             color: #1c2b39;
+             font-family: inherit;
+       }
+       #changePassword label{
+        text-align: right;
+       }
+       .drag-drop input {
+             position: absolute;
+             margin: 0;
+             padding: 0;
+             width: 100%;
+             height: 100%;
+             outline: none;
+             opacity: 0;
+        }
+      .drag-drop {
+             position: relative;
+             width: 300px;
+             height: 160px;
+             border: 2px dashed #e6e3e3;
+        }
+      .drag-drop button {
+             margin: 0;
+             color: #07e4d0;
+             border: 2px solid #07e4d0;
+             background: white;
+             font-weight: bold;
+             /*border: none;*/
+             width: 124px;
+             height: 35px;
+             /*margin-top: -20px;*/
+             /*margin-left: -4px;*/
+             border-radius: 4px;
+             /*border-bottom: 4px solid #117A60;*/
+             transition: all .2s ease;
+             /*outline: none;*/
+         }
+         .p23{
+          text-align: center;
+          margin: 0 0 20px;
+         }
+         .p23 i{
+          margin-top: 10px;
+          color: #e6e3e3;
+         }
+         .drag-drop-text{
+          padding-right: 0px;
+          text-align: right;
+          padding-left: 0px;
+          font-weight: 600;
+          color: black;
+          margin-top: 7px;
+          text-align: center;
+         }
+    /*Master Dashboard End*/
+  
 </style>
 {% endblock extra_stylesheet %}
 
@@ -181,12 +287,186 @@ tr:nth-child(odd) {
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
                     <div class="tab-content" id="vendorDashboard">
-                        <div class="tab-pane active" id="vendorProfile" role="tabpanel">
+                        <div class="tab-pane masterDashboard active" id="vendorProfile" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Vendor Profile</h4>
                             </div>
                             <div class="col-sm-12">
+                        <ul class="dashboardTab ">
+                           <li class="active" ><a href="#editProfile" data-toggle="tab">Edit Profile</a></li>
+                           <li ><a href="#changePassword" data-toggle="tab">Change Password</a></li>
+                           <li ><a href="#referal" data-toggle="tab">Referal</a></li>
+                        </ul>
+                        <div class="tab-content">
+                           <div class="tab-pane active" id="editProfile">
+                              <form class="booking-frm" >
+                                <div class="col-sm-7">
+                                  <div class="dash_foam">
+                                  <label>First Name</label>
+                                  <input type="text" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Last Name</label>
+                                  <input type="text" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Father's Name</label>
+                                  <input type="text" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Date Of Birth</label>
+                                  <input type="date" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Email address*</label>
+                                  <input type="email" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Phone No 1*</label>
+                                  <input type="tel" name="">
+                                  </div>
+                                   <div class="dash_foam">
+                                  <label>Phone No 2</label>
+                                  <input type="tel" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Address*</label>
+                                  <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>KYC Proof*</label>
+                                  <select name="" >
+                                         <option Selected>--Select--</option>
+                                         <option value="0">Upload PAN</option>
+                                         <option value="1">Upload Voter Card</option>
+                                         <option value="0">Upload Driving Licence</option>
+                                         <option value="0">Upload Aadhar Card</option>
+                                  </select>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <ul>
+                                    <li>Pancard uploaded</li>
+                                    <li>Upload Aadhar* Error</li>
+                                    <li>Upload Voter Card</li>
+                                    <li>Upload Driving Licnce</li>
+                                  </ul>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Bank Details*</label>
+                                  <input type="text" name="" placeholder="Account Number">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <input type="text" name="" placeholder="Bank Name">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label></label>
+                                  <input type="text" name="" placeholder="IFSC Code">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>+ Add New Account</label>
+                                  <input type="text" name="" placeholder="Account Number">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label></label>
+                                  <input type="text" name="" placeholder="Bank Name">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <input type="text" name="" placeholder="IFSC Code">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Company Name (if any)</label>
+                                  <input type="text" name="" >
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>GST Details*</label>
+                                  <input type="text" name="" >
+                                  </div>
+
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="drag-drop">
+                                    <input type="file" class="input-file" name="">
+                                      <p class="p23">
+                                       <i class="fas fa-cloud-upload-alt fa-4x">
+                                       </i><br> Drag&Drop files here <br> or<br>
+                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
+                                      </p>
+                                      <div class="drag-drop-text">Select your profile image<br>
+                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                      </div>
+                                   </div>
+                                </div>
+                                </form>   
+                           </div>
+                           <div class="tab-pane" id="changePassword">
+                              <form class="booking-frm" id="change-passwordform">
                                 
+
+                                 <input type="hidden" name="type" value="change_password">
+
+                                <div class="col-sm-9" >
+                                  <div class="row">
+                                  <label class="col-sm-4">Enter Current Password</label>
+                                  <div class="col-sm-8">
+                                  <input type="password" id="current-pass" class="form-control" name="current_password">
+                                  </div>
+                                </div>
+                                  <div class="row">
+                                  <label class="col-sm-4">Enter New Password</label>
+                                  <div class="col-sm-8">
+                                  <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
+                                  <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
+                                         <span class="form-text" id="password_strength"></span>
+                                         <small class="form-text" id="password">Error message</small>
+                                  </div>
+                                </div>
+                                    <div class="row ">
+                                       <label class="col-sm-4">Confirm New Password</label>
+                                       <div class="col-sm-8">
+                                          <input type="Password" class="form-control" name="new_password" id="passwordConfirm1" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                          <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
+                                          <small class="form-text" id="password2">Error message</small>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12  col-sm-12">
+                                        <button type="submit" class="book-btn">Update</button>
+
+                                    </div>
+                                </div>
+                            </form>   
+                           </div>
+                           <div class="tab-pane" id="referal">
+                                                                  <div class="col-md-12 col-sm-12">
+                            <div class="adjustYellowButtonsSecond row input1">
+                              <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
+                              <div class="col-sm-5" style="display: flex;">
+                                <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                                <div class="copytooltip button1">
+                                    <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
+                                      <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                            Copy text
+                                      </button>
+                                 </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px;padding: 25px ">
+                               <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                   <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a></div>
+                                   <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                       <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" ><button class="btn btn-default" style="color: #1971bf;font-weight: bolder;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                                       </a>&nbsp;&nbsp;
+                                     </div>
+                                    <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                         <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
+                                       </div>
+                                </div>
+                           </div>
+                            </div>
                             </div>
                             
                         </div>
@@ -1236,6 +1516,154 @@ function PaginationButton (page, items) {
 DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
 </script>
+<script type="text/javascript">
+
+   function remove1(req){
+      const PasswordConfirm = document.getElementById('password2');
+      PasswordConfirm.classList = "form-text";
+
+    }
+    function remove2(req){
+      const Password = document.getElementById('password');
+      Password.classList = "form-text";
+
+    }
+
+    const password = document.getElementById('password1')
+    const Password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('passwordConfirm1');
+    const PasswordConfirm = document.getElementById('password2');
+    const button = document.getElementById('button1');
+
+
+    //////show Error message/////
+    function showError(input,input1,message){
+        input.className = "fail";
+        input1.innerHTML = message
+        input1.className = "fail2"
+    }
+
+    
+
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+
+
+
+
+    if(password.value.trim() === ""){
+        showError(password, Password,'Please enter a password');
+    }
+    // else if(password.value.trim().length > 5){
+    //     password.className = "success"
+    // }else{
+    //     showError(password, Password,'please enter a password of atlest six digits')
+    // }
+
+    if(passwordConfirm.value.trim() === ""){
+        showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
+    }else if(password.value.trim() === passwordConfirm.value.trim()){
+        passwordConfirm.className = "success"
+    }else{
+        showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
+    }
+   })
+
+
+    //code for copy input button for referral 
+    function copyFunction() {
+  var copyText = document.getElementById("refferral-input");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+
+//Toggle password icon code
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#password1").bind("keyup", function () {
+            //TextBox left blank.
+            if ($(this).val().length == 0) {
+                $("#password_strength").html("");
+                return;
+            }
+ 
+            //Regular Expressions.
+            var regex = new Array();
+            regex.push("[A-Z]"); //Uppercase Alphabet.
+            regex.push("[a-z]"); //Lowercase Alphabet.
+            regex.push("[0-9]"); //Digit.
+            regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+            var passed = 0;
+ 
+            //Validate for each Regular Expression.
+            for (var i = 0; i < regex.length; i++) {
+                if (new RegExp(regex[i]).test($(this).val())) {
+                    passed++;
+                }
+            }
+ 
+ 
+            //Validate for length of Password.
+            if (passed > 2 && $(this).val().length > 8) {
+                passed++;
+            }
+            console.log(passed)
+            //Display status.
+            var color = "";
+            var strength = "";
+            switch (passed) {
+                case 0:
+                case 1:
+                    strength = "Weak";
+                    color = "red";
+                    break;
+                case 2:
+                    strength = "Good";
+                    color = "darkorange";
+                    break;
+                case 3:
+                case 4:
+                    strength = "Strong";
+                    color = "green";
+                    break;
+                case 5:
+                    strength = "Very Strong";
+                    color = "darkgreen";
+                    break;
+            }
+            $("#password_strength").html(strength);
+            $("#password_strength").css("color", color);
+        });
+    });
+
+$(document).ready(function () {
+    $('.input-file').change(function () {
+      $('.p23').text(this.files.length + " file(s) selected");
+    });
+  });
+</script>
+
 
 
 {% endblock extra_scripts %}
