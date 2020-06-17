@@ -4,7 +4,8 @@
 {% block extra_stylesheet %}
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
     .vendorTab{
         padding: 8px 0px 28px 0px;
@@ -233,6 +234,21 @@ tr:nth-child(odd) {
          }
     /*Master Dashboard End*/
   
+
+    /* label{margin-left: 20px;} */
+#datepicker > input {
+    width: 100%;
+            padding: 6px 10px;
+    font-size: 12px;
+    line-height: 19px;
+    color: #a6a6a6;
+    border: 1px solid #e8e8e8;
+    display: block;
+   margin-bottom: 13px;
+    border-radius: 4px;
+}
+#datepicker{width: -webkit-fill-available;}
+#datepicker > span:hover{cursor: pointer;}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -319,6 +335,13 @@ tr:nth-child(odd) {
                                   <div class="dash_foam">
                                   <label>Date Of Birth</label>
                                   <input type="date" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Select Date: </label>
+                                    <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                        <input class="form-control" type="text" />
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
                                   </div>
                                   <div class="dash_foam">
                                   <label>Email address*</label>
@@ -605,7 +628,7 @@ tr:nth-child(odd) {
                                  <div class="col-sm-12"><button class="vendorAddButton" >Add more Driver +</button> </div>
                       <div class="modal fade" id="driverInformation" role="dialog">
                           <div class="modal-dialog" style="width:max-content;">
-                             <div class="driver-modal-content">
+                             <div class="driver-modal-content" style="width: 80vw;">
                                <div class="modal-header">
                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                                  <input type="hidden" name="modelid" id="ridemodalvalue">
@@ -1061,11 +1084,54 @@ tr:nth-child(odd) {
                                 
                             </div>
                             <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                                <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                                <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Start Ride</button>
                             </div>
+                            <div class="dropdown booking-frm">
+                                <button class="btn book-btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 5px auto; background-color: #e61616;color:whitesmoke ;">
+                                 Stop Ride
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: -webkit-fill-available;">
+                                    <form class="booking-frm" >
+                                        <div class="col-sm-5" style="padding-left: 5%; padding-right: 5%;">
+                                          <div class="dash_foam">
+                                          <label>Enter Odometer Reading</label>
+                                          <input type="text" name="">
+                                          </div>
+                                          <div class="dash_foam">
+                                          <label>Extra KM</label>
+                                          <input type="text" name="">
+                                          </div>
+                                          <div class="dash_foam">
+                                          <label>Extra KM Amount</label>
+                                          <input type="text" name="">
+                                          </div>
+                                          <div class="dash_foam">
+                                          <label>Extra Hourly Charges</label>
+                                          <input type="text" name="">
+                                          </div>
+                                          <div class="dash_foam">
+                                          <label>Other Charges</label>
+                                          <input type="text" name="">
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-7" style="background-color: #e2e2e2; height: 100vh;">
+                                            <div class="dash_foam">
+                                            <label>First Name</label>
+                                            <input type="text" name="">
+                                            </div>
+                                            <div class="dash_foam">
+                                            <label>Driver Collection</label>
+                                            <input type="text" name="">
+                                            </div>
+                                            <button class="book-btn" type="submit" style="padding: 10px; background-color: #ffc000;">Enter Odometer Reading</button>
+                                          </div>
+                                    </form>
+                                </div>
+                              </div>
                             <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                                 <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #636863;color:whitesmoke ;">Reject Trip</button>
                             </div>
+                            <!-- <div style="height: 500px"></div> -->
                         </div>
 
                         <div class="tab-pane" id="bookingHistory" role="tabpanel">
@@ -1696,9 +1762,27 @@ $(".toggle-password1").click(function() {
   }
 });
 </script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-
-
+<script>
+    $(function () {
+        var d = new Date();
+        var current_year = d.getFullYear();
+         /////////////set age restrictions here////////////////////
+        var req_year = current_year - 18;
+        var month = d.getMonth();
+        var date = d.getDate();
+        var req_date = date + "/" + month + "/" + req_year;
+        var today_date = date + "/" + month + "/" + current_year;
+  $("#datepicker").datepicker({ 
+        dateformat: "yyyy-mm-dd",
+        autoclose: true, 
+        todayHighlight: false,
+        endDate: req_date
+  }).datepicker('update', new Date());
+});
+</script>
 {% endblock extra_scripts %}
 
 
