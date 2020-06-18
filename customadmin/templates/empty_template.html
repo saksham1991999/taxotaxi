@@ -9,7 +9,115 @@
 
 
 {% block content %}
+<div class="main-content">
 
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Blog Categories Form</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Blogs</a></li>
+                                <li class="breadcrumb-item active">Blog Categories Form</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+            <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title"></h4>
+                            <p class="card-title-desc"></p>
+                            <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ formset.management_form }}
+                                <div data-repeater-list="group-a" id="form_set">
+                                    {% for form in formset %}
+                                    <div data-repeater-item="" class="row">
+                                        <div class="col-lg-3">
+                                            <div class="row">
+                                                <div class="form-group col-lg-4">
+                                                    <label for="name">Pickup</label>
+                                                    {% render_field form.city1 class="form-control" %}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label for="name">Drop</label>
+                                                    {% render_field form.city2 class="form-control" %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="name">Car Type</label>
+                                            {% render_field form.car_type class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="name">Attribute</label>
+                                            {% render_field form.attr class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="name">Value</label>
+                                            {% render_field form.value class="form-control" %}
+                                        </div>
+
+                                        {% for field in form.hidden_fields %}
+                                            {{ field }}
+                                        {% endfor %}
+                                    {{ form.errors }}
+                                    </div>
+
+                                    {% endfor %}
+                                </div>
+{#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
+                            <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
+
+                            </form>
+                        </div>
+                    </div>
+            </div>
+
+                <div hidden id="empty_form">
+                    <div data-repeater-item="" class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="name">Title</label>
+                            {% render_field formset.empty_form.title class="form-control" %}
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="name">Keywords</label>
+                            {% render_field formset.empty_form.keywords class="form-control" rows="2" %}
+                        </div>
+                        <div class="form-group col-lg-2">
+                            <label for="name">Delete</label>
+                            {% render_field formset.empty_form.DELETE class="form-control" %}
+                        </div>
+                        {% for field in formset.empty_form.hidden_fields %}
+                            {{ field }}
+                        {% endfor %}
+                        {{  formset.empty_form.errors }}
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+
+</div>
 
 {% endblock content %}
 
