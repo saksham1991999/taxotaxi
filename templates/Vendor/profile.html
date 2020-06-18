@@ -4,95 +4,11 @@
 {% load fullurl %}
 
 {% block extra_stylesheet %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<style type="text/css">
-    .vendorTab{
-        padding: 8px 0px 28px 0px;
-    border: 1px #eee solid;
-    padding-inline-start: 15px;
-    list-style-type: none;
-    font-size: medium;
-    }
-    .vendorTab li{
-      margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 4px;
-    margin-right: 4px;
-    padding-left: 4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    }
-    .vendorTab a{
-        font-size: medium;
-        color: inherit;
-
-    }
-    .vendorTab .active{
-         color: black;
-         font-weight: bold;
-    }
-    #vendorDashboard h4{
-      font-weight: bold;
-      padding: 10px 0px;
-    }
-    #vendorDashboard h4 p{
-      display: contents;
-      font-weight: 400;
-    }
-    .vendorHeader{
-      background-color: #f9f9f9;
-    padding: 0 0 0 0;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.foam-field{
-      display: flex;
-      margin-bottom: 15px;
-    }
-    .foam-field label{
-      width: 80%;
-        text-align: right;
-        padding-right: 28px;
-    }
-    .foam-field input,.foam-field select,.foam-field textarea{
-      width: 100%;
-    }
-    .pagenumbers button {
-    width: 40px;
-    height: 40px;
-    font-size: 1.3rem !important;
-    appearance: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    background-color: white;
-    margin: 0px;
-
-    transition: 0.4s;
-
-    color: rgb(10, 10, 10);
-    font-size: 18px;
-    text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-}
-
-.pagenumbers button:hover {
-    background-color: #ffc000;
-}
-
-.pagenumbers button.active {
-    background-color: #ffc000;
-    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-}
-
-
-
-
-</style>
 {% endblock extra_stylesheet %}
 
 
@@ -107,240 +23,195 @@
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
                     <div class="tab-content" id="vendorDashboard">
-                        <div class="tab-pane active" id="vendorProfile" role="tabpanel">
+                        <div class="tab-pane masterDashboard active" id="vendorProfile" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Vendor Profile</h4>
                             </div>
-                            <div class="col-sm-12 col-md-12">
-                                <table>
-  <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
-  </tr>
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
-  </tr>
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>Francisco Chang</td>
-    <td>Mexico</td>
-  </tr>
-  <tr>
-    <td>Ernst Handel</td>
-    <td>Roland Mendel</td>
-    <td>Austria</td>
-  </tr>
-  <tr>
-    <td>Island Trading</td>
-    <td>Helen Bennett</td>
-    <td>UK</td>
-  </tr>
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>Yoshi Tannamuri</td>
-    <td>Canada</td>
-  </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
-    <td>Italy</td>
-  </tr>
-</table>
-
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="carDetail" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Car Detail</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="driverDetails" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Driver Details</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="yourBooking" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
-                                <div class="col-sm-3">
-                                    <div class="foam-field">
-                                        <!-- <label>Saving/ Current</label> -->
-                                        <select name="subject" id="">
-                                              <option Selected>Search By Date</option>
-                                              <option value="0" >Saving</option>
-                                              <option value="1">Current</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="foam-field">
-                                        <!-- <label>Saving/ Current</label> -->
-                                        <select name="subject" id="">
-                                              <option Selected>Search By Booking</option>
-                                              <option value="0" >Saving</option>
-                                              <option value="1">Current</option>
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="col-sm-3">
-
-                                </div>
-                                <div class="col-sm-3">
-                                    <div style="font-size: large;">&#8635 Refresh Info</div>
-                                </div>
-                            </div>
-                            <div class="list" id="list"></div>
-                            <div id="listitem1" style="display: none;">
-
-
-                            <div class="col-sm-12 col-md-12">
-                                <div class="col-sm-1" class="listNumber">
-                                    01
-                                </div>
+                            <div class="col-sm-12">
+                        <ul class="dashboardTab ">
+                           <li class="active" ><a href="#editProfile" data-toggle="tab">Edit Profile</a></li>
+                           <li ><a href="#changePassword" data-toggle="tab">Change Password</a></li>
+                           <li ><a href="#referal" data-toggle="tab">Referal</a></li>
+                        </ul>
+                        <div class="tab-content">
+                           <div class="tab-pane active" id="editProfile">
+                              <form  >
                                 <div class="col-sm-7">
-                                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
-                                            <span class="from">sadfsdf</span>
-                                             To
-                                            <span class="to">sdfsdfsdf</span>
-                                        </h4>
-                                    </a>
-
-                                    <h5 style="color: blue;">Booking Id: <span class="bookingId"></span></h5 style="color: blue;">
-                                    <h5>One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance"></span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance"></span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance"></span></h5>
-
-                                    <h5><span class="cngAllowed"> CNG Allowed</span>
-                                        <span class="dieselAllowed"> Diesel Only</span>
-                                        <span class="electricAllowed"> Electric Allowed</span>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date"></span>, <span id="day"></span></h4>
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time"></span></h4>
-                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
-                                    <h5 style="visibility: visible;">Recommended Amount <br>
-                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                            <div class="col-sm-4">
-                                                <h4>Pickup Location</h4>
-                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Drop Location</h4>
-                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
-                                            <div class="col-sm-4">
-                                                <h4>Special Requirements</h4>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
-                                        </div>
-
-                                    </div>
+                                  <div class="dash_foam">
+                                  <label>First Name</label>
+                                  <input type="text" name="">
                                   </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
-                                <div class="col-sm-1">
+                                  <div class="dash_foam">
+                                  <label>Last Name</label>
+                                  <input type="text" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Father's Name</label>
+                                  <input type="text" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Date Of Birth</label>
+                                  <input id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                  <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Email address*</label>
+                                  <input type="email" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Phone No 1*</label>
+                                  <input type="tel" name="">
+                                  </div>
+                                   <div class="dash_foam">
+                                  <label>Phone No 2</label>
+                                  <input type="tel" name="">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Address*</label>
+                                  <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>KYC Proof*</label>
+                                  <select name="" >
+                                         <option Selected>--Select--</option>
+                                         <option value="0">Upload PAN</option>
+                                         <option value="1">Upload Voter Card</option>
+                                         <option value="0">Upload Driving Licence</option>
+                                         <option value="0">Upload Aadhar Card</option>
+                                  </select>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <ul>
+                                    <li>Pancard uploaded</li>
+                                    <li>Upload Aadhar* Error</li>
+                                    <li>Upload Voter Card</li>
+                                    <li>Upload Driving Licnce</li>
+                                  </ul>
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Bank Details*</label>
+                                  <input type="text" name="" placeholder="Account Number">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <input type="text" name="" placeholder="Bank Name">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label></label>
+                                  <input type="text" name="" placeholder="IFSC Code">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>+ Add New Account</label>
+                                  <input type="text" name="" placeholder="Account Number">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label></label>
+                                  <input type="text" name="" placeholder="Bank Name">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label> </label>
+                                  <input type="text" name="" placeholder="IFSC Code">
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>Company Name (if any)</label>
+                                  <input type="text" name="" >
+                                  </div>
+                                  <div class="dash_foam">
+                                  <label>GST Details*</label>
+                                  <input type="text" name="" >
+                                  </div>
 
                                 </div>
-                                <div class="col-sm-11 booking-frm">
-                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="margin-bottom: 10px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
-                                        </div>
-                                    </div>
-
-
+                                <div class="col-sm-5">
+                                    <div class="drag-drop">
+                                    <input type="file" class="input-file" name="">
+                                      <p class="p23">
+                                       <i class="fas fa-cloud-upload-alt fa-4x">
+                                       </i><br> Drag&Drop files here <br> or<br>
+                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
+                                      </p>
+                                      <div class="drag-drop-text">Select your profile image<br>
+                                          <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                      </div>
+                                   </div>
                                 </div>
+                                <div class="col-sm-12 booking-frm dashButton"> 
+                                    <button class="book-btn" type="submit">Update
+                                    </button>&nbsp;&nbsp;
+                                    <button class="book-btn" type="Cancel">Cancel</button>
+                              </div>
+                                </form>   
+                           </div>
+                           <div class="tab-pane" id="changePassword">
+                              <form class="booking-frm" id="change-passwordform">
+                                
 
-                            </div>
-                            </div>
-                            <div style="float: right; margin-top: 10px; margin-bottom: 10px;">
-                                <span class="pagenumbers" >
-                                    <button id="prevButton" style="background-color: #ffc000;"> << </button>
-                                </span>
+                                 <input type="hidden" name="type" value="change_password">
 
-                                <span class="pagenumbers" id="pagination">
+                                <div class="col-sm-9" >
+                                  <div class="row">
+                                  <label class="col-sm-4">Enter Current Password</label>
+                                  <div class="col-sm-8">
+                                  <input type="password" id="current-pass" class="form-control" name="current_password">
+                                  </div>
+                                </div>
+                                  <div class="row">
+                                  <label class="col-sm-4">Enter New Password</label>
+                                  <div class="col-sm-8">
+                                  <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
+                                  <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password">
+                                    <span class="tooltiptext">Click to see password</span></span>
+                                         <span class="form-text" id="password_strength"></span>
+                                         <small class="form-text" id="password">Error message</small>
+                                  </div>
+                                </div>
+                                    <div class="row ">
+                                       <label class="col-sm-4">Confirm New Password</label>
+                                       <div class="col-sm-8">
+                                          <input type="Password" class="form-control" name="new_password" id="passwordConfirm1" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                          <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
+                                          <small class="form-text" id="password2">Error message</small>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-12 booking-frm col-sm-12 dashButton">
+                                        <button type="submit" class="book-btn">Update</button>
 
-                                </span>
-                                <span class="pagenumbers">
-                                    <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
-                                </span>
+                                    </div>
+                                </div>
+                            </form>   
+                           </div>
+                           <div class="tab-pane" id="referal">
+                               <div class="col-md-12 col-sm-12">
+                              <div class="row">
+                              <label class="col-sm-4">Your Referal code</label>
+                              <div class="col-sm-5" style="display: flex;">
+                                <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                                <div class="copytooltip button1">
+                                    <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
+                                      <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                            Copy text
+                                      </button>
+                                 </div>
+                              </div>
                             </div>
-                            <!-- <div class="pagenumbers" id="pagination">
-                                <button>ghi</button>
-                            </div> -->
-                        </div>
 
-                        <div class="tab-pane" id="assignments" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Assignments</h4>
+                          </div>
+                          <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px;padding: 25px ">
+                               <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                   <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a></div>
+                                   <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                       <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" ><button class="btn btn-default" style="color: #1971bf;font-weight: bolder;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                                       </a>&nbsp;&nbsp;
+                                     </div>
+                                    <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                                         <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
+                                       </div>
+                                </div>
+                           </div>
                             </div>
-                            <div class="col-sm-12 col-md-12">
                             </div>
-                        </div>
-
-                        <div class="tab-pane" id="bookingHistory" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Booking History</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="payments" role="tabpanel">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Payments</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -355,443 +226,189 @@
 
 
 {% block extra_scripts %}
-    <script type="text/javascript">
-//     const list_items = [
-//  "Item 1",
-//  "Item 2",
-//  "Item 3",
-//  "Item 4",
-//  "Item 5",
-//  "Item 6",
-//  "Item 7",
-//  "Item 8",
-//  "Item 9"
-// ];
+ <script type="text/javascript">
+        $(function () {
+        var d = new Date();
+        var current_year = d.getFullYear();
+         /////////////set age restrictions here////////////////////
+        var req_year = current_year - 18;
+        var month = d.getMonth();
+        var date = d.getDate();
+        var req_date = date + "/" + month + "/" + req_year;
+        var today_date = date + "/" + month + "/" + current_year;
+  $("#datepicker").datepicker({ 
+        dateformat: "yyyy-mm-dd",
+        autoclose: true, 
+        todayHighlight: false,
+        endDate: req_date
+  }).datepicker('update', new Date());
+});
+     
+ </script> 
+ <script type="text/javascript">
 
-const list_items = [
-    {from : "Chandigarh",
-     to : "Faridabad",
-     date : "24-May-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "10:50",
-     bookindId: 1656565,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Mumbai",
-     date : "24-Jan-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "4:30",
-     bookindId : 123798465,
-     nightPickAllowance : "&#10004",
-     nightDropAllowance : "&#10008",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"}
+   function remove1(req){
+      const PasswordConfirm = document.getElementById('password2');
+      PasswordConfirm.classList = "form-text";
 
-]
-
-
-const list_element = document.getElementById('list');
-const pagination_element = document.getElementById('pagination');
-
-let current_page = 1;
-let rows = 2;
-let count_page;
-function DisplayList (items, wrapper, rows_per_page, page) {
-    wrapper.innerHTML = "";
-    page--;
-
-    let start = rows_per_page * page;
-    let end = start + rows_per_page;
-    let paginatedItems = items.slice(start, end);
-
-    for (let i = 0; i < paginatedItems.length; i++) {
-        let item = paginatedItems[i];
-
-        let item_element = document.createElement('div');
-        item_element.classList.add('item');
-        // item_element.innerText = item;
-        // let item_element = document.createElement('div');
-        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-        // console.log(item_element);
-        // item_element.classList.add(`list${i+1}`);
-        // console.log(item_element.classList);
-        // var temp2 = document.getElementsByClassName(`list${i+1}`).innerHTML;
-        // var temp = document.querySelector(`#listitem1 > div > div > h4 > .from`).innerHTML;
-        // console.log(temp);
-        // $(temp).innerText = list_items[i].from ;
-        // console.log( $(`list${i+1} .from`).innerText);
-        // console.log(i);
-
-
-
-        let text = `<div>
-
-
-                            <div class="col-sm-12 col-md-12">
-                                <div class="col-sm-1" class="listNumber">
-                                    <h4>${i+1}</h4>
-                                </div>
-                                <div class="col-sm-7">
-                                    <a data-toggle="collapse" href="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample${i}">
-                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
-                                            <span class="from"> ${paginatedItems[i].from}</span>
-                                             To
-                                            <span class="to">${paginatedItems[i].to}</span>
-                                        </h4>
-                                    </a>
-
-
-                                    <h5 style="color: blue;">Booking Id: <span class="bookingId">${paginatedItems[i].bookindId}</span></h5 style="color: blue;">
-                                    <h5>${paginatedItems[i].type}/ <span style="font-weight: 800; color: red;">${paginatedItems[i].carType}</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
-
-                                    <h5><span class="cngAllowed">
-                                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
-                                        </span>
-                                        <span class="dieselAllowed">
-                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                                        <span class="electricAllowed">
-                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
-                                    </h5>
-                                </div>
-
-                                <div class="col-sm-4">
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
-                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>${paginatedItems[i].date},${paginatedItems[i].day} <span id="day"></span></h4>
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
-                                        <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">${paginatedItems[i].time}</span></h4>
-                                    <div>
-
-                                        <h4>
-                                            <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
-                                            <span style="font-weight: 900;">KM Limit : 350</span>
-                                            <small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
-                                        </h4>
-                                    </div>
-                                    <h5 style="visibility: visible;">
-                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Recommended Amount <br>
-                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="collapse" id="collapseExample${i}">
-                                    <div class="card card-body">
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                            <div class="col-sm-4">
-                                                <h4>Pickup Location</h4>
-                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Drop Location</h4>
-                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
-                                            <div class="col-sm-4">
-                                                <h4>Special Requirements</h4>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
-                                        </div>
-
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
-                                <div class="col-sm-1">
-
-                                </div>
-                                <div class="col-sm-11 booking-frm">
-                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="margin-bottom: 10px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            </div>`;
-        // console.log(froms.length);
-        // froms[i].innerHTML = list_items[i].from;
-        // console.log( list_items[i].from);
-
-
-        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-        item_element.innerHTML = text;
-        wrapper.appendChild(item_element);
     }
-}
+    function remove2(req){
+      const Password = document.getElementById('password');
+      Password.classList = "form-text";
 
-function SetupPagination (items, wrapper, rows_per_page) {
-    wrapper.innerHTML = "";
+    }
 
-    let page_count = Math.ceil(items.length / rows_per_page);
-    count_page = page_count;
-    // if( current_page != page_count){
-    //     for (let i = current_page; i < current_page + 3; i++) {
-    //      let btn = PaginationButton(i, items);
-    //      wrapper.appendChild(btn);
-    //     }
+    const password = document.getElementById('password1')
+    const Password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('passwordConfirm1');
+    const PasswordConfirm = document.getElementById('password2');
+    const button = document.getElementById('button1');
+
+
+    //////show Error message/////
+    function showError(input,input1,message){
+        input.className = "fail";
+        input1.innerHTML = message
+        input1.className = "fail2"
+    }
+
+    
+
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+
+
+
+
+    if(password.value.trim() === ""){
+        showError(password, Password,'Please enter a password');
+    }
+    // else if(password.value.trim().length > 5){
+    //     password.className = "success"
     // }else{
-    //     let btn = PaginationButton(page_count, items);
-    //     wrapper.appendChild(btn);
+    //     showError(password, Password,'please enter a password of atlest six digits')
     // }
-    console.log(page_count);
-    if( (page_count-current_page) >= 3){
-        for (let i = current_page; i <= current_page + 2; i++) {
-            let btn = PaginationButton(i, items);
-            wrapper.appendChild(btn);
-        }
-    }else{
-        for (let i = current_page; i <= page_count; i++) {
-            let btn = PaginationButton(i, items);
-            wrapper.appendChild(btn);
-        }
-    }
 
+    if(passwordConfirm.value.trim() === ""){
+        showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
+    }else if(password.value.trim() === passwordConfirm.value.trim()){
+        passwordConfirm.className = "success"
+    }else{
+        showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
+    }
+   })
+
+
+    //code for copy input button for referral 
+    function copyFunction() {
+  var copyText = document.getElementById("refferral-input");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
 }
 
-    $("#prevButton").click(function(){
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
 
-        console.log("Previous Button Clicked");
-        console.log((Math.floor((current_page-1)/3)));
-        if((Math.floor((current_page-1)/3)) > 0){
-            pagination_element.innerHTML = "";
-            let check = 0;
-            for(let i = ((Math.floor((current_page-1)/3)-1)*3)+1  ; i <= (Math.floor((current_page-1)/3)-1)*3 +3 ; i++ ){
-                if( check == 0 ){
 
+</script>
+<script type="text/javascript">
+    $(function () {
+        $("#password1").bind("keyup", function () {
+            //TextBox left blank.
+            if ($(this).val().length == 0) {
+                $("#password_strength").html("");
+                return;
+            }
+ 
+            //Regular Expressions.
+            var regex = new Array();
+            regex.push("[A-Z]"); //Uppercase Alphabet.
+            regex.push("[a-z]"); //Lowercase Alphabet.
+            regex.push("[0-9]"); //Digit.
+            regex.push("[$@$!%*#?&]"); //Special Character.
+ 
+            var passed = 0;
+ 
+            //Validate for each Regular Expression.
+            for (var i = 0; i < regex.length; i++) {
+                if (new RegExp(regex[i]).test($(this).val())) {
+                    passed++;
                 }
-                console.log("forLop");
-                let btn = PaginationButton(i, list_items);
-                pagination_element.appendChild(btn);
-                check = 1 ;
             }
-            current_page = ((Math.floor((current_page-1)/3)-1)*3)+1;
-             DisplayList(list_items, list_element, rows, current_page);
-        }
-    })
-    $("#nextButton").click(function(){
-
-        console.log("Next Button Clicked");
-        console.log("count_page is " + count_page);
-        // var page_count = Math.ceil(list_items / rows);
-        console.log( "Math.floor((current_page-1)/3) = " + Math.floor((current_page-1)/3) + " Math.floor(count_page/3) = "+ Math.floor(count_page/3) )
-        if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
-        if( (Math.floor((current_page-1)/3)+1) < Math.floor(count_page/3) ){
-            pagination_element.innerHTML = "";
-            console.log(list_items.length);
-            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= (Math.floor((current_page-1)/3)+1)*3 +3 ; i++ ){
-                console.log("forLop");
-                let btn = PaginationButton(i, list_items);
-                // current_page = ((((current_page-1)/3)+1)*3)+1
-
-                pagination_element.appendChild(btn);
+ 
+ 
+            //Validate for length of Password.
+            if (passed > 2 && $(this).val().length > 8) {
+                passed++;
             }
-
-        }else if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
-            pagination_element.innerHTML = "";
-            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= count_page ; i++  ){
-                // current_page = ((((current_page-1)/3)+1)*3)+1
-
-                    // console.log("forLop");
-                    let btn = PaginationButton(i, list_items);
-                    pagination_element.appendChild(btn);
-
+            console.log(passed)
+            //Display status.
+            var color = "";
+            var strength = "";
+            switch (passed) {
+                case 0:
+                case 1:
+                    strength = "Weak";
+                    color = "red";
+                    break;
+                case 2:
+                    strength = "Good";
+                    color = "darkorange";
+                    break;
+                case 3:
+                case 4:
+                    strength = "Strong";
+                    color = "green";
+                    break;
+                case 5:
+                    strength = "Very Strong";
+                    color = "darkgreen";
+                    break;
             }
-        }
-        current_page = ((Math.floor((current_page-1)/3)+1)*3)+1;
-        DisplayList(list_items, list_element, rows, current_page);
-
-        }
-
-    })
-
-
-function PaginationButton (page, items) {
-    let button = document.createElement('button');
-    button.innerText = page;
-
-    if (current_page == page) button.classList.add('active');
-
-    button.addEventListener('click', function () {
-        current_page = page;
-        // SetupPagination(list_items, pagination_element, rows);
-        DisplayList(items, list_element, rows, current_page);
-
-        let current_btn = document.querySelector('.pagenumbers button.active');
-        current_btn.classList.remove('active');
-
-        button.classList.add('active');
+            $("#password_strength").html(strength);
+            $("#password_strength").css("color", color);
+        });
     });
 
-    return button;
-}
-
-DisplayList(list_items, list_element, rows, current_page);
-SetupPagination(list_items, pagination_element, rows);
+$(document).ready(function () {
+    $('.input-file').change(function (e) {
+      var fileName = e.target.files[0].name;
+      $('.p23').text(fileName);
+    });
+  });
 </script>
+<script type="text/javascript">
+  //Toggle password icon code
+$(".toggle-password").click(function() {
 
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script>
+<script type="text/javascript">
+  //Toggle password icon code
+$(".toggle-password1").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+</script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 {% endblock extra_scripts %}
