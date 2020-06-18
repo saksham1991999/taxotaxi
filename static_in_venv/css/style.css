@@ -5384,7 +5384,7 @@ background-color: ##4CAF50 !important;
 /*--------Customer Dashboard ends------*/
 
 /*---------------Vendor Dashboard Start-----------------*/
-.vendorTab{
+/*.vendorTab{
         padding: 8px 0px 28px 0px;
     border: 1px #eee solid;
     padding-inline-start: 15px;
@@ -5439,7 +5439,7 @@ background-color: ##4CAF50 !important;
     .foam-field input,.foam-field select,.foam-field textarea{
     	width: 100%;
     }*/
-    .pagenumbers button {
+    /*.pagenumbers button {
 	width: 50px;
 	height: 50px;
 
@@ -5466,7 +5466,7 @@ background-color: ##4CAF50 !important;
 .pagenumbers button.active {
 	background-color: #44EEAA;
 	box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
-}
+}*/
 
 /*------------Vendor Dashboard Ends----------------*/
 /*------------Vendor registration start-----------*/
