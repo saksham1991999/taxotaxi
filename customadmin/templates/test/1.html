@@ -3,7 +3,45 @@
 
 
 {% block extra_stylesheet %}
-
+<style>
+.menu-bar h5{
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: 0.8rem;
+    
+}
+.active1{
+    font-weight: 600;
+    text-decoration: underline;
+}
+.menu-bar{
+    background-color: rgb(255, 255, 255);
+    padding: 30px 20px;
+    margin: 20px 0px;
+    border: 0.5px solid rgb(230, 230, 230);
+    height: -webkit-fill-available;
+}
+.collapse-row{
+    padding: 0px !important;
+}
+.collapse-row h5{
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: 0.8rem;
+}
+.check{
+  color: #17ee17;
+font-weight: bold;   
+}
+.cross{
+     color: red;
+font-weight: bold;
+}
+.wait{
+   color: #ffc000;;
+font-weight: bold;
+}
+</style>
 {% endblock extra_stylesheet %}
 
 
@@ -33,103 +71,125 @@
             <!-- end page title -->
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-2">
+                    <div class="col-12 menu-bar">
+                        <h5>Booking ID</h5>
+                        <h5>1564865</h5>
+                    </div>
+                    <div class="col-12 menu-bar">
+                        <a href=""><h5 class="active1">Select Vendors</h5></a>
+                        <a href=""><h5>Final Vendors</h5></a>
+                        <a href=""><h5>Assign Car</h5></a>
+                        <a href=""><h5>Assign Driver</h5></a>
+                        <a href=""><h5>Final Action</h5></a>
+                        <a href=""><h5>Ride Completion</h5></a>
+                    </div>
+                    
+                </div>
+                <div class="col-10">
                     <div class="card">
                         <div class="card-body">
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Booking Id</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
+                                    <th></th>
+                                    <th>Vendor Id</th>
+                                    <th>Name</th>
+                                    <th>Previous ride</th>
+                                    <th>Bid Amount</th>
+                                    <th>Status</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>2</td>
+                                    <td><input type="checkbox"></td>
                                     <td>456813</td>
-                                    <td>20/06/2020</td>
-                                    <td>12:00 A.M.</td>
+                                    <td>Abhay</td>
+                                    <td>32</td>
+                                    <td>850</td>
+                                    <td class="cross">&#10008 Not Selected</td>
                                     <td>
-                                        <p>
                                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                               Details
                                             </button>
-                                          </p>
-                                          
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="5">
+                                    <td colspan="8" class="collapse-row">
                                         <div class="collapse" id="collapseExample">
-                                        <div class="card card-body">
-                                            <h4 class="card-title">Driver Details</h4>
-                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse:     collapse; border-spacing: 0; width: 100%;">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Age</th>
-                                                    <th>Previous Rides</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                
-                                                <tr>
-                                                    <th>1</th>
-                                                    <th>Abhay</th>
-                                                    <th>25</th>
-                                                    <th>13</th>
-                                                    <th><input type="checkbox"></th>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-
-                                            <h4 class="card-title">Car Details</h4>
-                                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse:     collapse; border-spacing: 0; width: 100%;">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Number</th>
-                                                    <th>Age</th>
-                                                    <th>Previous Rides</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                
-                                                <tr>
-                                                    <th>1</th>
-                                                    <th>1321454</th>
-                                                    <th>25</th>
-                                                    <th>13</th>
-                                                    <th><input type="checkbox"></th>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                            <div class="card">
+                                                <div class="card-body row">
+                                                    <div class="col-3">
+                                                        <h5>Name</h5>
+                                                        <h5>Aadhar Id</h5>
+                                                        <h5>Rating</h5>
+                                                        <h5>Address</h5>
+                                                        <h5>Review</h5>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h5>Abhay</h5>
+                                                        <h5>5454321321</h5>
+                                                        <h5>4.5</h5>
+                                                        <h5>Delhi</h5>
+                                                        <h5>Good</h5>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            
                                           </div>
                                     </td>
                                     
                                 </tr>
+                              
                                 <tr>
-                                    <td>3 </td>
+                                    <td>2</td>
+                                    <td><input type="checkbox"></td>
                                     <td>456813</td>
-                                    <td>20/06/2020</td>
-                                    <td>12:00 A.M.</td>
+                                    <td>Abhay</td>
+                                    <td>32</td>
+                                    <td>850</td>
+                                    <td class="check">&#10004 Selected</td>
                                     <td>
-                                        <button type="button" style="padding-right: 10px;margin-right: 10px;" class="btn btn-warning waves-effect waves-light mb-2">
-                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Details
-                                        </button>
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                              Details
+                                            </button>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="8" class="collapse-row">
+                                        <div class="collapse" id="collapseExample2">
+                                            <div class="card">
+                                                <div class="card-body row">
+                                                    <div class="col-3">
+                                                        <h5>Name</h5>
+                                                        <h5>Aadhar Id</h5>
+                                                        <h5>Rating</h5>
+                                                        <h5>Address</h5>
+                                                        <h5>Review</h5>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <h5>Abhay</h5>
+                                                        <h5>5454321321</h5>
+                                                        <h5>4.5</h5>
+                                                        <h5>Delhi</h5>
+                                                        <h5>Good</h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                          </div>
+                                    </td>
+                                    
                                 </tr>
                                 
                                 </tbody>
                             </table>
+                            <button type="button" style="padding-right: 10px;margin-right: 10px;" class="btn btn-block btn-warning waves-effect waves-light mb-2">
+                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Submit
+                            </button>
                         </div>
                     </div>
                 </div>
