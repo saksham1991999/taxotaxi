@@ -1,9 +1,14 @@
 from django.db import models
 
 # Create your models here.
-
+vendor_status_choices = (
+    ('Approved', 'Approved'),
+    ('Rejected', 'Rejected'),
+    ('Hold', 'Hold'),
+)
 class vendorprofile(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT)
+    status = models.CharField(max_length=8 , choices=vendor_status_choices)
     full_name = models.CharField(max_length=256)
 
     father_name = models.CharField(max_length=100, blank=True, null=True)
@@ -27,7 +32,7 @@ class vendorprofile(models.Model):
     gst_no = models.CharField(max_length=15, blank=True, null=True)
 
     verified = models.BooleanField(default=0)
-    rejection_reason = models.TextField()
+    rejection_reason = models.TextField(blank=True, null=True)
 
     date_of_registration = models.DateField(auto_now_add=True)
 
@@ -57,6 +62,12 @@ class bank_detail(models.Model):
     def __str__(self):
         return str(self.vendor) + str(self.account_holder_name)
 
+
+driver_status_choices = (
+    ('Approved', 'Approved'),
+    ('Rejected', 'Rejected'),
+    ('Hold', 'Hold'),
+)
 fuel_type_choices = (
     ('P', 'Petrol'),
     ('D', 'Diesel'),
@@ -65,6 +76,7 @@ fuel_type_choices = (
 class vendor_cars(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
     car_type = models.ForeignKey('core.car_types', on_delete=models.DO_NOTHING)
+    status = models.CharField(max_length=8 , choices=driver_status_choices)
 
     owner_name = models.CharField(max_length=256, blank=True, null=True)
     father_name = models.CharField(max_length=256, blank=True, null=True)
@@ -100,8 +112,14 @@ class vendor_cars(models.Model):
     class Meta:
         verbose_name_plural = 'Vendor Cars'
 
+driver_status_choices = (
+    ('Approved', 'Approved'),
+    ('Rejected', 'Rejected'),
+    ('Hold', 'Hold'),
+)
 class driver(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
+    status = models.CharField(max_length=8 , choices=driver_status_choices)
     full_name = models.CharField(max_length=256)
     father_name = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField()

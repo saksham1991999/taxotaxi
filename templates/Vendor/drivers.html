@@ -37,42 +37,28 @@
                                        <th>Status</th>
                                        <th>Rating</th>
                                      </tr>
+                                    {% for driver in drivers %}
                                      <tr>
-                                       <td>1</td>
-                                       <td><a data-toggle="modal" data-target="#driverInformation">Maria Anders</a></td>
-                                       <td>9991155693</td>
-                                       <td class="check">&#10004</td>
-                                       <td class="check">Approved</td>
+                                       <td>{{ forloop.counter }}</td>
+                                       <td><a data-toggle="modal" data-target="#driverInformation">{{ driver.full_name }}</a></td>
+                                       <td>{{ driver.contact1 }}</td>
+                                         {% if driver.status == 'Approved' %}
+                                           <td class="check">&#10004</td>
+                                           <td class="check">Approved</td>
+                                         {% elif driver.status == 'Rejected' %}
+                                           <td class="cross">✘</td>
+                                           <td class="cross">Rejected</td>
+                                         {% elif driver.status == 'Hold' %}
+                                           <td class="cross">✘</td>
+                                           <td class="wait">Hold</td>
+                                         {% endif %}
                                        <td><span class="fa fa-star checked"></span>
                                            <span class="fa fa-star checked"></span>
                                            <span class="fa fa-star checked"></span>
                                            <span class="fa fa-star"></span>
                                            <span class="fa fa-star"></span></td>
                                      </tr>
-                                     <tr>
-                                       <td>2</td>
-                                       <td>sakir Hussain</td>
-                                       <td>9991155693</td>
-                                       <td class="cross">&#10008</td>
-                                       <td class="cross">Rejected</td>
-                                       <td><span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star"></span>
-                                           <span class="fa fa-star"></span></td>
-                                     </tr>
-                                     <tr>
-                                       <td>3</td>
-                                       <td>sakir Hussain</td>
-                                       <td>9991155693</td>
-                                       <td class="cross">&#10008</td>
-                                       <td class="wait">Hold</td>
-                                       <td><span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star"></span>
-                                          <span class="fa fa-star"></span></td>
-                                     </tr>
+                                    {% endfor %}
                                  </table>
                                  <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Car +</button> </div>
                                  <div class="col-sm-12 addDriverFoam">
@@ -248,6 +234,8 @@
                               </div>
                                     </form>
                                  </div>
+
+                            {% for driver in drivers %}
                       <div class="modal fade" id="driverInformation" role="dialog">
                           <div class="modal-dialog" style="width:max-content;">
                              <div class="driver-modal-content" style="width: 80vw;">
@@ -259,9 +247,9 @@
                             
                                 <div class="col-sm-12" style="display: block;" > 
                                     <div class="col-sm-3" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
-                                    <div class="col-sm-6" ><p>Chetan Rana</p>
-                                        <p>Address:<span>12/D, Greenfield colony faridabad-121001</span></p>
-                                        <p>Phone no.: <span>8295359554</span></p></div>
+                                    <div class="col-sm-6" ><p>{{ driver.full_name}}</p>
+                                        <p>Address:<span>{{ driver.address }}</span></p>
+                                        <p>Phone no.: <span>{{ driver.contact1 }}</span></p></div>
                                     <div class="col-sm-3" >
                                         <h5>Driver Ratings</h5>
                                         <span class="fa fa-star checked"></span>
@@ -281,20 +269,20 @@
                                 <div class="col-sm-12">
                                     <div class="col-sm-2">
                                         <h5>DL</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.driving_licence_front.url}}" alt="">
                                     </div>
                                     
                                     <div class="col-sm-2">
                                         <h5>Pan Card</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.pancard_front.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Aadhar Card</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.aadharcard_front.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Voter Id</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.votercard_front.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Other Documents</h5>
@@ -316,20 +304,20 @@
                                 <div class="col-sm-12">
                                     <div class="col-sm-2">
                                         <h5>DL</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.driving_licence_rear.url}}" alt="">
                                     </div>
                                     
                                     <div class="col-sm-2">
                                         <h5>Pan Card</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.pancard_rear.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Aadhar Card</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.aadharcard_rear.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Voter Id</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{driver.votercard_rear.url}}" alt="">
                                     </div>
                                     <div class="col-sm-2">
                                         <h5>Other Documents</h5>

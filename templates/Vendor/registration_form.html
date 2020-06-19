@@ -281,12 +281,12 @@
                                         <label>Aadhar Card*<p>Size must be 200KB</p></label>
                                         <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.aadharcard_front placeholder="Front" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-aadharcard_front-p">
                                                 <i class="far fa-file"></i> Front side</p>
                                             </div>
                                             <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.aadharcard_rear placeholder="Back" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext"  id="id_vendor-aadharcard_rear-p">
                                                 <i class="far fa-file"></i> Back side</p>
                                             </div>
                                         </div>
@@ -297,12 +297,12 @@
                                         <label>Voter Card</label>
                                         <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.votercard_front placeholder="Front" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-votercard_front-p">
                                                 <i class="far fa-file"></i> Front side</p>
                                             </div>
                                             <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.votercard_rear placeholder="Back" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-votercard_rear-p">
                                                 <i class="far fa-file"></i> Back side</p>
                                             </div>
                                         </div>
@@ -313,12 +313,12 @@
                                         <label>Driving Licence</label>
                                         <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.driving_licence_front placeholder="Front" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-driving_licence_front-p">
                                                 <i class="far fa-file"></i> Front Side</p>
                                             </div>
                                             <div class="vendorFile" style="width: 49%;">
                                                 {% render_field profile_form.driving_licence_rear placeholder="Back" %}
-                                                <p class="fileUploadtext">
+                                                <p class="fileUploadtext" id="id_vendor-driving_licence_rear-p">
                                                 <i class="far fa-file"></i> Back side</p>
                                             </div>
                                         </div>
@@ -469,11 +469,11 @@
                                 <div class="foam-field">
                                     <label>Upload Car photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           {% render_field car_form.image_front %}<p class="fileUploadtext">
+                                           {% render_field car_form.image_front %}<p class="fileUploadtext"  id="id_car-image_front-p">
                                             <i class="far fa-file"></i> Front Side</p>
                                     </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                        {% render_field car_form.image_rear %}<p class="fileUploadtext">
+                                        {% render_field car_form.image_rear %}<p class="fileUploadtext" id="id_car-image_rear-p">
                                         <i class="far fa-file"></i> Back side</p>
                                     </div>
                                 </div>
@@ -483,11 +483,11 @@
                                 <div class="foam-field">
                                     <label>Upload RC photo*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                       {% render_field car_form.rc_front %}<p class="fileUploadtext">
+                                       {% render_field car_form.rc_front %}<p class="fileUploadtext" id="id_car-rc_front-p">
                                         <i class="far fa-file"></i> Front Side</p>
                                     </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                        {% render_field car_form.rc_rear %}<p class="fileUploadtext">
+                                        {% render_field car_form.rc_rear %}<p class="fileUploadtext" id="id_car-rc_rear-p">
                                         <i class="far fa-file"></i> Back side</p>
                                     </div>
                                 </div>
@@ -502,12 +502,12 @@
                                 <label>Upload Tourists Permit*</label>
                                 <div class="vendorFile" style="width: 49%;">
                                     {% render_field car_form.touristpermit_front %}
-                                    <p class="fileUploadtext">
+                                    <p class="fileUploadtext" id="id_car-touristpermit_front-p">
                                      <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
                                  <div class="vendorFile" style="width: 49%;">
-                                     {% render_field car_form.touristpermit_rear %}<p class="fileUploadtext">
+                                     {% render_field car_form.touristpermit_rear %}<p class="fileUploadtext" id="id_car-touristpermit_rear-p">
                                      <i class="far fa-file"></i> Back side</p>
                                  </div>
                                 </div>
@@ -519,22 +519,22 @@
                                 <div class="foam-field ">
                                 <label>Upload Permit A*</label>
                                 <div class="vendorFile" style="width: 49%;">
-                                     {% render_field car_form.permita_front %}<p class="fileUploadtext">
+                                     {% render_field car_form.permita_front %}<p class="fileUploadtext" id="id_car-permita_front-p">
                                      <i class="far fa-file"></i> Front Side</p>
                                  </div>
                                  <div class="vendorFile" style="width: 49%;">
-                                     {% render_field car_form.permita_rear %}<p class="fileUploadtext">
+                                     {% render_field car_form.permita_rear %}<p class="fileUploadtext" id="id_car-permita_rear-p">
                                      <i class="far fa-file"></i> Back side</p>
                                  </div>
                                 </div>
                                 <div class="foam-field ">
                                     <label>Upload Permit B*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                         {% render_field car_form.permitb_front %}<p class="fileUploadtext">
+                                         {% render_field car_form.permitb_front %}<p class="fileUploadtext" id="id_car-permitb_front-p">
                                          <i class="far fa-file"></i> Front Side</p>
                                     </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                         {% render_field car_form.permitb_rear %}<p class="fileUploadtext">
+                                         {% render_field car_form.permitb_rear %}<p class="fileUploadtext" id="id_car-permitb_rear-p">
                                          <i class="far fa-file"></i> Back side</p>
                                     </div>
                                 </div>
@@ -542,7 +542,7 @@
                                 <div class="foam-field ">
                                     <label>Upload Insurance</label>
                                     <div class="vendorFile">
-                                        {% render_field car_form.insurance_front %}<p class="fileUploadtext">
+                                        {% render_field car_form.insurance_front %}<p class="fileUploadtext" id="id_car-insurance_front-p">
                                         <i class="far fa-file"></i> Drop file here</p>
                                     </div>
                                 </div>
@@ -556,7 +556,7 @@
                                 <div class="foam-field ">
                                 <label>Upload Pollution Certificate</label>
                                 <div class="vendorFile">
-                                    {% render_field car_form.pollution_certificate %}<p class="fileUploadtext">
+                                    {% render_field car_form.pollution_certificate %}<p class="fileUploadtext" id="id_car-pollution_certificate-p">
                                     <i class="far fa-file"></i> Drop file here</p>
                                 </div>
                                 </div>
@@ -618,11 +618,11 @@
                                 <div class="foam-field">
                                     <label>PAN Card*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                         {% render_field driver_form.pancard_front %}<p class="fileUploadtext">
+                                         {% render_field driver_form.pancard_front %}<p class="fileUploadtext" id="id_driver-pancard_front-p">
                                          <i class="far fa-file"></i> Front Side</p>
                                     </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                         {% render_field driver_form.pancard_rear %}<p class="fileUploadtext">
+                                         {% render_field driver_form.pancard_rear %}<p class="fileUploadtext" id="id_driver-pancard_rear-p">
                                          <i class="far fa-file"></i>Back side</p>
                                     </div>
                                 </div>
@@ -630,14 +630,14 @@
                                 <div class="foam-field">
                                     <label>Aadhar Card* <p>Size must be 200KB</p></label>
                                     <div class="vendorFile" style="width: 49%;">
-                                    {% render_field driver_form.pancard_front %}
-                                        <p class="fileUploadtext">
+                                    {% render_field driver_form.aadharcard_front %}
+                                        <p class="fileUploadtext" id="id_driver-aadharcard_front-p">
                                         <i class="far fa-file"></i> Front Side
                                         </p>
                                      </div>
 
                                      <div class="vendorFile" style="width: 49%;">
-                                         {% render_field driver_form.pancard_rear %}<p class="fileUploadtext">
+                                         {% render_field driver_form.aadharcard_rear %}<p class="fileUploadtext" id="id_driver-aadharcard_rear-p">
                                          <i class="far fa-file"></i> Back side</p>
                                      </div>
                                 </div>
@@ -646,11 +646,11 @@
                                     <label>Voter Card</label>
 
                                     <div class="vendorFile" style="width: 49%;">
-                                        {% render_field driver_form.votercard_front %}<p class="fileUploadtext">
+                                        {% render_field driver_form.votercard_front %}<p class="fileUploadtext" id="id_driver-votercard_front-p">
                                          <i class="far fa-file"></i> Front Side</p>
                                      </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                        {% render_field driver_form.votercard_rear %}<p class="fileUploadtext">
+                                        {% render_field driver_form.votercard_rear %}<p class="fileUploadtext" id="id_driver-votercard_rear-p">
                                          <i class="far fa-file"></i> Back side</p>
                                     </div>
                                 </div>
@@ -658,11 +658,11 @@
                                 <div class="foam-field">
                                     <label>Driving Licence</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                        {% render_field driver_form.driving_licence_front %}<p class="fileUploadtext">
+                                        {% render_field driver_form.driving_licence_front %}<p class="fileUploadtext" id="id_driver-driving_licence_front-p">
                                          <i class="far fa-file"></i> Front Side</p>
                                     </div>
                                     <div class="vendorFile" style="width: 49%;">
-                                         {% render_field driver_form.driving_licence_rear %}<p class="fileUploadtext">
+                                         {% render_field driver_form.driving_licence_rear %}<p class="fileUploadtext" id="id_driver-driving_licence_rear-p">
                                          <i class="far fa-file"></i> Back side</p>
                                     </div>
                                 </div>
@@ -689,7 +689,7 @@
                                 <div class="foam-field">
                                     <label>Police Verification*<p>With in 15days or 6 months old</p></label>
                                     <div class="vendorFile">
-                                         {% render_field driver_form.police_verification_front %}<p class="fileUploadtext">
+                                         {% render_field driver_form.police_verification_front %}<p class="fileUploadtext" id="id_driver-police_verification_front-p">
                                          <i class="far fa-file"></i> Drop file here</p>
                                      </div>
                                 </div>
@@ -708,7 +708,7 @@
                                     <div class="foam-field">
                                         <label style="color: #e61616;">Upload any supporting document*</label>
                                         <div class="vendorFile">
-                                            {%  render_field driver_form.legal_accidental_case_document %}<p class="fileUploadtext">
+                                            {%  render_field driver_form.legal_accidental_case_document %}<p class="fileUploadtext" id="id_driver-legal_accidental_case_document-p">
                                             <i class="far fa-file"></i> Drop file here</p>
                                         </div>
                                     </div>

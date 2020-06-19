@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     is_vendor = models.BooleanField(default=False)
+    is_driver = models.BooleanField(default = False)
+    is_admin = models.BooleanField(default = False)
     mobile = models.CharField(max_length=10)
     mobile_verified = models.BooleanField(default=False)
     profile_pic = models.ImageField(blank = True, null = True)
