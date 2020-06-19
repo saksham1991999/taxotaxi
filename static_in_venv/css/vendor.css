@@ -262,6 +262,10 @@ tr:nth-child(odd) {
           margin-top: 8px;
           margin-right: 6px;
          }
+         .uploadStyle{
+          width: 40%!important;
+          padding-right: 10px!important;
+         }
 
     /*Master Dashboard End*/
        .addCarFoam{
