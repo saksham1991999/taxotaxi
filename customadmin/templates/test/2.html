@@ -18,22 +18,22 @@
 }
 .header{
     background-color: rgb(255, 253, 250);
-    padding: 10px;
+    padding: 5px;
     
 }
 .header-info h5{
-    font-size: 0.9rem;
-    padding: 5px 0px;
+    font-size: 0.8rem;
+    padding: 0px;
 }
 .header-info h5 span{
     font-weight: 900;
     color: blue;
-    font-size: 0.9rem;
-    padding: 5px 0px;
+    font-size: 0.8rem;
+    padding: 0px;
 }
 .address{
     margin: 20px auto;
-    padding: 20px;
+    padding: 5px;
     background-color: rgb(255, 253, 250);
 }
 .address-info{
@@ -78,7 +78,7 @@ font-weight: bold;
 }
 .common-vendors-card{
     background-color:rgb(255, 253, 250) ;
-    padding: 30px;
+    padding: 5px;
     margin: auto;
 }
 .common-vendors div{
@@ -116,6 +116,50 @@ font-weight: bold;
     padding: 10px 0px;
 }
 .status h4{
+    font-size: 0.8rem;
+}
+.details > div > h5{
+    font-size: 0.9rem;
+    color: blue;
+    font-weight: 900;
+}
+.details > div{
+    padding: 5px;
+}
+.vendor-details{
+    width: 100%;
+    display: flex;
+}
+.vendor-details h5{
+    width: 50%;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+.vendor-details h4{
+    font-size: 0.8rem;
+}
+.driver-details{
+    width: 100%;
+    display: flex;
+}
+.driver-details h5{
+    width: 50%;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+.driver-details h4{
+    font-size: 0.8rem;
+}
+.car-details{
+    width: 100%;
+    display: flex;
+}
+.car-details h5{
+    width: 50%;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+.car-details h4{
     font-size: 0.8rem;
 }
 </style>
@@ -178,24 +222,16 @@ font-weight: bold;
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur velit quos sint itaque distinctio neque laboriosam suscipit magnam. Deleniti!</p>
                     </div>
                     <div class="address-info">
-                        <h5>Pickup Date</h5>
-                        <p>20/06/2020</p>
-                    </div>
-                    <div class="address-info">
-                        <h5>Pickup TIme</h5>
-                        <p>9:00 A.M.</p>
+                        <h5>Pickup Date Time</h5>
+                        <p>20/06/2020 9:00 A.M.</p>
                     </div>
                     <div class="address-info">
                         <h5>Drop Location</h5>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit porro inventore facere suscipit, eius placeat delectus saepe provident deserunt ad!</p>
                     </div>
                     <div class="address-info">
-                        <h5>Drop Date</h5>
-                        <p>20/06/2020</p>
-                    </div>
-                    <div class="address-info">
-                        <h5>Drop Timr</h5>
-                        <p>11:00 A.M.</p>
+                        <h5>Drop Date Time</h5>
+                        <p>20/06/2020 11:00 A.M.</p>
                     </div>
                 </div>
                 <div class="col-sm-4 address special">
@@ -249,6 +285,78 @@ font-weight: bold;
                     <div style="display: flex;">
                         <h5 style="width: 50%;">Fair</h5>
                         <h4>100.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row details">
+                <div class="col-sm-4">
+                    <h5>Vendor Details</h5>
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <div class="vendor-details">
+                        <h5>Name</h5>
+                        <h4>Abhay</h4>
+                    </div>
+                    <div class="vendor-details">
+                        <h5>Phone</h5>
+                        <h4>64874646874</h4>
+                    </div>
+                    <div class="vendor-details">
+                        <h5>Address</h5>
+                        <h4>Delhi</h4>
+                    </div>
+                    <div class="vendor-details">
+                        <h5>Rating</h5>
+                        <h4>4.3</h4>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Driver Details</h5>
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <div class="driver-details">
+                        <h5>Name</h5>
+                        <h4>Suraj</h4>
+                    </div>
+                    <div class="driver-details">
+                        <h5>Phone</h5>
+                        <h4>64874646874</h4>
+                    </div>
+                    <div class="driver-details">
+                        <h5>Address</h5>
+                        <h4>Suraj</h4>
+                    </div>
+                    <div class="driver-details">
+                        <h5>Rating</h5>
+                        <h4>3.3</h4>
+                    </div>
+                    <div class="driver-details">
+                        <h5>Previous Rides</h5>
+                        <h4>31</h4>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Car Details</h5>
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <img src="{% static 'images/news_img2.jpg' %}" alt="" width="30%">
+                    <div class="car-details">
+                        <h5>Number</h5>
+                        <h4>DL53 1203</h4>
+                    </div>
+                    <div class="car-details">
+                        <h5>Registeration No</h5>
+                        <h4>64874646874</h4>
+                    </div>
+                    <div class="car-details">
+                        <h5>Owner</h5>
+                        <h4>Suraj</h4>
+                    </div>
+                    <div class="car-details">
+                        <h5>Type</h5>
+                        <h4>Sedan</h4>
                     </div>
                 </div>
             </div>
@@ -339,7 +447,9 @@ font-weight: bold;
                     </div>
                 </div>
             </div>
-            
+            <div class="row">
+                
+            </div>
             <!-- end row -->
 
             <!-- end row -->
