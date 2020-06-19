@@ -286,26 +286,12 @@ tr:nth-child(odd) {
             <div class="col-md-3 " style="margin-top: 80px">
                     <ul class="vendorTab">
                       <li class="active" >
-                        <a href="#vendorProfile" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Vendor-Profile-Active.png' %}" alt=""></i>&nbsp;&nbsp;Vendor Profile</a>
+                        <a href="#driverProfile" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Vendor-Profile-Active.png' %}" alt=""></i>&nbsp;Driver Profile</a>
                       </li>
                       <li >
-                        <a href="#carDetail" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Car-details--Active.png' %}" alt=""></i>&nbsp;&nbsp;Car Detail</a>
-                      </li>
-                      <li >
-                        <a href="#driverDetails" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Driver--Active.png' %}" alt=""></i>&nbsp;Driver Details
-                        </a>
-                      </li>
-                      <li >
-                        <a href="#yourBooking" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Assignment-Active.png' %}" alt=""></i>&nbsp;Your Booking
-                        </a>
-                      </li>
-                      <li >
-                        <a href="#assignments" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;Assignments
+                        <a href="#upcomingRides" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Driver--Active.png' %}" alt=""></i>&nbsp;&nbsp;Upcoming
                         </a>
                       </li>
                       <li >
@@ -315,12 +301,17 @@ tr:nth-child(odd) {
                       </li>
                       <li >
                         <a href="#bookingHistory" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/History-Active.png' %}" alt=""></i>&nbsp;Booking History
+                          <i><img src="{% static 'images/icons/History-Active.png' %}" alt=""></i>&nbsp;History
                         </a>
                       </li>
                       <li >
-                        <a href="#payments" data-toggle="tab">
-                          <i><img src="{% static 'images/icons/Payment-Active.png' %}" alt=""></i>&nbsp;Payments
+                        <a href="#incentiveEarn" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Payment-Active.png' %}" alt=""></i>&nbsp;Incentive Earn
+                        </a>
+                      </li>
+                      <li >
+                        <a href="#sellRide" data-toggle="tab">
+                          <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;Sell a Ride
                         </a>
                       </li>
                     </ul>
@@ -330,9 +321,9 @@ tr:nth-child(odd) {
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
                     <div class="tab-content" id="vendorDashboard">
-                        <div class="tab-pane masterDashboard active" id="vendorProfile" role="tabpanel">
+                        <div class="tab-pane masterDashboard active" id="driverProfile" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Vendor Profile</h4>
+                                <h4 class="text-center tab-heading">Driver Profile</h4>
                             </div>
                             <div class="col-sm-12">
                         <ul class="dashboardTab ">
@@ -777,9 +768,9 @@ tr:nth-child(odd) {
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="driverDetails" role="tabpanel">
+                        <div class="tab-pane" id="upcomingRides" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Driver Details</h4>
+                                <h4 class="text-center tab-heading">Upcoming</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
                                 <table>
@@ -1255,14 +1246,7 @@ tr:nth-child(odd) {
                                 <button>ghi</button>
                             </div> -->
                         </div>
-                        <div class="tab-pane" id="assignments" role="tabpanel">
-                          <div class="col-md-12 col-sm-12 vendorHeader">
-                            <h4 class="text-center tab-heading">Booking Assignments</h4>
-                          </div>
-                          <div class="col-sm-12 col-md-12">
-                            
-                          </div>
-                        </div>
+                        
 
                         <div class="tab-pane" id="rideDetails" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
@@ -1512,18 +1496,26 @@ tr:nth-child(odd) {
 
                         <div class="tab-pane" id="bookingHistory" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Booking History</h4>
+                                <h4 class="text-center tab-heading">History</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="payments" role="tabpanel">
+                        <div class="tab-pane" id="incentiveEarn" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Payments</h4>
+                                <h4 class="text-center tab-heading">Incentive Earn</h4>
                             </div>
                             <div class="col-sm-12 col-md-12">
                             </div>
+                        </div>
+                        <div class="tab-pane" id="sellRide" role="tabpanel">
+                          <div class="col-md-12 col-sm-12 vendorHeader">
+                            <h4 class="text-center tab-heading">Sell a Ride</h4>
+                          </div>
+                          <div class="col-sm-12 col-md-12">
+                            
+                          </div>
                         </div>
                     </div>          
                 </div>
