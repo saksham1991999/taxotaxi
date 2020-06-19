@@ -1975,6 +1975,7 @@ function PaginationButton (page, items) {
 DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
 </script>
+<!-- profile page js file start -->
 <script type="text/javascript">
 
    function remove1(req){
@@ -2105,13 +2106,6 @@ function outFunc() {
             $("#password_strength").css("color", color);
         });
     });
-
-$(document).ready(function () {
-    $('.input-file').change(function (e) {
-      var fileName = e.target.files[0].name;
-      $('.p23').text(fileName);
-    });
-  });
 </script>
 <script type="text/javascript">
   //Toggle password icon code
@@ -2139,6 +2133,7 @@ $(".toggle-password1").click(function() {
   }
 });
 </script>
+<!-- profile page js file end except datetimepicker -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
@@ -2221,10 +2216,6 @@ $(".toggle-password1").click(function() {
     $("#hide-driverbtn").click(function(){
         $(".addDriverFoam").hide();
     });
-     $('.input-file2').change(function (e) {
-            var fileName = e.target.files[0].name;
-      $('.p24').text(fileName);
-    });
      $("#legalCase").change(function(){
         var selected = $("#legalCase").children("option:selected").val();
         // console.log(selected);
@@ -2237,6 +2228,28 @@ $(".toggle-password1").click(function() {
             $("#caseInput").css({"display":"none"})
         }
     })
+</script>
+<script type="text/javascript">
+    $(function () {
+        // Function to return file name to the input field
+         $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
+        });
+
+         $('.input-file').change(function (e) {
+                var fileName = e.target.files[0].name;
+              $('.p23').text(fileName);
+            });
+                 $('.input-file2').change(function (e) {
+                    var fileName = e.target.files[0].name;
+              $('.p24').text(fileName);
+            }) ;
+    });
+
 </script>
 {% endblock extra_scripts %}
 

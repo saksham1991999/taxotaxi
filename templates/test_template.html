@@ -2106,13 +2106,6 @@ function outFunc() {
             $("#password_strength").css("color", color);
         });
     });
-
-$(document).ready(function () {
-    $('.input-file').change(function (e) {
-      var fileName = e.target.files[0].name;
-      $('.p23').text(fileName);
-    });
-  });
 </script>
 <script type="text/javascript">
   //Toggle password icon code
@@ -2223,10 +2216,6 @@ $(".toggle-password1").click(function() {
     $("#hide-driverbtn").click(function(){
         $(".addDriverFoam").hide();
     });
-     $('.input-file2').change(function (e) {
-            var fileName = e.target.files[0].name;
-      $('.p24').text(fileName);
-    });
      $("#legalCase").change(function(){
         var selected = $("#legalCase").children("option:selected").val();
         // console.log(selected);
@@ -2239,6 +2228,28 @@ $(".toggle-password1").click(function() {
             $("#caseInput").css({"display":"none"})
         }
     })
+</script>
+<script type="text/javascript">
+    $(function () {
+        // Function to return file name to the input field
+         $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
+        });
+
+         $('.input-file').change(function (e) {
+                var fileName = e.target.files[0].name;
+              $('.p23').text(fileName);
+            });
+                 $('.input-file2').change(function (e) {
+                    var fileName = e.target.files[0].name;
+              $('.p24').text(fileName);
+            }) ;
+    });
+
 </script>
 {% endblock extra_scripts %}
 

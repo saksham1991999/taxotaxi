@@ -375,13 +375,6 @@ function outFunc() {
             $("#password_strength").css("color", color);
         });
     });
-
-$(document).ready(function () {
-    $('.input-file').change(function (e) {
-      var fileName = e.target.files[0].name;
-      $('.p23').text(fileName);
-    });
-  });
 </script>
 <script type="text/javascript">
   //Toggle password icon code
@@ -397,18 +390,23 @@ $(".toggle-password").click(function() {
 });
 </script>
 <script type="text/javascript">
-  //Toggle password icon code
-$(".toggle-password1").click(function() {
+    $(function () {
+        // Function to return file name to the input field
+         $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
+        });
 
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-</script> 
+         $('.input-file').change(function (e) {
+                var fileName = e.target.files[0].name;
+              $('.p23').text(fileName);
+            });
+    });
+
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 {% endblock extra_scripts %}
