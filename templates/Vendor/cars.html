@@ -347,6 +347,19 @@
         $(".addCarFoam").hide();
     });
 </script>
+<script type="text/javascript">
+    $(function () {
+        // Function to return file name to the input field
+         $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
+        });
+    });
+
+</script>
 
 
 {% endblock extra_scripts %}
