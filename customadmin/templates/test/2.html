@@ -3,7 +3,122 @@
 
 
 {% block extra_stylesheet %}
+<style>
+    .collapse-row{
+    padding: 0px !important;
+}
+.collapse-row h5{
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-size: 0.8rem;
+}
+.labels h5{
+    font-weight: 900;
+    color: black;
+}
+.header{
+    background-color: rgb(255, 253, 250);
+    padding: 10px;
+    
+}
+.header-info h5{
+    font-size: 0.9rem;
+    padding: 5px 0px;
+}
+.header-info h5 span{
+    font-weight: 900;
+    color: blue;
+    font-size: 0.9rem;
+    padding: 5px 0px;
+}
+.address{
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(255, 253, 250);
+}
+.address-info{
+    margin: 10px 0px;
+}
+.address-info h5{
+    color: blue;
+    font-weight: 900;
+    font-size: 0.9rem;
+}
+.address-info p{
+    font-size: 0.8rem;
+}
+.special{
+    padding: 20px;
+}
+.special h5{
+    color: blue;
+    font-weight: 900;
+    font-size: 0.9rem;
+}
+.fare h4{
+    font-size: 0.9rem;
+}
+.fare h5{
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-size: 0.9rem;
+}
 
+.check{
+  color: #17ee17;
+font-weight: bold;   
+}
+.cross{
+     color: red;
+font-weight: bold;
+}
+.wait{
+   color: #ffc000;;
+font-weight: bold;
+}
+.common-vendors-card{
+    background-color:rgb(255, 253, 250) ;
+    padding: 30px;
+    margin: auto;
+}
+.common-vendors div{
+    width: 100%;
+    display: flex;
+}
+.common-vendors div h5{
+    width: 50%;
+}
+.common-vendors-card > h5{
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: black;
+    padding-bottom: 20px;
+    text-align: center;
+}
+.common-vendors-card .common-vendors h5{
+    font-size: 0.8rem;
+}
+.common-vendors-card .common-vendors .attributes h5{
+    color: blue;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+.bid{
+    margin-top: 0px;
+}
+.status{
+    background-color:rgb(255, 253, 250) ;
+    padding: 10px 0px;
+    text-align: center;
+}
+.status h5{
+    font-size: 0.9rem;
+    padding: 10px 0px;
+}
+.status h4{
+    font-size: 0.8rem;
+}
+</style>
 {% endblock extra_stylesheet %}
 
 
@@ -14,69 +129,217 @@
     <div class="page-content">
         <div class="container-fluid">
 
-            <!-- start page title -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Blog Categories Form</h4>
-
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Blogs</a></li>
-                                <li class="breadcrumb-item active">Blog Categories Form</li>
-                            </ol>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            
             <!-- end page title -->
-
+            <div class="header">
+            <div class="row header-info">
+                
+                    <div class="col-sm-3">
+                        <h5><span>Name</span> : Abhinav</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5><span>Booking Id </span>: 456168POJ</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5><span>Car Type</span> : Sedan</h5>
+                    </div>
+                    <div class="col-sm-3">
+                        <h5><span>Ride Type</span> : One Way</h5>
+                    </div>
+                
+            </div>
+            <div class="row header-info">
+                <div class="col-sm-3">
+                    <h5><span>Distance</span> : 450km</h5>
+                </div>
+                <div class="col-sm-3">
+                    <h5><span>Duration</span> : 2hr</h5>
+                </div>
+                <div class="col-sm-3">
+                    <h5><span>Phone</span> : 9876543210</h5>
+                </div>
+                <div class="col-sm-3">
+                    <h5><span>Final Amount</span> : 498.00</h5>
+                </div>
+            </div>
+            <div class="row header-info">
+                <div class="col-sm-6">
+                    <h5><span>Pickup</span> : Delhi</h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5><span>Drop</span> : Faridabad</h5>
+                </div>
+            </div>
+            </div>
             <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Booking Id</th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>2</td>
-                                    <td>456813</td>
-                                    <td>20/06/2020</td>
-                                    <td>12:00 A.M.</td>
-                                    <td>
-                                        <button type="button" style="padding-right: 10px;margin-right: 10px;" class="btn btn-warning waves-effect waves-light mb-2">
-                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Details
-                                        </button>
-                                    </td>
-                                </tr>
-                              
-                                <tr>
-                                    <td>3 </td>
-                                    <td>456813</td>
-                                    <td>20/06/2020</td>
-                                    <td>12:00 A.M.</td>
-                                    <td>
-                                        <button type="button" style="padding-right: 10px;margin-right: 10px;" class="btn btn-warning waves-effect waves-light mb-2">
-                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Details
-                                        </button>
-                                    </td>
-                                </tr>
-                                
-                                </tbody>
-                            </table>
+                <div class="col-sm-4 address">
+                    <div class="address-info">
+                        <h5>Pickup Location</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse consequuntur velit quos sint itaque distinctio neque laboriosam suscipit magnam. Deleniti!</p>
+                    </div>
+                    <div class="address-info">
+                        <h5>Pickup Date</h5>
+                        <p>20/06/2020</p>
+                    </div>
+                    <div class="address-info">
+                        <h5>Pickup TIme</h5>
+                        <p>9:00 A.M.</p>
+                    </div>
+                    <div class="address-info">
+                        <h5>Drop Location</h5>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit porro inventore facere suscipit, eius placeat delectus saepe provident deserunt ad!</p>
+                    </div>
+                    <div class="address-info">
+                        <h5>Drop Date</h5>
+                        <p>20/06/2020</p>
+                    </div>
+                    <div class="address-info">
+                        <h5>Drop Timr</h5>
+                        <p>11:00 A.M.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4 address special">
+                    <h5>Specail Requirements</h5>
+                    <p><span class="check">&#10004</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, in.</p>
+                    <p><span class="check">&#10004</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, dolores.</p>
+                    <p><span class="check">&#10004</span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, tempore!</p>
+                </div>
+                <div class="col-sm-3 address fare">
+                    <h4 style="color: blue; font-weight: 900;">Fare</h4>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Initial Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Additional Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Early Pickup Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Late Drop Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Night Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">GST Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Final Charges</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Balance</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Coupon</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Final Ride</h5>
+                        <h4>100.00</h4>
+                    </div>
+                    <div style="display: flex;">
+                        <h5 style="width: 50%;">Fair</h5>
+                        <h4>100.00</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-1 status">
+                    <h5>Status</h5>
+                    <h4 class="cross">&#10008 Select Vendor</h4>
+                    <h4 class="cross">&#10008 Assign Vendor</h4>
+                </div>
+                <div class="col-sm-5 common-vendors-card">
+                    <h5>TaxoTaxi common vendors</h5>
+                    <div class="row common-vendors">
+                        <div class="attributes">
+                            <h5>#</h5>
+                            <h5>Name</h5>
+                            <h5>Phone</h5>
+                            <h5>Company</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox" name="" id=""></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox"></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-5 common-vendors-card bid">
+                    <h5>Bids(Vendor)</h5>
+                    <div class="row common-vendors">
+                        <div class="attributes">
+                            <h5>#</h5>
+                            <h5>Name</h5>
+                            <h5>Phone</h5>
+                            <h5>Company</h5>
+                            <h5>Bid Amount</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox" name="" id=""></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                            <h5>200</h5>
+                        </div>
+                        <div>
+                            <h5><input type="checkbox" name="" id=""></h5>
+                            <h5>Abhay</h5>
+                            <h5>46845154687</h5>
+                            <h5>asdas</h5>
+                            <h5>300</h5>
                         </div>
                     </div>
                 </div>
             </div>
+            
             <!-- end row -->
 
             <!-- end row -->
