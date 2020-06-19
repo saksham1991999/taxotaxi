@@ -221,14 +221,34 @@ tr:nth-child(odd) {
           margin-top: 7px;
           text-align: center;
          }
+         @media(min-width: 770px){
+          .dashButton button[type="submit"]{
+            margin-left: 25%;
+         }
          .dashButton{
-          margin-top: 25px;
+           margin-top: 25px;
+         }
+         }
+         @media(max-width: 481px){
+           .dashButton{
+           margin-top: 65px;
+           margin-left: 20%;
+           display: block!important;
+         }
+
+         }
+         @media ( max-width:769px ) and ( min-width:481px ){
+            .dashButton{
+           margin-top: 65px;
+           float: inline-end;
+           margin-right: 15%;
+         }
+         }
+         .dashButton{
           display: flex;
           margin-bottom: 10px;
          }
-         .dashButton button[type="submit"]{
-            margin-left: 25%;
-         }
+         
          .dashButton button[type="cancel"],#hide-carbtn,#hide-driverbtn{
             background-color: #7f7f7f;
          }
