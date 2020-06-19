@@ -5637,7 +5637,7 @@ background-color: ##4CAF50 !important;
     background-color: #f12b2b !important;
 }
 #datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
-     width: 89%;
+     width: 100%;
 }
 /*#datepicker1{ width: 103%;}*/
 #datepicker1 > span:hover{cursor: pointer;}

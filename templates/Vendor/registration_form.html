@@ -170,9 +170,9 @@
 .add-cars:hover{
     background-color: #f12b2b !important;
 }
-#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
+/*#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
      width: 89%;
-}
+}*/
 /*#datepicker1{ width: 103%;}*/
 #datepicker1 > span:hover{cursor: pointer;}
 #datepicker2 > span:hover{cursor: pointer;}
@@ -234,7 +234,7 @@
                                         <div class="foam-field">
                                         <label>Date Of Birth</label>
                                             {% render_field profile_form.dob id="datepicker1" data-date-format="mm-dd-yyyy" readonly='true' %}
-                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
 
@@ -495,7 +495,7 @@
                                 <label>RC valid upto</label>
                                     {% render_field car_form.rc_valid_upto id="datepicker5" data-date-format="mm-dd-yyyy" readonly='true' %}
 {#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                   <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
 
                                  <div class="foam-field ">
@@ -514,7 +514,7 @@
                                 <div class="foam-field">
                                 <label>Tourist Permit valid upto</label>
                                     {% render_field car_form.touristpermit_valid_upto id="datepicker6" data-date-format="mm-dd-yyyy" readonly='true' %}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field ">
                                 <label>Upload Permit A*</label>
@@ -550,7 +550,7 @@
                                 <div class="foam-field">
                                     <label>Insurance valid upto</label>
                                     {% render_field car_form.touristpermit_valid_upto id="datepicker7" data-date-format="mm-dd-yyyy" readonly='true' %}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
 
                                 <div class="foam-field ">
@@ -590,7 +590,7 @@
                                 <div class="foam-field">
                                 <label>Date Of Birth</label>
                                     {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
 
                                 <div class="foam-field">
@@ -670,13 +670,13 @@
                                 <div class="foam-field">
                                 <label>Valid From*</label>
                                     {%  render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 <!-- <input type="date" name="vendorName"> -->
                                 </div>
                                 <div class="foam-field">
                                 <label>Valid To*</label>
                                     {%  render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
-                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
                                     <label>Total Driving Experience</label>
