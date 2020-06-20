@@ -11,5 +11,5 @@ urlpatterns = [
     path('booking-history/', views.BookingsHistoryView, name='booking_history'),
     path('bookings/', views.BookingsView, name='bookings'),
     path('assignments/', views.AssignmentsView, name='assignments'),
-    path('ride/<int:id>/', views.RideDetailsView, name='booking'),
+    path('ride/<int:id>/', views.RideDetailsView, name='booking_detail'),
 ]

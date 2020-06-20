@@ -3,40 +3,40 @@
 <div class="col-md-3 " style="margin-top: 80px">
     <ul class="vendorTab">
       <li class="active" >
-        <a href="#vendorProfile" data-toggle="tab">
+        <a href="{% url 'vendor:dashboard' %}">
           <i><img src="{% static 'images/icons/Vendor-Profile-Active.png' %}" alt=""></i>&nbsp;&nbsp;Vendor Profile</a>
       </li>
       <li >
-        <a href="#carDetail" data-toggle="tab">
+        <a href="{% url 'vendor:cars' %}">
           <i><img src="{% static 'images/icons/Car-details--Active.png' %}" alt=""></i>&nbsp;&nbsp;Car Detail</a>
       </li>
       <li >
-        <a href="#driverDetails" data-toggle="tab">
+        <a href="#{% url 'vendor:drivers' %}">
           <i><img src="{% static 'images/icons/Driver--Active.png' %}" alt=""></i>&nbsp;Driver Details
         </a>
       </li>
       <li >
-        <a href="#yourBooking" data-toggle="tab">
+        <a href="{% url 'vendor:bookings' %}">
           <i><img src="{% static 'images/icons/Assignment-Active.png' %}" alt=""></i>&nbsp;Your Booking
         </a>
       </li>
       <li >
-        <a href="#assignments" data-toggle="tab">
+        <a href="{% url 'vendor:assignments' %}">
           <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;Assignments
         </a>
       </li>
       <li >
-        <a href="#assignments" data-toggle="tab">
+        <a href="{% url 'vendor:dashboard' %}">
           <i><img src="{% static 'images/icons/Ride-details-active.png' %}" alt=""></i>&nbsp;Ride Details
         </a>
       </li>
       <li >
-        <a href="#bookingHistory" data-toggle="tab">
+        <a href="{% url 'vendor:booking_history' %}">
           <i><img src="{% static 'images/icons/History-Active.png' %}" alt=""></i>&nbsp;Booking History
         </a>
       </li>
       <li >
-        <a href="#payments" data-toggle="tab">
+        <a href="{% url 'vendor:payments' %}">
           <i><img src="{% static 'images/icons/Payment-Active.png' %}" alt=""></i>&nbsp;Payments
         </a>
       </li>

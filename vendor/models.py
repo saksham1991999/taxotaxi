@@ -20,13 +20,13 @@ class vendorprofile(models.Model):
 
     address = models.TextField()
 
-    pancard = models.FileField()
-    aadharcard_front = models.FileField()
-    aadharcard_rear = models.FileField()
-    votercard_front = models.FileField(blank=True, null=True)
-    votercard_rear = models.FileField(blank=True, null=True)
-    driving_licence_front = models.FileField(blank=True, null=True)
-    driving_licence_rear = models.FileField(blank=True, null=True)
+    pancard = models.ImageField()
+    aadharcard_front = models.ImageField()
+    aadharcard_rear = models.ImageField()
+    votercard_front = models.ImageField(blank=True, null=True)
+    votercard_rear = models.ImageField(blank=True, null=True)
+    driving_licence_front = models.ImageField(blank=True, null=True)
+    driving_licence_rear = models.ImageField(blank=True, null=True)
 
     company_name = models.CharField(max_length=100, blank=True, null=True)
     gst_no = models.CharField(max_length=15, blank=True, null=True)
@@ -87,24 +87,24 @@ class vendor_cars(models.Model):
     image_front = models.ImageField()
     image_rear = models.ImageField()
 
-    rc_front = models.FileField()
-    rc_rear = models.FileField()
+    rc_front = models.ImageField()
+    rc_rear = models.ImageField()
     rc_valid_upto = models.DateField()
 
-    touristpermit_front = models.FileField()
-    touristpermit_rear = models.FileField(blank=True, null=True)
+    touristpermit_front = models.ImageField()
+    touristpermit_rear = models.ImageField(blank=True, null=True)
     touristpermit_valid_upto = models.DateField()
 
-    permita_front = models.FileField()
-    permita_rear = models.FileField(blank=True, null=True)
+    permita_front = models.ImageField()
+    permita_rear = models.ImageField(blank=True, null=True)
 
-    permitb_front = models.FileField()
-    permitb_rear = models.FileField(blank=True, null=True)
+    permitb_front = models.ImageField()
+    permitb_rear = models.ImageField(blank=True, null=True)
 
-    insurance_front = models.FileField()
-    insurance_rear = models.FileField(blank=True, null=True)
+    insurance_front = models.ImageField()
+    insurance_rear = models.ImageField(blank=True, null=True)
     insurance_valid_upto = models.DateField()
-    pollution_certificate = models.FileField(blank=True, null=True)
+    pollution_certificate = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return str(self.id) + str(self.car_type)
@@ -130,16 +130,16 @@ class driver(models.Model):
     contact2 = models.CharField(max_length=10, blank=True, null=True)
     address = models.TextField()
 
-    pancard_front = models.FileField()
-    pancard_rear = models.FileField()
+    pancard_front = models.ImageField()
+    pancard_rear = models.ImageField()
 
-    aadharcard_front = models.FileField()
-    aadharcard_rear = models.FileField()
-    votercard_front = models.FileField(blank=True, null=True)
-    votercard_rear = models.FileField(blank=True, null=True)
+    aadharcard_front = models.ImageField()
+    aadharcard_rear = models.ImageField()
+    votercard_front = models.ImageField(blank=True, null=True)
+    votercard_rear = models.ImageField(blank=True, null=True)
 
-    driving_licence_front = models.FileField(blank=True, null=True)
-    driving_licence_rear = models.FileField(blank=True, null=True)
+    driving_licence_front = models.ImageField(blank=True, null=True)
+    driving_licence_rear = models.ImageField(blank=True, null=True)
     driving_licence_no = models.CharField(max_length=50, blank=True, null=True)
     driving_licence_valid_from = models.DateField()
     driving_licence_valid_till = models.DateField()
@@ -147,9 +147,9 @@ class driver(models.Model):
     driving_experience = models.PositiveSmallIntegerField()
     hill_experience = models.PositiveSmallIntegerField()
 
-    police_verification_front = models.FileField(blank=True, null=True)
-    police_verification_rear = models.FileField(blank=True, null=True)
+    police_verification_front = models.ImageField(blank=True, null=True)
+    police_verification_rear = models.ImageField(blank=True, null=True)
 
     legal_accidental_case = models.BooleanField(default=False)
     legal_accidental_case_details = models.TextField(blank=True, null=True)
-    legal_accidental_case_document = models.FileField(blank=True, null=True)
+    legal_accidental_case_document = models.ImageField(blank=True, null=True)
