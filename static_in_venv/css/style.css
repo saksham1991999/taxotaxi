@@ -5566,9 +5566,9 @@ background-color: ##4CAF50 !important;
         font-size: large;
         font-weight: bold;
     }
-    .customer-tab .active{
+   /* .customer-tab .active{
         color: #1c2b39;
-    }
+    }*/
     
     .foam-field{
         display: flex;
