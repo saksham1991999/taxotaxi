@@ -22,58 +22,56 @@
           {% include 'Vendor/vendorSidebar.html' %}
 
                 <!-- --------Begning of navigation tabs---------- -->
-                <div class="col-md-9">
-
-
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center tab-heading">Car Detail</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                                                <table>
-                                     <tr>
-                                       <th>S.N0.</th>
-                                       <th>Car Number</th>
-                                       <th>Car Type</th>
-                                       <th>Owner Name</th>
-                                       <th>Oprational</th>
-                                       <th>Status</th>
-                                     </tr>
-                                     <tr>
-                                       <td>1</td>
-                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                                       <td>Sedan</td>
-                                       <td>Chetain</td>
-                                       <td class="check">&#10004</td>
-                                       <td class="check">Approved</td>
-                                     </tr>
-                                     <tr>
-                                       <td>2</td>
-                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                                       <td>Sedan</td>
-                                       <td>Chetain</td>
-                                       <td class="cross">&#10008</td>
-                                       <td class="cross">Rejected</td>
-                                     </tr>
-                                     <tr>
-                                       <td>3</td>
-                                       <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                                       <td>Sedan</td>
-                                       <td>Chetain</td>
-                                       <td class="cross">&#10008</td>
-                                       <td class="wait">hold</td>
-                                     </tr>
-                                 </table>
-                                 <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-carbtn">Add more Car +</button> </div>
-                                 <div class="col-sm-8 addCarFoam">
-                                  <form class="">
-                                   <div class="foam-field">
-                                    <label>Car Number</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Owner Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
+                <div class="col-md-9" >
+                    <div class="col-md-12 col-sm-12 vendorHeader">
+                        <h4 class="text-center tab-heading">Car Detail</h4>
+                    </div>
+                    <div class="col-sm-12 col-md-12" id="vendorTable">
+                       <table>
+                           <tr>
+                              <th>S.N0.</th>
+                              <th>Car Number</th>
+                              <th>Car Type</th>
+                              <th>Owner Name</th>
+                              <th>Oprational</th>
+                              <th>Status</th>
+                           </tr>
+                           <tr>
+                              <td>1</td>
+                              <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                              <td>Sedan</td>
+                              <td>Chetain</td>
+                              <td class="check">&#10004</td>
+                              <td class="check">Approved</td>
+                           </tr>
+                            <tr>
+                               <td>2</td>
+                               <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                               <td>Sedan</td>
+                               <td>Chetain</td>
+                               <td class="cross">&#10008</td>
+                               <td class="cross">Rejected</td>
+                          </tr>
+                            <tr>
+                              <td>3</td>
+                              <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
+                              <td>Sedan</td>
+                              <td>Chetain</td>
+                              <td class="cross">&#10008</td>
+                              <td class="wait">hold</td>
+                             </tr>
+                       </table>
+                         <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-carbtn">Add more Car +</button> </div>
+                         <div class="col-sm-8 addCarFoam">
+                            <form class="">
+                               <div class="foam-field">
+                                  <label>Car Number</label>
+                                  <input type="text" name="vendorName">
+                               </div>
+                               <div class="foam-field">
+                                  <label>Owner Name</label>
+                                  <input type="text" name="vendorName">
+                               </div>
                                     <div class="foam-field">
                                     <label>Father's Name</label>
                                     <input type="text" name="vendorName">
@@ -172,7 +170,7 @@
                                     </form>
                                  </div>
                          <div class="modal fade" id="carInformation" role="dialog">
-                                                    <div class="modal-dialog" style="width:max-content;">
+                              <div class="modal-dialog" style="width:max-content;">
                              <div class="driver-modal-content" style="width: 80vw;">
                                <div class="modal-header">
                                <div class="col-sm-7" style="display: block;" > 
@@ -194,7 +192,7 @@
                                 <!-- <div class="col-sm-12" style="height: 1px; background-color: #7f7f7f; margin-top: 10px">
 
                                 </div> -->
-                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                <div class="col-sm-12 modalDivider">
                                     <h4>Front Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
@@ -224,11 +222,7 @@
                                         <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
                                     </div>
                                 </div>
-                                
-                                <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
-
-                                </div>
-                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                <div class="col-sm-12 modalDivider" >
                                     <h4>Rear Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
@@ -258,10 +252,7 @@
                                         <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
-
-                                </div>
-                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                <div class="col-sm-12 modalDivider">
                                     <h4>Others</h4>
                                 </div>
                                 <div class="col-sm-12">

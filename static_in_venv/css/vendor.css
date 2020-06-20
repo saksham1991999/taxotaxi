@@ -20,6 +20,12 @@
         color: inherit;
         
     }
+    .vendorTab a:hover{
+        font-size: medium;
+        color: #7f7f7f;
+        text-decoration: none;
+        font-weight: bold;
+    }
     .vendorTab .active{
          color: black;
          font-weight: bold;
@@ -27,11 +33,11 @@
     .vendorTab li img{
         height: 27px;
     }
-    #vendorDashboard h4{
+    .vendorHeader h4{
       font-weight: bold;
       padding: 10px 0px;
     }
-    #vendorDashboard h4 p{
+    .vendorHeader h4 p{
       display: contents;
       font-weight: 400;
     }
@@ -94,20 +100,20 @@ font-weight: bold;
    color: #ffc000;;
 font-weight: bold;
 }
-table {
+#vendorTable table {
   font-family: 'Open Sans', sans-serif;
   border-collapse: collapse;
   width: 100%;
   margin-top: 8px
 }
 
-td, th {
+#vendorTable td,#vendorTable th {
   border: 1px transparent #dddddd;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(odd) {
+#vendorTable tr:nth-child(odd) {
   background-color: #eee;
 }
   .checked {
@@ -276,6 +282,12 @@ tr:nth-child(odd) {
        }
        .addDriverFoam #datepicker2,.addDriverFoam #datepicker3,.addDriverFoam #datepicker4{
         width: 86%;
+       }
+       .modalDivider{
+        /*height: 1px;*/ 
+        background-color: #f9f9f9; 
+        margin-top: 10px;
+        color: black;
        }
 
     /* label{margin-left: 20px;} */

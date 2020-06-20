@@ -23,12 +23,10 @@
 
                 <!-- --------Begning of navigation tabs---------- -->
                 <div class="col-md-9">
-                    <div class="tab-content" id="vendorDashboard">
-                                                <div class="tab-pane" id="driverDetails" role="tabpanel">
                             <div class="col-md-12 col-sm-12 vendorHeader">
                                 <h4 class="text-center tab-heading">Driver Details</h4>
                             </div>
-                            <div class="col-sm-12 col-md-12">
+                            <div class="col-sm-12 col-md-12" id="vendorTable">
                                 <table>
                                      <tr>
                                        <th>S.N0.</th>
@@ -261,10 +259,7 @@
                                     
                                 </div>
                             
-                                <div class="col-sm-12" style="height: 1px; background-color: #7f7f7f; margin-top: 10px">
-
-                                </div>
-                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                <div class="col-sm-12 modalDivider">
                                     <h4>Documents Front Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
@@ -295,11 +290,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
-
-                                </div>
-                                <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
+                                <div class="col-sm-12 modalDivider">
                                     <h4>Documents Rear Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
@@ -340,8 +331,7 @@
                             {% endfor %}
                             </div>
                         </div>
-                    </div>
-                </div>
+                    
         </div>
     </div>
 </div>

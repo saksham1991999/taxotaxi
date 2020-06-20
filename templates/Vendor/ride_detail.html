@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load fullurl %}
+
+{% block extra_stylesheet %}
+
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+
+          {% include 'Vendor/vendorSidebar.html' %}
+
+                <!-- --------Begning of navigation tabs---------- -->
+                <div class="col-md-9">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center tab-heading">Payments</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12">
+                               
+
+                            </div>
+                        
+                </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+   
+
+
+{% endblock extra_scripts %}
