@@ -289,6 +289,12 @@ font-weight: bold;
         margin-top: 10px;
         color: black;
        }
+       .responsiveTable{
+        overflow-x: auto;
+       }
+       .setTableWidth{
+        min-width: 125px
+       }
 
     /* label{margin-left: 20px;} */
 /*#datepicker > input {
