@@ -27,10 +27,11 @@
                                 <h4 class="text-center tab-heading">Driver Details</h4>
                             </div>
                             <div class="col-sm-12 col-md-12" id="vendorTable">
+                                <div class="responsiveTable">
                                 <table>
                                      <tr>
                                        <th>S.N0.</th>
-                                       <th>Driver Name</th>
+                                       <th class="setTableWidth">Driver Name</th>
                                        <th>Phone No</th>
                                        <th>Oprational</th>
                                        <th>Status</th>
@@ -39,7 +40,7 @@
                                     {% for driver in drivers %}
                                      <tr>
                                        <td>{{ forloop.counter }}</td>
-                                       <td><a data-toggle="modal" data-target="#driverInformation-{{ forloop.counter }}">{{ driver.full_name }}</a></td>
+                                       <td class="setTableWidth"><a data-toggle="modal" data-target="#driverInformation-{{ forloop.counter }}">{{ driver.full_name }}</a></td>
                                        <td>{{ driver.contact1 }}</td>
                                          {% if driver.status == 'Approved' %}
                                            <td class="check">&#10004</td>
@@ -59,6 +60,7 @@
                                      </tr>
                                     {% endfor %}
                                  </table>
+                               </div>
                                  <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Car +</button> </div>
                                  <div class="col-sm-12 addDriverFoam">
                                   <form >
