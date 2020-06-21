@@ -216,8 +216,9 @@
 
 
                                     <div class="col-sm-7">
-                                        <div class="errorSpace"> Error Message</div>
-                                        <div class="errorSpace"> Error Message</div>
+                                        {% for error in profile_form.non_field_errors %}
+                                            <div class="errorSpace">{{ error }}</div>
+                                        {% endfor %}
 
                                         <div class="foam-field">
                                             <label>Full Name</label>
@@ -425,7 +426,9 @@
                                     
                             </form> -->
                             <div class="col-sm-5">
-                                <div class="errorSpace"> Error Message</div>
+                                {% for error in profile_form.non_field_errors %}
+                                    <div class="errorSpace">{{ error }}</div>
+                                {% endfor %}
                                 <div class="carTypeHeader">
                                 <div class="foam-field">
 
@@ -435,12 +438,12 @@
                                 </div>
                                 <div class="foam-field">
                                     <label>Total Sedan</label>
-                                    {% render_field profile_form.total_compact %}
+                                    {% render_field profile_form.total_sedan %}
 
                                 </div>
                                 <div class="foam-field">
                                     <label>Total SUV</label>
-                                    {% render_field profile_form.total_compact %}
+                                    {% render_field profile_form.total_suv %}
 
                                 </div>
                                 </div>
@@ -575,7 +578,10 @@
                                 <label for="">Is Vendor/Driver same</label>
                             </div>
                             <div class="col-sm-7">
-                                <div class="errorSpace"> Error Message</div>
+                                {% for error in driver_form.non_field_errors %}
+                                    <div class="errorSpace">{{ error }}</div>
+                                {% endfor %}
+
                                 <div class="foam-field">
                                     <label>Full Name</label>
                                     {% render_field driver_form.full_name %}

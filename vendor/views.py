@@ -84,6 +84,7 @@ def VendorRegistrationView(request):
             vendor.mobile = vendor_mobile
             vendor.is_vendor = True
             vendor.save()
+            new_profile_form.status = "Pending"
             new_profile_form.user = vendor
             new_profile_form.save()
 
@@ -100,11 +101,12 @@ def VendorRegistrationView(request):
             driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
             driver.is_driver = True
             driver.save()
+            new_driver_form.status = "Pending"
             new_driver_form.user = driver
             new_driver_form.save()
 
-
             car = car_form.save(commit=False)
+            car.status = "Pending"
             car.vendor = profile_form
             car.save()
 
