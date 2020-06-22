@@ -724,7 +724,7 @@
 
                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                               <div class="drag-drop">
-                                {% render_field driver_form.image %}
+                                {% render_field driver_form.image class="input-file2" %}
                                   <p class="p24">
                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                    </i><br> Drag&Drop files here <br> or<br>
@@ -773,10 +773,10 @@
     $("#legalCase").change(function(){
         var selected = $("#legalCase").children("option:selected").val();
         // console.log(selected);
-        if( selected == "1"){
+        if( selected == "true"){
             $("#caseInput").css({"display":"block"})
         }
-        else if( selected == "0"){
+        else if( selected == "false"){
             $("#caseInput").css({"display":"none"})
         }else{
             $("#caseInput").css({"display":"none"})
