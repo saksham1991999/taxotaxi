@@ -4,10 +4,16 @@
 {% block extra_stylesheet %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
-
+ 
 {% endblock extra_stylesheet %}
 {% block content %}
-<div class="tab-pane" id="yourBooking" role="tabpanel">
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+
+          {% include 'Vendor/vendorSidebar.html' %}
+
+<div class="col-md-9">
    <div class="col-md-12 col-sm-12 vendorHeader">
       <h4 class="tab-heading">Available Booking<p>(Active Rides)</p></h4>
    </div>
@@ -154,6 +160,10 @@
                                 <button>ghi</button>
                             </div> -->
                         </div>
+                    </div>
+                </div>
+            </div>
+            
 {% endblock content %}
 
 
