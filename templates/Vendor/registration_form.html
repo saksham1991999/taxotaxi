@@ -567,8 +567,8 @@
                             </div>           
                               <div class="col-sm-12 booking-frm buttonallign">
                                   <div style="display: flex;width:fit-content;">
-                                    <button class="book-btn" id="navToDriver" href="#driverDetails" data-toggle="tab" type="button">Next</button>&nbsp;&nbsp;
-                                    <button style="background-color: #7f7f7f;" id="backToVendor" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button><br>
+                                    <button style="background-color: #7f7f7f;" id="backToVendor" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button>&nbsp;&nbsp;
+                                    <button class="book-btn" id="navToDriver" href="#driverDetails" data-toggle="tab" type="button">Next</button><br>
                                   </div><br>
                               </div>
                         </div>
@@ -737,8 +737,8 @@
                             </div>
                             <div class="col-sm-12 booking-frm buttonallign ">
                                 <div style="display: flex;width:fit-content;">
-                                  <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                  <button style="background-color: #7f7f7f;" id="navToCar" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button><br>
+                                  <button style="background-color: #7f7f7f;" id="backToCar" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button>&nbsp;&nbsp;
+                                  <button class="book-btn" type="submit">Submit</button><br>
                                 </div><br>
                             </div>
                         </div>
@@ -893,8 +893,20 @@
       $("#carTb").removeClass("active");
       $("#driverTb").addClass("active");
     });
+    $("#backToCar").click(function() {
+        $("#vendorTb").removeClass("active");
+      $("#driverTb").removeClass("active");
+      $("#carTb").addClass("active");
+    });
     
 
+</script>
+<script language="JavaScript">
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name");
+frmvalidator.addValidation("email","req","Please provide your email");
+frmvalidator.addValidation("email","email",
+  "Please enter a valid email address");
 </script>
 
 {% endblock extra_scripts %}
