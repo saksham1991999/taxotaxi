@@ -8,7 +8,7 @@
       </li>
       <li {% if request.resolver_match.view_name == 'vendor:cars' %}class="active"{% endif %}>
         <a href="{% url 'vendor:cars' %}">
-          <i><img src="{% static 'images/icons/Car-details--Active.png' %}" alt=""></i>&nbsp;Car Detail</a>
+          <i><img src="{% static 'images/icons/Car-details--Active.png' %}" alt=""></i>&nbsp;Car Details</a>
       </li>
       <li {% if request.resolver_match.view_name == 'vendor:drivers' %}class="active"{% endif %}>
         <a href="{% url 'vendor:drivers' %}">

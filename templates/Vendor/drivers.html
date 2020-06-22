@@ -70,47 +70,80 @@
                                                 <label>Full Name</label>
                                                 {% render_field driver_form.full_name %}
                                             </div>
-                                            <div class="errorSpace"> Error Message</div>
+
+                                            {% for error in driver_form.full_name.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Father's Name</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.father_name %}
                                             </div>
+
+                                            {% for error in driver_form.father_name.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Date Of Birth</label>
-                                                {% render_field driver_form.full_name %}
-                                                <input type="text" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
+                                                {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
                                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                             </div>
+
+                                            {% for error in driver_form.dob.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Email address*</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.email %}
                                             </div>
+
+                                            {% for error in driver_form.email.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Phone No 1*</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.contact1 %}
                                             </div>
+
+                                            {% for error in driver_form.contact1.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Phone No 2*</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.contact2 %}
                                             </div>
+
+                                            {% for error in driver_form.contact2.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label>Address*</label>
-                                                {% render_field driver_form.full_name %}
-                                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                                {% render_field driver_form.address %}
                                             </div>
+
+                                            {% for error in driver_form.address.errors %}
+                                                <div class="errorSpace"> {{ error}}</div>
+                                            {% endfor %}
+
                                             <div class="foam-field">
                                                 <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
                                             </div>
+
                                             <div class="foam-field">
                                                 <label>PAN Card*</label>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.pancard_front %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Front Side
                                                     </p>
                                                 </div>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.pancard_rear %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Back side
                                                     </p>
@@ -122,13 +155,13 @@
                                                     <p>Size must be 200KB</p>
                                                 </label>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.aadharcard_front %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Front Side
                                                     </p>
                                                 </div>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.aadharcard_rear %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Back side
                                                     </p>
@@ -137,13 +170,13 @@
                                             <div class="foam-field">
                                                 <label>Voter Card</label>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.votercard_front %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Front Side
                                                     </p>
                                                 </div>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.votercard_rear %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Back side
                                                     </p>
@@ -152,13 +185,13 @@
                                             <div class="foam-field">
                                                 <label>Driving Licence</label>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.driving_licence_front %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Front Side
                                                     </p>
                                                 </div>
                                                 <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.driving_licence_rear %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Back side
                                                     </p>
@@ -166,24 +199,22 @@
                                             </div>
                                             <div class="foam-field">
                                                 <label>Valid From*</label>
-                                                {% render_field driver_form.full_name %}
-                                                <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
+                                                {% render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
                                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                                 <!-- <input type="date" name="vendorName"> -->
                                             </div>
                                             <div class="foam-field">
                                                 <label>Valid To*</label>
-                                                {% render_field driver_form.full_name %}
-                                                <input type="text" id="datepicker3" data-date-format="mm-dd-yyyy" readonly />
+                                                {% render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
                                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                             </div>
                                             <div class="foam-field">
                                                 <label>Total Driving Experience</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.driving_experience %}
                                             </div>
                                             <div class="foam-field">
                                                 <label>Hill Driving Experience</label>
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.hill_experience %}
                                             </div>
                                             <div class="foam-field">
                                                 <label>
@@ -191,7 +222,7 @@
                                                     <p>With in 15days or 6 months old</p>
                                                 </label>
                                                 <div class="vendorFile">
-                                                    {% render_field driver_form.full_name %}
+                                                    {% render_field driver_form.police_verification_front %}
                                                     <p class="fileUploadtext">
                                                         <i class="far fa-file"></i> Drop file here
                                                     </p>
@@ -210,7 +241,7 @@
                                                 <div class="foam-field">
                                                     <label style="color: #e61616;" >Upload supporting documents*</label>
                                                     <div class="vendorFile">
-                                                        {% render_field driver_form.full_name %}
+                                                        {% render_field driver_form.legal_accidental_case_document %}
                                                         <p class="fileUploadtext">
                                                             <i class="far fa-file"></i> Drop file here
                                                         </p>
@@ -221,7 +252,7 @@
                                         </div>
                                         <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
                                             <div class="drag-drop">
-                                                {% render_field driver_form.full_name %}
+                                                {% render_field driver_form.image %}
                                                 <p class="p24">
                                                     <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                                     </i><br> Drag&Drop files here <br> or<br>
