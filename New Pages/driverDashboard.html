@@ -347,7 +347,7 @@ tr:nth-child(odd) {
                                 </div>
                                 <div class="foam-field">
                                 <label>Date Of Birth</label>
-                                    <input type="text" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
+                                    <input type="text" id="datepicker4" readonly />
                                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
@@ -416,13 +416,13 @@ tr:nth-child(odd) {
                                  
                                 <div class="foam-field">
                                 <label>Valid From*</label>
-                                    <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
+                                    <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" readonly />
                                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 <!-- <input type="date" name="vendorName"> -->
                                 </div>
                                 <div class="foam-field">
                                 <label>Valid To*</label>
-                                    <input type="text" id="datepicker3" data-date-format="mm-dd-yyyy" readonly />
+                                    <input type="text" id="datepicker3" readonly />
                                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
@@ -643,7 +643,7 @@ tr:nth-child(odd) {
                                     </div>
                                     <div class="foam-field">
                                 <label>RC valid upto*</label>
-                                    <input type="text" id="datepicker5"data-date-format="mm-dd-yyyy"readonly />
+                                    <input type="text" id="datepicker5" readonly />
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                     <div class="foam-field">
@@ -681,7 +681,7 @@ tr:nth-child(odd) {
                                     </div>
                                     <div class="foam-field">
                                        <label>Tourist Permit valid upto</label>
-                                           <input type="text" id="datepicker6" data-date-format="mm-dd-yyyy" readonly />
+                                           <input type="text" id="datepicker6"  readonly />
                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                     <div class="foam-field ">
@@ -705,7 +705,7 @@ tr:nth-child(odd) {
                                     </div>
                                     <div class="foam-field">
                                         <label>Insurance valid upto</label>
-                                        <input type="text" id="datepicker7"data-date-format="mm-dd-yyyy" readonly />
+                                        <input type="text" id="datepicker7" readonly />
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                     </div>
                                     <div class="foam-field ">
@@ -897,7 +897,7 @@ tr:nth-child(odd) {
                                 </div>
                                 <div class="foam-field">
                                 <label>Date Of Birth</label>
-                                    <input type="text" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
+                                    <input type="text" id="datepicker4" readonly />
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
@@ -966,13 +966,13 @@ tr:nth-child(odd) {
                                  
                                 <div class="foam-field">
                                 <label>Valid From*</label>
-                                    <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
+                                    <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" readonly />
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 <!-- <input type="date" name="vendorName"> -->
                                 </div>
                                 <div class="foam-field">
                                 <label>Valid To*</label>
-                                    <input type="text" id="datepicker3" data-date-format="mm-dd-yyyy" readonly />
+                                    <input type="text" id="datepicker3" readonly />
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
                                 <div class="foam-field">
@@ -2031,9 +2031,8 @@ DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
 </script>
 <!-- profile page js file start -->
-<script type="text/javascript">
-
-   function remove1(req){
+<script>
+    function remove1(req){
       const PasswordConfirm = document.getElementById('password2');
       PasswordConfirm.classList = "form-text";
 
@@ -2058,8 +2057,6 @@ SetupPagination(list_items, pagination_element, rows);
         input1.className = "fail2"
     }
 
-    
-
     button.addEventListener('click', function(e){
         e.preventDefault();
 
@@ -2069,22 +2066,24 @@ SetupPagination(list_items, pagination_element, rows);
     if(password.value.trim() === ""){
         showError(password, Password,'Please enter a password');
     }
-    // else if(password.value.trim().length > 5){
-    //     password.className = "success"
-    // }else{
-    //     showError(password, Password,'please enter a password of atlest six digits')
-    // }
-
-    if(passwordConfirm.value.trim() === ""){
+    else if(password.value.trim().length > 5){
+        // password.className = "success"
+        if(passwordConfirm.value.trim() === ""){
         showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
     }else if(password.value.trim() === passwordConfirm.value.trim()){
-        passwordConfirm.className = "success"
+        // passwordConfirm.className = "success";
+        $("#change-passwordform").submit();
     }else{
         showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
     }
+    }else{
+        showError(password, Password,'please enter a password of atlest six digits')
+    }
+
+    
    })
-
-
+</script>
+<script type="text/javascript">
     //code for copy input button for referral 
     function copyFunction() {
   var copyText = document.getElementById("refferral-input");
@@ -2175,19 +2174,6 @@ $(".toggle-password").click(function() {
   }
 });
 </script>
-<script type="text/javascript">
-  //Toggle password icon code
-$(".toggle-password1").click(function() {
-
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
-</script>
 <!-- profile page js file end except datetimepicker -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
@@ -2200,8 +2186,8 @@ $(".toggle-password1").click(function() {
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-        var req_date = date + "/" + month + "/" + req_year;
-        var today_date = date + "/" + month + "/" + current_year;
+        var req_date = req_year + "/" + month + "/" + date;
+        var today_date = current_year + "/" + month + "/" + date;
   $("#datepicker").datepicker({ 
         dateformat: "yyyy-mm-dd",
         autoclose: true, 
@@ -2210,14 +2196,14 @@ $(".toggle-password1").click(function() {
   }).datepicker('update', new Date());
   $(function () {
             $("#datepicker2").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false
             })
         });
         $(function () {
             $("#datepicker3").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -2225,7 +2211,7 @@ $(".toggle-password1").click(function() {
         });
         $(function () {
             $("#datepicker4").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
@@ -2263,6 +2249,13 @@ $(".toggle-password1").click(function() {
             }) ;
     });
 
+</script>
+<script language="JavaScript">
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name");
+frmvalidator.addValidation("email","req","Please provide your email");
+frmvalidator.addValidation("email","email",
+  "Please enter a valid email address");
 </script>
 {% endblock extra_scripts %}
 

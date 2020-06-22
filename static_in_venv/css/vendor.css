@@ -280,9 +280,9 @@ font-weight: bold;
        .addDriverFoam{
         display: none;
        }
-       .addDriverFoam #datepicker2,.addDriverFoam #datepicker3,.addDriverFoam #datepicker4{
+       /*.addDriverFoam #datepicker2,.addDriverFoam #datepicker3,.addDriverFoam #datepicker4{
         width: 86%;
-       }
+       }*/
        .modalDivider{
         /*height: 1px;*/ 
         background-color: #f9f9f9; 

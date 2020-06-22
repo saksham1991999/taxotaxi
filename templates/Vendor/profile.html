@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% endblock extra_stylesheet %}
-
+ 
 
 
 {% block content %}
@@ -51,7 +51,7 @@
                                   </div>
                                   <div class="dash_foam">
                                   <label>Date Of Birth</label>
-                                  <input id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                  <input id="datepicker1" class="input-group date" >
                                   <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                   </div>
                                   <div class="dash_foam">
@@ -239,27 +239,29 @@
 
 {% block extra_scripts %}
  <script type="text/javascript">
-        $(function () {
+       $(document).ready(function(){
         var d = new Date();
         var current_year = d.getFullYear();
          /////////////set age restrictions here////////////////////
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-        var req_date = date + "/" + month + "/" + req_year;
-        var today_date = date + "/" + month + "/" + current_year;
-  $("#datepicker").datepicker({ 
-        dateformat: "yyyy-mm-dd",
-        autoclose: true, 
-        todayHighlight: false,
-        endDate: req_date
-  }).datepicker('update', new Date());
-});
+        var req_date = req_year + "/" + month + "/" + date ;
+        var today_date = current_year + "/" + month + "/" + date;
+
+        $(function () {
+            $("#datepicker1").datepicker({ 
+                format: "yyyy-mm-dd",
+                autoclose: true, 
+                todayHighlight: false,
+                endDate: req_date
+            })
+        });
+      })
      
  </script> 
- <script type="text/javascript">
-
-   function remove1(req){
+ <script>
+    function remove1(req){
       const PasswordConfirm = document.getElementById('password2');
       PasswordConfirm.classList = "form-text";
 
@@ -284,8 +286,6 @@
         input1.className = "fail2"
     }
 
-    
-
     button.addEventListener('click', function(e){
         e.preventDefault();
 
@@ -295,22 +295,24 @@
     if(password.value.trim() === ""){
         showError(password, Password,'Please enter a password');
     }
-    // else if(password.value.trim().length > 5){
-    //     password.className = "success"
-    // }else{
-    //     showError(password, Password,'please enter a password of atlest six digits')
-    // }
-
-    if(passwordConfirm.value.trim() === ""){
+    else if(password.value.trim().length > 5){
+        // password.className = "success"
+        if(passwordConfirm.value.trim() === ""){
         showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
     }else if(password.value.trim() === passwordConfirm.value.trim()){
-        passwordConfirm.className = "success"
+        // passwordConfirm.className = "success";
+        $("#change-passwordform").submit();
     }else{
         showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
     }
+    }else{
+        showError(password, Password,'please enter a password of atlest six digits')
+    }
+
+    
    })
-
-
+</script>
+ <script type="text/javascript">
     //code for copy input button for referral 
     function copyFunction() {
   var copyText = document.getElementById("refferral-input");

@@ -1973,9 +1973,8 @@ DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
 </script>
 <!-- profile page js file start -->
-<script type="text/javascript">
-
-   function remove1(req){
+<script>
+    function remove1(req){
       const PasswordConfirm = document.getElementById('password2');
       PasswordConfirm.classList = "form-text";
 
@@ -2000,8 +1999,6 @@ SetupPagination(list_items, pagination_element, rows);
         input1.className = "fail2"
     }
 
-    
-
     button.addEventListener('click', function(e){
         e.preventDefault();
 
@@ -2011,22 +2008,24 @@ SetupPagination(list_items, pagination_element, rows);
     if(password.value.trim() === ""){
         showError(password, Password,'Please enter a password');
     }
-    // else if(password.value.trim().length > 5){
-    //     password.className = "success"
-    // }else{
-    //     showError(password, Password,'please enter a password of atlest six digits')
-    // }
-
-    if(passwordConfirm.value.trim() === ""){
+    else if(password.value.trim().length > 5){
+        // password.className = "success"
+        if(passwordConfirm.value.trim() === ""){
         showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
     }else if(password.value.trim() === passwordConfirm.value.trim()){
-        passwordConfirm.className = "success"
+        // passwordConfirm.className = "success";
+        $("#change-passwordform").submit();
     }else{
         showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
     }
+    }else{
+        showError(password, Password,'please enter a password of atlest six digits')
+    }
+
+    
    })
-
-
+</script>
+<script type="text/javascript">
     //code for copy input button for referral 
     function copyFunction() {
   var copyText = document.getElementById("refferral-input");
