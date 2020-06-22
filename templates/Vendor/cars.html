@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% load widget_tweaks %}
 {% load fullurl %}
 
 {% block extra_stylesheet %}
- 
+
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -37,30 +38,24 @@
                               <th>Oprational</th>
                               <th>Status</th>
                            </tr>
+                           {% for car in cars %}
                            <tr>
-                              <td>1</td>
-                              <td class="setTableWidth"><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                              <td>Sedan</td>
-                              <td class="setTableWidth">Chetain</td>
-                              <td class="check">&#10004</td>
-                              <td class="check">Approved</td>
+                              <td>{{ forloop.counter }}</td>
+                              <td class="setTableWidth"><a data-toggle="modal" data-target="#carInformation-{{ forloop.counter }}">{{ car.registration_no }}</a></td>
+                              <td>{{ car.car_type }}</td>
+                              <td class="setTableWidth">{{ car.owner_name }}</td>
+                               {% if car.status == 'Approved' %}
+                                  <td class="check">&#10004</td>
+                                  <td class="check">Approved</td>
+                               {% elif car.status == "Rejected" %}
+                                   <td class="cross">&#10008</td>
+                                   <td class="cross">Rejected</td>
+                               {% elif car.status == "Hold" %}
+                                   <td class="cross">&#10008</td>
+                                   <td class="wait">hold</td>
+                               {% endif %}
                            </tr>
-                            <tr>
-                               <td>2</td>
-                               <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                               <td>Sedan</td>
-                             <td class="setTableWidth">Chetain</td>
-                               <td class="cross">&#10008</td>
-                               <td class="cross">Rejected</td>
-                          </tr>
-                            <tr>
-                              <td>3</td>
-                              <td><a data-toggle="modal" data-target="#carInformation">HR 26 AJ 6543</a></td>
-                              <td>Sedan</td>
-                              <td class="setTableWidth">Chetain</td>
-                              <td class="cross">&#10008</td>
-                              <td class="wait">hold</td>
-                             </tr>
+                           {% endfor %}
                        </table>
                        </div>
                          <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-carbtn">Add more Car +</button> </div>
@@ -171,13 +166,16 @@
                               </div>
                                     </form>
                                  </div>
-                         <div class="modal fade" id="carInformation" role="dialog">
+
+
+                    {% for car in cars %}
+                         <div class="modal fade" id="carInformation-{{ forloop.counter }}" role="dialog">
                               <div class="modal-dialog" style="width:max-content;">
                              <div class="driver-modal-content" style="width: 80vw;">
                                <div class="modal-header">
                                <div class="col-sm-7" style="display: block;" > 
-                                    <p>HR 36 AA 4608 Details</p>
-                                    <p>Date Of Registration: 24-May-2020</p>
+                                    <p>{{ car.registration_no }} Details</p>
+                                    <p>Date Of Registration: {{ car.dateofregistration|date:"j-M-Y" }}</p>
                                 </div>
                                 <div class="col-sm-5">
                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -198,70 +196,100 @@
                                     <h4>Front Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
+
+                                    {% if car.image_front %}
                                     <div class="col-sm-2">
                                         <h5>Car</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.image_front.url }}" alt="">
                                     </div>
-                                    
+                                    {% endif %}
+                                    {% if car.rc_front %}
                                     <div class="col-sm-2">
                                         <h5>RC</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.rc_front.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.touristpermit_front %}
                                     <div class="col-sm-2">
                                         <h5>Tourist Permit</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.touristpermit_front.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.permita_front %}
                                     <div class="col-sm-2">
                                         <h5>Permit A</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.permita_front.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.permitb_front %}
                                     <div class="col-sm-2">
                                         <h5>Permit B</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.permitb_front.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.insurance_front %}
                                     <div class="col-sm-2">
                                         <h5>Insurance</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.insurance_front.url }}" alt="">
                                     </div>
+                                {% endif %}
+
                                 </div>
                                 <div class="col-sm-12 modalDivider" >
                                     <h4>Rear Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
+
+                                    {% if car.image_rear %}
                                     <div class="col-sm-2">
                                         <h5>Car</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.image_rear.url }}" alt="">
                                     </div>
-                                    
+                                    {% endif %}
+                                    {% if car.rc_rear %}
                                     <div class="col-sm-2">
                                         <h5>RC</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.rc_rear.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.touristpermit_rear %}
                                     <div class="col-sm-2">
                                         <h5>Tourist Permit</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.touristpermit_rear.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.permita_rear %}
                                     <div class="col-sm-2">
                                         <h5>Permit A</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.permita_rear.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.permitb_rear %}
                                     <div class="col-sm-2">
                                         <h5>Permit B</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.permitb_rear.url }}" alt="">
                                     </div>
+                                {% endif %}
+                                    {% if car.insurance_rear %}
                                     <div class="col-sm-2">
                                         <h5>Insurance</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.insurance_rear.url }}" alt="">
                                     </div>
+                                {% endif %}
+
                                 </div>
                                 <div class="col-sm-12 modalDivider">
                                     <h4>Others</h4>
                                 </div>
+
                                 <div class="col-sm-12">
+
+                                    {% if car.pollution_certificate %}
                                     <div class="col-sm-2">
                                         <h5>Pollution</h5>
-                                        <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
+                                        <img style="width: 100%;" src="{{ car.pollution_certificate.url }}" alt="">
                                     </div>
+                                    {% endif %}
                                   </div>
                                </div>
                                <div class="modal-footer">
@@ -270,7 +298,8 @@
                              </div>
                          </div>
                      </div>
-                            </div>
+                         </div>
+                    {% endfor %}
 
 
                 </div>
@@ -292,44 +321,53 @@
     $(function () {
         var d = new Date();
         var current_year = d.getFullYear();
-         /////////////set age restrictions here////////////////////
+        /////////////set age restrictions here////////////////////
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-         var req_date = req_year + "/" + month + "/" + date ;
+        var req_date = req_year + "/" + month + "/" + date;
         var today_date = current_year + "/" + month + "/" + date;
-  $("#datepicker").datepicker({ 
-        dateformat: "yyyy-mm-dd",
-        autoclose: true, 
-        todayHighlight: false,
-        endDate: req_date
-  }).datepicker('update', new Date());
-           
+        $("#datepicker").datepicker({
+            dateformat: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: false,
+            endDate: req_date
+        }).datepicker('update', new Date());
 
-  $(function () {
-            $("#datepicker5").datepicker({ 
+
+        $(function () {
+            $("#datepicker5").datepicker({
                 format: "yyyy-mm-dd",
-                autoclose: true, 
+                autoclose: true,
                 todayHighlight: false,
                 startDate: new Date(),
             })
         });
         $(function () {
-            $("#datepicker6").datepicker({ 
+            $("#datepicker6").datepicker({
                 format: "yyyy-mm-dd",
-                autoclose: true, 
+                autoclose: true,
                 todayHighlight: false,
                 startDate: new Date(),
             })
         });
         $(function () {
-            $("#datepicker7").datepicker({ 
+            $("#datepicker7").datepicker({
                 format: "yyyy-mm-dd",
-                autoclose: true, 
+                autoclose: true,
                 todayHighlight: false,
                 startDate: new Date(),
             })
         });
+    });
+
+
+    $("#show-carbtn").click(function(){
+        $(".addCarFoam").show();
+    });
+    $("#hide-carbtn").click(function(){
+        $(".addCarFoam").hide();
+    });
 </script>
 <script type="text/javascript">
     $(function () {
@@ -343,14 +381,6 @@
         });
     });
 
-</script>
-<script type="text/javascript">
-   $("#show-carbtn").click(function(){
-        $(".addCarFoam").show();
-    });
-    $("#hide-carbtn").click(function(){
-        $(".addCarFoam").hide();
-    });
 </script>
 
 

@@ -5,3 +5,4 @@ from . import models
 admin.site.register(models.vendorprofile)
 admin.site.register(models.vendor_cars)
 admin.site.register(models.driver)
+admin.site.register(models.bank_detail)

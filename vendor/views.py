@@ -76,9 +76,9 @@ def VendorRegistrationView(request):
 
         if profile_form.is_valid() and bank_form.is_valid() and car_form.is_valid() and driver_form.is_valid():
             new_profile_form = profile_form.save(commit=False)
-            vendor_mobile = profile_form.get_cleaned_data('contact1')
-            vendor_email = profile_form.get_cleaned_data('email')
-            vendor_fullname = profile_form.get_cleaned_data('full_name')
+            vendor_mobile = profile_form.cleaned_data['contact1']
+            vendor_email = profile_form.cleaned_data['email']
+            vendor_fullname = profile_form.cleaned_data['full_name']
             vendor_password = str(vendor_fullname[:4]) + str(vendor_mobile[-4:])
             vendor = coremodels.User.objects.create_user(username=vendor_mobile, email = vendor_email, password = vendor_password)
             vendor.mobile = vendor_mobile
@@ -93,10 +93,10 @@ def VendorRegistrationView(request):
             bank_account.save()
 
             new_driver_form = driver_form.save(commit=False)
-            new_driver_form.vendor = profile_form
-            driver_mobile = new_driver_form.get_cleaned_data('contact1')
-            driver_email = new_driver_form.get_cleaned_data('email')
-            driver_fullname = new_driver_form.get_cleaned_data('full_name')
+            new_driver_form.vendor = new_profile_form
+            driver_mobile = driver_form.cleaned_data['contact1']
+            driver_email = driver_form.cleaned_data['email']
+            driver_fullname = driver_form.cleaned_data['full_name']
             driver_password = str(driver_fullname[:4]) + str(driver_mobile[-4:])
             driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
             driver.is_driver = True
@@ -107,9 +107,10 @@ def VendorRegistrationView(request):
 
             car = car_form.save(commit=False)
             car.status = "Pending"
-            car.vendor = profile_form
+            car.vendor = new_profile_form
             car.save()
-
+            messages.success(request, 'Details Submitted Successfully. Please wait till the confirmation is received.',
+                             extra_tags='alert alert-success alert-dismissible')
             return redirect('core:home')
         print('--------------------------------')
         print('--------------------------------')
@@ -129,6 +130,8 @@ def VendorRegistrationView(request):
             'driver_form':driver_form,
             'bank_form':bank_form,
         }
+        messages.error(request, 'Please fill the form correctly',
+                         extra_tags='alert alert-danger alert-dismissible')
         return render(request, 'Vendor/registration_form.html', context)
     else:
         profile_form = forms.VendorProfileForm(prefix = 'vendor')
@@ -175,7 +178,7 @@ def DriversView(request):
                 new_driver_form.vendor = vendor
                 new_driver_form.save()
                 return redirect('vendor:drivers')
-        drivers = models.vendor_cars.objects.filter(vendor = vendor)
+        drivers = models.driver.objects.filter(vendor = vendor)
         driver_form = forms.AddDriverForm(prefix='driver')
         context = {
             'drivers':drivers,

@@ -51,10 +51,11 @@ def DashboardView(request):
                 user.set_password(new_password)
                 user.save()
                 login(request, user)
+
                 messages.success(request, 'Password Updated',  extra_tags='alert alert-success alert-dismissible')
                 return redirect('customer:dashboard')
             else:
-                messages.error(request, 'Invalid Password',  extra_tags='alert alert-error alert-dismissible')
+                messages.error(request, 'Invalid Password',  extra_tags='alert alert-danger alert-dismissible')
                 return redirect('customer:dashboard')
 
         return redirect('customer:dashboard')

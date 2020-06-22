@@ -61,178 +61,187 @@
                                     {% endfor %}
                                  </table>
                                </div>
-                                 <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Car +</button> </div>
-                                 <div class="col-sm-12 addDriverFoam">
-                                  <form >
-                                    <div class="col-sm-8">
-                                <div class="foam-field">
-                                <label>Full Name</label>
-                                <input type="text" name="vendorName">
-                                </div>
-                                <div class="errorSpace"> Error Message</div>
-                                <div class="foam-field">
-                                <label>Father's Name</label>
-                                <input type="text" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Date Of Birth</label>
-                                    <input type="text" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                <div class="foam-field">
-                                <label>Email address*</label>
-                                <input type="email" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Phone No 1*</label>
-                                <input type="tel" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Phone No 2*</label>
-                                <input type="tel" name="vendorName">
-                                </div>
-                                <div class="foam-field">
-                                <label>Address*</label>
-                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                                </div>
-                                <div class="foam-field">
-                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                                </div>
-                                <div class="foam-field">
-                                    <label>PAN Card*</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Front Side</p>
-                                     </div>
-                                     <div class="vendorFile" style="width: 49%;">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Back side</p>
-                                     </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Aadhar Card* <p>Size must be 200KB</p></label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Voter Card</label>
-                                    <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
-                                    </div>
-                                    <div class="foam-field">
-                                        <label>Driving Licence</label>
-                                        <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Front Side</p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                     <i class="far fa-file"></i> Back side</p>
-                                 </div>
+                                 <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Driver +</button> </div>
+
+                                <div class="col-sm-12 addDriverFoam">
+                                    <form >
+                                        <div class="col-sm-8">
+                                            <div class="foam-field">
+                                                <label>Full Name</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="errorSpace"> Error Message</div>
+                                            <div class="foam-field">
+                                                <label>Father's Name</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Date Of Birth</label>
+                                                {% render_field driver_form.full_name %}
+                                                <input type="text" id="datepicker4"data-date-format="mm-dd-yyyy" readonly />
+                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Email address*</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Phone No 1*</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Phone No 2*</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Address*</label>
+                                                {% render_field driver_form.full_name %}
+                                                <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>PAN Card*</label>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Front Side
+                                                    </p>
+                                                </div>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Back side
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>
+                                                    Aadhar Card*
+                                                    <p>Size must be 200KB</p>
+                                                </label>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Front Side
+                                                    </p>
+                                                </div>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Back side
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Voter Card</label>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Front Side
+                                                    </p>
+                                                </div>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Back side
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Driving Licence</label>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Front Side
+                                                    </p>
+                                                </div>
+                                                <div class="vendorFile" style="width: 49%;">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Back side
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Valid From*</label>
+                                                {% render_field driver_form.full_name %}
+                                                <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
+                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <!-- <input type="date" name="vendorName"> -->
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Valid To*</label>
+                                                {% render_field driver_form.full_name %}
+                                                <input type="text" id="datepicker3" data-date-format="mm-dd-yyyy" readonly />
+                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Total Driving Experience</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Hill Driving Experience</label>
+                                                {% render_field driver_form.full_name %}
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>
+                                                    Police Verification*
+                                                    <p>With in 15days or 6 months old</p>
+                                                </label>
+                                                <div class="vendorFile">
+                                                    {% render_field driver_form.full_name %}
+                                                    <p class="fileUploadtext">
+                                                        <i class="far fa-file"></i> Drop file here
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="foam-field">
+                                                <label>Any Legal/Accidental case pending for clearance*</label>
+                                                <select name="subject" id="legalCase">
+                                                    <option Selected>--Select--</option>
+                                                    <option value="0">No</option>
+                                                    <option value="1" id="Yes">Yes</option>
+                                                </select>
+                                            </div>
+                                            <!-- //////if Yes is selected///////// -->
+                                            <div style="display: none;" id="caseInput">
+                                                <div class="foam-field">
+                                                    <label style="color: #e61616;" >Upload supporting documents*</label>
+                                                    <div class="vendorFile">
+                                                        {% render_field driver_form.full_name %}
+                                                        <p class="fileUploadtext">
+                                                            <i class="far fa-file"></i> Drop file here
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- //////////////////////////////// -->
                                         </div>
-                                 
-                                <div class="foam-field">
-                                <label>Valid From*</label>
-                                    <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" data-date-format="mm-dd-yyyy"readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                <!-- <input type="date" name="vendorName"> -->
-                                </div>
-                                <div class="foam-field">
-                                <label>Valid To*</label>
-                                    <input type="text" id="datepicker3" data-date-format="mm-dd-yyyy" readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                </div>
-                                <div class="foam-field">
-                                <label>Total Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>No. of years</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                    <label>Police Verification*<p>With in 15days or 6 months old</p></label>
-                                    <div class="vendorFile">
-                                        <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                         <i class="far fa-file"></i> Drop file here</p>
-                                     </div>
-                                </div>
-                                <div class="foam-field">
-                                <label>Hill Driving Experience</label>
-                                <select name="subject" id="">
-                                      <option Selected>10</option>
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                </select>
-                                </div>
-                                <div class="foam-field">
-                                        <label>Any Legal/Accidental case pending for clearance*</label>
-                                        <select name="subject" id="legalCase">
-                                              <option Selected>--Select--</option>
-                                              <option value="0">No</option>
-                                              <option value="1" id="Yes">Yes</option>
-                                        </select>
-                                 </div>
-                                    <!-- //////if Yes is selected///////// -->
-                                 <div style="display: none;" id="caseInput">
-                                    <div class="foam-field">
-                                        <label style="color: #e61616;" >Upload supporting documents*</label>
-                                        <div class="vendorFile">
-                                            <input type="file" name="vendorName" ><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
+                                        <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
+                                            <div class="drag-drop">
+                                                {% render_field driver_form.full_name %}
+                                                <p class="p24">
+                                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                                                    </i><br> Drag&Drop files here <br> or<br>
+                                                    <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                                                </p>
+                                                <div class="label-right-allign" style="text-align: center;">
+                                                    Select your profile image<br>
+                                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>                                         </div>
-                                    <!-- //////////////////////////////// -->
-                                    </div>
-                            <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
-                              <div class="drag-drop">
-                                <input type="file" class="input-file2" name="">
-                                  <p class="p24">
-                                   <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                   </i><br> Drag&Drop files here <br> or<br>
-                                   <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                  </p>
-                                  <div class="label-right-allign" style="text-align: center;">Select your profile image<br>
-                                      <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                  </div>
-                               </div>
-                            </div>
-                         <div class="col-sm-12 booking-frm dashButton"> 
-                                    <button class="book-btn" type="submit">Update
-                                    </button>&nbsp;&nbsp;
-                                    <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
-                              </div>
+                                        <div class="col-sm-12 booking-frm dashButton">
+                                            <button class="book-btn" type="submit">Update
+                                            </button>&nbsp;&nbsp;
+                                            <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
+                                        </div>
                                     </form>
-                                 </div>
+                                </div>
+
+
 
                             {% for driver in drivers %}
                       <div class="modal fade" id="driverInformation-{{ forloop.counter }}" role="dialog">
@@ -263,63 +272,84 @@
                                     <h4>Documents Front Pictures</h4>
                                 </div>
                                 <div class="col-sm-12">
+                                    {% if driver.driving_licence_front %}
                                     <div class="col-sm-2">
                                         <h5>DL</h5>
                                         <img style="width: 100%;" src="{{driver.driving_licence_front.url}}" alt="">
                                     </div>
-                                    
-                                    <div class="col-sm-2">
-                                        <h5>Pan Card</h5>
-                                        <img style="width: 100%;" src="{{driver.pancard_front.url}}" alt="">
-                                    </div>
+                                    {% endif %}
+                                    {% if driver.pancard_front %}
+                                        <div class="col-sm-2">
+                                            <h5>Pan Card</h5>
+                                            <img style="width: 100%;" src="{{driver.pancard_front.url}}" alt="">
+                                        </div>
+                                    {% endif %}
+                                {% if driver.aadharcard_front %}
                                     <div class="col-sm-2">
                                         <h5>Aadhar Card</h5>
                                         <img style="width: 100%;" src="{{driver.aadharcard_front.url}}" alt="">
                                     </div>
+                                {% endif %}
+                                {% if driver.votercard_front %}
                                     <div class="col-sm-2">
                                         <h5>Voter Id</h5>
                                         <img style="width: 100%;" src="{{driver.votercard_front.url}}" alt="">
                                     </div>
+                                {% endif %}
+
+
+                                {% if driver.police_verification_front %}
                                     <div class="col-sm-2">
-                                        <h5>Other Documents</h5>
-                                        <div style="width: 100%; background-color: #e4e4e4; height: 100%; height: 100px;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: space-evenly;" >
-                                            <h5>Legal if Any</h5>
-                                        </div>
+                                        <h5>Police Verification</h5>
+                                        <img style="width: 100%;" src="{{driver.police_verification_front.url}}" alt="">
                                     </div>
+                                {% endif %}
+                                {% if driver.legal_accidental_case_document %}
+                                    <div class="col-sm-2">
+                                        <h5>Legal Accidental Case</h5>
+                                        <img style="width: 100%;" src="{{driver.legal_accidental_case_document.url}}" alt="">
+                                    </div>
+                                {% endif %}
+
+
                                 </div>
                                 <div class="col-sm-12 modalDivider">
                                     <h4>Documents Rear Pictures</h4>
                                 </div>
+
                                 <div class="col-sm-12">
-                                    <div class="col-sm-2">
-                                        <h5>DL</h5>
-                                        <img style="width: 100%;" src="{{driver.driving_licence_rear.url}}" alt="">
-                                    </div>
-                                    
+                                    {% if driver.driving_licence_rear %}
+                                        <div class="col-sm-2">
+                                            <h5>DL</h5>
+                                            <img style="width: 100%;" src="{{driver.driving_licence_rear.url}}" alt="">
+                                        </div>
+                                    {% endif %}
+                                    {% if driver.pancard_rear %}
                                     <div class="col-sm-2">
                                         <h5>Pan Card</h5>
                                         <img style="width: 100%;" src="{{driver.pancard_rear.url}}" alt="">
                                     </div>
+                                    {% endif %}
+                                {% if driver.aadharcard_rear %}
                                     <div class="col-sm-2">
                                         <h5>Aadhar Card</h5>
                                         <img style="width: 100%;" src="{{driver.aadharcard_rear.url}}" alt="">
                                     </div>
+                                    {% endif %}
+                                {% if driver.votercard_rear %}
                                     <div class="col-sm-2">
                                         <h5>Voter Id</h5>
                                         <img style="width: 100%;" src="{{driver.votercard_rear.url}}" alt="">
                                     </div>
-                                    <div class="col-sm-2">
-                                        <h5>Other Documents</h5>
-                                        <div style="width: 100%; background-color: #e4e4e4; height: 100%; height: 100px;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: space-evenly;" >
-                                            <h5>Legal if Any</h5>
+                                    {% endif %}
+
+                                    {% if driver.police_verification_rear %}
+                                        <div class="col-sm-2">
+                                            <h5>Police Verification</h5>
+                                            <img style="width: 100%;" src="{{driver.police_verification_rear.url}}" alt="">
                                         </div>
-                                    </div>
+                                    {% endif %}
+
                                 </div>
                                </div>
                                <div class="modal-footer">

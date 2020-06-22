@@ -63,6 +63,8 @@ class bank_detail(models.Model):
     def __str__(self):
         return str(self.vendor) + str(self.account_holder_name)
 
+    class Meta:
+        verbose_name_plural = 'Vendor Bank Details'
 
 driver_status_choices = (
     ('Approved', 'Approved'),

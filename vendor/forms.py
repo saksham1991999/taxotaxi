@@ -5,10 +5,11 @@ from django.utils.translation import gettext_lazy as _
 from . import models
 from core import models as coremodels
 
+
 class VendorProfileForm(forms.ModelForm):
     class Meta:
         model = models.vendorprofile
-        exclude = ['user']
+        exclude = ['user', 'status']
 
     def clean_contact1(self):
         mobile = self.cleaned_data.get('contact1')
@@ -19,17 +20,20 @@ class VendorProfileForm(forms.ModelForm):
             except:
                 return mobile
 
+
 class BankAccountForm(forms.ModelForm):
     class Meta:
         model = models.bank_detail
-        exclude = ['vendor']
+        exclude = ['vendor', 'status']
+
 
 class AddCarForm(forms.ModelForm):
     class Meta:
         model = models.vendor_cars
-        exclude = ['vendor']
+        exclude = ['vendor', 'status']
+
 
 class AddDriverForm(forms.ModelForm):
     class Meta:
         model = models.driver
-        exclude = ['vendor']
+        exclude = ['vendor', 'status']
