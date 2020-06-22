@@ -295,6 +295,12 @@ font-weight: bold;
        .setTableWidth{
         min-width: 125px
        }
+       .addCarFoam{
+        display: none;
+       }
+       .addDriverFoam{
+        display: none;
+       }
 
     /* label{margin-left: 20px;} */
 /*#datepicker > input {
