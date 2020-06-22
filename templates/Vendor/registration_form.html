@@ -791,12 +791,12 @@
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-        var req_date = date + "/" + month + "/" + req_year;
+        var req_date = req_year + "/" + month + "/" + date;
         var today_date = date + "/" + month + "/" + current_year;
 
         $(function () {
             $("#datepicker1").datepicker({ 
-                dateformat: "yyyy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
@@ -805,14 +805,14 @@
         
         $(function () {
             $("#datepicker2").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false
             })
         });
         $(function () {
             $("#datepicker3").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -820,7 +820,7 @@
         });
         $(function () {
             $("#datepicker4").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
@@ -828,7 +828,7 @@
         });
         $(function () {
             $("#datepicker5").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -836,7 +836,7 @@
         });
         $(function () {
             $("#datepicker6").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -844,7 +844,7 @@
         });
         $(function () {
             $("#datepicker7").datepicker({ 
-                dateformat: "yy-mm-dd",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
