@@ -356,8 +356,8 @@
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-        var req_date = date + "/" + month + "/" + req_year;
-        var today_date = date + "/" + month + "/" + current_year;
+         var req_date = req_year + "/" + month + "/" + date ;
+        var today_date = current_year + "/" + month + "/" + date;
   $("#datepicker").datepicker({ 
         dateformat: "yyyy-mm-dd",
         autoclose: true, 
@@ -366,14 +366,14 @@
   }).datepicker('update', new Date());
   $(function () {
             $("#datepicker2").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false
             })
         });
         $(function () {
             $("#datepicker3").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 startDate: new Date(),
@@ -381,13 +381,12 @@
         });
         $(function () {
             $("#datepicker4").datepicker({ 
-                format: "dd/mm/yyyy",
+                format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
                 endDate: req_date
             })
         });
-
 
 });
     $("#show-driverbtn").click(function(){

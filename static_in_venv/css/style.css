@@ -5679,3 +5679,15 @@ background-color: ##4CAF50 !important;
 .toggle-password:hover .tooltiptext {
   visibility: visible;
 }
+@media(min-width: 660px){
+        .headerWidth{
+            width: 33.33%
+        }
+        .customer-tab{
+            display: flex;
+        }
+        .buttonallign{
+        padding: 0 40%;
+        margin-bottom: 10px
+    }
+    }

@@ -3,6 +3,7 @@
 {% load fullurl %}
 {% load widget_tweaks %}
 {% block extra_stylesheet %}
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style>
@@ -200,13 +201,13 @@
             </div>
             <div class="col-sm-12 col-md-12">
                         <ul class="customer-tab col-sm-12">
-                           <li class="col-sm-4 headerWidth active headerAlign" >
+                           <li class="col-sm-4 headerWidth active headerAlign" id="vendorTb" >
                               <a href="#vendorInformation" data-toggle="tab" style="text-decoration: none;">Vendor Information <span class="errorCount">{{ profile_form.errors.count }}</span></a>
                            </li>
-                           <li class="col-sm-4 headerWidth" style="text-align: center;">
+                           <li class="col-sm-4 headerWidth" id="carTb" style="text-align: center;">
                               <a href="#carDetails" data-toggle="tab" style="text-decoration: none;">Car Details <span class="errorCount">{{ car_form.errors.count }}</span></a>
                            </li>
-                           <li class="col-sm-4 headerWidth" style="text-align: center;">
+                           <li class="col-sm-4 headerWidth" id="driverTb" style="text-align: center;">
                               <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">{{ driver_form.errors.count }}</span></a>
                            </li>
                         </ul>
@@ -234,7 +235,7 @@
 
                                         <div class="foam-field">
                                         <label>Date Of Birth</label>
-                                            {% render_field profile_form.dob id="datepicker1" data-date-format="mm-dd-yyyy" readonly='true' %}
+                                            {% render_field profile_form.dob id="datepicker1" readonly='true' %}
                                             <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
@@ -414,7 +415,7 @@
 
                                     <div class="col-sm-12 booking-frm buttonallign" style=" text-align: -webkit-center; margin-top : 40px">
                                         <div style="display: flex;width:fit-content;">
-                                          <button href="#carDetails" data-toggle="tab" class="book-btn" type="button">Next</button>&nbsp;&nbsp;
+                                          <button href="#carDetails" id="navToCar" data-toggle="tab" class="book-btn" type="button">Next</button>&nbsp;&nbsp;
                                         </div><br>
                                     </div>
 
@@ -566,8 +567,8 @@
                             </div>           
                               <div class="col-sm-12 booking-frm buttonallign">
                                   <div style="display: flex;width:fit-content;">
-                                    <button class="book-btn" href="#driverDetails" data-toggle="tab" type="button">Next</button>&nbsp;&nbsp;
-                                    <button style="background-color: #7f7f7f;" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button><br>
+                                    <button class="book-btn" id="navToDriver" href="#driverDetails" data-toggle="tab" type="button">Next</button>&nbsp;&nbsp;
+                                    <button style="background-color: #7f7f7f;" id="backToVendor" href="#vendorInformation" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                   </div><br>
                               </div>
                         </div>
@@ -737,7 +738,7 @@
                             <div class="col-sm-12 booking-frm buttonallign ">
                                 <div style="display: flex;width:fit-content;">
                                   <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                  <button style="background-color: #7f7f7f;" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button><br>
+                                  <button style="background-color: #7f7f7f;" id="navToCar" href="#carDetails" data-toggle="tab" class="book-btn" type="button">Back</button><br>
                                 </div><br>
                             </div>
                         </div>
@@ -791,8 +792,8 @@
         var req_year = current_year - 18;
         var month = d.getMonth();
         var date = d.getDate();
-        var req_date = req_year + "/" + month + "/" + date;
-        var today_date = date + "/" + month + "/" + current_year;
+        var req_date = req_year + "/" + month + "/" + date ;
+        var today_date = current_year + "/" + month + "/" + date;
 
         $(function () {
             $("#datepicker1").datepicker({ 
@@ -874,6 +875,29 @@
               $('.p24').text(fileName);
             }) ;
     });
+
+</script>
+<script type="text/javascript">
+    $("#navToCar").click(function() {
+        $("#vendorTb").removeClass("active");
+      $("#driverTb").removeClass("active");
+      $("#carTb").addClass("active");
+    }
+    $("#backToVendor").click(function() {
+        $("#carTb").removeClass("active");
+      $("#driverTb").removeClass("active");
+      $("#vendorTb").addClass("active");
+    }
+    $("#navToDriver").click(function() {
+        $("#vendorTb").removeClass("active");
+      $("#carTb").removeClass("active");
+      $("#driverTb").addClass("active");
+    }
+    $("#backToCar").click(function() {
+        $("#vendorTb").removeClass("active");
+      $("#driverTb").removeClass("active");
+      $("#carTb").addClass("active");
+    }
 
 </script>
 

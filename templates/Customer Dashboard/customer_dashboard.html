@@ -9,12 +9,29 @@
 
 
 <style type="text/css">
+  .passInputfield input{
+    width: 100%;
+padding: 10px 13px;
+    padding-right: 13px;
+font-size: 14px;
+line-height: 24px;
+color: #a6a6a6;
+border: 1px solid #e8e8e8;
+display: block;
+margin-bottom: 13px;
+border-radius: 4px;
+padding-right: 28px;
+height: 34px;
+  }
   @media(min-width: 450px){
     .adjustYellowButtons{
       padding: 0 21%;
   }
   .adjustYellowButtonsSecond{
      padding: 0 50%;
+  }
+  .customerBtn{
+    margin-left: 40%;
   }
 
   }
@@ -586,24 +603,23 @@
                                    </div>
                                    <div class="form-group row input1">
                                       <label class="col-sm-4 col-form-label label-right-allign">Enter New Password</label>
-                                      <div class="col-sm-8">
-                                         <input type="password" class="form-control" id="password1" placeholder="Enter New Password" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
+                                      <div class="col-sm-8 passInputfield">
+                                         <input type="password" class="" id="password1" placeholder="Enter New Password" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
                                          <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                          <span class="form-text" id="password_strength"></span>
                                          <small class="form-text" id="password">Error message</small>
                                       </div>
                                     </div>
-                                    <div class="form-group row input1">
+                                    <div class="form-group row input1 passInputfield">
                                        <label class="col-sm-4 col-form-label label-right-allign">Confirm New Password</label>
                                        <div class="col-sm-8">
-                                          <input type="Password" class="form-control" name="new_password" id="passwordConfirm1" placeholder="Confirm New Password" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                          <input type="Password" class="" name="new_password" id="passwordConfirm1" placeholder="Confirm New Password" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
                                           <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                           <small class="form-text" id="password2">Error message</small>
                                        </div>
                                     </div>
-                                    <button type="submit" id="button1" class="book-btn">Update</button>
-                                    <div class="col-md-12 adjustYellowButtonsSecond col-sm-12">
-                                        <button type="submit" id="button1" class="book-btn">Update</button>
+                                    <div class=" col-sm-12 ">
+                                        <button type="submit" id="button1" class="book-btn customerBtn">Update</button>
                                     </div>
                                 </div>
                             </form>
@@ -615,7 +631,7 @@
                               <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
                               <div class="col-sm-5" style="display: flex;">
                                 <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
-                                <div class="copytooltip button1">
+                                <div class="copytooltip ">
                                     <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
                                       <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                                             Copy text
@@ -1441,58 +1457,6 @@ function passRide(val){
     });
 </script>
 <script>
-    function remove1(req){
-      const PasswordConfirm = document.getElementById('password2');
-      PasswordConfirm.classList = "form-text";
-
-    }
-    function remove2(req){
-      const Password = document.getElementById('password');
-      Password.classList = "form-text";
-
-    }
-
-    const password = document.getElementById('password1')
-    const Password = document.getElementById('password');
-    const passwordConfirm = document.getElementById('passwordConfirm1');
-    const PasswordConfirm = document.getElementById('password2');
-    const button = document.getElementById('button1');
-
-
-    //////show Error message/////
-    function showError(input,input1,message){
-        input.className = "fail";
-        input1.innerHTML = message
-        input1.className = "fail2"
-    }
-
-    
-
-    button.addEventListener('click', function(e){
-        e.preventDefault();
-
-
-
-
-    if(password.value.trim() === ""){
-        showError(password, Password,'Please enter a password');
-    }
-    // else if(password.value.trim().length > 5){
-    //     password.className = "success"
-    // }else{
-    //     showError(password, Password,'please enter a password of atlest six digits')
-    // }
-
-    if(passwordConfirm.value.trim() === ""){
-        showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
-    }else if(password.value.trim() === passwordConfirm.value.trim()){
-        passwordConfirm.className = "success"
-    }else{
-        showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
-    }
-   })
-
-
     //code for copy input button for referral 
     function copyFunction() {
   var copyText = document.getElementById("refferral-input");
@@ -1508,18 +1472,6 @@ function outFunc() {
   var tooltip = document.getElementById("myTooltip");
   tooltip.innerHTML = "Copy to clipboard";
 }
-
-//Toggle password icon code
-$(".toggle-password").click(function() {
-
-  $(this).toggleClass("fa-eye fa-eye-slash");
-  var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "password") {
-    input.attr("type", "text");
-  } else {
-    input.attr("type", "password");
-  }
-});
 
 
 var valueHover = 0;
@@ -1566,6 +1518,58 @@ function upStars(val) {
   $('#my-button').click(function(){
     $('#my-file').click();
 });
+</script>
+<script>
+    function remove1(req){
+      const PasswordConfirm = document.getElementById('password2');
+      PasswordConfirm.classList = "form-text";
+
+    }
+    function remove2(req){
+      const Password = document.getElementById('password');
+      Password.classList = "form-text";
+
+    }
+
+    const password = document.getElementById('password1')
+    const Password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('passwordConfirm1');
+    const PasswordConfirm = document.getElementById('password2');
+    const button = document.getElementById('button1');
+
+
+    //////show Error message/////
+    function showError(input,input1,message){
+        input.className = "fail";
+        input1.innerHTML = message
+        input1.className = "fail2"
+    }
+
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+
+
+
+
+    if(password.value.trim() === ""){
+        showError(password, Password,'Please enter a password');
+    }
+    else if(password.value.trim().length > 5){
+        // password.className = "success"
+        if(passwordConfirm.value.trim() === ""){
+        showError(passwordConfirm, PasswordConfirm,'Please enter the field to confirm password')
+    }else if(password.value.trim() === passwordConfirm.value.trim()){
+        // passwordConfirm.className = "success";
+        $("#change-passwordform").submit();
+    }else{
+        showError(passwordConfirm, PasswordConfirm,'Please enter the same password')
+    }
+    }else{
+        showError(password, Password,'please enter a password of atlest six digits')
+    }
+
+    
+   })
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -1663,6 +1667,19 @@ function upStars(val) {
      $("#side-list-1").removeClass("active1");
    })
   });
+</script>
+<script type="text/javascript">
+  //Toggle password icon code
+$(".toggle-password").click(function() {
+
+  $(this).toggleClass("fa-eye fa-eye-slash");
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
 </script>
 <script>
 const list_items = [
@@ -1805,7 +1822,7 @@ function SetupPagination (items, wrapper, rows_per_page) {
     //     let btn = PaginationButton(page_count, items);
     //     wrapper.appendChild(btn);
     // }
-    console.log(page_count);
+    
     if( (page_count-current_page) >= 3){
         for (let i = current_page; i <= current_page + 2; i++) {
 	    	let btn = PaginationButton(i, items);
