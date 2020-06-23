@@ -304,6 +304,27 @@ font-weight: bold;
        .boldH5{
         font-weight: bolder;
        }
+
+   .vendorPayments{
+      border-bottom: 1px solid #f1f1f1;
+   }
+   .vendorPayments h4{
+      text-align: center;
+      color: black;
+      font-weight: bold;
+   }
+   .vendorPayments h5{
+      font-weight: bold;
+      color: black;
+   }
+   .vendorPayments h5 p{
+      color: #4CAF50;
+      padding-top: 4px;
+   }
+   .noPadding{
+      padding-left: 0;
+      padding-right: 0;
+   }
     /* label{margin-left: 20px;} */
 /*#datepicker > input {
     width: 100%;
