@@ -5437,7 +5437,7 @@ height: 34px;
   }
 
   .customer-tab{
-    text-decoration: overline;
+    /*text-decoration: overline;*/
     border-bottom: 1px #333232 solid;
     list-style-type:none;
     color: #7f7f7f;
@@ -5961,7 +5961,7 @@ height: 34px;
     }
 
     .customer-tab{
-        /*text-decoration: overline;*/
+    	
         border-bottom: 1px #c5c1c1 solid;
         list-style-type:none;
         color: #a7a1a1;
