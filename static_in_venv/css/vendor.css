@@ -372,6 +372,12 @@ font-weight: bold;
       margin: -8px 0px 2px 33px;;
       color: red;
     }
+    .vendorMessage{
+      text-align: center;
+      margin: -8px 0px 2px 33px;;
+      color: red;
+      display: none;
+    }
     .drag-drop p {
     width: 100%;
     height: 100%;

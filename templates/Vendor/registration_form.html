@@ -353,7 +353,6 @@
                                         <!-- //////////////////////////////// -->
                                         <div class="foam-field booking-frm">
                                         <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
-                                        <button href="" id="" class="book-btn" type="button" style="padding: 0px;">+ Add Bank</button>
                                         </div>
 
                                     <div>
@@ -626,6 +625,7 @@
                             <div>
                                 <input type="checkbox">
                                 <label for="">Is Vendor/Driver same</label>
+                                <p class="vendorMessage">Please upload all below documents*</p>
                             </div>
                             <div class="col-sm-7">
                                 {% for error in driver_form.non_field_errors %}
@@ -989,9 +989,12 @@ frmvalidator.addValidation("email","email",
         $('input[type="checkbox"]').click(function(){
             if($(this).prop("checked") == true){
                 autofillFunc();
+                $(".vendorMessage").show();
             }
             else if($(this).prop("checked") == false){
+                $(".vendorMessage").hide();
                 removeFill();
+                
             }
         });
     });
@@ -1009,11 +1012,11 @@ frmvalidator.addValidation("email","email",
                 // console.log('Index: ' + index + ', html: ' + $(this).val());
                 
     })
-    console.log(arrayCopy);
     j=0;
     $("#driverDetails > .col-sm-7").find("input").each(function(index){
         if( j<= 5){
             $(this).val(arrayCopy[j]) ;
+            $(this).attr('readonly', true);
             j++
         }
         // console.log('Index: ' + index + ', html: ' + $(this).val());
@@ -1032,6 +1035,7 @@ frmvalidator.addValidation("email","email",
         $("#driverDetails > .col-sm-7").find("input").each(function(index){
         if( j<= 5){
             $(this).val("") ;
+            $(this).attr('readonly', false);
             j++
         }
         $("#id_driver-address").val("");
