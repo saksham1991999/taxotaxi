@@ -1,667 +1,610 @@
- {% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
 {% load template_tag %}
 {% block extra_stylesheet %}
-    <style type="text/css">
-      @media(max-width: 500px){
-        .bookingsummaryinfo{
-          width: 100%;
-        }
-      }
-      @media (min-width: 770px){
-        .checkout-button{
-        padding: 0 35%;
-        display: flex;
-      }
-      .icon1 .fair-breakdown {
-    right: 41px;
-  }
-      }
-      
- @media (max-width: 768px){
-  .icon1 .fair-breakdown {
-    right: 9%;
-  }
-    .container1{
-      display: grid;
-      /*margin-top: 50px !important;*/
-      padding-top: 20px;
-    }
-    .checkout-button{
-        padding: 0 5%;
-      }
-  }
-  @media (max-width: 999px){
-    .container1{
-      /*margin-top: 275px ;*/
-       display: grid;
-      /*margin-top: 50px !important;*/
-      padding-top: 20px;
-    }
-  }
-
-  .bookingsummaryinfo .fair-breakdown {
-    visibility: hidden;
-    width: max-content;
-    background-color: white;
-    color: #233545;
-    text-align: left;
-    border-radius: 2px;
-    position: absolute;
-    z-index: 1;
-    font-size: small;
-    box-shadow: 0px 0px 8px #2b2929;
-    border: 2px solid #ffc000;
-}
-
-.bookingsummaryinfo:hover .fair-breakdown {
-  visibility: visible;
-}
-.inputlayout{
-  width: 100%;
-padding: 8px 8px;
-font-size: 14px;
-line-height: 24px;
-/*color: #d3d1d0;*/
-border: 1px solid #e8e8e8;
-display: flex;
-margin-bottom: 10px;
-border-radius: 4px;
-text-align: left;
-background-color: white;
-}
-.icon-style{
-  width: 19%;
-  text-align: right;
-  font-size: 19px;
-}
-
-.icon1 .fair-breakdown {
-  visibility: hidden;
-    width:max-content;
-    background-color: #eee;
-    color: #233545;
-    text-align: left;
-    border-radius: 8px;
-    padding: 8px 11px;
-    position: absolute;
-    z-index: 1;
-    font-size: small;
-    box-shadow: 0px 0px 13px #000000;
-    right: 6%;
-}
-
-.icon1:hover .fair-breakdown {
-  visibility: visible;
-}
-
- .checkout-frm input[type="text"]{
-  width: 100%;
-    padding: 8px 8px;
-    font-size: 14px;
-    line-height: 24px;
-    color: #000;
-    border: 1px solid #e8e8e8;
-    display: block;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    text-align: left;
-
- }
-
- .checkout-frm select{
-  width: 50%;
-    padding: 8px 8px;
-    font-size: 14px;
-    line-height: 24px;
-    color: #000;
-    border: 1px solid #e8e8e8;
-    display: block;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    text-align: left;
-
- }
-
-.button0{
-    height: 40px;
-    width: 100%;
-    padding: 10px;
-    margin: auto;
-    background-color:  #4CAF50;
-    border-radius: 0%;
-    border-color:  #4CAF50;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.2rem;
-    font-weight: bolder;
-    border: 0px;
-}
-.input-icons i {
-    position: absolute;
-}
-
-/*.button0:hover{
-    background-color: #4CAF50 ;
-}*/
-
-.input-icons {
-    width: 100%;
-
-}
-
-.icon {
-    margin-left: 75%;
-    padding: 10px;
-    color: rgb(76, 82, 76);
-    min-width: 50px;
-    text-align: center;
-}
-
-.input-field {
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-}
-
-
-.header2{
-    background-color: #b2b2b2;
-    color: #1b233e;
-    margin-bottom: 13px;
-}
-
-.container1{
-  margin-top: 170px;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-}
-
-.col-form-label{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-     text-align: right;
-     margin-top: 14px;
-}
-
-
-.check-text{
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bolder;
-}
-
-.address1{
-    background-color: #eee;
-}
-
-input:focus{
-    border: none;
-}
-.hover-text-style{
-  color: #ce0c0c;
-  text-decoration: underline;
-  margin: 10px;
-}
-
-@media (max-width: 761px) and ( min-width: 700px){
-  .inputlayout{
-    width: 690px;
-  }
-  .input-field{
-    width: 690px !important;
-  }
-  .btn-width{
-    width: 690px !important;
-  }
-  .input-field1{
-    width: 350px !important;
-  }
-  .input-field2{
-    width: 340px !important;
-  }
-}
-@media (max-width: 700px) and ( min-width: 600px){
-  .inputlayout{
-    width: 590px;
-  }
-  .input-field{
-    width: 590px !important;
-  }
-  .btn-width{
-    width: 590px !important;
-  }
-  .input-field1{
-    width: 300px !important;
-  }
-  .input-field2{
-    width: 290px !important;
-  }
-}
-@media (max-width: 600px) and ( min-width: 500px){
-  .inputlayout{
-    width: 490px;
-  }
-  .input-field{
-    width: 490px !important;
-  }
-  .btn-width{
-    width: 490px !important;
-  }
-  .input-field1{
-    width: 250px !important;
-  }
-  .input-field2{
-    width: 240px !important;
-  }
-}
-@media (max-width: 500px) and ( min-width: 400px){
-  .inputlayout{
-    width: 390px;
-  }
-  .input-field{
-    width: 390px !important;
-  }
-  .btn-width{
-    width: 390px !important;
-  }
-  .input-field1{
-    width: 200px !important;
-  }
-  .input-field2{
-    width: 190px !important;
-  }
-}
-@media (max-width: 400px) and ( min-width: 300px){
-  .inputlayout{
-    width: 290px;
-  }
-  .input-field{
-    width: 290px !important;
-  }
-  .btn-width{
-    width: 290px !important;
-  }
-  .input-field1{
-    width: 150px !important;
-  }
-  .input-field2{
-    width: 140px !important;
-  }
-}
+<style type="text/css">
+   @media(max-width: 500px){
+   .bookingsummaryinfo{
+   width: 100%;
+   }
+   }
+   @media (min-width: 770px){
+   .checkout-button{
+   padding: 0 35%;
+   display: flex;
+   }
+   .icon1 .fair-breakdown {
+   right: 41px;
+   }
+   }
+   @media (max-width: 768px){
+   .icon1 .fair-breakdown {
+   right: 9%;
+   }
+   .container1{
+   display: grid;
+   /*margin-top: 50px !important;*/
+   padding-top: 20px;
+   }
+   .checkout-button{
+   padding: 0 5%;
+   }
+   }
+   @media (max-width: 999px){
+   .container1{
+   /*margin-top: 275px ;*/
+   display: grid;
+   /*margin-top: 50px !important;*/
+   padding-top: 20px;
+   }
+   }
+   .bookingsummaryinfo .fair-breakdown {
+   visibility: hidden;
+   width: max-content;
+   background-color: white;
+   color: #233545;
+   text-align: left;
+   border-radius: 2px;
+   position: absolute;
+   z-index: 1;
+   font-size: small;
+   box-shadow: 0px 0px 8px #2b2929;
+   border: 2px solid #ffc000;
+   }
+   .bookingsummaryinfo:hover .fair-breakdown {
+   visibility: visible;
+   }
+   .inputlayout{
+   width: 100%;
+   padding: 8px 8px;
+   font-size: 14px;
+   line-height: 24px;
+   /*color: #d3d1d0;*/
+   border: 1px solid #e8e8e8;
+   display: flex;
+   margin-bottom: 10px;
+   border-radius: 4px;
+   text-align: left;
+   background-color: white;
+   }
+   .icon-style{
+   width: 19%;
+   text-align: right;
+   font-size: 19px;
+   }
+   .icon1 .fair-breakdown {
+   visibility: hidden;
+   width:max-content;
+   background-color: #eee;
+   color: #233545;
+   text-align: left;
+   border-radius: 8px;
+   padding: 8px 11px;
+   position: absolute;
+   z-index: 1;
+   font-size: small;
+   box-shadow: 0px 0px 13px #000000;
+   right: 6%;
+   }
+   .icon1:hover .fair-breakdown {
+   visibility: visible;
+   }
+   .checkout-frm input[type="text"]{
+   width: 100%;
+   padding: 8px 8px;
+   font-size: 14px;
+   line-height: 24px;
+   color: #000;
+   border: 1px solid #e8e8e8;
+   display: block;
+   margin-bottom: 10px;
+   border-radius: 4px;
+   text-align: left;
+   }
+   .checkout-frm select{
+   width: 50%;
+   padding: 8px 8px;
+   font-size: 14px;
+   line-height: 24px;
+   color: #000;
+   border: 1px solid #e8e8e8;
+   display: block;
+   margin-bottom: 10px;
+   border-radius: 4px;
+   text-align: left;
+   }
+   .button0{
+   height: 40px;
+   width: 100%;
+   padding: 10px;
+   margin: auto;
+   background-color:  #4CAF50;
+   border-radius: 0%;
+   border-color:  #4CAF50;
+   color: white;
+   font-family: 'Open Sans', sans-serif;
+   font-size: 1.2rem;
+   font-weight: bolder;
+   border: 0px;
+   }
+   .input-icons i {
+   position: absolute;
+   }
+   /*.button0:hover{
+   background-color: #4CAF50 ;
+   }*/
+   .input-icons {
+   width: 100%;
+   }
+   .icon {
+   margin-left: 75%;
+   padding: 10px;
+   color: rgb(76, 82, 76);
+   min-width: 50px;
+   text-align: center;
+   }
+   .input-field {
+   width: 100%;
+   padding: 10px;
+   text-align: center;
+   }
+   .header2{
+   background-color: #b2b2b2;
+   color: #1b233e;
+   margin-bottom: 13px;
+   }
+   .container1{
+   margin-top: 170px;
+   margin-bottom: 20px;
+   background-color: #f9f9f9;
+   }
+   .col-form-label{
+   font-family: 'Open Sans', sans-serif;
+   font-weight: bolder;
+   text-align: right;
+   margin-top: 14px;
+   }
+   .check-text{
+   font-family: 'Open Sans', sans-serif;
+   font-weight: bolder;
+   }
+   .address1{
+   background-color: #eee;
+   }
+   input:focus{
+   border: none;
+   }
+   .hover-text-style{
+   color: #ce0c0c;
+   text-decoration: underline;
+   margin: 10px;
+   }
+   @media (max-width: 761px) and ( min-width: 700px){
+   .inputlayout{
+   width: 690px;
+   }
+   .input-field{
+   width: 690px !important;
+   }
+   .btn-width{
+   width: 690px !important;
+   }
+   .input-field1{
+   width: 350px !important;
+   }
+   .input-field2{
+   width: 340px !important;
+   }
+   }
+   @media (max-width: 700px) and ( min-width: 600px){
+   .inputlayout{
+   width: 590px;
+   }
+   .input-field{
+   width: 590px !important;
+   }
+   .btn-width{
+   width: 590px !important;
+   }
+   .input-field1{
+   width: 300px !important;
+   }
+   .input-field2{
+   width: 290px !important;
+   }
+   }
+   @media (max-width: 600px) and ( min-width: 500px){
+   .inputlayout{
+   width: 490px;
+   }
+   .input-field{
+   width: 490px !important;
+   }
+   .btn-width{
+   width: 490px !important;
+   }
+   .input-field1{
+   width: 250px !important;
+   }
+   .input-field2{
+   width: 240px !important;
+   }
+   }
+   @media (max-width: 500px) and ( min-width: 400px){
+   .inputlayout{
+   width: 390px;
+   }
+   .input-field{
+   width: 390px !important;
+   }
+   .btn-width{
+   width: 390px !important;
+   }
+   .input-field1{
+   width: 200px !important;
+   }
+   .input-field2{
+   width: 190px !important;
+   }
+   }
+   @media (max-width: 400px) and ( min-width: 300px){
+   .inputlayout{
+   width: 290px;
+   }
+   .input-field{
+   width: 290px !important;
+   }
+   .btn-width{
+   width: 290px !important;
+   }
+   .input-field1{
+   width: 150px !important;
+   }
+   .input-field2{
+   width: 140px !important;
+   }
+   }
 </style>
 {% endblock extra_stylesheet %}
-  
-
-
 {% block content %}
-
-
-  <div class="container container1 mt-5 checkout-frm ">
-        
-    <div class="row header2">
-        <div class="col-sm-6">
-            <h4 ><span>{{ request.user.first_name }}</span>'s Booking Summary</h4>
-        </div>
-        <div class="col-sm-6">
-            <form method="post" action="{% url 'core:cars' %}">
-                {% csrf_token %}
-
-           <div class="bookingsummaryinfo" style="float: right;">
-                           <p class="hover-text-style">booking summary info</p>
-                            <!-- Ride Fair BreakDown -->
-                           <span class="fair-breakdown " style="right: 75px;max-width: 550px;">
-
-                           <input type="hidden" name="car_type" id="car_type" value="{{ request.session.car_type }}" required>
-
-                               <div class="col-sm-12" style="background-color: #eee;">
-                             <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5></div>
-                                 <div class="col-sm-8" >
-                                     <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 15px;">
-                                      <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5></li>
-
-                                     {% for checkbox in ride_checkboxes_qs %}
-                                        {% if checkbox.value > 0 %}
-                                      <li>
-                                          <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
-                                         <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span>
-                                      </li>
-                                        {% endif %}
-                                     {% endfor %}
-
-                                    <li><h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5></li>
-                                    {% for checkbox in ride_checkboxes_qs %}
-                                        {% if checkbox.value == 0 %}
-                                      <li >  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
-                                         <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span></li>
-                                        {% endif %}
-                                     {% endfor %}
-                                    </ul>
-                                </div>
-                            <div class="col-sm-4 square-box" >
-                              <p style="margin: 76px 20px 0px 0px;
-                                        background-color: #eee;
-                                        height: 85px;
-                                        padding: 33px 0;text-align: center;"> ₹ {{ checkbox_charges|intcomma  }} </p>
-                            </div>
-                            
-                            <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
-                              <button class="book-btn" type="submit">&nbsp; Update booking Summary &nbsp;</button>
-                           </div>
-                      
-                   
-
-                           </span>
-           </div></form>
-        </div>
-    </div>
-    <div></div>
-    
-    <div class="row">
-       <div class="col-md-12" style="padding-left: 0px;padding-right: 0px">
-          
-           <div class="col-md-6">
-            <div class="row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
-            <div class="col-sm-8">
-              <div class="inputlayout">{{ pickup }}</div>
-            </div></div>
-          </div>
-          
-         <div class="col-md-6">
-          <div class="row">
-            <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
-            <div class="col-sm-8">
-              <div class="inputlayout">{{ drop }}</div>
-            </div></div>
-        
+<div class="container container1 mt-5 checkout-frm ">
+   <div class="row header2">
+      <div class="col-sm-6">
+         <h4 ><span>{{ request.user.first_name }}</span>'s Booking Summary</h4>
       </div>
-       </div>
-       
-        <div class="col-md-6">
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Pick-Up Date & Time</label>
-                <div class="col-sm-8">
-                  <input class="input-field" 
-                         type="text" readonly
-                         placeholder="{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}">
-                </div>
+      <div class="col-sm-6">
+         <form method="post" action="{% url 'core:cars' %}">
+            {% csrf_token %}
+            <div class="bookingsummaryinfo" style="float: right;">
+               <p class="hover-text-style">booking summary info</p>
+               <!-- Ride Fair BreakDown -->
+               <span class="fair-breakdown " style="right: 75px;max-width: 550px;">
+                  <input type="hidden" name="car_type" id="car_type" value="{{ request.session.car_type }}" required>
+                  <div class="col-sm-12" style="background-color: #eee;">
+                     <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5>
+                  </div>
+                  <div class="col-sm-8" >
+                     <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 15px;">
+                        <li>
+                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5>
+                        </li>
+                        {% for checkbox in ride_checkboxes_qs %}
+                        {% if checkbox.value > 0 %}
+                        <li>
+                           <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
+                           <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        <li>
+                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5>
+                        </li>
+                        {% for checkbox in ride_checkboxes_qs %}
+                        {% if checkbox.value == 0 %}
+                        <li >  <input type="checkbox" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}" {% if checkbox.id|stringformat:"i" in ride_checkboxes %}checked{% endif %}>
+                           <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                     </ul>
+                  </div>
+                  <div class="col-sm-4 square-box" >
+                     <p style="margin: 76px 20px 0px 0px;
+                        background-color: #eee;
+                        height: 85px;
+                        padding: 33px 0;text-align: center;"> ₹ {{ checkbox_charges|intcomma  }} </p>
+                  </div>
+                  <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
+                     <button class="book-btn" type="submit">&nbsp; Update booking Summary &nbsp;</button>
+                  </div>
+               </span>
             </div>
-
+         </form>
+      </div>
+   </div>
+   <div></div>
+   <div class="row">
+      <div class="col-md-12" style="padding-left: 0px;padding-right: 0px">
+         <div class="col-md-6">
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Journey Type</label>
-                <div class="col-sm-8">
-                  <input class="input-field" 
+               <label for="staticEmail" class="col-sm-4 col-form-label">From</label>
+               <div class="col-sm-8">
+                  <div class="inputlayout">{{ pickup }}</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-6">
+            <div class="row">
+               <label for="staticEmail" class="col-sm-4 col-form-label">To</label>
+               <div class="col-sm-8">
+                  <div class="inputlayout">{{ drop }}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-6">
+         <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Pick-Up Date & Time</label>
+            <div class="col-sm-8">
+               <input class="input-field" 
+               type="text" readonly
+               placeholder="{{ pickup_datetime|date:"j-M-Y" }} &ensp;{{ pickup_datetime|time:"h:i A" }}">
+            </div>
+         </div>
+         <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Journey Type</label>
+            <div class="col-sm-8">
+               <input class="input-field" 
                   type="text" readonly
                   placeholder="{{ ride_type }}">
-                </div>
             </div>
-            
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Final Fare</label>
-                <div class="col-sm-8"> 
-                     <div class="inputlayout " >
-                      <div style="width: 80%">{{ ride_total|intcomma }} INR</div>
-                        <div class="icon1" style="width: 20%;text-align: right;font-size: 18px;">
-                           <span class="fas fa-info-circle">
-                           </span>
-                            <!-- Ride Fair BreakDown -->
-                           <span class="fair-breakdown">
-
-                                Initial Charges : {{ initial_charges|intcomma  }}<br>
-                               {% if additional_charges %}
-                                Additional Taxes : {{ additional_charges|intcomma  }}<br>
-                               {% endif %}
-                                {% if driver_allowances %}
-                                Driver Allowances : {{ driver_allowances|intcomma  }}<br>
-                                {% endif %}
-                                {% if checkbox_charges %}
-                                    Chargeable Additions : {{ checkbox_charges|intcomma  }}<br>
-                                {% endif %}
-                               {% if gst_charges %}
-                                GST : {{ gst_charges|intcomma  }}<br>
-                               {% endif %}
-                                Total : {{ ride_total|intcomma  }}
-
-                           </span>
-                        </div>
-                     </div>
-                </div>
-            </div>          
-            <div class="row">
-                <form method="post">
-                    {% csrf_token %}
-                    <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
-                    <div class="col-sm-4">
-                      <input type="hidden"  name="type" value="coupon">
-                      <input type="text" class="input-field" name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
-                    </div>
-                    <div class="col-sm-4">
-                        <button class="button0 btn-width" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                    </div>
-                </form>
+         </div>
+         <div class="row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Final Fare</label>
+            <div class="col-sm-8">
+               <div class="inputlayout " >
+                  <div style="width: 80%">{{ ride_total|intcomma }} INR</div>
+                  <div class="icon1" style="width: 20%;text-align: right;font-size: 18px;">
+                     <span class="fas fa-info-circle">
+                     </span>
+                     <!-- Ride Fair BreakDown -->
+                     <span class="fair-breakdown">
+                     Initial Charges : {{ initial_charges|intcomma  }}<br>
+                     {% if additional_charges %}
+                     Additional Taxes : {{ additional_charges|intcomma  }}<br>
+                     {% endif %}
+                     {% if driver_allowances %}
+                     Driver Allowances : {{ driver_allowances|intcomma  }}<br>
+                     {% endif %}
+                     {% if checkbox_charges %}
+                     Chargeable Additions : {{ checkbox_charges|intcomma  }}<br>
+                     {% endif %}
+                     {% if gst_charges %}
+                     GST : {{ gst_charges|intcomma  }}<br>
+                     {% endif %}
+                     Total : {{ ride_total|intcomma  }}
+                     </span>
+                  </div>
+               </div>
             </div>
-
+         </div>
+         <div class="row">
             <form method="post">
+               {% csrf_token %}
+               <label for="staticEmail" class="col-sm-4 col-form-label">Enter Coupon Code</label>
+               <div class="col-sm-4">
+                  <input type="hidden"  name="type" value="coupon">
+                  <input type="text" class="input-field" name="coupon_code" id="staticEmail" placeholder="Enter Coupon Code">
+               </div>
+               <div class="col-sm-4">
+                  <button class="button0 btn-width" type="submit">Apply Coupon &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+               </div>
+            </form>
+         </div>
+         <form method="post">
             {% csrf_token %}
-                <input type="hidden" value="details" name="type">
+            <input type="hidden" value="details" name="type">
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
-                <div class="col-sm-8"> 
-                     <div class="inputlayout " >
-                      <div style="width: 80%">{{ request.user.wallet_balance|intcomma  }} INR</div>
-                        <div class="icon1 icon-style">
-                           <input type="checkbox" class="my-auto" style="display: inline-blocks;">
-                        </div>
+               <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
+               <div class="col-sm-8">
+                  <div class="inputlayout " >
+                     <div style="width: 80%">{{ request.user.wallet_balance|intcomma  }} INR</div>
+                     <div class="icon1 icon-style">
+                        <input type="checkbox" class="my-auto" style="display: inline-blocks;">
                      </div>
-                </div>
+                  </div>
+               </div>
             </div>
-
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Payable Amount</label>
-                <div class="col-sm-8">
+               <label for="staticEmail" class="col-sm-4 col-form-label">Payable Amount</label>
+               <div class="col-sm-8">
                   <input class="input-field " 
-                  type="text" readonly
-                  placeholder="{{ final_ride_fair|intcomma  }}  INR">
-                </div>
-               
+                     type="text" readonly
+                     placeholder="{{ final_ride_fair|intcomma  }}  INR">
+               </div>
             </div>
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Pay Booking Amount</label>
-                <div class="col-sm-8"> 
-                     <div class="inputlayout " >
-                      <div style="width: 80%">{{ advance|intcomma  }} INR</div>
-                        <div class="icon1 icon-style">
-                           <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=15 checked>
-                        </div>
+               <label for="staticEmail" class="col-sm-4 col-form-label">Pay Booking Amount</label>
+               <div class="col-sm-8">
+                  <div class="inputlayout " >
+                     <div style="width: 80%">{{ advance|intcomma  }} INR</div>
+                     <div class="icon1 icon-style">
+                        <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=15 checked>
                      </div>
-                </div>
+                  </div>
+               </div>
             </div>
             <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Pay Full Amount</label>
-                <div class="col-sm-8"> 
-                     <div class="inputlayout " >
-                      <div style="width: 80%">{{ final_ride_fair|intcomma  }}  INR</div>
-                        <div class="icon1 icon-style">
-                           <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=100>
-                        </div>
+               <label for="staticEmail" class="col-sm-4 col-form-label">Pay Full Amount</label>
+               <div class="col-sm-8">
+                  <div class="inputlayout " >
+                     <div style="width: 80%">{{ final_ride_fair|intcomma  }}  INR</div>
+                     <div class="icon1 icon-style">
+                        <input type="checkbox" class="check" style="display: inline-blocks;" name="advance" value=100>
                      </div>
-                </div>
-               
+                  </div>
+               </div>
             </div>
-        </div>
-
-
-        <!-- //////////////////Second column////////// -->
-        <div class="col-md-6">
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Drop-Off Date & Time</label>
-                <div class="col-sm-8">
-                  <input class="input-field " 
-                  type="text" readonly
-                  placeholder="{{ drop_datetime|date:"j-M-Y" }} &ensp;{{ drop_datetime|time:"h:i A" }}">
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Halt, If Required 
-                          <span class="icon1"> <span class="fas fa-info-circle">
-                           </span>
-                            <!-- Ride Fair BreakDown -->
-                           <span class="fair-breakdown">
-
-                                Initial Charges : {{ initial_charges }}<br>
-                               {% if additional_charges %}
-                                Additional Taxes : {{ additional_charges }}<br>
-                               {% endif %}
-                                {% if driver_allowances %}
-                                Driver Allowances : {{ driver_allowances }}<br>
-                                {% endif %}
-                                {% if checkbox_charges %}
-                                    Chargeable Additions : {{ checkbox_charges }}<br>
-                                {% endif %}
-                               {% if gst_charges %}
-                                GST : {{ gst_charges }}<br>
-                               {% endif %}
-                                Total : {{ ride_total }}
-
-                           </span>
-                           </span>
-                        </label>
-                <div class="col-sm-8" style="display: flex;">
-                  <select name="subject" class="input-field1" id="halt" style="">
-                          <option Selected>--Select City--</option>
-                          <option value="0" > Gurgaon </option>
-                          <option value="1">Faridabad</option>
-                          <option value="2">Delhi</option>                     
-                        </select>
-                 <select name="subject" class="input-field2" id="halt">
-                          <option Selected>--Time Duration--</option>
-                          <option value="0" > 30 min </option>
-                          <option value="1"> 1 hour </option>
-                          <option value="2"> 2 hour </option>                     
-                 </select>
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Travel Distance</label>
-                <div class="col-sm-8">
-                  <input class="input-field " 
-                  type="text" readonly
-                  placeholder="{{ distance_text }}">
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Travel Duration</label>
-                <div class="col-sm-8">
-                  <input class="input-field " 
-                  type="text" readonly
-                  placeholder="{{ duration_text }}">
-                </div>
-            </div>
-            
-            <div class="row">
-
-                <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
-                <div class="col-sm-8" style="display: flex;">                 
-                        <!-- <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}> -->
-                     <div class="inputlayout input-field1" style="width: 40%" >
-                      <div >{{ request.user.first_name }}</div>
-                     </div>
-                     <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Name (optional)">   
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
-                <div class="col-sm-8" style="display: flex;">               
-                        <!-- <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}> -->
-                     <div class="inputlayout input-field1" style="width: 40%">
-                      <div >{{ request.user.mobile }}</div>
-                     </div>
-                     <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Phone No. (optional)">   
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Exact Pickup:</label>
-                <div class="col-sm-8">
-                        <input class="input-field " type="text" name="pickup_location" placeholder="Enter pickup location">              
-                </div>
-            </div>
-            <div class="row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">Exact Drop:</label>
-                <div class="col-sm-8">
-                        <input class="input-field " 
-                               type="text"
-                               name="drop_location"
-                               placeholder="Enter drop Location"> 
-                </div>
-            </div>
-            
-            
-        </div>
+      </div>
+      <!-- //////////////////Second column////////// -->
+      <div class="col-md-6">
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Drop-Off Date & Time</label>
+      <div class="col-sm-8">
+      <input class="input-field " 
+      type="text" readonly
+      placeholder="{{ drop_datetime|date:"j-M-Y" }} &ensp;{{ drop_datetime|time:"h:i A" }}">
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Halt, If Required 
+      <span class="icon1"> <span class="fas fa-info-circle">
+      </span>
+      <!-- Ride Fair BreakDown -->
+      <span class="fair-breakdown">
+      Initial Charges : {{ initial_charges }}<br>
+      {% if additional_charges %}
+      Additional Taxes : {{ additional_charges }}<br>
+      {% endif %}
+      {% if driver_allowances %}
+      Driver Allowances : {{ driver_allowances }}<br>
+      {% endif %}
+      {% if checkbox_charges %}
+      Chargeable Additions : {{ checkbox_charges }}<br>
+      {% endif %}
+      {% if gst_charges %}
+      GST : {{ gst_charges }}<br>
+      {% endif %}
+      Total : {{ ride_total }}
+      </span>
+      </span>
+      </label>
+      <div class="col-sm-8" style="display: flex;">
+      <select name="subject" class="input-field1" id="halt" style="">
+      <option Selected>--Select City--</option>
+      <option value="0" > Gurgaon </option>
+      <option value="1">Faridabad</option>
+      <option value="2">Delhi</option>                     
+      </select>
+      <select name="subject" class="input-field2" id="halt">
+      <option Selected>--Time Duration--</option>
+      <option value="0" > 30 min </option>
+      <option value="1"> 1 hour </option>
+      <option value="2"> 2 hour </option>                     
+      </select>
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Travel Distance</label>
+      <div class="col-sm-8">
+      <input class="input-field " 
+         type="text" readonly
+         placeholder="{{ distance_text }}">
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Travel Duration</label>
+      <div class="col-sm-8">
+      <input class="input-field " 
+         type="text" readonly
+         placeholder="{{ duration_text }}">
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Name:</label>
+      <div class="col-sm-8" style="display: flex;">                 
+      <!-- <input class="input-field " type="text" name="name" placeholder="Full Name" value={{ request.user.first_name }}> -->
+      <div class="inputlayout input-field1" style="width: 40%" >
+      <div >{{ request.user.first_name }}</div>
+      </div>
+      <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Name (optional)">   
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Phone:</label>
+      <div class="col-sm-8" style="display: flex;">               
+      <!-- <input class="input-field " type="text" name="mobile" placeholder="Phone" value={{ request.user.mobile }}> -->
+      <div class="inputlayout input-field1" style="width: 40%">
+      <div >{{ request.user.mobile }}</div>
+      </div>
+      <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Phone No. (optional)">   
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Exact Pickup:</label>
+      <div class="col-sm-8">
+      <input class="input-field " type="text" name="pickup_location" placeholder="Enter pickup location">              
+      </div>
+      </div>
+      <div class="row">
+      <label for="staticEmail" class="col-sm-4 col-form-label">Exact Drop:</label>
+      <div class="col-sm-8">
+      <input class="input-field " 
+         type="text"
+         name="drop_location"
+         placeholder="Enter drop Location"> 
+      </div>
+      </div>
+      </div>
       <div class="col-sm-12">
       <div class="booking-frm checkout-button" style="display: flex">
-                <a href="{% url 'core:cars' %}"><button type="button" class="book-btn" style="margin-right: 15px;
-                       font-weight: 700;background-color: #233545;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;Back</button></a>
-                <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                </div>
+      <a href="{% url 'core:cars' %}"><button type="button" class="book-btn" style="margin-right: 15px;
+         font-weight: 700;background-color: #233545;"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>&nbsp;Back</button></a>
+      <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
       </div>
-        </form>
-    </div>
+      </div>
+      </form>
+   </div>
 </div>
-
-            
-
-            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 {% endblock content %}
-
-
 {% block extra_scripts %}
 <script type="text/javascript">
-  //Code to chose one checkbox betweent he given options(payment full or 15 %)
-  $(document).ready(function(){
-    $('.check').click(function() {
-        $('.check').not(this).prop('checked', false);
-    });
-});
-   // $( document ).ready(function () {
-   //      {% for checkbox in ridecheckboxes %}
-   //          $('#checkbox{{ checkbox.id }}').prop("checked", false);
-   //      {% endfor %}
-   //  });
-
-    $(document).ready(function(){
-
-        {% for checkbox in ridecheckboxes %}
-            $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
-                price = $('#checkbox{{ checkbox.id }}').val();
-                price = parseInt({{ checkbox.value }});
-                console.log('CheckBox Price');
-                console.log(price);
-
-                 if ($(this).is(':checked')){
-                    {% for type in car_types %}
-                        type_price = $('#finalprice{{ type.id }} .price').text();
-                        type_price = parseInt(type_price);
-                        console.log('Car Type Price');
-                        console.log(type_price);
-                        $('#finalprice{{ type.id }} .price').text((type_price + price));
-                    {% endfor %}
-                }
-                 if ($(this).is(':not(:checked')){
-                    {% for type in car_types %}
-                        type_price = $('#finalprice{{ type.id }} .price').text();
-                        type_price = parseInt(type_price);
-                        console.log(type_price);
-                        $('#finalprice{{ type.id }} .price').text((type_price - price));
-                    {% endfor %}
-                }
-            });
-
-        {% endfor %}
-         });
+   //Code to chose one checkbox betweent he given options(payment full or 15 %)
+   $(document).ready(function(){
+     $('.check').click(function() {
+         $('.check').not(this).prop('checked', false);
+     });
+   });
+    // $( document ).ready(function () {
+    //      {% for checkbox in ridecheckboxes %}
+    //          $('#checkbox{{ checkbox.id }}').prop("checked", false);
+    //      {% endfor %}
+    //  });
+   
+     $(document).ready(function(){
+   
+         {% for checkbox in ridecheckboxes %}
+             $( "#checkbox{{ checkbox.id }}" ).on( "click", function() {
+                 price = $('#checkbox{{ checkbox.id }}').val();
+                 price = parseInt({{ checkbox.value }});
+                 console.log('CheckBox Price');
+                 console.log(price);
+   
+                  if ($(this).is(':checked')){
+                     {% for type in car_types %}
+                         type_price = $('#finalprice{{ type.id }} .price').text();
+                         type_price = parseInt(type_price);
+                         console.log('Car Type Price');
+                         console.log(type_price);
+                         $('#finalprice{{ type.id }} .price').text((type_price + price));
+                     {% endfor %}
+                 }
+                  if ($(this).is(':not(:checked')){
+                     {% for type in car_types %}
+                         type_price = $('#finalprice{{ type.id }} .price').text();
+                         type_price = parseInt(type_price);
+                         console.log(type_price);
+                         $('#finalprice{{ type.id }} .price').text((type_price - price));
+                     {% endfor %}
+                 }
+             });
+   
+         {% endfor %}
+          });
 </script>
 {% endblock extra_scripts %}
- 
+

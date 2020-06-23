@@ -2,1330 +2,1260 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block extra_stylesheet %}
- <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- <link rel="stylesheet" href="/resources/demos/style.css">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
-
- <style type="text/css">
-  .timeWithText:before{
-    font-weight: bolder;
-    color: #1c2b39;
-    content: "Date and Time";
-    }
-    .tj-form2-tabs .nav-tabs > li.active > a, .tj-form2-tabs .nav-tabs > li.active > a:hover, .tj-form2-tabs .nav-tabs > li.active > a:focus{
-    background-color:#ffc000;
-      height: 69px;
-    font-size: 18px;
-    bottom: 0px;
-    }
-    .airport-section .tj-form2-tabs .nav-tabs > li.active > a,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:hover,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:focus{
-    background-color:#ffc000;
-      padding: 12px;
-    height: 47px;
-    font-size: 18px;
-    bottom: 5px;
-    }
-  .tj-destinations{
-    float: left;
-    width: 100%;
-    padding: 0;
-  }
-    @media (max-width: 768px){
-    .display-change{
-      display: grid !important;
-     }
-    }
-    .display-change{
-     display: flex;
-    }
-    @media(max-width:767px){
-    .airport-section{
-    margin-top: 20px !important;
-    }
+<link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css">
+<style type="text/css">
+   .timeWithText:before{
+   font-weight: bolder;
+   color: #1c2b39;
+   content: "Date and Time";
+   }
+   .tj-form2-tabs .nav-tabs > li.active > a, .tj-form2-tabs .nav-tabs > li.active > a:hover, .tj-form2-tabs .nav-tabs > li.active > a:focus{
+   background-color:#ffc000;
+   height: 69px;
+   font-size: 18px;
+   bottom: 0px;
+   }
+   .airport-section .tj-form2-tabs .nav-tabs > li.active > a,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:hover,.airport-section .tj-form2-tabs .nav-tabs > li.active > a:focus{
+   background-color:#ffc000;
+   padding: 12px;
+   height: 47px;
+   font-size: 18px;
+   bottom: 5px;
+   }
+   .tj-destinations{
+   float: left;
+   width: 100%;
+   padding: 0;
+   }
+   @media (max-width: 768px){
+   .display-change{
+   display: grid !important;
+   }
+   }
+   .display-change{
+   display: flex;
+   }
+   @media(max-width:767px){
+   .airport-section{
+   margin-top: 20px !important;
+   }
    .res-padding{
-    padding-left: 0px;
-    padding-right: 0px;
-    }
+   padding-left: 0px;
+   padding-right: 0px;
+   }
    .airport-btn{
-     margin-top: 0px !important;
-     padding-left: 0px;
-     }
-     .remove-padding-left{
-     padding-right: 0px;
-     padding-left: 0px;
-     margin-bottom: 13px;
-     margin-top: 12px;
-     }
-     .airport-date-col{
-     margin-top: 25px;
-     padding-right: 0px;
-     padding-left: 0px;
-     }
-     }
-
-     .airport-section{
-     margin-top: 48px;
-     }
-     .remove-padding-left{
-     padding-left: 0px;
-     }
-    .airport-date-col{
-    margin-top: 35px;
-    padding-right: 0px;
-    }
-    .airport-btn{
-    margin-top: 32px;
-    padding-right: 0px;
-    }
-    
-    /*CSS for Expandible Testimonials*/
-    .morecontent span {
-    display: none;
-
-    }
-    .morelink {
-    display: block;
-    
-    }
-    
-    .tj-reviews .reviews-slider .review-item{
-     min-height: 341px;
-     }
-     
-     .tj-reviews .owl-item{
-     margin-bottom: 10px;
-     }
-
-      /*Destination carousel css*/
-      strong h3{
-      font-weight: bolder;
-      color: black;
-      }
-      .txt-right{
-      display: inline;
-      float: right;
-      margin: 0;
-      }
-      .carousel-btn{
-      background-color: #ffc000;
-      padding: 2px 7px;
-      display: inline;
-      float: right;
-      }
-      .txt-left{
-      display:inline;
-      float:left;
-      margin: 0;
-      }
-      .carousel_article{
-      position: relative;
-      margin-top: 94%;
-      width: 100%;
-      color:#fff;
-      padding: 3%;
-      background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.09) 0%, rgba(0, 0, 0, .9) 100%);
-      }
-      /*#cab-slider .owl-controls .owl-nav{
-       display: none !important;
-      }*/
-      #owl-one .owl-carousel .owl-controls .owl-nav .owl-prev{
-      left: -2%;
-      position: absolute !important;
-      top: 39% !important;
-      background-color: white !important;
-      color: black !important;
-
-      }
-      
-      #owl-one .owl-carousel .owl-controls .owl-nav .owl-next{
-      right: -2%;
-      position: absolute !important;
-      top: 39% !important;
-      background-color: white !important;
-      color: black !important;
-      }
-      
-      
-      /*css for select dropdown */
-      .bootstrap-select>.dropdown-toggle{
-      width: 100%;
-      padding: 10px 13px;
-      font-size: 14px;
-      line-height: 24px;
-      color: #a6a6a6;
-      border: 1px solid #e8e8e8;
-      display: block;
-      margin-bottom: 0px;
-      border-radius: 4px;
-      }
-      .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
-      width: 100% !important;
-      }
-      /*CSS for image bellow Testimonial*/
-      .aligntest h3:after{
-      margin-top: 0px;!important
-      margin: 10px; !important
-      }
- </style>
-
+   margin-top: 0px !important;
+   padding-left: 0px;
+   }
+   .remove-padding-left{
+   padding-right: 0px;
+   padding-left: 0px;
+   margin-bottom: 13px;
+   margin-top: 12px;
+   }
+   .airport-date-col{
+   margin-top: 25px;
+   padding-right: 0px;
+   padding-left: 0px;
+   }
+   }
+   .airport-section{
+   margin-top: 48px;
+   }
+   .remove-padding-left{
+   padding-left: 0px;
+   }
+   .airport-date-col{
+   margin-top: 35px;
+   padding-right: 0px;
+   }
+   .airport-btn{
+   margin-top: 32px;
+   padding-right: 0px;
+   }
+   /*CSS for Expandible Testimonials*/
+   .morecontent span {
+   display: none;
+   }
+   .morelink {
+   display: block;
+   }
+   .tj-reviews .reviews-slider .review-item{
+   min-height: 341px;
+   }
+   .tj-reviews .owl-item{
+   margin-bottom: 10px;
+   }
+   /*Destination carousel css*/
+   strong h3{
+   font-weight: bolder;
+   color: black;
+   }
+   .txt-right{
+   display: inline;
+   float: right;
+   margin: 0;
+   }
+   .carousel-btn{
+   background-color: #ffc000;
+   padding: 2px 7px;
+   display: inline;
+   float: right;
+   }
+   .txt-left{
+   display:inline;
+   float:left;
+   margin: 0;
+   }
+   .carousel_article{
+   position: relative;
+   margin-top: 94%;
+   width: 100%;
+   color:#fff;
+   padding: 3%;
+   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.09) 0%, rgba(0, 0, 0, .9) 100%);
+   }
+   /*#cab-slider .owl-controls .owl-nav{
+   display: none !important;
+   }*/
+   #owl-one .owl-carousel .owl-controls .owl-nav .owl-prev{
+   left: -2%;
+   position: absolute !important;
+   top: 39% !important;
+   background-color: white !important;
+   color: black !important;
+   }
+   #owl-one .owl-carousel .owl-controls .owl-nav .owl-next{
+   right: -2%;
+   position: absolute !important;
+   top: 39% !important;
+   background-color: white !important;
+   color: black !important;
+   }
+   /*css for select dropdown */
+   .bootstrap-select>.dropdown-toggle{
+   width: 100%;
+   padding: 10px 13px;
+   font-size: 14px;
+   line-height: 24px;
+   color: #a6a6a6;
+   border: 1px solid #e8e8e8;
+   display: block;
+   margin-bottom: 0px;
+   border-radius: 4px;
+   }
+   .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn){
+   width: 100% !important;
+   }
+   /*CSS for image bellow Testimonial*/
+   .aligntest h3:after{
+   margin-top: 0px;!important
+   margin: 10px; !important
+   }
+</style>
 {% endblock extra_stylesheet %}
- 
-
 {% block content %}
-
-    <!--Slider Section Start-->
-      <div class="tj-slider">
-        <div class="tj-cab-slider" id="cab-slider" >
-
-                    {% for banner in banners %}
-          <!--Slider Item Content Start-->
-          <div class="slide-item">
-            <img class="set-image" src="{{ banner.image.url }}" alt="" >
-            <div class="slide-caption">
-              <div class="container">
-                <div class="slide-inner">
+<!--Slider Section Start-->
+<div class="tj-slider">
+   <div class="tj-cab-slider" id="cab-slider" >
+      {% for banner in banners %}
+      <!--Slider Item Content Start-->
+      <div class="slide-item">
+         <img class="set-image" src="{{ banner.image.url }}" alt="" >
+         <div class="slide-caption">
+            <div class="container">
+               <div class="slide-inner">
                   <h2>{{ banner.h5|linebreaks|escape }}</h2>
                   <!-- <h2>{{ banner.h2|linebreaks|escape }}</h2> -->
-                </div>
-              </div>
+               </div>
             </div>
-          </div>
-          <!--Slider Item Content End-->
-                    {% endfor %}
-        </div>
+         </div>
       </div>
-      <!--Slider Section End-->
-
-    <!--Banner Form 2 Content Start-->
-    <section class="tj-banner-form2" >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <!--Banner Form 2 Nav Start-->
-                     <div id="maintab" class="tj-form2-tabs">
+      <!--Slider Item Content End-->
+      {% endfor %}
+   </div>
+</div>
+<!--Slider Section End-->
+<!--Banner Form 2 Content Start-->
+<section class="tj-banner-form2" >
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 col-sm-12">
+            <!--Banner Form 2 Nav Start-->
+            <div id="maintab" class="tj-form2-tabs">
+               <ul class="nav nav-tabs">
+                  <li class="active"  id="ONEWAY"><a href="#one-way" data-toggle="tab">One Way</a></li>
+                  <li id="AIRPORT"><a href="#airport" data-toggle="tab">Airport</a></li>
+                  <!-- <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
+                     <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li> -->
+               </ul>
+            </div>
+            <!--Banner Form 2 Nav End-->
+            <!--Form Tab Content Start-->
+            <div class="tab-content" style="border: 5px solid #ffc000;">
+               <!--Banner Form 2 Tab One Way Section Start-->
+               <div class="tab-pane active" id="one-way">
+                  <!--Banner Form 2 Content Start-->
+                  <form class="booking-frm" method="POST" id="ride-bform" >
+                     {% csrf_token %}
+                     <div class="col-md-3 col-sm-6">
+                        <input type="hidden" name="type" value="One Way" required>
+                        <strong>Pickup City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="one_way_pickup_city" name="pickup_city" placeholder="Pickup City" required>
+                              <option  value="empty" selected="selected">--select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6">
+                        <strong>Pick Up Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="one_way_pickup_location" name="pickup" placeholder="From" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6" >
+                        <strong>Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text" name="pickup_datetime">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6">
+                        <strong>Drop City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" list="drop_cities" id="one_way_drop_city" name="drop_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in drop_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-12">
+                        <strong>Drop Off Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="one_way_drop_location" name="drop" placeholder="To" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6" style="margin-top: 15px" id="btn-hov"><br>
+                        <button type="submit" style="width: 100%;" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                     </div>
+                  </form>
+                  <!--Banner Form 2 Content End-->
+               </div>
+               <!--Banner Form 2 Tab One Way Section End-->
+               <!--Banner Form 2 Tab Airport Section Start-->
+               <div class="tab-pane" id="airport">
+                  <!--Banner Form 2 Content Start-->
+                  <section class="airport-section" style="margin-top: 48px" >
+                     <div class="tj-form2-tabs">
                         <ul class="nav nav-tabs">
-                            <li class="active"  id="ONEWAY"><a href="#one-way" data-toggle="tab">One Way</a></li>
-                            <li id="AIRPORT"><a href="#airport" data-toggle="tab">Airport</a></li>
-                            <!-- <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
-                            <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li> -->
+                           <li class="active tabwidth"><a  href="#from-airport" data-toggle="tab">From Airport</a></li>
+                           <li class="tabwidth"><a href="#to-airport" data-toggle="tab">To Airport</a></li>
                         </ul>
-                    </div>
-                    <!--Banner Form 2 Nav End-->
-                    <!--Form Tab Content Start-->
-                    <div class="tab-content" style="border: 5px solid #ffc000;">
-
-
-                        <!--Banner Form 2 Tab One Way Section Start-->
-                        <div class="tab-pane active" id="one-way">
-                            <!--Banner Form 2 Content Start-->
-                            <form class="booking-frm" method="POST" id="ride-bform" >
-                                    {% csrf_token %}
-
-                                <div class="col-md-3 col-sm-6">
-                                   <input type="hidden" name="type" value="One Way" required>
-                                   <strong>Pickup City</strong>
-                                   <div class="field-holder">
-                                       <select class="selectpicker" data-live-search="true" id="one_way_pickup_city" name="pickup_city" placeholder="Pickup City" required>
-                                           <option  value="empty" selected="selected">--select--</option>
-                                           {% for city in pickup_cities %}
-                                           <option value="{{city}}">{{city}}</option>
-                                           {% endfor %}
-                                       </select>
-                                   </div>
-                                </div>
-                               
-                                <div class="col-md-6 col-sm-6">
-                                    <strong>Pick Up Address</strong>
-                                    <div class="field-holder">
-                                        <input type="text" id="one_way_pickup_location" name="pickup" placeholder="From" required>
-                                       <span class="fas fa-map-marker-alt"></span>
-                                    </div>
-                               </div>
-                              <div class="col-md-3 col-sm-6" > 
-                                  <strong>Date & Time</strong>
-                                  <div class="field-holder datetimepicker">
-                                       <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
-                                       <input type="text" name="pickup_datetime">
-                                   </div>
-                             </div>
-
-                               <div class="col-md-3 col-sm-6">
-                                    <strong>Drop City</strong>
-                                    <div class="field-holder">
-                                        <select class="selectpicker" data-live-search="true" list="drop_cities" id="one_way_drop_city" name="drop_city" placeholder="--Select--" required>
-                                            <option  value="empty" selected="selected">--Select--</option>
-                                           {% for city in drop_cities %}
-                                            <option value="{{city}}">{{city}}</option>
-                                           {% endfor %}
-                                        </select>
-                                    </div>
-                               </div>
-                             <div class="col-md-6 col-sm-12">
+                     </div>
+                     <div class="tab-content" style="padding: 0px 0px;">
+                        <!-- FROM AIRPORT FORM -->
+                        <div class="tab-pane active" id="from-airport">
+                           <form class="booking-frm" method="POST" id="ride-bform">
+                              {% csrf_token %}
+                              <input type="hidden" name="type" value="Airport" required>
+                              <div class="col-md-3 col-sm-6 remove-padding-left" >
+                                 <strong>Pick Up City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" id="from_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                                       <option  value="empty" selected="selected">--Select Airport City--<span class="fas fa-map-marker-alt"></span></option>
+                                       {% for city in pickup_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6 res-padding">
+                                 <strong>Pick Up Address</strong>
+                                 <div class="field-holder">
+                                    <input type="text" id="from_airport_pickup_location" name="pickup" placeholder="From Airport" required>
+                                    <span class="fas fa-map-marker-alt"></span>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 res-padding">
+                                 <strong>Date & Time</strong>
+                                 <div class="field-holder datetimepicker">
+                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                                    <input type="text">
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 remove-padding-left" >
+                                 <strong>Drop City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" list="drop_cities" id="from_airport_drop_city" name="drop_city" placeholder="Drop City" required>
+                                       <option  value="empty" selected="selected">--Select--</option>
+                                       {% for city in drop_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-12 res-padding">
                                  <strong>Drop Off Address</strong>
                                  <div class="field-holder">
-                                     <input type="text" id="one_way_drop_location" name="drop" placeholder="To" required>
-                                     <span class="fas fa-map-marker-alt"></span>
+                                    <input type="text" id="from_airport_drop_location" name="drop" placeholder="To" required>
+                                    <span class="fas fa-map-marker-alt"></span>
                                  </div>
-                                 
-                                  
-                             </div>
-                             <div class="col-md-3 col-sm-6" style="margin-top: 15px" id="btn-hov"><br>
-                                <button type="submit" style="width: 100%;" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                              </div>                     
-                             </form>
-                            <!--Banner Form 2 Content End-->
-                         </div>
-                        <!--Banner Form 2 Tab One Way Section End-->
-
-
-
-                        <!--Banner Form 2 Tab Airport Section Start-->
-              <div class="tab-pane" id="airport">
-                            <!--Banner Form 2 Content Start-->
-                  <section class="airport-section" style="margin-top: 48px" >
-                          <div class="tj-form2-tabs">
-                             <ul class="nav nav-tabs">
-                               <li class="active tabwidth"><a  href="#from-airport" data-toggle="tab">From Airport</a></li>
-                               <li class="tabwidth"><a href="#to-airport" data-toggle="tab">To Airport</a></li>
-                             </ul>
-                           </div>
-                     <div class="tab-content" style="padding: 0px 0px;">
-
-                           <!-- FROM AIRPORT FORM -->
-                       <div class="tab-pane active" id="from-airport">
-                            <form class="booking-frm" method="POST" id="ride-bform">
-                                    {% csrf_token %}
-                                <input type="hidden" name="type" value="Airport" required>
-                                   <div class="col-md-3 col-sm-6 remove-padding-left" >
-                                       <strong>Pick Up City</strong>
-                                       <div class="field-holder">
-                                          <select class="selectpicker" data-live-search="true" id="from_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
-                                              <option  value="empty" selected="selected">--Select Airport City--<span class="fas fa-map-marker-alt"></span></option>
-                                               {% for city in pickup_cities %}
-                                              <option value="{{city}}">{{city}}</option>
-                                               {% endfor %}
-                                          </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-sm-6 res-padding">
-                                       <strong>Pick Up Address</strong>
-                                       <div class="field-holder">
-                                           <input type="text" id="from_airport_pickup_location" name="pickup" placeholder="From Airport" required>
-                                           <span class="fas fa-map-marker-alt"></span>
-                                       </div>
-                                    </div>
-
-                                 <div class="col-md-3 col-sm-6 res-padding">    <strong>Date & Time</strong>
-                                      <div class="field-holder datetimepicker">
-                                       <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
-                                       <input type="text">
-                                   </div>
-                                 </div> 
-
-                                  <div class="col-md-3 col-sm-6 remove-padding-left" >
-                                        <strong>Drop City</strong>
-                                          <div class="field-holder">
-
-                                            <select class="selectpicker" data-live-search="true" list="drop_cities" id="from_airport_drop_city" name="drop_city" placeholder="Drop City" required>
-                                               <option  value="empty" selected="selected">--Select--</option>
-                                                 {% for city in drop_cities %}
-                                               <option value="{{city}}">{{city}}</option>
-                                                 {% endfor %}
-                                            </select>
-                                                   </div>
-                                            </div>
-
-                                            <div class="col-md-6 col-sm-12 res-padding">
-                                                  <strong>Drop Off Address</strong>
-                                                  <div class="field-holder">
-                                                       <input type="text" id="from_airport_drop_location" name="drop" placeholder="To" required>
-                                                       <span class="fas fa-map-marker-alt"></span>
-                                                  </div><br>
-                                            </div>
-                                            <div class="col-md-3 col-sm-3 airport-btn">
-                                                <button type="submit" style="width: 100%" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                            </div>
-                                        </form>
-                                   </div>
-
-
-                               <div class="tab-pane"  id="to-airport">
-                                  <!-- TO AIRPORT  -->
-                                 <form class="booking-frm" method="POST" id="ride-bform" >
-                                        {% csrf_token %}
-                                        <input type="hidden" name="type" value="Airport" required>
-                                        <div class="col-md-3 col-sm-6 remove-padding-left">
-                                            <strong>Pick Up City</strong>
-                                             <div class="field-holder">  
-                                                 <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
-                                                     <option  value="empty" selected="selected">--Select--</option>
-                                                       {% for city in pickup_cities %}
-                                                    <option value="{{city}}">{{city}}</option>
-                                                        {% endfor %}
-                                                  </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6 res-padding">
-                                              <strong>Pick Up Address</strong>
-                                              <div class="field-holder">
-                                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
-                                                    <span class="fas fa-map-marker-alt"></span>
-                                              </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-6 res-padding">
-                                            <strong>Date & Time</strong>
-                                            <div class="field-holder datetimepicker">
-                                                <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
-                                                <input type="text">
-                                             </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6 remove-padding-left">
-                                               <strong>Drop City</strong>
-                                               <div class="field-holder">
-                                                <select class="selectpicker" data-live-search="true" list="drop_cities" id="to_airport_drop_city" name="drop_city" placeholder="--Select--" required>                                  
-                                               <option  value="empty" selected="selected">--Select Airport City--</option>
-                                                 {% for city in drop_cities %}
-                                               <option value="{{city}}">{{city}}</option>
-                                                 {% endfor %}
-                                            </select>
-                                               </div>
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-12 res-padding">
-                                              <strong>Drop Off Address</strong>
-                                              <div class="field-holder">
-                                                   <input type="text" id="to_airport_drop_location" name="drop" placeholder="To Airport" required>
-                                                   <span class="fas fa-map-marker-alt"></span><br>
-                                              </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-3 airport-btn" >
-                                            <button type="submit" style="width: 100%;" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                        </div>                                        
-                                    </form>
-                                   </div>
-                               </div>
-                           </section>
-                            </form>
-                            <!--Banner Form 2 Content End-->
+                                 <br>
+                              </div>
+                              <div class="col-md-3 col-sm-3 airport-btn">
+                                 <button type="submit" style="width: 100%" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                              </div>
+                           </form>
                         </div>
-                        <!--Banner Form 2 Tab One Way Section End-->
-
-                        <!--Banner Form 2 Tab One Way Section Start-->
-                        <div class="tab-pane" id="round-trip">
-                            <!--Banner Form 2 Content Start-->
-                            <form method="POST" class="trip-frm2">
-                                <div class="col-md-12 col-sm-12">
-                                    <h4>Picking Up</h4>
-                                    <div class="field-box">
-                                        <span class="fas fa-search"></span>
-                                        <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-sm-12">
-                                    <h4>Dropping Off</h4>
-                                    <div class="field-box">
-                                        <span class="fas fa-search"></span>
-                                        <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                </div>
-                            </form>
-                            <!--Banner Form 2 Content End-->
+                        <div class="tab-pane"  id="to-airport">
+                           <!-- TO AIRPORT  -->
+                           <form class="booking-frm" method="POST" id="ride-bform" >
+                              {% csrf_token %}
+                              <input type="hidden" name="type" value="Airport" required>
+                              <div class="col-md-3 col-sm-6 remove-padding-left">
+                                 <strong>Pick Up City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                                       <option  value="empty" selected="selected">--Select--</option>
+                                       {% for city in pickup_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6 res-padding">
+                                 <strong>Pick Up Address</strong>
+                                 <div class="field-holder">
+                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
+                                    <span class="fas fa-map-marker-alt"></span>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 res-padding">
+                                 <strong>Date & Time</strong>
+                                 <div class="field-holder datetimepicker">
+                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                                    <input type="text">
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 remove-padding-left">
+                                 <strong>Drop City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" list="drop_cities" id="to_airport_drop_city" name="drop_city" placeholder="--Select--" required>
+                                       <option  value="empty" selected="selected">--Select Airport City--</option>
+                                       {% for city in drop_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-12 res-padding">
+                                 <strong>Drop Off Address</strong>
+                                 <div class="field-holder">
+                                    <input type="text" id="to_airport_drop_location" name="drop" placeholder="To Airport" required>
+                                    <span class="fas fa-map-marker-alt"></span><br>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-3 airport-btn" >
+                                 <button type="submit" style="width: 100%;" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                              </div>
+                           </form>
                         </div>
-                        <!--Banner Form 2 Tab One Way Section End-->
-
-                        <!--Banner Form 2 Tab One Way Section Start-->
-                        <div class="tab-pane" id="multi-way">
-                            <!--Banner Form 2 Content Start-->
-                            <form method="POST" class="trip-frm2">
-                                <div class="col-md-12 col-sm-12">
-                                    <h4>Picking Up</h4>
-                                    <div class="field-box">
-                                        <span class="fas fa-search"></span>
-                                        <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 col-sm-12">
-                                    <h4>Dropping Off</h4>
-                                    <div class="field-box">
-                                        <span class="fas fa-search"></span>
-                                        <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3">
-                                    <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                                </div>
-                            </form>
-                            <!--Banner Form 2 Content End-->
-                        </div>
-                        <!--Banner Form 2 Tab One Way Section End-->
-                    </div>
-                    <!--Form Tab Content End-->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Banner Form 2 Content End-->
-
-    <!--Booking Services Section Start-->
-    <section class="tj-book-services" >
-        <div class="container">
-            <div class="row">
-                <!--Booking Services Heading Start-->
-                <div class="col-md-12 col-sm-12">
-                    <div class="tj-heading-style">
-                        <h3>Get Booking in Easy Steps</h3>
-                        <p>We are here to make your road trip booking hassle free with three easy clicks i.e. fill details, confirm itinerary and make payment.</p>
-                    </div>
-                </div>
-                <!--Booking Services Heading End-->
-                <!--Booking Services Box Start-->
-                <!-- <div class="col-md-4 col-sm-4">
-                    <div class="service-box">
-                        <div class="icon-outer"> -->
-                            <!-- <span>01</span> -->
-                            <!-- <i class="far fa-edit"></i>
-                        </div>
-                        <div class="service-caption">
-                            <h3>Make Reservation</h3>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
-                            <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
-                     <!--    </div>
-                    </div>
-                </div> -->
-                <!--Booking Services Box End-->
-                <!--Booking Services Box Start-->
-                <!-- <div class="col-md-4 col-sm-4">
-                    <div class="service-box">
-                        <div class="icon-outer"> -->
-                            <!-- <span>02</span> -->
-                            <!-- <i class="fas fa-taxi"></i>
-                        </div>
-                        <div class="service-caption">
-                            <h3>Vehicle Confirmation</h3>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
-                            <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
-                       <!--  </div>
-                    </div>
-                </div> -->
-                <!--Booking Services Box End-->
-                <!--Booking Services Box Start-->
-                <!-- <div class="col-md-4 col-sm-4" id="nav-destinations">
-                    <div class="service-box">
-                        <div class="icon-outer"> -->
-                            <!-- <span>03</span> -->
-                            <!-- <i class="far fa-thumbs-up"></i>
-                        </div>
-                        <div class="service-caption">
-                            <h3>Enjoy your Trips</h3>
-                            <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
-                            <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
-                        <!-- </div>
-                    </div>
-                </div> -->
-                <!--Booking Services Box End-->
-
-
-
-           <div class="cab-services" style="padding: 0px;">
-        <div class="container">
-            <div class="row">
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
-                        <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb service-box">
-                          <div class="icon-outer">
-                            <!-- <span>01</span> -->
-                            <i class="far fa-edit"></i>
-                        </div>
-                            <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
-                        </figure>
-                        <!--Cab Services Thumb End-->
-                        <!--Cab Services Info Start-->
-                        <div class="service-desc" >
-                            <h4>Make Reservation</h4>
-                            <p>Fill in your requirement to reserve your cab for outbound or inbound journey</p>
-                        </div>
-                        <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
-                        <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb service-box">
-                          <div class="icon-outer">
-                            <!-- <span>01</span> -->
-                            <i class="fas fa-taxi"></i>
-                        </div>
-                            <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
-                        </figure>
-                        <!--Cab Services Thumb End-->
-                        <!--Cab Services Info Start-->
-                        <div class="service-desc" >
-                            <h4>Vehicle Confirmation</h4>
-                            <p>Confirmed vehicle provided as per itinerary for your luxury </p>
-                        </div>
-                        <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4" >
-                    <div class="cab-service-box">
-                        <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb service-box">
-                          <div class="icon-outer">
-                            <!-- <span>01</span> -->
-                            <i class="far fa-thumbs-up"></i>
-                        </div>
-                            <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
-                        </figure>
-                        <!--Cab Services Thumb End-->
-                        <!--Cab Services Info Start-->
-                        <div class="service-desc" >
-                            <h4>Enjoy your Trips</h4>
-                            <p>Comfortable vehicle of your choice to enjoy memorable journey</p>
-                        </div>
-                        <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-
-            </div>
-        </div>
-          </div>
-                  </div>
-              </div>
-           
-    </section>
-    <!--Booking Services Section End-->
-    <section class="tj-destinations" id="nav-destinations">
-
-    <div class="container" >
-        <div class="row" >
-            
-          <div class="col-md-3 col-sm-3 service-box " style="margin-top: 8%; position: static;">
-            <div class="service-caption">
-            <h3  >Destinations</h3>
-            <p>Popular destinations for your lifetime memories </p><br>
-            <p>Amazing  Destinations to cherish  your memories life long </p>
-          </div>
-          </div>
-          <div class="col-md-9 col-sm-12 col-xs-12"id="owl-one">
-
-            <div class="owl-carousel" >
-
-                {% for destination in popular_destinations %}
-                    <div class=" item" style="padding-left: 0px;">
-                        <img style="position: absolute;" class="img-responsive" src="{{ destination.image.url }}"  alt="">
-                        <article class="text-center carousel_article col-xs-2" >
-                           <h5 class="txt-left"><strong>{{ destination.from_place }} To {{ destination.to_place }}</strong></h5>
-                            <h5 class="txt-right">{{ destination.distance }} KM</h5><br>
-                            <h6 class="txt-left">{{ destination.popular_place }}<br></h6>
-                            <h7 class="txt-left">Starting from &#8377 {{ destination.starting_from_price }}/-</h7>
-                           <button type="submit" class="carousel-btn book-btn btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                        </article>
-                        <div class="ver_mas text-center">
-                            <span  class="lnr lnr-eye"></span>
-                         </div>
                      </div>
-                {% endfor %}
-
-              </div>
-          </div>
-        </div>
+                  </section>
+                  </form>
+                  <!--Banner Form 2 Content End-->
+               </div>
+               <!--Banner Form 2 Tab One Way Section End-->
+               <!--Banner Form 2 Tab One Way Section Start-->
+               <div class="tab-pane" id="round-trip">
+                  <!--Banner Form 2 Content Start-->
+                  <form method="POST" class="trip-frm2">
+                     <div class="col-md-12 col-sm-12">
+                        <h4>Picking Up</h4>
+                        <div class="field-box">
+                           <span class="fas fa-search"></span>
+                           <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
+                        </div>
+                     </div>
+                     <div class="col-md-12 col-sm-12">
+                        <h4>Dropping Off</h4>
+                        <div class="field-box">
+                           <span class="fas fa-search"></span>
+                           <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-3">
+                        <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                     </div>
+                  </form>
+                  <!--Banner Form 2 Content End-->
+               </div>
+               <!--Banner Form 2 Tab One Way Section End-->
+               <!--Banner Form 2 Tab One Way Section Start-->
+               <div class="tab-pane" id="multi-way">
+                  <!--Banner Form 2 Content Start-->
+                  <form method="POST" class="trip-frm2">
+                     <div class="col-md-12 col-sm-12">
+                        <h4>Picking Up</h4>
+                        <div class="field-box">
+                           <span class="fas fa-search"></span>
+                           <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
+                        </div>
+                     </div>
+                     <div class="col-md-12 col-sm-12">
+                        <h4>Dropping Off</h4>
+                        <div class="field-box">
+                           <span class="fas fa-search"></span>
+                           <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-3">
+                        <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                     </div>
+                  </form>
+                  <!--Banner Form 2 Content End-->
+               </div>
+               <!--Banner Form 2 Tab One Way Section End-->
+            </div>
+            <!--Form Tab Content End-->
+         </div>
       </div>
-    </section>
-    <!--Cab Services Section Start-->
-    <section class="cab-services">
-        <div class="container">
-            <div class="row">
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
+   </div>
+</section>
+<!--Banner Form 2 Content End-->
+<!--Booking Services Section Start-->
+<section class="tj-book-services" >
+   <div class="container">
+      <div class="row">
+         <!--Booking Services Heading Start-->
+         <div class="col-md-12 col-sm-12">
+            <div class="tj-heading-style">
+               <h3>Get Booking in Easy Steps</h3>
+               <p>We are here to make your road trip booking hassle free with three easy clicks i.e. fill details, confirm itinerary and make payment.</p>
+            </div>
+         </div>
+         <!--Booking Services Heading End-->
+         <!--Booking Services Box Start-->
+         <!-- <div class="col-md-4 col-sm-4">
+            <div class="service-box">
+                <div class="icon-outer"> -->
+         <!-- <span>01</span> -->
+         <!-- <i class="far fa-edit"></i>
+            </div>
+            <div class="service-caption">
+                <h3>Make Reservation</h3>
+                <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
+         <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
+         <!--    </div>
+            </div>
+            </div> -->
+         <!--Booking Services Box End-->
+         <!--Booking Services Box Start-->
+         <!-- <div class="col-md-4 col-sm-4">
+            <div class="service-box">
+                <div class="icon-outer"> -->
+         <!-- <span>02</span> -->
+         <!-- <i class="fas fa-taxi"></i>
+            </div>
+            <div class="service-caption">
+                <h3>Vehicle Confirmation</h3>
+                <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
+         <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
+         <!--  </div>
+            </div>
+            </div> -->
+         <!--Booking Services Box End-->
+         <!--Booking Services Box Start-->
+         <!-- <div class="col-md-4 col-sm-4" id="nav-destinations">
+            <div class="service-box">
+                <div class="icon-outer"> -->
+         <!-- <span>03</span> -->
+         <!-- <i class="far fa-thumbs-up"></i>
+            </div>
+            <div class="service-caption">
+                <h3>Enjoy your Trips</h3>
+                <p>A more with desktop softy like aldus page maker still in their infancy mak versions have evolved</p> -->
+         <!-- <a href="">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a> -->
+         <!-- </div>
+            </div>
+            </div> -->
+         <!--Booking Services Box End-->
+         <div class="cab-services" style="padding: 0px;">
+            <div class="container">
+               <div class="row">
+                  <!--Cab Services Outer Start-->
+                  <div class="col-md-4 col-sm-4">
+                     <div class="cab-service-box">
                         <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb ">
-                            <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="">
+                        <figure class="service-thumb service-box">
+                           <div class="icon-outer">
+                              <!-- <span>01</span> -->
+                              <i class="far fa-edit"></i>
+                           </div>
+                           <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
                         </figure>
                         <!--Cab Services Thumb End-->
                         <!--Cab Services Info Start-->
                         <div class="service-desc" >
-                            <h4>Best Price Guaranteed</h4>
-                            <p>Assure to give best price for services we offer.</p>
+                           <h4>Make Reservation</h4>
+                           <p>Fill in your requirement to reserve your cab for outbound or inbound journey</p>
                         </div>
                         <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
+                     </div>
+                  </div>
+                  <!--Cab Services Outer End-->
+                  <!--Cab Services Outer Start-->
+                  <div class="col-md-4 col-sm-4">
+                     <div class="cab-service-box">
                         <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb">
-                            <img src="{% static 'images/icons/customer-care.png' %}" alt="">
+                        <figure class="service-thumb service-box">
+                           <div class="icon-outer">
+                              <!-- <span>01</span> -->
+                              <i class="fas fa-taxi"></i>
+                           </div>
+                           <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
                         </figure>
                         <!--Cab Services Thumb End-->
                         <!--Cab Services Info Start-->
-                        <div class="service-desc">
-                            <h4>24/7 Customer Care</h4>
-                            <p>Round the clock assistance to ensure hassle free service.</p>
+                        <div class="service-desc" >
+                           <h4>Vehicle Confirmation</h4>
+                           <p>Confirmed vehicle provided as per itinerary for your luxury </p>
                         </div>
                         <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
+                     </div>
+                  </div>
+                  <!--Cab Services Outer End-->
+                  <!--Cab Services Outer Start-->
+                  <div class="col-md-4 col-sm-4" >
+                     <div class="cab-service-box">
                         <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb">
-                            <img src="{% static 'images/icons/home-pickups.png' %}" alt="">
+                        <figure class="service-thumb service-box">
+                           <div class="icon-outer">
+                              <!-- <span>01</span> -->
+                              <i class="far fa-thumbs-up"></i>
+                           </div>
+                           <!-- <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt=""> -->
                         </figure>
                         <!--Cab Services Thumb End-->
                         <!--Cab Services Info Start-->
-                        <div class="service-desc">
-                            <h4>Home Pickups</h4>
-                            <p>Home pick up services, no need to walk out for taxi.</p>
+                        <div class="service-desc" >
+                           <h4>Enjoy your Trips</h4>
+                           <p>Comfortable vehicle of your choice to enjoy memorable journey</p>
                         </div>
                         <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
-                        <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb">
-                            <img src="{% static 'images/icons/instant-booking.png' %}" alt="">
-                        </figure>
-                        <!--Cab Services Thumb End-->
-                        <!--Cab Services Info Start-->
-                        <div class="service-desc">
-                            <h4>Instant Booking</h4>
-                            <p>Provides instant booking to plan outstation travel anytime.</p>
-                        </div>
-                        <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-                <!--Cab Services Outer Start-->
-                <div class="col-md-4 col-sm-4">
-                    <div class="cab-service-box">
-                        <!--Cab Services Thumb Start-->
-                        <figure class="service-thumb">
-                            <img src="{% static 'images/icons/easy-cancelation.png' %}" alt="">
-                        </figure>
-                        <!--Cab Services Thumb End-->
-                        <!--Cab Services Info Start-->
-                        <div class="service-desc">
-                            <h4>Easy Cancellation</h4>
-                            <p>Convenient cancellation in case change in plan.</p>
-                        </div>
-                        <!--Cab Services Info End-->
-                    </div>
-                </div>
-                <!--Cab Services Outer End-->
-
+                     </div>
+                  </div>
+                  <!--Cab Services Outer End-->
+               </div>
             </div>
-        </div>
-    </section>
-    <!--Cab Services Section End-->
-
-    <!--Testimonials Section Start-->
-    <section class="tj-reviews" >
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="tj-heading-style" style="padding-top: 30px">
-                        <h3 id="aligntest" >Testimonials</h3>
-                    </div>
-                </div>
-                <div class="col-md-12 col-sm-12">
-                    <!--Testimonials Slider Content Start-->
-                    <div id="testimonial-slider" class="reviews-slider owl-carousel">
-
-                        {% for testimonial in testimonials %}
-                        <!--Review Item Start-->
-                        <div class="review-item">
-                            <figure class="img-box">
-                                <img src="{{ testimonial.image.url }}" alt="" style="height: 119px; width:134px">
-                            </figure>
-                            <div class="review-info">
-                                <strong>{{ testimonial.name }}</strong>
-                                <span class="icon-star-empty icomoon rating"></span>
-                                <span class="icon-star-empty icomoon rating"></span>
-                                <span class="icon-star-empty icomoon rating"></span>
-                                <span class="icon-star-empty icomoon rating"></span>
-                                <span class="icon-star-empty icomoon"></span>
-                                <div class="review-quote">
-                                <span class="more">{{ testimonial.message }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Review Item End-->
-                        {% endfor %}
-                    </div>
-                    <!--Testimonials Slider Content End-->
-                </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Booking Services Section End-->
+<section class="tj-destinations" id="nav-destinations">
+   <div class="container" >
+      <div class="row" >
+         <div class="col-md-3 col-sm-3 service-box " style="margin-top: 8%; position: static;">
+            <div class="service-caption">
+               <h3  >Destinations</h3>
+               <p>Popular destinations for your lifetime memories </p>
+               <br>
+               <p>Amazing  Destinations to cherish  your memories life long </p>
             </div>
-        </div>
-    </section>
-    <!--Testimonials Section End-->
-
-   <section class="tj-form-map">
-        <div class="container">
-          <div class="row display-change">
-            <div class="col-md-6 col-sm-6 no-padr">
-              <div id="tj-map2" class="tj-map2">
-
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224544.5592617254!2d77.1563277262857!3d28.434076741346683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdc15f5a424b1%3A0xe4f50576c850e0f2!2sFaridabad%2C%20Haryana!5e0!3m2!1sen!2sin!4v1589535258830!5m2!1sen!2sin" width="575" height="100%" frameborder="0" style="border:0;width: inherit;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-                            </div>
+         </div>
+         <div class="col-md-9 col-sm-12 col-xs-12"id="owl-one">
+            <div class="owl-carousel" >
+               {% for destination in popular_destinations %}
+               <div class=" item" style="padding-left: 0px;">
+                  <img style="position: absolute;" class="img-responsive" src="{{ destination.image.url }}"  alt="">
+                  <article class="text-center carousel_article col-xs-2" >
+                     <h5 class="txt-left"><strong>{{ destination.from_place }} To {{ destination.to_place }}</strong></h5>
+                     <h5 class="txt-right">{{ destination.distance }} KM</h5>
+                     <br>
+                     <h6 class="txt-left">{{ destination.popular_place }}<br></h6>
+                     <h7 class="txt-left">Starting from &#8377 {{ destination.starting_from_price }}/-</h7>
+                     <button type="submit" class="carousel-btn book-btn btn">Book Now <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                  </article>
+                  <div class="ver_mas text-center">
+                     <span  class="lnr lnr-eye"></span>
+                  </div>
+               </div>
+               {% endfor %}
             </div>
-            <div class="col-md-6 col-sm-6 no-padl">
-              <div class="form-box">
-                <div class="form_desc">
+         </div>
+      </div>
+   </div>
+</section>
+<!--Cab Services Section Start-->
+<section class="cab-services">
+   <div class="container">
+      <div class="row">
+         <!--Cab Services Outer Start-->
+         <div class="col-md-4 col-sm-4">
+            <div class="cab-service-box">
+               <!--Cab Services Thumb Start-->
+               <figure class="service-thumb ">
+                  <img src="{% static 'images/icons/Best-Price-Guranteed.png' %}" alt="">
+               </figure>
+               <!--Cab Services Thumb End-->
+               <!--Cab Services Info Start-->
+               <div class="service-desc" >
+                  <h4>Best Price Guaranteed</h4>
+                  <p>Assure to give best price for services we offer.</p>
+               </div>
+               <!--Cab Services Info End-->
+            </div>
+         </div>
+         <!--Cab Services Outer End-->
+         <!--Cab Services Outer Start-->
+         <div class="col-md-4 col-sm-4">
+            <div class="cab-service-box">
+               <!--Cab Services Thumb Start-->
+               <figure class="service-thumb">
+                  <img src="{% static 'images/icons/customer-care.png' %}" alt="">
+               </figure>
+               <!--Cab Services Thumb End-->
+               <!--Cab Services Info Start-->
+               <div class="service-desc">
+                  <h4>24/7 Customer Care</h4>
+                  <p>Round the clock assistance to ensure hassle free service.</p>
+               </div>
+               <!--Cab Services Info End-->
+            </div>
+         </div>
+         <!--Cab Services Outer End-->
+         <!--Cab Services Outer Start-->
+         <div class="col-md-4 col-sm-4">
+            <div class="cab-service-box">
+               <!--Cab Services Thumb Start-->
+               <figure class="service-thumb">
+                  <img src="{% static 'images/icons/home-pickups.png' %}" alt="">
+               </figure>
+               <!--Cab Services Thumb End-->
+               <!--Cab Services Info Start-->
+               <div class="service-desc">
+                  <h4>Home Pickups</h4>
+                  <p>Home pick up services, no need to walk out for taxi.</p>
+               </div>
+               <!--Cab Services Info End-->
+            </div>
+         </div>
+         <!--Cab Services Outer End-->
+         <!--Cab Services Outer Start-->
+         <div class="col-md-4 col-sm-4">
+            <div class="cab-service-box">
+               <!--Cab Services Thumb Start-->
+               <figure class="service-thumb">
+                  <img src="{% static 'images/icons/instant-booking.png' %}" alt="">
+               </figure>
+               <!--Cab Services Thumb End-->
+               <!--Cab Services Info Start-->
+               <div class="service-desc">
+                  <h4>Instant Booking</h4>
+                  <p>Provides instant booking to plan outstation travel anytime.</p>
+               </div>
+               <!--Cab Services Info End-->
+            </div>
+         </div>
+         <!--Cab Services Outer End-->
+         <!--Cab Services Outer Start-->
+         <div class="col-md-4 col-sm-4">
+            <div class="cab-service-box">
+               <!--Cab Services Thumb Start-->
+               <figure class="service-thumb">
+                  <img src="{% static 'images/icons/easy-cancelation.png' %}" alt="">
+               </figure>
+               <!--Cab Services Thumb End-->
+               <!--Cab Services Info Start-->
+               <div class="service-desc">
+                  <h4>Easy Cancellation</h4>
+                  <p>Convenient cancellation in case change in plan.</p>
+               </div>
+               <!--Cab Services Info End-->
+            </div>
+         </div>
+         <!--Cab Services Outer End-->
+      </div>
+   </div>
+</section>
+<!--Cab Services Section End-->
+<!--Testimonials Section Start-->
+<section class="tj-reviews" >
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="tj-heading-style" style="padding-top: 30px">
+               <h3 id="aligntest" >Testimonials</h3>
+            </div>
+         </div>
+         <div class="col-md-12 col-sm-12">
+            <!--Testimonials Slider Content Start-->
+            <div id="testimonial-slider" class="reviews-slider owl-carousel">
+               {% for testimonial in testimonials %}
+               <!--Review Item Start-->
+               <div class="review-item">
+                  <figure class="img-box">
+                     <img src="{{ testimonial.image.url }}" alt="" style="height: 119px; width:134px">
+                  </figure>
+                  <div class="review-info">
+                     <strong>{{ testimonial.name }}</strong>
+                     <span class="icon-star-empty icomoon rating"></span>
+                     <span class="icon-star-empty icomoon rating"></span>
+                     <span class="icon-star-empty icomoon rating"></span>
+                     <span class="icon-star-empty icomoon rating"></span>
+                     <span class="icon-star-empty icomoon"></span>
+                     <div class="review-quote">
+                        <span class="more">{{ testimonial.message }}</span>
+                     </div>
+                  </div>
+               </div>
+               <!--Review Item End-->
+               {% endfor %}
+            </div>
+            <!--Testimonials Slider Content End-->
+         </div>
+      </div>
+   </div>
+</section>
+<!--Testimonials Section End-->
+<section class="tj-form-map">
+   <div class="container">
+      <div class="row display-change">
+         <div class="col-md-6 col-sm-6 no-padr">
+            <div id="tj-map2" class="tj-map2">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224544.5592617254!2d77.1563277262857!3d28.434076741346683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdc15f5a424b1%3A0xe4f50576c850e0f2!2sFaridabad%2C%20Haryana!5e0!3m2!1sen!2sin!4v1589535258830!5m2!1sen!2sin" width="575" height="100%" frameborder="0" style="border:0;width: inherit;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+         </div>
+         <div class="col-md-6 col-sm-6 no-padl">
+            <div class="form-box">
+               <div class="form_desc">
                   <h3>Contact Us</h3>
                   <p>More recently with desktop publishing aldus including versions.</p>
-                </div>
-                <form method="POST" class="contact_frm">
-                    {% csrf_token %}
-                    <input type="hidden" name="form_type" value="contact-us">
+               </div>
+               <form method="POST" class="contact_frm">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_type" value="contact-us">
                   <div class="frm-field">
-                    {% render_field contactform.name id="username" placeholder="Name" %}
-                    {% render_field contactform.email id="user_email" placeholder="Email" %}
+                     {% render_field contactform.name id="username" placeholder="Name" %}
+                     {% render_field contactform.email id="user_email" placeholder="Email" %}
                   </div>
                   <div class="frm-field">
-                    {% render_field contactform.message id="send_msg" placeholder="Message" %}
+                     {% render_field contactform.message id="send_msg" placeholder="Message" %}
                   </div>
                   <button type="submit" class="submit-btn">Submit <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
-                </form>
-              </div>
+               </form>
             </div>
-          </div>
-        </div>
-  </section>
-
+         </div>
+      </div>
+   </div>
+</section>
 {% endblock content %}
-
 {% block footer %}
-    <!--Footer Content Start-->
-    <section class="tj-footer">
-        <div class="container" style="margin-top: 130px">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="about-widget widget">
-                        <h3>About TaxoTaxi</h3>
-                        <p>Search for will uncover many web sites variables onto of passages of lorem ipsum available but the majority the words all predefined humour to met chunks recently with desktop.</p>
-                        <ul class="fsocial-links">
-                            <li><a href="http://www.facebook.com"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="http://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
-                            <!-- <li><a href="http://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a></li> -->
-                            <li><a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="links-widget widget">
-                        <h3>Explore Links</h3>
-                        <ul class="flinks-list">
-                            <!-- <li><i class="far fa-folder"></i><a href="">One Way</a></li>
-                            <li><i class="far fa-folder"></i><a href="">Multi-Way/Round Trip</a></li> -->
-                            <li><i class="far fa-folder"></i><a href="">About Us</a></li>
-                            <li><i class="far fa-folder"></i><a href="{% url 'blog:home' %}">Blog</a></li>
-                            <li><i class="far fa-folder"></i><a href="{% url 'core:faq' %}">F.A.Q.</a></li>
-                            <li><i class="far fa-folder"></i><a href="{% url 'core:contact' %}">Contact-Us</a></li>
-                            <li><i class="far fa-folder"></i><a href="{% url 'core:terms&conditions' %}"> Terms & conditions</a></li>
-                            <!-- <li><i class="far fa-folder"></i><a href=""> Company Policy</a></li> -->
-                        </ul>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3">
-                    <div class="contact-info widget">
-                        <h3>Contact Info</h3>
-                        <ul class="contact-box">
-                            <li>
-                                <i class="fas fa-home" aria-hidden="true"></i> Faridabad
-                            </li>
-                            <li>
-                                <i class="far fa-envelope-open"></i>
-                                <a href="mailto:taxotaxi@booking.com">
-                                contact@taxotaxi.com</a>
-                            </li>
-                            <li>
-                                <i class="icon-phone icomoon"></i>
-                                <a href="tel:9650818563">+91-9650818563</a>
-                            </li>
-                            <li>
-                                <i class="fas fa-globe-asia"></i>
-                                <a href="www.taxotaxi.com">www.taxotaxi.com</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<!--Footer Content Start-->
+<section class="tj-footer">
+   <div class="container" style="margin-top: 130px">
+      <div class="row">
+         <div class="col-md-6">
+            <div class="about-widget widget">
+               <h3>About TaxoTaxi</h3>
+               <p>Search for will uncover many web sites variables onto of passages of lorem ipsum available but the majority the words all predefined humour to met chunks recently with desktop.</p>
+               <ul class="fsocial-links">
+                  <li><a href="http://www.facebook.com"><i class="fab fa-facebook-f"></i></a></li>
+                  <li><a href="http://www.twitter.com"><i class="fab fa-twitter"></i></a></li>
+                  <li><a href="http://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
+                  <!-- <li><a href="http://www.pinterest.com"><i class="fab fa-pinterest-p"></i></a></li> -->
+                  <li><a href="http://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
+               </ul>
             </div>
-        </div>
-    </section>
-    <!--Footer Content End-->
-    <!--Footer Copyright Start-->
-    <section class="tj-copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4">
-              <p>&copy; Copyrights 2020 <a href="https://www.taxotaxi.com">Taxotaxi</a>. All Rights Reserved.</p>
+         </div>
+         <div class="col-md-3">
+            <div class="links-widget widget">
+               <h3>Explore Links</h3>
+               <ul class="flinks-list">
+                  <!-- <li><i class="far fa-folder"></i><a href="">One Way</a></li>
+                     <li><i class="far fa-folder"></i><a href="">Multi-Way/Round Trip</a></li> -->
+                  <li><i class="far fa-folder"></i><a href="">About Us</a></li>
+                  <li><i class="far fa-folder"></i><a href="{% url 'blog:home' %}">Blog</a></li>
+                  <li><i class="far fa-folder"></i><a href="{% url 'core:faq' %}">F.A.Q.</a></li>
+                  <li><i class="far fa-folder"></i><a href="{% url 'core:contact' %}">Contact-Us</a></li>
+                  <li><i class="far fa-folder"></i><a href="{% url 'core:terms&conditions' %}"> Terms & conditions</a></li>
+                  <!-- <li><i class="far fa-folder"></i><a href=""> Company Policy</a></li> -->
+               </ul>
             </div>
-            <div class="col-md-4 col-sm-4" >
-              <p style="float: right;">&#9413; Powered By <a href="https://kmltechs.com/">Taxotecnosoft Pvt Ltd</a>. </p>
+         </div>
+         <div class="col-md-3">
+            <div class="contact-info widget">
+               <h3>Contact Info</h3>
+               <ul class="contact-box">
+                  <li>
+                     <i class="fas fa-home" aria-hidden="true"></i> Faridabad
+                  </li>
+                  <li>
+                     <i class="far fa-envelope-open"></i>
+                     <a href="mailto:taxotaxi@booking.com">
+                     contact@taxotaxi.com</a>
+                  </li>
+                  <li>
+                     <i class="icon-phone icomoon"></i>
+                     <a href="tel:9650818563">+91-9650818563</a>
+                  </li>
+                  <li>
+                     <i class="fas fa-globe-asia"></i>
+                     <a href="www.taxotaxi.com">www.taxotaxi.com</a>
+                  </li>
+               </ul>
             </div>
-            <div class="col-md-4 col-sm-4" >
-              <p style="float: right;"> Developed By <a href="https://kmltechs.com/">KML Technologies</a>. </p>
-            </div>
-            </div>
-        </div>
-    </section>
-    <!--Footer Copyright End-->
+         </div>
+      </div>
+   </div>
+</section>
+<!--Footer Content End-->
+<!--Footer Copyright Start-->
+<section class="tj-copyright">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-4 col-sm-4">
+            <p>&copy; Copyrights 2020 <a href="https://www.taxotaxi.com">Taxotaxi</a>. All Rights Reserved.</p>
+         </div>
+         <div class="col-md-4 col-sm-4" >
+            <p style="float: right;">&#9413; Powered By <a href="https://kmltechs.com/">Taxotecnosoft Pvt Ltd</a>. </p>
+         </div>
+         <div class="col-md-4 col-sm-4" >
+            <p style="float: right;"> Developed By <a href="https://kmltechs.com/">KML Technologies</a>. </p>
+         </div>
+      </div>
+   </div>
+</section>
+<!--Footer Copyright End-->
 {% endblock footer %}
-
 {% block extra_scripts %}
-
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=initService" async defer></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=one_way_drop_location_autocomplete" async defer></script>
-
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=from_airport_pickup_location_autocomplete" async defer></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=from_airport_drop_location_autocomplete" async defer></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=to_airport_pickup_location_autocomplete" async defer></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=to_airport_drop_location_autocomplete" async defer></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-
-        <script>
-
-        var final_place = 'Sector 10';
-        // One Way Pickup Location Autocomplete
-        function initService() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              // alert(status);
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              // var li = document.createElement('li');
-              // li.appendChild(document.createTextNode(prediction.description));
-              // document.getElementById('results').appendChild(li);
-              console.log(arr);
-              $('#one_way_pickup_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-          }
-
-        function one_way_drop_location_autocomplete() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              // alert(status);
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              // var li = document.createElement('li');
-              // li.appendChild(document.createTextNode(prediction.description));
-              // document.getElementById('results').appendChild(li);
-              console.log(arr);
-              $('#one_way_drop_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-        }
-
-        function from_airport_pickup_location_autocomplete() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              console.log(arr);
-              $('#from_airport_pickup_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-        }
-
-        function from_airport_drop_location_autocomplete() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              console.log(arr);
-              $('#from_airport_drop_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-        }
-
-        function to_airport_pickup_location_autocomplete() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              console.log(arr);
-              $('#to_airport_pickup_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-        }
-
-        function to_airport_drop_location_autocomplete() {
-          var arr = [];
-          var displaySuggestions = function(predictions, status) {
-            if (status != google.maps.places.PlacesServiceStatus.OK) {
-              return;
-            }
-            predictions.forEach(function(prediction) {
-              arr.push(prediction.description);
-              console.log(arr);
-              $('#to_airport_drop_location').autocomplete({
-                source:arr
-              });
-            });
-          };
-          var service = new google.maps.places.AutocompleteService();
-          service.getPlacePredictions({ input: final_place }, displaySuggestions);
-        }
-
-        function to_airport_function(){
-            $("to_airport_button").addClass('active');
-            $("to_airport_form").show();
-            $("from_airport_form").hide();
-        }
-
-
-
-        $(document).ready(function(){
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=initService" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=one_way_drop_location_autocomplete" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=from_airport_pickup_location_autocomplete" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=from_airport_drop_location_autocomplete" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=to_airport_pickup_location_autocomplete" async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU&libraries=places&callback=to_airport_drop_location_autocomplete" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+   var final_place = 'Sector 10';
+   // One Way Pickup Location Autocomplete
+   function initService() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         // alert(status);
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         // var li = document.createElement('li');
+         // li.appendChild(document.createTextNode(prediction.description));
+         // document.getElementById('results').appendChild(li);
+         console.log(arr);
+         $('#one_way_pickup_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+     }
+   
+   function one_way_drop_location_autocomplete() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         // alert(status);
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         // var li = document.createElement('li');
+         // li.appendChild(document.createTextNode(prediction.description));
+         // document.getElementById('results').appendChild(li);
+         console.log(arr);
+         $('#one_way_drop_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+   }
+   
+   function from_airport_pickup_location_autocomplete() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         console.log(arr);
+         $('#from_airport_pickup_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+   }
+   
+   function from_airport_drop_location_autocomplete() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         console.log(arr);
+         $('#from_airport_drop_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+   }
+   
+   function to_airport_pickup_location_autocomplete() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         console.log(arr);
+         $('#to_airport_pickup_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+   }
+   
+   function to_airport_drop_location_autocomplete() {
+     var arr = [];
+     var displaySuggestions = function(predictions, status) {
+       if (status != google.maps.places.PlacesServiceStatus.OK) {
+         return;
+       }
+       predictions.forEach(function(prediction) {
+         arr.push(prediction.description);
+         console.log(arr);
+         $('#to_airport_drop_location').autocomplete({
+           source:arr
+         });
+       });
+     };
+     var service = new google.maps.places.AutocompleteService();
+     service.getPlacePredictions({ input: final_place }, displaySuggestions);
+   }
+   
+   function to_airport_function(){
+       $("to_airport_button").addClass('active');
+       $("to_airport_form").show();
+       $("from_airport_form").hide();
+   }
+   
+   
+   
+   $(document).ready(function(){
+   
+   
+       // readonly on site load for location field
+     $("#one_way_pickup_location").attr("readonly", true);
+     $("#one_way_drop_location").attr("readonly", true);
+     $("#from_airport_pickup_location").attr("readonly", true);
+     $("#from_airport_drop_location").attr("readonly", true);
+     $("#to_airport_pickup_location").attr("readonly", true);
+     $("#to_airport_drop_location").attr("readonly", true);
+   
+       //ReadOnly attribute for location field on empty city selection
+   
         
-
-            // readonly on site load for location field
-          $("#one_way_pickup_location").attr("readonly", true);
-          $("#one_way_drop_location").attr("readonly", true);
-          $("#from_airport_pickup_location").attr("readonly", true);
-          $("#from_airport_drop_location").attr("readonly", true);
-          $("#to_airport_pickup_location").attr("readonly", true);
-          $("#to_airport_drop_location").attr("readonly", true);
-
-            //ReadOnly attribute for location field on empty city selection
-
-             
-               //one-way tab
-            $('#one_way_pickup_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#one_way_pickup_location").attr("readonly", true); }
-               else{ $("#one_way_pickup_location").attr("readonly", false); }
-              });
-            $('#one_way_drop_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#one_way_drop_location").attr("readonly", true); }
-               else{ $("#one_way_drop_location").attr("readonly", false); }
-              });
-                //airport 
-              $('#from_airport_pickup_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#from_airport_pickup_location").attr("readonly", true); }
-               else{ $("#from_airport_pickup_location").attr("readonly", false); }
-              }); 
-               $('#from_airport_drop_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#from_airport_drop_location").attr("readonly", true); }
-               else{ $("#from_airport_drop_location").attr("readonly", false); }
-              });
-                $('#to_airport_pickup_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#to_airport_pickup_location").attr("readonly", true); }
-               else{ $("#to_airport_pickup_location").attr("readonly", false); }
-              });
-                 $('#to_airport_drop_city').on("change",function(){
-               var $arr=$(this).val();
-               if($arr == "empty"){ $("#to_airport_drop_location").attr("readonly", true); }
-               else{ $("#to_airport_drop_location").attr("readonly", false); }
-              });
-
-
-            // One Way Clear Location on Manipulating City
-            $('#one_way_pickup_city').on("change",function(){
-                $('#one_way_pickup_location').val('');
-                $( "#one_way_pickup_location" ).focus();
-            });
-            $('#one_way_drop_city').on("change",function(){
-                $('#one_way_drop_location').val('');
-                $( "#one_way_drop_location" ).focus();
-            });
-
-            $('#to_airport_pickup_city').on("change",function(){
-                $('#to_airport_pickup_location').val('');
-                $( "#to_airport_pickup_location" ).focus();
-            });
+          //one-way tab
+       $('#one_way_pickup_city').on("change",function(){
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#one_way_pickup_location").attr("readonly", true); }
+          else{ $("#one_way_pickup_location").attr("readonly", false); }
+         });
+       $('#one_way_drop_city').on("change",function(){
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#one_way_drop_location").attr("readonly", true); }
+          else{ $("#one_way_drop_location").attr("readonly", false); }
+         });
+           //airport 
+         $('#from_airport_pickup_city').on("change",function(){
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#from_airport_pickup_location").attr("readonly", true); }
+          else{ $("#from_airport_pickup_location").attr("readonly", false); }
+         }); 
+          $('#from_airport_drop_city').on("change",function(){
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#from_airport_drop_location").attr("readonly", true); }
+          else{ $("#from_airport_drop_location").attr("readonly", false); }
+         });
+           $('#to_airport_pickup_city').on("change",function(){
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#to_airport_pickup_location").attr("readonly", true); }
+          else{ $("#to_airport_pickup_location").attr("readonly", false); }
+         });
             $('#to_airport_drop_city').on("change",function(){
-                $('#to_airport_drop_location').val('');
-                $( "#to_airport_drop_location" ).focus();
-            });
-
-            $('#from_airport_pickup_city').on("change",function(){
-                $('#from_airport_pickup_location').val('');
-                $( "#from_airport_pickup_location" ).focus();
-            });
-            $('#from_airport_drop_city').on("change",function(){
-                $('#from_airport_drop_location').val('');
-                $( "#from_airport_drop_location" ).focus();
-            });
-
-
-            // One Way Autocomplete Function Call
-              $('#one_way_pickup_location').keyup(function(){
-                var city = $('#one_way_pickup_city').val();
-                var place = $('#one_way_pickup_location').val();
-                final_place = place.concat(' ' + city);
-                console.log(final_place);
-                initService();
-              });
-
-              $('#one_way_drop_location').keyup(function(){
-                var city = $('#one_way_drop_city').val();
-                var place = $('#one_way_drop_location').val();
-                final_place = place.concat(' ' + city);
-                one_way_drop_location_autocomplete();
-              });
-
-              // From Airport Autocomplete Function Call
-                $('#from_airport_pickup_location').keyup(function(){
-                    var city = $('#from_airport_pickup_city').val();
-                    var place = $('#from_airport_pickup_location').val();
-                    final_place = place.concat(' airport ' + city);
-                    from_airport_pickup_location_autocomplete();
-                  });
-
-                  $('#from_airport_drop_location').keyup(function(){
-                    var city = $('#from_airport_drop_city').val();
-                    var place = $('#from_airport_drop_location').val();
-                    final_place = place.concat(' ' + city);
-                    from_airport_drop_location_autocomplete();
-                  });
-
-
-                // To Airport Autocomplete Function Call
-                  $('#to_airport_pickup_location').keyup(function(){
-                    var city = $('#to_airport_pickup_city').val();
-                    var place = $('#to_airport_pickup_location').val();
-                    final_place = place.concat(' ' + city);
-                    to_airport_pickup_location_autocomplete();
-                  });
-
-                  $('#to_airport_drop_location').keyup(function(){
-                    var city = $('#to_airport_drop_city').val();
-                    var place = $('#to_airport_drop_location').val();
-                    final_place = place.concat(' airport ' + city);
-                    to_airport_drop_location_autocomplete();
-                  });
-        });
-
-
-
-
-        </script>
-
-        <script src="{% static 'js/owl.carousel.min.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>This file distort the existing css -->
-        <!-- Bellow scripts for Datetime picker -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-       <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/locale/nl.js"></script> -->
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-        <script>
-
-            $('.owl-carousel').owlCarousel({
-              autoplay: true,
-              center: false,
-              loop: true,
-              nav: true,
-              margin:4,
-               responsive:{
-        0:{
-            items:1,
-            nav:true
-        },
-        600:{
-            items:3,
-            nav:false
-        },
-        1000:{
-            items:4,
-            nav:true,
-            loop:true
-        }
+          var $arr=$(this).val();
+          if($arr == "empty"){ $("#to_airport_drop_location").attr("readonly", true); }
+          else{ $("#to_airport_drop_location").attr("readonly", false); }
+         });
+   
+   
+       // One Way Clear Location on Manipulating City
+       $('#one_way_pickup_city').on("change",function(){
+           $('#one_way_pickup_location').val('');
+           $( "#one_way_pickup_location" ).focus();
+       });
+       $('#one_way_drop_city').on("change",function(){
+           $('#one_way_drop_location').val('');
+           $( "#one_way_drop_location" ).focus();
+       });
+   
+       $('#to_airport_pickup_city').on("change",function(){
+           $('#to_airport_pickup_location').val('');
+           $( "#to_airport_pickup_location" ).focus();
+       });
+       $('#to_airport_drop_city').on("change",function(){
+           $('#to_airport_drop_location').val('');
+           $( "#to_airport_drop_location" ).focus();
+       });
+   
+       $('#from_airport_pickup_city').on("change",function(){
+           $('#from_airport_pickup_location').val('');
+           $( "#from_airport_pickup_location" ).focus();
+       });
+       $('#from_airport_drop_city').on("change",function(){
+           $('#from_airport_drop_location').val('');
+           $( "#from_airport_drop_location" ).focus();
+       });
+   
+   
+       // One Way Autocomplete Function Call
+         $('#one_way_pickup_location').keyup(function(){
+           var city = $('#one_way_pickup_city').val();
+           var place = $('#one_way_pickup_location').val();
+           final_place = place.concat(' ' + city);
+           console.log(final_place);
+           initService();
+         });
+   
+         $('#one_way_drop_location').keyup(function(){
+           var city = $('#one_way_drop_city').val();
+           var place = $('#one_way_drop_location').val();
+           final_place = place.concat(' ' + city);
+           one_way_drop_location_autocomplete();
+         });
+   
+         // From Airport Autocomplete Function Call
+           $('#from_airport_pickup_location').keyup(function(){
+               var city = $('#from_airport_pickup_city').val();
+               var place = $('#from_airport_pickup_location').val();
+               final_place = place.concat(' airport ' + city);
+               from_airport_pickup_location_autocomplete();
+             });
+   
+             $('#from_airport_drop_location').keyup(function(){
+               var city = $('#from_airport_drop_city').val();
+               var place = $('#from_airport_drop_location').val();
+               final_place = place.concat(' ' + city);
+               from_airport_drop_location_autocomplete();
+             });
+   
+   
+           // To Airport Autocomplete Function Call
+             $('#to_airport_pickup_location').keyup(function(){
+               var city = $('#to_airport_pickup_city').val();
+               var place = $('#to_airport_pickup_location').val();
+               final_place = place.concat(' ' + city);
+               to_airport_pickup_location_autocomplete();
+             });
+   
+             $('#to_airport_drop_location').keyup(function(){
+               var city = $('#to_airport_drop_city').val();
+               var place = $('#to_airport_drop_location').val();
+               final_place = place.concat(' airport ' + city);
+               to_airport_drop_location_autocomplete();
+             });
+   });
+   
+   
+   
+   
+</script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>This file distort the existing css -->
+<!-- Bellow scripts for Datetime picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/locale/nl.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+   $('.owl-carousel').owlCarousel({
+     autoplay: true,
+     center: false,
+     loop: true,
+     nav: true,
+     margin:4,
+      responsive:{
+   0:{
+   items:1,
+   nav:true
+   },
+   600:{
+   items:3,
+   nav:false
+   },
+   1000:{
+   items:4,
+   nav:true,
+   loop:true
+   }
+   }
+   
+   });
+   $('#testimonial-slider').owlCarousel({
+     autoplay: false,
+     center: true,
+     loop: true,
+     nav: false,
+     margin:4,
+   
+     items: 5,
+     responsive:{
+   0:{
+   item:1
+   },
+   600:{
+   item:3
+   },
+   1000:{
+    item:5,
+   nav:true,
+   loop:true
+   }
+   }
+   
+   });
+   
+     $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>')
+     $( ".owl-next").html('<i class="fa fa-chevron-right"></i>')
+   
+   // ------Date time Picker JS file-----------
+      var defaults = {
+       calendarWeeks: true,
+       showClear: true,
+       showClose: true,
+       allowInputToggle: true,
+       useCurrent: true,
+       ignoreReadonly: true,
+       minDate: min_date(),
+       toolbarPlacement: 'top',
+       sideBySide: true,
+       maxDate:max_date(),
+   
+       icons: {
+           time: 'fa fa-clock-o',
+           date: 'fa fa-calendar',
+           up: 'fa fa-angle-up',
+           down: 'fa fa-angle-down',
+           previous: 'fa fa-angle-left',
+           next: 'fa fa-angle-right',
+           today: 'fa fa-dot-circle-o',
+           clear: 'timeWithText',
+           close: 'fa fa-times'
        }
-
-            });
-            $('#testimonial-slider').owlCarousel({
-              autoplay: false,
-              center: true,
-              loop: true,
-              nav: false,
-              margin:4,
-
-              items: 5,
-              responsive:{
-        0:{
-            item:1
-        },
-        600:{
-            item:3
-        },
-        1000:{
-             item:5,
-            nav:true,
-            loop:true
-        }
-       }
-
-            });
-
-              $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>')
-              $( ".owl-next").html('<i class="fa fa-chevron-right"></i>')
-         
-           // ------Date time Picker JS file-----------
-               var defaults = {
-                calendarWeeks: true,
-                showClear: true,
-                showClose: true,
-                allowInputToggle: true,
-                useCurrent: true,
-                ignoreReadonly: true,
-                minDate: min_date(),
-                toolbarPlacement: 'top',
-                sideBySide: true,
-                maxDate:max_date(),
-
-                icons: {
-                    time: 'fa fa-clock-o',
-                    date: 'fa fa-calendar',
-                    up: 'fa fa-angle-up',
-                    down: 'fa fa-angle-down',
-                    previous: 'fa fa-angle-left',
-                    next: 'fa fa-angle-right',
-                    today: 'fa fa-dot-circle-o',
-                    clear: 'timeWithText',
-                    close: 'fa fa-times'
-                }
-            };
-
-            
-            $(function() {
-                var optionsDatetime = $.extend({}, defaults, {format:'DD-MM-YYYY HH:mm'});
-                // var optionsDate = $.extend({}, defaults, {format:'DD-MM-YYYY'});
-                // var optionsTime = $.extend({}, defaults, {format:'HH:mm'});
-                
-                // $('.datepicker').datetimepicker(optionsDate);
-                // $('.timepicker').datetimepicker(optionsTime);
-                $('.datetimepicker').datetimepicker(optionsDatetime);
-            });
-             
-
-            function min_date() { 
-               var a = new Date();  
-               a.setTime(a.getTime() + 
-                     (4 * 60 * 60 * 1000)); 
-               return a; 
-                 } 
-            function max_date() { 
-               var expireDate = new Date();
-               // expireDate.setFullYear(expireDate.getFullYear() + 2);
-               expireDate.setMonth(expireDate.getMonth() + 6)
-               // expireDate.setDate(expireDate.getDate() -1);
-               return expireDate;
-                           //     a; 
-                                }      
-
-
-              ////////// Code for expandable testimonials//////////
-              $(document).ready(function() {
-                   // Configure/customize these variables.
-                   var showChar = 100;  // How many characters are shown by default
-                   var ellipsestext = "...";
-                   var moretext = "Show more >";
-                   var lesstext = "Show less";
+   };
+   
+   
+   $(function() {
+       var optionsDatetime = $.extend({}, defaults, {format:'DD-MM-YYYY HH:mm'});
+       // var optionsDate = $.extend({}, defaults, {format:'DD-MM-YYYY'});
+       // var optionsTime = $.extend({}, defaults, {format:'HH:mm'});
+       
+       // $('.datepicker').datetimepicker(optionsDate);
+       // $('.timepicker').datetimepicker(optionsTime);
+       $('.datetimepicker').datetimepicker(optionsDatetime);
+   });
     
-                   $('.more').each(function() {
-                       var content = $(this).html();
- 
-                       if(content.length > showChar) {
- 
-                           var c = content.substr(0, showChar);
-                           var h = content.substr(showChar, content.length - showChar);
- 
-                           var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
- 
-                            $(this).html(html);
-                        }
- 
-                    });
- 
-                    $(".morelink").click(function(){
-                        if($(this).hasClass("less")) {
-                            $(this).removeClass("less");
-                            $(this).html(moretext);
-                        } else {
-                            $(this).addClass("less");
-                            $(this).html(lesstext);
-                        }
-                        $(this).parent().prev().toggle();
-                        $(this).prev().toggle();
-                        return false;
-                    });
-               });
-              </script>
-
-
+   
+   function min_date() { 
+      var a = new Date();  
+      a.setTime(a.getTime() + 
+            (4 * 60 * 60 * 1000)); 
+      return a; 
+        } 
+   function max_date() { 
+      var expireDate = new Date();
+      // expireDate.setFullYear(expireDate.getFullYear() + 2);
+      expireDate.setMonth(expireDate.getMonth() + 6)
+      // expireDate.setDate(expireDate.getDate() -1);
+      return expireDate;
+                  //     a; 
+                       }      
+   
+   
+     ////////// Code for expandable testimonials//////////
+     $(document).ready(function() {
+          // Configure/customize these variables.
+          var showChar = 100;  // How many characters are shown by default
+          var ellipsestext = "...";
+          var moretext = "Show more >";
+          var lesstext = "Show less";
+   
+          $('.more').each(function() {
+              var content = $(this).html();
+   
+              if(content.length > showChar) {
+   
+                  var c = content.substr(0, showChar);
+                  var h = content.substr(showChar, content.length - showChar);
+   
+                  var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp;</span><span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
+   
+                   $(this).html(html);
+               }
+   
+           });
+   
+           $(".morelink").click(function(){
+               if($(this).hasClass("less")) {
+                   $(this).removeClass("less");
+                   $(this).html(moretext);
+               } else {
+                   $(this).addClass("less");
+                   $(this).html(lesstext);
+               }
+               $(this).parent().prev().toggle();
+               $(this).prev().toggle();
+               return false;
+           });
+      });
+     
+</script>
 {% endblock extra_scripts %}
+

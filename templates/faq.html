@@ -1,101 +1,88 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-
-		<!--Wrapper Content Start-->
-		<div class="tj-wrapper">
-			<!--Inner Banner Section Start-->
-	    	<div class="tj-inner-banner">
-	    		<div class="container">
-	    			<h2>FAQ</h2>
-	    		</div>
-	    	</div>
-			<!--Inner Banner Section End-->
-			
-				
-			
-			<!--FAQ Section Start-->	
-			<section class="tj-faq">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<div class="tj-heading-style">
-								<h3>Frequent Questions</h3>
-							</div>
-							<div class="tj-accordion-holder">
-								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-									
-									
-									
-									{% for question in questions %}
-									<!--FAQ Panel Content Start-->
-									<div class="panel panel-default">
-										<div class="panel-heading" role="tab" id="tj-tab-10">
-											<div class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#tj-tab-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="tj-tab-collapse{{ forloop.counter }}" class="collapsed">{{ forloop.counter }}. {{ question.title|capfirst }}</a>
-											</div>
-										</div>
-										<div id="tj-tab-collapse{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tj-tab-10">
-											<div class="panel-body">
-												<div class="panel-text">
-													<p>
-                                                    {{ question.answer|linebreaks|escape  }}
-                                                    </p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!--FAQ Panel Content End-->
-									
-                                    {% endfor %}
-									
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!--FAQ Section End-->
-
-			
-			<!--Call To Action Content Start-->
-			<section class="tj-cal-to-action">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-4">
-							<div class="cta-box">
-								<img src="{% static 'images/cta-icon1.png' %}" alt="">
-								<div class="cta-text">
-									<strong>Best Price Guaranteed</strong>
-									<p>A more recently with desktop softy  like aldus page maker.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="cta-box">
-								<img src="{% static 'images/cta-icon2.png' %}" alt="">
-								<div class="cta-text">
-									<strong>24/7 Customer Care</strong>
-									<p>A more recently with desktop softy  like aldus page maker.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-4">
-							<div class="cta-box">
-								<img src="{% static 'images/cta-icon3.png' %}" alt="">
-								<div class="cta-text">
-									<strong>Easy Bookings</strong>
-									<p>A more recently with desktop softy  like aldus page maker.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!--Call To Action Content End-->
-
-		</div>
-		<!--Wrapper Content End-->
-
+<!--Wrapper Content Start-->
+<div class="tj-wrapper">
+   <!--Inner Banner Section Start-->
+   <div class="tj-inner-banner">
+      <div class="container">
+         <h2>FAQ</h2>
+      </div>
+   </div>
+   <!--Inner Banner Section End-->
+   <!--FAQ Section Start-->	
+   <section class="tj-faq">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 col-sm-12">
+               <div class="tj-heading-style">
+                  <h3>Frequent Questions</h3>
+               </div>
+               <div class="tj-accordion-holder">
+                  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     {% for question in questions %}
+                     <!--FAQ Panel Content Start-->
+                     <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="tj-tab-10">
+                           <div class="panel-title">
+                              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#tj-tab-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="tj-tab-collapse{{ forloop.counter }}" class="collapsed">{{ forloop.counter }}. {{ question.title|capfirst }}</a>
+                           </div>
+                        </div>
+                        <div id="tj-tab-collapse{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tj-tab-10">
+                           <div class="panel-body">
+                              <div class="panel-text">
+                                 <p>
+                                    {{ question.answer|linebreaks|escape  }}
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--FAQ Panel Content End-->
+                     {% endfor %}
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--FAQ Section End-->
+   <!--Call To Action Content Start-->
+   <section class="tj-cal-to-action">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-4 col-sm-4">
+               <div class="cta-box">
+                  <img src="{% static 'images/cta-icon1.png' %}" alt="">
+                  <div class="cta-text">
+                     <strong>Best Price Guaranteed</strong>
+                     <p>A more recently with desktop softy  like aldus page maker.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+               <div class="cta-box">
+                  <img src="{% static 'images/cta-icon2.png' %}" alt="">
+                  <div class="cta-text">
+                     <strong>24/7 Customer Care</strong>
+                     <p>A more recently with desktop softy  like aldus page maker.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+               <div class="cta-box">
+                  <img src="{% static 'images/cta-icon3.png' %}" alt="">
+                  <div class="cta-text">
+                     <strong>Easy Bookings</strong>
+                     <p>A more recently with desktop softy  like aldus page maker.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <!--Call To Action Content End-->
+</div>
+<!--Wrapper Content End-->
 {% endblock content %}
 

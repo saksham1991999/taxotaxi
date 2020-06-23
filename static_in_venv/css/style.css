@@ -33,7 +33,8 @@ Table of Content For Page Sections CSS
 24. Widgets
 25. Customer Dashboard
 26. Vendor Dashboard
-27. css which will be same on all pages if used
+27. Password Reset page
+28. css which will be same on all pages if used
 	
 (Typography And Color Codes)
 
@@ -6059,6 +6060,28 @@ height: 34px;
     padding-bottom: 22px;
 }
     
+/*--------------Password Reset page CSS start-------------*/
+  .reset-window{
+   padding: 23px 210px 0px 210px;
+   }
+   @media(max-width: 1200px) {
+   .reset-window{
+   padding: 23px ;
+   }
+   }
+   @media(max-width: 768px) {
+   }
+   small{
+   visibility: hidden;
+   }
+   .fail2{
+   visibility: visible;
+   color: red;
+   }
+ 
+/*--------------Password Reset page CSS end-------------*/
+
+
 
 /*-----css which will be same on all pages if used*/
 .field-icon {
