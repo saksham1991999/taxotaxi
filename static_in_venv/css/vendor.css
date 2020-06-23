@@ -301,7 +301,9 @@ font-weight: bold;
        .addDriverFoam{
         display: none;
        }
-
+       .boldH5{
+        font-weight: bolder;
+       }
     /* label{margin-left: 20px;} */
 /*#datepicker > input {
     width: 100%;
