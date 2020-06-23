@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 {% load fullurl %}
@@ -9,6 +7,26 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+   .vendorPayments{
+      border-bottom: 1px solid #f1f1f1;
+   }
+   .vendorPayments h4{
+      text-align: center;
+      color: black;
+      font-weight: bold;
+   }
+   .vendorPayments h5{
+      font-weight: bold;
+      color: black;
+   }
+   .vendorPayments h5 p{
+      color: #4CAF50;
+      padding-top: 4px;
+   }
+   .noPadding{
+      padding-left: 0;
+      padding-right: 0;
+   }
    .vendorTab{
    padding: 8px 0px 28px 0px;
    border: 1px #eee solid;
@@ -1751,6 +1769,29 @@
                      <h4 class="text-center ">Payments</h4>
                   </div>
                   <div class="col-sm-12 col-md-12">
+                     <div class="row vendorPayments">
+                        <div class="col-sm-12 noPadding" >
+                           <div class="col-sm-5 noPadding">
+                              <div class="col-sm-1 noPadding"><h4>1</h4> </div>
+                              <div class="col-sm-6 "><h5>Booking Date:<p>24-May-2020, Sunday</p></h5><!-- <p>24-May-2020, Sunday</p> --> </div>
+                              <div class="col-sm-5"><h5>Booking ID:<p>20200524</p></h5></div>
+                           </div>
+                           <div class="col-sm-7 noPadding">
+                              <div class="col-sm-4"><h5>Booking Amount:<p>3330&nbsp;<span>INR</span></p></h5></div>
+                              <div class="col-sm-4"><h5>Cash Collection:<p>4520&nbsp;<span>INR</span></p></h5></div>
+                              <div class="col-sm-4"><h5>Amount Due:<p>330&nbsp;<span>INR</span></p></h5></div>
+                           </div>
+                        </div>
+                        <div class="col-sm-12">
+                           <div class="col-sm-5">
+                              <div class="col-sm-12"><h5>ITR Deduction:<p>000&nbsp;<span>INR</span></p></h5></div>
+                           </div>
+                           <div class="col-sm-7">
+                              <div class="col-sm-4"><h5>Amount Paid:<p>330&nbsp;<span>INR</span></p></h5></div>
+                              <div class="col-sm-8"><h5>Reference:<p>Online transaction no.<span>TX2420ICICI</span></p></h5></div>
+                           </div>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
