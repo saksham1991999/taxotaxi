@@ -351,9 +351,16 @@
                                         </div>
 
                                         <!-- //////////////////////////////// -->
-                                        <div class="foam-field">
+                                        <div class="foam-field booking-frm">
                                         <label style="width: 46%;color: black;font-weight: 800;">    Bank Details*</label>
+                                        <button href="" id="" class="book-btn" type="button" style="padding: 0px;">+ Add Bank</button>
                                         </div>
+
+                                    <div>
+
+
+                                        <!-- start of default/first Bank details -->
+                                        <div>
                                         <div class="foam-field">
                                         <label>Account Holder Name</label>
                                             {% render_field bank_form.account_holder_name %}
@@ -389,7 +396,19 @@
                                             {% render_field bank_form.bank_address %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.bank_address.errors }}</div>
+                                        </div>
+                                        <!-- end of default/first Bank Details -->
 
+
+                                        <!-- second Bank Details -->
+                                        <div></div>
+                                        
+
+                                        <!-- Third Bank Details -->
+                                        <div></div>
+                                    </div>
+
+                                    
                                         {% comment %}
                                         <div style="text-align: right;" >
                                             <input type="checkbox" name="terms" id="terms" required>
