@@ -61,7 +61,8 @@
 
                          <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-carbtn">Add more Car +</button> </div>
                          <div class="col-sm-8 addCarFoam">
-                            <form class="" method="post">
+                            <form class="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
                                <div class="foam-field">
                                     <label>Owner Name</label>
                                     {% render_field car_form.owner_name %}
