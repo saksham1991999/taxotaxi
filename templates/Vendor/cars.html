@@ -58,107 +58,149 @@
                            {% endfor %}
                        </table>
                        </div>
+
                          <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-carbtn">Add more Car +</button> </div>
                          <div class="col-sm-8 addCarFoam">
-                            <form class="">
+                            <form class="" method="post">
                                <div class="foam-field">
-                                  <label>Car Number</label>
-                                  <input type="text" name="vendorName">
-                               </div>
-                               <div class="foam-field">
-                                  <label>Owner Name</label>
-                                  <input type="text" name="vendorName">
-                               </div>
-                                    <div class="foam-field">
+                                    <label>Owner Name</label>
+                                    {% render_field car_form.owner_name %}
+                                </div>
+                                <div class="errorSpace">{{ car_form.owner_name.errors }}</div>
+
+                                <div class="foam-field">
                                     <label>Father's Name</label>
-                                    <input type="text" name="vendorName">
-                                    </div>
-                                    <div class="foam-field">
+                                    {% render_field car_form.father_name %}
+                                </div>
+                                    <div class="errorSpace">{{ car_form.father_name.errors }}</div>
+
+                                <div class="foam-field">
                                     <label>Vehicle Type</label>
-                                    <select name="subject" id="">
-                                        <option Selected>Sedan</option>
-                                        <option value="0" >SUV</option>
-                                        <option value="1">Compact</option>
-                                     </select>
-                                    </div>
-                                    <div class="foam-field">
+                                    {% render_field car_form.car_type %}
+                                </div>
+                                    <div class="errorSpace">{{ car_form.car_type.errors }}</div>
+
+                                <div class="foam-field">
                                     <label>Registration No</label>
-                                    <input type="text" name="vendorName">
+                                    {% render_field car_form.registration_no %}
+                                </div>
+                                    <div class="errorSpace">{{ car_form.registration_no.errors }}</div>
+
+                                <div class="foam-field">
+                                    <label>Upload Car photo*</label>
+                                    <div class="vendorFile" style="width: 49%;">
+                                           {% render_field car_form.image_front %}<p class="fileUploadtext"  id="id_car-image_front-p">
+                                            <i class="far fa-file"></i> &ensp; Front Side</p>
                                     </div>
-                                    <div class="foam-field">
-                                <label>RC valid upto*</label>
-                                    <input type="text" id="datepicker5"data-date-format="mm-dd-yyyy"readonly />
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field car_form.image_rear %}<p class="fileUploadtext" id="id_car-image_rear-p">
+                                        <i class="far fa-file"></i> &ensp; Back side</p>
+                                    </div>
+                                </div>
+                                <div class="errorSpace">{{ car_form.image_front.errors }}</div>
+                                <div class="errorSpace">{{ car_form.image_rear.errors }}</div>
+
+
+                                <div class="foam-field">
+                                    <label>Upload RC photo*</label>
+                                    <div class="vendorFile" style="width: 49%;">
+                                       {% render_field car_form.rc_front %}<p class="fileUploadtext" id="id_car-rc_front-p">
+                                        <i class="far fa-file"></i> &ensp; Front Side</p>
+                                    </div>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field car_form.rc_rear %}<p class="fileUploadtext" id="id_car-rc_rear-p">
+                                        <i class="far fa-file"></i> &ensp; Back side</p>
+                                    </div>
+                                </div>
+                                    <div class="errorSpace">{{ car_form.rc_front.errors }}</div>
+                                    <div class="errorSpace">{{ car_form.rc_rear.errors }}</div>
+
+                                <div class="foam-field">
+                                    <label>RC valid upto</label>
+                                    {% render_field car_form.rc_valid_upto id="datepicker5" data-date-format="mm-dd-yyyy" readonly='true' %}
+{#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
+                                   <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                                <div class="errorSpace">{{ car_form.rc_valid_upto.errors }}</div>
+
+                                 <div class="foam-field ">
+                                    <label>Upload Tourists Permit*</label>
+                                    <div class="vendorFile" style="width: 49%;">
+                                        {% render_field car_form.touristpermit_front %}
+                                        <p class="fileUploadtext" id="id_car-touristpermit_front-p">
+                                         <i class="far fa-file"></i> &ensp; Front Side
+                                        </p>
+                                     </div>
+                                     <div class="vendorFile" style="width: 49%;">
+                                         {% render_field car_form.touristpermit_rear %}<p class="fileUploadtext" id="id_car-touristpermit_rear-p">
+                                         <i class="far fa-file"></i> &ensp; Back side</p>
+                                     </div>
+                                </div>
+                                    <div class="errorSpace">{{ car_form.touristpermit_front.errors }}</div>
+                                    <div class="errorSpace">{{ car_form.touristpermit_rear.errors }}</div>
+
+
+                                <div class="foam-field">
+                                <label>Tourist Permit valid upto</label>
+                                    {% render_field car_form.touristpermit_valid_upto id="datepicker6" data-date-format="mm-dd-yyyy" readonly='true' %}
                                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                 </div>
-                                    <div class="foam-field">
-                                    <label>Upload Car Photo*</label>
+                                    <div class="errorSpace">{{ car_form.touristpermit_valid_upto.errors }}</div>
+
+                                <div class="foam-field ">
+                                    <label>Upload Permit A*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
-                                    </div>
-                                    <div class="foam-field">
-                                    <label>Upload RC*</label>
+                                         {% render_field car_form.permita_front %}<p class="fileUploadtext" id="id_car-permita_front-p">
+                                         <i class="far fa-file"></i> &ensp; Front Side</p>
+                                     </div>
+                                     <div class="vendorFile" style="width: 49%;">
+                                         {% render_field car_form.permita_rear %}<p class="fileUploadtext" id="id_car-permita_rear-p">
+                                         <i class="far fa-file"></i> &ensp; Back side</p>
+                                     </div>
+                                </div>
+                                    <div class="errorSpace">{{ car_form.permita_front.errors }}</div>
+                                    <div class="errorSpace">{{ car_form.permita_rear.errors }}</div>
+
+
+                                <div class="foam-field ">
+                                    <label>Upload Permit B*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
+                                         {% render_field car_form.permitb_front %}<p class="fileUploadtext" id="id_car-permitb_front-p">
+                                         <i class="far fa-file"></i> &ensp; Front Side</p>
                                     </div>
-                                    <div class="foam-field">
-                                    <label>Upload Tourist Permit*</label>
                                     <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Front side</p>
-                                        </div>
-                                        <div class="vendorFile" style="width: 49%;">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Back side</p>
-                                        </div>
+                                         {% render_field car_form.permitb_rear %}<p class="fileUploadtext" id="id_car-permitb_rear-p">
+                                         <i class="far fa-file"></i> &ensp; Back side</p>
                                     </div>
-                                    <div class="foam-field">
-                                       <label>Tourist Permit valid upto</label>
-                                           <input type="text" id="datepicker6" data-date-format="mm-dd-yyyy" readonly />
-                                           <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                                    <div class="errorSpace">{{ car_form.permitb_front.errors }}</div>
+                                    <div class="errorSpace">{{ car_form.permitb_rear.errors }}</div>
+
+                                <div class="foam-field ">
+                                    <label>Upload Insurance</label>
+                                    <div class="vendorFile">
+                                        {% render_field car_form.insurance_front %}<p class="fileUploadtext" id="id_car-insurance_front-p">
+                                        <i class="far fa-file"></i> &ensp; Drop file here</p>
                                     </div>
-                                    <div class="foam-field ">
-                                        <label>Upload Permit A*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
-                                        </div>
-                                    </div><div class="foam-field ">
-                                        <label>Upload Permit B*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
-                                        </div>
-                                    </div><div class="foam-field ">
-                                        <label>Upload Insurance*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
-                                        </div>
+                                </div>
+                                <div class="errorSpace">{{ car_form.insurance_front.errors }}</div>
+
+                                <div class="foam-field">
+                                    <label>Insurance valid upto</label>
+                                    {% render_field car_form.insurance_valid_upto id="datepicker7" data-date-format="mm-dd-yyyy" readonly='true' %}
+                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                </div>
+                                <div class="errorSpace">{{ car_form.insurance_valid_upto.errors }}</div>
+
+                                <div class="foam-field ">
+                                    <label>Upload Pollution Certificate</label>
+                                    <div class="vendorFile">
+                                        {% render_field car_form.pollution_certificate %}<p class="fileUploadtext" id="id_car-pollution_certificate-p">
+                                        <i class="far fa-file"></i> &ensp; Drop file here</p>
                                     </div>
-                                    <div class="foam-field">
-                                        <label>Insurance valid upto</label>
-                                        <input type="text" id="datepicker7"data-date-format="mm-dd-yyyy" readonly />
-                                        <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                    </div>
-                                    <div class="foam-field ">
-                                        <label>Upload Pollution certificate*</label>
-                                        <div class="vendorFile">
-                                           <input type="file" name="vendorName" placeholder="Pan Card"><p class="fileUploadtext">
-                                            <i class="far fa-file"></i> Drop file here</p>
-                                        </div>
-                                    </div>
+                                </div>
+                                    <div class="errorSpace">{{ car_form.pollution_certificate.errors }}</div>
+
                                     <div class="col-sm-12 booking-frm dashButton"> 
                                     <button class="book-btn" type="submit">Update
                                     </button>&nbsp;&nbsp;

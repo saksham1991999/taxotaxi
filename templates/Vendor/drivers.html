@@ -149,6 +149,9 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.pancard_front.errors }}</div>
+                                            <div class="errorSpace">{{ driver_form.pancard_rear.errors }}</div>
+
                                             <div class="foam-field">
                                                 <label>
                                                     Aadhar Card*
@@ -167,6 +170,10 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.aadharcard_front.errors }}</div>
+                                            <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
+
+
                                             <div class="foam-field">
                                                 <label>Voter Card</label>
                                                 <div class="vendorFile" style="width: 49%;">
@@ -182,6 +189,10 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.votercard_front.errors }}</div>
+                                            <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
+
+
                                             <div class="foam-field">
                                                 <label>Driving Licence</label>
                                                 <div class="vendorFile" style="width: 49%;">
@@ -197,25 +208,38 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.driving_licence_front.errors }}</div>
+                                            <div class="errorSpace">{{ driver_form.driving_licence_rear.errors }}</div>
+
+
                                             <div class="foam-field">
                                                 <label>Valid From*</label>
                                                 {% render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
                                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                                 <!-- <input type="date" name="vendorName"> -->
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.driving_licence_valid_from.errors }}</div>
+
+
                                             <div class="foam-field">
                                                 <label>Valid To*</label>
                                                 {% render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
                                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
+
                                             <div class="foam-field">
                                                 <label>Total Driving Experience</label>
                                                 {% render_field driver_form.driving_experience %}
                                             </div>
+                                             <div class="errorSpace">{{ driver_form.driving_experience.errors }}</div>
+
                                             <div class="foam-field">
                                                 <label>Hill Driving Experience</label>
                                                 {% render_field driver_form.hill_experience %}
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.hill_experience.errors }}</div>
+
                                             <div class="foam-field">
                                                 <label>
                                                     Police Verification*
@@ -228,6 +252,9 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="errorSpace">{{ driver_form.police_verification_front.errors }}</div>
+
+
                                             <div class="foam-field">
                                                 <label>Any Legal/Accidental case pending for clearance*</label>
                                                 <select name="subject" id="legalCase">
@@ -248,7 +275,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- //////////////////////////////// -->
+                                            <div class="errorSpace">{{ driver_form.legal_accidental_case_document.errors }}</div>
                                         </div>
                                         <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
                                             <div class="drag-drop">
