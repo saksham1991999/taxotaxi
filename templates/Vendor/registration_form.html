@@ -965,5 +965,60 @@ frmvalidator.addValidation("email","req","Please provide your email");
 frmvalidator.addValidation("email","email",
   "Please enter a valid email address");
 </script>
+<script>
+    $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).prop("checked") == true){
+                autofillFunc();
+            }
+            else if($(this).prop("checked") == false){
+                removeFill();
+            }
+        });
+    });
+    function autofillFunc(){
+        var arrayCopy = [];
+        var i = 0;
+    
+    $("#vendorInformation > div").find("input").each(function(index){
+        i++;
+        if( i<=6 ){
+            
+            arrayCopy.push($(this).val());
+        }
+        
+                // console.log('Index: ' + index + ', html: ' + $(this).val());
+                
+    })
+    console.log(arrayCopy);
+    j=0;
+    $("#driverDetails > .col-sm-7").find("input").each(function(index){
+        if( j<= 5){
+            $(this).val(arrayCopy[j]) ;
+            j++
+        }
+        // console.log('Index: ' + index + ', html: ' + $(this).val());
+        
+    })
+    $("#id_driver-address").val($("#vendorInformation > div > div > textarea").val());
+    console.log($("#vendorInformation > div > div > textarea").val());
+    }
+    // console.log($("#id_driver-address").val());
 
+
+</script>
+<script>
+    function removeFill(){
+        j=0;
+        $("#driverDetails > .col-sm-7").find("input").each(function(index){
+        if( j<= 5){
+            $(this).val("") ;
+            j++
+        }
+        $("#id_driver-address").val("");
+        // console.log('Index: ' + index + ', html: ' + $(this).val());
+        
+    })
+    }
+</script>
 {% endblock extra_scripts %}
