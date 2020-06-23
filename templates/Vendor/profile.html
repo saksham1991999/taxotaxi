@@ -32,56 +32,66 @@
                      <div class="tab-pane active" id="editProfile">
                         <form  >
                            <div class="col-sm-7">
+
                               <div class="dash_foam">
-                                 <label>First Name</label>
-                                 <input type="text" name="">
+                                 <label>Full Name</label>
+                                 {% render_field profile_form.full_name %}
                               </div>
-                              <div class="dash_foam">
-                                 <label>Last Name</label>
-                                 <input type="text" name="">
-                              </div>
+                               <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
+
                               <div class="dash_foam">
                                  <label>Father's Name</label>
-                                 <input type="text" name="">
+                                 {% render_field profile_form.father_name %}
                               </div>
+                               <div class="errorSpace">{{ profile_form.father_name.errors }}</div>
+
                               <div class="dash_foam">
                                  <label>Date Of Birth</label>
-                                 <input id="datepicker1" class="input-group date" >
+                                  {% render_field profile_form.dob id="datepicker1" readonly='true' class="input-group date" %}
                                  <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                               </div>
+                               <div class="errorSpace">{{ profile_form.dob.errors }}</div>
+
                               <div class="dash_foam">
                                  <label>Email address*</label>
-                                 <input type="email" name="">
+                                 {% render_field profile_form.email %}
                               </div>
+                               <div class="errorSpace">{{ profile_form.email.errors }}</div>
+
                               <div class="dash_foam">
                                  <label>Phone No 1*</label>
-                                 <input type="tel" name="">
+                                 {% render_field profile_form.contact1 pattern="[0-9]{10}" %}
                               </div>
+                               <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
                               <div class="dash_foam">
                                  <label>Phone No 2</label>
-                                 <input type="tel" name="">
+                                 {% render_field profile_form.contact2 pattern="[0-9]{10}" %}
                               </div>
+                               <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
                               <div class="dash_foam">
                                  <label>Address*</label>
-                                 <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
+                                  {% render_field profile_form.address rows="3" cols="50" %}
                               </div>
+
                               <div class="dash_foam">
                                  <label>KYC Proof*</label>
                               </div>
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Pancard</label>
                                  <div class="vendorFile">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Drop file here
+                                    {% render_field profile_form.pancard placeholder="Pan Card" %}
+                                    <p class="fileUploadtext" id="id_vendor-pancard-p">
+                                       <i class="far fa-file"></i> &ensp;Drop file here
                                     </p>
                                  </div>
                               </div>
+                               <div class="errorSpace">{{ profile_form.pancard.errors }}</div>
+
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Aadhar Card*</label>
                                  <div class="vendorFile">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
+                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Drop file here
                                     </p>
                                  </div>
@@ -89,14 +99,14 @@
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Voter Card*</label>
                                  <div class="vendorFile">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
+                                    {% render_field profile_form.aadharcard_rear placeholder="Back" %}
+                                    <p class="fileUploadtext" id="id_vendor-aadharcard_rear-p">
                                        <i class="far fa-file"></i> Drop file here
                                     </p>
                                  </div>
                               </div>
                               <div class="foam-field ">
-                                 <label class="uploadStyle">Upload Driving Licnce*</label>
+                                 <label class="uploadStyle">Upload Driving Licence*</label>
                                  <div class="vendorFile">
                                     <input type="file" name="vendorName" placeholder="Pan Card">
                                     <p class="fileUploadtext">

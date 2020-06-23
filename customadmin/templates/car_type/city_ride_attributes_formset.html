@@ -29,12 +29,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Blog Categories Form</h4>
-
+                        <h4 class="mb-0 font-size-18">City Ride Attribute Values Form</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Blogs</a></li>
-                                <li class="breadcrumb-item active">Blog Categories Form</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ride Calculation</a></li>
+                                <li class="breadcrumb-item active">City Ride Attribute Values Form</li>
                             </ol>
                         </div>
 
@@ -44,77 +43,186 @@
             <!-- end page title -->
 
             <div class="row">
-            <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
+                <div class="col-10">
+                        <div class="card">
+                            <div class="card-body">
 
-                            <h4 class="card-title"></h4>
-                            <p class="card-title-desc"></p>
-                            <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            {{ formset.management_form }}
-                                <div data-repeater-list="group-a" id="form_set">
-                                    {% for form in formset %}
-                                    <div data-repeater-item="" class="row">
-                                        <div class="col-lg-3">
-                                            <div class="row">
-                                                <div class="form-group col-lg-4">
-                                                    <label for="name">Pickup</label>
-                                                    {% render_field form.city1 class="form-control" %}
-                                                </div>
-                                                <div class="form-group col-lg-6">
-                                                    <label for="name">Drop</label>
-                                                    {% render_field form.city2 class="form-control" %}
+                                <h4 class="card-title"></h4>
+                                <p class="card-title-desc"></p>
+                                <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ formset.management_form }}
+                                    <div data-repeater-list="group-a" id="form_set">
+                                        {% for form in formset %}
+                                        <div data-repeater-item="" class="row">
+                                            <div class="col-lg-3">
+                                                <div class="row">
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name">Pickup</label>
+                                                        {% render_field form.city1 class="form-control" %}
+                                                    </div>
+                                                    <div class="form-group col-lg-6">
+                                                        <label for="name">Drop</label>
+                                                        {% render_field form.city2 class="form-control" %}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Car Type</label>
-                                            {% render_field form.car_type class="form-control" %}
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Attribute</label>
-                                            {% render_field form.attr class="form-control" %}
-                                        </div>
-                                        <div class="form-group col-lg-3">
-                                            <label for="name">Value</label>
-                                            {% render_field form.value class="form-control" %}
+                                            <div class="form-group col-lg-3">
+                                                <label for="name">Car Type</label>
+                                                {% render_field form.car_type class="form-control" %}
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <label for="name">Attribute</label>
+                                                {% render_field form.attr class="form-control" %}
+                                            </div>
+                                            <div class="form-group col-lg-3">
+                                                <label for="name">Value</label>
+                                                {% render_field form.value class="form-control" %}
+                                            </div>
+
+                                            {% for field in form.hidden_fields %}
+                                                {{ field }}
+                                            {% endfor %}
+                                        {{ form.errors }}
                                         </div>
 
-                                        {% for field in form.hidden_fields %}
-                                            {{ field }}
                                         {% endfor %}
-                                    {{ form.errors }}
                                     </div>
+    {#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
+                                <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
 
-                                    {% endfor %}
-                                </div>
-{#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
-                            <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
-
-                            </form>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-2">
+                    {% comment %}
+                    <div class="col-12" style="margin: auto 0px; padding: 0px;">
+                        <div class="card">
+                            <div class="card-body" style="display: inline;margin: auto;">
+                                <a href="">
+                                    <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn   waves-effect waves-light mb-2">
+                                        <i class="bx bx-down-arrow-alt font-size-16 mr-2 align-middle"></i> Import
+                                    </button>
+                                </a>
+                                <a href="">
+                                    <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn  waves-effect waves-light mb-2">
+                                        <i class="bx bx-up-arrow-alt font-size-16 mr-2 align-middle"></i> Export
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
-            </div>
+                    {% endcomment %}
+                    <div class="card">
+                        <form method="get">
+                            <div class="card-body">
 
-                <div hidden id="empty_form">
-                    <div data-repeater-item="" class="row">
-                        <div class="form-group col-lg-4">
-                            <label for="name">Title</label>
-                            {% render_field formset.empty_form.title class="form-control" %}
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="name">Keywords</label>
-                            {% render_field formset.empty_form.keywords class="form-control" rows="2" %}
-                        </div>
-                        <div class="form-group col-lg-2">
-                            <label for="name">Delete</label>
-                            {% render_field formset.empty_form.DELETE class="form-control" %}
-                        </div>
-                        {% for field in formset.empty_form.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
-                        {{  formset.empty_form.errors }}
+                                <h4 class="card-title">Filter By</h4>
+                                <p class="card-title-desc"></p>
+
+
+                                <div id="accordion">
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingOne">
+                                            <h6 class="m-0">
+                                                <a href="#collapseOne" class="text-dark" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseOne">
+                                                    By Pickup City
+                                                </a>
+                                            </h6>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse show"
+                                                aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                {% for city in pickup_cities %}
+                                                <div class="custom-control custom-checkbox mb-1">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-a" name="pickup_cities" value="{{ city.id }}" {% if city.id|stringformat:"i" in selected_pickup_cities %}checked{% endif %}>
+                                                    <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-a">{{ city.name }}</label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingTwo">
+                                            <h6 class="m-0">
+                                                <a href="#collapseTwo" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseTwo">
+                                                    By Drop City
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for city in drop_cities %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-b" name="drop_cities" value="{{ city.id }}" {% if city.id|stringformat:"i" in selected_drop_cities %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-b">{{ city.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingThree">
+                                            <h6 class="m-0">
+                                                <a href="#collapseThree" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseThree">
+                                                   By Car Type
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseThree" class="collapse"
+                                                aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+
+
+                                                    {% for car_type in car_types %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-c" name="car_types" value="{{ car_type.id }}" {% if car_type.id|stringformat:"i" in selected_car_types %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-c">{{ car_type.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-0 shadow-none">
+                                        <div class="card-header" id="headingFour">
+                                            <h6 class="m-0">
+                                                <a href="#collapseFour" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                    By Attribute
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseFour" class="collapse"
+                                                aria-labelledby="headingFour" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for attribute in attributes %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-d" name="attributes" value="{{ attribute.id }}" {% if attribute.id|stringformat:"i" in selected_attributes %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-d">{{ attribute.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button type="submit" style="display: flex;align-items: center;margin: auto;" class="btn btn-primary waves-effect waves-light mb-2">
+                                        <i class="bx bx-check-square font-size-16 mr-2 align-middle"></i> Apply
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -34,7 +34,7 @@
             <!-- end page title -->
 
             <div class="row">
-            <div class="col-12">
+            <div class="col-9">
                     <div class="card">
                         <div class="card-body">
 
@@ -73,28 +73,89 @@
                         </div>
                     </div>
             </div>
+            <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="get">
+                                <h4 class="card-title">Filter By</h4>
+                                <p class="card-title-desc"></p>
 
-                <div hidden id="empty_form">
-                    <div data-repeater-item="" class="row">
-                        <div class="form-group col-lg-3">
-                            <label for="name">Car Type</label>
-                            {% render_field formset.empty_form.car_type class="form-control" readonly='true' %}
-                        </div>
-                        <div class="form-group col-lg-3">
-                            <label for="name">Car Attribute</label>
-                            {% render_field formset.empty_form.attr_name class="form-control" readonly='' %}
-                        </div>
-                        <div class="form-group col-lg-6">
-                            <label for="name">Value</label>
-                            {% render_field formset.empty_form.name class="form-control" %}
-                        </div>
 
-                        {% for field in formset.empty_form.hidden_fields %}
-                            {{ field }}
-                        {% endfor %}
-                        {{  formset.empty_form.errors }}
-                    </div>
+                                <div id="accordion">
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingThree">
+                                            <h6 class="m-0">
+                                                <a href="#collapseThree" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseThree">
+                                                   By Car Type
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseThree" class="collapse"
+                                                aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for car_type in car_types %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-a" name="car_types" value="{{ car_type.id }}" {% if car_type.id|stringformat:"i" in selected_car_types %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-a">{{ car_type.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-0 shadow-none">
+                                        <div class="card-header" id="headingFour">
+                                            <h6 class="m-0">
+                                                <a href="#collapseFour" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                    By Attribute
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseFour" class="collapse"
+                                                aria-labelledby="headingFour" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for attribute in attributes %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-b" name="attributes" value="{{ attribute.id }}" {% if attribute.id|stringformat:"i" in selected_attributes %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-b">{{ attribute.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                        <button type="submit" style="display: flex;align-items: center;margin: auto;" class="btn btn-primary waves-effect waves-light mb-2">
+                                            <i class="bx bx-check-square font-size-16 mr-2 align-middle"></i> Apply
+                                        </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% comment %}
+                        <div class="col-12" style="margin: auto 0px; padding: 0px;">
+                            <div class="card">
+                                <div class="card-body" style="display: inline;margin: auto;">
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn   waves-effect waves-light mb-2">
+                                            <i class="bx bx-down-arrow-alt font-size-16 mr-2 align-middle"></i> Import
+                                        </button>
+                                    </a>
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn  waves-effect waves-light mb-2">
+                                            <i class="bx bx-up-arrow-alt font-size-16 mr-2 align-middle"></i> Export
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endcomment %}
                 </div>
+
+
             </div>
             <!-- end row -->
 

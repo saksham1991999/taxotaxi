@@ -320,9 +320,32 @@ def UpdateCarAttributeValueView(request):
         return redirect( 'customadmin:car_type')
     else:
         formset = CarAtrributeValueFormset()
+        qs = coremodels.car_attr_comparison.objects.all()
+
+        selected_car_types = []
+        selected_attributes = []
+
+        if 'car_types' in request.GET:
+            selected_car_types = list(request.GET.getlist('car_types'))
+            qs = qs.filter(car_type_id__in = selected_car_types)
+
+        if 'attributes' in request.GET:
+            selected_attributes = list(request.GET.getlist('attributes'))
+            qs = qs.filter(attr_name_id__in = selected_attributes)
+
+        print(selected_car_types)
+        print(selected_attributes)
+        car_types = coremodels.car_types.objects.all()
+        attributes = coremodels.car_attr.objects.all()
+        formset.queryset = qs
         context = {
             'formset':formset,
+            'car_types':car_types,
+            'attributes':attributes,
+            'selected_car_types':selected_car_types,
+            'selected_attributes':selected_attributes,
         }
+
         return render(request, 'car_type/car_attribute_value_formset.html', context)
 
 def UpdateRideAdditionalChoices(request):
@@ -348,8 +371,44 @@ def UpdateCityRideAttributeValues(request):
         return redirect( 'customadmin:car_type')
     else:
         formset = CityRideAttributesFormset()
+        qs = coremodels.calc_city_attr_value.objects.all()
+
+        selected_pickup_cities = []
+        selected_drop_cities = []
+        selected_car_types = []
+        selected_attributes = []
+
+        if 'pickup_cities' in request.GET:
+            selected_pickup_cities = list(request.GET.getlist('pickup_cities'))
+            qs = qs.filter(city1_id__in = selected_pickup_cities)
+
+        if 'drop_cities' in request.GET:
+            selected_drop_cities = list(request.GET.getlist('drop_cities'))
+            qs = qs.filter(city2_id__in=selected_drop_cities)
+
+        if 'car_types' in request.GET:
+            selected_car_types = list(request.GET.getlist('car_types'))
+            qs = qs.filter(car_type_id__in=selected_car_types)
+
+        if 'attributes' in request.GET:
+            selected_attributes = list(request.GET.getlist('attributes'))
+            qs = qs.filter(attr_id__in=selected_attributes)
+
+        formset.queryset = qs
+        pickup_cities = coremodels.city.objects.filter(pickup = True)
+        drop_cities = coremodels.city.objects.filter(pickup = True)
+        car_types = coremodels.car_types.objects.all()
+        attributes = coremodels.calc_attr.objects.all()
         context = {
             'formset':formset,
+            'pickup_cities':pickup_cities,
+            'drop_cities':drop_cities,
+            'car_types':car_types,
+            'attributes':attributes,
+            'selected_pickup_cities':selected_pickup_cities,
+            'selected_drop_cities':selected_drop_cities,
+            'selected_car_types':selected_car_types,
+            'selected_attributes':selected_attributes,
         }
     return render(request, 'car_type/city_ride_attributes_formset.html', context)
 
