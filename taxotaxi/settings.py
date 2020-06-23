@@ -178,3 +178,6 @@ PAYU_CONFIG = {
         "success_url": "http://127.0.0.1:8000/payu/success",
         "failure_url": "http://127.0.0.1:8000/payu/failure"
     }
+
+# SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True

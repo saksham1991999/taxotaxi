@@ -53,12 +53,12 @@ account_type_choices = (
 )
 class bank_detail(models.Model):
     vendor = models.ForeignKey('vendor.vendorprofile', on_delete=models.PROTECT)
-    account_holder_name = models.CharField(max_length=50)
+    account_holder_name = models.CharField(max_length=50, blank=True, null=True)
     account_no = models.IntegerField()
     bank_name = models.CharField(max_length=50)
-    account_type = models.CharField(max_length=1, choices=account_type_choices)
+    account_type = models.CharField(max_length=1, choices=account_type_choices, blank=True, null=True)
     ifsc = models.CharField(max_length=20)
-    bank_address = models.CharField(max_length=200)
+    bank_address = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
         return str(self.vendor) + str(self.account_holder_name)

@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
+from django.forms import modelformset_factory, inlineformset_factory
+
 
 from . import models, forms
 from core import models as coremodels
@@ -99,53 +101,50 @@ def VendorRegistrationView(request):
 def DashboardView(request):
     try:
         vendorprofile = models.vendorprofile.objects.get(user = request.user, verified=True)
-
-        if request.method == 'POST':
-            type = request.POST['type']
-            print(request.POST)
-            if type == 'profile':
-                form = forms.VendorProfileForm(request.POST, request.FILES, instance=customerprofile)
-                userform = coreforms.UserProfileForm(request.POST, request.FILES, instance=request.user)
-
-                if form.is_valid() and userform.is_valid():
-                    new_form = form.save(commit=False)
-                    new_form.user = request.user
-                    new_form.save()
-
-                    userform.save()
-                    messages.success(request, 'Details Saved Successfully',
-                                     extra_tags='alert alert-success alert-dismissible')
-                    return redirect('customer:dashboard')
-                return redirect('customer:dashboard')
-
-            elif type == 'change_password':
-                password = request.POST['current_password']
-                new_password = request.POST['new_password']
-                user = authenticate(username=request.user.username, password=password)
-                if user is not None:
-                    user.set_password(new_password)
-                    user.save()
-                    login(request, user)
-                    messages.success(request, 'Password Updated', extra_tags='alert alert-success alert-dismissible')
-                    return redirect('customer:dashboard')
-                else:
-                    messages.error(request, 'Invalid Password', extra_tags='alert alert-error alert-dismissible')
-                    return redirect('customer:dashboard')
-            return redirect('customer:dashboard')
-        else:
-
-            profile_form = forms.VendorProfileForm(instance=vendorprofile)
-
-            context = {
-
-
-                'profile_form':profile_form,
-            }
-            return render(request, 'Vendor/profile.html', context)
     except:
         return redirect('core:dashboard')
 
+    VendorBankFormset = inlineformset_factory(models.vendorprofile,
+                                                       models.bank_detail, exclude=['vendor'],
+                                                       extra=0, can_delete=False)
 
+    if request.method == 'POST':
+        type = request.POST['type']
+        print(request.POST)
+        if type == 'profile':
+            profile_form = forms.VendorProfileForm(request.POST, request.FILES, instance=vendorprofile)
+            bank_formset = VendorBankFormset(request.POST, request.FILES, instance = vendorprofile)
+            if profile_form.is_valid() and bank_formset.is_valid():
+                profile_form.save()
+                bank_formset.save()
+                messages.success(request, 'Details Saved Successfully',
+                                 extra_tags='alert alert-success alert-dismissible')
+                return redirect('customer:dashboard')
+            context = {
+                'profile_form': profile_form,
+                'bank_formset': bank_formset,
+            }
+            return render(request, 'Vendor/profile.html', context)
+        elif type == 'change_password':
+            password = request.POST['current_password']
+            new_password = request.POST['new_password']
+            user = authenticate(username=request.user.username, password=password)
+            if user is not None:
+                user.set_password(new_password)
+                user.save()
+                login(request, user)
+                messages.success(request, 'Password Updated', extra_tags='alert alert-success alert-dismissible')
+                return redirect('customer:dashboard')
+            else:
+                messages.error(request, 'Invalid Password', extra_tags='alert alert-error alert-dismissible')
+
+    profile_form = forms.VendorProfileForm(instance=vendorprofile)
+    bank_formset = VendorBankFormset(instance = vendorprofile)
+    context = {
+        'profile_form':profile_form,
+        'bank_formset':bank_formset,
+    }
+    return render(request, 'Vendor/profile.html', context)
 
 
 def CarsView(request):
@@ -158,14 +157,21 @@ def CarsView(request):
                 new_car_form.vendor = vendor
                 new_car_form.status = 'Pending'
                 new_car_form.save()
-                return redirect('vendor:drivers')
-        cars = models.vendor_cars.objects.filter(vendor = vendor)
-        car_form = forms.AddCarForm(prefix='car')
-        context = {
-            'cars':cars,
-            'car_form':car_form,
-        }
-        return render(request,'Vendor/cars.html', context)
+                return redirect('vendor:cars')
+            cars = models.vendor_cars.objects.filter(vendor=vendor)
+            context = {
+                'cars': cars,
+                'car_form': car_form,
+            }
+            return render(request, 'Vendor/cars.html', context)
+        else:
+            cars = models.vendor_cars.objects.filter(vendor = vendor)
+            car_form = forms.AddCarForm(prefix='car')
+            context = {
+                'cars':cars,
+                'car_form':car_form,
+            }
+            return render(request,'Vendor/cars.html', context)
     else:
         return redirect('core:dashboard')
 
@@ -197,13 +203,14 @@ def DriversView(request):
                 'driver_form': driver_form,
             }
             return render(request, 'Vendor/drivers.html', context)
-        drivers = models.driver.objects.filter(vendor = vendor)
-        driver_form = forms.AddDriverForm(prefix='driver')
-        context = {
-            'drivers':drivers,
-            'driver_form':driver_form,
-        }
-        return render(request,'Vendor/drivers.html', context)
+        else:
+            drivers = models.driver.objects.filter(vendor = vendor)
+            driver_form = forms.AddDriverForm(prefix='driver')
+            context = {
+                'drivers':drivers,
+                'driver_form':driver_form,
+            }
+            return render(request,'Vendor/drivers.html', context)
     else:
         return redirect('core:dashobard')
 

@@ -30,7 +30,9 @@
                   </ul>
                   <div class="tab-content">
                      <div class="tab-pane active" id="editProfile">
-                        <form  >
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input name="type" type="hidden" value="profile">
                            <div class="col-sm-7">
 
                               <div class="dash_foam">
@@ -96,7 +98,7 @@
                                     </p>
                                  </div>
                                  <div class="vendorFile" style="width: 50%;">
-                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    {% render_field profile_form.aadharcard_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
                                     </p>
@@ -105,13 +107,13 @@
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Voter Card*</label>
                                  <div class="vendorFile" style="width: 50%;">
-                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    {% render_field profile_form.votercard_front placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
                                  <div class="vendorFile" style="width: 50%;">
-                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    {% render_field profile_form.votercard_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
                                     </p>
@@ -120,54 +122,58 @@
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Driving Licence*</label>
                                  <div class="vendorFile" style="width: 50%;">
-                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    {% render_field profile_form.driving_licence_front placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
                                  <div class="vendorFile" style="width: 50%;">
-                                    {% render_field profile_form.aadharcard_front placeholder="Front" %}
+                                    {% render_field profile_form.driving_licence_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
                                     </p>
                                  </div>
                               </div>
-                              <div class="dash_foam">
-                                 <label>Bank Details*</label>
-                                 <input type="text" name="" placeholder="Account Number">
-                              </div>
-                              <div class="dash_foam">
-                                 <label> </label>
-                                 <input type="text" name="" placeholder="Bank Name">
-                              </div>
-                              <div class="dash_foam">
-                                 <label></label>
-                                 <input type="text" name="" placeholder="IFSC Code">
-                              </div>
-                              <div class="dash_foam">
-                                 <label>+ Add New Account</label>
-                                 <input type="text" name="" placeholder="Account Number">
-                              </div>
-                              <div class="dash_foam">
-                                 <label></label>
-                                 <input type="text" name="" placeholder="Bank Name">
-                              </div>
-                              <div class="dash_foam">
-                                 <label> </label>
-                                 <input type="text" name="" placeholder="IFSC Code">
-                              </div>
+
+                               <div id="bank-details">
+                               {{ bank_formset.management_form }}
+                                   {% for form in bank_formset %}
+                                   <div>
+                                      <div class="dash_foam">
+                                         <label>Bank Details*</label>
+                                          {% render_field form.account_no placeholder="Account Number" %}
+                                      </div>
+                                      <div class="dash_foam">
+                                         <label> </label>
+                                          {% render_field form.bank_name placeholder="Bank Name" %}
+                                      </div>
+                                      <div class="dash_foam">
+                                         <label></label>
+                                          {% render_field form.ifsc placeholder="IFSC" %}
+                                      </div>
+                                   </div>
+                                   {% for field in form.hidden_fields %}
+                                        {{ field }}
+                                    {% endfor %}
+                                    {{ form.errors }}
+                                   {% endfor %}
+                               </div>
+                               <div class="dash_foam">
+                                   <label>+ Add New Account</label>
+                                   <input type="button" id="add_more" value="Add New Account">
+                               </div>
                               <div class="dash_foam">
                                  <label>Company Name (if any)</label>
-                                 <input type="text" name="" >
+                                  {% render_field profile_form.company_name %}
                               </div>
                               <div class="dash_foam">
                                  <label>GST Details*</label>
-                                 <input type="text" name="" >
+                                 {% render_field profile_form.gst_no %}
                               </div>
                            </div>
                            <div class="col-sm-5">
                               <div class="drag-drop">
-                                 <input type="file" class="input-file" name="">
+                                  {% render_field profile_form.image %}
                                  <p class="p23">
                                     <i class="fas fa-cloud-upload-alt fa-4x">
                                     </i><br> Drag&Drop files here <br> or<br>
@@ -187,7 +193,8 @@
                         </form>
                      </div>
                      <div class="tab-pane" id="changePassword">
-                        <form class="booking-frm" id="change-passwordform">
+                        <form class="booking-frm" id="change-passwordform" method="post">
+                            {% csrf_token %}
                            <input type="hidden" name="type" value="change_password">
                            <div class="col-sm-9" >
                               <div class="row">
@@ -255,8 +262,40 @@
       </div>
    </div>
 </div>
+
+
+    <div hidden id="empty_form">
+        <div data-repeater-item="" class="row">
+
+              <div class="dash_foam">
+                 <label>Bank Details*</label>
+                  {% render_field bank_formset.empty_form.account_no placeholder="Account Number" %}
+              </div>
+              <div class="dash_foam">
+                 <label> </label>
+                  {% render_field bank_formset.empty_form.bank_name placeholder="Bank Name" %}
+              </div>
+              <div class="dash_foam">
+                 <label></label>
+                  {% render_field bank_formset.empty_form.ifsc placeholder="IFSC" %}
+              </div>
+
+            {% for field in bank_formset.empty_form.hidden_fields %}
+                {{ field }}
+            {% endfor %}
+            {{  bank_formset.empty_form.errors }}
+        </div>
+    </div>
 {% endblock content %}
 {% block extra_scripts %}
+<script>
+    $('#add_more').click(function() {
+        var form_idx = $('#id_bank_detail_set-TOTAL_FORMS').val();
+        $('#bank-details').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+</script>
+
 <script type="text/javascript">
    $(document).ready(function(){
     var d = new Date();
