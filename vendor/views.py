@@ -110,7 +110,6 @@ def DashboardView(request):
 
     if request.method == 'POST':
         type = request.POST['type']
-        print(request.POST)
         if type == 'profile':
             profile_form = forms.VendorProfileForm(request.POST, request.FILES, instance=vendorprofile)
             bank_formset = VendorBankFormset(request.POST, request.FILES, instance = vendorprofile)
@@ -119,7 +118,9 @@ def DashboardView(request):
                 bank_formset.save()
                 messages.success(request, 'Details Saved Successfully',
                                  extra_tags='alert alert-success alert-dismissible')
-                return redirect('customer:dashboard')
+                return redirect('vendor:dashboard')
+            messages.success(request, 'Please Update Details Correctly',
+                             extra_tags='alert alert-danger alert-dismissible')
             context = {
                 'profile_form': profile_form,
                 'bank_formset': bank_formset,
@@ -134,7 +135,7 @@ def DashboardView(request):
                 user.save()
                 login(request, user)
                 messages.success(request, 'Password Updated', extra_tags='alert alert-success alert-dismissible')
-                return redirect('customer:dashboard')
+                return redirect('vendor:dashboard')
             else:
                 messages.error(request, 'Invalid Password', extra_tags='alert alert-error alert-dismissible')
 

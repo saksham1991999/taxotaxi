@@ -34,7 +34,11 @@
                             {% csrf_token %}
                             <input name="type" type="hidden" value="profile">
                            <div class="col-sm-7">
-
+                                <div style="display: none">
+                                    {% render_field profile_form.total_compact %}
+                                    {% render_field profile_form.total_sedan %}
+                                    {% render_field profile_form.total_suv %}
+                                </div>
                               <div class="dash_foam">
                                  <label>Full Name</label>
                                  {% render_field profile_form.full_name %}
