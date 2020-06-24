@@ -106,7 +106,7 @@
 
                                             <div class="foam-field">
                                                 <label>Phone No 1*</label>
-                                                {% render_field driver_form.contact1 %}
+                                                {% render_field driver_form.contact1 pattern="[1-9]{1}[0-9]{9}"%}
                                             </div>
 
                                             {% for error in driver_form.contact1.errors %}
@@ -115,7 +115,7 @@
 
                                             <div class="foam-field">
                                                 <label>Phone No 2*</label>
-                                                {% render_field driver_form.contact2 %}
+                                                {% render_field driver_form.contact2 pattern="[1-9]{1}[0-9]{9}"%}
                                             </div>
 
                                             {% for error in driver_form.contact2.errors %}

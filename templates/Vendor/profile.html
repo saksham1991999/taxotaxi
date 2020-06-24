@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
@@ -66,12 +64,12 @@
 
                               <div class="dash_foam">
                                  <label>Phone No 1*</label>
-                                 {% render_field profile_form.contact1 pattern="[0-9]{10}" %}
+                                 {% render_field profile_form.contact1 pattern="[1-9]{1}[0-9]{9}" %}
                               </div>
                                <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
                               <div class="dash_foam">
                                  <label>Phone No 2</label>
-                                 {% render_field profile_form.contact2 pattern="[0-9]{10}" %}
+                                 {% render_field profile_form.contact2 pattern="[1-9]{1}[0-9]{9}" %}
                               </div>
                                <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
                               <div class="dash_foam">
@@ -164,7 +162,7 @@
                                </div>
                                <div class="dash_foam">
                                    <label></label>
-                                   <input type="button" id="add_more" value="+ Add New Account">
+                                   <input type="button" id="add_more" value=" Add New Account">
                                </div>
                               <div class="dash_foam">
                                  <label>Company Name (if any)</label>
