@@ -26,6 +26,9 @@
         text-decoration: none;
         font-weight: bold;
     }
+    .vendorTab a:focus{
+      text-decoration: none;
+    }
     .vendorTab .active{
          color: black;
          font-weight: bold;
