@@ -99,53 +99,54 @@ def VendorRegistrationView(request):
 
 @login_required(login_url='/login/')
 def DashboardView(request):
+
     try:
-        vendorprofile = models.vendorprofile.objects.get(user = request.user, verified=True)
-    except:
-        return redirect('core:dashboard')
 
-    VendorBankFormset = inlineformset_factory(models.vendorprofile,
-                                                       models.bank_detail, exclude=['vendor'],
-                                                       extra=0, can_delete=False)
-
-    if request.method == 'POST':
-        type = request.POST['type']
-        if type == 'profile':
-            profile_form = forms.VendorProfileForm(request.POST, request.FILES, instance=vendorprofile)
-            bank_formset = VendorBankFormset(request.POST, request.FILES, instance = vendorprofile)
-            if profile_form.is_valid() and bank_formset.is_valid():
-                profile_form.save()
-                bank_formset.save()
-                messages.success(request, 'Details Saved Successfully',
-                                 extra_tags='alert alert-success alert-dismissible')
-                return redirect('vendor:dashboard')
-            messages.success(request, 'Please Update Details Correctly',
-                             extra_tags='alert alert-danger alert-dismissible')
+        vendorprofile = get_object_or_404(models.vendorprofile, user = request.user)
+        VendorBankFormset = inlineformset_factory(models.vendorprofile,
+                                                           models.bank_detail, exclude=['vendor'],
+                                                           extra=0, can_delete=False)
+        if request.method == 'POST':
+            type = request.POST['type']
+            if type == 'profile':
+                profile_form = forms.VendorProfileForm(request.POST, request.FILES, instance=vendorprofile)
+                bank_formset = VendorBankFormset(request.POST, request.FILES, instance = vendorprofile)
+                if profile_form.is_valid() and bank_formset.is_valid():
+                    profile_form.save()
+                    bank_formset.save()
+                    messages.success(request, 'Details Saved Successfully',
+                                     extra_tags='alert alert-success alert-dismissible')
+                    return redirect('vendor:dashboard')
+                else:
+                    messages.success(request, 'Please Update Details Correctly',
+                                     extra_tags='alert alert-danger alert-dismissible')
+                    context = {
+                        'profile_form': profile_form,
+                        'bank_formset': bank_formset,
+                    }
+                    return render(request, 'Vendor/profile.html', context)
+            elif type == 'change_password':
+                password = request.POST['current_password']
+                new_password = request.POST['new_password']
+                user = authenticate(username=request.user.username, password=password)
+                if user is not None:
+                    user.set_password(new_password)
+                    user.save()
+                    login(request, user)
+                    messages.success(request, 'Password Updated', extra_tags='alert alert-success alert-dismissible')
+                    return redirect('vendor:dashboard')
+                else:
+                    messages.error(request, 'Invalid Password', extra_tags='alert alert-error alert-dismissible')
+        else:
+            profile_form = forms.VendorProfileForm(instance=vendorprofile)
+            bank_formset = VendorBankFormset(instance = vendorprofile)
             context = {
-                'profile_form': profile_form,
-                'bank_formset': bank_formset,
+                'profile_form':profile_form,
+                'bank_formset':bank_formset,
             }
             return render(request, 'Vendor/profile.html', context)
-        elif type == 'change_password':
-            password = request.POST['current_password']
-            new_password = request.POST['new_password']
-            user = authenticate(username=request.user.username, password=password)
-            if user is not None:
-                user.set_password(new_password)
-                user.save()
-                login(request, user)
-                messages.success(request, 'Password Updated', extra_tags='alert alert-success alert-dismissible')
-                return redirect('vendor:dashboard')
-            else:
-                messages.error(request, 'Invalid Password', extra_tags='alert alert-error alert-dismissible')
-
-    profile_form = forms.VendorProfileForm(instance=vendorprofile)
-    bank_formset = VendorBankFormset(instance = vendorprofile)
-    context = {
-        'profile_form':profile_form,
-        'bank_formset':bank_formset,
-    }
-    return render(request, 'Vendor/profile.html', context)
+    except:
+        return redirect('core:dashboard')
 
 
 def CarsView(request):

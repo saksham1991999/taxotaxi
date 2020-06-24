@@ -78,7 +78,7 @@ fuel_type_choices = (
     ('C', 'CNG'),
 )
 class vendor_cars(models.Model):
-    vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
+    vendor = models.ForeignKey(vendorprofile, on_delete=models.PROTECT)
     car_type = models.ForeignKey('core.car_types', on_delete=models.DO_NOTHING)
     status = models.CharField(max_length=8 , choices=driver_status_choices, default = "Pending")
 
@@ -123,7 +123,7 @@ driver_status_choices = (
     ('Pending', 'Pending'),
 )
 class driver(models.Model):
-    vendor = models.ForeignKey(vendorprofile, on_delete=models.DO_NOTHING)
+    vendor = models.ForeignKey(vendorprofile, on_delete=models.PROTECT)
     status = models.CharField(max_length=8 , choices=driver_status_choices, default = "Pending")
     full_name = models.CharField(max_length=256)
     father_name = models.CharField(max_length=100, blank=True, null=True)
