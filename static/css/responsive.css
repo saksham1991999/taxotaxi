@@ -3,6 +3,14 @@
 	Responsive CSS File
 */
  /*for navbar header*/
+/* @media(min-width: 100px){
+ 	#cab-slider .owl-controls .owl-nav{
+       display: none !important;
+      }
+      #cab-slider .owl-controls .owl-nav .tj-slider .owl-dots{
+      	display: none !important;
+      }
+ }*/
 @media(max-width: 355px){
 	.airport-section .tj-form2-tabs .nav-tabs > li.active > a{
         font-size: 12px !important;

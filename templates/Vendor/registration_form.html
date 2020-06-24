@@ -248,7 +248,7 @@
 
                                         <div class="foam-field">
                                         <label>Phone No 1*</label>
-                                            {% render_field profile_form.contact1 pattern="[1-9]{1}[0-9]{9}" type="number"%}
+                                            {% render_field profile_form.contact1 pattern="[1-9]{1}[0-9]{9}"%}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
 
@@ -368,7 +368,7 @@
 
                                         <div class="foam-field">
                                             <label>Bank Account Number</label>
-                                            {% render_field bank_form.account_no %}
+                                            {% render_field bank_form.account_no pattern="[0-9]{8,18}" type="text" %}
                                         </div>
                                         <div class="errorSpace">{{ bank_form.account_no.errors }}</div>
 
