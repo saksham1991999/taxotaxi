@@ -1,5 +1,3 @@
-
-
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
@@ -93,12 +91,6 @@
    background-color: #eee;
    color: black !important;
    }
-   /*html,
-   body {
-   height: 100%;
-   margin: 0;
-   padding: 0;
-   }*/
    .label-right-allign {
    padding-right: 0px;
    text-align: right;
@@ -133,9 +125,6 @@
    color: black !important;
    font-weight: bold;
    }
-   /*.row1:active {
-   font-weight: bold;
-   }*/
    .styletext {
    color: #ffb100 !important;
    }
@@ -217,16 +206,13 @@
    padding-left: 4px;
    padding-top: 10px;
    padding-bottom: 10px;
-   /*border-style: solid;*/
    border-width: 1px;
    border-color: #84a9ac;
    }
    .row1 li a:hover {
-   /*color: black;*/
    font-weight: bold;
    }
    .container1 {
-   /*margin-top: 80px;*/
    padding: 4px 2px 27px 23px;
    border: 1px #eee solid;
    }
@@ -267,7 +253,6 @@
    width: 100%;
    height: 100%;
    text-align: center;
-   /*line-height: 40px;*/
    color: #1c2b39;
    font-family: inherit;
    }
@@ -286,15 +271,10 @@
    border: 2px solid #07e4d0;
    background: white;
    font-weight: bold;
-   /*border: none;*/
    width: 124px;
    height: 35px;
-   /*margin-top: -20px;*/
-   /*margin-left: -4px;*/
    border-radius: 4px;
-   /*border-bottom: 4px solid #117A60;*/
    transition: all .2s ease;
-   /*outline: none;*/
    }
    @media (max-width: 768px){
    .col-sm-8,.col-sm-6,.col-sm-5{
@@ -312,12 +292,9 @@
    }
    .adjustButton{
    margin-bottom: 70px;
-   /*left: -21px;*/
    display: flex;
    }
    .adjustYellowButtons{
-   /*margin-top: 270px !important;
-   margin-bottom: 40px;*/
    margin-left: -32px;
    }
    .adjustYellowButtonsSecond{
@@ -360,7 +337,7 @@
 <div class="container" >
    <div class="row">
       <div class="col-md-12 col-sm-12">
-         <!-- s/////////////////Side dashboard///////////////////////// -->
+         <!-- /////////Side dashboard///////////////// -->
          <div class="col-md-3 adjustDashboard" id="left-nav-tab" style="margin-top: 80px">
             <div class=" container1">
                <ul class="row row1" style="list-style-type: none;">
@@ -405,7 +382,7 @@
                </ul>
             </div>
          </div>
-         <!-- ///////////////////End Of Side dashBoard///////////// -->
+         <!-- /////////////End Of Side dashBoard/////////// -->
          <div class="col-md-9 container2">
             <div class="tab-content">
                <div class="tab-pane active " id="customerProfile" role="tabpanel">
@@ -424,7 +401,7 @@
                            <a href="#referral" style="font-weight: bold;" data-toggle="tab">&nbsp;Referral</a>
                         </li>
                      </ul>
-                     <!-- //////////togable Content pannel start///////////////// -->
+                   <!--/////togable Content pannel start/////// -->
                      <div class="tab-content">
                         <div class="tab-pane active" id="editProfile">
                            <form class="booking-frm" method="POST" id="edit-profileform" enctype="multipart/form-data">
@@ -497,7 +474,7 @@
                               {% else %}
                               <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                                  <div class="drag-drop">
-                                    <!-- <img src="{% static 'images/icons/Add.png' %}" alt=""> -->
+                                    <!-- <img src="{% static 'images/comment_img1.jpg' %}" alt=""> -->
                                     {% render_field userform.profile_pic class="input-file" %}
                                     <p class="p23">
                                        <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
