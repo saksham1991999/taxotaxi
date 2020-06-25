@@ -1348,6 +1348,7 @@
                      <h4 class="text-center ">Ride Details</h4>
                   </div>
                   <div class="col-sm-12 col-md-12">
+                     <div class="rideCard">
                      <div class="col-sm-1" class="listNumber">
                         <h4>01</h4>
                      </div>
@@ -1454,29 +1455,27 @@
                   </div>
                   <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Neeraj Kumar Sharma</h5>
+                        <h5 style="font-weight: bold;color: black;">Neeraj Kumar Sharma</h5>
                         <h5>Mobile: <span>9876543210</span></h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Pickup Location</h5>
+                        <h5 style="font-weight: bold;color: black;">Pickup Location</h5>
                         <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5 style="font-weight: bold;color: black;">Drop Location</h5>
                         <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
                      </div>
                      <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
                         <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                     <div class="" style="text-align: left;">
-                        <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #ffc000;">
-                           Enter Odometer Reading
-                           <div style="display: inline-block; margin-bottom: 0px">
-                              <input type="text" style="margin-bottom: 0px; padding: 0px;">
-                           </div>
-                        </button>
+                  <div class="col-sm-12 col-md-12 " style="background-color: #ffc000;padding: 10px;">
+                     <div class="col-sm-6" style="text-align: left;color: white;">
+                         Enter Odometer Reading
+                     </div>
+                     <div class="col-sm-6">
+                         <input type="text" style="float: right;">
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
@@ -1485,20 +1484,141 @@
                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                      <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #636863;color:whitesmoke ;">Reject Trip</button>
                   </div>
-                  <!-- <div style="height: 500px"></div> -->
-               </div>
-               <div class="tab-pane" id="bookingHistory" role="tabpanel">
-                  <div class="col-md-12 col-sm-12 vendorHeader">
-                     <h4 class="text-center ">History</h4>
+                  <div class="rideCard">
+                     <div class="col-sm-1" class="listNumber">
+                        <h4>01</h4>
+                     </div>
+                     <div class="col-sm-4">
+                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                              <span class="from">Faridabad</span>
+                              To 
+                              <span class="to">Chandigarh</span>
+                           </h4>
+                        </a>
+                        <h5 style="color: blue;">
+                        Booking Id: <span class="bookingId">9874654</span></h5 style="color: blue;">
+                        <h5>
+                        One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
+                        <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Night Drop Allowance <span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span></h5>
+                        <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                     </div>
+                     <div class="col-sm-7">
+                        <div class="col-sm-5" style="text-align: right; padding-right: 0px;">
+                           <h4 style="color: rgb(10, 10, 10);margin-bottom: 0px;">
+                              <span>Start Trip</span>
+                           </h4>
+                           <h4 style="color: rgb(10, 10, 10); padding-bottom: 0px;visibility: hidden;margin-top: 0px; margin-bottom: 0px;">
+                              <span>Start Trip</span>
+                           </h4>
+                           <h4 style=" color: rgb(10, 10, 10); padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                              <span>End Trip</span>
+                           </h4>
+                        </div>
+                        <div class="col-sm-7">
+                           <h4 style=" color: darkgreen; padding-bottom: 0px; margin-bottom: 0px;">
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
+                              <span>24-May-2020, Sunday</span>
+                           </h4>
+                           <h4 style=" color: darkgreen; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px;">
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
+                              <span>10:20 A.M</span>
+                           </h4>
+                           <h4 style=" color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">24-May-2020, Sunday</span>
+                           </h4>
+                           <h4 style=" color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                              <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
+                           </h4>
+                           <div>
+                              <h4 style="margin-top: 0px; margin-bottom: 0px;">
+                                 <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
+                                 <span >KM Limit : 350</span>
+                                 <small style="visibility: visible;"> km</small><br>
+                                 <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                              </h4>
+                           </div>
+                           
+                           <h5 style="visibility: visible;margin-top: 0px; margin-bottom: 0px;">
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Driver Collection Amount <br> 
+                              <h4 style="padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px; color: darkorange;">2,200</h4>
+                           </h5>
+                        </div>
+                     </div>
                   </div>
-                  <div class="col-sm-12 col-md-12">
+                  <div class="col-sm-12 col-md-12" style="padding: 0px;">
+                     <h4>Special Requirements</h4>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Need one hour of halt at</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Carrier on car required</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Travelling with pet</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Kids on board</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Women Travelling</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Senior citizen travelling</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Required English speaking driver</span>
+                     </div>
                   </div>
-               </div>
-               <div class="tab-pane" id="incentiveEarn" role="tabpanel">
-                  <div class="col-md-12 col-sm-12 vendorHeader">
-                     <h4 class="text-center ">Incentive Earn</h4>
-                     <form class="booking-frm" >
-                        <div class="col-sm-5" style="padding-left: 5%; padding-right: 5%;">
+                  <div class="col-sm-12 col-md-12"  style="padding: 0px;">
+                     <div>
+                        <small style="visibility: visible; color: red;">* Note Additionanl Information from admin or customer</small>
+                     </div>
+                     <h5><span class="cngAllowed" style="margin-right: 10px;">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
+                        </span>
+                        <span class="dieselAllowed" style="margin-right: 10px;">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
+                        <span class="electricAllowed" style="margin-right: 10px;">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                     </h5>
+                  </div>
+                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
+                     <div class="col-sm-3">
+                        <h5 style="font-weight: bold;color: black;">Neeraj Kumar Sharma</h5>
+                        <h5>Mobile: <span>9876543210</span></h5>
+                     </div>
+                     <div class="col-sm-3">
+                        <h5 style="font-weight: bold;color: black;">Pickup Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <div class="col-sm-3">
+                        <h5 style="font-weight: bold;color: black;">Drop Location</h5>
+                        <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
+                     </div>
+                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
+                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 " style="background-color: #ffc000;padding: 10px;">
+                     <div class="col-sm-6" style="text-align: left;color: white;">
+                         Enter Odometer Reading
+                     </div>
+                     <div class="col-sm-6">
+                         <input type="text" style="float: right;">
+                         <input type="text" style="float: right;margin-right: 5px;">
+                     </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
+                     <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: red;color:whitesmoke ;">Stop Ride</button>
+                     <form class="booking-frm display-change" style="display: flex;box-shadow: 0px 0px 13px #000000;" >
+                        <div class="col-sm-5" style="padding: 40px;">
                            <div class="dash_foam">
                               <label>Enter Odometer Reading</label>
                               <input type="text" name="">
@@ -1520,20 +1640,133 @@
                               <input type="text" name="">
                            </div>
                         </div>
-                        <div class="col-sm-7" style="background-color: #e2e2e2; height: 100vh;">
+                        <div class="col-sm-7" style="background-color: #f4f3f3;padding: 40px;">
                            <div class="dash_foam">
-                              <label>First Name</label>
-                              <input type="text" name="">
+                              <label>Collect Amount From the Customer</label>
+                              <div class="col-sm-7 noPadding">
+                              <input type="text" name=""></div>
                            </div>
+                           <br>
                            <div class="dash_foam">
+                              <div class="col-sm-7 noPadding">
                               <label>Driver Collection</label>
-                              <input type="text" name="">
+                              
+                              <input type="text" name=""></div>
                            </div>
-                           <button class="book-btn" type="submit" style="padding: 10px; background-color: #ffc000;">Enter Odometer Reading</button>
+                           <button class="book-btn" type="submit" style="padding: 10px;width: inherit;">Submit</button>
                         </div>
                      </form>
                   </div>
-                  <div class="col-sm-12 col-md-12">
+                  </div>
+                  
+                  
+               </div>
+               <div class="tab-pane" id="bookingHistory" role="tabpanel">
+                  <div class="col-md-12 col-sm-12 vendorHeader">
+                     <h4 class="text-center ">History</h4>
+                  </div>
+                  <div class="col-sm-12 col-md-12 bookingHistory" style="margin: 10px 0px;">
+               <div class="row list-group">
+                  <div class="item  col-sm-12">
+                     <div class="row CardHeader">
+                        <div class="col-md-12 col-sm-12">
+                           <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">Indira Gandhi International
+                           Airport(del.), Delhi-Agra </span><span
+                              class="styletext fas fa-map-marker-alt"></span></strong>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                           <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                        </div>
+                        <div class="col-md-5 col-xs-12 col-sm-12">
+                           <h5 class="boldH5">
+                              Booking ID: <span>20202305</span>
+                           </h5>
+                           <p>
+                              <span class="trip_est">One way trip/SUV</span><br>
+                              <span class="trip_est">Start Ride: 15/06/2020,10:35 AM</span><br>
+                              <span class="trip_est">Finish Ride: 19/06/2020, 03:00 PM</span><br>
+                           </p>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <p>
+                              <strong>Cash Collection:&nbsp;&nbsp;<span
+                                 class="trip_est styletext">1700.50</span></strong><br>
+                           <h5 class="boldH5"><i class="fas fa-tachometer-alt"></i> Total KM: 370 KM</h5>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                           <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                           <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                           <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                        </div>
+                     </div>
+                     <div class="row CardFooter">
+                        <div class="col-xs-6 col-md-4 col-sm-4">
+                           <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                           <span class="fa fa-star checked styletext"></span>
+                           <span class="fa fa-star checked styletext"></span>
+                           <span class="fa fa-star checked styletext"></span>
+                           <span class="fa fa-star styletext"></span>
+                           <span class="fa fa-star styletext"></span></span>
+                        </div>
+                        <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                           <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+               </div>
+               <div class="tab-pane" id="incentiveEarn" role="tabpanel">
+                  <div class="col-md-12 col-sm-12 vendorHeader">
+                     <h4 class="text-center ">Incentive Earn</h4>
+                  </div>
+                  <div class="col-sm-12">
+                     <div class="col-sm-12" style="margin: 30px 0px;">
+                       <form class="booking-frm display-change" style="display: flex;box-shadow: 0px 0px 13px #000000;" >
+                        <div class="col-sm-5" style="padding: 40px;">
+                           <div class="dash_foam">
+                              <label>Enter Odometer Reading</label>
+                              <input type="text" name="">
+                           </div>
+                           <div class="dash_foam">
+                              <label>Extra KM</label>
+                              <input type="text" name="">
+                           </div>
+                           <div class="dash_foam">
+                              <label>Extra KM Amount</label>
+                              <input type="text" name="">
+                           </div>
+                           <div class="dash_foam">
+                              <label>Extra Hourly Charges</label>
+                              <input type="text" name="">
+                           </div>
+                           <div class="dash_foam">
+                              <label>Other Charges</label>
+                              <input type="text" name="">
+                           </div>
+                        </div>
+                        <div class="col-sm-7" style="background-color: #f4f3f3;padding: 40px;">
+                           <div class="dash_foam">
+                              <label>Collect Amount From the Customer</label>
+                              <div class="col-sm-7 noPadding">
+                              <input type="text" name=""></div>
+                           </div>
+                           <br>
+                           <div class="dash_foam">
+                              <div class="col-sm-7 noPadding">
+                              <label>Driver Collection</label>
+                              
+                              <input type="text" name=""></div>
+                           </div>
+                           <button class="book-btn" type="submit" style="padding: 10px;width: inherit;">Submit</button>
+                        </div>
+                     </form>
+                  </div>
                   </div>
                </div>
                <div class="tab-pane" id="sellRide" role="tabpanel">
@@ -1541,6 +1774,42 @@
                      <h4 class="text-center ">Sell a Ride</h4>
                   </div>
                   <div class="col-sm-12 col-md-12">
+                     <div class="col-sm-6" >
+                        <div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div>
+                        <div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div><div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div><div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div><div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div>
+                     </div>
+                     <div class="col-sm-6" >
+                        <div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div>
+                        <div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div>
+                        <div class="foam-field">
+                           <label>From*</label>
+                           <input type="text" name="">
+                        </div>
+                     </div>
+                     <div class="col-md-12 booking-frm col-sm-12 dashButton">
+                        <button type="submit" class="book-btn">Update</button>
+                     </div>
 
                   </div>
                </div>

@@ -5612,8 +5612,8 @@ height: 34px;
     width: 100%;
 
   }
-
-  .icon {
+ 
+  .passInputfield .icon {
     margin-left: 70%;
     padding: 10px;
     color: rgb(76, 82, 76);
@@ -5717,15 +5717,10 @@ height: 34px;
     border: 2px solid #07e4d0;
     background: white;
     font-weight: bold;
-    /*border: none;*/
     width: 124px;
     height: 35px;
-    /*margin-top: -20px;*/
-    /*margin-left: -4px;*/
     border-radius: 4px;
-    /*border-bottom: 4px solid #117A60;*/
     transition: all .2s ease;
-    /*outline: none;*/
   }
   @media (max-width: 768px){
     .col-sm-8,.col-sm-6,.col-sm-5{
@@ -5743,12 +5738,9 @@ height: 34px;
     }
     .adjustButton{
       margin-bottom: 70px;
-      /*left: -21px;*/
       display: flex;
     }
     .adjustYellowButtons{
-    /*margin-top: 270px !important;
-    margin-bottom: 40px;*/
     margin-left: -32px;
   }
   .adjustYellowButtonsSecond{
@@ -6081,6 +6073,16 @@ height: 34px;
  
 /*--------------Password Reset page CSS end-------------*/
 
+/*cars Specification start*/
+@media (max-width: 768px){
+   .display-change{
+   display: grid !important;
+   }
+   }
+   .display-change{
+   display: flex;
+   }
+/*cars specification end*/
 
 
 /*-----css which will be same on all pages if used*/
