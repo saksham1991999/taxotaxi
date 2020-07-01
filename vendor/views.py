@@ -15,7 +15,14 @@ import requests
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth import get_user_model
 # Create your views here.
-
+def SMS(mobile, message):
+    mobile = '91' + str(mobile)
+    message = str(message)
+    url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fsdCr1FyckqYrndE63halg&senderid=SMSTST&channel=2&DCS=0&flashsms=0&number='+mobile+'&text='+message+'&route=1'
+    print(url)
+    r = requests.post(url = url)
+    x = r.text
+    print(x)
 
 def VendorRegistrationView(request):
     if request.method == 'POST':
@@ -38,6 +45,12 @@ def VendorRegistrationView(request):
             new_profile_form.user = vendor
             new_profile_form.save()
 
+            referal_code = coremodels.user_referral.objects.create(user=vendor, promotional_code=str(vendor_mobile),
+                                                               referralbenefit=50,
+                                                               customerbenefit=50, is_activated=True)
+            text = 'Thanks for registering on TaxoTaxi, We will verify and contact you soon!'
+            SMS(vendor_mobile, text)
+
             bank_account = bank_form.save(commit=False)
             bank_account.vendor = new_profile_form
             bank_account.save()
@@ -48,13 +61,19 @@ def VendorRegistrationView(request):
             driver_email = driver_form.cleaned_data['email']
             driver_fullname = driver_form.cleaned_data['full_name']
             driver_password = str(driver_fullname[:4]) + str(driver_mobile[-4:])
+
+            # year instead of Full Name
             driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
             driver.is_driver = True
             driver.save()
             new_driver_form.status = "Pending"
             new_driver_form.user = driver
             new_driver_form.save()
-
+            referal_code = coremodels.user_referral.objects.create(user=driver, promotional_code=str(driver_mobile),
+                                                                   referralbenefit=50,
+                                                                   customerbenefit=50, is_activated=True)
+            text = 'Thanks for registering on TaxoTaxi, We will verify and contact you soon!'
+            SMS(driver_mobile, text)
             car = car_form.save(commit=False)
             car.status = "Pending"
             car.vendor = new_profile_form
@@ -177,6 +196,28 @@ def CarsView(request):
     else:
         return redirect('core:dashboard')
 
+def EditCarView(request, id):
+    if request.user.is_vendor:
+        vendor = get_object_or_404(models.vendorprofile, user = request.user)
+        car = get_object_or_404(models.vendor_cars, id = id)
+        if request.method == 'POST':
+            car_form = forms.AddCarForm(request.POST, request.FILES, prefix='car', instance=car)
+            if car_form.is_valid() and car.vendor == vendor:
+                new_car_form = car_form.save(commit=False)
+                new_car_form.save()
+                return redirect('vendor:cars')
+            context = {
+                'car_form': car_form,
+            }
+            return render(request, 'Vendor/cars.html', context)
+        else:
+            car_form = forms.AddCarForm(prefix='car', instance=car)
+            context = {
+                'car_form':car_form,
+            }
+            return render(request,'Vendor/edit-car.html', context)
+    else:
+        return redirect('core:dashboard')
 
 def DriversView(request):
     if request.user.is_vendor:
@@ -216,7 +257,27 @@ def DriversView(request):
     else:
         return redirect('core:dashobard')
 
-
+def EditDriverView(request, id):
+    if request.user.is_vendor:
+        vendor = get_object_or_404(models.vendorprofile, user=request.user)
+        driver = get_object_or_404(models.driver, user = request.user)
+        if request.method == 'POST':
+            driver_form = forms.AddDriverForm(request.POST, request.FILES, prefix='driver', instance=driver)
+            if driver_form.is_valid() and driver.vendor == vendor:
+                driver_form.save()
+                return redirect('vendor:drivers')
+            context = {
+                'driver_form': driver_form,
+            }
+            return render(request, 'Vendor/drivers.html', context)
+        else:
+            driver_form = forms.AddDriverForm(prefix='driver', instance=driver)
+            context = {
+                'driver_form':driver_form,
+            }
+            return render(request,'Vendor/edit-driver.html', context)
+    else:
+        return redirect('core:dashobard')
 
 def PaymentsView(request):
     context = {}

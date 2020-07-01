@@ -388,11 +388,24 @@ def LoginView(request):
                 full_name = request.POST['full_name']
                 user = models.User.objects.create_user(username=mobile, email=email, password=password)
                 lname = ''
-                fname, lname = full_name.split()
+                fname = ''
+                full_name2 = full_name.split(' ', 1)
+
+                print(full_name2)
+                if len(full_name2) == 1:
+                    fname = full_name2[0]
+                else:
+                    fname = full_name2[0]
+                    lname = full_name2[1]
                 user.first_name = fname
                 user.last_name = lname
                 user.mobile = mobile
                 user.save()
+
+                customerprofile = customermodels.customerprofile.objects.create(user=user)
+                referal_code = models.user_referral.objects.create(user=user, promotional_code=str(mobile),
+                                                                                  referralbenefit=50,
+                                                                                  customerbenefit=50, is_activated=True)
 
                 otp = random.randint(1000, 9999)
                 request.session['mobile'] = mobile
@@ -403,10 +416,6 @@ def LoginView(request):
                 SMS(mobile, text)
                 print('-----------------------OTP--------------------------')
                 print(otp)
-
-                customerprofile = customermodels.customerprofile.objects.create(user = user)
-                referal_code = customermodels.customer_promotional.objects.create(customer = customerprofile, promotional_code=str(mobile), referralbenefit=50, customerbenefit=50, is_activated=True)
-
 
                 return redirect('core:register_otp_verification')
             except:
@@ -651,7 +660,13 @@ def CustomerAuthenticationView(request):
                     full_name = request.POST['full_name']
                     user = models.User.objects.create_user(username=mobile, email=email, password=password)
                     lname = ''
-                    fname, lname = full_name.split()
+                    fname = ''
+                    full_name2 = full_name.split(' ', 1)
+                    if len(full_name2) == 1:
+                        fname = full_name2[0]
+                    else:
+                        fname = full_name2[0]
+                        lname = full_name2[1]
                     user.first_name = fname
                     user.last_name = lname
                     user.mobile = mobile
@@ -665,11 +680,9 @@ def CustomerAuthenticationView(request):
                     print('-----------------------OTP--------------------------')
                     print(otp)
                     customerprofile = customermodels.customerprofile.objects.create(user=user)
-                    referal_code = customermodels.customer_promotional.objects.create(customer=customerprofile,
-                                                                                      promotional_code=str(mobile),
-                                                                                      referralbenefit=50,
-                                                                                      customerbenefit=50,
-                                                                                      is_activated=True)
+                    referal_code = models.user_referral.objects.create(user=user, promotional_code=str(mobile),
+                                                                       referralbenefit=50,
+                                                                       customerbenefit=50, is_activated=True)
 
                     return redirect('core:booking-otp-verification')
                 except:

@@ -37,3 +37,12 @@ class AddDriverForm(forms.ModelForm):
     class Meta:
         model = models.driver
         exclude = ['vendor', 'status']
+
+    def clean_contact1(self):
+        mobile = self.cleaned_data.get('contact1')
+        if mobile:
+            try:
+                user = coremodels.User.objects.get(username = mobile)
+                raise forms.ValidationError('Mobile Number is already registered')
+            except:
+                return mobile

@@ -6,7 +6,11 @@ urlpatterns = [
     path('', views.DashboardView, name='dashboard'),
     path('register/', views.VendorRegistrationView, name='registration'),
     path('cars/', views.CarsView, name='cars'),
+    path('cars/edit/<int:id>/', views.EditCarView, name='edit_car'),
     path('drivers/', views.DriversView, name='drivers'),
+    path('drivers/edit/<int:id>/', views.EditDriverView, name='edit_driver'),
+
+
     path('payments/', views.PaymentsView, name='payments'),
     path('booking-history/', views.BookingsHistoryView, name='booking_history'),
     path('bookings/', views.BookingsView, name='bookings'),

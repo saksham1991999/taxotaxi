@@ -164,6 +164,30 @@ def UpdateCityView(request):
         formset = CityFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
+
+            cities = coremodels.city.objects.all()
+            car_types = coremodels.car_types.objects.all()
+            cal_attr = coremodels.calc_attr.objects.all()
+
+            for pickup_cities in cities:
+                if pickup_cities.pickup:
+                    for dropcities in cities:
+                        if dropcities.drop:
+                            for type in car_types:
+                                for attr in cal_attr:
+                                    if attr.active:
+                                        try:
+                                            new = coremodels.calc_city_attr_value.objects.get(city1=pickup_cities,
+                                                                                          city2=dropcities,
+                                                                                          car_type=type,
+                                                                                          attr=attr)
+                                        except:
+                                            new = coremodels.calc_city_attr_value.objects.create(city1=pickup_cities,
+                                                                                             city2=dropcities,
+                                                                                             car_type=type,
+                                                                                             attr=attr,
+                                                                                             value=attr.value)
+                                            new.save()
         return redirect('customadmin:general')
     else:
         formset = CityFormset()
@@ -303,6 +327,17 @@ def UpdateCarAttributes(request):
         formset = CarAtrributeFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
+
+            car_types = coremodels.car_types.objects.all()
+            car_attributes = coremodels.car_attr.objects.all()
+            for car_type in car_types:
+                for car_attribute in car_attributes:
+                    try:
+                        value = coremodels.car_attr_comparison.objects.get(car_type=car_type,
+                                                                              attr_name=car_attribute)
+                    except:
+                        value = coremodels.car_attr_comparison.objects.create(car_type=car_type, attr_name = car_attribute, value=' ')
+
         return redirect( 'customadmin:car_type')
     else:
         formset = CarAtrributeFormset()

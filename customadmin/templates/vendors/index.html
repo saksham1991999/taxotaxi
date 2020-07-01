@@ -73,10 +73,10 @@
                                     <td>{{ vendor.company_name }}</td>
 
                                     <td>
-                                        <a href="{% url 'customadmin:vendor_edit' %}">
+                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
                                             <i class="bx bx-edit-alt font-size-16 align-middle"></i>
                                         </a>
-                                        <a href="{% url 'customadmin:vendor_edit' %}">
+                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
                                     </td>
@@ -166,7 +166,7 @@
 
 
                                 <tbody>
-                                {% for driver in vendor.driver_set %}
+                                {% for driver in vendor.driver_set.all %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ driver.first_name }}</td>

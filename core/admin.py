@@ -206,6 +206,7 @@ class terms_and_conditions_admin(ImportExportModelAdmin):
 
 admin.site.register(models.ride_types, ride_types_admin)
 admin.site.register(models.User)
+admin.site.register(models.user_referral)
 admin.site.register(models.city, city_admin)
 
 admin.site.register(models.location)

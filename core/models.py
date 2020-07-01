@@ -305,3 +305,16 @@ class final_ride_detail(models.Model):
     start_datetime = models.DateTimeField(blank=True, null=True)
     end_datetime = models.DateTimeField(blank=True, null=True)
 
+
+class user_referral(models.Model):
+    user = models.ForeignKey('core.User', on_delete=models.PROTECT, verbose_name='User to assign the referral code to')
+    promotional_code = models.CharField(max_length=10)
+    referralbenefit = models.IntegerField(verbose_name='Amount to be credited to the person using it')
+    customerbenefit = models.IntegerField(verbose_name='Amount to be credited to the customer referring')
+    is_activated = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.promotional_code
+
+    class Meta:
+        verbose_name_plural = 'User Referral Codes'
