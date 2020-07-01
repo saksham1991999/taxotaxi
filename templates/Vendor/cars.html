@@ -37,6 +37,7 @@
                               <th class="setTableWidth">Owner Name</th>
                               <th>Oprational</th>
                               <th>Status</th>
+                              <th></th>
                            </tr>
                            {% for car in cars %}
                            <tr>
@@ -53,6 +54,8 @@
                                {% elif car.status == "Hold" %}
                                    <td class="cross">&#10008</td>
                                    <td class="wait">hold</td>
+                                  <!--  <td><button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
+                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button></td> -->
                                {% endif %}
                            </tr>
                            {% endfor %}
@@ -336,6 +339,8 @@
                                   </div>
                                </div>
                                <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" >Edit</button>
+                                 <button type="button" class="btn btn-danger" >Delete</button>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                </div>
                              </div>
