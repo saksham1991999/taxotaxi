@@ -133,7 +133,18 @@
                                     <tr>
                                         <td>{{ drop_city.name }}</td>
                                         {% for pickup_city in pickup_cities %}
-                                            <td> - </td>
+                                            <td style="">
+
+                                                <form method="get" action="{% url 'customadmin:update_city_ride_attributes' %}">
+                                                    <input type="checkbox" class="custom-control-input" name="pickup_cities" value="{{ pickup_city.id }}" checked hidden>
+                                                    <input type="checkbox" class="custom-control-input" name="drop_cities" value="{{ drop_city.id }}" checked hidden>
+
+                                                    <button type="submit" style="float: right;" class="btn btn-warning waves-effect waves-light mb-2">
+                                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                                    </button>
+                                                </form>
+
+                                            </td>
                                         {% endfor %}
                                     </tr>
                                     {% endfor %}
