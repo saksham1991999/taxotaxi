@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load fullurl %}
+
+{% block extra_stylesheet %}
+
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+
+          {% include 'Vendor/vendorSidebar.html' %}
+
+                <!-- --------Begning of navigation tabs---------- -->
+                <div class="col-md-9">
+                            <div class="col-md-12 col-sm-12 vendorHeader">
+                                <h4 class="text-center"> Edit Car Details</h4>
+                            </div>
+                            <div class="col-sm-8">
+                              <br>
+                        <form class="">
+                           <div class="foam-field">
+                              <label>Car Number</label>
+                              <input type="text" name="vendorName">
+                           </div>
+                           <div class="foam-field">
+                              <label>Owner Name</label>
+                              <input type="text" name="vendorName">
+                           </div>
+                           <div class="foam-field">
+                              <label>Father's Name</label>
+                              <input type="text" name="vendorName">
+                           </div>
+                           <div class="foam-field">
+                              <label>Vehicle Type</label>
+                              <select name="subject" id="">
+                                 <option Selected>Sedan</option>
+                                 <option value="0" >SUV</option>
+                                 <option value="1">Compact</option>
+                              </select>
+                           </div>
+                           <div class="foam-field">
+                              <label>Registration No</label>
+                              <input type="text" name="vendorName">
+                           </div>
+                           <div class="foam-field">
+                              <label>RC valid upto*</label>
+                              <input type="text" id="datepicker5"data-date-format="mm-dd-yyyy"readonly />
+                              <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                           </div>
+                           <div class="foam-field">
+                              <label>Upload Car Photo*</label>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Front side
+                                 </p>
+                              </div>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Back side
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field">
+                              <label>Upload RC*</label>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Front side
+                                 </p>
+                              </div>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Back side
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field">
+                              <label>Upload Tourist Permit*</label>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Front side
+                                 </p>
+                              </div>
+                              <div class="vendorFile" style="width: 49%;">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Back side
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field">
+                              <label>Tourist Permit valid upto</label>
+                              <input type="text" id="datepicker6" data-date-format="mm-dd-yyyy" readonly />
+                              <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                           </div>
+                           <div class="foam-field ">
+                              <label>Upload Permit A*</label>
+                              <div class="vendorFile">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Drop file here
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field ">
+                              <label>Upload Permit B*</label>
+                              <div class="vendorFile">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Drop file here
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field ">
+                              <label>Upload Insurance*</label>
+                              <div class="vendorFile">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Drop file here
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="foam-field">
+                              <label>Insurance valid upto</label>
+                              <input type="text" id="datepicker7"data-date-format="mm-dd-yyyy" readonly />
+                              <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                           </div>
+                           <div class="foam-field ">
+                              <label>Upload Pollution certificate*</label>
+                              <div class="vendorFile">
+                                 <input type="file" name="vendorName" placeholder="Pan Card">
+                                 <p class="fileUploadtext">
+                                    <i class="far fa-file"></i> Drop file here
+                                 </p>
+                              </div>
+                           </div>
+                           <div class="col-sm-12 booking-frm dashButton"> 
+                              <button class="book-btn" type="submit">Update
+                              </button>&nbsp;&nbsp;
+                              <button class="book-btn" id="hide-carbtn" type="button">Cancel</button>
+                           </div>
+                        </form>
+                     </div>
+                        </div>
+                    
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+<script>
+    $(function () {
+        var d = new Date();
+        var current_year = d.getFullYear();
+        /////////////set age restrictions here////////////////////
+        var req_year = current_year - 18;
+        var month = d.getMonth();
+        var date = d.getDate();
+        var req_date = req_year + "/" + month + "/" + date;
+        var today_date = current_year + "/" + month + "/" + date;
+        $("#datepicker").datepicker({
+            dateformat: "yyyy-mm-dd",
+            autoclose: true,
+            todayHighlight: false,
+            endDate: req_date
+        }).datepicker('update', new Date());
+
+
+        $(function () {
+            $("#datepicker5").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+                startDate: new Date(),
+            })
+        });
+        $(function () {
+            $("#datepicker6").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+                startDate: new Date(),
+            })
+        });
+        $(function () {
+            $("#datepicker7").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+                startDate: new Date(),
+            })
+        });
+    });
+
+
+    $("#show-carbtn").click(function(){
+        $(".addCarFoam").show();
+    });
+    $("#hide-carbtn").click(function(){
+        $(".addCarFoam").hide();
+    });
+</script>
+<script type="text/javascript">
+    $(function () {
+        // Function to return file name to the input field
+         $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                var id = e.target.id;
+                console.log(id);
+                var pfile = '#' + id + '-p';
+                $(pfile).text(fileName);
+        });
+    });
+
+</script>
+
+
+{% endblock extra_scripts %}
