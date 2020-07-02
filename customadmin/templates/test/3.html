@@ -4,6 +4,9 @@
 
 {% block extra_stylesheet %}
 <style>
+    .main-content{
+        font-size: 0.7rem !important;
+    }
 .main-info{
     background-color:rgb(255, 253, 250);
 }
@@ -11,6 +14,8 @@
     font-size: 0.8rem;
 }
 .main-info h5{
+    color: blue;
+    font-weight: 600;
     font-size: 0.8rem;
 }
 </style>
@@ -67,11 +72,10 @@
                         </div>
                         <div class="col-sm-4">
                             <img src="{% static 'images/news_img2.jpg' %}" alt="" width="100%">
-                            <h4>Status</h4>
                             
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin: 15px auto;">
                         <div style="display: flex; margin: auto;">
                             <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
@@ -193,6 +197,198 @@
                 </div>
             </div>
 
+            <!--  -->
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Cars
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Type</th>
+                                            <th>Luggage Capacity</th>
+                                            <th>Suspension/Control</th>
+                                            <th>Comfort Level</th>
+                                            <th>Boot Space</th>
+                                            <th>Price per Km</th>
+                                            <th>Fuel Type</th>
+                                            <th>Seating Capacity</th>
+                                            <th>Class/ Variants</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Drivers
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Vendor</th>
+                                            <th>Status</th>
+                                            <th>Bank Name</th>
+                                            <th>Full Name</th>
+                                            <th>Father Name</th>
+                                            <th>Email</th>
+                                            <th>Contact1</th>
+                                            <th>Contact2</th>
+                                            <th>Address</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Payments
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account Holder name</th>
+                                            <th>Account Number</th>
+                                            <th>Bank Name</th>
+                                            <th>Account Type</th>
+                                            <th>IFSC</th>
+                                            <th>Bank Address</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Bookings
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account Holder name</th>
+                                            <th>Account Number</th>
+                                            <th>Bank Name</th>
+                                            <th>Account Type</th>
+                                            <th>IFSC</th>
+                                            <th>Bank Address</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div> <!-- container-fluid -->
     </div>
     <!-- End Page-content -->
