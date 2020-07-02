@@ -9,6 +9,7 @@
     }
 .main-info{
     background-color:rgb(255, 253, 250);
+    padding: 10px;
 }
 .main-info h4{
     font-size: 0.8rem;
@@ -17,6 +18,15 @@
     color: blue;
     font-weight: 600;
     font-size: 0.8rem;
+}
+.bank-collapse h5{
+    font-size: 0.7rem;
+}
+.main-content img{
+    padding: 2px;
+}
+.img-button button{
+    margin: 5px;
 }
 </style>
 {% endblock extra_stylesheet %}
@@ -70,12 +80,20 @@
                                 <h4 style="width: 50%;">6.8</h4>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 img-button">
                             <img src="{% static 'images/news_img2.jpg' %}" alt="" width="100%">
-                            
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Change Status </span>
+                                </button>
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Edit</span> 
+                                </button>
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Delete</span> 
+                                </button>
                         </div>
                     </div>
-                    <div class="row" style="margin: 15px auto;">
+                    <!-- <div class="row" style="margin: 15px auto;">
                         <div style="display: flex; margin: auto;">
                             <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
@@ -89,7 +107,7 @@
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Delete
                             </button>
                             </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="col-sm-3">
                             <h4>Aadhar Card</h4>
@@ -133,22 +151,50 @@
                                             <th>#</th>
                                             <th>Account Holder name</th>
                                             <th>Account Number</th>
-                                            <th>Bank Name</th>
-                                            <th>Account Type</th>
-                                            <th>IFSC</th>
-                                            <th>Bank Address</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         
+                                            <!-- for one row the main part -->
                                         <tr>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>asfsdf</td>
+                                            <td>sfsdfasdf</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleBankAccounts1" aria-expanded="false" aria-controls="collapseExampleBankAccounts1">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- collapse part of one row -->
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleBankAccounts1">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Bank Name</h5>
+                                                                <h5>Account Type</h5>
+                                                                <h5>IFSC</h5>
+                                                                <h5>Duration</h5>
+                                                                <h5>Bank Address</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>25/06/2020 9:00 A.M.</h5>
+                                                                <h5>25/06/2020 8:00 A.M.</h5>
+                                                                <h5>90 KM</h5>
+                                                                <h5>2 hr</h5>
+                                                                <h5>delhi</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </td>
+                                            
                                         </tr>
                                         
                                         </tbody>
@@ -217,30 +263,53 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Number</th>
                                             <th>Type</th>
-                                            <th>Luggage Capacity</th>
-                                            <th>Suspension/Control</th>
-                                            <th>Comfort Level</th>
-                                            <th>Boot Space</th>
-                                            <th>Price per Km</th>
-                                            <th>Fuel Type</th>
-                                            <th>Seating Capacity</th>
-                                            <th>Class/ Variants</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         
                                         <tr>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleCar1" aria-expanded="false" aria-controls="collapseExampleCar1">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleCar1">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Luggage Capacity</h5>
+                                                                <h5>Suspension/Control</h5>
+                                                                <h5>Comfort Level</h5>
+                                                                <h5>Boot Space</h5>
+                                                                <h5>Price per Km</h5>
+                                                                <h5>Fuel Type</h5>
+                                                                <h5>Seating Capacity</h5>
+                                                                <h5>Class/ Variants</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>25/06/2020 9:00 A.M.</h5>
+                                                                <h5>25/06/2020 8:00 A.M.</h5>
+                                                                <h5>90 KM</h5>
+                                                                <h5>2 hr</h5>
+                                                                <h5>delhi</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </td>
+                                            
                                         </tr>
                                         
                                         </tbody>
@@ -268,28 +337,51 @@
                                             <th>#</th>
                                             <th>Vendor</th>
                                             <th>Status</th>
-                                            <th>Bank Name</th>
-                                            <th>Full Name</th>
-                                            <th>Father Name</th>
-                                            <th>Email</th>
-                                            <th>Contact1</th>
-                                            <th>Contact2</th>
-                                            <th>Address</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         
                                         <tr>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>Abhinav</td>
+                                            <td>asdbjgjh</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleDriver1" aria-expanded="false" aria-controls="collapseExampleDriver1">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleDriver1">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Luggage Capacity</h5>
+                                                                <h5>Suspension/Control</h5>
+                                                                <h5>Comfort Level</h5>
+                                                                <h5>Boot Space</h5>
+                                                                <h5>Price per Km</h5>
+                                                                <h5>Fuel Type</h5>
+                                                                <h5>Seating Capacity</h5>
+                                                                <h5>Class/ Variants</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>25/06/2020 9:00 A.M.</h5>
+                                                                <h5>25/06/2020 8:00 A.M.</h5>
+                                                                <h5>90 KM</h5>
+                                                                <h5>2 hr</h5>
+                                                                <h5>delhi</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </td>
+                                            
                                         </tr>
                                         
                                         </tbody>
