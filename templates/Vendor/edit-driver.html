@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load fullurl %}
+{% block extra_stylesheet %}
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+{% endblock extra_stylesheet %}
+{% block content %}
+<div class="tj-wrapper">
+   <div class="container">
+      <div class="row">
+         {% include 'Vendor/vendorSidebar.html' %}
+         <!-- --------Begning of navigation tabs---------- -->
+         <div class="col-md-9">
+            <div class="col-md-12 col-sm-12 vendorHeader">
+               <h4 class="text-center"> Edit Driver Details</h4>
+            </div>
+            <div class="col-sm-12 ">
+               <br>
+               <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <div class="col-sm-8">
+                     <div class="foam-field">
+                        <label>Full Name</label>
+                        {% render_field driver_form.full_name %}
+                     </div>
+                     {% for error in driver_form.full_name.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Father's Name</label>
+                        {% render_field driver_form.father_name %}
+                     </div>
+                     {% for error in driver_form.father_name.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Date Of Birth</label>
+                        {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
+                        <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     </div>
+                     {% for error in driver_form.dob.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Email address*</label>
+                        {% render_field driver_form.email %}
+                     </div>
+                     {% for error in driver_form.email.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Phone No 1*</label>
+                        {% render_field driver_form.contact1 pattern="[1-9]{1}[0-9]{9}"%}
+                     </div>
+                     {% for error in driver_form.contact1.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Phone No 2*</label>
+                        {% render_field driver_form.contact2 pattern="[1-9]{1}[0-9]{9}"%}
+                     </div>
+                     {% for error in driver_form.contact2.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label>Address*</label>
+                        {% render_field driver_form.address %}
+                     </div>
+                     {% for error in driver_form.address.errors %}
+                     <div class="errorSpace"> {{ error}}</div>
+                     {% endfor %}
+                     <div class="foam-field">
+                        <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                     </div>
+                     <div class="foam-field">
+                        <label>PAN Card*</label>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.pancard_front %}
+                           <p class="fileUploadtext" id="id_driver-pancard_front-p">
+                              <i class="far fa-file"></i> &ensp; Front Side
+                           </p>
+                        </div>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.pancard_rear %}
+                           <p class="fileUploadtext" id="id_driver-pancard_rear-p">
+                              <i class="far fa-file"></i> &ensp; Back side
+                           </p>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.pancard_front.errors }}</div>
+                     <div class="errorSpace">{{ driver_form.pancard_rear.errors }}</div>
+                     <div class="foam-field">
+                        <label>
+                           Aadhar Card*
+                           <p>Size must be 200KB</p>
+                        </label>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.aadharcard_front %}
+                           <p class="fileUploadtext" id="id_driver-aadharcard_front-p">
+                              <i class="far fa-file"></i> &ensp; Front Side
+                           </p>
+                        </div>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.aadharcard_rear %}
+                           <p class="fileUploadtext" id="id_driver-aadharcard_rear-p">
+                              <i class="far fa-file"></i> &ensp; Back side
+                           </p>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.aadharcard_front.errors }}</div>
+                     <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
+                     <div class="foam-field">
+                        <label>Voter Card</label>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.votercard_front %}
+                           <p class="fileUploadtext" id="id_driver-votercard_front-p">
+                              <i class="far fa-file"></i> &ensp; Front Side
+                           </p>
+                        </div>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.votercard_rear %}
+                           <p class="fileUploadtext" id="id_driver-votercard_rear-p">
+                              <i class="far fa-file"></i> &ensp; Back side
+                           </p>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.votercard_front.errors }}</div>
+                     <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
+                     <div class="foam-field">
+                        <label>Driving Licence</label>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.driving_licence_front %}
+                           <p class="fileUploadtext" id="id_driver-driving_licence_front-p">
+                              <i class="far fa-file"></i> &ensp; Front Side
+                           </p>
+                        </div>
+                        <div class="vendorFile" style="width: 49%;">
+                           {% render_field driver_form.driving_licence_rear %}
+                           <p class="fileUploadtext" id="id_driver-driving_licence_rear-p">
+                              <i class="far fa-file"></i> &ensp; Back side
+                           </p>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.driving_licence_front.errors }}</div>
+                     <div class="errorSpace">{{ driver_form.driving_licence_rear.errors }}</div>
+                     <div class="foam-field">
+                        <label>Valid From*</label>
+                        {% render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
+                        <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                        <!-- <input type="date" name="vendorName"> -->
+                     </div>
+                     <div class="errorSpace">{{ driver_form.driving_licence_valid_from.errors }}</div>
+                     <div class="foam-field">
+                        <label>Valid To*</label>
+                        {% render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
+                        <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
+                     <div class="foam-field">
+                        <label>Total Driving Experience</label>
+                        {% render_field driver_form.driving_experience %}
+                     </div>
+                     <div class="errorSpace">{{ driver_form.driving_experience.errors }}</div>
+                     <div class="foam-field">
+                        <label>Hill Driving Experience</label>
+                        {% render_field driver_form.hill_experience %}
+                     </div>
+                     <div class="errorSpace">{{ driver_form.hill_experience.errors }}</div>
+                     <div class="foam-field">
+                        <label>
+                           Police Verification*
+                           <p>With in 15days or 6 months old</p>
+                        </label>
+                        <div class="vendorFile">
+                           {% render_field driver_form.police_verification_front %}
+                           <p class="fileUploadtext" id="id_driver-police_verification_front-p">
+                              <i class="far fa-file"></i> &ensp; Drop file here
+                           </p>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.police_verification_front.errors }}</div>
+                     <div class="foam-field">
+                        <label>Any Legal/Accidental case pending for clearance*</label>
+                        <select name="subject" id="legalCase">
+                           <option Selected>--Select--</option>
+                           <option value="0">No</option>
+                           <option value="1" id="Yes">Yes</option>
+                        </select>
+                     </div>
+                     <!-- //////if Yes is selected///////// -->
+                     <div style="display: none;" id="caseInput">
+                        <div class="foam-field">
+                           <label style="color: #e61616;" >Upload supporting documents*</label>
+                           <div class="vendorFile">
+                              {% render_field driver_form.legal_accidental_case_document %}
+                              <p class="fileUploadtext" id="id_driver-legal_accidental_case_document-p">
+                                 <i class="far fa-file"></i> &ensp; Drop file here
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="errorSpace">{{ driver_form.legal_accidental_case_document.errors }}</div>
+                  </div>
+                  <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
+                     <div class="drag-drop">
+                        {% render_field driver_form.image class="input-file2" %}
+                        <p class="p24">
+                           <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                           </i><br> Drag&Drop files here <br> or<br>
+                           <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                        </p>
+                        <div class="label-right-allign" style="text-align: center;">
+                           Select your profile image<br>
+                           <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 booking-frm dashButton">
+                     <button class="book-btn" type="submit">Update
+                     </button>&nbsp;&nbsp;
+                     <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+{% block extra_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script>
+   $(function () {
+       var d = new Date();
+       var current_year = d.getFullYear();
+        /////////////set age restrictions here////////////////////
+       var req_year = current_year - 18;
+       var month = d.getMonth();
+       var date = d.getDate();
+        var req_date = req_year + "/" + month + "/" + date ;
+       var today_date = current_year + "/" + month + "/" + date;
+   $("#datepicker").datepicker({ 
+       dateformat: "yyyy-mm-dd",
+       autoclose: true, 
+       todayHighlight: false,
+       endDate: req_date
+   }).datepicker('update', new Date());
+   $(function () {
+           $("#datepicker2").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false
+           })
+       });
+       $(function () {
+           $("#datepicker3").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false,
+               startDate: new Date(),
+           })
+       });
+       $(function () {
+           $("#datepicker4").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false,
+               endDate: req_date
+           })
+       });
+   
+   });
+   $("#show-driverbtn").click(function(){
+       $(".addDriverFoam").show();
+   });
+   $("#hide-driverbtn").click(function(){
+       $(".addDriverFoam").hide();
+   });
+    $("#legalCase").change(function(){
+       var selected = $("#legalCase").children("option:selected").val();
+       // console.log(selected);
+       if( selected == "1"){
+           $("#caseInput").css({"display":"block"})
+       }
+       else if( selected == "0"){
+           $("#caseInput").css({"display":"none"})
+       }else{
+           $("#caseInput").css({"display":"none"})
+       }
+   })
+</script>
+<script type="text/javascript">
+   $(function () {
+       // Function to return file name to the input field
+        $('input[type="file"]').change(function(e){
+               var fileName = e.target.files[0].name;
+               var id = e.target.id;
+               console.log(id);
+               var pfile = '#' + id + '-p';
+               $(pfile).text(fileName);
+       });
+                $('.input-file2').change(function (e) {
+                   var fileName = e.target.files[0].name;
+             $('.p24').text(fileName);
+           }) ;
+   });
+   
+</script>
+{% endblock extra_scripts %}
