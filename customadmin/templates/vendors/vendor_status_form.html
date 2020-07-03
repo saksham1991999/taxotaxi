@@ -20,12 +20,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Blog Form</h4>
+                        <h4 class="mb-0 font-size-18">Vendor Status Form</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                <li class="breadcrumb-item active">Blog Form</li>
+                                <li class="breadcrumb-item active">Vendor Status Form</li>
                             </ol>
                         </div>
 
@@ -33,101 +33,169 @@
                 </div>
             </div>
             <!-- end page title -->
+            <form method="post">
+                <div class="row">
 
-            <div class="row">
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
 
-                            <h4 class="card-title"></h4>
-                            <p class="card-title-desc"></p>
+                                    <h4 class="card-title"></h4>
+                                    <p class="card-title-desc"></p>
 
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-md-2 col-form-label">Title</label>
-                                <div class="col-md-10">
-                                    {% render_field form.title class="form-control" %}
-                                    <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Full Name</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.full_name class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-md-2 col-form-label">Father Name</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.father_name class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-email-input" class="col-md-2 col-form-label">Date of Birth</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.dob class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-url-input" class="col-md-2 col-form-label">Email</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.email class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Image</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.image class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Mobile</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.contact1 class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Alternative Mobile</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.contact2 class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Address</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.address class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Company Name</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.company_name class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">GST Number</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.gst_no class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label for="example-search-input" class="col-md-2 col-form-label">Category</label>
-                                <div class="col-md-10">
-                                    {% render_field form.category class="form-control" %}
-                                    <!-- <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> -->
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-email-input" class="col-md-2 col-form-label">Date</label>
-                                <div class="col-md-10">
-                                    {% render_field form.date class="form-control" type="datetime-local" %}
-                                    <!-- <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> -->
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-url-input" class="col-md-2 col-form-label">Published</label>
-                                <div class="col-md-10">
-                                    {% render_field form.published class="form-control" %}
-                                    <!-- <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> -->
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-tel-input" class="col-md-2 col-form-label">Image</label>
-                                <div class="col-md-10">
-                                    {% render_field form.main_image class="form-control" %}
-                                    <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
-                                </div>
+                        </div> <!-- end col -->
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-body">
 
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-tel-input" class="col-md-2 col-form-label">image1</label>
-                                <div class="col-md-10">
-                                    {% render_field form.image1 class="form-control" %}
-                                    <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                    <h4 class="card-title"></h4>
+                                    <p class="card-title-desc"></p>
+
+                                    <div class="form-group row">
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Status</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.status class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">PanCard</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.pancard class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Aadhaar Card Front</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.aadharcard_front class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Aadhaar Card Rear</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.aadharcard_rear class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">VoterCard Front</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.votercard_front class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">VoterCard Rear</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.votercard_rear class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">DL Front</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.driving_licence_front class="form-control" readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">DL Rear</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.driving_licence_rear class="form-control"  readonly='' %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-block btn-lg btn-success waves-effect waves-light">
+                                        <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
+                                    </button>
+
                                 </div>
-
                             </div>
-                            <div class="form-group row">
-                                <label for="example-tel-input" class="col-md-2 col-form-label">image2</label>
-                                <div class="col-md-10">
-                                    {% render_field form.image2 class="form-control" %}
-                                    <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
-                                </div>
-
-                            </div>
-                            <div class="form-group row">
-                                <label for="example-tel-input" class="col-md-2 col-form-label">image3</label>
-                                <div class="col-md-10">
-                                    {% render_field form.image3 class="form-control" %}
-                                    <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
-                                </div>
-
-                            </div>
-
                         </div>
-                    </div>
-                </div> <!-- end col -->
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body">
 
-                            <h4 class="card-title"></h4>
-                            <p class="card-title-desc"></p>
-
-                            <div class="form-group row">
-                                <label for="example-text-input" class="col-md-2 col-form-label">Content</label>
-                                <div class="col-md-10">
-                                    {% render_field form.content class="form-control" %}
-                                    <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-block btn-lg btn-success waves-effect waves-light">
-                                <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
-                            </button>
-
-                        </div>
-                    </div>
                 </div>
-            </div>
+            </form>
             <!-- end row -->
 
             <!-- end row -->
