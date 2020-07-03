@@ -1031,7 +1031,7 @@ frmvalidator.addValidation("email","email",
     // console.log($("#vendorInformation > div > div > textarea").val());
     // }
     // console.log($("#id_driver-address").val());
-
+    }
 
 </script>
 <script>
@@ -1051,13 +1051,15 @@ frmvalidator.addValidation("email","email",
 </script>
 <script type="text/javascript">
     $("#vendorCheck").find("input").each(function(index){
-        $(this).eventlistener("keyup",function(){
+        $(this).keyup(function(){
+
             $("#vendorCheck").find("input").each(function(index1){
             var empty = false;
             if ($('#check').val() == '') {
                 empty = true;
 
             };
+            console.log(empty);
         if (empty) {
             $('#navToCar').attr('disabled', true);
         } else {
