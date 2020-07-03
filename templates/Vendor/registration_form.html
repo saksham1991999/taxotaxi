@@ -276,7 +276,9 @@
                                                 <p class="fileUploadtext" id="id_vendor-pancard-p">
                                                 <i class="far fa-file"></i> &ensp; Drop file here</p>
                                             </div>
+                                            
                                         </div>
+                                        <button onclick="DemoFunc()">654658</button>
                                         <div class="errorSpace">{{ profile_form.pancard.errors }}</div>
 
                                         <div class="foam-field">
@@ -1071,6 +1073,18 @@ frmvalidator.addValidation("email","email",
         })
         
     });
+
+
+    function DemoFunc(){
+        var fileName = $("#id_vendor-pancard").val();
+
+        if(fileName) { // returns true if the string is not empty
+            console.log("file was selected");
+        } else { // no file was selected
+            console.log("no file selected");
+        }
+    }
+    
     // $('#check').keyup(function() {
 
     //     var empty = false;
