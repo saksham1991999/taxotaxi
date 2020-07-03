@@ -55,6 +55,7 @@
                                     <th>Alternate Mobile</th>
                                     <th>Email</th>
                                     <th>Company Name</th>
+                                    <th>Status</th>
                                     <th></th>
                                     
                                 </tr>
@@ -71,8 +72,15 @@
                                     <td>{{ vendor.user.contact2 }}</td>
                                     <td>{{ vendor.user.email }}</td>
                                     <td>{{ vendor.company_name }}</td>
+                                    <td>{{ vendor.status }}</td>
 
                                     <td>
+                                        <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                            <i class="bx bx-show font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                            <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                        </a>
                                         <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
                                             <i class="bx bx-edit-alt font-size-16 align-middle"></i>
                                         </a>

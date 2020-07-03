@@ -666,7 +666,7 @@ def AddVendorView(request):
                 new_form = profileform.save(commit=False)
                 new_form.user = new_form
                 profileform.save()
-        return redirect( 'customadmin:customers')
+        return redirect('customadmin:vendors')
     else:
         userform = forms.UserForm()
         profileform = forms.VendorForm()
@@ -675,6 +675,26 @@ def AddVendorView(request):
             'profileform':profileform,
         }
         return render(request, 'vendors/vendor_form.html', context)
+
+def UpdateVendorStatusView(request, id):
+    profile = get_object_or_404(vendormodels.vendorprofile, id=id)
+    user = profile.user
+    if request.method == 'POST':
+        userform = forms.UserForm(request.POST, request.FILES, instance=user)
+        profileform = forms.VendorForm(request.POST, request.FILES, instance=profile)
+        if userform.is_valid():
+            userform.save()
+        if profileform.is_valid():
+            profileform.save()
+        return redirect('customadmin:vendors')
+    else:
+        userform = forms.UserForm(instance=user)
+        profileform = forms.VendorForm(instance=profile)
+        context = {
+            'profileform':profileform,
+            'userform':userform,
+        }
+        return render(request, 'vendors/vendor_status_form.html', context)
 
 def EditVendorView(request, id):
     profile = get_object_or_404(vendormodels.vendorprofile, id=id)
@@ -686,12 +706,12 @@ def EditVendorView(request, id):
             userform.save()
         if profileform.is_valid():
             profileform.save()
-        return redirect( 'customadmin:customers')
+        return redirect('customadmin:vendors')
     else:
         userform = forms.UserForm(instance=user)
-        profileform = forms.VendorForm(instance=profile)
+        form = forms.VendorForm(instance=profile)
         context = {
-            'profileform':profileform,
+            'form':form,
             'userform':userform,
         }
         return render(request, 'vendors/vendor_form.html', context)
@@ -699,7 +719,7 @@ def EditVendorView(request, id):
 def DeleteVendorView(request):
     vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
     vendor.delete()
-    return redirect( 'customadmin:vendors')
+    return redirect('customadmin:vendors')
 
 def UpdateVendorCarsView(request, id):
     vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
@@ -709,7 +729,7 @@ def UpdateVendorCarsView(request, id):
         formset = CarsFormset(request.POST, request.FILES, instance = vendor)
         if formset.is_valid():
             formset.save()
-        return redirect( 'customadmin:vendors')
+        return redirect('customadmin:vendor', vendor.id)
     else:
         formset = CarsFormset(instance = vendor)
         context = {
@@ -726,9 +746,26 @@ def UpdateVendorDriversView(request, id):
         formset = DriversFormset(request.POST, request.FILES, instance=vendor)
         if formset.is_valid():
             formset.save()
-        return redirect( 'customadmin:vendors')
+        return redirect('customadmin:vendor', vendor.id)
     else:
         formset = DriversFormset(instance=vendor)
+        context = {
+            'formset': formset,
+        }
+        return render(request, 'vendors/vendor_driver_formset.html', context)
+
+def UpdateVendorBankDetailsView(request, id):
+    vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
+    BankDetailsFormset = inlineformset_factory(vendormodels.vendorprofile, vendormodels.bank_detail, exclude=['vendor'],
+                                        extra=2)
+
+    if request.method == 'POST':
+        formset = BankDetailsFormset(request.POST, request.FILES, instance=vendor)
+        if formset.is_valid():
+            formset.save()
+        return redirect('customadmin:vendor', vendor.id)
+    else:
+        formset = BankDetailsFormset(instance=vendor)
         context = {
             'formset': formset,
         }

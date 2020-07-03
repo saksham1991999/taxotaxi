@@ -41,7 +41,7 @@ def VendorRegistrationView(request):
             vendor.mobile = vendor_mobile
             vendor.is_vendor = True
             vendor.save()
-            new_profile_form.status = "Pending"
+            new_profile_form.status = "Hold"
             new_profile_form.user = vendor
             new_profile_form.save()
 
@@ -66,7 +66,7 @@ def VendorRegistrationView(request):
             driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
             driver.is_driver = True
             driver.save()
-            new_driver_form.status = "Pending"
+            new_driver_form.status = "Hold"
             new_driver_form.user = driver
             new_driver_form.save()
             referal_code = coremodels.user_referral.objects.create(user=driver, promotional_code=str(driver_mobile),
@@ -75,7 +75,7 @@ def VendorRegistrationView(request):
             text = 'Thanks for registering on TaxoTaxi, We will verify and contact you soon!'
             SMS(driver_mobile, text)
             car = car_form.save(commit=False)
-            car.status = "Pending"
+            car.status = "Hold"
             car.vendor = new_profile_form
             car.save()
             messages.success(request, 'Details Submitted Successfully. Please wait till the confirmation is received.',
@@ -219,6 +219,16 @@ def EditCarView(request, id):
     else:
         return redirect('core:dashboard')
 
+def DeleteCarView(request, id):
+    if request.user.is_vendor:
+        vendor = get_object_or_404(models.vendorprofile, user = request.user)
+        car = get_object_or_404(models.vendor_cars, id = id)
+        if car.vendor == vendor:
+            car.delete()
+            return redirect('vendor:cars')
+    else:
+        return redirect('core:dashboard')
+
 def DriversView(request):
     if request.user.is_vendor:
         vendor = get_object_or_404(models.vendorprofile, user=request.user)
@@ -260,7 +270,7 @@ def DriversView(request):
 def EditDriverView(request, id):
     if request.user.is_vendor:
         vendor = get_object_or_404(models.vendorprofile, user=request.user)
-        driver = get_object_or_404(models.driver, user = request.user)
+        driver = get_object_or_404(models.driver, id = id)
         if request.method == 'POST':
             driver_form = forms.AddDriverForm(request.POST, request.FILES, prefix='driver', instance=driver)
             if driver_form.is_valid() and driver.vendor == vendor:
@@ -276,6 +286,16 @@ def EditDriverView(request, id):
                 'driver_form':driver_form,
             }
             return render(request,'Vendor/edit-driver.html', context)
+    else:
+        return redirect('core:dashobard')
+
+def DeleteDriverView(request, id):
+    if request.user.is_vendor:
+        vendor = get_object_or_404(models.vendorprofile, user=request.user)
+        driver = get_object_or_404(models.driver, id = id)
+        if driver.vendor == vendor:
+            driver.delete()
+            return redirect('vendor:drivers')
     else:
         return redirect('core:dashobard')
 

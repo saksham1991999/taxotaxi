@@ -1,10 +1,535 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'admin_base.html' %}
+{% load static %}
 
-</body>
-</html>
+
+{% block extra_stylesheet %}
+<style>
+    .main-content{
+        font-size: 0.7rem !important;
+    }
+.main-info{
+    background-color:rgb(255, 253, 250);
+    padding: 10px;
+}
+.main-info h4{
+    font-size: 0.8rem;
+}
+.main-info h5{
+    color: blue;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.bank-collapse h5{
+    font-size: 0.7rem;
+}
+.main-content img{
+    padding: 2px;
+}
+.img-button button{
+    margin: 5px;
+}
+</style>
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            
+            <!-- end page title -->
+            <div class="row">
+                <div class="col-sm-7  main-info">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Full Name</h5>
+                                <h4 style="width: 50%;">{{ vendor.full_name }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Father Name</h5>
+                                <h4 style="width: 50%;">{{ vendor.father_name }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Email</h5>
+                                <h4 style="width: 50%;">{{ vendor.email }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Address</h5>
+                                <h4 style="width: 50%;">{{ vendor.address }}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Dob</h5>
+                                <h4 style="width: 50%;">{{ vendor.dob }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Contact 1</h5>
+                                <h4 style="width: 50%;">{{ vendor.contact1 }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">Contact 2</h5>
+                                <h4 style="width: 50%;">{{ vendor.contact2 }}</h4>
+                            </div>
+                            <div style="display: flex;">
+                                <h5 style="width: 50%;">GST Number</h5>
+                                <h4 style="width: 50%;">{{ vendor.gst_no }}</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 img-button">
+                            <img src="{{ vendor.image.url }}" alt="" width="100%">
+                            <div style="margin-bottom: 20px"></div>
+                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-check-square font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Change Status </span>
+                                </button>
+                            </a>
+                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-warning waves-effect waves-light mb-2">
+                                    <i class="bx bx-edit-alt  font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Edit</span>
+                                </button>
+                            </a>
+                            <a href="{% url 'customadmin:vendor_delete' vendor.id %}">
+                                <button style="display: flex; margin: auto;" type="button" class="btn btn-danger waves-effect waves-light mb-2">
+                                    <i class="bx bx-trash font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Delete</span>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="row" style="margin: 15px auto;">
+                        <div style="display: flex; margin: auto;">
+                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
+                            </button>
+                            
+                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Edit
+                            </button>
+                            
+                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Delete
+                            </button>
+                            </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4>Aadhar Card</h4>
+                            {% if vendor.aadharcard_front %}
+                                <a href="{{ vendor.aadharcard_front.url }}">
+                                    <img src="{{ vendor.aadharcard_front.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                            {% if vendor.aadharcard_rear %}
+                                <a href="{{ vendor.aadharcard_rear.url }}">
+                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>Voter Card</h4>
+                            {% if vendor.votercard_front %}
+                                <a href="{{ vendor.votercard_front.url }}">
+                                <img src="{{ vendor.votercard_front.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                            {% if vendor.votercard_rear %}
+                                <a href="{{ vendor.votercard_rear.url }}">
+                                <img src="{{ vendor.votercard_rear.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                        </div>
+                        {% if vendor.pancard %}
+                        <div class="col-sm-3">
+                            <h4>Pan Card</h4>
+                            <a href="{{ vendor.pancard.url }}">
+                            <img src="{{ vendor.pancard.url }}" alt="" width="100%">
+                            </a>
+                        </div>
+                        {% endif %}
+                        <div class="col-sm-3">
+                            <h4>DL</h4>
+                            {% if vendor.driving_licence_front %}
+                                <a href="{{ vendor.driving_licence_front.url }}">
+                                <img src="{{ vendor.driving_licence_front.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                            {% if vendor.driving_licence_rear %}
+                                <a href="{{ vendor.driving_licence_rear.url }}">
+                                <img src="{{ vendor.driving_licence_rear.url }}" alt="" width="100%">
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Bank Accounts
+                                        <a href="{% url 'customadmin:vendor_banks_update' vendor.id %}">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2" >
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account Number</th>
+                                            <th>Bank Name</th>
+                                            <th>IFSC</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                            <!-- for one row the main part -->
+                                            {% for bank in vendor.bank_detail_set.all %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ bank.account_no }}</td>
+                                            <td>{{ bank.ifsc }}</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleBankAccounts-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExampleBankAccounts-{{ forloop.counter }}">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <!-- collapse part of one row -->
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleBankAccounts-{{ forloop.counter }}">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Account Number</h5>
+                                                                <h5>Account Holder Name</h5>
+                                                                <h5>Bank Name</h5>
+                                                                <h5>Account Type</h5>
+                                                                <h5>IFSC</h5>
+                                                                <h5>Bank Address</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>{{ bank.account_no }}</h5>
+                                                                <h5>{{ bank.account_holder_name }}</h5>
+                                                                <h5>{{ bank.bank_name }}</h5>
+                                                                <h5>{{ bank.account_type }}</h5>
+                                                                <h5>{{ bank.ifsc }}</h5>
+                                                                <h5>{{ bank.bank_address }}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Promotional Codes
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Customer</th>
+                                            <th>Promotional Code</th>
+                                            <th>Amount Credited</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Cars
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Number</th>
+                                            <th>Type</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleCar1" aria-expanded="false" aria-controls="collapseExampleCar1">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleCar1">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Luggage Capacity</h5>
+                                                                <h5>Suspension/Control</h5>
+                                                                <h5>Comfort Level</h5>
+                                                                <h5>Boot Space</h5>
+                                                                <h5>Price per Km</h5>
+                                                                <h5>Fuel Type</h5>
+                                                                <h5>Seating Capacity</h5>
+                                                                <h5>Class/ Variants</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>25/06/2020 9:00 A.M.</h5>
+                                                                <h5>25/06/2020 8:00 A.M.</h5>
+                                                                <h5>90 KM</h5>
+                                                                <h5>2 hr</h5>
+                                                                <h5>delhi</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Drivers
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Vendor</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td>Abhinav</td>
+                                            <td>asdbjgjh</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleDriver1" aria-expanded="false" aria-controls="collapseExampleDriver1">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="5" class="collapse-row" style="padding: 0px;">
+                                                <div class="collapse" id="collapseExampleDriver1">
+                                                    <div class="card">
+                                                        <div class="card-body bank-collapse row">
+                                                            <div class="col-4">
+                                                                <h5>Luggage Capacity</h5>
+                                                                <h5>Suspension/Control</h5>
+                                                                <h5>Comfort Level</h5>
+                                                                <h5>Boot Space</h5>
+                                                                <h5>Price per Km</h5>
+                                                                <h5>Fuel Type</h5>
+                                                                <h5>Seating Capacity</h5>
+                                                                <h5>Class/ Variants</h5>
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h5>25/06/2020 9:00 A.M.</h5>
+                                                                <h5>25/06/2020 8:00 A.M.</h5>
+                                                                <h5>90 KM</h5>
+                                                                <h5>2 hr</h5>
+                                                                <h5>delhi</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                  </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Payments
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account Holder name</th>
+                                            <th>Account Number</th>
+                                            <th>Bank Name</th>
+                                            <th>Account Type</th>
+                                            <th>IFSC</th>
+                                            <th>Bank Address</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="height: auto ;overflow-y: auto;">
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        Bookings
+                                        <a href="">
+                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                            </button>
+                                        </a>
+                                    </h4>
+        
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Account Holder name</th>
+                                            <th>Account Number</th>
+                                            <th>Bank Name</th>
+                                            <th>Account Type</th>
+                                            <th>IFSC</th>
+                                            <th>Bank Address</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+
+</div>
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+
+{% endblock extra_scripts %}

@@ -52,14 +52,23 @@
                                          {% elif driver.status == 'Hold' %}
                                            <td class="cross">✘</td>
                                            <td class="wait">Hold</td>
+                                         {% elif driver.status == 'Temp Approved' %}
+                                           <td class="cross">✘</td>
+                                           <td class="wait">Temp Approved</td>
                                          {% endif %}
                                        <td><span class="fa fa-star checked"></span>
                                            <span class="fa fa-star checked"></span>
                                            <span class="fa fa-star checked"></span>
                                            <span class="fa fa-star"></span>
                                            <span class="fa fa-star"></span></td>
-                                      <td><button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
-                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button></td>
+                                        <td>
+                                            <a href="{% url 'vendor:edit_driver' driver.id %}">
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
+                                            </a>
+                                            <a href="{% url 'vendor:delete_driver' driver.id %}">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                                            </a>
+                                        </td>
                                      </tr>
                                     {% endfor %}
                                  </table>

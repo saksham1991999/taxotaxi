@@ -5,7 +5,7 @@ vendor_status_choices = (
     ('Approved', 'Approved'),
     ('Rejected', 'Rejected'),
     ('Hold', 'Hold'),
-    ('Pending', 'Pending'),
+    ('Temp Approved', 'Temp Approved'),
 )
 class vendorprofile(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT)
@@ -37,9 +37,9 @@ class vendorprofile(models.Model):
 
     date_of_registration = models.DateField(auto_now_add=True)
 
-    total_compact = models.PositiveSmallIntegerField()
-    total_sedan = models.PositiveSmallIntegerField()
-    total_suv = models.PositiveSmallIntegerField()
+    total_compact = models.PositiveSmallIntegerField(default=0)
+    total_sedan = models.PositiveSmallIntegerField(default=0)
+    total_suv = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
         return str(self.full_name)
@@ -70,7 +70,7 @@ driver_status_choices = (
     ('Approved', 'Approved'),
     ('Rejected', 'Rejected'),
     ('Hold', 'Hold'),
-    ('Pending', 'Pending'),
+    ('Temp Approved', 'Temp Approved'),
 )
 fuel_type_choices = (
     ('P', 'Petrol'),
@@ -120,7 +120,7 @@ driver_status_choices = (
     ('Approved', 'Approved'),
     ('Rejected', 'Rejected'),
     ('Hold', 'Hold'),
-    ('Pending', 'Pending'),
+    ('Temp Approved', 'Temp Approved'),
 )
 class driver(models.Model):
     vendor = models.ForeignKey(vendorprofile, on_delete=models.PROTECT)

@@ -54,9 +54,18 @@
                                {% elif car.status == "Hold" %}
                                    <td class="cross">&#10008</td>
                                    <td class="wait">hold</td>
-                                   <td><button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
-                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button></td>
+                               {% elif car.status == "Temp Approved" %}
+                                   <td class="cross">&#10008</td>
+                                   <td class="wait">Temp Approved</td>
                                {% endif %}
+                               <td>
+                                   <a href="{% url 'vendor:edit_car' car.id %}">
+                                       <button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
+                                   </a>
+                                   <a href="{% url 'vendor:edit_car' car.id %}">
+                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                                   </a>
+                               </td>
                            </tr>
                            {% endfor %}
                        </table>

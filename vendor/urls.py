@@ -7,8 +7,10 @@ urlpatterns = [
     path('register/', views.VendorRegistrationView, name='registration'),
     path('cars/', views.CarsView, name='cars'),
     path('cars/edit/<int:id>/', views.EditCarView, name='edit_car'),
+    path('cars/delete/<int:id>/', views.DeleteCarView, name='delete_car'),
     path('drivers/', views.DriversView, name='drivers'),
     path('drivers/edit/<int:id>/', views.EditDriverView, name='edit_driver'),
+    path('drivers/delete/<int:id>/', views.DeleteDriverView, name='delete_driver'),
 
 
     path('payments/', views.PaymentsView, name='payments'),

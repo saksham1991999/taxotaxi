@@ -62,7 +62,7 @@ class UserForm(forms.ModelForm):
 class VendorForm(forms.ModelForm):
     class Meta:
         model = vendormodels.vendorprofile
-        exclude = []
+        exclude = ['user', 'total_compact', 'total_sedan', 'total_suv']
 
 class VendorCarForm(forms.ModelForm):
     class Meta:
