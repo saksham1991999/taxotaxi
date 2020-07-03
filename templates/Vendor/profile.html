@@ -173,7 +173,8 @@
                                  {% render_field profile_form.gst_no %}
                               </div>
                            </div>
-                           <!-- <div class="col-sm-5">
+                        {% if vendor.image %}
+                           <div class="col-sm-5">
                               <div class="drag-drop">
                                   {% render_field profile_form.image %}
                                  <p class="p23">
@@ -186,8 +187,9 @@
                                     <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
                                  </div>
                               </div>
-                           </div> -->
+                           </div>
                             <!-- profile field -->
+                        {% else %}
                              <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                                  <div class="drag-drop">
                                     <img class="input-file" src="{% static 'images/comment_img1.jpg' %}" alt="">
@@ -202,6 +204,8 @@
                                     </div>
                                  </div>
                               </div>
+                            {% endif %}
+
                            <div class="col-sm-12 booking-frm dashButton"> 
                               <button class="book-btn" type="submit">Update
                               </button>&nbsp;&nbsp;
@@ -246,11 +250,12 @@
                      </div>
                      <div class="tab-pane" id="referral">
                         <div class="col-md-12 col-sm-12">
+                            {% for referral_code in request.user.user_referral_set.all %}
                            <div class="row">
                               <label class="col-sm-4">Your Referal code</label>
                               <div class="col-sm-5" style="display: flex;">
-                                 <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
-                                 <div class="copytooltip button1">
+                                  <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                                  <div class="copytooltip button1">
                                     <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
                                     <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                                     Copy text
@@ -259,6 +264,7 @@
                               </div>
                            </div>
                         </div>
+                          {% endfor %}
                         <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px;padding: 25px ">
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
                               <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a>
