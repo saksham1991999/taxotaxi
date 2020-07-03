@@ -681,17 +681,15 @@ def UpdateVendorStatusView(request, id):
     user = profile.user
     if request.method == 'POST':
         userform = forms.UserForm(request.POST, request.FILES, instance=user)
-        profileform = forms.VendorForm(request.POST, request.FILES, instance=profile)
-        if userform.is_valid():
-            userform.save()
-        if profileform.is_valid():
-            profileform.save()
+        form = forms.VendorForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
         return redirect('customadmin:vendors')
     else:
         userform = forms.UserForm(instance=user)
-        profileform = forms.VendorForm(instance=profile)
+        form = forms.VendorForm(instance=profile)
         context = {
-            'profileform':profileform,
+            'form':form,
             'userform':userform,
         }
         return render(request, 'vendors/vendor_status_form.html', context)
@@ -702,8 +700,6 @@ def EditVendorView(request, id):
     if request.method == 'POST':
         userform = forms.UserForm(request.POST, request.FILES, instance=user)
         profileform = forms.VendorForm(request.POST, request.FILES, instance=profile)
-        if userform.is_valid():
-            userform.save()
         if profileform.is_valid():
             profileform.save()
         return redirect('customadmin:vendors')
