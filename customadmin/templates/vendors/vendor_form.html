@@ -64,7 +64,7 @@
                                         <label for="example-email-input" class="col-md-2 col-form-label">Date of Birth</label>
                                         <div class="col-md-10">
                                            <!--  {% render_field form.dob class="form-control" type="text" %} -->
-                                            <input class="form-control" type="text"  id="datepicker1" >
+                                            <input class="form-control" type="text"  id="id_dob" >
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -220,7 +220,7 @@
 {% block extra_scripts %}
 <script type="text/javascript">
    $(function () {
-            $("#datepicker1").datepicker({ 
+            $("#id_dob").datepicker({ 
                 format: "yyyy-mm-dd",
                 autoclose: true, 
                 todayHighlight: false,
