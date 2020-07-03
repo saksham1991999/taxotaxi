@@ -533,6 +533,7 @@
                         </div>
                         <div class="tab-pane" id="referral" role="tabpanel">
                            <div class="col-md-12 col-sm-12">
+                               {% for refferal_code in request.user.user_referral_set.all %}
                               <div class="adjustYellowButtonsSecond row input1">
                                  <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
                                  <div class="col-sm-5" style="display: flex;">
@@ -545,6 +546,7 @@
                                     </div>
                                  </div>
                               </div>
+                               {% endfor %}
                            </div>
                            <div class="col-sm-12" style="border-bottom: silver solid 2px;padding: 25px ">
                               <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
