@@ -48,11 +48,12 @@
                                     <div data-repeater-item="" class="row">
                                         <div class="form-group col-lg-3">
                                             <label for="name">Car Type</label>
-                                            {% render_field form.car_type class="form-control" readonly='' %}
+                                            <input type="text" name="" value="WagonR/Indica" class="form-control" id="" readonly>
+                                            <!-- {% render_field form.car_type class="form-control" %} -->
                                         </div>
                                         <div class="form-group col-lg-3">
                                             <label for="name">Car Attribute</label>
-                                            {% render_field form.attr_name class="form-control" readonly='' %}
+                                            {% render_field form.attr_name class="form-control" %}
                                         </div>
                                         <div class="form-group col-lg-6">
                                             <label for="name">Value</label>
@@ -67,8 +68,9 @@
                                     {% endfor %}
                                 </div>
 {#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
-                            <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
-
+                                <div>
+                            <input type="submit" style="margin-left: 43%;" class="btn btn-success mt-3 mt-lg-0" value="Save">
+                        </div>
                             </form>
                         </div>
                     </div>

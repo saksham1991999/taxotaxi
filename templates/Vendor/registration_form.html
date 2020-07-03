@@ -223,7 +223,7 @@
 
                                         <div class="foam-field">
                                             <label>Full Name</label>
-                                            {% render_field profile_form.full_name id="check" %}
+                                            {% render_field profile_form.full_name %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
 
@@ -272,7 +272,7 @@
                                         <div class="foam-field ">
                                             <label>PAN Card*</label>
                                             <div class="vendorFile">
-                                                {% render_field profile_form.pancard placeholder="Pan Card" %}
+                                                {% render_field profile_form.pancard placeholder="Pan Card"  %}
                                                 <p class="fileUploadtext" id="id_vendor-pancard-p">
                                                 <i class="far fa-file"></i> &ensp; Drop file here</p>
                                             </div>
@@ -1055,9 +1055,11 @@ frmvalidator.addValidation("email","email",
 
             $("#vendorCheck").find("input").each(function(index1){
             var empty = false;
-            if ($('#check').val() == '') {
+            alert(imgVal);
+            var imgVal= $('#id_vendor-pancard').val();
+            if ( imgVal=='') {
                 empty = true;
-
+        
             };
             console.log(empty);
         if (empty) {

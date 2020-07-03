@@ -1,6 +1,6 @@
 {% extends 'admin_base.html' %}
 {% load static %}
-
+{% load widget_tweaks %}
 
 {% block extra_stylesheet %}
 
@@ -9,361 +9,181 @@
 
 
 {% block content %}
+
 <div class="main-content">
 
     <div class="page-content">
         <div class="container-fluid">
+
+            <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Ride Choices</h4>
+                        <h4 class="mb-0 font-size-18">Car Attribute Values Form</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Core</a></li>
-                                <li class="breadcrumb-item active">Ride Choices</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Rides</a></li>
+                                <li class="breadcrumb-item active">Car Attribute Values Form</li>
                             </ol>
                         </div>
 
                     </div>
                 </div>
             </div>
+            <!-- end page title -->
 
-                <button type="button" class="btn btn-success waves-effect waves-light mb-3" data-toggle="modal" data-target="#exampleModalScrollable">
-                    <i class="bx bx-add-to-queue font-size-16 align-middle mr-2"></i> Add
-                </button>
-                <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title mt-0" id="exampleModalScrollableTitle">Scrollable Modal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="">
-
-                                </form>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div>
-                <button type="button" class="btn btn-success waves-effect waves-light mb-3">
-                    <i class="bx bxs-trash font-size-16 align-middle mr-2"></i> Delete
-                </button>
-                <button type="button" class="btn btn-success waves-effect waves-light mb-3">
-                    <i class="bx bxs-happy-heart-eyes font-size-16 align-middle mr-2"></i> View
-                </button>
-                <button type="button" class="btn btn-success waves-effect waves-light mb-3"  data-toggle="modal" data-target="#exampleModalScrollable" onclick="functionEdit()">
-                    <i class="bx bx-edit-alt font-size-16 align-middle mr-2"></i> Edit
-                </button>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-
-                                <h4 class="card-title">Ride Choices</h4>
-                                <p class="card-title-desc">
-                                </p>
-                                <div class="table-responsive">
-                                <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100% !important;">
-                                    <thead>
-                                    <tr>
-                                        <th> # </th>
-                                        <th>Name</th>
-                                        <th>Value</th>
-                                        <th></th>
-                                        <th> </th>
-                                    </tr>
-                                    </thead>
-
-
-                                    <tbody>
-                                    <tr>
-                                        
-                                        <td>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1"></label>
-                                            </div>
-                                        </td>
-                                        <td>You require additional pick up or drop</td>
-                                        <td>
-                                            150
-                                        </td>
-                                        <td><button type="button" class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-edit-alt font-size-16 align-middle mr-2"></i></button></td>
-                                        <td> <button type="button" class="btn btn-danger waves-effect waves-light">
-                                            <i class="bx bxs-trash font-size-16 align-middle mr-2"></i>
-                                        </button></td>
-                                    
-                                    </tr>
-                                    
-                                   
-                                    </tbody>
-                                </div>
-                                </table>
-                            </div>
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-               
-        </div>
-                <!-- end row -->
-                <div class="row" style="display: none;">
-                    <div class="col-12">
-                        <div class="page-title-box d-flex align-items-center justify-content-between">
-                            <h4 class="mb-0 font-size-18">Notifications</h4>
-
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">UI Elements</a></li>
-                                    <li class="breadcrumb-item active">Notifications</li>
-                                </ol>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- end page title -->
-                <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
-                <button type="button" class="btn btn-primary" id="showtoast1">Show Toast</button>
-                <div class="row" style="display: none;">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-xl-4">
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <div class="form-group">
-                                                    <label class="control-label">Title</label>
-                                                    <input id="title" type="text" class="input-large form-control" placeholder="Enter a title ..." />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label">Message</label>
-                                                    <textarea class="input-large form-control" id="message" rows="3" placeholder="Enter a message ..."></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="control-group my-4">
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="closeButton" value="checked">
-                                                <label class="custom-control-label" for="closeButton">Close Button</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="addBehaviorOnToastClick" value="checked">
-                                                <label class="custom-control-label" for="addBehaviorOnToastClick">Add behavior on toast click</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="debugInfo" value="checked">
-                                                <label class="custom-control-label" for="debugInfo">Debug</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="progressBar" value="checked">
-                                                <label class="custom-control-label" for="progressBar">Progress Bar</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="preventDuplicates" value="checked">
-                                                <label class="custom-control-label" for="preventDuplicates">Prevent Duplicates</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="addClear" value="checked">
-                                                <label class="custom-control-label" for="addClear">Add button to force clearing a toast, ignoring focus</label>
-                                            </div>
-        
-                                            <div class="custom-control custom-checkbox mb-2">
-                                                <input type="checkbox" class="custom-control-input input-mini" id="newestOnTop" value="checked">
-                                                <label class="custom-control-label" for="newestOnTop">Newest on top</label>
-                                            </div>
-        
-                                        </div>
-                                    </div>
-        
-                                    <div class="col-xl-2">
-                                        <div class="control-group" id="toastTypeGroup">
-                                            <div class="controls mb-4">
-                                                <label>Toast Type</label>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio1" name="radio" class="custom-control-input" value="success" checked>
-                                                    <label class="custom-control-label" for="radio1">Success</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio2" name="radio" class="custom-control-input" value="info">
-                                                    <label class="custom-control-label" for="radio2">Info</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio3" name="radio" class="custom-control-input" value="warning">
-                                                    <label class="custom-control-label" for="radio3">Warning</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio4" name="radio" class="custom-control-input" value="error">
-                                                    <label class="custom-control-label" for="radio4">Error</label>
-                                                </div>
-        
-                                            </div>
-                                        </div>
-                                        <div class="control-group" id="positionGroup">
-                                            <div class="controls mb-4">
-                                                <label>Position</label>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio5" name="positions" class="custom-control-input" value="toast-top-right" checked />
-                                                    <label class="custom-control-label" for="radio5">Top Right</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio6" name="positions" class="custom-control-input" value="toast-bottom-right" />
-                                                    <label class="custom-control-label" for="radio6">Bottom Right</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio7" name="positions" class="custom-control-input" value="toast-bottom-left" />
-                                                    <label class="custom-control-label" for="radio7">Bottom Left</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio8" name="positions" class="custom-control-input" value="toast-top-left" />
-                                                    <label class="custom-control-label" for="radio8">Top Left</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio9" name="positions" class="custom-control-input" value="toast-top-full-width" />
-                                                    <label class="custom-control-label" for="radio9">Top Full Width</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio10" name="positions" class="custom-control-input" value="toast-bottom-full-width" />
-                                                    <label class="custom-control-label" for="radio10">Bottom Full Width</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio11" name="positions" class="custom-control-input" value="toast-top-center" />
-                                                    <label class="custom-control-label" for="radio11">Top Center</label>
-                                                </div>
-        
-                                                <div class="custom-control custom-radio mb-2">
-                                                    <input type="radio" id="radio12" name="positions" class="custom-control-input" value="toast-bottom-center" />
-                                                    <label class="custom-control-label" for="radio12">Bottom Center</label>
-                                                </div>
-        
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="col-xl-3">
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <div class="form-group">
-                                                    <label for="showEasing">Show Easing</label>
-                                                    <input id="showEasing" type="text" placeholder="swing, linear" class="input-mini form-control" value="swing" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="hideEasing">Hide Easing</label>
-                                                    <input id="hideEasing" type="text" placeholder="swing, linear" class="input-mini form-control" value="linear" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="showMethod">Show Method</label>
-                                                    <input id="showMethod" type="text" placeholder="show, fadeIn, slideDown" class="input-mini form-control" value="fadeIn" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="hideMethod">Hide Method</label>
-                                                    <input id="hideMethod" type="text" placeholder="hide, fadeOut, slideUp" class="input-mini form-control" value="fadeOut" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="col-xl-3">
-                                        <div class="control-group">
-                                            <div class="controls">
-                                                <div class="form-group">
-                                                    <label for="showDuration">Show Duration</label>
-                                                    <input id="showDuration" type="text" placeholder="ms" class="input-mini form-control" value="300" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="hideDuration">Hide Duration</label>
-                                                    <input id="hideDuration" type="text" placeholder="ms" class="input-mini form-control" value="1000" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="timeOut">Time out</label>
-                                                    <input id="timeOut" type="text" placeholder="ms" class="input-mini form-control" value="5000" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="extendedTimeOut">Extended time out</label>
-                                                    <input id="extendedTimeOut" type="text" placeholder="ms" class="input-mini form-control" value="1000" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end row -->
-        
-                                <div class="row mt-4">
-                                    <div class="col-md-12">
-                                        <div class="button-items">
-                                           
-                                            <button type="button" class="btn btn-danger" id="cleartoasts">Clear Toasts</button>
-                                            <button type="button" class="btn btn-danger" id="clearlasttoast">Clear Last Toast</button>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <pre id='toastrOptions' class="toastr-options"></pre>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    <footer class="footer">
-        <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Skote.
-                </div>
-                <div class="col-sm-6">
-                    <div class="text-sm-right d-none d-sm-block">
-                        Design & Develop by Themesbrand
+            <div class="col-9">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title"></h4>
+                            <p class="card-title-desc"></p>
+                            <form method="post" enctype="multipart/form-data">
+                           
+                                <div data-repeater-list="group-a" id="form_set">
+                                    
+                                    <div data-repeater-item="" class="row">
+                                        <div class="form-group col-lg-3">
+                                            <label for="name">Car Type</label>
+                                            
+                                        </div>
+                                        <div class="form-group col-lg-3">
+                                            <label for="name">Car Attribute</label>
+                                           
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            <label for="name">Value</label>
+                                            
+                                        </div>
+                                        
+                                    </div>
+
+                                    
+                                </div>
+{#                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">#}
+                            <input type="submit" style="margin-left: 44%;" class="btn btn-success mt-3 mt-lg-0" value="Save">
+
+                            </form>
+                        </div>
                     </div>
-                </div>
             </div>
-        </div>
-    </footer>
-</div>
-<!-- end main content-->
+            <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <form method="get">
+                                <h4 class="card-title">Filter By</h4>
+                                <p class="card-title-desc"></p>
+
+
+                                <div id="accordion">
+                                    <div class="card mb-1 shadow-none">
+                                        <div class="card-header" id="headingThree">
+                                            <h6 class="m-0">
+                                                <a href="#collapseThree" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseThree">
+                                                   By Car Type
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseThree" class="collapse"
+                                                aria-labelledby="headingThree" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for car_type in car_types %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-a" name="car_types" value="{{ car_type.id }}" {% if car_type.id|stringformat:"i" in selected_car_types %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-a">{{ car_type.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="card mb-0 shadow-none">
+                                        <div class="card-header" id="headingFour">
+                                            <h6 class="m-0">
+                                                <a href="#collapseFour" class="text-dark collapsed" data-toggle="collapse"
+                                                        aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                    By Attribute
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapseFour" class="collapse"
+                                                aria-labelledby="headingFour" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    {% for attribute in attributes %}
+                                                        <div class="custom-control custom-checkbox mb-1">
+                                                            <input type="checkbox" class="custom-control-input" id="customCheck-{{ forloop.counter }}-b" name="attributes" value="{{ attribute.id }}" {% if attribute.id|stringformat:"i" in selected_attributes %}checked{% endif %}>
+                                                            <label class="custom-control-label" for="customCheck-{{ forloop.counter }}-b">{{ attribute.name }}</label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                        <button type="submit" style="display: flex;align-items: center;margin: auto;" class="btn btn-primary waves-effect waves-light mb-2">
+                                            <i class="bx bx-check-square font-size-16 mr-2 align-middle"></i> Apply
+                                        </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        {% comment %}
+                        <div class="col-12" style="margin: auto 0px; padding: 0px;">
+                            <div class="card">
+                                <div class="card-body" style="display: inline;margin: auto;">
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn   waves-effect waves-light mb-2">
+                                            <i class="bx bx-down-arrow-alt font-size-16 mr-2 align-middle"></i> Import
+                                        </button>
+                                    </a>
+                                    <a href="">
+                                        <button type="button" style="background-color: #f1b44c; color: whitesmoke;" class="btn  waves-effect waves-light mb-2">
+                                            <i class="bx bx-up-arrow-alt font-size-16 mr-2 align-middle"></i> Export
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endcomment %}
+                </div>
+
+
+            </div>
+            <!-- end row -->
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
 
 </div>
+
 {% endblock content %}
 
 
 
 
 {% block extra_scripts %}
+<script>
+    $('#add_more').click(function() {
+        var form_idx = $('#id_form-TOTAL_FORMS').val();
+        console.log(form_idx);
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+
+    $( document ).ready(function() {
+        $( "input[name*='date']" ).datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+        });
+    });
+</script>
 {% endblock extra_scripts %}
-
-
-
-
-
-
-
-
