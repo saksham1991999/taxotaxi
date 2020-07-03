@@ -211,19 +211,19 @@
                               <a href="#driverDetails " data-toggle="tab" style="text-decoration: none;">Driver Details <span class="errorCount">{{ driver_form.errors.count }}</span></a>
                            </li>
                         </ul>
-                   <!------------togable Content pannel start----------->
+                   <!------togable Content pannel start-------->
                         <div class="tab-content">
                             <div class="tab-pane active" id="vendorInformation">
 
 
-                                    <div class="col-sm-7">
+                                    <div class="col-sm-7" id="vendorCheck">
                                         {% for error in profile_form.non_field_errors %}
                                             <div class="errorSpace">{{ error }}</div>
                                         {% endfor %}
 
                                         <div class="foam-field">
                                             <label>Full Name</label>
-                                            {% render_field profile_form.full_name %}
+                                            {% render_field profile_form.full_name id="check" %}
                                         </div>
                                         <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
 
@@ -433,7 +433,8 @@
 
                                     <div class="col-sm-12 booking-frm buttonallign" style=" text-align: -webkit-center; margin-top : 40px">
                                         <div style="display: flex;width:fit-content;">
-                                          <button href="#carDetails" id="navToCar" data-toggle="tab" class="book-btn" type="button">Next</button>&nbsp;&nbsp;
+                                          <!-- <button href="#carDetails" id="navToCar" data-toggle="tab" class="book-btn" type="button">Next</button> -->
+                                          <button id="navToCar" data-toggle="tab" class="book-btn" type="button" disabled>Next</button>&nbsp;&nbsp;
                                         </div><br>
                                     </div>
 
@@ -958,6 +959,10 @@
         $("#vendorTb").removeClass("active");
       $("#driverTb").removeClass("active");
       $("#carTb").addClass("active");
+      // $("#check").valid();
+    //   if ($("#check1").valid()) {
+    //     this.setCustomValidity('This is my custom message.')
+    // } 
     });
     $("#backToVendor").click(function() {
         $("#carTb").removeClass("active");
@@ -1023,8 +1028,8 @@ frmvalidator.addValidation("email","email",
         
     })
     $("#id_driver-address").val($("#vendorInformation > div > div > textarea").val());
-    console.log($("#vendorInformation > div > div > textarea").val());
-    }
+    // console.log($("#vendorInformation > div > div > textarea").val());
+    // }
     // console.log($("#id_driver-address").val());
 
 
@@ -1043,5 +1048,41 @@ frmvalidator.addValidation("email","email",
         
     })
     }
+</script>
+<script type="text/javascript">
+    $("#vendorCheck").find("input").each(function(index){
+        $(this).eventlistener("keyup",function(){
+            $("#vendorCheck").find("input").each(function(index1){
+            var empty = false;
+            if ($('#check').val() == '') {
+                empty = true;
+
+            };
+        if (empty) {
+            $('#navToCar').attr('disabled', true);
+        } else {
+            $('#navToCar').removeAttr('disabled',false);
+        }
+    })
+        })
+        
+    });
+    // $('#check').keyup(function() {
+
+    //     var empty = false;
+    //     // $('#vendorCheck > input').foreach(index)(function) {
+    //         if ($('#check').val() == '') {
+    //             empty = true;
+
+    //         };
+    //     // });
+
+    //     if (empty) {
+    //         $('#navToCar').attr('disabled', true);
+    //     } else {
+    //         $('#navToCar').removeAttr('disabled',false);
+    //     }
+    // });
+
 </script>
 {% endblock extra_scripts %}
