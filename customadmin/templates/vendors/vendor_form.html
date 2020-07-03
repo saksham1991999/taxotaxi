@@ -60,7 +60,7 @@
                                     <div class="form-group row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Date of Birth</label>
                                         <div class="col-md-10">
-                                            {% render_field form.dob class="form-control" type="datetime-local" %}
+                                            {% render_field form.dob class="form-control" type="text" placeholder="yyyy-mm-dd" %}
                                             <!-- <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> -->
                                         </div>
                                     </div>
@@ -215,5 +215,11 @@
 
 
 {% block extra_scripts %}
-
+<script type="text/javascript">
+    $("#id_dob").datepicker({ 
+                format: "yyyy-mm-dd",
+                autoclose: true, 
+                todayHighlight: false,
+            })
+</script>
 {% endblock extra_scripts %}
