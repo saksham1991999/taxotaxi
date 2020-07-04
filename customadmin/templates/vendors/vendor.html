@@ -8,7 +8,7 @@
         font-size: 0.7rem !important;
     }
 .main-info{
-    background-color:rgb(255, 253, 250);
+    background-color:#fff;
     padding: 10px;
 }
 .main-info h4{
@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-sm-7  main-info">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-5">
                             <div style="display: flex;">
                                 <h5 style="width: 50%;">Full Name</h5>
                                 <h4 style="width: 50%;">{{ vendor.full_name }}</h4>
@@ -86,8 +86,8 @@
                                 <h4 style="width: 50%;">{{ vendor.gst_no }}</h4>
                             </div>
                         </div>
-                        <div class="col-sm-4 img-button">
-                            <img src="{{ vendor.image.url }}" alt="" width="50%" class="center">
+                        <div class="col-sm-3 img-button">
+                            <img src="{{ vendor.image.url }}" alt="" width="100%" class="center">
                             <div style="margin-bottom: 20px"></div>
                             
                         </div>
@@ -294,7 +294,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body">
+                                <div class="card-body" style="height: 300px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Cars
                                         <a href="">
@@ -342,12 +342,15 @@
                                                                 <h5>Seating Capacity</h5>
                                                                 <h5>Class/ Variants</h5>
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-4">
                                                                 <h5>25/06/2020 9:00 A.M.</h5>
                                                                 <h5>25/06/2020 8:00 A.M.</h5>
                                                                 <h5>90 KM</h5>
                                                                 <h5>2 hr</h5>
                                                                 <h5>delhi</h5>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -355,6 +358,77 @@
                                                   </div>
                                             </td>
                                             
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td></td>
+                                            <td>16548498</td>
+                                            <td>Sedan</td>
+                                            <td>
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
+                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                </button>
+                                            </td>
                                         </tr>
                                         
                                         </tbody>
@@ -366,7 +440,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body">
+                                <div class="card-body"  style="height: 300px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Drivers
                                         <a href="">
@@ -414,12 +488,15 @@
                                                                 <h5>Seating Capacity</h5>
                                                                 <h5>Class/ Variants</h5>
                                                             </div>
-                                                            <div class="col-8">
+                                                            <div class="col-4">
                                                                 <h5>25/06/2020 9:00 A.M.</h5>
                                                                 <h5>25/06/2020 8:00 A.M.</h5>
                                                                 <h5>90 KM</h5>
                                                                 <h5>2 hr</h5>
                                                                 <h5>delhi</h5>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -441,7 +518,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body">
+                                <div class="card-body"  style="height: 300px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Payments
                                         <a href="">
@@ -484,7 +561,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body">
+                                <div class="card-body"  style="height: 300px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Bookings
                                         <a href="">
