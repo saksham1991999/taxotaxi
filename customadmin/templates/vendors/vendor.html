@@ -28,6 +28,12 @@
 .img-button button{
     margin: 5px;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -81,40 +87,43 @@
                             </div>
                         </div>
                         <div class="col-sm-4 img-button">
-                            <img src="{{ vendor.image.url }}" alt="" width="100%">
+                            <img src="{{ vendor.image.url }}" alt="" width="50%" class="center">
                             <div style="margin-bottom: 20px"></div>
-                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                <button style="display: flex; margin: auto;" type="button" class="btn btn-success waves-effect waves-light mb-2">
-                                    <i class="bx bx-check-square font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Change Status </span>
-                                </button>
-                            </a>
-                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                <button style="display: flex; margin: auto;" type="button" class="btn btn-warning waves-effect waves-light mb-2">
-                                    <i class="bx bx-edit-alt  font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Edit</span>
-                                </button>
-                            </a>
-                            <a href="{% url 'customadmin:vendor_delete' vendor.id %}">
-                                <button style="display: flex; margin: auto;" type="button" class="btn btn-danger waves-effect waves-light mb-2">
-                                    <i class="bx bx-trash font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Delete</span>
-                                </button>
-                            </a>
+                            
                         </div>
                     </div>
-                    <!-- <div class="row" style="margin: 15px auto;">
+                    <!-- <div class="row">
+                        <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                            <button type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                <i class="bx bx-check-square font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Change Status </span>
+                            </button>
+                        </a>
+                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                            <button type="button" class="btn btn-warning waves-effect waves-light mb-2">
+                                <i class="bx bx-edit-alt  font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Edit</span>
+                            </button>
+                        </a>
+                        <a href="{% url 'customadmin:vendor_delete' vendor.id %}">
+                            <button type="button" class="btn btn-danger waves-effect waves-light mb-2">
+                                <i class="bx bx-trash font-size-16 align-middle"></i><span style="font-size: 0.7rem;"> Delete</span>
+                            </button>
+                        </a>
+                    </div> -->
+                    <div class="row" style="margin: 15px auto;">
                         <div style="display: flex; margin: auto;">
                             <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
                             </button>
                             
-                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-warning waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Edit
                             </button>
                             
-                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-danger waves-effect waves-light mb-2">
                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Delete
                             </button>
                             </div>
-                    </div> -->
+                    </div>
                     <div class="row">
                         <div class="col-sm-3">
                             <h4>Aadhar Card</h4>
@@ -281,7 +290,7 @@
 
             <!--  -->
             <div class="row" style="margin-top: 20px;">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
@@ -428,7 +437,7 @@
                     </div>
                 </div>
                 
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
