@@ -5646,7 +5646,7 @@ height: 34px;
     font-weight: bold;
   }
 
-  .container1 {
+  #customerPage .container1 {
     /*margin-top: 80px;*/
     padding: 4px 2px 27px 23px;
     border: 1px #eee solid;

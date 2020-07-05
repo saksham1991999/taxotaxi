@@ -452,7 +452,7 @@
                   </div>
                   <div class="errorSpace">{{ car_form.owner_name.errors }}</div>
                   <div class="foam-field">
-                     <label>Father's Name*</label>
+                     <label>Father's Name</label>
                      {% render_field car_form.father_name %}
                   </div>
                   <div class="errorSpace">{{ car_form.father_name.errors }}</div>
@@ -1074,7 +1074,7 @@
    // });
    // Code for Car Details page button dissable and enable
    $("#carDetails").find("input").each(function(index2){
-       $(this).keyup(function(){
+       $(this).change(function(){
            $("#carDetails").find("input").each(function(index3){
            var empty = false;
            if ( $('#id_car-owner_name').val() == '' || $("#id_car-registration_no").val()=='' || $("#id_car-image_front").val()=='' || $("#id_car-image_rear").val()=='' ||              $("#id_car-rc_front").val()=='' ||      $("#id_car-rc_rear").val()=='' ||       $("#id_car-touristpermit_front").val()=='' ||              $("#id_car-touristpermit_rear").val()=='' ||               $("#id_car-permita_front").val()=='' || $("#id_car-permita_rear").val()==''
