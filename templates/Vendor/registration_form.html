@@ -501,7 +501,7 @@
                   <div class="errorSpace">{{ car_form.rc_front.errors }}</div>
                   <div class="errorSpace">{{ car_form.rc_rear.errors }}</div>
                   <div class="foam-field">
-                     <label>RC valid upto</label>
+                     <label>RC valid upto*</label>
                      {% render_field car_form.rc_valid_upto id="datepicker5" data-date-format="mm-dd-yyyy" readonly='true' %}
                      {#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
@@ -525,7 +525,7 @@
                   <div class="errorSpace">{{ car_form.touristpermit_front.errors }}</div>
                   <div class="errorSpace">{{ car_form.touristpermit_rear.errors }}</div>
                   <div class="foam-field">
-                     <label>Tourist Permit valid upto</label>
+                     <label>Tourist Permit valid upto*</label>
                      {% render_field car_form.touristpermit_valid_upto id="datepicker6" data-date-format="mm-dd-yyyy" readonly='true' %}
                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                   </div>
@@ -575,7 +575,7 @@
                   </div>
                   <div class="errorSpace">{{ car_form.insurance_front.errors }}</div>
                   <div class="foam-field">
-                     <label>Insurance valid upto</label>
+                     <label>Insurance valid upto*</label>
                      {% render_field car_form.insurance_valid_upto id="datepicker7" data-date-format="mm-dd-yyyy" readonly='true' %}
                      <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
                   </div>
@@ -610,7 +610,7 @@
                   <div class="errorSpace">{{ error }}</div>
                   {% endfor %}
                   <div class="foam-field">
-                     <label>Full Name</label>
+                     <label>Full Name*</label>
                      {% render_field driver_form.full_name %}
                   </div>
                   <div class="errorSpace">{{ driver_form.full_name.errors }}</div>
@@ -636,7 +636,7 @@
                   </div>
                   <div class="errorSpace">{{ driver_form.contact1.errors }}</div>
                   <div class="foam-field">
-                     <label>Phone No 2*</label>
+                     <label>Phone No 2</label>
                      {% render_field driver_form.contact2 pattern="[1-9]{1}[0-9]{9}"%}
                   </div>
                   <div class="errorSpace">{{ driver_form.contact2.errors }}</div>
@@ -686,7 +686,7 @@
                   <div class="errorSpace">{{ driver_form.aadharcard_front.errors }}</div>
                   <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
                   <div class="foam-field">
-                     <label>Voter Card</label>
+                     <label>Voter Card*</label>
                      <div class="vendorFile" style="width: 49%;">
                         {% render_field driver_form.votercard_front %}
                         <p class="fileUploadtext" id="id_driver-votercard_front-p">
@@ -703,7 +703,7 @@
                   <div class="errorSpace">{{ driver_form.votercard_front.errors }}</div>
                   <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
                   <div class="foam-field">
-                     <label>Driving Licence</label>
+                     <label>Driving Licence*</label>
                      <div class="vendorFile" style="width: 49%;">
                         {% render_field driver_form.driving_licence_front %}
                         <p class="fileUploadtext" id="id_driver-driving_licence_front-p">
@@ -733,12 +733,12 @@
                   </div>
                   <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
                   <div class="foam-field">
-                     <label>Total Driving Experience</label>
+                     <label>Total Driving Experience*</label>
                      {% render_field driver_form.driving_experience %}
                   </div>
                   <div class="errorSpace">{{ driver_form.driving_experience.errors }}</div>
                   <div class="foam-field">
-                     <label>Hill Driving Experience</label>
+                     <label>Hill Driving Experience*</label>
                      {% render_field driver_form.hill_experience %}
                   </div>
                   <div class="errorSpace">{{ driver_form.hill_experience.errors }}</div>
@@ -1078,7 +1078,7 @@
            $("#carDetails").find("input").each(function(index3){
            var empty = false;
            if ( $('#id_car-owner_name').val() == '' || $("#id_car-registration_no").val()=='' || $("#id_car-image_front").val()=='' || $("#id_car-image_rear").val()=='' ||              $("#id_car-rc_front").val()=='' ||      $("#id_car-rc_rear").val()=='' ||       $("#id_car-touristpermit_front").val()=='' ||              $("#id_car-touristpermit_rear").val()=='' ||               $("#id_car-permita_front").val()=='' || $("#id_car-permita_rear").val()==''
-               || $("#id_car-permitb_front").val()=='' || $("#id_car-permitb_rear").val()=='' || $("#id_car-insurance_front").val()=='' ) {
+               || $("#id_car-permitb_front").val()=='' || $("#id_car-permitb_rear").val()=='' || $("#id_car-insurance_front").val()=='' || $("#datepicker5").val()=='' || $("#datepicker6").val()=='' || $("#datepicker7").val()=='' ) {
                empty = true;
            };
        if (empty) {
