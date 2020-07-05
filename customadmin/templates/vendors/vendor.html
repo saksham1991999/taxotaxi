@@ -34,6 +34,18 @@
   margin-right: auto;
   width: 50%;
 }
+.collapase-car-images{
+    margin: 20px auto;
+}
+.collapase-car-images h5{
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: blue;
+}
+.collapase-car-images h6{
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
 </style>
 {% endblock extra_stylesheet %}
 
@@ -129,12 +141,12 @@
                             <h4>Aadhar Card</h4>
                             {% if vendor.aadharcard_front %}
                                 <a href="{{ vendor.aadharcard_front.url }}">
-                                    <img src="{{ vendor.aadharcard_front.url }}" alt="" width="100%">
+                                    <img src="{{ vendor.aadharcard_front.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                             {% if vendor.aadharcard_rear %}
                                 <a href="{{ vendor.aadharcard_rear.url }}">
-                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="100%">
+                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                         </div>
@@ -142,12 +154,12 @@
                             <h4>Voter Card</h4>
                             {% if vendor.votercard_front %}
                                 <a href="{{ vendor.votercard_front.url }}">
-                                <img src="{{ vendor.votercard_front.url }}" alt="" width="100%">
+                                <img src="{{ vendor.votercard_front.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                             {% if vendor.votercard_rear %}
                                 <a href="{{ vendor.votercard_rear.url }}">
-                                <img src="{{ vendor.votercard_rear.url }}" alt="" width="100%">
+                                <img src="{{ vendor.votercard_rear.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                         </div>
@@ -155,7 +167,7 @@
                         <div class="col-sm-3">
                             <h4>Pan Card</h4>
                             <a href="{{ vendor.pancard.url }}">
-                            <img src="{{ vendor.pancard.url }}" alt="" width="100%">
+                            <img src="{{ vendor.pancard.url }}" alt="" width="100%" style="max-height: 100px;">
                             </a>
                         </div>
                         {% endif %}
@@ -163,12 +175,12 @@
                             <h4>DL</h4>
                             {% if vendor.driving_licence_front %}
                                 <a href="{{ vendor.driving_licence_front.url }}">
-                                <img src="{{ vendor.driving_licence_front.url }}" alt="" width="100%">
+                                <img src="{{ vendor.driving_licence_front.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                             {% if vendor.driving_licence_rear %}
                                 <a href="{{ vendor.driving_licence_rear.url }}">
-                                <img src="{{ vendor.driving_licence_rear.url }}" alt="" width="100%">
+                                <img src="{{ vendor.driving_licence_rear.url }}" alt="" width="100%" style="max-height: 100px;">
                                 </a>
                             {% endif %}
                         </div>
@@ -294,7 +306,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body" style="height: 300px; overflow: scroll;">
+                                <div class="card-body" style="height: 500px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Cars
                                         <a href="">
@@ -350,7 +362,42 @@
                                                                 <h5>delhi</h5>
                                                             </div>
                                                             <div class="col-4">
-                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%">
+                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%" style="max-height: 200px;">
+                                                            </div>
+                                                            <div class="row collapase-car-images">
+                                                                <div class="col-sm-3">
+                                                                    <h5>Car Photo</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>RC Photo</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>Tourist Permit</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>Other</h5>
+                                                                    <h6>Insurance</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Pollution Certificate</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -440,7 +487,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card" style="height: auto ;overflow-y: auto;">
-                                <div class="card-body"  style="height: 300px; overflow: scroll;">
+                                <div class="card-body"  style="height: 500px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Drivers
                                         <a href="">
@@ -496,7 +543,42 @@
                                                                 <h5>delhi</h5>
                                                             </div>
                                                             <div class="col-4">
-                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%">
+                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%" style="max-width: 200px;">
+                                                            </div>
+                                                            <div class="row collapase-car-images">
+                                                                <div class="col-sm-3">
+                                                                    <h5>Car Photo</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>RC Photo</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>Tourist Permit</h5>
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Back</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>Other</h5>
+                                                                    <h6>Insurance</h6>
+                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                     <h6>Pollution Certificate</h6>
+                                                                     
+                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
