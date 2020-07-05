@@ -1,6 +1,6 @@
 <!--Style Switcher Section End-->
 {% load static %}
-
+{% load template_tag %}
 <style type="text/css">
    .nav-active a{
    border-color: #ffc000 !important;
@@ -188,12 +188,12 @@
                         <li class="nav-item dropdown" style="max-height: 59px;float: right;">
                            {% if request.user.is_authenticated %}
                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex;">
-                              {% if request.user.profile_pic %}
-                              <img class="rounded-circle" src="{{ request.user.profile_pic.url }}" width="35" height="35" style="border-radius: 20px;" >
+                              {% if request.user|profile_pic %}
+                              <img class="rounded-circle" src="{{ request.user|profile_pic }}" width="35" height="35" style="border-radius: 20px;" >
                               {% else %}
                               <canvas id="user-icon" width="35" height="35" style="border-radius: 20px;"></canvas>
                               {% endif %}
-                              <span>&ensp;{% if request.user.first_name %}{{ request.user.first_name }}{% else %}Guest{% endif %}
+                              <span>&ensp;{{ request.user|first_name }}
                               <i class="fas fa-chevron-down"></i>
                               </span>
                            </a>
@@ -225,7 +225,7 @@
    <script>
       var colours = ["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"];
       
-                     var name = '{{ request.user.first_name }} {{ request.user.last_name }}';
+                     var name = '{{ request.user|full_name }}';
       
                      var nameSplit = name.split(" "),
                          initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase();

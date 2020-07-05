@@ -12,14 +12,11 @@ class VendorProfileForm(forms.ModelForm):
         exclude = ['user', 'status']
 
     def clean_contact1(self):
-        mobile = self.cleaned_data.get('contact1')
-        if mobile:
-            try:
-                user = coremodels.User.objects.get(username = mobile)
-                raise forms.ValidationError('Mobile Number is already registered')
-            except:
-                return mobile
-
+        mobile = self.cleaned_data['contact1']
+        user = coremodels.User.objects.filter(username=mobile)
+        if user.exists():
+            raise forms.ValidationError('Mobile Number is already registered')
+        return mobile
 
 class BankAccountForm(forms.ModelForm):
     class Meta:
@@ -36,13 +33,12 @@ class AddCarForm(forms.ModelForm):
 class AddDriverForm(forms.ModelForm):
     class Meta:
         model = models.driver
-        exclude = ['vendor', 'status']
+        exclude = ['vendor', 'status', 'user']
 
     def clean_contact1(self):
-        mobile = self.cleaned_data.get('contact1')
-        if mobile:
-            try:
-                user = coremodels.User.objects.get(username = mobile)
-                raise forms.ValidationError('Mobile Number is already registered')
-            except:
-                return mobile
+        mobile = self.cleaned_data['contact1']
+        user = coremodels.User.objects.filter(username=mobile)
+        if user.exists():
+            raise forms.ValidationError('Mobile Number is already registered')
+        return mobile
+

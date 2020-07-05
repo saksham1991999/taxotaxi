@@ -174,28 +174,28 @@
                               </div>
                            </div>
                         {% if vendor.image %}
-                           <div class="col-sm-5">
-                              <div class="drag-drop">
-                                  {% render_field profile_form.image %}
-                                 <p class="p23">
-                                    <i class="fas fa-cloud-upload-alt fa-4x">
-                                    </i><br> Drag&Drop files here <br> or<br>
-                                    <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                 </p>
-                                 <div class="drag-drop-text">
-                                    Select your profile image<br>
-                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                           <div class="col-sm-5" style="margin-top: 24px;">
+                                 <div class="row text-center" class="">
+                                    <img src="{{ vendor.image.url }}" width="50%" alt="">
+                                 </div>
+                                 <div class="row text-center" style="margin-top: 20px;">
+                                    {% render_field profile_form.image class="input-file" id='my-file' %}
+                                    <!-- <input type="file" class="input-file" id="my-file"> -->
+                                    <button type="button" id="my-button" class="btn btn-outline-primary">Browse Files</button>
+                                    <div class="label-right-allign" style="text-align: center;">
+                                       Select your profile image and click update<br>
+                                       <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
                             <!-- profile field -->
                         {% else %}
                              <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                                  <div class="drag-drop">
-                                    <img class="input-file" src="{% static 'images/comment_img1.jpg' %}" alt="">
+                                    {% render_field profile_form.image class="input-file" %}
                                     <p class="p23">
                                        <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                       </i><br> Drag&Drop files here <br> or<br>
+                                       </i><br> Drag&Drop files here<br> or<br>
                                        <button type="button" class="btn btn-outline-primary">Browse Files</button> 
                                     </p>
                                     <div class="label-right-allign" style="text-align: center;">

@@ -367,59 +367,96 @@
                                                 <div class="collapse" id="collapseExampleCar1">
                                                     <div class="card">
                                                         <div class="card-body bank-collapse row">
-                                                            <div class="col-4">
-                                                                <h5>Luggage Capacity</h5>
-                                                                <h5>Suspension/Control</h5>
-                                                                <h5>Comfort Level</h5>
-                                                                <h5>Boot Space</h5>
-                                                                <h5>Price per Km</h5>
-                                                                <h5>Fuel Type</h5>
-                                                                <h5>Seating Capacity</h5>
-                                                                <h5>Class/ Variants</h5>
+                                                            <div class="col-6">
+                                                                <h5>R.C. Valid Upto</h5>
+                                                                <h5>Tourist Permit Valid Upto</h5>
+                                                                <h5>Insurance Valid Upto</h5>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <h5>25/06/2020 9:00 A.M.</h5>
-                                                                <h5>25/06/2020 8:00 A.M.</h5>
-                                                                <h5>90 KM</h5>
-                                                                <h5>2 hr</h5>
-                                                                <h5>delhi</h5>
-                                                            </div>
-                                                            <div class="col-4">
-                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%" style="max-height: 200px;">
+                                                            <div class="col-6">
+                                                                <h5>{{ car.rc_valid_upto }}</h5>
+                                                                <h5>{{ car.touristpermit_valid_upto }}</h5>
+                                                                <h5>{{ car.insurance_valid_upto }}</h5>
                                                             </div>
                                                             <div class="row collapase-car-images">
                                                                 <div class="col-sm-3">
                                                                     <h5>Car Photo</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% if car.image_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ car.image_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.image_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ car.image_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <h5>RC Photo</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% if car.rc_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ car.rc_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.rc_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ car.rc_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <h5>Tourist Permit</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% if car.touristpermit_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ car.touristpermit_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.touristpermit_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ car.touristpermit_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="col-sm-3">
-                                                                    <h5>Other</h5>
-                                                                    <h6>Insurance</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Pollution Certificate</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    <h5>Permit A</h5>
+                                                                    {% if car.permita_front %}
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ car.permita_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.permita_rear %}
+                                                                    <h6>Back</h6>
+                                                                    <img src="{{ car.permita_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
+                                                                <div class="col-sm-3">
+
+                                                                    <h5>Permit B</h5>
+                                                                    {% if car.permitb_front %}
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ car.permitb_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.permitb_rear %}
+                                                                    <h6>Back</h6>
+                                                                    <img src="{{ car.permitb_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="col-sm-3">
+                                                                    <h5>Insurance</h5>
+                                                                    {% if car.insurance_front %}
+                                                                    <h6>Front</h6>
+                                                                     <img src="{{ car.insurance_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if car.insurance_rear %}
+                                                                    <h6>Back</h6>
+                                                                    <img src="{{ car.insurance_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                </div>
+                                                                {% if car.insurance_rear %}
+                                                                    <div class="col-sm-3">
+                                                                        <h5>Polution Certificate</h5>
+                                                                        <h6></h6>
+
+                                                                         <img src="{{ car.pollution_certificate.url }}" alt="" width="60%%"     style="max-height: 100px;">
+
+    {#                                                                     <h6>Pollution Certificate</h6>#}
+
+    {#                                                                    <img src="{{ car.permita_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">#}
+                                                                    </div>
+                                                                {% endif %}
                                                                 
                                                             </div>
                                                         </div>
@@ -496,58 +533,107 @@
                                                     <div class="card">
                                                         <div class="card-body bank-collapse row">
                                                             <div class="col-4">
-                                                                <h5>Luggage Capacity</h5>
-                                                                <h5>Suspension/Control</h5>
-                                                                <h5>Comfort Level</h5>
-                                                                <h5>Boot Space</h5>
-                                                                <h5>Price per Km</h5>
-                                                                <h5>Fuel Type</h5>
-                                                                <h5>Seating Capacity</h5>
-                                                                <h5>Class/ Variants</h5>
+                                                                <h5>DOB</h5>
+                                                                <h5>Address</h5>
+                                                                <h5>DL Number</h5>
+                                                                <h5>DL Valid From</h5>
+                                                                <h5>DL Valid Till</h5>
+                                                                <h5>Driving Experience</h5>
+                                                                <h5>Hill Experience</h5>
+                                                                {% if dricer.legal_accidental_case %}
+                                                                    <h5>Legal Case Details</h5>
+                                                                {% endif %}
                                                             </div>
                                                             <div class="col-4">
-                                                                <h5>25/06/2020 9:00 A.M.</h5>
-                                                                <h5>25/06/2020 8:00 A.M.</h5>
-                                                                <h5>90 KM</h5>
-                                                                <h5>2 hr</h5>
-                                                                <h5>delhi</h5>
+                                                                <h5>{{ driver.dob }}</h5>
+                                                                <h5>{{ driver.address }}</h5>
+                                                                <h5>{{ driver.driving_licence_no }}</h5>
+                                                                <h5>{{ driver.driving_licence_valid_from }}</h5>
+                                                                <h5>{{ driver.driving_licence_valid_till }}</h5>
+                                                                <h5>{{ driver.driving_experience }}</h5>
+                                                                <h5>{{ driver.hill_experience }}</h5>
+                                                                {% if dricer.legal_accidental_case %}
+                                                                    <h5>{{ driver.legal_accidental_case_details }}</h5>
+                                                                {% endif %}
                                                             </div>
+                                                            {% if driver.image %}
                                                             <div class="col-4">
-                                                                <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="80%" style="max-width: 200px;">
+                                                                <img src="{{ driver.image.url }}" alt="" width="80%" style="max-width: 200px;">
                                                             </div>
+                                                            {% endif %}
+
                                                             <div class="row collapase-car-images">
                                                                 <div class="col-sm-3">
-                                                                    <h5>Car Photo</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    <h5>PanCard</h5>
+                                                                    {% if driver.pancard_rear %}
+                                                                        <h6>Front</h6>
+                                                                        <img src="{{ driver.pancard_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if driver.pancard_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ driver.pancard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
                                                                 <div class="col-sm-3">
                                                                     <h5>RC Photo</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% if driver.aadharcard_front %}
+                                                                        <h6>Front</h6>
+                                                                        <img src="{{ driver.aadharcard_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if driver.aadharcard_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ driver.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
+                                                                {% if driver.votercard_front or driver.votercard_rear %}
                                                                 <div class="col-sm-3">
-                                                                    <h5>Tourist Permit</h5>
-                                                                    <h6>Front</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Back</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    <h5>Voter Card</h5>
+                                                                    {% if driver.votercard_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ driver.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if driver.votercard_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ driver.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
+                                                                {% endif %}
+
+                                                                {% if driver.driving_licence_front or driver.driving_licence_rear %}
                                                                 <div class="col-sm-3">
-                                                                    <h5>Other</h5>
-                                                                    <h6>Insurance</h6>
-                                                                     <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"     style="max-height: 100px;">
-                                                                     <h6>Pollution Certificate</h6>
-                                                                     
-                                                                    <img src="{{ vendor.aadharcard_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    <h5>Driving Licence</h5>
+                                                                    {% if driver.driving_licence_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ driver.driving_licence_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if driver.driving_licence_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ driver.driving_licence_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
                                                                 </div>
+                                                                {% endif %}
+
+                                                                {% if driver.police_verification_front or driver.police_verification_rear %}
+                                                                <div class="col-sm-3">
+                                                                    <h5>Police Verification</h5>
+                                                                    {% if driver.police_verification_front %}
+                                                                        <h6>Front</h6>
+                                                                         <img src="{{ driver.police_verification_front.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                    {% if driver.police_verification_rear %}
+                                                                         <h6>Back</h6>
+                                                                        <img src="{{ driver.police_verification_rear.url }}" alt="" width="60%%"  style="max-height: 100px;">
+                                                                    {% endif %}
+                                                                </div>
+                                                                {% endif %}
+
+                                                                {% if legal_accidental_case %}
+                                                                    <div class="col-sm-3">
+                                                                        <h5>Other</h5>
+                                                                        <h6>Legal Case Document</h6>
+                                                                         <img src="{{ driver.legal_accidental_case_document.url }}" alt="" width="60%%"     style="max-height: 100px;">
+                                                                    </div>
+                                                                {% endif %}
                                                                 
                                                             </div>
                                                         </div>

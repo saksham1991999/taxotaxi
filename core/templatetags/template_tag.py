@@ -1,6 +1,6 @@
 from django import template
 from core import models
-
+from vendor import models as vendormodels
 register = template.Library()
 
 
@@ -57,3 +57,56 @@ def car_attr_value(type, attr):
         return value
     except:
         return ' '
+
+
+@register.filter
+def profile_pic(user):
+    if user.is_authenticated:
+        if user.is_vendor:
+            vendor = vendormodels.vendorprofile.objects.get(user = user)
+            pic = vendor.image.url
+        elif user.is_driver:
+            driver = vendormodels.driver.objects.get(user = user)
+            pic = driver.image.url
+        else:
+            pic = user.profile_pic.url
+        if pic:
+            return pic
+    return None
+
+@register.filter
+def first_name(user):
+    if user.is_authenticated:
+        if user.is_vendor:
+            vendor = vendormodels.vendorprofile.objects.get(user = user)
+            first_name = list(vendor.full_name.split())[0]
+        elif user.is_driver:
+            driver = vendormodels.driver.objects.get(user = user)
+            first_name = list(driver.full_name.split())[0]
+        else:
+            first_name = user.first_name
+        if first_name:
+            return first_name
+    return 'Guest'
+
+@register.filter
+def full_name(user):
+    if user.is_authenticated:
+        if user.is_vendor:
+            vendor = vendormodels.vendorprofile.objects.get(user = user)
+            if len(list(vendor.full_name.split())) > 1:
+                full_name = vendor.full_name
+            else:
+                full_name = vendor.full_name + '  '
+        elif user.is_driver:
+            driver = vendormodels.driver.objects.get(user = user)
+            if len(list(driver.full_name.split())) > 1:
+                full_name = driver.full_name
+            else:
+                full_name = driver.full_name + '  '
+        else:
+            full_name = str(user.first_name) + ' ' + str(user.last_name)
+
+        if full_name:
+            return full_name
+    return 'Guest'

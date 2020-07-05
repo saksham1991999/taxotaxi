@@ -142,6 +142,7 @@ def DashboardView(request):
                     context = {
                         'profile_form': profile_form,
                         'bank_formset': bank_formset,
+                        'vendor': vendorprofile,
                     }
                     return render(request, 'Vendor/profile.html', context)
             elif type == 'change_password':
@@ -162,6 +163,7 @@ def DashboardView(request):
             context = {
                 'profile_form':profile_form,
                 'bank_formset':bank_formset,
+                'vendor':vendorprofile,
             }
             return render(request, 'Vendor/profile.html', context)
     except:
@@ -220,12 +222,12 @@ def EditCarView(request, id):
         return redirect('core:dashboard')
 
 def DeleteCarView(request, id):
-    if request.user.is_vendor:
+    if request.user.is_vendor and request.user.is_authenticated:
         vendor = get_object_or_404(models.vendorprofile, user = request.user)
         car = get_object_or_404(models.vendor_cars, id = id)
         if car.vendor == vendor:
             car.delete()
-            return redirect('vendor:cars')
+        return redirect('vendor:cars')
     else:
         return redirect('core:dashboard')
 
@@ -245,10 +247,9 @@ def DriversView(request):
                                                              password=driver_password)
                 driver.is_driver = True
                 driver.save()
-                new_driver_form.status = "Pending"
+                new_driver_form.status = "Hold"
                 new_driver_form.user = driver
                 new_driver_form.save()
-
                 return redirect('vendor:drivers')
             drivers = models.driver.objects.filter(vendor=vendor)
             context = {
@@ -295,7 +296,7 @@ def DeleteDriverView(request, id):
         driver = get_object_or_404(models.driver, id = id)
         if driver.vendor == vendor:
             driver.delete()
-            return redirect('vendor:drivers')
+        return redirect('vendor:drivers')
     else:
         return redirect('core:dashobard')
 

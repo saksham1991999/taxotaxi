@@ -13,7 +13,7 @@ class vendorprofile(models.Model):
     full_name = models.CharField(max_length=256)
 
     father_name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
     dob = models.DateField()
     email = models.EmailField()
     contact1 = models.CharField(max_length=10)
@@ -123,11 +123,12 @@ driver_status_choices = (
     ('Temp Approved', 'Temp Approved'),
 )
 class driver(models.Model):
+    user = models.ForeignKey('core.User', on_delete=models.CASCADE)
     vendor = models.ForeignKey(vendorprofile, on_delete=models.PROTECT)
     status = models.CharField(max_length=8 , choices=driver_status_choices, default = "Pending")
     full_name = models.CharField(max_length=256)
     father_name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
     dob = models.DateField()
 
     email = models.EmailField()
