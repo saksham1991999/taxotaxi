@@ -17,17 +17,17 @@
 
     <div class="page-content">
         <div class="container-fluid">
-            
+
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Vendor Form</h4>
+                        <h4 class="mb-0 font-size-18">Vendor Car Form</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                <li class="breadcrumb-item active">Vendor Form</li>
+                                <li class="breadcrumb-item active">Vendor Car Form</li>
                             </ol>
                         </div>
 
@@ -47,10 +47,24 @@
                                     <p class="card-title-desc"></p>
 
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Full Name</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Status</label>
                                         <div class="col-md-10">
-                                            {% render_field form.full_name class="form-control" %}
+                                            {% render_field form.status class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Car Type</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.car_type class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-search-input" class="col-md-2 col-form-label">Owner Name</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.owner_name class="form-control" %}
+                                            <!-- <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -61,66 +75,53 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-email-input" class="col-md-2 col-form-label">Date of Birth</label>
+                                        <label for="example-email-input" class="col-md-2 col-form-label">Registration Number</label>
                                         <div class="col-md-10">
-                                            {% render_field form.dob class="form-control" type="text" %}
+                                            {% render_field form.registration_no class="form-control" %}
 {#                                            <input class="form-control" type="text"  id="id_dob" >#}
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-url-input" class="col-md-2 col-form-label">Email</label>
+                                        <label for="example-url-input" class="col-md-2 col-form-label">Date of Registration</label>
                                         <div class="col-md-10">
-                                            {% render_field form.email class="form-control" %}
+                                            {% render_field form.dateofregistration class="form-control" type="text" %}
                                             <!-- <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Image</label>
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Image Front</label>
                                         <div class="col-md-10">
-                                            {% render_field form.image class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                            {% render_field form.image_front class="form-control" %}
                                         </div>
 
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Mobile</label>
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">Image Rear</label>
                                         <div class="col-md-10">
-                                            {% render_field form.contact1 class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                            {% render_field form.image_rear class="form-control" %}
                                         </div>
-
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Alternative Mobile</label>
+                                        <label for="example-tel-input" class="col-md-2 col-form-label">RC Front</label>
                                         <div class="col-md-10">
-                                            {% render_field form.contact2 class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Address</label>
-                                        <div class="col-md-10">
-                                            {% render_field form.address class="form-control" %}
+                                            {% render_field form.rc_front class="form-control" %}
                                             <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Company Name</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">RC Rear</label>
                                         <div class="col-md-10">
-                                            {% render_field form.company_name class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                            {% render_field form.rc_rear class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">GST Number</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">RC Valid Upto</label>
                                         <div class="col-md-10">
-                                            {% render_field form.gst_no class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
+                                            {% render_field form.rc_valid_upto class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div> <!-- end col -->
@@ -131,59 +132,82 @@
                                     <h4 class="card-title"></h4>
                                     <p class="card-title-desc"></p>
 
-                                    <div class="form-group row" style="display: none">
-                                        <label for="example-tel-input" class="col-md-2 col-form-label">Status</label>
-                                        <div class="col-md-10">
-                                            {% render_field form.status class="form-control" %}
-                                            <!-- <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> -->
-                                        </div>
-                                    </div>
+
+
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">PanCard</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Tourist Permit Front</label>
                                         <div class="col-md-10">
-                                            {% render_field form.pancard class="form-control" %}
+                                            {% render_field form.touristpermit_front class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Aadhaar Card Front</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Tourist Permit Rear</label>
                                         <div class="col-md-10">
-                                            {% render_field form.aadharcard_front class="form-control" %}
+                                            {% render_field form.touristpermit_rear class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Aadhaar Card Rear</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Tourist Permit Valid Upto</label>
                                         <div class="col-md-10">
-                                            {% render_field form.aadharcard_rear class="form-control" %}
+                                            {% render_field form.touristpermit_valid_upto class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">VoterCard Front</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Permit A Front</label>
                                         <div class="col-md-10">
-                                            {% render_field form.votercard_front class="form-control" %}
+                                            {% render_field form.permita_front class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">VoterCard Rear</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Permit A Rear</label>
                                         <div class="col-md-10">
-                                            {% render_field form.votercard_rear class="form-control" %}
+                                            {% render_field form.permita_rear class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">DL Front</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Permit B Front</label>
                                         <div class="col-md-10">
-                                            {% render_field form.driving_licence_front class="form-control" %}
+                                            {% render_field form.permitb_front class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">DL Rear</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Permit B Rear</label>
                                         <div class="col-md-10">
-                                            {% render_field form.driving_licence_rear class="form-control" %}
+                                            {% render_field form.permitb_rear class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Insurance Front</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.insurance_front class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Insurance Rear</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.insurance_rear class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Insurance Valid Upto</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.insurance_valid_upto class="form-control" %}
+                                            <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Pollution Certificate</label>
+                                        <div class="col-md-10">
+                                            {% render_field form.pollution_certificate class="form-control" %}
                                             <!-- <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> -->
                                         </div>
                                     </div>
@@ -194,9 +218,9 @@
                                     </button>
 
                                 </div>
+
                             </div>
                         </div>
-
                 </div>
             </form>
             <!-- end row -->
@@ -207,8 +231,8 @@
     </div>
     <!-- End Page-content -->
 
-    
-    
+
+
 </div>
 
 
@@ -220,12 +244,26 @@
 {% block extra_scripts %}
 <script type="text/javascript">
    $(function () {
-            $("#id_dob").datepicker({ 
+            $("#id_dateofregistration").datepicker({
                 format: "yyyy-mm-dd",
-                autoclose: true, 
+                autoclose: true,
                 todayHighlight: false,
-                
-            })
+            });
+            $("#id_rc_valid_upto").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+            });
+            $("#id_touristpermit_valid_upto").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+            });
+            $("#id_insurance_valid_upto").datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: false,
+            });
         });
 </script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->

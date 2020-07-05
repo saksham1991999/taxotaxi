@@ -69,7 +69,7 @@
                                 <tbody>
                                 {% for vendor in vendors %}
                                 <tr>
-                                    <td><input type="checkbox" name="" id="checkbox1" onclick="MainFunc(this)"></td>
+                                    <td><input type="radio" name="vendors" value="vendor-{{ vendor.id }}"></td>
                                     <td>{{ forloop.counter }}</td>
                                     <td>{{ vendor.user.first_name }}</td>
                                     <td>{{ vendor.user.last_name }}</td>
@@ -96,34 +96,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><input type="checkbox" name="" id="checkbox2" onclick="MainFunc(this)"></td>
-                                    <td>{{ forloop.counter }}</td>
-                                    <td>{{ vendor.user.first_name }}</td>
-                                    <td>{{ vendor.user.last_name }}</td>
-                                    <td>{{ vendor.user.mobile }}</td>
-                                    <td>{{ vendor.user.contact2 }}</td>
-                                    <td>{{ vendor.user.email }}</td>
-                                    <td>{{ vendor.company_name }}</td>
-                                    <td>{{ vendor.status }}</td>
 
-                                    <td>
-                                        <div style="display: flex;">
-                                        <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                            <i class="bx bx-show font-size-16 align-middle"></i>
-                                        </a>
-                                        <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                            <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                        </a>
-                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
-                                        </a>
-                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                        </a>
-                                        </div>
-                                    </td>
-                                </tr>
                                 {% endfor %}
                          
                               
@@ -136,144 +109,63 @@
             </div> <!-- end row -->
 
         {% for vendor in vendors %}
+
+            <div class="row vendor-details" id="vendor-{{ vendor.id }}" style="display: none">
+
+
             <div class="row">
                 <div class="col-6">
+
                     <div class="card">
                         <div class="card-body">
 
                             <h4 class="card-title">Vendor Cars
-                                <a href="{% url 'customadmin:vendor_cars_update' vendor.id %}">
-                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                <a href="{% url 'customadmin:vendor_car_add' vendor.id %}">
+                                    <button type="button" style="float: right;" class="btn btn-primary waves-effect waves-light mb-2">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
                                     </button>
-                                    </a>
+                                </a>
                             </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
                                 <table id="" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100% !important;">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Car Type</th>
-                                    <th>Registration Number</th>
-                                    <th>Image Front</th>
-                                    <th>Image Rear</th>
-                                    <th></th>
-                                    
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                {% for car in vendor.vendor_cars_set.all %}
+                                    <thead>
                                     <tr>
-                                        <td>{{ forloop.counter }}</td>
-                                        <td>{{ car.car_type }}</td>
-                                        <td>{{ car.registration_no }}</td>
-                                        <td>{{ car.dateofregistration }}</td>
-                                        <td>
-                                            <div style="display: flex;">
-                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                                <i class="bx bx-show font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                            </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                                    <tr class="vendor1 vendors">
-                                        <td></td>
-                                        <td>vednor1</td>
-                                        <td>bendor13</td>
-                                        <td>654erfsfe</td>
-                                        <td>646erwe</td>
-                                    </tr>
+                                        <th>#</th>
+                                        <th>Car Type</th>
+                                        <th>Owner Name</th>
+                                        <th>Registration Number</th>
+                                        <th>Date of Registration</th>
+                                        <th>Status</th>
+                                        <th></th>
 
-                                    <tr class="vendor1 vendors">
-                                        <td></td>
-                                        <td>vednor1</td>
-                                        <td>bendor13</td>
-                                        <td>654erfsfe</td>
-                                        <td>646erwe</td>
-                                        <td>
-                                            <div style="display: flex;">
-                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                                <i class="bx bx-show font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                            </a>
-                                            </div>
-                                        </td>
                                     </tr>
+                                    </thead>
 
-                                    <tr class="vendor2 vendors">
-                                        <td></td>
-                                        <td>sfasdg</td>
-                                        <td>asdfv3513</td>
-                                        <td>654erfsfe</td>
-                                        <td>646erwe</td>
-                                        <td>
-                                            <div style="display: flex;">
-                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                                <i class="bx bx-show font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                            </a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <tbody>
+                                    {% for car in vendor.vendor_cars_set.all %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ car.car_type }}</td>
+                                            <td>{{ car.owner_name }}</td>
+                                            <td>{{ car.registration_no }}</td>
+                                            <td>{{ car.dateofregistration }}</td>
 
-                                    <tr class="vendor2 vendors">
-                                        <td></td>
-                                        <td>sfasdg</td>
-                                        <td>asdfv3513</td>
-                                        <td>654erfsfe</td>
-                                        <td>646erwe</td>
-                                        <td>
-                                            <div style="display: flex;">
-                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                                <i class="bx bx-show font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
-                                            </a>
-                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
-                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
-                                            </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                         
-                              
-                                </tbody>
-                            </table>
-                        </div>
+                                            <td>{{ car.status }}</td>
+                                            <td>
+                                                <a href="{% url 'customadmin:vendor_car_edit' car.id %}">
+                                                    <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                                </a>
+                                                <a href="{% url 'customadmin:vendor_car_delete' car.id %}">
+                                                    <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div> 
@@ -283,10 +175,11 @@
                         <div class="card-body">
 
                             <h4 class="card-title">Drivers
-                                <a href="{% url 'customadmin:vendor_drivers_update' vendor.id %}">
+                                <a href="{% url 'customadmin:vendor_driver_add' vendor.id %}">
                             <button type="button" style="float: right;" class="btn btn-primary mr-2 waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                            </button></a></h4>
+                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
+                            </button></a>
+                            </h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -294,11 +187,12 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <th>Full Name</th>
+                                    <th>Father Name</th>
                                     <th>Mobile</th>
-                                    <th>Alternate Mobile</th>
                                     <th>Email</th>
+                                    <th>Status</th>
+                                    <th></th>
                                 </tr>
                                 </thead>
 
@@ -307,27 +201,19 @@
                                 {% for driver in vendor.driver_set.all %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ driver.first_name }}</td>
-                                    <td>{{ driver.last_name }}</td>
+                                    <td>{{ driver.full_name }}</td>
+                                    <td>{{ driver.father_name }}</td>
                                     <td>{{ driver.contact1 }}</td>
-                                    <td>{{ driver.contact2 }}</td>
                                     <td>{{ driver.email }}</td>
+
+                                    <td>{{ driver.status }}</td>
                                     <td>
-                                        <div style="display: flex;">
-                                        <a href="{% url 'customadmin:vendor' vendor.id %}">
-                                            <i class="bx bx-show font-size-16 align-middle"></i>
-                                        </a>
-                                        <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
-                                            <i class="bx bx-check-square font-size-16 align-middle"></i>
-                                        </a>
-                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                        <a href="{% url 'customadmin:vendor_driver_edit' driver.id %}">
                                             <i class="bx bx-edit-alt font-size-16 align-middle"></i>
                                         </a>
-                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                        <a href="{% url 'customadmin:vendor_driver_delete' driver.id %}">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
-                                    </div>
-                                    </td>
                                 </tr>
                                 {% endfor %}
                               
@@ -368,35 +254,45 @@
     //         }
     //     });
 
-    for( var i=0 ; i<$(".vendors").length ; i++) {
-             $(".vendors")[i].classList.add("hidden");
-        }
-    function MainFunc(ele){
-        
-        if(ele.checked==true){
-            var req_id = `${ele.id}`;
-        var number = req_id.slice(8,req_id.length);
-        var req_class = `vendor${number}`;
-        // console.log(document.querySelectorAll(".vendors"));
+    {#for( var i=0 ; i<$(".vendors").length ; i++) {#}
+    {#         $(".vendors")[i].classList.add("hidden");#}
+    {#    }#}
+    {#function MainFunc(ele){#}
+    {#    #}
+    {#    if(ele.checked==true){#}
+    {#        var req_id = `${ele.id}`;#}
+    {#    var number = req_id.slice(8,req_id.length);#}
+    {#    var req_class = `vendor${number}`;#}
+    {#    // console.log(document.querySelectorAll(".vendors"));#}
+    {##}
+    {#    console.log($(".vendors"));#}
+    {#    // for( var i=0 ; i<$(".vendors").length ; i++) {#}
+    {#    //      $(".vendors")[i].classList.add("hidden");#}
+    {#    // }#}
+    {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
+    {#         $(`.${req_class}`).removeClass("hidden");#}
+    {#    }#}
+    {#    }else{#}
+    {#        var req_id = `${ele.id}`;#}
+    {#    var number = req_id.slice(8,req_id.length);#}
+    {#    var req_class = `vendor${number}`;#}
+    {##}
+    {#    console.log($(".vendors"));#}
+    {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
+    {#         $(`.${req_class}`).addClass("hidden");#}
+    {#    }#}
+    {#    }#}
+    {#    #}
 
-        console.log($(".vendors"));
-        // for( var i=0 ; i<$(".vendors").length ; i++) {
-        //      $(".vendors")[i].classList.add("hidden");
-        // }
-        for( var i=0 ; i<$(`.${req_class}`).length ; i++) {
-             $(`.${req_class}`).removeClass("hidden");
-        }
-        }else{
-            var req_id = `${ele.id}`;
-        var number = req_id.slice(8,req_id.length);
-        var req_class = `vendor${number}`;
 
-        console.log($(".vendors"));
-        for( var i=0 ; i<$(`.${req_class}`).length ; i++) {
-             $(`.${req_class}`).addClass("hidden");
-        }
-        }
-        
-    }
+    $(document).ready(function(){
+        $('input[type=radio]').change(function(){
+            $('.vendor-details').hide();
+            id = $(this).val()
+            str = '#' + id;
+            $(str).show();
+        });
+    });
+
 </script>
 {% endblock extra_scripts %}

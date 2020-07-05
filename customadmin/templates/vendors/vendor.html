@@ -123,18 +123,22 @@
                     </div> -->
                     <div class="row" style="margin: 15px auto;">
                         <div style="display: flex; margin: auto;">
-                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
-                            </button>
-                            
-                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-warning waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Edit
-                            </button>
-                            
-                            <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-danger waves-effect waves-light mb-2">
-                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Delete
-                            </button>
-                            </div>
+                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-success waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Change Status
+                                </button>
+                            </a>
+                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-warning waves-effect waves-light mb-2">
+                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Edit
+                                </button>
+                            </a>
+{#                            <a href="{% url 'customadmin:vendor_delete' vendor.id %}">#}
+{#                                <button style="display: flex; margin: auto; margin-bottom: 0px !important; margin-right: 5px;" type="button" class="btn btn-danger waves-effect waves-light mb-2">#}
+{#                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Delete#}
+{#                                </button>#}
+{#                            </a>#}
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
@@ -194,7 +198,7 @@
                                     <h4 class="card-title">
                                         Bank Accounts
                                         <a href="{% url 'customadmin:vendor_banks_update' vendor.id %}">
-                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2" >
+                                            <button type="button" style="float: right;" class="btn btn-primary waves-effect waves-light mb-2" >
                                                 <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
                                             </button>
                                         </a>
@@ -219,10 +223,11 @@
                                             <td>{{ bank.account_no }}</td>
                                             <td>{{ bank.ifsc }}</td>
                                             <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleBankAccounts-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExampleBankAccounts-{{ forloop.counter }}">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
+                                                    <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleBankAccounts-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseExampleBankAccounts-{{ forloop.counter }}">
+                                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
+                                                        <span style="font-size: 0.7rem;">Details</span>
+                                                    </button>
+
                                             </td>
                                         </tr>
 
@@ -266,31 +271,33 @@
                                 <div class="card-body">
                                     <h4 class="card-title">
                                         Promotional Codes
-                                        <a href="">
-                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                                            </button>
-                                        </a>
+                                        <a href="{% url 'customadmin:customer_update_promotional' vendor.user.id %}">
+                                        <button type="button" style="float: right;" class="btn btn-primary waves-effect waves-light mb-2">
+                                            <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        </button>
+                                    </a>
                                     </h4>
         
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Customer</th>
                                             <th>Promotional Code</th>
-                                            <th>Amount Credited</th>
+                                            <th>Referral Benefit</th>
+                                            <th>Customer Benefit</th>
+                                            <th>Activated</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        
+                                        {% for refferal_code in vendor.user.user_referral_set.all %}
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ refferal_code.promotional_code }}</td>
+                                            <td>{{ refferal_code.referralbenefit }}</td>
+                                            <td>{{ refferal_code.customerbenefit }}</td>
+                                            <td>{{ refferal_code.is_activated }}</td>
                                         </tr>
-                                        
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -309,35 +316,51 @@
                                 <div class="card-body" style="height: 500px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Cars
-                                        <a href="">
-                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        <a href="{% url 'customadmin:vendor_car_add' vendor.id %}">
+                                            <button type="button" style="float: right;" class="btn btn-primary waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
                                             </button>
                                         </a>
                                     </h4>
         
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Number</th>
-                                            <th>Type</th>
-                                            <th></th>
-                                        </tr>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Car Type</th>
+                                                <th>Owner Name</th>
+                                                <th>Father Name</th>
+                                                <th>Registration Number</th>
+                                                <th>Date of Registration</th>
+                                                <th>Status</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        
+                                        {% for car in vendor.vendor_cars_set.all %}
                                         <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ car.car_type }}</td>
+                                            <td>{{ car.owner_name }}</td>
+                                            <td>{{ car.father_name }}</td>
+                                            <td>{{ car.registration_no }}</td>
+                                            <td>{{ car.dateofregistration }}</td>
+                                            <td>{{ car.status }}</td>
+                                            <td>
+                                                <a href="{% url 'customadmin:vendor_car_edit' car.id %}">
+                                                    <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                                </a>
+                                                <a href="{% url 'customadmin:vendor_car_delete' car.id %}">
+                                                    <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                                </a>
+                                            </td>
                                             <td>
                                                 <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleCar1" aria-expanded="false" aria-controls="collapseExampleCar1">
                                                     <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
+                                                    <span style="font-size: 0.7rem;">Details</span>
                                                 </button>
                                             </td>
-                                        </tr>
 
                                         <tr>
                                             <td colspan="5" class="collapse-row" style="padding: 0px;">
@@ -406,77 +429,7 @@
                                             </td>
                                             
                                         </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td></td>
-                                            <td>16548498</td>
-                                            <td>Sedan</td>
-                                            <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="">
-                                                    <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
-                                                    <span style="font-size: 0.7rem;">Details</span> 
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        {% endfor %}
                                         
                                         </tbody>
                                     </table>
@@ -490,9 +443,9 @@
                                 <div class="card-body"  style="height: 500px; overflow: scroll;">
                                     <h4 class="card-title">
                                         Drivers
-                                        <a href="">
-                                            <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
+                                        <a href="{% url 'customadmin:vendor_driver_add' vendor.id %}">
+                                            <button type="button" style="float: right;" class="btn btn-primary mr-2 waves-effect waves-light mb-2">
+                                                <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
                                             </button>
                                         </a>
                                     </h4>
@@ -501,17 +454,34 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Vendor</th>
+                                            <th>Full Name</th>
+                                            <th>Father Name</th>
+                                            <th>Mobile</th>
+                                            <th>Alternate Mobile</th>
+                                            <th>Email</th>
                                             <th>Status</th>
+                                            <th></th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        
+                                        {% for driver in vendor.driver_set.all %}
                                         <tr>
-                                            <td></td>
-                                            <td>Abhinav</td>
-                                            <td>asdbjgjh</td>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ driver.full_name }}</td>
+                                            <td>{{ driver.father_name }}</td>
+                                            <td>{{ driver.contact1 }}</td>
+                                            <td>{{ driver.contact2 }}</td>
+                                            <td>{{ driver.email }}</td>
+                                            <td>{{ driver.status }}</td>
+                                            <td>
+                                                <a href="{% url 'customadmin:vendor_driver_edit' driver.id %}">
+                                                    <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                                </a>
+                                                <a href="{% url 'customadmin:vendor_driver_delete' driver.id %}">
+                                                    <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                                </a>
+                                            </td>
                                             <td>
                                                 <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleDriver1" aria-expanded="false" aria-controls="collapseExampleDriver1">
                                                     <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
@@ -587,7 +557,7 @@
                                             </td>
                                             
                                         </tr>
-                                        
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

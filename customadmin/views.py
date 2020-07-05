@@ -622,8 +622,8 @@ def DeleteCustomerView(request, id):
     return redirect( 'customadmin:customers')
 
 def UpdateCustomerPromotionalView(request, id):
-    profile = get_object_or_404(customermodels.customerprofile, id=id)
-    CustomerPromotionalFormset = inlineformset_factory(customermodels.customerprofile, customermodels.customer_promotional, exclude=['customer'], extra=1, can_delete=True)
+    profile = get_object_or_404(coremodels.User, id=id)
+    CustomerPromotionalFormset = inlineformset_factory(coremodels.User, coremodels.user_referral, exclude=['customer'], extra=1, can_delete=True)
     if request.method == 'POST':
         formset = CustomerPromotionalFormset(request.POST, request.FILES, instance = profile)
         if formset.is_valid():
@@ -702,7 +702,7 @@ def EditVendorView(request, id):
         profileform = forms.VendorForm(request.POST, request.FILES, instance=profile)
         if profileform.is_valid():
             profileform.save()
-        return redirect('customadmin:vendors')
+        return redirect('customadmin:vendor', id)
     else:
         userform = forms.UserForm(instance=user)
         form = forms.VendorForm(instance=profile)
@@ -717,38 +717,77 @@ def DeleteVendorView(request):
     vendor.delete()
     return redirect('customadmin:vendors')
 
-def UpdateVendorCarsView(request, id):
+def AddVendorCarView(request, id):
     vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
-    CarsFormset = inlineformset_factory(vendormodels.vendorprofile, vendormodels.vendor_cars, exclude=['vendor'], extra=2)
-
     if request.method == 'POST':
-        formset = CarsFormset(request.POST, request.FILES, instance = vendor)
-        if formset.is_valid():
-            formset.save()
+        form = forms.VendorCarForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.vendor = vendor
+            new_form.save()
         return redirect('customadmin:vendor', vendor.id)
     else:
-        formset = CarsFormset(instance = vendor)
+        form = forms.VendorCarForm()
         context = {
-            'formset':formset,
+            'form':form,
         }
-        return render(request, 'vendors/vendor_car_formset.html', context)
+        return render(request, 'vendors/car_form.html', context)
 
-def UpdateVendorDriversView(request, id):
-    vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
-    DriversFormset = inlineformset_factory(vendormodels.vendorprofile, vendormodels.vendor_cars, exclude=['vendor'],
-                                        extra=2)
-
+def EditVendorCarView(request, id):
+    car = get_object_or_404(vendormodels.vendor_cars, id=id)
     if request.method == 'POST':
-        formset = DriversFormset(request.POST, request.FILES, instance=vendor)
-        if formset.is_valid():
-            formset.save()
+        form = forms.VendorCarForm(request.POST, request.FILES, instance=car)
+        if form.is_valid():
+            form.save()
+        return redirect('customadmin:vendor', car.vendor.id)
+    else:
+        form = forms.VendorCarForm(instance=car)
+        context = {
+            'form':form,
+        }
+        return render(request, 'vendors/car_form.html', context)
+
+def DeleteVendorCarView(request, id):
+    car = get_object_or_404(vendormodels.vendor_cars, id = id)
+    vendor = car.vendor
+    car.delete()
+    return redirect('customadmin:vendor', vendor.id)
+
+def AddVendorDriver(request):
+    vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
+    if request.method == 'POST':
+        form = forms.VendorDriverForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.vendor = vendor
+            new_form.save()
         return redirect('customadmin:vendor', vendor.id)
     else:
-        formset = DriversFormset(instance=vendor)
+        form = forms.VendorDriverForm()
         context = {
-            'formset': formset,
+            'form':form,
         }
-        return render(request, 'vendors/vendor_driver_formset.html', context)
+        return render(request, 'vendors/driver_form.html', context)
+
+def EditVendorDriver(request, id):
+    driver = get_object_or_404(vendormodels.driver, id=id)
+    if request.method == 'POST':
+        form = forms.VendorDriverForm(request.POST, request.FILES, instance=driver)
+        if form.is_valid():
+            form.save()
+        return redirect('customadmin:vendor', driver.vendor.id)
+    else:
+        form = forms.VendorDriverForm(instance=driver)
+        context = {
+            'form':form,
+        }
+        return render(request, 'vendors/driver_form.html', context)
+
+def DeleteVendorDriver(request, id):
+    driver = get_object_or_404(vendormodels.driver, id=id)
+    vendor = driver.vendor
+    driver.delete()
+    return redirect('customadmin:vendor', vendor.id)
 
 def UpdateVendorBankDetailsView(request, id):
     vendor = get_object_or_404(vendormodels.vendorprofile, id=id)
@@ -765,37 +804,10 @@ def UpdateVendorBankDetailsView(request, id):
         context = {
             'formset': formset,
         }
-        return render(request, 'vendors/vendor_driver_formset.html', context)
+        return render(request, 'vendors/vendor_bank_formset.html', context)
 
-# def AddVendorCarView(request, id):
-#     form = forms.VendorCarForm()
-#     context = {
-#         'form':form,
-#     }
-#     return render(request, 'vendors/vendor_car_formset.html', context)
-#
-# def EditVendorCarView(request, id):
-#     context = {}
-#     return render(request, 'vendors/vendor_car_formset.html', context)
-#
-# def DeleteVendorCarView(request, id):
-#     context = {}
-#     return render(request, '', context)
-#
-# def AddVendorDriver(request):
-#     form = forms.VendorDriverForm()
-#     context = {
-#         'form':form,
-#     }
-#     return render(request, 'vendors/vendor_driver_formset.html', context)
-#
-# def EditVendorDriver(request, id):
-#     context = {}
-#     return render(request, 'vendors/vendor_driver_formset.html', context)
-#
-# def DeleteVendorDriver(request, id):
-#     context = {}
-#     return render(request, '', context)
+
+
 
 
 

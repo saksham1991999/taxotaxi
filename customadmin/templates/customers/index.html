@@ -66,7 +66,7 @@
                                 <tbody>
                                 {% for customer in customers %}
                                 <tr>
-                                    <td>{{ forloop.counter }}</td>
+                                    <td><input type="radio" name="customer" value="customer-{{ customer.id }}"></td>
                                     <td>{{ customer.user.first_name }}</td>
                                     <td>{{ customer.user.last_name }}</td>
                                     <td>{{ customer.user.mobile }}</td>
@@ -92,13 +92,13 @@
                 </div> <!-- end col -->
             </div> <!-- end row -->
               {% for customer in customers %}
-                    <div class="row">
+                    <div class="row customer-details" id="customer-{{ customer.id }}" style="display: none">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
 
                                 <h4 class="card-title"> Promotional Codes
-                                    <a href="{% url 'customadmin:customer_update_promotional' customer.id %}">
+                                    <a href="{% url 'customadmin:customer_update_promotional' customer.user.id %}">
                                         <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
                                             <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
                                         </button>
@@ -120,15 +120,16 @@
 
 
                                     <tbody>
-                                    {% for promotional_code in customer.customer_promotional_set.all %}
+                                    {% for refferal_code in customer.user.user_referral_set.all %}
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
-                                            <td>{{ promotional_code.promotional_code }}</td>
-                                            <td>{{ promotional_code.referralbenefit }}</td>
-                                            <td>{{ promotional_code.customerbenefit }}</td>
-                                            <td>{{ promotional_code.is_activated }}</td>
+                                            <td>{{ refferal_code.promotional_code }}</td>
+                                            <td>{{ refferal_code.referralbenefit }}</td>
+                                            <td>{{ refferal_code.customerbenefit }}</td>
+                                            <td>{{ refferal_code.is_activated }}</td>
                                         </tr>
                                     {% endfor %}
+
 
 
                                     </tbody>
@@ -156,5 +157,14 @@
 
 
 {% block extra_scripts %}
-
+<script>
+    $(document).ready(function(){
+        $('input[type=radio]').change(function(){
+            $('.customer-details').hide();
+            id = $(this).val()
+            str = '#' + id;
+            $(str).show();
+        });
+    });
+</script>
 {% endblock extra_scripts %}

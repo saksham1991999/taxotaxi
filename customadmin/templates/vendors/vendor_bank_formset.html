@@ -1,10 +1,174 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
 
-</body>
-</html>
+{% block extra_stylesheet %}
+
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Promotional Codes Form</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Customers</a></li>
+                                <li class="breadcrumb-item active">Promotional Codes Form</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="row">
+            <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <h4 class="card-title"></h4>
+                            <p class="card-title-desc"></p>
+                            <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ formset.management_form }}
+                                <div data-repeater-list="group-a" id="form_set">
+                                    {% for form in formset %}
+                                    <div data-repeater-item="" class="row">
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Account Number</label>
+                                            {% render_field form.account_no class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Bank Name</label>
+                                            {% render_field form.bank_name class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">IFSC</label>
+                                            {% render_field form.ifsc class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Account Holder Name</label>
+                                            {% render_field form.account_holder_name class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Bank Address</label>
+                                            {% render_field form.bank_address class="form-control" %}
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6">
+                                                    <label for="name">Type</label>
+                                                    {% render_field form.account_type class="form-control" %}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label for="name">Delete</label>
+                                                    {% render_field form.DELETE class="form-control" %}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {% for field in form.hidden_fields %}
+                                            {{ field }}
+                                        {% endfor %}
+                                    {{ form.errors }}
+                                    </div>
+
+                                    {% endfor %}
+                                </div>
+                            <input data-repeater-create="" type="button" class="btn btn-warning mt-3 mt-lg-0" value="Add" id="add_more">
+                            <input type="submit" class="btn btn-success mt-3 mt-lg-0" value="Save">
+
+                            </form>
+                        </div>
+                    </div>
+            </div>
+
+                <div hidden id="empty_form">
+                    <div data-repeater-item="" class="row">
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Account Number</label>
+                                            {% render_field formset.empty_form.account_no class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Bank Name</label>
+                                            {% render_field formset.empty_form.bank_name class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">IFSC</label>
+                                            {% render_field formset.empty_form.ifsc class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Account Holder Name</label>
+                                            {% render_field formset.empty_form.account_holder_name class="form-control" %}
+                                        </div>
+                                        <div class="form-group col-lg-2">
+                                            <label for="name">Bank Address</label>
+                                            {% render_field formset.empty_form.bank_address class="form-control" %}
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="row">
+                                                <div class="form-group col-lg-6">
+                                                    <label for="name">Type</label>
+                                                    {% render_field formset.empty_form.account_type class="form-control" %}
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label for="name">Delete</label>
+                                                    {% render_field formset.empty_form.DELETE class="form-control" %}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                        {% for field in formset.empty_form.hidden_fields %}
+                            {{ field }}
+                        {% endfor %}
+                        {{  formset.empty_form.errors }}
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+
+</div>
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+<script>
+    $('#add_more').click(function() {
+        var form_idx = $('#id_bank_detail_set-TOTAL_FORMS').val();
+        console.log(form_idx);
+        $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+        $('#id_bank_detail_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+    });
+
+    $( document ).ready(function() {
+        $( "input[name*='date']" ).datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+        });
+    });
+</script>
+{% endblock extra_scripts %}

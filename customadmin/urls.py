@@ -60,7 +60,8 @@ urlpatterns = [
     path('customers/add/',views.AddCustomerView, name="customer_add"),
     path('customers/edit/<int:id>/',views.EditCustomerView, name="customer_edit"),
     path('customers/delete/<int:id>/',views.DeleteCustomerView, name="customer_delete"),
-    path('customers/promotional/update/<int:id>/', views.UpdateCustomerPromotionalView, name="customer_update_promotional"),
+
+    path('promotional/update/<int:id>/', views.UpdateCustomerPromotionalView, name="customer_update_promotional"),
 
     # Vendor Urls
     path('vendors/',views.VendorsView, name="vendors"),
@@ -69,15 +70,15 @@ urlpatterns = [
     path('vendor/update-status/<int:id>/',views.UpdateVendorStatusView, name="vendor_update_status"),
     path('vendor/edit/<int:id>/',views.EditVendorView, name="vendor_edit"),
     path('vendor/delete/<int:id>/',views.DeleteVendorView, name="vendor_delete"),
-    path('vendor/cars/update/<int:id>/', views.UpdateVendorCarsView, name="vendor_cars_update"),
-    path('vendor/drivers/update/<int:id>/', views.UpdateVendorDriversView, name="vendor_drivers_update"),
-    path('vendor/bank-details/update/<int:id>/', views.UpdateVendorDriversView, name="vendor_banks_update"),
-    # path('vendor/car/add/<int:id>/', views.AddVendorCarView, name="vendor_car_add"),
-    # path('vendor/car/edit/<int:id>/', views.EditVendorCarView, name="vendor_car_edit"),
-    # path('vendor/car/delete/<int:id>/', views.DeleteVendorCarView, name="vendor_car_delete"),
-    # path('vendor/driver/add/<int:id>/', views.AddVendorDriver, name="vendor_driver_add"),
-    # path('vendor/driver/edit/<int:id>/', views.EditVendorDriver, name="vendor_driver_edit"),
-    # path('vendor/driver/delete/<int:id>/', views.DeleteVendorDriver, name="vendor_driver_delete"),
+    # path('vendor/cars/update/<int:id>/', views.UpdateVendorCarsView, name="vendor_cars_update"),
+    # path('vendor/drivers/update/<int:id>/', views.UpdateVendorDriversView, name="vendor_drivers_update"),
+    path('vendor/bank-details/update/<int:id>/', views.UpdateVendorBankDetailsView, name="vendor_banks_update"),
+    path('vendor/car/add/<int:id>/', views.AddVendorCarView, name="vendor_car_add"),
+    path('vendor/car/edit/<int:id>/', views.EditVendorCarView, name="vendor_car_edit"),
+    path('vendor/car/delete/<int:id>/', views.DeleteVendorCarView, name="vendor_car_delete"),
+    path('vendor/driver/add/<int:id>/', views.AddVendorDriver, name="vendor_driver_add"),
+    path('vendor/driver/edit/<int:id>/', views.EditVendorDriver, name="vendor_driver_edit"),
+    path('vendor/driver/delete/<int:id>/', views.DeleteVendorDriver, name="vendor_driver_delete"),
 
     # Test Views
     path('test/1/', views.TestView1, name='test1'),
