@@ -80,6 +80,7 @@
                                     <td>{{ vendor.status }}</td>
 
                                     <td>
+                                        <div style="display: flex;">
                                         <a href="{% url 'customadmin:vendor' vendor.id %}">
                                             <i class="bx bx-show font-size-16 align-middle"></i>
                                         </a>
@@ -92,6 +93,7 @@
                                         <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,6 +108,7 @@
                                     <td>{{ vendor.status }}</td>
 
                                     <td>
+                                        <div style="display: flex;">
                                         <a href="{% url 'customadmin:vendor' vendor.id %}">
                                             <i class="bx bx-show font-size-16 align-middle"></i>
                                         </a>
@@ -118,6 +121,7 @@
                                         <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
+                                        </div>
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -133,7 +137,7 @@
 
         {% for vendor in vendors %}
             <div class="row">
-                <div class="col-4">
+                <div class="col-6">
                     <div class="card">
                         <div class="card-body">
 
@@ -168,6 +172,22 @@
                                         <td>{{ car.car_type }}</td>
                                         <td>{{ car.registration_no }}</td>
                                         <td>{{ car.dateofregistration }}</td>
+                                        <td>
+                                            <div style="display: flex;">
+                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                                <i class="bx bx-show font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                            </a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                     <tr class="vendor1 vendors">
@@ -184,6 +204,22 @@
                                         <td>bendor13</td>
                                         <td>654erfsfe</td>
                                         <td>646erwe</td>
+                                        <td>
+                                            <div style="display: flex;">
+                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                                <i class="bx bx-show font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                            </a>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                     <tr class="vendor2 vendors">
@@ -192,6 +228,22 @@
                                         <td>asdfv3513</td>
                                         <td>654erfsfe</td>
                                         <td>646erwe</td>
+                                        <td>
+                                            <div style="display: flex;">
+                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                                <i class="bx bx-show font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                            </a>
+                                            </div>
+                                        </td>
                                     </tr>
 
                                     <tr class="vendor2 vendors">
@@ -200,6 +252,22 @@
                                         <td>asdfv3513</td>
                                         <td>654erfsfe</td>
                                         <td>646erwe</td>
+                                        <td>
+                                            <div style="display: flex;">
+                                            <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                                <i class="bx bx-show font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                                <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                            </a>
+                                            <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                                <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                            </a>
+                                            </div>
+                                        </td>
                                     </tr>
                          
                               
@@ -210,7 +278,7 @@
                     </div>
                 </div> 
                 <!-- end col -->
-                <div class="col-8">
+                <div class="col-6">
                     <div class="card">
                         <div class="card-body">
 
@@ -244,6 +312,22 @@
                                     <td>{{ driver.contact1 }}</td>
                                     <td>{{ driver.contact2 }}</td>
                                     <td>{{ driver.email }}</td>
+                                    <td>
+                                        <div style="display: flex;">
+                                        <a href="{% url 'customadmin:vendor' vendor.id %}">
+                                            <i class="bx bx-show font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
+                                            <i class="bx bx-check-square font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                            <i class="bx bx-edit-alt font-size-16 align-middle"></i>
+                                        </a>
+                                        <a href="{% url 'customadmin:vendor_edit' vendor.id %}">
+                                            <i class="bx bxs-trash font-size-16 align-middle"></i>
+                                        </a>
+                                    </div>
+                                    </td>
                                 </tr>
                                 {% endfor %}
                               
