@@ -356,7 +356,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleCar1" aria-expanded="false" aria-controls="collapseExampleCar1">
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleCar-{{ car.id }}" aria-expanded="false" aria-controls="collapseExampleCar-{{ car.id }}">
                                                     <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
                                                     <span style="font-size: 0.7rem;">Details</span>
                                                 </button>
@@ -364,7 +364,7 @@
 
                                         <tr>
                                             <td colspan="5" class="collapse-row" style="padding: 0px;">
-                                                <div class="collapse" id="collapseExampleCar1">
+                                                <div class="collapse" id="collapseExampleCar-{{ car.id }}">
                                                     <div class="card">
                                                         <div class="card-body bank-collapse row">
                                                             <div class="col-6">
@@ -520,7 +520,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleDriver1" aria-expanded="false" aria-controls="collapseExampleDriver1">
+                                                <button type="button" style="margin-right: 10px;" class="btn btn-warning waves-effect waves-light" data-toggle="collapse" data-target="#collapseExampleDriver-{{ driver.id }}" aria-expanded="false" aria-controls="collapseExampleDriver-{{ driver.id }}">
                                                     <i class="bx bx-add-to-queue font-size-16 align-middle"></i>
                                                     <span style="font-size: 0.7rem;">Details</span> 
                                                 </button>
@@ -529,7 +529,7 @@
 
                                         <tr>
                                             <td colspan="5" class="collapse-row" style="padding: 0px;">
-                                                <div class="collapse" id="collapseExampleDriver1">
+                                                <div class="collapse" id="collapseExampleDriver-{{ driver.id }}">
                                                     <div class="card">
                                                         <div class="card-body bank-collapse row">
                                                             <div class="col-4">
