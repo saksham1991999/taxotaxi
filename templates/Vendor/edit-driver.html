@@ -304,6 +304,7 @@
                console.log(id);
                var pfile = '#' + id + '-p';
                $(pfile).text(fileName);
+               $(pfile).css("font-weight","600");
        });
                 $('.input-file2').change(function (e) {
                    var fileName = e.target.files[0].name;
