@@ -211,7 +211,7 @@ def EditCarView(request, id):
             context = {
                 'car_form': car_form,
             }
-            return render(request, 'Vendor/cars.html', context)
+            return render(request,'Vendor/edit-car.html', context)
         else:
             car_form = forms.AddCarForm(prefix='car', instance=car)
             context = {
@@ -280,7 +280,7 @@ def EditDriverView(request, id):
             context = {
                 'driver_form': driver_form,
             }
-            return render(request, 'Vendor/drivers.html', context)
+            return render(request, 'Vendor/edit-driver.html', context)
         else:
             driver_form = forms.AddDriverForm(prefix='driver', instance=driver)
             context = {

@@ -509,16 +509,18 @@ def ForgotPasswordView(request):
             mobile = form.cleaned_data['mobile']
             try:
                 user = get_object_or_404(models.User, username=mobile)
+                otp = random.randint(1000, 9999)
+                request.session['mobile'] = mobile
+                request.session['otp'] = otp
+                message = 'HI, ' + str(mobile) + '. Please use ' + str(
+                    otp) + " to complete your change password request. If you haven't requested, please ignore"
+                SMS(str(mobile), message)
+                return redirect('core:forgot_password_otp')
             except:
                 messages.error(request, 'This Mobile Number is not Registered with us.',  extra_tags='alert alert-error alert-dismissible' )
                 # raise ValidationError(_("This Mobile Number is not Registered"))
                 return redirect('core:forgot_password')
-            otp = random.randint(1000, 9999)
-            request.session['mobile'] = mobile
-            request.session['otp'] = otp
-            message = 'HI, ' + str(mobile) + '. Please use ' + str(otp) + " to complete your change password request. If you haven't requested, please ignore"
-            SMS(str(mobile), message)
-            return redirect('core:forgot_password_otp')
+
         else:
             raise ValidationError(_('Please Enter a Valid Phone Number'))
     else:
@@ -536,6 +538,7 @@ def ForgotPasswordOTPView(request):
             generated_otp = request.session['otp']
             otp_entered = form.cleaned_data['otp']
             new_password = form.cleaned_data['password1']
+            print(otp_entered)
             if int(otp_entered) == int(generated_otp):
                 user = get_object_or_404(models.User, username = mobile)
                 user.set_password(new_password)
@@ -547,7 +550,11 @@ def ForgotPasswordOTPView(request):
             else:
                 messages.error(request, "Entered OTP is wrong !! Please enter correct OTP",  extra_tags='alert alert-error alert-dismissible')
                 return redirect('core:forgot_password_otp')
-                raise ValidationError(_("Entered OTP is wrong !! Please enter correct OTP"))
+        print(form.errors)
+        context = {
+            'form': form,
+        }
+        return render(request, 'Reset Password/reset_password.html', context)
     else:
         form = forms.ResetPasswordForm()
         context = {
