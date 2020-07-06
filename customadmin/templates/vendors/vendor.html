@@ -98,11 +98,13 @@
                                 <h4 style="width: 50%;">{{ vendor.gst_no }}</h4>
                             </div>
                         </div>
+                        {% if vendor.image %}
                         <div class="col-sm-3 img-button">
                             <img src="{{ vendor.image.url }}" alt="" width="100%" class="center">
                             <div style="margin-bottom: 20px"></div>
                             
                         </div>
+                        {% endif %}
                     </div>
                     <!-- <div class="row">
                         <a href="{% url 'customadmin:vendor_update_status' vendor.id %}">
