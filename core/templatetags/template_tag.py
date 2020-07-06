@@ -62,14 +62,18 @@ def car_attr_value(type, attr):
 @register.filter
 def profile_pic(user):
     if user.is_authenticated:
+        pic = None
         if user.is_vendor:
             vendor = vendormodels.vendorprofile.objects.get(user = user)
-            pic = vendor.image.url
+            if vendor.image:
+                pic = vendor.image.url
         elif user.is_driver:
             driver = vendormodels.driver.objects.get(user = user)
-            pic = driver.image.url
+            if driver.image:
+                pic = driver.image.url
         else:
-            pic = user.profile_pic.url
+            if user.profile_pic:
+                pic = user.profile_pic.url
         if pic:
             return pic
     return None
@@ -92,6 +96,7 @@ def first_name(user):
 @register.filter
 def full_name(user):
     if user.is_authenticated:
+        full_name = "Guest  "
         if user.is_vendor:
             vendor = vendormodels.vendorprofile.objects.get(user = user)
             if len(list(vendor.full_name.split())) > 1:
@@ -105,8 +110,9 @@ def full_name(user):
             else:
                 full_name = driver.full_name + '  '
         else:
-            full_name = str(user.first_name) + ' ' + str(user.last_name)
+            if user.first_name or user.last_name:
+                full_name = str(user.first_name) + ' ' + str(user.last_name)
 
         if full_name:
             return full_name
-    return 'Guest'
+    return 'Taxo Taxi'
