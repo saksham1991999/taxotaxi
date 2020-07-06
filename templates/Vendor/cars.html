@@ -62,7 +62,7 @@
                                    <a href="{% url 'vendor:edit_car' car.id %}">
                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
                                    </a>
-                                   <a href="{% url 'vendor:edit_car' car.id %}">
+                                   <a href="{% url 'vendor:delete_car' car.id %}">
                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
                                    </a>
                                </td>
@@ -348,8 +348,12 @@
                                   </div>
                                </div>
                                <div class="modal-footer">
+                                   <a href="{% url 'vendor:edit_car' car.id %}">
                                 <button type="button" class="btn btn-primary" >Edit</button>
+                                   </a>
+                                   <a href="{% url 'vendor:delete_car' car.id %}">
                                  <button type="button" class="btn btn-danger" >Delete</button>
+                                   </a>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                </div>
                              </div>
