@@ -69,7 +69,7 @@
                                 <tbody>
                                 {% for vendor in vendors %}
                                 <tr>
-                                    <td><input type="radio" name="vendors" value="vendor-{{ vendor.id }}" onclick="vendor_details(this)"></td>
+                                    <td><input type="radio" name="vendors" value="vendor-{{ vendor.id }}" onclick="DisplayFunc(this)"></td>
                                     <td>{{ vendor.user.full_name }}</td>
                                     <td>{{ vendor.user.father_name }}</td>
                                     <td>{{ vendor.user.mobile }}</td>
@@ -243,6 +243,19 @@
 
 {% block extra_scripts %}
 <script>
+    console.log("afajfb");
+    
+
+    function DisplayFunc(ele){
+    console.log(ele);
+    $('.vendor-details').hide();
+    id = $(ele).val();
+    str = '#' + id;
+    $(str).show();
+}
+
+</script>
+<script>
     // console.log("hiiiiiii");
     // $("#checkbox1").click(function(){
     //         if($(this).is(":checked")){
@@ -253,46 +266,38 @@
     //         }
     //     });
 
-    {#for( var i=0 ; i<$(".vendors").length ; i++) {#}
-    {#         $(".vendors")[i].classList.add("hidden");#}
-    {#    }#}
-    {#function MainFunc(ele){#}
-    {#    #}
-    {#    if(ele.checked==true){#}
-    {#        var req_id = `${ele.id}`;#}
-    {#    var number = req_id.slice(8,req_id.length);#}
-    {#    var req_class = `vendor${number}`;#}
-    {#    // console.log(document.querySelectorAll(".vendors"));#}
-    {##}
-    {#    console.log($(".vendors"));#}
-    {#    // for( var i=0 ; i<$(".vendors").length ; i++) {#}
-    {#    //      $(".vendors")[i].classList.add("hidden");#}
-    {#    // }#}
-    {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
-    {#         $(`.${req_class}`).removeClass("hidden");#}
-    {#    }#}
-    {#    }else{#}
-    {#        var req_id = `${ele.id}`;#}
-    {#    var number = req_id.slice(8,req_id.length);#}
-    {#    var req_class = `vendor${number}`;#}
-    {##}
-    {#    console.log($(".vendors"));#}
-    {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
-    {#         $(`.${req_class}`).addClass("hidden");#}
-    {#    }#}
-    {#    }#}
-    {#    #}
+    // {#for( var i=0 ; i<$(".vendors").length ; i++) {#}
+    // {#         $(".vendors")[i].classList.add("hidden");#}
+    // {#    }#}
+    // {#function MainFunc(ele){#}
+    // {#    #}
+    // {#    if(ele.checked==true){#}
+    // {#        var req_id = `${ele.id}`;#}
+    // {#    var number = req_id.slice(8,req_id.length);#}
+    // {#    var req_class = `vendor${number}`;#}
+    // {#    // console.log(document.querySelectorAll(".vendors"));#}
+    // {##}
+    // {#    console.log($(".vendors"));#}
+    // {#    // for( var i=0 ; i<$(".vendors").length ; i++) {#}
+    // {#    //      $(".vendors")[i].classList.add("hidden");#}
+    // {#    // }#}
+    // {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
+    // {#         $(`.${req_class}`).removeClass("hidden");#}
+    // {#    }#}
+    // {#    }else{#}
+    // {#        var req_id = `${ele.id}`;#}
+    // {#    var number = req_id.slice(8,req_id.length);#}
+    // {#    var req_class = `vendor${number}`;#}
+    // {##}
+    // {#    console.log($(".vendors"));#}
+    // {#    for( var i=0 ; i<$(`.${req_class}`).length ; i++) {#}
+    // {#         $(`.${req_class}`).addClass("hidden");#}
+    // {#    }#}
+    // {#    }#}
+    // {#    #}
 
 
-    $(document).ready(function(){
-
-        function vendor_details(this){
-            $('.vendor-details').hide();
-            id = $(this).val()
-            str = '#' + id;
-            $(str).show();
-        }
-    });
+    
 
 </script>
 {% endblock extra_scripts %}
