@@ -53,8 +53,8 @@
                                 <thead>
                                 <tr>
                                     <th></th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
+                                    <th>Name</th>
+                                    <th>Father Name</th>
                                     <th>Mobile</th>
                                     <th>Alternate Mobile</th>
                                     <th>Email</th>
@@ -69,10 +69,9 @@
                                 <tbody>
                                 {% for vendor in vendors %}
                                 <tr>
-                                    <td><input type="radio" name="vendors" value="vendor-{{ vendor.id }}"></td>
-                                    <td>{{ forloop.counter }}</td>
-                                    <td>{{ vendor.user.first_name }}</td>
-                                    <td>{{ vendor.user.last_name }}</td>
+                                    <td><input type="radio" name="vendors" value="vendor-{{ vendor.id }}" onclick="vendor_details(this)"></td>
+                                    <td>{{ vendor.user.full_name }}</td>
+                                    <td>{{ vendor.user.father_name }}</td>
                                     <td>{{ vendor.user.mobile }}</td>
                                     <td>{{ vendor.user.contact2 }}</td>
                                     <td>{{ vendor.user.email }}</td>
@@ -286,12 +285,13 @@
 
 
     $(document).ready(function(){
-        $('input[type=radio]').change(function(){
+
+        function vendor_details(this){
             $('.vendor-details').hide();
             id = $(this).val()
             str = '#' + id;
             $(str).show();
-        });
+        }
     });
 
 </script>
