@@ -59,9 +59,9 @@
                                    <td class="wait">Temp Approved</td>
                                {% endif %}
                                <td>
-                                   <a href="{% url 'vendor:edit_car' car.id %}">
-                                       <button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
-                                   </a>
+                                   <!-- <a href="{% url 'vendor:edit_car' car.id %}"> -->
+                                       <button type="button" class="btn btn-primary" click="location.href='{% url 'vendor:edit_car' car.id %}'"data-dismiss="modal">Edit</button>
+                                   <!-- </a> -->
                                    <a href="{% url 'vendor:delete_car' car.id %}">
                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
                                    </a>

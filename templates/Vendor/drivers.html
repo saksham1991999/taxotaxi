@@ -68,9 +68,9 @@
                                            <span class="fa fa-star"></span>
                                            <span class="fa fa-star"></span></td>
                                         <td>
-                                            <a href="{% url 'vendor:edit_driver' driver.id %}">
-                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Edit</button>
-                                            </a>
+                                            <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
+                                                <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'"data-dismiss="modal">Edit</button>
+                                            <!-- </a> -->
                                             <a href="{% url 'vendor:delete_driver' driver.id %}">
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
                                             </a>
@@ -436,7 +436,7 @@
                                </div>
                                <div class="modal-footer">
                                    <a href="{% url 'vendor:edit_driver' driver.id %}">
-                                    <button type="button" class="btn btn-primary" >Edit</button>
+                                    <button type="button" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'" class="btn btn-primary" >Edit</button>
                                    </a>
                                    <a href="{% url 'vendor:delete_driver' driver.id %}">
                                      <button type="button" class="btn btn-danger" >Delete</button>
