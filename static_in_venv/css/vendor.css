@@ -530,3 +530,75 @@ font-weight: bold;
 }
 #datepicker{width: -webkit-fill-available;}
 #datepicker > span:hover{cursor: pointer;}
+/*-------Delete confirmation CSS------*/
+    .BlockUIConfirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1200;
+    display: none;
+}
+
+.blockui-mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 0.4;
+}
+
+.RowDialogBody {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    opacity: 1;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.RowDialogBody > div:not(.confirm-body) {
+    padding: 8px 10px;
+}
+
+.confirm-header {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 0;
+}
+
+.row-dialog-hdr-success {
+    border-top: 4px solid #ffc000;
+    border-bottom: 1px solid transparent;
+}
+
+.row-dialog-hdr-info {
+    border-top: 4px solid #5bc0de;
+    border-bottom: 1px solid transparent;
+}
+
+.confirm-body {
+    border-top: 1px solid #ccc;
+    padding:20px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.confirm-btn-panel {
+    width: 100%;
+}
+.row-dialog-btn {
+    cursor: pointer;
+}
+
+.btn-naked {
+    background-color: transparent;
+}
+/*-------Delete Confirmation CSS End-------*/

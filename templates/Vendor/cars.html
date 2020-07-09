@@ -60,11 +60,11 @@
                                {% endif %}
                                <td>
                                    <!-- <a href="{% url 'vendor:edit_car' car.id %}"> -->
-                                       <button type="button" class="btn btn-primary" click="location.href='{% url 'vendor:edit_car' car.id %}'"data-dismiss="modal">Edit</button>
+                                       <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_car' car.id %}'">Edit</button>
                                    <!-- </a> -->
-                                   <a href="{% url 'vendor:delete_car' car.id %}">
-                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                                   </a>
+                                   <!-- <a href="{% url 'vendor:delete_car' car.id %}"> -->
+                                    <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_car' car.id %}')" >Delete</button>
+                                   <!-- </a> -->
                                </td>
                            </tr>
                            {% endfor %}
@@ -348,12 +348,12 @@
                                   </div>
                                </div>
                                <div class="modal-footer">
-                                   <a href="{% url 'vendor:edit_car' car.id %}">
-                                <button type="button" class="btn btn-primary" >Edit</button>
-                                   </a>
-                                   <a href="{% url 'vendor:delete_car' car.id %}">
-                                 <button type="button" class="btn btn-danger" >Delete</button>
-                                   </a>
+                                   <!-- <a href="{% url 'vendor:edit_car' car.id %}"> -->
+                                <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_car' car.id %}'">Edit</button>
+                                   <!-- </a> -->
+                                  <!--  <a href="{% url 'vendor:delete_car' car.id %}"> -->
+                                 <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_car' car.id %}')" >Delete</button>
+                                   <!-- </a> -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                </div>
                              </div>
@@ -367,7 +367,23 @@
         </div>
     </div>
 </div>
-
+<div id="BlockUIConfirm" class="BlockUIConfirm">
+    <div class="blockui-mask"></div>
+    <div class="RowDialogBody">
+        <div class="confirm-header row-dialog-hdr-success">
+            Delete Confirmtion
+        </div>
+        <div class="confirm-body">
+            Please confirm to delete data
+        </div>
+        <div class="confirm-btn-panel pull-right">
+            <div class="btn-holder pull-right">
+                <input type="button" class="row-dialog-btn btn btn-success" value="Yes, Delete" onclick="okDelete();" />
+                <input type="button" class="row-dialog-btn btn btn-naked" value="No, Cancel" onclick="$('#BlockUIConfirm').hide();" />
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 
@@ -444,6 +460,21 @@
     });
 
 </script>
+<script type="text/javascript">
+    //  Delete Confirmation code 
+    var delAddress;
+    function confirm_delete(temp) {
+        delAddress=temp;
+        // alert(delAddress);
+    $("#BlockUIConfirm").show();
+}
 
+function okDelete() {
+    // alert("Form would be deleted.");
+    $('#BlockUIConfirm').hide();
+    window.location.href=delAddress;
+    
+}
+</script>
 
 {% endblock extra_scripts %}

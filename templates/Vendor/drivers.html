@@ -14,6 +14,77 @@
         width: auto;
         height: inherit;
     }*/
+/*    .BlockUIConfirm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 50;
+    display: none;
+}
+
+.blockui-mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 0.4;
+}
+
+.RowDialogBody {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    opacity: 1;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.RowDialogBody > div:not(.confirm-body) {
+    padding: 8px 10px;
+}
+
+.confirm-header {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    font-size: 13pt;
+    font-weight: bold;
+    margin: 0;
+}
+
+.row-dialog-hdr-success {
+    border-top: 4px solid #ffc000;
+    border-bottom: 1px solid transparent;
+}
+
+.row-dialog-hdr-info {
+    border-top: 4px solid #5bc0de;
+    border-bottom: 1px solid transparent;
+}
+
+.confirm-body {
+    border-top: 1px solid #ccc;
+    padding:20px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.confirm-btn-panel {
+    width: 100%;
+}
+.row-dialog-btn {
+    cursor: pointer;
+}
+
+.btn-naked {
+    background-color: transparent;
+}
+*/
 </style>
 
 {% endblock extra_stylesheet %}
@@ -71,9 +142,9 @@
                                             <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
                                                 <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'"data-dismiss="modal">Edit</button>
                                             <!-- </a> -->
-                                            <a href="{% url 'vendor:delete_driver' driver.id %}">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
-                                            </a>
+                                            <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
+                                                <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
+                                            <!-- </a> -->
                                         </td>
                                      </tr>
                                     {% endfor %}
@@ -435,12 +506,12 @@
                                 </div>
                                </div>
                                <div class="modal-footer">
-                                   <a href="{% url 'vendor:edit_driver' driver.id %}">
+                                   <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
                                     <button type="button" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'" class="btn btn-primary" >Edit</button>
-                                   </a>
-                                   <a href="{% url 'vendor:delete_driver' driver.id %}">
-                                     <button type="button" class="btn btn-danger" >Delete</button>
-                                   </a>
+                                   <!-- </a> -->
+                                   <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
+                                     <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
+                                   <!-- </a> -->
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                </div>
                              </div>
@@ -453,7 +524,23 @@
         </div>
     </div>
 </div>
-
+<div id="BlockUIConfirm" class="BlockUIConfirm">
+    <div class="blockui-mask"></div>
+    <div class="RowDialogBody">
+        <div class="confirm-header row-dialog-hdr-success">
+            Delete Confirmtion
+        </div>
+        <div class="confirm-body">
+            Please confirm to delete data
+        </div>
+        <div class="confirm-btn-panel pull-right">
+            <div class="btn-holder pull-right">
+                <input type="button" class="row-dialog-btn btn btn-success" value="Yes, Delete" onclick="okDelete();" />
+                <input type="button" class="row-dialog-btn btn btn-naked" value="No, Cancel" onclick="$('#BlockUIConfirm').hide();" />
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
 
@@ -556,6 +643,22 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
+</script>
+<script type="text/javascript">
+    //  Delete Confirmation code 
+    var delAddress;
+    function confirm_delete(temp) {
+        delAddress=temp;
+        // alert(delAddress);
+    $("#BlockUIConfirm").show();
+}
+
+function okDelete() {
+    // alert("Form would be deleted.");
+    $('#BlockUIConfirm').hide();
+    window.location.href=delAddress;
+    
+}
 </script>
 
 
