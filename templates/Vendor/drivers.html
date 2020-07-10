@@ -2,664 +2,597 @@
 {% load static %}
 {% load widget_tweaks %}
 {% load fullurl %}
-
 {% block extra_stylesheet %}
-
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-    /*#blah{
-        width: auto;
-        height: inherit;
-    }*/
-/*    .BlockUIConfirm {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 50;
-    display: none;
-}
-
-.blockui-mask {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #333;
-    opacity: 0.4;
-}
-
-.RowDialogBody {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 400px;
-    opacity: 1;
-    background-color: white;
-    border-radius: 4px;
-}
-
-.RowDialogBody > div:not(.confirm-body) {
-    padding: 8px 10px;
-}
-
-.confirm-header {
-    width: 100%;
-    border-radius: 4px 4px 0 0;
-    font-size: 13pt;
-    font-weight: bold;
-    margin: 0;
-}
-
-.row-dialog-hdr-success {
-    border-top: 4px solid #ffc000;
-    border-bottom: 1px solid transparent;
-}
-
-.row-dialog-hdr-info {
-    border-top: 4px solid #5bc0de;
-    border-bottom: 1px solid transparent;
-}
-
-.confirm-body {
-    border-top: 1px solid #ccc;
-    padding:20px 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.confirm-btn-panel {
-    width: 100%;
-}
-.row-dialog-btn {
-    cursor: pointer;
-}
-
-.btn-naked {
-    background-color: transparent;
-}
-*/
+   /*#blah{
+   width: auto;
+   height: inherit;
+   }*/
+   /*    .BlockUIConfirm {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 100vh;
+   width: 100vw;
+   z-index: 50;
+   display: none;
+   }
+   .blockui-mask {
+   position: absolute;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #333;
+   opacity: 0.4;
+   }
+   .RowDialogBody {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 100%;
+   max-width: 400px;
+   opacity: 1;
+   background-color: white;
+   border-radius: 4px;
+   }
+   .RowDialogBody > div:not(.confirm-body) {
+   padding: 8px 10px;
+   }
+   .confirm-header {
+   width: 100%;
+   border-radius: 4px 4px 0 0;
+   font-size: 13pt;
+   font-weight: bold;
+   margin: 0;
+   }
+   .row-dialog-hdr-success {
+   border-top: 4px solid #ffc000;
+   border-bottom: 1px solid transparent;
+   }
+   .row-dialog-hdr-info {
+   border-top: 4px solid #5bc0de;
+   border-bottom: 1px solid transparent;
+   }
+   .confirm-body {
+   border-top: 1px solid #ccc;
+   padding:20px 10px;
+   border-bottom: 1px solid #ccc;
+   }
+   .confirm-btn-panel {
+   width: 100%;
+   }
+   .row-dialog-btn {
+   cursor: pointer;
+   }
+   .btn-naked {
+   background-color: transparent;
+   }
+   */
 </style>
-
 {% endblock extra_stylesheet %}
-
-
-
 {% block content %}
 <div class="tj-wrapper">
-    <div class="container">
-        <div class="row">
-
-          {% include 'Vendor/vendorSidebar.html' %}
-
-                <!-- --------Begning of navigation tabs---------- -->
-                <div class="col-md-9">
-                            <div class="col-md-12 col-sm-12 vendorHeader">
-                                <h4 class="text-center">Driver Details</h4>
-                            </div>
-                            <div class="col-sm-12 col-md-12" id="vendorTable">
-                                <div class="responsiveTable">
-                                <table>
-                                     <tr>
-                                       <th>S.N0.</th>
-                                       <th class="setTableWidth">Driver Name</th>
-                                       <th>Phone No</th>
-                                       <th>Oprational</th>
-                                       <th>Status</th>
-                                       <th>Rating</th>
-                                       <th></th>
-                                     </tr>
-                                    {% for driver in drivers %}
-                                     <tr>
-                                       <td>{{ forloop.counter }}</td>
-                                       <td class="setTableWidth"><a data-toggle="modal" data-target="#driverInformation-{{ forloop.counter }}">{{ driver.full_name }}</a></td>
-                                       <td>{{ driver.contact1 }}</td>
-                                         {% if driver.status == 'Approved' %}
-                                           <td class="check">&#10004</td>
-                                           <td class="check">Approved</td>
-                                         {% elif driver.status == 'Rejected' %}
-                                           <td class="cross">✘</td>
-                                           <td class="cross">Rejected</td>
-                                         {% elif driver.status == 'Hold' %}
-                                           <td class="cross">✘</td>
-                                           <td class="wait">Hold</td>
-                                         {% elif driver.status == 'Temp Approved' %}
-                                           <td class="cross">✘</td>
-                                           <td class="wait">Temp Approved</td>
-                                         {% endif %}
-                                       <td><span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star checked"></span>
-                                           <span class="fa fa-star"></span>
-                                           <span class="fa fa-star"></span></td>
-                                        <td>
-                                            <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
-                                                <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'"data-dismiss="modal">Edit</button>
-                                            <!-- </a> -->
-                                            <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
-                                                <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
-                                            <!-- </a> -->
-                                        </td>
-                                     </tr>
-                                    {% endfor %}
-                                 </table>
-                               </div>
-                                 <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Driver +</button> </div>
-
-                                <div class="col-sm-12 addDriverFoam">
-                                    <form method="post" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                        <div class="col-sm-8">
-
-                                            {% for error in driver_form.non_field_errors.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-                                            <div class="foam-field">
-                                                <label>Full Name</label>
-                                                {% render_field driver_form.full_name %}
-                                            </div>
-
-                                            {% for error in driver_form.full_name.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Father's Name</label>
-                                                {% render_field driver_form.father_name %}
-                                            </div>
-
-                                            {% for error in driver_form.father_name.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Date Of Birth</label>
-                                                {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
-                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                            </div>
-
-                                            {% for error in driver_form.dob.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Email address*</label>
-                                                {% render_field driver_form.email %}
-                                            </div>
-
-                                            {% for error in driver_form.email.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Phone No 1*</label>
-                                                {% render_field driver_form.contact1 pattern="[1-9]{1}[0-9]{9}"%}
-                                            </div>
-
-                                            {% for error in driver_form.contact1.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Phone No 2*</label>
-                                                {% render_field driver_form.contact2 pattern="[1-9]{1}[0-9]{9}"%}
-                                            </div>
-
-                                            {% for error in driver_form.contact2.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label>Address*</label>
-                                                {% render_field driver_form.address %}
-                                            </div>
-
-                                            {% for error in driver_form.address.errors %}
-                                                <div class="errorSpace"> {{ error}}</div>
-                                            {% endfor %}
-
-                                            <div class="foam-field">
-                                                <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                                            </div>
-
-                                            <div class="foam-field">
-                                                <label>PAN Card*</label>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.pancard_front %}
-                                                    <p class="fileUploadtext" id="id_driver-pancard_front-p">
-                                                        <i class="far fa-file"></i> &ensp; Front Side
-                                                    </p>
-                                                </div>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.pancard_rear %}
-                                                    <p class="fileUploadtext" id="id_driver-pancard_rear-p">
-                                                        <i class="far fa-file"></i> &ensp; Back side
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.pancard_front.errors }}</div>
-                                            <div class="errorSpace">{{ driver_form.pancard_rear.errors }}</div>
-
-                                            <div class="foam-field">
-                                                <label>
-                                                    Aadhar Card*
-                                                    <p>Size must be 200KB</p>
-                                                </label>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.aadharcard_front %}
-                                                    <p class="fileUploadtext" id="id_driver-aadharcard_front-p">
-                                                        <i class="far fa-file"></i> &ensp; Front Side
-                                                    </p>
-                                                </div>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.aadharcard_rear %}
-                                                    <p class="fileUploadtext" id="id_driver-aadharcard_rear-p">
-                                                        <i class="far fa-file"></i> &ensp; Back side
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.aadharcard_front.errors }}</div>
-                                            <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
-
-
-                                            <div class="foam-field">
-                                                <label>Voter Card</label>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.votercard_front %}
-                                                    <p class="fileUploadtext" id="id_driver-votercard_front-p">
-                                                        <i class="far fa-file"></i> &ensp; Front Side
-                                                    </p>
-                                                </div>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.votercard_rear %}
-                                                    <p class="fileUploadtext" id="id_driver-votercard_rear-p">
-                                                        <i class="far fa-file"></i> &ensp; Back side
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.votercard_front.errors }}</div>
-                                            <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
-
-
-                                            <div class="foam-field">
-                                                <label>Driving Licence</label>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.driving_licence_front %}
-                                                    <p class="fileUploadtext" id="id_driver-driving_licence_front-p">
-                                                        <i class="far fa-file"></i> &ensp; Front Side
-                                                    </p>
-                                                </div>
-                                                <div class="vendorFile" style="width: 49%;">
-                                                    {% render_field driver_form.driving_licence_rear %}
-                                                    <p class="fileUploadtext" id="id_driver-driving_licence_rear-p">
-                                                        <i class="far fa-file"></i> &ensp; Back side
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.driving_licence_front.errors }}</div>
-                                            <div class="errorSpace">{{ driver_form.driving_licence_rear.errors }}</div>
-
-
-                                            <div class="foam-field">
-                                                <label>Valid From*</label>
-                                                {% render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
-                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                                <!-- <input type="date" name="vendorName"> -->
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.driving_licence_valid_from.errors }}</div>
-
-
-                                            <div class="foam-field">
-                                                <label>Valid To*</label>
-                                                {% render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
-                                                <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
-
-                                            <div class="foam-field">
-                                                <label>Total Driving Experience</label>
-                                                {% render_field driver_form.driving_experience %}
-                                            </div>
-                                             <div class="errorSpace">{{ driver_form.driving_experience.errors }}</div>
-
-                                            <div class="foam-field">
-                                                <label>Hill Driving Experience</label>
-                                                {% render_field driver_form.hill_experience %}
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.hill_experience.errors }}</div>
-
-                                            <div class="foam-field">
-                                                <label>
-                                                    Police Verification*
-                                                    <p>With in 15days or 6 months old</p>
-                                                </label>
-                                                <div class="vendorFile">
-                                                    {% render_field driver_form.police_verification_front %}
-                                                    <p class="fileUploadtext" id="id_driver-police_verification_front-p">
-                                                        <i class="far fa-file"></i> &ensp; Drop file here
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.police_verification_front.errors }}</div>
-
-
-                                            <div class="foam-field">
-                                                <label>Any Legal/Accidental case pending for clearance*</label>
-                                                <select name="subject" id="legalCase">
-                                                    <option Selected>--Select--</option>
-                                                    <option value="0">No</option>
-                                                    <option value="1" id="Yes">Yes</option>
-                                                </select>
-                                            </div>
-                                            <!-- //////if Yes is selected///////// -->
-                                            <div style="display: none;" id="caseInput">
-                                                <div class="foam-field">
-                                                    <label style="color: #e61616;" >Upload supporting documents*</label>
-                                                    <div class="vendorFile">
-                                                        {% render_field driver_form.legal_accidental_case_document %}
-                                                        <p class="fileUploadtext" id="id_driver-legal_accidental_case_document-p">
-                                                            <i class="far fa-file"></i> &ensp; Drop file here
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="errorSpace">{{ driver_form.legal_accidental_case_document.errors }}</div>
-                                        </div>
-                                        <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
-                                            <div class="drag-drop">
-                                                {% render_field driver_form.image class="input-file2" onchange="readURL(this);" %}
-                                                <img id="blah" src="" alt="" />
-                                                <p class="p24">
-                                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                                    </i><br> Drag&Drop files here <br> or<br>
-                                                    <button type="button" class="btn btn-outline-primary">Browse Files</button>
-                                                </p>
-                                                <div class="label-right-allign" style="text-align: center;">
-                                                    Select your profile image<br>
-                                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 booking-frm dashButton">
-                                            <button class="book-btn" type="submit">Update
-                                            </button>&nbsp;&nbsp;
-                                            <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
-                                        </div>
-                                    </form>
-                                </div>
-
-
-
-                            {% for driver in drivers %}
-                      <div class="modal fade" id="driverInformation-{{ forloop.counter }}" role="dialog">
-                          <div class="modal-dialog" style="width:max-content;">
-                             <div class="driver-modal-content" style="width: 80vw;">
-                               <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                 <input type="hidden" name="modelid" id="ridemodalvalue">
-                               </div>
-                               <div class="driver-modal-body" style="display: block;">
-                            
-                                <div class="col-sm-12" style="display: block;" > 
-                                    <div class="col-sm-3" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
-                                    <div class="col-sm-6" ><p>{{ driver.full_name}}</p>
-                                        <p>Address:<span>{{ driver.address }}</span></p>
-                                        <p>Phone no.: <span>{{ driver.contact1 }}</span></p></div>
-                                    <div class="col-sm-3" >
-                                        <h5>Driver Ratings</h5>
-                                        <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star checked"></span>
-                                          <span class="fa fa-star"></span>
-                                          <span class="fa fa-star"></span></div>
-                                    
-                                </div>
-                            
-                                <div class="col-sm-12 modalDivider">
-                                    <h4>Documents Front Pictures</h4>
-                                </div>
-                                <div class="col-sm-12">
-                                    {% if driver.driving_licence_front %}
-                                    <div class="col-sm-2">
-                                        <h5>DL</h5>
-                                        <img style="width: 100%;" src="{{driver.driving_licence_front.url}}" alt="">
-                                    </div>
-                                    {% endif %}
-                                    {% if driver.pancard_front %}
-                                        <div class="col-sm-2">
-                                            <h5>Pan Card</h5>
-                                            <img style="width: 100%;" src="{{driver.pancard_front.url}}" alt="">
-                                        </div>
-                                    {% endif %}
-                                {% if driver.aadharcard_front %}
-                                    <div class="col-sm-2">
-                                        <h5>Aadhar Card</h5>
-                                        <img style="width: 100%;" src="{{driver.aadharcard_front.url}}" alt="">
-                                    </div>
-                                {% endif %}
-                                {% if driver.votercard_front %}
-                                    <div class="col-sm-2">
-                                        <h5>Voter Id</h5>
-                                        <img style="width: 100%;" src="{{driver.votercard_front.url}}" alt="">
-                                    </div>
-                                {% endif %}
-
-
-                                {% if driver.police_verification_front %}
-                                    <div class="col-sm-2">
-                                        <h5>Police Verification</h5>
-                                        <img style="width: 100%;" src="{{driver.police_verification_front.url}}" alt="">
-                                    </div>
-                                {% endif %}
-                                {% if driver.legal_accidental_case_document %}
-                                    <div class="col-sm-2">
-                                        <h5>Legal Accidental Case</h5>
-                                        <img style="width: 100%;" src="{{driver.legal_accidental_case_document.url}}" alt="">
-                                    </div>
-                                {% endif %}
-
-
-                                </div>
-                                <div class="col-sm-12 modalDivider">
-                                    <h4>Documents Rear Pictures</h4>
-                                </div>
-
-                                <div class="col-sm-12">
-                                    {% if driver.driving_licence_rear %}
-                                        <div class="col-sm-2">
-                                            <h5>DL</h5>
-                                            <img style="width: 100%;" src="{{driver.driving_licence_rear.url}}" alt="">
-                                        </div>
-                                    {% endif %}
-                                    {% if driver.pancard_rear %}
-                                    <div class="col-sm-2">
-                                        <h5>Pan Card</h5>
-                                        <img style="width: 100%;" src="{{driver.pancard_rear.url}}" alt="">
-                                    </div>
-                                    {% endif %}
-                                {% if driver.aadharcard_rear %}
-                                    <div class="col-sm-2">
-                                        <h5>Aadhar Card</h5>
-                                        <img style="width: 100%;" src="{{driver.aadharcard_rear.url}}" alt="">
-                                    </div>
-                                    {% endif %}
-                                {% if driver.votercard_rear %}
-                                    <div class="col-sm-2">
-                                        <h5>Voter Id</h5>
-                                        <img style="width: 100%;" src="{{driver.votercard_rear.url}}" alt="">
-                                    </div>
-                                    {% endif %}
-
-                                    {% if driver.police_verification_rear %}
-                                        <div class="col-sm-2">
-                                            <h5>Police Verification</h5>
-                                            <img style="width: 100%;" src="{{driver.police_verification_rear.url}}" alt="">
-                                        </div>
-                                    {% endif %}
-
-                                </div>
-                               </div>
-                               <div class="modal-footer">
-                                   <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
-                                    <button type="button" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'" class="btn btn-primary" >Edit</button>
-                                   <!-- </a> -->
-                                   <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
-                                     <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
-                                   <!-- </a> -->
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                               </div>
-                             </div>
-                         </div>
-                     </div>
-                            {% endfor %}
-                            </div>
+   <div class="container">
+      <div class="row">
+         {% include 'Vendor/vendorSidebar.html' %}
+         <!-- --------Begning of navigation tabs---------- -->
+         <div class="col-md-9">
+            <div class="col-md-12 col-sm-12 vendorHeader">
+               <h4 class="text-center">Driver Details</h4>
+            </div>
+            <div class="col-sm-12 col-md-12" id="vendorTable">
+               <div class="responsiveTable">
+                  <table>
+                     <tr>
+                        <th>S.N0.</th>
+                        <th class="setTableWidth">Driver Name</th>
+                        <th>Phone No</th>
+                        <th>Oprational</th>
+                        <th>Status</th>
+                        <th>Rating</th>
+                        <th></th>
+                     </tr>
+                     {% for driver in drivers %}
+                     <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td class="setTableWidth"><a data-toggle="modal" data-target="#driverInformation-{{ forloop.counter }}">{{ driver.full_name }}</a></td>
+                        <td>{{ driver.contact1 }}</td>
+                        {% if driver.status == 'Approved' %}
+                        <td class="check">&#10004</td>
+                        <td class="check">Approved</td>
+                        {% elif driver.status == 'Rejected' %}
+                        <td class="cross">✘</td>
+                        <td class="cross">Rejected</td>
+                        {% elif driver.status == 'Hold' %}
+                        <td class="cross">✘</td>
+                        <td class="wait">Hold</td>
+                        {% elif driver.status == 'Temp Approved' %}
+                        <td class="cross">✘</td>
+                        <td class="wait">Temp Approved</td>
+                        {% endif %}
+                        <td><span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star checked"></span>
+                           <span class="fa fa-star"></span>
+                           <span class="fa fa-star"></span>
+                        </td>
+                        <td>
+                           <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
+                           <button type="button" class="btn btn-primary" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'"data-dismiss="modal">Edit</button>
+                           <!-- </a> -->
+                           <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
+                           <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
+                           <!-- </a> -->
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </table>
+               </div>
+               <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Driver +</button> </div>
+               <div class="col-sm-12 addDriverFoam">
+                  <form method="post" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <div class="col-sm-8">
+                        {% for error in driver_form.non_field_errors.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Full Name</label>
+                           {% render_field driver_form.full_name %}
                         </div>
-                    
-        </div>
-    </div>
+                        {% for error in driver_form.full_name.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Father's Name</label>
+                           {% render_field driver_form.father_name %}
+                        </div>
+                        {% for error in driver_form.father_name.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Date Of Birth</label>
+                           {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
+                           <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                        {% for error in driver_form.dob.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Email address*</label>
+                           {% render_field driver_form.email %}
+                        </div>
+                        {% for error in driver_form.email.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Phone No 1*</label>
+                           {% render_field driver_form.contact1 pattern="[1-9]{1}[0-9]{9}"%}
+                        </div>
+                        {% for error in driver_form.contact1.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Phone No 2*</label>
+                           {% render_field driver_form.contact2 pattern="[1-9]{1}[0-9]{9}"%}
+                        </div>
+                        {% for error in driver_form.contact2.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label>Address*</label>
+                           {% render_field driver_form.address %}
+                        </div>
+                        {% for error in driver_form.address.errors %}
+                        <div class="errorSpace"> {{ error}}</div>
+                        {% endfor %}
+                        <div class="foam-field">
+                           <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                        </div>
+                        <div class="foam-field">
+                           <label>PAN Card*</label>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.pancard_front %}
+                              <p class="fileUploadtext" id="id_driver-pancard_front-p">
+                                 <i class="far fa-file"></i> &ensp; Front Side
+                              </p>
+                           </div>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.pancard_rear %}
+                              <p class="fileUploadtext" id="id_driver-pancard_rear-p">
+                                 <i class="far fa-file"></i> &ensp; Back side
+                              </p>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.pancard_front.errors }}</div>
+                        <div class="errorSpace">{{ driver_form.pancard_rear.errors }}</div>
+                        <div class="foam-field">
+                           <label>
+                              Aadhar Card*
+                              <p>Size must be 200KB</p>
+                           </label>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.aadharcard_front %}
+                              <p class="fileUploadtext" id="id_driver-aadharcard_front-p">
+                                 <i class="far fa-file"></i> &ensp; Front Side
+                              </p>
+                           </div>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.aadharcard_rear %}
+                              <p class="fileUploadtext" id="id_driver-aadharcard_rear-p">
+                                 <i class="far fa-file"></i> &ensp; Back side
+                              </p>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.aadharcard_front.errors }}</div>
+                        <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
+                        <div class="foam-field">
+                           <label>Voter Card</label>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.votercard_front %}
+                              <p class="fileUploadtext" id="id_driver-votercard_front-p">
+                                 <i class="far fa-file"></i> &ensp; Front Side
+                              </p>
+                           </div>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.votercard_rear %}
+                              <p class="fileUploadtext" id="id_driver-votercard_rear-p">
+                                 <i class="far fa-file"></i> &ensp; Back side
+                              </p>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.votercard_front.errors }}</div>
+                        <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
+                        <div class="foam-field">
+                           <label>Driving Licence</label>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.driving_licence_front %}
+                              <p class="fileUploadtext" id="id_driver-driving_licence_front-p">
+                                 <i class="far fa-file"></i> &ensp; Front Side
+                              </p>
+                           </div>
+                           <div class="vendorFile" style="width: 49%;">
+                              {% render_field driver_form.driving_licence_rear %}
+                              <p class="fileUploadtext" id="id_driver-driving_licence_rear-p">
+                                 <i class="far fa-file"></i> &ensp; Back side
+                              </p>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.driving_licence_front.errors }}</div>
+                        <div class="errorSpace">{{ driver_form.driving_licence_rear.errors }}</div>
+                        <div class="foam-field">
+                           <label>Valid From*</label>
+                           {% render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
+                           <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                           <!-- <input type="date" name="vendorName"> -->
+                        </div>
+                        <div class="errorSpace">{{ driver_form.driving_licence_valid_from.errors }}</div>
+                        <div class="foam-field">
+                           <label>Valid To*</label>
+                           {% render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
+                           <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
+                        <div class="foam-field">
+                           <label>Total Driving Experience</label>
+                           {% render_field driver_form.driving_experience %}
+                        </div>
+                        <div class="errorSpace">{{ driver_form.driving_experience.errors }}</div>
+                        <div class="foam-field">
+                           <label>Hill Driving Experience</label>
+                           {% render_field driver_form.hill_experience %}
+                        </div>
+                        <div class="errorSpace">{{ driver_form.hill_experience.errors }}</div>
+                        <div class="foam-field">
+                           <label>
+                              Police Verification*
+                              <p>With in 15days or 6 months old</p>
+                           </label>
+                           <div class="vendorFile">
+                              {% render_field driver_form.police_verification_front %}
+                              <p class="fileUploadtext" id="id_driver-police_verification_front-p">
+                                 <i class="far fa-file"></i> &ensp; Drop file here
+                              </p>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.police_verification_front.errors }}</div>
+                        <div class="foam-field">
+                           <label>Any Legal/Accidental case pending for clearance*</label>
+                           <select name="subject" id="legalCase">
+                              <option Selected>--Select--</option>
+                              <option value="0">No</option>
+                              <option value="1" id="Yes">Yes</option>
+                           </select>
+                        </div>
+                        <!-- //////if Yes is selected///////// -->
+                        <div style="display: none;" id="caseInput">
+                           <div class="foam-field">
+                              <label style="color: #e61616;" >Upload supporting documents*</label>
+                              <div class="vendorFile">
+                                 {% render_field driver_form.legal_accidental_case_document %}
+                                 <p class="fileUploadtext" id="id_driver-legal_accidental_case_document-p">
+                                    <i class="far fa-file"></i> &ensp; Drop file here
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="errorSpace">{{ driver_form.legal_accidental_case_document.errors }}</div>
+                     </div>
+                     <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
+                        <div class="drag-drop">
+                           {% render_field driver_form.image class="input-file2" onchange="readURL(this);" %}
+                           <img id="blah" src="" alt="" />
+                           <p class="p24">
+                              <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                              </i><br> Drag&Drop files here <br> or<br>
+                              <button type="button" class="btn btn-outline-primary">Browse Files</button>
+                           </p>
+                           <div class="label-right-allign" style="text-align: center;">
+                              Select your profile image<br>
+                              <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-sm-12 booking-frm dashButton">
+                        <button class="book-btn" type="submit">Update
+                        </button>&nbsp;&nbsp;
+                        <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
+                     </div>
+                  </form>
+               </div>
+               {% for driver in drivers %}
+               <div class="modal fade" id="driverInformation-{{ forloop.counter }}" role="dialog">
+                  <div class="modal-dialog" style="width:max-content;">
+                     <div class="driver-modal-content" style="width: 80vw;">
+                        <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal">&times;</button>
+                           <input type="hidden" name="modelid" id="ridemodalvalue">
+                        </div>
+                        <div class="driver-modal-body" style="display: block;">
+                           <div class="col-sm-12" style="display: block;" >
+                              <div class="col-sm-3" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
+                              <div class="col-sm-6" >
+                                 <p>{{ driver.full_name}}</p>
+                                 <p>Address:<span>{{ driver.address }}</span></p>
+                                 <p>Phone no.: <span>{{ driver.contact1 }}</span></p>
+                              </div>
+                              <div class="col-sm-3" >
+                                 <h5>Driver Ratings</h5>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star"></span>
+                                 <span class="fa fa-star"></span>
+                              </div>
+                           </div>
+                           <div class="col-sm-12 modalDivider">
+                              <h4>Documents Front Pictures</h4>
+                           </div>
+                           <div class="col-sm-12">
+                              {% if driver.driving_licence_front %}
+                              <div class="col-sm-2">
+                                 <h5>DL</h5>
+                                 <img style="width: 100%;" src="{{driver.driving_licence_front.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.pancard_front %}
+                              <div class="col-sm-2">
+                                 <h5>Pan Card</h5>
+                                 <img style="width: 100%;" src="{{driver.pancard_front.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.aadharcard_front %}
+                              <div class="col-sm-2">
+                                 <h5>Aadhar Card</h5>
+                                 <img style="width: 100%;" src="{{driver.aadharcard_front.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.votercard_front %}
+                              <div class="col-sm-2">
+                                 <h5>Voter Id</h5>
+                                 <img style="width: 100%;" src="{{driver.votercard_front.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.police_verification_front %}
+                              <div class="col-sm-2">
+                                 <h5>Police Verification</h5>
+                                 <img style="width: 100%;" src="{{driver.police_verification_front.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.legal_accidental_case_document %}
+                              <div class="col-sm-2">
+                                 <h5>Legal Accidental Case</h5>
+                                 <img style="width: 100%;" src="{{driver.legal_accidental_case_document.url}}" alt="">
+                              </div>
+                              {% endif %}
+                           </div>
+                           <div class="col-sm-12 modalDivider">
+                              <h4>Documents Rear Pictures</h4>
+                           </div>
+                           <div class="col-sm-12">
+                              {% if driver.driving_licence_rear %}
+                              <div class="col-sm-2">
+                                 <h5>DL</h5>
+                                 <img style="width: 100%;" src="{{driver.driving_licence_rear.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.pancard_rear %}
+                              <div class="col-sm-2">
+                                 <h5>Pan Card</h5>
+                                 <img style="width: 100%;" src="{{driver.pancard_rear.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.aadharcard_rear %}
+                              <div class="col-sm-2">
+                                 <h5>Aadhar Card</h5>
+                                 <img style="width: 100%;" src="{{driver.aadharcard_rear.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.votercard_rear %}
+                              <div class="col-sm-2">
+                                 <h5>Voter Id</h5>
+                                 <img style="width: 100%;" src="{{driver.votercard_rear.url}}" alt="">
+                              </div>
+                              {% endif %}
+                              {% if driver.police_verification_rear %}
+                              <div class="col-sm-2">
+                                 <h5>Police Verification</h5>
+                                 <img style="width: 100%;" src="{{driver.police_verification_rear.url}}" alt="">
+                              </div>
+                              {% endif %}
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <!-- <a href="{% url 'vendor:edit_driver' driver.id %}"> -->
+                           <button type="button" onclick="location.href='{% url 'vendor:edit_driver' driver.id %}'" class="btn btn-primary" >Edit</button>
+                           <!-- </a> -->
+                           <!-- <a href="{% url 'vendor:delete_driver' driver.id %}"> -->
+                           <button type="button" class="btn btn-danger" onclick="confirm_delete('{% url 'vendor:delete_driver' driver.id %}')" >Delete</button>
+                           <!-- </a> -->
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 <div id="BlockUIConfirm" class="BlockUIConfirm">
-    <div class="blockui-mask"></div>
-    <div class="RowDialogBody">
-        <div class="confirm-header row-dialog-hdr-success">
-            Delete Confirmtion
-        </div>
-        <div class="confirm-body">
-            Please confirm to delete data
-        </div>
-        <div class="confirm-btn-panel pull-right">
-            <div class="btn-holder pull-right">
-                <input type="button" class="row-dialog-btn btn btn-success" value="Yes, Delete" onclick="okDelete();" />
-                <input type="button" class="row-dialog-btn btn btn-naked" value="No, Cancel" onclick="$('#BlockUIConfirm').hide();" />
-            </div>
-        </div>
-    </div>
+   <div class="blockui-mask"></div>
+   <div class="RowDialogBody">
+      <div class="confirm-header row-dialog-hdr-success">
+         Delete Confirmtion
+      </div>
+      <div class="confirm-body">
+         Please confirm to delete data
+      </div>
+      <div class="confirm-btn-panel pull-right">
+         <div class="btn-holder pull-right">
+            <input type="button" class="row-dialog-btn btn btn-danger" value="Yes, Delete" onclick="okDelete();" />
+            <input type="button" class="row-dialog-btn btn btn-naked" value="No, Cancel" onclick="$('#BlockUIConfirm').hide();" />
+         </div>
+      </div>
+   </div>
 </div>
-
 {% endblock content %}
-
-
-
-
 {% block extra_scripts %}
-   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
-
 <script>
-    $(function () {
-        var d = new Date();
-        var current_year = d.getFullYear();
-         /////////////set age restrictions here////////////////////
-        var req_year = current_year - 18;
-        var month = d.getMonth();
-        var date = d.getDate();
-         var req_date = req_year + "/" + month + "/" + date ;
-        var today_date = current_year + "/" + month + "/" + date;
-  $("#datepicker").datepicker({ 
-        dateformat: "yyyy-mm-dd",
-        autoclose: true, 
-        todayHighlight: false,
-        endDate: req_date
-  }).datepicker('update', new Date());
-  $(function () {
-            $("#datepicker2").datepicker({ 
-                format: "yyyy-mm-dd",
-                autoclose: true, 
-                todayHighlight: false
-            })
-        });
-        $(function () {
-            $("#datepicker3").datepicker({ 
-                format: "yyyy-mm-dd",
-                autoclose: true, 
-                todayHighlight: false,
-                startDate: new Date(),
-            })
-        });
-        $(function () {
-            $("#datepicker4").datepicker({ 
-                format: "yyyy-mm-dd",
-                autoclose: true, 
-                todayHighlight: false,
-                endDate: req_date
-            })
-        });
-
-});
-    $("#show-driverbtn").click(function(){
-        $(".addDriverFoam").show();
-    });
-    $("#hide-driverbtn").click(function(){
-        $(".addDriverFoam").hide();
-    });
-     $("#legalCase").change(function(){
-        var selected = $("#legalCase").children("option:selected").val();
-        // console.log(selected);
-        if( selected == "1"){
-            $("#caseInput").css({"display":"block"})
-        }
-        else if( selected == "0"){
-            $("#caseInput").css({"display":"none"})
-        }else{
-            $("#caseInput").css({"display":"none"})
-        }
-    })
+   $(function () {
+       var d = new Date();
+       var current_year = d.getFullYear();
+        /////////////set age restrictions here////////////////////
+       var req_year = current_year - 18;
+       var month = d.getMonth();
+       var date = d.getDate();
+        var req_date = req_year + "/" + month + "/" + date ;
+       var today_date = current_year + "/" + month + "/" + date;
+   $("#datepicker").datepicker({ 
+       dateformat: "yyyy-mm-dd",
+       autoclose: true, 
+       todayHighlight: false,
+       endDate: req_date
+   }).datepicker('update', new Date());
+   $(function () {
+           $("#datepicker2").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false
+           })
+       });
+       $(function () {
+           $("#datepicker3").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false,
+               startDate: new Date(),
+           })
+       });
+       $(function () {
+           $("#datepicker4").datepicker({ 
+               format: "yyyy-mm-dd",
+               autoclose: true, 
+               todayHighlight: false,
+               endDate: req_date
+           })
+       });
+   
+   });
+   $("#show-driverbtn").click(function(){
+       $(".addDriverFoam").show();
+   });
+   $("#hide-driverbtn").click(function(){
+       $(".addDriverFoam").hide();
+   });
+    $("#legalCase").change(function(){
+       var selected = $("#legalCase").children("option:selected").val();
+       // console.log(selected);
+       if( selected == "1"){
+           $("#caseInput").css({"display":"block"})
+       }
+       else if( selected == "0"){
+           $("#caseInput").css({"display":"none"})
+       }else{
+           $("#caseInput").css({"display":"none"})
+       }
+   })
 </script>
 <script type="text/javascript">
-    $(function () {
-        // Function to return file name to the input field
-         $('input[type="file"]').change(function(e){
-                var fileName = e.target.files[0].name;
-                var id = e.target.id;
-                console.log(id);
-                var pfile = '#' + id + '-p';
-                $(pfile).text(fileName);
-                $(pfile).css("font-weight","600");
-        });
-                 $('.input-file2').change(function (e) {
-                    var fileName = e.target.files[0].name;
-              $('.p24').text(fileName);
-            }) ;
-    });
-    
-      function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
-                    $('#blah').css("width","auto");
-                    $('#blah').css("height","inherit");
-                    $('#blah').css("border-radius","10px");
-                    $('.p24').css("height","auto");
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+   $(function () {
+       // Function to return file name to the input field
+        $('input[type="file"]').change(function(e){
+               var fileName = e.target.files[0].name;
+               var id = e.target.id;
+               console.log(id);
+               var pfile = '#' + id + '-p';
+               $(pfile).text(fileName);
+               $(pfile).css("font-weight","600");
+       });
+                $('.input-file2').change(function (e) {
+                   var fileName = e.target.files[0].name;
+             $('.p24').text(fileName);
+           }) ;
+   });
+   
+     function readURL(input) {
+           if (input.files && input.files[0]) {
+               var reader = new FileReader();
+   
+               reader.onload = function (e) {
+                   $('#blah').attr('src', e.target.result);
+                   $('#blah').css("width","auto");
+                   $('#blah').css("height","inherit");
+                   $('#blah').css("border-radius","10px");
+                   $('.p24').css("height","auto");
+               };
+   
+               reader.readAsDataURL(input.files[0]);
+           }
+       }
 </script>
 <script type="text/javascript">
-    //  Delete Confirmation code 
-    var delAddress;
-    function confirm_delete(temp) {
-        delAddress=temp;
-        // alert(delAddress);
-    $("#BlockUIConfirm").show();
-}
-
-function okDelete() {
-    // alert("Form would be deleted.");
-    $('#BlockUIConfirm').hide();
-    window.location.href=delAddress;
-    
-}
+   //  Delete Confirmation code 
+   var delAddress;
+   function confirm_delete(temp) {
+       delAddress=temp;
+       // alert(delAddress);
+   $("#BlockUIConfirm").show();
+   }
+   
+   function okDelete() {
+   // alert("Form would be deleted.");
+   $('#BlockUIConfirm').hide();
+   window.location.href=delAddress;
+   
+   }
 </script>
-
-
 {% endblock extra_scripts %}

@@ -500,6 +500,36 @@ font-weight: bold;
 .add-cars:hover{
     background-color: #f12b2b !important;
 }
+#vendorMain button:disabled{
+   background-color: #ffc00099!important;
+   }
+   #vendorMain button:disabled:hover{
+   background-color: #ffc00099!important;
+   }
+   @media(max-width: 500px){
+   .customer-tab{
+   text-decoration: overline;
+   }
+   }
+   @media(min-width: 660px){
+   .headerWidth{
+   width: 33.33%
+   }
+   .customer-tab{
+   display: flex;
+   }
+   .buttonallign{
+   padding: 0 40%;
+   }
+   }
+   @media(max-width: 770px){
+   .headerAlign{
+   text-align: center!important;
+   }
+   .drag-drop{
+   width: 100%!important;
+   }
+   }
 /*#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
      width: 89%;
 }*/

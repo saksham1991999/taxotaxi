@@ -7,12 +7,12 @@
 {#<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />#}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style>
-   #vendorMain button:disabled{
+   /*#vendorMain button:disabled{
    background-color: #ffc00099!important;
    }
    #vendorMain button:disabled:hover{
    background-color: #ffc00099!important;
-   }
+   }*/
    /*button:hover:after { 
    content: "Hi"; 
    position: absolute;
@@ -22,7 +22,7 @@
    background-color: gray;
    color: white;
    }*/
-   @media(max-width: 500px){
+   /*@media(max-width: 500px){
    .customer-tab{
    text-decoration: overline;
    }
@@ -101,7 +101,6 @@
    margin: 0;
    }
    .customer-tab{
-   /*text-decoration: overline;*/
    border-bottom: 1px #c5c1c1 solid;
    list-style-type:none;
    color: #a7a1a1;
@@ -133,9 +132,7 @@
    color: #a6a6a6;
    border: 1px solid #e8e8e8;
    display: block;
-   /* margin-bottom: 13px; */
    border-radius: 4px;
-   /* padding-right: 28px;*/
    }
    .foam-field p{
    margin: 0;
@@ -178,12 +175,12 @@
    }
    .add-cars:hover{
    background-color: #f12b2b !important;
-   }
+   }*/
    /*#datepicker1,#datepicker2,#datepicker3,#datepicker4,#datepicker5,#datepicker6,#datepicker7{
    width: 89%;
    }*/
    /*#datepicker1{ width: 103%;}*/
-   #datepicker1 > span:hover{cursor: pointer;}
+   /*#datepicker1 > span:hover{cursor: pointer;}
    #datepicker2 > span:hover{cursor: pointer;}
    #datepicker3 > span:hover{cursor: pointer;}
    #datepicker4 > span:hover{cursor: pointer;}
@@ -193,7 +190,7 @@
    .middleHeading{
    border-top: 1px #c5c1c1 solid;
    padding-bottom: 22px;
-   }
+   }*/
 </style>
 {% endblock extra_stylesheet %}
 {% block content %}
@@ -397,8 +394,9 @@
                   {% endcomment %}
                </div>
                <div class="col-sm-5 col-md-5" style="margin-top: 24px;">
-                  <div class="drag-drop">
-                     {% render_field profile_form.image class="input-file" %}
+                  <div class="drag-drop" style="text-align: center;">
+                     {% render_field profile_form.image class="input-file" onchange="readURL(this);" %}
+                     <img id="blah" src="" alt="" />
                      <p class="p23">
                         <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                         </i><br> Drag&Drop files here <br> or<br>
@@ -779,7 +777,8 @@
                </div>
                <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                   <div class="drag-drop">
-                     {% render_field driver_form.image class="input-file2" %}
+                     {% render_field driver_form.image class="input-file2" onchange="readURL1(this);" %}
+                     <img id="blah1" src="" alt="" />
                      <p class="p24">
                         <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                         </i><br> Drag&Drop files here <br> or<br>
@@ -927,6 +926,37 @@
              $('.p24').text(fileName);
            }) ;
    });
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                    $('#blah').css("width","auto");
+                    $('#blah').css("height","inherit");
+                    $('#blah').css("border-radius","10px");
+                    $('.p23').css("height","auto");
+                    // $('.drag-drop')css("text-align","center");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+         function readURL1(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah1').attr('src', e.target.result);
+                    $('#blah1').css("width","auto");
+                    $('#blah1').css("height","inherit");
+                    $('#blah1').css("border-radius","10px");
+                    $('.p24').css("height","auto");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
    
 </script>
 <script type="text/javascript">

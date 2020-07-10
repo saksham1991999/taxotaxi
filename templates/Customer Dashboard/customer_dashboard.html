@@ -475,7 +475,8 @@
                               <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
                                  <div class="drag-drop">
                                     <!-- <img src="{% static 'images/comment_img1.jpg' %}" alt=""> -->
-                                    {% render_field userform.profile_pic class="input-file" %}
+                                    {% render_field userform.profile_pic class="input-file" onchange="readURL(this);" %}
+                                    <img id="blah" src="" alt="" />
                                     <p class="p23">
                                        <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
                                        </i><br> Drag&Drop files here <br> or<br>
@@ -1232,6 +1233,21 @@
          $('.p23').text(this.files.length + " file(s) selected");
        });
      });
+     function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                    $('#blah').css("width","auto");
+                    $('#blah').css("height","inherit");
+                    $('#blah').css("border-radius","10px");
+                    $('.p23').css("height","auto");
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 </script>
 <script type="text/javascript">
    $(function () {
