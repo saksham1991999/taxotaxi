@@ -1374,12 +1374,12 @@ line-height: 1vw;
 	.tj-form-map .form-box{
 		padding: 50px 20px;
 	}
-	.tj-form-map .no-padl{
+	/*.tj-form-map .no-padl{
 		padding-left:15px;
 	}
 	.tj-form-map .no-padr{
 		padding-right:15px;
-	}
+	}*/
 	.contact_frm .frm-field input[type="text"]{
 		margin-right: 0;
 		margin-bottom: 10px;
