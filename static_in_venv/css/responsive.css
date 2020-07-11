@@ -77,7 +77,8 @@ line-height: 1vw;
     padding: 24px 0px;
    }
 	.tj-banner-form2 {
-    margin-top: 8px;}
+    margin-top: 40px;
+    }
     #nav-destinations .service-box{
     	text-align: center;
         width: 100%;
@@ -322,7 +323,7 @@ line-height: 1vw;
 
 }
 
-@media(min-width:768px) and (max-width:991px){
+@media( min-width:768px ) and ( max-width:991px ) {
 	
 
 	.remove-padding-left{
@@ -369,7 +370,7 @@ line-height: 1vw;
 		width:100%;
 	}
 	.trip-outer .tab-content{
-		padding:30px 20px
+		padding:30px 20px;
 	}
 	.trip-type-frm .search-btn{
 		width: 200px;
@@ -385,7 +386,7 @@ line-height: 1vw;
 		font-size:18px;
 	}
 	.cab-service-box .service-desc{
-		padding:35px 25px
+		padding:35px 25px;
 	}
 	.deal-thumb img{
 		width:100%;
@@ -607,7 +608,7 @@ line-height: 1vw;
 		padding: 20px 20px 15px 20px;
 	}
 	.booking-summary .booking-info{
-		padding: 35px 20px 15px 20px
+		padding: 35px 20px 15px 20px;
 	}
 	.booking-summary .booking-info li{
 		width:auto;
@@ -619,7 +620,7 @@ line-height: 1vw;
 	}
 	.booking-summary .journey-info{
 		width:auto;
-		padding:0 20px 0 20px
+		padding:0 20px 0 20px;
 	}
 	.journey-info i{
 		padding-left:10px;
@@ -770,6 +771,9 @@ line-height: 1vw;
 }
 
 @media(max-width:767px){
+	.footerHomeImage{
+		height: 390px;
+	}
 	.paddingleft-list{
     padding-left: 15px !important;
   }
@@ -1424,7 +1428,7 @@ line-height: 1vw;
 	/* User Account Styles */
 	
 	.tj-account-frm .tab-content{
-		padding:55px 20px
+		padding:55px 20px;
 	}
 	.tj-account-frm .nav-tabs > li{
 		float:none;
