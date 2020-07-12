@@ -45,13 +45,13 @@
                   <div class="errorSpace">{{ car_form.registration_no.errors }}</div>
                   <div class="foam-field">
                      <label>Upload Car photo*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2 " >
                         {% render_field car_form.image_front %}
                         <p class="fileUploadtext"  id="id_car-image_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.image_rear %}
                         <p class="fileUploadtext" id="id_car-image_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -62,13 +62,13 @@
                   <div class="errorSpace">{{ car_form.image_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Upload RC photo*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.rc_front %}
                         <p class="fileUploadtext" id="id_car-rc_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.rc_rear %}
                         <p class="fileUploadtext" id="id_car-rc_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -80,19 +80,18 @@
                   <div class="foam-field">
                      <label>RC valid upto</label>
                      {% render_field car_form.rc_valid_upto id="datepicker5" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     {#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.rc_valid_upto.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Tourists Permit*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.touristpermit_front %}
                         <p class="fileUploadtext" id="id_car-touristpermit_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.touristpermit_rear %}
                         <p class="fileUploadtext" id="id_car-touristpermit_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -104,18 +103,18 @@
                   <div class="foam-field">
                      <label>Tourist Permit valid upto</label>
                      {% render_field car_form.touristpermit_valid_upto id="datepicker6" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.touristpermit_valid_upto.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Permit A*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.permita_front %}
                         <p class="fileUploadtext" id="id_car-permita_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.permita_rear %}
                         <p class="fileUploadtext" id="id_car-permita_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -126,13 +125,13 @@
                   <div class="errorSpace">{{ car_form.permita_rear.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Permit B*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.permitb_front %}
                         <p class="fileUploadtext" id="id_car-permitb_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile2" >
                         {% render_field car_form.permitb_rear %}
                         <p class="fileUploadtext" id="id_car-permitb_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -154,7 +153,7 @@
                   <div class="foam-field">
                      <label>Insurance valid upto</label>
                      {% render_field car_form.insurance_valid_upto id="datepicker7" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.insurance_valid_upto.errors }}</div>
                   <div class="foam-field ">
