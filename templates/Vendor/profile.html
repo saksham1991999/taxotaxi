@@ -52,10 +52,10 @@
                               <div class="dash_foam">
                                  <label>Date Of Birth</label>
                                   {% render_field profile_form.dob id="datepicker1" readonly='true' class="input-group date" %}
-                                 <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                 <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                               </div>
-                               <div class="errorSpace">{{ profile_form.dob.errors }}</div>
-
+                               <div class="errorSpace">{{ profile_form.dob.errors }}
+                               </div>
                               <div class="dash_foam">
                                  <label>Email address*</label>
                                  {% render_field profile_form.email %}
@@ -93,13 +93,13 @@
 
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Aadhar Card*</label>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2">
                                     {% render_field profile_form.aadharcard_front placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2" >
                                     {% render_field profile_form.aadharcard_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
@@ -108,13 +108,13 @@
                               </div>
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Voter Card*</label>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2" >
                                     {% render_field profile_form.votercard_front placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2" >
                                     {% render_field profile_form.votercard_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
@@ -123,13 +123,13 @@
                               </div>
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Driving Licence*</label>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2" >
                                     {% render_field profile_form.driving_licence_front placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i> Front Side
                                     </p>
                                  </div>
-                                 <div class="vendorFile" style="width: 50%;">
+                                 <div class="vendorFile uploadFile2" >
                                     {% render_field profile_form.driving_licence_rear placeholder="Front" %}
                                     <p class="fileUploadtext" id="id_vendor-aadharcard_front-p" >
                                        <i class="far fa-file"></i>  Back Side
@@ -267,14 +267,17 @@
                         </div>
                         <div class="col-sm-12 col-md-12" style="border-bottom: silver solid 2px;padding: 25px ">
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                              <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a>
+                              <button class="btn btn-default" style="color: #2cb930;font-weight: bolder;width: 100%;" onclick="location.href='https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi'"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button>
                            </div>
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                              <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" ><button class="btn btn-default" style="color: #1971bf;font-weight: bolder;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
-                              </a>&nbsp;&nbsp;
+                             <!--  <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" > -->
+                                <button class="btn btn-default" onclick="location.href='mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com'" style="color: #1971bf;font-weight: bolder;width: 100%;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                              <!-- </a>&nbsp;&nbsp; -->
                            </div>
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                              <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
+                              <!-- <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" > -->
+                                <button class="btn btn-default" onclick="location.href='sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com'" style="color: #f7df24;font-weight: bolder;width: 100%;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button>
+                              <!-- </a> -->
                            </div>
                         </div>
                           {% endfor %}

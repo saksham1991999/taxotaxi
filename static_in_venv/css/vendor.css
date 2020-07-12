@@ -155,17 +155,17 @@ font-weight: bold;
        .masterDashboard .dashboardTab .active{
             color: black;
        }
-       .masterDashboard .dash_foam {
+       /*.masterDashboard .dash_foam {
              display: flex;
-       }
+       }*/
        .masterDashboard .dash_foam label{
-             padding-right: 10px;
-    text-align: right;
+             /*padding-right: 10px;*/
+    /*text-align: right;*/
     padding-left: 0px;
     font-weight: 600;
     color: black;
     margin-top: 7px;
-    width: 40%;         
+    /*width: 40%;         */
        }
        .masterDashboard .dash_foam input,.masterDashboard .dash_foam textarea,.masterDashboard .dash_foam select{
              width: 100%;
@@ -230,6 +230,49 @@ font-weight: bold;
           margin-top: 7px;
           text-align: center;
          }
+         @media(max-width: 768px){
+          .masterDashboard .dash_foam {
+             display: block;
+       }
+       .masterDashboard .dash_foam label{
+            /* padding-right: 10px;*/
+    text-align: left;
+    padding-left: 0px;
+    font-weight: 600;
+    color: black;
+    margin-top: 7px;
+    width: 100%;         
+       }
+       .uploadStyle{
+          width: 100%!important;
+          padding-right: 10px!important;
+          text-align: left !important;
+         }
+         .foam-field{
+        display: block;
+        margin-bottom: 15px;
+        }
+         .uploadFile2{
+          width: 100%!important;
+         }
+        .dateIcon{
+          margin-left: 0px;
+          margin-top: 0px;
+          margin-right: 0px;
+          top: -23px !important;
+          float: right;
+          right: 6px;
+         }
+         .dateIconVProfile{
+          top: -36px !important;
+         }
+         .foam-field label{
+        width: 100%;
+        text-align: left;
+        padding-right: 0px;
+    }
+
+         }
          @media(min-width: 770px){
           .dashButton button[type="submit"]{
             margin-left: 25%;
@@ -237,6 +280,43 @@ font-weight: bold;
          .dashButton{
            margin-top: 25px;
          }
+         .masterDashboard .dash_foam {
+             display: flex;
+       }
+       .masterDashboard .dash_foam label{
+             padding-right: 10px;
+    text-align: right;
+    padding-left: 0px;
+    font-weight: 600;
+    color: black;
+    margin-top: 7px;
+    width: 40%;         
+       }
+       .uploadStyle{
+          width: 40%!important;
+          padding-right: 10px!important;
+         }
+         .foam-field{
+        display: flex;
+        margin-bottom: 15px;
+    }   
+         .uploadFile2{
+          width: 50% !important;
+         }
+         .uploadFile1{
+          width: 48.5% !important;
+         }
+         .dateIcon{
+          margin-left: -25px;
+          margin-top: 8px;
+          margin-right: 12px;
+         }
+         .foam-field label{
+         width: 80%;
+        text-align: right;
+        padding-right: 28px;
+        }
+
          }
          @media(max-width: 481px){
            .dashButton{
@@ -266,15 +346,15 @@ font-weight: bold;
           margin-top: 15px;
           margin-bottom: 15px;
          }
-         .dateIcon{
+         /*.dateIcon{
           margin-left: -25px;
           margin-top: 8px;
-          margin-right: 6px;
-         }
-         .uploadStyle{
+          margin-right: 12px;
+         }*/
+         /*.uploadStyle{
           width: 40%!important;
           padding-right: 10px!important;
-         }
+         }*/
 
     /*Master Dashboard End*/
        .addCarFoam{
@@ -353,6 +433,11 @@ font-weight: bold;
         .drag-drop{
             width: 100%!important;
         }
+        .foam-field{
+        display: block;
+        margin-bottom: 15px;
+        }
+
     }
     .buttonallign{
         margin-top : 40px
@@ -434,15 +519,15 @@ font-weight: bold;
         color: #1c2b39;
     }
     
-    .foam-field{
+    /*.foam-field{
         display: flex;
         margin-bottom: 15px;
-    }
-    .foam-field label{
+    }*/
+    /*.foam-field label{
         width: 80%;
         text-align: right;
         padding-right: 28px;
-    }
+    }*/
     .foam-field input,.foam-field select,.foam-field textarea{
         width: 100%;
     padding: 6px 10px;
@@ -473,6 +558,7 @@ font-weight: bold;
     width: 300px;
     height: 160px;
     border: 2px dashed #e6e3e3;
+    margin-bottom: 100px;
     }
 
     .vendorFile{

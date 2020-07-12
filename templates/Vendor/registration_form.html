@@ -233,7 +233,7 @@
                   <div class="foam-field">
                      <label>Date Of Birth</label>
                      {% render_field profile_form.dob id="datepicker1" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ profile_form.dob.errors }}</div>
                   <div class="foam-field">
@@ -275,13 +275,13 @@
                         Aadhar Card*
                         <p>Size must be 200KB</p>
                      </label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2 " >
                         {% render_field profile_form.aadharcard_front placeholder="Front" %}
                         <p class="fileUploadtext" id="id_vendor-aadharcard_front-p">
                            <i class="far fa-file"></i> &ensp; Front side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2 " >
                         {% render_field profile_form.aadharcard_rear placeholder="Back" %}
                         <p class="fileUploadtext"  id="id_vendor-aadharcard_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -292,13 +292,13 @@
                   <div class="errorSpace">{{ profile_form.aadharcard_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Voter Card</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2 " >
                         {% render_field profile_form.votercard_front placeholder="Front" %}
                         <p class="fileUploadtext" id="id_vendor-votercard_front-p">
                            <i class="far fa-file"></i> &ensp; Front side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field profile_form.votercard_rear placeholder="Back" %}
                         <p class="fileUploadtext" id="id_vendor-votercard_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -309,13 +309,13 @@
                   <div class="errorSpace">{{ profile_form.votercard_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Driving Licence</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field profile_form.driving_licence_front placeholder="Front" %}
                         <p class="fileUploadtext" id="id_vendor-driving_licence_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field profile_form.driving_licence_rear placeholder="Back" %}
                         <p class="fileUploadtext" id="id_vendor-driving_licence_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -466,13 +466,13 @@
                   <div class="errorSpace">{{ car_form.registration_no.errors }}</div>
                   <div class="foam-field">
                      <label>Upload Car photo*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.image_front %}
                         <p class="fileUploadtext"  id="id_car-image_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.image_rear %}
                         <p class="fileUploadtext" id="id_car-image_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -483,13 +483,13 @@
                   <div class="errorSpace">{{ car_form.image_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Upload RC photo*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.rc_front %}
                         <p class="fileUploadtext" id="id_car-rc_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.rc_rear %}
                         <p class="fileUploadtext" id="id_car-rc_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -502,18 +502,18 @@
                      <label>RC valid upto*</label>
                      {% render_field car_form.rc_valid_upto id="datepicker5" data-date-format="mm-dd-yyyy" readonly='true' %}
                      {#                                    <input type="date" id="datepicker5" data-date-format="mm-dd-yyyy" readonly />#}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.rc_valid_upto.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Tourists Permit*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.touristpermit_front %}
                         <p class="fileUploadtext" id="id_car-touristpermit_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.touristpermit_rear %}
                         <p class="fileUploadtext" id="id_car-touristpermit_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -525,18 +525,18 @@
                   <div class="foam-field">
                      <label>Tourist Permit valid upto*</label>
                      {% render_field car_form.touristpermit_valid_upto id="datepicker6" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.touristpermit_valid_upto.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Permit A*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.permita_front %}
                         <p class="fileUploadtext" id="id_car-permita_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.permita_rear %}
                         <p class="fileUploadtext" id="id_car-permita_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -547,13 +547,13 @@
                   <div class="errorSpace">{{ car_form.permita_rear.errors }}</div>
                   <div class="foam-field ">
                      <label>Upload Permit B*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.permitb_front %}
                         <p class="fileUploadtext" id="id_car-permitb_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field car_form.permitb_rear %}
                         <p class="fileUploadtext" id="id_car-permitb_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -575,7 +575,7 @@
                   <div class="foam-field">
                      <label>Insurance valid upto*</label>
                      {% render_field car_form.insurance_valid_upto id="datepicker7" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ car_form.insurance_valid_upto.errors }}</div>
                   <div class="foam-field ">
@@ -620,7 +620,7 @@
                   <div class="foam-field">
                      <label>Date Of Birth</label>
                      {% render_field driver_form.dob id="datepicker4" data-date-format="mm-dd-yyyy" readonly='true' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ driver_form.dob.errors }}</div>
                   <div class="foam-field">
@@ -648,13 +648,13 @@
                   </div>
                   <div class="foam-field">
                      <label>PAN Card*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.pancard_front %}
                         <p class="fileUploadtext" id="id_driver-pancard_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.pancard_rear %}
                         <p class="fileUploadtext" id="id_driver-pancard_rear-p">
                            <i class="far fa-file"></i> &ensp;Back side
@@ -668,13 +668,13 @@
                         Aadhar Card* 
                         <p>Size must be 200KB</p>
                      </label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.aadharcard_front %}
                         <p class="fileUploadtext" id="id_driver-aadharcard_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.aadharcard_rear %}
                         <p class="fileUploadtext" id="id_driver-aadharcard_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -685,13 +685,13 @@
                   <div class="errorSpace">{{ driver_form.aadharcard_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Voter Card*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.votercard_front %}
                         <p class="fileUploadtext" id="id_driver-votercard_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.votercard_rear %}
                         <p class="fileUploadtext" id="id_driver-votercard_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -702,13 +702,13 @@
                   <div class="errorSpace">{{ driver_form.votercard_rear.errors }}</div>
                   <div class="foam-field">
                      <label>Driving Licence*</label>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.driving_licence_front %}
                         <p class="fileUploadtext" id="id_driver-driving_licence_front-p">
                            <i class="far fa-file"></i> &ensp; Front Side
                         </p>
                      </div>
-                     <div class="vendorFile" style="width: 49%;">
+                     <div class="vendorFile uploadFile1 uploadFile2" >
                         {% render_field driver_form.driving_licence_rear %}
                         <p class="fileUploadtext" id="id_driver-driving_licence_rear-p">
                            <i class="far fa-file"></i> &ensp; Back side
@@ -720,14 +720,14 @@
                   <div class="foam-field">
                      <label>Valid From*</label>
                      {%  render_field driver_form.driving_licence_valid_from id="datepicker2" data-date-format="yyyy-mm-dd" readonly='' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                      <!-- <input type="date" name="vendorName"> -->
                   </div>
                   <div class="errorSpace">{{ driver_form.driving_licence_valid_from.errors }}</div>
                   <div class="foam-field">
                      <label>Valid To*</label>
                      {%  render_field driver_form.driving_licence_valid_till id="datepicker3" data-date-format="yyyy-mm-dd" readonly='' %}
-                     <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                     <i class="dateIcon glyphicon glyphicon-calendar"></i>
                   </div>
                   <div class="errorSpace">{{ driver_form.driving_licence_valid_till.errors }}</div>
                   <div class="foam-field">
