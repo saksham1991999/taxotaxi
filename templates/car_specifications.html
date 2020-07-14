@@ -7,6 +7,11 @@
 
 
 <style>
+   .feeHeader{
+      float: right;
+     margin-right: 20px;
+
+   }
    .paddingleft-list{
    padding-left: 0px;
    }
@@ -290,7 +295,7 @@
                         <h5>Additional Information Required (if any)</h5>
                      </li>
                      <li>
-                        <h5>Chargeable:</h5>
+                        <h5>ADD-ON SERVICES:<span class="feeHeader">Convenient FEE</span></h5>
                      </li>
                      {% for checkbox in ridecheckboxes %}
                      {% if checkbox.value > 0 %}
@@ -307,12 +312,12 @@
                      {% endif %}
                      {% endfor %}
                      <li>
-                        <h5>Non-Chargeable:</h5>
+                        <h5>Add-on Complementary:</h5>
                      </li>
                      {% for checkbox in ridecheckboxes %}
                      {% if checkbox.value == 0 %}
                      <li >  <input type="checkbox" autocomplete="off" id="checkbox{{ checkbox.id }}" name="ride_checkboxes" value="{{ checkbox.id }}">
-                        <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span>
+                        <span for="checkbox{{ checkbox.id }}">&nbsp;&nbsp;&nbsp;{{ checkbox.name }}</span><!-- <span class="hidden-price">&#x20b9 {{checkbox.value|intcomma }}/-</span> -->
                      </li>
                      {% endif %}
                      {% endfor %}

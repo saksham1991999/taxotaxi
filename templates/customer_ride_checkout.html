@@ -282,12 +282,12 @@
                <span class="fair-breakdown " style="right: 75px;max-width: 550px;">
                   <input type="hidden" name="car_type" id="car_type" value="{{ request.session.car_type }}" required>
                   <div class="col-sm-12" style="background-color: #eee;">
-                     <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Additional Information Required (if any)</h5>
+                     <h5  style=" font-weight: bolder;text-align: justify;color: #233545; ">Add-Ons Summary</h5>
                   </div>
                   <div class="col-sm-8" >
                      <ul  style="list-style-type: none;line-height: 27px;color: #233545;font-family: inherit; font-weight: 600;padding-inline-start: 15px;">
                         <li>
-                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Chargeable:</h5>
+                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">ADD-ON SERVICES:</h5>
                         </li>
                         {% for checkbox in ride_checkboxes_qs %}
                         {% if checkbox.value > 0 %}
@@ -298,7 +298,7 @@
                         {% endif %}
                         {% endfor %}
                         <li>
-                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Non-Chargeable:</h5>
+                           <h5  style=" font-weight: bolder;text-align: justify;color: #233545;">Add-on Complementary:</h5>
                         </li>
                         {% for checkbox in ride_checkboxes_qs %}
                         {% if checkbox.value == 0 %}
@@ -316,7 +316,7 @@
                         padding: 33px 0;text-align: center;"> ₹ {{ checkbox_charges|intcomma  }} </p>
                   </div>
                   <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
-                     <button class="book-btn" type="submit">&nbsp; Update booking Summary &nbsp;</button>
+                     <button class="book-btn" type="submit">&nbsp; Update Add-ons &nbsp;</button>
                   </div>
                </span>
             </div>

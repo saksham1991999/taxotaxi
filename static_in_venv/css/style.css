@@ -2266,12 +2266,13 @@ bottom: -6px
 }
 
 .tj-banner-form2 .tab-content{
-	
-	width:100%;
-	background-color:white;
-	/*padding:45px 65px;*/
-	float:left;
-		padding: 39px 43px;
+	padding-bottom: 20px;
+    padding-top: 39px;
+    width: 100%;
+    background-color: white;
+    float: left;
+    padding-left: 43px;
+    padding-right: 43px;
 }
 .tab-content .trip-frm2 h4{
 	font-family: 'Montserrat',sans-serif;
