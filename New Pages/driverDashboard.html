@@ -7,7 +7,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
-   .vendorTab{
+   /*.vendorTab{
    padding: 8px 0px 28px 0px;
    border: 1px #eee solid;
    padding-inline-start: 15px;
@@ -119,9 +119,9 @@
    }
    .vendormodalImages{
    width: 20%;
-   }
+   }*/
    /*Master DashBoard Start*/
-   .masterDashboard .dashboardTab{
+   /*.masterDashboard .dashboardTab{
    padding-inline-start: 0;
    border-bottom: 1px #333232 solid;
    list-style-type: none;
@@ -215,7 +215,7 @@
    color: black;
    margin-top: 7px;
    text-align: center;
-   }
+   }*/
    /* .dashButton{
    margin-top: 25px;
    display: flex;
@@ -227,7 +227,7 @@
    .dashButton button[type="cancel"],#hide-carbtn,#hide-driverbtn{
    background-color: #7f7f7f;
    }*/
-   .vendorAddButton{
+   /*.vendorAddButton{
    margin-left: 45%;
    margin-top: 15px;
    margin-bottom: 15px;
@@ -236,7 +236,7 @@
    margin-left: -20px;
    margin-top: 8px;
    margin-right: 6px;
-   }
+   }*/
    /*Master Dashboard End*/
    .addCarFoam{
    display: none;
@@ -261,6 +261,39 @@
    }
    #datepicker{width: -webkit-fill-available;}
    #datepicker > span:hover{cursor: pointer;}*/
+
+   .ride-details-header h4 { text-decoration: underline; color: rgb(45, 45, 46); } 
+
+.ride-details-right-col-left-part h4{  color: rgb(10, 10, 10); padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px; }
+
+.ride-details-right-col-left-part{ text-align: right; padding-right: 0px;}
+
+.ride-details-right-col-right-part h4 {color: darkgreen; padding-bottom: 0px !important; margin-bottom: 0px; margin-top: 2px;}
+
+.ride-details-right-col-right-part > div > h4 { margin-top: 0px; margin-bottom: 0px; }
+
+.ride-details-right-col-right-part > h5{ visibility: visible;margin-top: 0px; margin-bottom: 0px; }
+
+.ride-details-right-col-right-part > h5 > h4 { padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px; color: darkorange; }
+
+
+
+.ride-details-special-requirements > div > span { margin-right: 30px;}
+
+.ride-details-special-addinfo {padding: 0px;}
+
+
+.ride-details-special-addinfo > div > small {visibility: visible; color: red;}
+
+.ride-details-special-addinfo > h5> span {margin-right: 10px;}
+
+.ride-details-special-rideinfo {margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;}
+
+.ride-details-special-rideinfo > div > h5 { font-weight: bold;color: black;}
+
+.ride-details-special-rideinfo .booking-frm {margin-top: 5%;}
+
+.ride-details-special-rideinfo .booking-frm > button {padding: 5px auto; background-color: #4CAF50;}
 </style>
 {% endblock extra_stylesheet %}
 {% block content %}
@@ -305,11 +338,11 @@
          <!-- --------Begning of navigation tabs---------- -->
          <div class="col-md-9">
             <div class="tab-content" id="vendorDashboard">
-               <div class="tab-pane masterDashboard active" id="driverProfile" role="tabpanel">
+               <div class="tab-pane active" id="driverProfile" role="tabpanel">
                   <div class="col-md-12 col-sm-12 vendorHeader">
                      <h4 class="text-center ">Driver Profile</h4>
                   </div>
-                  <div class="col-sm-12">
+                  <div class="col-sm-12 masterDashboard">
                      <ul class="dashboardTab ">
                         <li class="active" ><a href="#editProfile" data-toggle="tab">Edit Profile</a></li>
                         <li ><a href="#changePassword" data-toggle="tab">Change Password</a></li>
@@ -320,48 +353,48 @@
                            <form  >
                               <div class="col-sm-7">
                                  <div class="errorSpace"> Error Message</div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Full Name</label>
                                     <input type="text" name="vendorName">
                                  </div>
                                  <div class="errorSpace"> Error Message</div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Father's Name</label>
                                     <input type="text" name="vendorName">
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Date Of Birth</label>
                                     <input type="text" id="datepicker4" readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Email address*</label>
                                     <input type="email" name="vendorName">
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Phone No 1*</label>
                                     <input type="tel" name="vendorName">
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Phone No 2*</label>
                                     <input type="tel" name="vendorName">
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Address*</label>
                                     <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
                                  </div>
-                                 <div class="foam-field">
-                                    <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
+                                 <div class="dash_foam">
+                                    <label>KYC Proof*</label>
                                  </div>
                                  <div class="foam-field">
-                                    <label>PAN Card*</label>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <label class="uploadStyle">PAN Card*</label>
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Front Side
                                        </p>
                                     </div>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Back side
@@ -369,17 +402,17 @@
                                     </div>
                                  </div>
                                  <div class="foam-field">
-                                    <label>
+                                    <label class="uploadStyle">
                                        Aadhar Card* 
                                        <p>Size must be 200KB</p>
                                     </label>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Front Side
                                        </p>
                                     </div>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Back side
@@ -387,14 +420,14 @@
                                     </div>
                                  </div>
                                  <div class="foam-field">
-                                    <label>Voter Card</label>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <label class="uploadStyle">Voter Card</label>
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Front Side
                                        </p>
                                     </div>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" placeholder="Pan Card">
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Back side
@@ -402,32 +435,31 @@
                                     </div>
                                  </div>
                                  <div class="foam-field">
-                                    <label>Driving Licence</label>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <label class="uploadStyle">Driving Licence</label>
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" >
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Front Side
                                        </p>
                                     </div>
-                                    <div class="vendorFile" style="width: 49%;">
+                                    <div class="vendorFile uploadFile2" >
                                        <input type="file" name="vendorName" >
                                        <p class="fileUploadtext">
                                           <i class="far fa-file"></i> Back side
                                        </p>
                                     </div>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Valid From*</label>
                                     <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
-                                    <!-- <input type="date" name="vendorName"> -->
+                                    <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Valid To*</label>
                                     <input type="text" id="datepicker3" readonly />
-                                    <span class="dateIcon" ><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Total Driving Experience</label>
                                     <select name="subject" id="">
                                        <option Selected>No. of years</option>
@@ -438,7 +470,7 @@
                                        <option value="5">5</option>
                                     </select>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Hill Driving Experience</label>
                                     <select name="subject" id="">
                                        <option Selected>10</option>
@@ -449,7 +481,7 @@
                                        <option value="5">5</option>
                                     </select>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>
                                        Police Verification*
                                        <p>With in 15days or 6 months old</p>
@@ -461,7 +493,7 @@
                                        </p>
                                     </div>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Hill Driving Experience</label>
                                     <select name="subject" id="">
                                        <option Selected>10</option>
@@ -472,7 +504,7 @@
                                        <option value="5">5</option>
                                     </select>
                                  </div>
-                                 <div class="foam-field">
+                                 <div class="dash_foam">
                                     <label>Any Legal/Accidental case pending for clearance*</label>
                                     <select name="subject" id="legalCase">
                                        <option Selected>--Select--</option>
@@ -482,7 +514,7 @@
                                  </div>
                                  <!-- //////if Yes is selected///////// -->
                                  <div style="display: none;" id="caseInput">
-                                    <div class="foam-field">
+                                    <div class="dash_foam">
                                        <label style="color: #e61616;" >Upload supporing documents*</label>
                                        <div class="vendorFile">
                                           <input type="file" name="vendorName" >
@@ -564,18 +596,21 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="col-sm-12 col-md-12 col-lg-12" style="border-bottom: silver solid 2px;padding: 25px ">
-                              <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                                 <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a>
-                              </div>
-                              <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                                 <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" ><button class="btn btn-default" style="color: #1971bf;font-weight: bolder;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
-                                 </a>&nbsp;&nbsp;
-                              </div>
-                              <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                                 <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
-                              </div>
+                           <div class="col-sm-12 col-md-12" style="border-bottom: silver solid 2px;padding: 25px ">
+                           <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                              <button class="btn btn-default" style="color: #2cb930;font-weight: bolder;width: 100%;" onclick="location.href='https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi'"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button>
                            </div>
+                           <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                             <!--  <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" > -->
+                                <button class="btn btn-default" onclick="location.href='mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com'" style="color: #1971bf;font-weight: bolder;width: 100%;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                              <!-- </a>&nbsp;&nbsp; -->
+                           </div>
+                           <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                              <!-- <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" > -->
+                                <button class="btn btn-default" onclick="location.href='sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com'" style="color: #f7df24;font-weight: bolder;width: 100%;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button>
+                              <!-- </a> -->
+                           </div>
+                        </div>
                         </div>
                      </div>
                   </div>
@@ -1343,7 +1378,7 @@
                      <button>ghi</button>
                      </div> -->
                </div>
-               <div class="tab-pane" id="rideDetails" role="tabpanel">
+               <div class="tab-pane" id="rideDetails" role="tabpanel" class="ride-details">
                   <div class="col-md-12 col-sm-12 vendorHeader">
                      <h4 class="text-center ">Ride Details</h4>
                   </div>
@@ -1352,9 +1387,9 @@
                      <div class="col-sm-1" class="listNumber">
                         <h4>01</h4>
                      </div>
-                     <div class="col-sm-4">
+                     <div class="col-sm-4 ride-details-header">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                           <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                           <h4>
                               <span class="from">Faridabad</span>
                               To 
                               <span class="to">Chandigarh</span>
@@ -1370,35 +1405,35 @@
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                      </div>
-                     <div class="col-sm-7">
-                        <div class="col-sm-5" style="text-align: right; padding-right: 0px;">
-                           <h4 style="color: rgb(10, 10, 10);margin-bottom: 0px;">
+                     <div class="col-sm-7 ride-details-right-col">
+                        <div class="col-sm-5 ride-details-right-col-left-part">
+                           <h4>
                               <span>Start Trip</span>
                            </h4>
-                           <h4 style="color: rgb(10, 10, 10); padding-bottom: 0px;visibility: hidden;margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="visibility: hidden;">
                               <span>Start Trip</span>
                            </h4>
-                           <h4 style=" color: rgb(10, 10, 10); padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4>
                               <span>End Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-7">
-                           <h4 style=" color: darkgreen; padding-bottom: 0px; margin-bottom: 0px;">
+                        <div class="col-sm-7 ride-details-right-col-right-part">
+                           <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>24-May-2020, Sunday</span>
                            </h4>
-                           <h4 style=" color: darkgreen; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px;">
+                           <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>10:20 A.M</span>
                            </h4>
-                           <h4 style=" color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">24-May-2020, Sunday</span>
                            </h4>
-                           <h4 style=" color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4>
                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
                            </h4>
                            <div>
-                              <h4 style="margin-top: 0px; margin-bottom: 0px;">
+                              <h4>
                                  <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                                  <span >KM Limit : 350</span>
                                  <small style="visibility: visible;"> km</small><br>
@@ -1406,68 +1441,68 @@
                               </h4>
                            </div>
                            
-                           <h5 style="visibility: visible;margin-top: 0px; margin-bottom: 0px;">
+                           <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Driver Collection Amount <br> 
-                              <h4 style="padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px; color: darkorange;">2,200</h4>
+                              <h4>2,200</h4>
                            </h5>
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12" style="padding: 0px;">
+                  <div class="col-sm-12 col-md-12 ride-details-special-requirements" style="padding: 0px;">
                      <h4>Special Requirements</h4>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Need one hour of halt at</span>
+                        <span><span class="check">&#10004 </span>Need one hour of halt at</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Carrier on car required</span>
+                        <span><span class="check">&#10004 </span>Carrier on car required</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Travelling with pet</span>
+                        <span><span class="check">&#10004 </span>Travelling with pet</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
+                        <span><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Kids on board</span>
+                        <span><span class="check">&#10004 </span>Kids on board</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Women Travelling</span>
+                        <span><span class="check">&#10004 </span>Women Travelling</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Senior citizen travelling</span>
+                        <span><span class="check">&#10004 </span>Senior citizen travelling</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Required English speaking driver</span>
+                        <span><span class="check">&#10004 </span>Required English speaking driver</span>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12"  style="padding: 0px;">
+                  <div class="col-sm-12 col-md-12 ride-details-special-addinfo">
                      <div>
-                        <small style="visibility: visible; color: red;">* Note Additionanl Information from admin or customer</small>
+                        <small>* Note Additionanl Information from admin or customer</small>
                      </div>
-                     <h5><span class="cngAllowed" style="margin-right: 10px;">
+                     <h5><span class="cngAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
                         </span>
-                        <span class="dieselAllowed" style="margin-right: 10px;">
+                        <span class="dieselAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                        <span class="electricAllowed" style="margin-right: 10px;">
+                        <span class="electricAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
                      </h5>
                   </div>
-                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
+                  <div class="col-sm-12 col-md-12 ride-details-special-rideinfo">
                      <div class="col-sm-3">
-                        <h5 style="font-weight: bold;color: black;">Neeraj Kumar Sharma</h5>
+                        <h5>Neeraj Kumar Sharma</h5>
                         <h5>Mobile: <span>9876543210</span></h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: bold;color: black;">Pickup Location</h5>
+                        <h5>Pickup Location</h5>
                         <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: bold;color: black;">Drop Location</h5>
+                        <h5>Drop Location</h5>
                         <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
                      </div>
-                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
-                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                     <div class="col-sm-3 booking-frm">
+                        <button class="book-btn" type="submit">Pickup</button>
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-12 " style="background-color: #ffc000;padding: 10px;">
@@ -1726,8 +1761,8 @@
                      <h4 class="text-center ">Incentive Earn</h4>
                   </div>
                   <div class="col-sm-12">
-                     <div class="col-sm-12" style="margin: 30px 0px;">
-                       <form class="booking-frm display-change" style="display: flex;box-shadow: 0px 0px 13px #000000;" >
+                     <div class="col-sm-12">
+                       <form class="booking-frm display-change cardShadow"  >
                         <div class="col-sm-5" style="padding: 40px;">
                            <div class="dash_foam">
                               <label>Enter Odometer Reading</label>
@@ -1773,42 +1808,53 @@
                   <div class="col-md-12 col-sm-12 vendorHeader">
                      <h4 class="text-center ">Sell a Ride</h4>
                   </div>
-                  <div class="col-sm-12 col-md-12">
+                  <div class="col-sm-12 col-md-12 masterDashboard">
                      <div class="col-sm-6" >
-                        <div class="foam-field">
+                        <div class="dash_foam">
                            <label>From*</label>
                            <input type="text" name="">
                         </div>
-                        <div class="foam-field">
-                           <label>From*</label>
+                        <div class="dash_foam">
+                           <label>Car Type*</label>
+                           <select name="subject" id="companyDetails">
+                                 <option Selected>--Select--</option>
+                                 <option value="0">SUV</option>
+                                 <option value="1" id="Yes">Sedan</option>
+                                 <option value="1" id="Yes">Compact</option>
+                          </select>
+                        </div><div class="dash_foam">
+                           <label>Date From*</label>
+                           <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" readonly />
+                                 <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
+                        </div><div class="dash_foam">
+                           <label>Customer Name*</label>
                            <input type="text" name="">
-                        </div><div class="foam-field">
-                           <label>From*</label>
-                           <input type="text" name="">
-                        </div><div class="foam-field">
-                           <label>From*</label>
-                           <input type="text" name="">
-                        </div><div class="foam-field">
-                           <label>From*</label>
+                        </div><div class="dash_foam">
+                           <label>Phone*</label>
                            <input type="text" name="">
                         </div>
                      </div>
                      <div class="col-sm-6" >
-                        <div class="foam-field">
-                           <label>From*</label>
+                        <div class="dash_foam">
+                           <label>To</label>
                            <input type="text" name="">
                         </div>
-                        <div class="foam-field">
-                           <label>From*</label>
-                           <input type="text" name="">
+                        <div class="dash_foam">
+                           <label>Ride Type</label>
+                           <select name="subject" id="companyDetails">
+                                 <option Selected>--Select--</option>
+                                 <option value="0">Oneway</option>
+                                 <option value="1" id="Yes">Airport</option>
+                          </select>
                         </div>
-                        <div class="foam-field">
-                           <label>From*</label>
-                           <input type="text" name="">
+                        <div class="dash_foam">
+                           <label>To</label>
+                           <input type="text" id="datepicker3" readonly />
+                                 <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                         </div>
                      </div>
                      <div class="col-md-12 booking-frm col-sm-12 dashButton">
-                        <button type="submit" class="book-btn">Update</button>
+                        <button type="submit" class="book-btn">Submit</button>
                      </div>
 
                   </div>

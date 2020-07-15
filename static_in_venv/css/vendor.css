@@ -49,8 +49,12 @@
     padding: 0 0 0 0;
     margin-top: 20px;
     text-align: center;
+    margin-bottom: 10px;
 }
-
+  .cardShadow{
+    box-shadow: 0px 0px 13px #000000;
+    margin-bottom: 20px;
+  }
 /*.foam-field{
       display: flex;
       margin-bottom: 15px;
@@ -139,13 +143,13 @@ font-weight: bold;
            border-bottom: 1px #333232 solid;
            list-style-type: none;
            color: #7f7f7f;
-           display: flex;
+           
        }
 
-       .masterDashboard .dashboardTab li{
+       /*.masterDashboard .dashboardTab li{
             width: 33%;
             padding-left: 13px;
-       }
+       }*/
        .masterDashboard .dashboardTab a{
             color: inherit;
             font-size: larger;
@@ -266,6 +270,9 @@ font-weight: bold;
          .dateIconVProfile{
           top: -36px !important;
          }
+         .dateIconDProfile{
+          top: -13px !important;
+         }
          .foam-field label{
         width: 100%;
         text-align: left;
@@ -274,6 +281,15 @@ font-weight: bold;
 
          }
          @media(min-width: 770px){
+          .masterDashboard .dashboardTab{
+           list-style-type: none;
+           display: flex;
+       }
+
+       .masterDashboard .dashboardTab li{
+            width: 33%;
+            padding-left: 13px;
+       }
           .dashButton button[type="submit"]{
             margin-left: 25%;
          }
@@ -427,6 +443,19 @@ font-weight: bold;
     }
     }
     @media(max-width: 770px){
+        .masterDashboard .dashboardTab{
+           padding-inline-start: 0;
+           border-bottom: 1px #333232 solid;
+           list-style-type: none;
+           color: #7f7f7f;
+           display: block;
+       }
+
+       .masterDashboard .dashboardTab li{
+            width: 100%;
+            padding-left: 13px;
+            text-align: center;
+       }
         .headerAlign{
             text-align: center!important;
         }
