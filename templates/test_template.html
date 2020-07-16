@@ -884,355 +884,134 @@
                      </div>
                   </div>
                </div>
-               <div class="tab-pane" id="upcomingRides" role="tabpanel">
+               <div class="tab-pane" id="upcomingRides" role="tabpanel" class="ride-details">
                   <div class="col-md-12 col-sm-12 vendorHeader">
                      <h4 class="text-center ">Upcoming</h4>
                   </div>
                   <div class="col-sm-12 col-md-12">
-                     <table>
-                        <tr>
-                           <th>S.N0.</th>
-                           <th>Driver Name</th>
-                           <th>Phone No</th>
-                           <th>Oprational</th>
-                           <th>Status</th>
-                           <th>Rating</th>
-                        </tr>
-                        <tr>
-                           <td>1</td>
-                           <td><a data-toggle="modal" data-target="#driverInformation">Maria Anders</a></td>
-                           <td>9991155693</td>
-                           <td class="check">&#10004</td>
-                           <td class="check">Approved</td>
-                           <td><span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>2</td>
-                           <td>sakir Hussain</td>
-                           <td>9991155693</td>
-                           <td class="cross">&#10008</td>
-                           <td class="cross">Rejected</td>
-                           <td><span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>3</td>
-                           <td>sakir Hussain</td>
-                           <td>9991155693</td>
-                           <td class="cross">&#10008</td>
-                           <td class="wait">Hold</td>
-                           <td><span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star checked"></span>
-                              <span class="fa fa-star"></span>
-                              <span class="fa fa-star"></span>
-                           </td>
-                        </tr>
-                     </table>
-                     <div class="col-sm-12 booking-frm "><button class="vendorAddButton book-btn" id="show-driverbtn">Add more Car +</button> </div>
-                     <div class="col-sm-12 addDriverFoam">
-                        <form >
-                           <div class="col-sm-8">
-                              <div class="foam-field">
-                                 <label>Full Name</label>
-                                 <input type="text" name="vendorName">
-                              </div>
-                              <div class="errorSpace"> Error Message</div>
-                              <div class="foam-field">
-                                 <label>Father's Name</label>
-                                 <input type="text" name="vendorName">
-                              </div>
-                              <div class="foam-field">
-                                 <label>Date Of Birth</label>
-                                 <input type="text" id="datepicker4" readonly />
-                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Email address*</label>
-                                 <input type="email" name="vendorName">
-                              </div>
-                              <div class="foam-field">
-                                 <label>Phone No 1*</label>
-                                 <input type="tel" name="vendorName">
-                              </div>
-                              <div class="foam-field">
-                                 <label>Phone No 2*</label>
-                                 <input type="tel" name="vendorName">
-                              </div>
-                              <div class="foam-field">
-                                 <label>Address*</label>
-                                 <textarea rows="3" cols="50" name="comment" form="usrform"></textarea>
-                              </div>
-                              <div class="foam-field">
-                                 <label style="width: 46%;color: black;font-weight: 800;">    KYC Proof*</label>
-                              </div>
-                              <div class="foam-field">
-                                 <label>PAN Card*</label>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Front Side
-                                    </p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Back side
-                                    </p>
-                                 </div>
-                              </div>
-                              <div class="foam-field">
-                                 <label>
-                                    Aadhar Card* 
-                                    <p>Size must be 200KB</p>
-                                 </label>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Front Side
-                                    </p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Back side
-                                    </p>
-                                 </div>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Voter Card</label>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Front Side
-                                    </p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Back side
-                                    </p>
-                                 </div>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Driving Licence</label>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" >
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Front Side
-                                    </p>
-                                 </div>
-                                 <div class="vendorFile" style="width: 49%;">
-                                    <input type="file" name="vendorName" >
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Back side
-                                    </p>
-                                 </div>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Valid From*</label>
-                                 <input type="text" id="datepicker2" onchange="new_setter(this.innerHtml)" readonly />
-                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                 <!-- <input type="date" name="vendorName"> -->
-                              </div>
-                              <div class="foam-field">
-                                 <label>Valid To*</label>
-                                 <input type="text" id="datepicker3" readonly />
-                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Total Driving Experience</label>
-                                 <select name="subject" id="">
-                                    <option Selected>No. of years</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                 </select>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Hill Driving Experience</label>
-                                 <select name="subject" id="">
-                                    <option Selected>10</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                 </select>
-                              </div>
-                              <div class="foam-field">
-                                 <label>
-                                    Police Verification*
-                                    <p>With in 15days or 6 months old</p>
-                                 </label>
-                                 <div class="vendorFile">
-                                    <input type="file" name="vendorName" placeholder="Pan Card">
-                                    <p class="fileUploadtext">
-                                       <i class="far fa-file"></i> Drop file here
-                                    </p>
-                                 </div>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Hill Driving Experience</label>
-                                 <select name="subject" id="">
-                                    <option Selected>10</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                 </select>
-                              </div>
-                              <div class="foam-field">
-                                 <label>Any Legal/Accidental case pending for clearance*</label>
-                                 <select name="subject" id="legalCase">
-                                    <option Selected>--Select--</option>
-                                    <option value="0">No</option>
-                                    <option value="1" id="Yes">Yes</option>
-                                 </select>
-                              </div>
-                              <!-- //////if Yes is selected///////// -->
-                              <div style="display: none;" id="caseInput">
-                                 <div class="foam-field">
-                                    <label style="color: #e61616;" >Upload supporting documents*</label>
-                                    <div class="vendorFile">
-                                       <input type="file" name="vendorName" >
-                                       <p class="fileUploadtext">
-                                          <i class="far fa-file"></i> Drop file here
-                                       </p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <!-- //////////////////////////////// -->
-                           </div>
-                           <div class="col-sm-4 adjustButton col-md-4 text-center" style="margin-top: 24px;">
-                              <div class="drag-drop">
-                                 <input type="file" class="input-file2" name="">
-                                 <p class="p24">
-                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                    </i><br> Drag&Drop files here <br> or<br>
-                                    <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                 </p>
-                                 <div class="label-right-allign" style="text-align: center;">
-                                    Select your profile image<br>
-                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-sm-12 booking-frm dashButton"> 
-                              <button class="book-btn" type="submit">Update
-                              </button>&nbsp;&nbsp;
-                              <button class="book-btn" id="hide-driverbtn" type="button">Cancel</button>
-                           </div>
-                        </form>
+                     <div class="rideCard">
+                     <div class="col-sm-1" class="listNumber">
+                        <h4>01</h4>
                      </div>
-                     <div class="modal fade" id="driverInformation" role="dialog">
-                        <div class="modal-dialog" style="width:max-content;">
-                           <div class="driver-modal-content" style="width: 80vw;">
-                              <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                 <input type="hidden" name="modelid" id="ridemodalvalue">
-                              </div>
-                              <div class="driver-modal-body" style="display: block;">
-                                 <div class="col-sm-12" style="display: block;" >
-                                    <div class="col-sm-3" ><img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt=""></div>
-                                    <div class="col-sm-6" >
-                                       <p>Chetan Rana</p>
-                                       <p>Address:<span>12/D, Greenfield colony faridabad-121001</span></p>
-                                       <p>Phone no.: <span>8295359554</span></p>
-                                    </div>
-                                    <div class="col-sm-3" >
-                                       <h5>Driver Ratings</h5>
-                                       <span class="fa fa-star checked"></span>
-                                       <span class="fa fa-star checked"></span>
-                                       <span class="fa fa-star checked"></span>
-                                       <span class="fa fa-star"></span>
-                                       <span class="fa fa-star"></span>
-                                    </div>
-                                 </div>
-                                 <div class="col-sm-12" style="height: 1px; background-color: #7f7f7f; margin-top: 10px">
-                                 </div>
-                                 <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
-                                    <h4>Documents Front Pictures</h4>
-                                 </div>
-                                 <div class="col-sm-12">
-                                    <div class="col-sm-2">
-                                       <h5>DL</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Pan Card</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Aadhar Card</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Voter Id</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Other Documents</h5>
-                                       <div style="width: 100%; background-color: #e4e4e4; height: 100%; height: 100px;
-                                          display: flex;
-                                          align-items: center;
-                                          justify-content: space-evenly;" >
-                                          <h5>Legal if Any</h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="col-sm-12" style="height: 1px;background-color: #7f7f7f; margin-top: 10px">
-                                 </div>
-                                 <div class="col-sm-12" style="background-color: #dddddd;color: black; ">
-                                    <h4>Documents Rear Pictures</h4>
-                                 </div>
-                                 <div class="col-sm-12">
-                                    <div class="col-sm-2">
-                                       <h5>DL</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Pan Card</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Aadhar Card</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Voter Id</h5>
-                                       <img style="width: 100%;" src="{% static 'images/news_img2.jpg' %}" alt="">
-                                    </div>
-                                    <div class="col-sm-2">
-                                       <h5>Other Documents</h5>
-                                       <div style="width: 100%; background-color: #e4e4e4; height: 100%; height: 100px;
-                                          display: flex;
-                                          align-items: center;
-                                          justify-content: space-evenly;" >
-                                          <h5>Legal if Any</h5>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="modal-footer">
-                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              </div>
+                     <div class="col-sm-4 ride-details-header">
+                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           <h4>
+                              <span class="from">Faridabad</span>
+                              To 
+                              <span class="to">Chandigarh</span>
+                           </h4>
+                        </a>
+                        <h5 style="color: blue;">
+                        Booking Id: <span class="bookingId">9874654</span></h5 style="color: blue;">
+                        <h5>
+                        One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
+                        <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Night Drop Allowance <span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span></h5>
+                        <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                     </div>
+                     <div class="col-sm-7 ride-details-right-col">
+                        <div class="col-sm-5 ride-details-right-col-left-part">
+                           <h4>
+                              <span>Start Trip</span>
+                           </h4>
+                           <h4 style="visibility: hidden;">
+                              <span>Start Trip</span>
+                           </h4>
+                           <h4>
+                              <span>End Trip</span>
+                           </h4>
+                        </div>
+                        <div class="col-sm-7 ride-details-right-col-right-part">
+                           <h4>
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
+                              <span>24-May-2020, Sunday</span>
+                           </h4>
+                           <h4>
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
+                              <span>10:20 A.M</span>
+                           </h4>
+                           <h4>
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">24-May-2020, Sunday</span>
+                           </h4>
+                           <h4>
+                              <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
+                           </h4>
+                           <div>
+                              <h4>
+                                 <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
+                                 <span >KM Limit : 350</span>
+                                 <small style="visibility: visible;"> km</small><br>
+                                 <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                              </h4>
                            </div>
+                           
+                           <h5>
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Driver Collection Amount <br> 
+                              <h4>2,200</h4>
+                           </h5>
                         </div>
                      </div>
                   </div>
+                  <div class="col-sm-12 col-md-12 ride-details-special-rideinfo">
+                     <div class="col-sm-3">
+                        <h5>Neeraj Kumar Sharma</h5>
+                        <h5>Mobile: <span>9876543210</span></h5>
+                     </div>
+                     <div class="col-sm-3">
+                        <h5>Pickup Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <div class="col-sm-3">
+                        <h5>Drop Location</h5>
+                        <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
+                     </div>
+                     <div class="col-sm-3 booking-frm">
+                        <button class="book-btn" type="submit">Pickup</button>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 ride-details-special-requirements" style="padding: 0px;">
+                     <h4>Special Requirements</h4>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Need one hour of halt at</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Carrier on car required</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Travelling with pet</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Kids on board</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Women Travelling</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Senior citizen travelling</span>
+                     </div>
+                     <div class="col-sm-4">
+                        <span><span class="check">&#10004 </span>Required English speaking driver</span>
+                     </div>
+                  </div>
+                  <div class="col-sm-12 col-md-12 ride-details-special-addinfo">
+                     <div>
+                        <small>* Note Additionanl Information from admin or customer</small>
+                     </div>
+                     <h5><span class="cngAllowed">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
+                        </span>
+                        <span class="dieselAllowed">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
+                        <span class="electricAllowed">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                     </h5>
+                  </div>
+               </div>
                </div>
                <div class="tab-pane" id="yourBooking" role="tabpanel">
                   <div class="col-md-12 col-sm-12 vendorHeader">
@@ -1374,9 +1153,6 @@
                      <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
                      </span>
                   </div>
-                  <!-- <div class="pagenumbers" id="pagination">
-                     <button>ghi</button>
-                     </div> -->
                </div>
                <div class="tab-pane" id="rideDetails" role="tabpanel" class="ride-details">
                   <div class="col-md-12 col-sm-12 vendorHeader">
