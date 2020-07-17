@@ -32,14 +32,14 @@
    width: 100%;
    padding: 0;
    }
-   @media (max-width: 768px){
+   /*@media (max-width: 768px){
    .display-change{
    display: grid !important;
    }
    }
    .display-change{
    display: flex;
-   }
+   }*/
    @media(max-width:767px){
    .airport-section{
    margin-top: 20px !important;
@@ -191,8 +191,9 @@
                <ul class="nav nav-tabs">
                   <li class="active"  id="ONEWAY"><a href="#one-way" data-toggle="tab">One Way</a></li>
                   <li id="AIRPORT"><a href="#airport" data-toggle="tab">Airport</a></li>
-                  <!-- <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
-                     <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li> -->
+                  <li id="ROUNDTRIP"><a href="#round-trip" data-toggle="tab">Round Trip</a></li>
+                  <li id="MULTIWAY"><a href="#multi-way" data-toggle="tab">Multiway</a></li>
+                  <li id="DAYRENTAL"><a href="#day-rental" data-toggle="tab">Day Rental</a></li>
                </ul>
             </div>
             <!--Banner Form 2 Nav End-->
@@ -381,23 +382,61 @@
                <!--Banner Form 2 Tab One Way Section Start-->
                <div class="tab-pane" id="round-trip">
                   <!--Banner Form 2 Content Start-->
-                  <form method="POST" class="trip-frm2">
-                     <div class="col-md-12 col-sm-12">
-                        <h4>Picking Up</h4>
-                        <div class="field-box">
-                           <span class="fas fa-search"></span>
-                           <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
-                        </div>
-                     </div>
-                     <div class="col-md-12 col-sm-12">
-                        <h4>Dropping Off</h4>
-                        <div class="field-box">
-                           <span class="fas fa-search"></span>
-                           <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
-                        </div>
-                     </div>
-                     <div class="col-md-3 col-sm-3">
-                        <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                  <form method="POST" class="booking-frm trip-frm2">
+                     <div class="col-md-3 col-sm-6 remove-padding-left">
+                                 <strong>Pickup City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                                       <option  value="empty" selected="selected">--Select--</option>
+                                       {% for city in pickup_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6 res-padding">
+                                 <strong>Pickup Address</strong>
+                                 <div class="field-holder">
+                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
+                                    <span class="fas fa-map-marker-alt"></span>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 res-padding">
+                                 <strong>Pickup Date & Time</strong>
+                                 <div class="field-holder datetimepicker">
+                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                                    <input type="text">
+                                 </div>
+                              </div>
+                     <div class="col-md-3 col-sm-6 remove-padding-left">
+                                 <strong>Travling to City</strong>
+                                 <div class="field-holder">
+                                    <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                                       <option  value="empty" selected="selected">--Select--</option>
+                                       {% for city in pickup_cities %}
+                                       <option value="{{city}}">{{city}}</option>
+                                       {% endfor %}
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-md-6 col-sm-6 res-padding">
+                                 <strong>Drop Off Address</strong>
+                                 <div class="field-holder">
+                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="To" required>
+                                    <span class="fas fa-map-marker-alt"></span>
+                                 </div>
+                              </div>
+                              <div class="col-md-3 col-sm-6 res-padding">
+                                 <strong>Return Date & Time</strong>
+                                 <div class="field-holder datetimepicker">
+                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                                    <input type="text">
+                                 </div>
+                              </div>
+                     <div class="col-md-6 col-sm-3" style="float: right;">
+                        &nbsp;&nbsp;<button style="background-color: #7f7f7f;margin-left: 5px;"  class="search-btn" type="button">Add More Location</button>
+                        &nbsp;&nbsp;<button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        
                      </div>
                   </form>
                   <!--Banner Form 2 Content End-->
