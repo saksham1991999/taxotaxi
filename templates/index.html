@@ -313,7 +313,6 @@
                                     <input type="text" id="from_airport_drop_location" name="drop" placeholder="To" required>
                                     <span class="fas fa-map-marker-alt"></span>
                                  </div>
-                                 
                               </div>
                               <div class="col-md-3 col-sm-3 airport-btn">
                                  <button type="submit" style="width: 100%" class="book-btn">Search Cabs <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
@@ -384,59 +383,58 @@
                   <!--Banner Form 2 Content Start-->
                   <form method="POST" class="booking-frm trip-frm2">
                      <div class="col-md-3 col-sm-6 remove-padding-left">
-                                 <strong>Pickup City</strong>
-                                 <div class="field-holder">
-                                    <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
-                                       <option  value="empty" selected="selected">--Select--</option>
-                                       {% for city in pickup_cities %}
-                                       <option value="{{city}}">{{city}}</option>
-                                       {% endfor %}
-                                    </select>
-                                 </div>
-                              </div>
-                              <div class="col-md-6 col-sm-6 res-padding">
-                                 <strong>Pickup Address</strong>
-                                 <div class="field-holder">
-                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
-                                    <span class="fas fa-map-marker-alt"></span>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-6 res-padding">
-                                 <strong>Pickup Date & Time</strong>
-                                 <div class="field-holder datetimepicker">
-                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
-                                    <input type="text">
-                                 </div>
-                              </div>
+                        <strong>Pickup City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 res-padding">
+                        <strong>Pickup Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6 res-padding">
+                        <strong>Pickup Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text">
+                        </div>
+                     </div>
                      <div class="col-md-3 col-sm-6 remove-padding-left">
-                                 <strong>Travling to City</strong>
-                                 <div class="field-holder">
-                                    <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
-                                       <option  value="empty" selected="selected">--Select--</option>
-                                       {% for city in pickup_cities %}
-                                       <option value="{{city}}">{{city}}</option>
-                                       {% endfor %}
-                                    </select>
-                                 </div>
-                              </div>
-                              <div class="col-md-6 col-sm-6 res-padding">
-                                 <strong>Drop Off Address</strong>
-                                 <div class="field-holder">
-                                    <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="To" required>
-                                    <span class="fas fa-map-marker-alt"></span>
-                                 </div>
-                              </div>
-                              <div class="col-md-3 col-sm-6 res-padding">
-                                 <strong>Return Date & Time</strong>
-                                 <div class="field-holder datetimepicker">
-                                    <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
-                                    <input type="text">
-                                 </div>
-                              </div>
+                        <strong>Travling to City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 res-padding">
+                        <strong>Drop Off Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="To" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6 res-padding">
+                        <strong>Return Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text">
+                        </div>
+                     </div>
                      <div class="col-md-6 col-sm-3" style="float: right;">
                         &nbsp;&nbsp;<button style="background-color: #7f7f7f;margin-left: 5px;"  class="search-btn" type="button">Add More Location</button>
                         &nbsp;&nbsp;<button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        
                      </div>
                   </form>
                   <!--Banner Form 2 Content End-->
@@ -445,28 +443,117 @@
                <!--Banner Form 2 Tab One Way Section Start-->
                <div class="tab-pane" id="multi-way">
                   <!--Banner Form 2 Content Start-->
-                  <form method="POST" class="trip-frm2">
-                     <div class="col-md-12 col-sm-12">
-                        <h4>Picking Up</h4>
-                        <div class="field-box">
-                           <span class="fas fa-search"></span>
-                           <input type="text" name="trip_pick_loc" placeholder="Pickup Locations">
+                  <form method="POST" class="booking-frm trip-frm2">
+                     <div class="col-md-3 col-sm-6 remove-padding-left">
+                        <strong>Pickup City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
                         </div>
                      </div>
-                     <div class="col-md-12 col-sm-12">
-                        <h4>Dropping Off</h4>
-                        <div class="field-box">
-                           <span class="fas fa-search"></span>
-                           <input type="text" name="trip_drop_loc" placeholder="Dropping Locations">
+                     <div class="col-md-6 col-sm-6 res-padding">
+                        <strong>Pickup Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
+                           <span class="fas fa-map-marker-alt"></span>
                         </div>
                      </div>
-                     <div class="col-md-3 col-sm-3">
+                     <div class="col-md-3 col-sm-6 res-padding">
+                        <strong>Pickup Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text">
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6 remove-padding-left">
+                        <strong>Travling to & From</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 res-padding">
+                        <strong style="color: red;">*Est Arrival Time</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="To" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6 res-padding">
+                        <strong>Return Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text">
+                        </div>
+                     </div>
+                     <div class="col-md-9 col-sm-9 res-padding">
+                        <strong >Next Destination</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="To" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-3" style="float: right;">
+                        <button style="background-color: #7f7f7f;margin-left: 5px;"  class="search-btn" type="button">Add More Location</button>
                         <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                      </div>
                   </form>
                   <!--Banner Form 2 Content End-->
                </div>
                <!--Banner Form 2 Tab One Way Section End-->
+               <div class="tab-pane" id="day-rental">
+                  <!--Banner Form 2 Content Start-->
+                  <form method="POST" class="booking-frm trip-frm2">
+                     <div class="col-md-3 col-sm-6 remove-padding-left">
+                        <strong>Pickup City</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 res-padding">
+                        <strong>Pickup Address</strong>
+                        <div class="field-holder">
+                           <input type="text" id="to_airport_pickup_location" name="pickup" placeholder="From" required>
+                           <span class="fas fa-map-marker-alt"></span>
+                        </div>
+                     </div>
+                     <div class="col-md-3 col-sm-6 res-padding">
+                        <strong>Pickup Date & Time</strong>
+                        <div class="field-holder datetimepicker">
+                           <span class="fas fa-calendar-alt date"> + <span class="fa fa-clock-o"></span></span>
+                           <input type="text">
+                        </div>
+                     </div>
+                     <div class="col-md-9 col-sm-9 remove-padding-left">
+                        <strong>Rental Type</strong>
+                        <div class="field-holder">
+                           <select class="selectpicker" data-live-search="true" id="to_airport_pickup_city" name="pickup_city" placeholder="--Select--" required>
+                              <option  value="empty" selected="selected">--Select--</option>
+                              {% for city in pickup_cities %}
+                              <option value="{{city}}">{{city}}</option>
+                              {% endfor %}
+                           </select>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-3">
+                        <button type="submit" class="search-btn">Search&nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                     </div>
+                  </form>
+                  <!--Banner Form 2 Content End-->
+               </div>
             </div>
             <!--Form Tab Content End-->
          </div>
@@ -1297,4 +1384,3 @@
      
 </script>
 {% endblock extra_scripts %}
-
