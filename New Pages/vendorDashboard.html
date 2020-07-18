@@ -312,7 +312,7 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
 /* /////////////////////////end of your booking CSS */
 
 
-/* ////////////////////////////////////start of assignmnets CSS///////////////////////// */
+/* ////////////////////////////////////start of assignmnets CSS and used in ride details css too///////////////////////// */
 .assignments .heading > a > h4 { text-decoration: underline; color: rgb(45, 45, 46);}
 
 .assignments .heading .headingId { color: blue;}
@@ -323,7 +323,7 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
 
 .assignments .right-info .date-labels > h4 {font-weight: 900; color: rgb(10, 10, 10);margin-bottom: 0px;}
 
-.assignments .right-info .labels-data > h4 {font-weight: 900; color: darkgreen; padding-bottom: 0px; margin-bottom: 0px;}
+.assignments .right-info .labels-data > h4 {font-weight: 900; color: darkgreen; padding-bottom: 0px !important; margin-bottom: 0px !important;}
 
 .assignments .right-info .labels-data> div > h4{margin-top: 0px; margin-bottom: 0px;}
 
@@ -353,6 +353,13 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
 
 
 
+.hide-dropdown{
+   display: none;
+}
+
+.visible-dropdown{
+   display:block ;
+}
 
 /* ///////////////////////end of assignments CSS////////////////////// */
 </style>
@@ -1561,7 +1568,18 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                      </div>
                   </div>
                </div>
-               <div class="tab-pane" id="rideDetails" role="tabpanel">
+
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+                  <!--           Ride Details              -->
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// --><!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+               <div class="tab-pane assignments" id="rideDetails" role="tabpanel">
                   <div class="col-md-12 col-sm-12 vendorHeader">
                      <h4 class="text-center ">Ride Details</h4>
                   </div>
@@ -1569,66 +1587,66 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                      <div class="col-sm-1" class="listNumber">
                         <h4>01</h4>
                      </div>
-                     <div class="col-sm-4">
+                     <div class="col-sm-4 heading">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                           <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
+                           <h4>
                               <span class="from">Faridabad</span>
                               To 
                               <span class="to">Chandigarh</span>
                            </h4>
                         </a>
-                        <h5 style="color: blue;">
-                        Booking Id: <span class="bookingId">9874654</span></h5 style="color: blue;">
-                        <h5>
-                        One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
+                        <h5 class="headingId">
+                        Booking Id: <span class="bookingId">9874654</span></h5">
+                        <h5 class="heading-type">
+                        One Way/ <span>SUV</span> </h5">
                         <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                         <h5>Night Drop Allowance <span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span></h5>
                         <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
                      </div>
-                     <div class="col-sm-7">
-                        <div class="col-sm-5" style="text-align: right; padding-right: 0px;">
-                           <h4 style="font-weight: 900; color: rgb(10, 10, 10);margin-bottom: 0px;">
+                     <div class="col-sm-7 right-info">
+                        <div class="col-sm-5 date-labels">
+                           <h4>
                               <span>Start Trip</span>
                            </h4>
-                           <h4 style="font-weight: 900; color: rgb(10, 10, 10); padding-bottom: 0px;visibility: hidden;margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="visibility: hidden;margin-top: 0px;">
                               <span>Start Trip</span>
                            </h4>
-                           <h4 style="font-weight: 900; color: rgb(10, 10, 10); padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="margin-top: 0px;">
                               <span>End Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-7">
-                           <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px; margin-bottom: 0px;">
+                        <div class="col-sm-7 labels-data">
+                           <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>24-May-2020, Sunday</span>
                            </h4>
-                           <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>10:20 A.M</span>
                            </h4>
-                           <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">24-May-2020, Sunday</span>
                            </h4>
-                           <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;margin-top: 0px; margin-bottom: 0px;">
+                           <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
                            </h4>
                            <div>
-                              <h4 style="margin-top: 0px; margin-bottom: 0px;">
+                              <h4>
                                  <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                                  <span style="font-weight: 900;">KM Limit : 350</span>
                                  <small style="visibility: visible;"> km</small><br>
                                  <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
                               </h4>
                            </div>
-                           <h5 style="visibility: visible;margin-top: 0px; margin-bottom: 0px;">
+                           <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Booking Amount <br> 
-                              <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                              <span>2,200</span>
                            </h5>
-                           <h5 style="visibility: visible;margin-top: 0px; margin-bottom: 0px;">
+                           <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Driver Collection Amount <br> 
-                              <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
+                              <span>2,200</span>
                            </h5>
                         </div>
                      </div>
@@ -1636,69 +1654,70 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                   <div class="col-sm-12 col-md-12">
                      <hr style="height : 10px">
                   </div>
-                  <div class="col-sm-12 col-md-12" style="padding: 0px;">
+                  <div class="col-sm-12 col-md-12 specialreq">
                      <h4>Special Requirements</h4>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Need one hour of halt at</span>
+                        <span><span class="check">&#10004 </span>Need one hour of halt at</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Carrier on car required</span>
+                        <span><span class="check">&#10004 </span>Carrier on car required</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Travelling with pet</span>
+                        <span><span class="check">&#10004 </span>Travelling with pet</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
+                        <span><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Kids on board</span>
+                        <span><span class="check">&#10004 </span>Kids on board</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Women Travelling</span>
+                        <span><span class="check">&#10004 </span>Women Travelling</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Senior citizen travelling</span>
+                        <span><span class="check">&#10004 </span>Senior citizen travelling</span>
                      </div>
                      <div class="col-sm-4">
-                        <span style="margin-right: 30px;"><span class="check">&#10004 </span>Required English speaking driver</span>
+                        <span><span class="check">&#10004 </span>Required English speaking driver</span>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12"  style="padding: 0px;">
+                  <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;">
                      <div>
                         <small style="visibility: visible; color: red;">* Note Additionanl Information from admin or customer</small>
                      </div>
-                     <h5><span class="cngAllowed" style="margin-right: 10px;">
+                     <h5>
+                        <span class="cngAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
                         </span>
-                        <span class="dieselAllowed" style="margin-right: 10px;">
+                        <span class="dieselAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                        <span class="electricAllowed" style="margin-right: 10px;">
+                        <span class="electricAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
                      </h5>
                      <div style="height: 20px">
                         <hr style="height : 10px">
                      </div>
                      <div class="col-sm-12 col-md-12" style="padding: 0px;">
-                        <div style="background-color: #f0eeee; padding: 5px; margin-top: 5px;">
-                           <h4 style="text-align: left; font-weight: 800; color: black;"><span>
+                        <div class="heading">
+                           <h4><span>
                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="5%"> Assigned Car and Driver</span>
                            </h4>
                         </div>
-                        <div class="col-sm-12" style="padding: 0px; padding-top: 10px;">
-                           <div class="col-sm-2" style="padding: 0px;">
-                              <h5 style="margin-bottom: 0px; padding-bottom: 0px;">Select car</h5>
+                        <div class="col-sm-12 options">
+                           <div class="col-sm-2">
+                              <h5>Select car</h5>
                               <input type="text" style="width: 80%;">
                            </div>
-                           <div class="col-sm-2" style="padding: 0px;">
-                              <h5 style="margin-bottom: 0px; padding-bottom: 0px;">Car Details</h5>
+                           <div class="col-sm-2">
+                              <h5>Car Details</h5>
                               <input type="text" style="width: 80%;">
                            </div>
-                           <div class="col-sm-2" style="padding: 0px;">
-                              <h5 style="margin-bottom: 0px; padding-bottom: 0px;">Select Driver</h5>
+                           <div class="col-sm-2">
+                              <h5>Select Driver</h5>
                               <input type="text" style="width: 80%;">
                            </div>
-                           <div class="col-sm-3" style="padding: 0px;">
-                              <h5 style="margin-bottom: 0px; padding-bottom: 0px;">Driver Phone Number</h5>
+                           <div class="col-sm-3">
+                              <h5>Driver Phone Number</h5>
                               <input type="text" style="width: 80%;">
                            </div>
                            <div class="col-sm-3 booking-frm">
@@ -1707,9 +1726,7 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-12" style="margin: 10px auto; padding: 0px;">
-                     <hr>
-                  </div>
+
                   <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
                      <div class="col-sm-3">
                         <h5 style="font-weight: 500;color: black;">Neeraj Kumar Sharma</h5>
@@ -1727,6 +1744,7 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                         <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
                      </div>
                   </div>
+
                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                      <div class="" style="text-align: left;">
                         <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #ffc000;">
@@ -1740,11 +1758,13 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                      <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Start Ride</button>
                   </div>
-                  <div class="dropdown booking-frm">
-                     <button class="btn book-btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 5px auto; background-color: #e61616;color:whitesmoke ;">
+
+
+                  <div class="booking-frm">
+                     <button class="btn book-btn btn-block" type="button" onclick="DisplayStopRide()" style="padding: 5px auto; background-color: #e61616;color:whitesmoke ;">
                      Stop Ride
                      </button>
-                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: -webkit-fill-available;">
+                     <div class="hide-dropdown" style="width: -webkit-fill-available;" id="stopRideDropdown">
                         <form class="booking-frm" >
                            <div class="col-sm-5" style="padding-left: 5%; padding-right: 5%;">
                               <div class="dash_foam">
@@ -1782,10 +1802,10 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
                         </form>
                      </div>
                   </div>
+
                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                      <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #636863;color:whitesmoke ;">Reject Trip</button>
                   </div>
-                  <!-- <div style="height: 500px"></div> -->
                </div>
                <div class="tab-pane" id="bookingHistory" role="tabpanel">
                   <div class="col-md-12 col-sm-12 vendorHeader">
@@ -2598,5 +2618,18 @@ font-weight: 900; color: darkgreen; padding-bottom: 0px !important; }
    });
    
 </script>
+<script>
+   function DisplayStopRide(){
+      console.log("stopRideDropdown");
+      if($("#stopRideDropdown").hasClass("hide-dropdown")){
+         $("#stopRideDropdown").removeClass("hide-dropdown");
+         $("#stopRideDropdown").addClass("visible-dropdown");
+      }else{
+         $("#stopRideDropdown").addClass("hide-dropdown");
+         $("#stopRideDropdown").removeClass("visible-dropdown");
+      }
+   }
+</script>
+
 {% endblock extra_scripts %}
 
