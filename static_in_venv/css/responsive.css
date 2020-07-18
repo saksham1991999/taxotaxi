@@ -12,6 +12,27 @@
       }
  }*/
 @media(max-width: 355px){
+	.tj-form2-tabs .nav-tabs {
+    overflow-x: auto;
+    height: 57px;
+}
+.airport-section .tabwidth {
+    width: 100%!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs {
+    overflow-x: unset;
+    height: 57px;
+}
+/*.airport-section .tj-form2-tabs .nav-tabs {
+    overflow-x: unset;
+    height: 57px;
+}*/
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -4vw !important;
+        line-height: 1vw;
+	}
 	.airport-section .tj-form2-tabs .nav-tabs > li.active > a{
         font-size: 12px !important;
 	}
@@ -19,8 +40,31 @@
 		font-size: 12px !important;
 	}
 }
+@media(max-width: 400px){
+	.tj-form2-tabs {
+    margin-top: -55.5px!important;
+}
+    .tj-form2-tabs .nav-tabs {
+     display: flex;
+}
+.airport-section .tj-form2-tabs {
+    margin-top: -23px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs {
+     display: block;
+}
+}
+@media(min-width: 355px) and (max-width: 534px){
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -3vw !important;
+        line-height: 1vw;
+	}
+}
 
 @media (max-width: 534px){
+	
     .aditionalinfo-list{
        padding-inline-start: 10px;
        display: grid; 
@@ -47,13 +91,13 @@ bottom: 0px !important;
 	/*.container .col-md-3{
     width: 100%;
 }*/
-.tj-form2-tabs .nav-tabs li a{
+/*.tj-form2-tabs .nav-tabs li a{
 		font-size:13px !important;
-		/*padding: 13px 12px;*/
+		
 		width:90px!important;
 		bottom: -14px !important;
 line-height: 1vw;
-	}
+	}*/
 
 	.tj-form2-tabs .nav-tabs li.active a {
     /*font-size: 15px;*/
@@ -70,6 +114,37 @@ line-height: 1vw;
 	}
    
 }
+@media (min-width: 535px) and (max-width: 665px){
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -2vw !important;
+        line-height: 1vw;
+	}
+	.tj-form2-tabs .nav-tabs li.active a {
+    /*font-size: 15px;*/
+    bottom: -10px !important;
+    height: 50px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs > li.active > a {
+   bottom: 8px !important;
+    height: 50px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs li a{
+  
+    bottom: 3px !important;
+    padding: 14px 3px !important;
+    height: 45px !important;
+}
+}
+
+@media (min-width: 665px) and (max-width: 992px){
+.tj-form2-tabs .nav-tabs li a{
+		font-size:16px!important;
+		width:125px;
+	}	
+}
+
 @media (max-width: 992px)
 {    
 
@@ -90,6 +165,7 @@ line-height: 1vw;
    	min-height: 370px;
    }
 }
+
 @media (min-width: 1920px){
 	
 	/*.slide-item .slide-caption{
@@ -1341,11 +1417,10 @@ line-height: 1vw;
 		float:none;
 		margin-top:15px;
 	}
-	.tj-form2-tabs .nav-tabs li a{
+	/*.tj-form2-tabs .nav-tabs li a{
 		font-size:16px!important;
-		/*padding: 13px 12px;*/
 		width:125px;
-	}
+	}*/
 	.tj-book-services .tj-heading-style h3,
 	.tj-cab-filter .tj-heading-style h3{
 		font-size:28px;
