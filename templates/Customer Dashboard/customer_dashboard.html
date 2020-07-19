@@ -331,8 +331,72 @@
    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.2);
    }
 </style> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+     /*-------Booking card CSS Start------------------*/
+.assignments .heading > a > h4 { text-decoration: underline; color: rgb(45, 45, 46); font-weight: bolder;}
+
+.assignments .heading .headingId { color: blue;}
+
+.assignments .heading .heading-type span {color: red;}
+
+.assignments .right-info .date-labels { padding-right: 0px; padding-top: 10px;}
+
+.assignments .right-info .date-labels > h4 {font-weight: 600; color: rgb(10, 10, 10);}
+
+
+.assignments .right-info .labels-data > h4 {font-weight: bold; color: #17a017;}
+
+.assignments .right-info .labels-data> div > h4{margin-top: 0px; margin-bottom: 0px;}
+
+.assignments .right-info .labels-data > h5 {visibility: visible;margin-top: 0px; margin-bottom: 0px;}
+
+.assignments .right-info .labels-data > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;padding-left: 20px;}
+
+.assignments .specialreq {padding: 0px;}
+.assignments .specialreq h4{font-weight: 600;}
+
+.assignments .specialreq >div >span { margin-right: 30px;}
+
+.assignments .car-driver >h5 > span { margin-right: 10px;}
+
+.assignments .car-driver .heading {background-color: #f0eeee; padding: 5px; margin-top: 5px;}
+
+.assignments .car-driver .heading > h4 {text-align: left; font-weight: 800; color: black;}
+.assignments .car-driver .options {padding: 0px; padding-top: 10px;}
+.assignments .car-driver .options >div { padding: 0px;}
+
+.assignments .car-driver .options >div>h5 { margin-bottom: 0px; padding-bottom: 0px;}
+
+
+
+.assignments .buttons >div > button { padding: 0px auto; }
+
+.assignments .card-collapse {background-color: #fa9c9c; margin: 20px;}
+.assignments .extra-payment-icons .amount{
+   color: #ffc000;
+   
+}
+.large{
+   font-size: x-large;
+   font-weight: 600;
+}
+
+.check{
+color: #17ee17;
+font-weight: bold;   
+}
+.cross{
+ color: red;
+font-weight: bold;
+}
+.checked {
+  color: orange;
+}
+</style>
+
 {% endblock extra_stylesheet %}
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 {% block content %}
 <div class="container" id="customerPage" >
    <div class="row">
@@ -579,7 +643,7 @@
                      <div class="col-sm-1" class="listNumber">
                         <h4>01</h4>
                      </div>
-                     <div class="col-sm-4 heading">
+                     <div class="col-sm-5 heading">
                         <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                            <h4>
                               <span class="from">Faridabad</span>
@@ -591,13 +655,13 @@
                         Booking Id: <span class="bookingId">9874654</span></h5>
                         <h5 class="heading-type">
                         One Way/ <span>SUV</span> </h5>
-                        <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                         <h5>Night Drop Allowance <span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span></h5>
-                        <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
-                        <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
-                        <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10008</span></h5>
+                        <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
+                        <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
+                        <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                      </div>
-                     <div class="col-sm-7 right-info">
+                     <div class="col-sm-6 right-info">
                         <div class="col-sm-5 date-labels">
                            <h4>
                               <span>Start Trip</span>
@@ -642,23 +706,23 @@
                      </div>
 
                   </div>
-                  <div class="col-sm-12" >
+                  <div class="col-sm-12 extra-payment-icons" >
                            <div class="col-sm-4">
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount <br> 
-                              <span>2,200</span>
+                              <span class="amount large">2,200</span>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Advanced Paid <br> 
-                              <span>2,200</span>
+                              <span class="amount large">2,200</span>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Pending Amount <br> 
-                              <span>2,200</span>
+                              <span class="amount large">2,200</span>
                            </h5>
                            </div>
                             
@@ -722,31 +786,43 @@
                            </h4>
                         </div>
                         <div class="col-sm-6">
-                           <div class="col-sm-3"><img src="{% static 'images/fleet-carousel-img3.png' %}">
+                           <div class="col-sm-3"><img src="{% static 'images/fleet-carousel-img3.png' %}" width="100%">
                            </div>
-                           <div class="col-sm-9"> <h5>Driver Name:<span>Chetan Rana</span> </h5></div>
+                           <div class="col-sm-9 extra-payment-icons">
+                               <h5>Driver Name:<span> Chetan Rana</span> </h5>
+                               <h5>Phone Number:<span> 9876543210</span> </h5>
+                               <h5>Phone Number:<span> <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star checked"></span>
+                                 <span class="fa fa-star"></span>
+                                 <span class="fa fa-star"></span></span> </h5>
+                                 <br>
+                                 <h5>Ride Start:<span class="amount"> 24 May</span> </h5>
+                                 <h5>
+                                    <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount <br> 
+                                    <span class="amount">2,200</span>
+                                 </h5>
+                           </div>
                         </div>
-                        <div class="col-sm-6"></div>
+                        <div class="col-sm-6 extra-payment-icons">
+                           <div class="col-sm-4">
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="100%">
+                           </div>
+                           <div class="col-sm-8">
+                              <h5>Driver Name:<span> Chetan Rana</span> </h5>
+                           </div>
+                           
+                           <br>
+                           <h5>Ride Start:<span class="amount"> 24 May</span> </h5>
+                           <h5>Driver Name:<span> Chetan Rana</span> </h5>
+                               <h5>Phone Number:<span> 9876543210</span> </h5>
+                        </div>
                         
                      </div>
                   </div>
 
-                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
-                     <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Neeraj Kumar Sharma</h5>
-                        <h5>Mobile: <span>9876543210</span></h5>
-                     </div>
-                     <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Pickup Location</h5>
-                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
-                     </div>
-                     <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
-                        <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
-                     </div>
-                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
-                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
-                     </div>
+                  <div>
+                     <button class="btn btn-block" style="background-color: #4CAF50;">PAY ONLINE</button>
                   </div>
 
                   <!-- <div class="col-sm-12 col-md-12 container2">
