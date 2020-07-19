@@ -5936,3 +5936,12 @@ height: 34px;
 #referral a button{
     min-width: 170px;
   }
+  .color-box {
+   width: 10px;
+   height: 10px;
+   display: inline-block;
+   /*background-color: #ccc;*/
+   position: inherit;
+   margin-right: 14px;
+   margin-left: 4px;
+   }
