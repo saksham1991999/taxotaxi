@@ -1276,8 +1276,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                         <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
                      </div>
                   </div>
-                  <div class="list" id="list"></div>
-                  <div id="listitem1" class="list" style="display: none;">
+                  <div id="listitem1" class="list">
                      <div class="col-sm-12 col-md-12">
                         <div class="col-sm-1" class="listNumber">
                            01
@@ -1291,29 +1290,40 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                               </h4>
                            </a>
                            <h5 class="heading-Id">
-                           Booking Id: <span class="bookingId"></span></h5>
+                           Booking Id: <span class="bookingId">15648152146487</span></h5>
                            <h5 class="heading-type">
                            One Way/ <span>SUV</span></h5>
                            <h5>Night Pick Allowance <span class="nightPickAllowance cross"><i class="fas fa-times"></i></span></h5>
                            <h5>Night Drop Allowance <span class="nightDropAllowance check"></span></h5>
                            <h5>Driver Allowance <span class="driverAllowance cross"><i class="fas fa-times"></i></span></h5>
-                           <h5><span class="cngAllowed"> CNG Allowed</span>
-                              <span class="dieselAllowed"> Diesel Only</span>
-                              <span class="electricAllowed"> Electric Allowed</span>
-                           </h5>
+                           <h5><span class="cngAllowed">
+                              <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
+                              </span>
+                              <span class="dieselAllowed">
+                                  <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
+                              <span class="electricAllowed">
+                                  <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                          </h5>
                         </div>
                         <div class="col-sm-4 card-date">
-                           <h4><span class="date"></span>, <span id="day"></span></h4>
-                           <h4><span class="time"></span></h4>
+                           <h4>
+                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>20 May,2020,Sunday <span id="day"></span></h4>
+                           <h4>
+                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">$10:00 A.M.</span></h4>
                            <div>
-                              <h4><span>KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
-                                 <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs10/-</small>
-                              </h4>
+                               
+                               <h4>
+                                   <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
+                                   <span>KM Limit : 350</span>
+                                   <small style="visibility: visible;"> km</small><br>
+                               <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                               </h4>
                            </div>
-                           <h5 style="visibility: visible;">Recommended Amount <br> 
-                              <span>2,200</span>
+                           <h5 style="visibility: visible;">
+                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Recommended Amount <br> 
+                               <span>2,200</span>
                            </h5>
-                        </div>
+                       </div>
                      </div>
                      <div class="col-sm-12 col-md-12 card-collapse">
                         <div class="collapse" id="collapseExample">
@@ -1371,16 +1381,6 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                            </div>
                         </div>
                      </div>
-                  </div>
-                  <div style="float: right; margin-top: 10px; margin-bottom: 10px;">
-                     <span class="pagenumbers" >
-                     <button id="prevButton" style="background-color: #ffc000;"> << </button>
-                     </span>
-                     <span class="pagenumbers" id="pagination">
-                     </span>
-                     <span class="pagenumbers">
-                     <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
-                     </span>
                   </div>
                   <!-- <div class="pagenumbers" id="pagination">
                      <button>ghi</button>
@@ -1466,6 +1466,23 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                   </div>
                   <div class="col-sm-12 col-md-12">
                      <hr style="height : 10px">
+                  </div>
+                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
+                     <div class="col-sm-4">
+                        <h5 style="font-weight: 500;color: black;">Pickup Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <div class="col-sm-4">
+                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <!-- <div class="col-sm-3">
+                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
+                     </div>
+                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
+                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                     </div> -->
                   </div>
                   <div class="col-sm-12 col-md-12 specialreq">
                      <h4>Special Requirements</h4>
@@ -1665,6 +1682,23 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                   </div>
                   <div class="col-sm-12 col-md-12">
                      <hr style="height : 10px">
+                  </div>
+                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
+                     <div class="col-sm-4">
+                        <h5 style="font-weight: 500;color: black;">Pickup Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <div class="col-sm-4">
+                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
+                     </div>
+                     <!-- <div class="col-sm-3">
+                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
+                     </div>
+                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
+                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                     </div> -->
                   </div>
                   <div class="col-sm-12 col-md-12 specialreq">
                      <h4>Special Requirements</h4>

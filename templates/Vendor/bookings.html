@@ -5,6 +5,35 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
  
+<style>
+    /* ///////////////////////// Your Booking Css///////////////////////////////// */
+.your-booking .list .heading h4{
+ text-decoration: underline;
+ color: rgb(45, 45, 46);
+}
+
+.your-booking .list .heading .heading-Id{
+ color: blue;
+}
+
+.your-booking .list .heading .heading-type span{
+font-weight: 600;
+ color: red;
+}
+
+.your-booking .list .card-date > h4{
+font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
+
+.your-booking .list .card-date > div > h4 > span {font-weight: 600;}
+
+.your-booking .list .card-date > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;}
+
+.card-collapse > div > div > div { background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;}
+
+.card-buttons {margin-top: 10px;}
+
+/* /////////////////////////end of your booking CSS */
+</style>
 {% endblock extra_stylesheet %}
 {% block content %}
 <div class="tj-wrapper">
@@ -13,153 +42,152 @@
 
           {% include 'Vendor/vendorSidebar.html' %}
 
-<div class="col-md-9">
-   <div class="col-md-12 col-sm-12 vendorHeader">
-      <h4 class="text-center">Available Booking<p>(Active Rides)</p></h4>
-   </div>
-   <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
-      <div class="col-sm-3">
-         <div class="foam-field">
-                                        <!-- <label>Saving/ Current</label> -->
-            <select name="subject" id="">
-                  <option Selected>Search By Date</option>
-                  <option value="0" >Saving</option>
-                  <option value="1">Current</option>
-            </select>
-         </div>      
-      </div>
-         <div class="col-sm-3">
-             <div class="foam-field">
-                                        <!-- <label>Saving/ Current</label> -->
+<div class="col-md-9 your-booking">
+    
+        <div class="col-md-12 col-sm-12 vendorHeader">
+           <h4 class="text-center">
+              Available Booking
+              <p>(Active Rides)</p>
+           </h4>
+        </div>
+        <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
+           <div class="col-sm-3">
+              <div class="foam-field">
+                 <!-- <label>Saving/ Current</label> -->
                  <select name="subject" id="">
-                       <option Selected>Search By Booking</option>
-                       <option value="0" >Saving</option>
-                       <option value="1">Current</option>
+                    <option Selected>Search By Date</option>
+                    <option value="0" >Saving</option>
+                    <option value="1">Current</option>
                  </select>
+              </div>
+           </div>
+           <div class="col-sm-3">
+              <div class="foam-field">
+                 <!-- <label>Saving/ Current</label> -->
+                 <select name="subject" id="">
+                    <option Selected>Search By Booking</option>
+                    <option value="0" >Saving</option>
+                    <option value="1">Current</option>
+                 </select>
+              </div>
+           </div>
+           <div class="col-sm-3">
+           </div>
+           <div class="col-sm-3">
+              <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
+           </div>
+        </div>
+        <div id="listitem1" class="list">
+           <div class="col-sm-12 col-md-12">
+              <div class="col-sm-1" class="listNumber">
+                 01
+              </div>
+              <div class="col-sm-7 heading">
+                 <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <h4>
+                       <span class="from">sadfsdf</span>
+                       To 
+                       <span class="to">sdfsdfsdf</span>
+                    </h4>
+                 </a>
+                 <h5 class="heading-Id">
+                 Booking Id: <span class="bookingId">15648152146487</span></h5>
+                 <h5 class="heading-type">
+                 One Way/ <span>SUV</span></h5>
+                 <h5>Night Pick Allowance <span class="nightPickAllowance cross"><i class="fas fa-times"></i></span></h5>
+                 <h5>Night Drop Allowance <span class="nightDropAllowance check"></span></h5>
+                 <h5>Driver Allowance <span class="driverAllowance cross"><i class="fas fa-times"></i></span></h5>
+                 <h5><span class="cngAllowed">
+                    <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
+                    </span>
+                    <span class="dieselAllowed">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
+                    <span class="electricAllowed">
+                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                </h5>
+              </div>
+              <div class="col-sm-4 card-date">
+                 <h4>
+                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>20 May,2020,Sunday <span id="day"></span></h4>
+                 <h4>
+                     <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">$10:00 A.M.</span></h4>
+                 <div>
+                     
+                     <h4>
+                         <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
+                         <span>KM Limit : 350</span>
+                         <small style="visibility: visible;"> km</small><br>
+                     <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                     </h4>
+                 </div>
+                 <h5 style="visibility: visible;">
+                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Recommended Amount <br> 
+                     <span>2,200</span>
+                 </h5>
              </div>
-         </div>
-         <div class="col-sm-3">
-
-         </div>
-         <div class="col-sm-3">
-             <div style="font-size: large;">&#8635 Refresh Info</div>
-         </div>
-   </div>
-   <div class="list" id="list"></div>
-      <div id="listitem1" style="display: none;">
-         <div class="col-sm-12 col-md-12">
-             <div class="col-sm-1" class="listNumber">
-                                    01
-             </div>
-             <div class="col-sm-7">
-                <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
-                <span class="from">sadfsdf</span>
-                      To 
-                <span class="to">sdfsdfsdf</span>
-                </h4>
-                </a>
-                                    
-                                    <h5 style="color: blue;">Booking Id: <span class="bookingId"></span></h5 style="color: blue;">
-                                    <h5>One Way/ <span style="font-weight: 800; color: red;">SUV</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance"></span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance"></span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance"></span></h5>
-                                    
-                                    <h5><span class="cngAllowed"> CNG Allowed</span>
-                                        <span class="dieselAllowed"> Diesel Only</span>
-                                        <span class="electricAllowed"> Electric Allowed</span>
-                                    </h5>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="date"></span>, <span id="day"></span></h4>
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;"><span class="time"></span></h4>
-                                    <div><h4><span style="font-weight: 900;">KM Limit : 350</span><small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small></h4></div>
-                                    <h5 style="visibility: visible;">Recommended Amount <br> 
-                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                            <div class="col-sm-4">
-                                                <h4>Pickup Location</h4>
-                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Drop Location</h4>
-                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
-                                            <div class="col-sm-4">
-                                                <h4>Special Requirements</h4>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
-                                        </div>
-                                      
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
-                                <div class="col-sm-1">
-
-                                </div>
-                                <div class="col-sm-11 booking-frm">
-                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="margin-bottom: 10px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </div>
-                            </div>
-                            <div style="float: right; margin-top: 10px; margin-bottom: 10px;">
-                                <span class="pagenumbers" >
-                                    <button id="prevButton" style="background-color: #ffc000;"> << </button>
-                                </span>
-                                
-                                <span class="pagenumbers" id="pagination">
-                                   
-                                </span>
-                                <span class="pagenumbers">
-                                    <button id="nextButton"  style="background-color: #ffc000;"> >> </button>
-                                </span>
-                            </div>
-                            <!-- <div class="pagenumbers" id="pagination">
-                                <button>ghi</button>
-                            </div> -->
-                        </div>
+           </div>
+           <div class="col-sm-12 col-md-12 card-collapse">
+              <div class="collapse" id="collapseExample">
+                 <div class="card card-body">
+                    <div class="col-sm-12 col-md-12">
+                       <div class="col-sm-4">
+                          <h4>Pickup Location</h4>
+                          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                       </div>
+                       <div class="col-sm-4">
+                          <h4>Drop Location</h4>
+                          <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                       </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                       <div class="col-sm-4">
+                          <h4>Special Requirements</h4>
+                       </div>
+                       <div class="col-sm-12 col-md-12">
+                          <div class="col-sm-3">
+                             <h6>asdjfsdfsdf</h6>
+                          </div>
+                          <div class="col-sm-3">
+                             <h6>asdjfsdfsdf</h6>
+                          </div>
+                          <div class="col-sm-3">
+                             <h6>asdjfsdfsdf</h6>
+                          </div>
+                          <div class="col-sm-3">
+                             <h6>asdjfsdfsdf</h6>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                       <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           <div class="col-sm-12 col-md-12 card-buttons">
+              <div class="col-sm-1">
+              </div>
+              <div class="col-sm-11 booking-frm">
+                 <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                    <div style="display: flex;width:fit-content;">
+                       <button class="book-btn" type="submit">Bid Your Amount</button>
+                       <input type="text" name="" id="" style="margin-bottom: 0px;">
+                    </div>
+                 </div>
+                 <div class="col-sm-6" style="margin-bottom: 10px;">
+                    <div style="display: flex;width:fit-content;">
+                       <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
+                       <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- <div class="pagenumbers" id="pagination">
+           <button>ghi</button>
+           </div> -->
+     
+</div>
                     </div>
                 </div>
             </div>
@@ -170,443 +198,6 @@
 
 
 {% block extra_scripts %}
-<script type="text/javascript">
-//     const list_items = [
-//  "Item 1",
-//  "Item 2",
-//  "Item 3",
-//  "Item 4",
-//  "Item 5",
-//  "Item 6",
-//  "Item 7",
-//  "Item 8",
-//  "Item 9"
-// ];
-
-const list_items = [
-    {from : "Chandigarh",
-     to : "Faridabad",
-     date : "24-May-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "10:50",
-     bookindId: 1656565,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Mumbai",
-     date : "24-Jan-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "4:30",
-     bookindId : 123798465,
-     nightPickAllowance : "&#10004",
-     nightDropAllowance : "&#10008",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"},
-     {
-     from : "Delhi",
-     to : "Faridabad",
-     date : "24-June-2020",
-     day : "Sunday",
-     type : "One-way",
-     carType : "suv",
-     time : "12:30",
-     bookindId : 6519878,
-     nightPickAllowance : "&#10008",
-     nightDropAllowance : "&#10004",
-     driverAllowance : "&#10008",
-     cngAllowed : "&#10008",
-     dieselAllowed : "&#10008",
-     electricAllowed : "&#10008"}
-     
-]
-
-
-const list_element = document.getElementById('list');
-const pagination_element = document.getElementById('pagination');
-
-let current_page = 1;
-let rows = 2;
-let count_page;
-function DisplayList (items, wrapper, rows_per_page, page) {
-    wrapper.innerHTML = "";
-    page--;
-
-    let start = rows_per_page * page;
-    let end = start + rows_per_page;
-    let paginatedItems = items.slice(start, end);
-
-    for (let i = 0; i < paginatedItems.length; i++) {
-        let item = paginatedItems[i];
-
-        let item_element = document.createElement('div');
-        item_element.classList.add('item');
-        // item_element.innerText = item;
-        // let item_element = document.createElement('div');
-        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-        // console.log(item_element);
-        // item_element.classList.add(`list${i+1}`);
-        // console.log(item_element.classList);
-        // var temp2 = document.getElementsByClassName(`list${i+1}`).innerHTML;
-        // var temp = document.querySelector(`#listitem1 > div > div > h4 > .from`).innerHTML;
-        // console.log(temp);
-        // $(temp).innerText = list_items[i].from ;
-        // console.log( $(`list${i+1} .from`).innerText);
-        // console.log(i);
-
-        
-
-        let text = `<div>
-                            
-                            
-                            <div class="col-sm-12 col-md-12">
-                                <div class="col-sm-1" class="listNumber">
-                                    <h4>${i+1}</h4>
-                                </div>
-                                <div class="col-sm-7">
-                                    <a data-toggle="collapse" href="#collapseExample${i}" aria-expanded="false" aria-controls="collapseExample${i}">
-                                        <h4 style="text-decoration: underline; color: rgb(45, 45, 46);">
-                                            <span class="from"> ${paginatedItems[i].from}</span>
-                                             To 
-                                            <span class="to">${paginatedItems[i].to}</span>
-                                        </h4>
-                                    </a>
-                                    
-                                    
-                                    <h5 style="color: blue;">Booking Id: <span class="bookingId">${paginatedItems[i].bookindId}</span></h5 style="color: blue;">
-                                    <h5>${paginatedItems[i].type}/ <span style="font-weight: 800; color: red;">${paginatedItems[i].carType}</span> </h5 style="color: blue;">
-                                    <h5>Night Pick Allowance <span class="nightPickAllowance">${paginatedItems[i].nightPickAllowance}</span></h5>
-                                    <h5>Night Drop Allowance <span class="nightDropAllowance">${paginatedItems[i].nightDropAllowance}</span></h5>
-                                    <h5>Driver Allowance <span class="driverAllowance">${paginatedItems[i].driverAllowance}</span></h5>
-                                    
-                                    <h5><span class="cngAllowed">
-                                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
-                                        </span>
-                                        <span class="dieselAllowed">
-                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                                        <span class="electricAllowed">
-                                            <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
-                                    </h5>
-                                </div>
-                                
-                                <div class="col-sm-4">
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
-                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>${paginatedItems[i].date},${paginatedItems[i].day} <span id="day"></span></h4>
-                                    <h4 style="font-weight: 900; color: darkgreen; padding-bottom: 0px;">
-                                        <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">${paginatedItems[i].time}</span></h4>
-                                    <div>
-                                        
-                                        <h4>
-                                            <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
-                                            <span style="font-weight: 900;">KM Limit : 350</span>
-                                            <small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
-                                        </h4>
-                                    </div>
-                                    <h5 style="visibility: visible;">
-                                        <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Recommended Amount <br> 
-                                        <span style="font-size: x-large; font-weight: 800; color: darkorange;">2,200</span>
-                                    </h5>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="collapse" id="collapseExample${i}">
-                                    <div class="card card-body">
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                            <div class="col-sm-4">
-                                                <h4>Pickup Location</h4>
-                                                <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Drop Location</h4>
-                                                <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;">
-                                            <div class="col-sm-4">
-                                                <h4>Special Requirements</h4>
-                                            </div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <h6>asdjfsdfsdf</h6>
-                                                </div>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="col-sm-12 col-md-12" style=" background-image: linear-gradient(#feceab, #ffebdc);">
-                                        <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
-                                        </div>
-                                      
-                                    </div>
-                                  </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12" style="margin-top: 10px;">
-                                <div class="col-sm-1">
-
-                                </div>
-                                <div class="col-sm-11 booking-frm">
-                                    <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                                            <input type="text" name="" id="" style="margin-bottom: 0px;">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6" style="margin-bottom: 10px;">
-                                        <div style="display: flex;width:fit-content;">
-                                            <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                                            <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                                
-                            </div>
-                            </div>`;
-        // console.log(froms.length); 
-        // froms[i].innerHTML = list_items[i].from;
-        // console.log( list_items[i].from);
-
-
-        // item_element.innerHTML = document.getElementById('listitem1').innerHTML;
-        item_element.innerHTML = text;
-        wrapper.appendChild(item_element);
-    }
-}
-
-function SetupPagination (items, wrapper, rows_per_page) {
-    wrapper.innerHTML = "";
-
-    let page_count = Math.ceil(items.length / rows_per_page);
-    count_page = page_count;
-    // if( current_page != page_count){
-    //     for (let i = current_page; i < current_page + 3; i++) {
-    //      let btn = PaginationButton(i, items);
-    //      wrapper.appendChild(btn);
-    //     }
-    // }else{
-    //     let btn = PaginationButton(page_count, items);
-    //     wrapper.appendChild(btn);
-    // }
-    console.log(page_count);
-    if( (page_count-current_page) >= 3){
-        for (let i = current_page; i <= current_page + 2; i++) {
-            let btn = PaginationButton(i, items);
-            wrapper.appendChild(btn);
-        }
-    }else{
-        for (let i = current_page; i <= page_count; i++) {
-            let btn = PaginationButton(i, items);
-            wrapper.appendChild(btn);
-        }
-    }
-    
-} 
-
-    $("#prevButton").click(function(){
-        
-        console.log("Previous Button Clicked");
-        console.log((Math.floor((current_page-1)/3)));
-        if((Math.floor((current_page-1)/3)) > 0){
-            pagination_element.innerHTML = "";
-            let check = 0;
-            for(let i = ((Math.floor((current_page-1)/3)-1)*3)+1  ; i <= (Math.floor((current_page-1)/3)-1)*3 +3 ; i++ ){
-                if( check == 0 ){
-
-                }
-                console.log("forLop");
-                let btn = PaginationButton(i, list_items);
-                pagination_element.appendChild(btn);
-                check = 1 ;
-            }
-            current_page = ((Math.floor((current_page-1)/3)-1)*3)+1;
-             DisplayList(list_items, list_element, rows, current_page);
-        }
-    })
-    $("#nextButton").click(function(){
-        
-        console.log("Next Button Clicked");
-        console.log("count_page is " + count_page);
-        // var page_count = Math.ceil(list_items / rows);
-        console.log( "Math.floor((current_page-1)/3) = " + Math.floor((current_page-1)/3) + " Math.floor(count_page/3) = "+ Math.floor(count_page/3) )
-        if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
-        if( (Math.floor((current_page-1)/3)+1) < Math.floor(count_page/3) ){
-            pagination_element.innerHTML = "";
-            console.log(list_items.length);
-            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= (Math.floor((current_page-1)/3)+1)*3 +3 ; i++ ){
-                console.log("forLop");
-                let btn = PaginationButton(i, list_items);
-                // current_page = ((((current_page-1)/3)+1)*3)+1
-                
-                pagination_element.appendChild(btn);
-            }
-            
-        }else if(((Math.floor((current_page-1)/3)+1)*3)+1 <= count_page){
-            pagination_element.innerHTML = "";
-            for(let i = ((Math.floor((current_page-1)/3)+1)*3)+1  ; i <= count_page ; i++  ){
-                // current_page = ((((current_page-1)/3)+1)*3)+1
-                
-                    // console.log("forLop");
-                    let btn = PaginationButton(i, list_items);
-                    pagination_element.appendChild(btn);
-                
-            }
-        }
-        current_page = ((Math.floor((current_page-1)/3)+1)*3)+1;
-        DisplayList(list_items, list_element, rows, current_page);
-       
-        }
-       
-    })
-
-
-function PaginationButton (page, items) {
-    let button = document.createElement('button');
-    button.innerText = page;
-
-    if (current_page == page) button.classList.add('active');
-
-    button.addEventListener('click', function () {
-        current_page = page;
-        // SetupPagination(list_items, pagination_element, rows);
-        DisplayList(items, list_element, rows, current_page);
-
-        let current_btn = document.querySelector('.pagenumbers button.active');
-        current_btn.classList.remove('active');
-
-        button.classList.add('active');
-    });
-
-    return button;
-}
-
-DisplayList(list_items, list_element, rows, current_page);
-SetupPagination(list_items, pagination_element, rows);
-</script>
 
 
 {% endblock extra_scripts %}
