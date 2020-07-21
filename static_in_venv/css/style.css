@@ -5926,7 +5926,6 @@ height: 34px;
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    /* left: 105%; */
     font-weight: 200;
 }
 
@@ -5940,8 +5939,88 @@ height: 34px;
    width: 10px;
    height: 10px;
    display: inline-block;
-   /*background-color: #ccc;*/
    position: inherit;
    margin-right: 14px;
    margin-left: 4px;
    }
+
+/*-----css which will be same on all pages if used*/
+
+   /*-------Booking card CSS Start------------------*/
+   .assignments{color: black;}
+ .assignments .heading > h4 { text-decoration: underline; color: rgb(45, 45, 46); font-weight: bolder;}
+
+.assignments .heading .headingId { color: blue;}
+
+.assignments .heading .heading-type span {color: red;}
+
+
+
+.assignments .right-info .date-labels > h4 {font-weight: 600; color: rgb(10, 10, 10);}
+    
+
+.assignments .right-info .labels-data > h4 {font-weight: bold; color: #17a017;}
+
+.assignments .right-info .labels-data> div > h4{margin-top: 0px; margin-bottom: 0px;}
+
+.assignments .right-info .labels-data > h5 {visibility: visible;margin-top: 0px; margin-bottom: 0px;}
+
+.assignments .right-info .labels-data > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;padding-left: 20px;}
+
+.assignments .specialreq {padding: 0px;}
+.assignments .specialreq h4{font-weight: 600;}
+
+.assignments .specialreq >div >span { margin-right: 30px;}
+
+.assignments .car-driver >h5 > span { margin-right: 10px;}
+
+.assignments .car-driver .heading {background-color: #f0eeee; padding: 5px; margin-top: 5px;}
+
+.assignments .car-driver .heading > h4 {text-align: left; font-weight: 800; color: black; text-decoration: none;margin: 0;}
+.assignments .car-driver .options {padding: 0px; padding-top: 10px;}
+.assignments .car-driver .options >div { padding: 0px;}
+
+.assignments .car-driver .options >div>h5 { margin-bottom: 0px; padding-bottom: 0px;}
+
+
+
+.assignments .buttons >div > button { padding: 0px auto; }
+
+.assignments .card-collapse {background-color: #fa9c9c; margin: 20px;}
+
+
+.hide-dropdown{
+   display: none;
+}
+
+.visible-dropdown{
+   display:block ;
+}
+.roundImage{
+	border-radius: 20px;
+}
+.assignments .extra-payment-icons .amount{
+   color: #ffc000;
+   margin: 10px 0px;
+}
+.large{
+   font-size: x-large;
+   font-weight: 600;
+}
+
+.check{
+color: #17ee17;
+font-weight: bold;   
+}
+.cross{
+ color: red;
+font-weight: bold;
+}
+.checked {
+  color: orange;
+}
+.boldBlack{
+   color: black;
+   font-weight: bold;
+}
+/*---------Booking CSS END-------------*/

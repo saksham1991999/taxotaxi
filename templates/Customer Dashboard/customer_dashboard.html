@@ -334,27 +334,26 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
      /*-------Booking card CSS Start------------------*/
-.assignments .heading > a > h4 { text-decoration: underline; color: rgb(45, 45, 46); font-weight: bolder;}
+   /* .assignments .heading > a > h4 { text-decoration: underline; color: rgb(45, 45, 46);}
 
 .assignments .heading .headingId { color: blue;}
 
-.assignments .heading .heading-type span {color: red;}
+.assignments .heading .heading-type {font-weight: 800; color: red;}
 
-.assignments .right-info .date-labels { padding-right: 0px; padding-top: 10px;}
+.assignments .right-info .date-labels {text-align: right; padding-right: 0px;}
 
-.assignments .right-info .date-labels > h4 {font-weight: 600; color: rgb(10, 10, 10);}
+.assignments .right-info .date-labels > h4 {font-weight: 500; color: rgb(10, 10, 10);}
+    
 
-
-.assignments .right-info .labels-data > h4 {font-weight: bold; color: #17a017;}
+.assignments .right-info .labels-data > h4 {font-weight: bold; color: darkgreen; padding: 5px 0px; margin-bottom: 0px !important;}
 
 .assignments .right-info .labels-data> div > h4{margin-top: 0px; margin-bottom: 0px;}
 
 .assignments .right-info .labels-data > h5 {visibility: visible;margin-top: 0px; margin-bottom: 0px;}
 
-.assignments .right-info .labels-data > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;padding-left: 20px;}
+.assignments .right-info .labels-data > h5 > span {font-size: x-large; font-weight: 800; color: darkorange;}
 
 .assignments .specialreq {padding: 0px;}
-.assignments .specialreq h4{font-weight: 600;}
 
 .assignments .specialreq >div >span { margin-right: 30px;}
 
@@ -372,8 +371,8 @@
 
 .assignments .buttons >div > button { padding: 0px auto; }
 
-.assignments .card-collapse {background-color: #fa9c9c; margin: 20px;}
-.assignments .extra-payment-icons .amount{
+.assignments .card-collapse {background-color: #fa9c9c; margin: 20px;}*/
+/*.assignments .extra-payment-icons .amount{
    color: #ffc000;
    
 }
@@ -393,6 +392,10 @@ font-weight: bold;
 .checked {
   color: orange;
 }
+.boldBlack{
+   color: black;
+   font-weight: bold;
+}*/
 </style>
 
 {% endblock extra_stylesheet %}
@@ -411,25 +414,20 @@ font-weight: bold;
                   </li>
                   <li class="row row1" id="list2">
                      <a href="{% url 'core:home' %}">
-                     <i class="far fa-plus-square"></i>&nbsp;&nbsp;New Booking</a>
+                     <i class="far fa-plus-square"></i>&nbsp;&nbsp;Create New Booking</a>
                   </li>
-                  <li  class="row row1" id="list3" data-toggle="collapse" data-target="#collapseExample"  aria-expanded="false" aria-controls="collapseExample">
-                     <a><i class="far fa-check-circle"></i>&nbsp;My Booking</a>
-                     <ul class="collapse" id="collapseExample" style="list-style-type: none;padding-inline-start: 10px;">
-                        <li class=" row1" id="list3-1">
+                  <li class=" row1" id="list3-1">
                            <a href="#upcomingRides" data-toggle="tab">
-                           <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Upcoming Rides</a>
+                           <i class="fa fa-calendar-check-o"></i>&nbsp;&nbsp;Upcoming</a>
                         </li>
                         <li class="row row1" id="list3-2">
                            <a href="#rideHistory" data-toggle="tab">
-                           <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Ride History</a>
+                           <i class="fa fa-calendar"></i>&nbsp;&nbsp;History</a>
                         </li>
                         <li class="row row1" id="list3-3">
                            <a href="#canceledRides" data-toggle="tab">
-                           <i class="fas fa-chevron-right"></i>&nbsp;&nbsp;Canceled Rides</a>
+                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Canceled Rides</a>
                         </li>
-                     </ul>
-                  </li>
                   <li class="row row1" id="list4">
                      <a href="#customerProfile" data-toggle="tab">
                      <i class="fas fa-user-plus"></i>&nbsp;Reffer a Friend
@@ -633,25 +631,24 @@ font-weight: bold;
                   </div>
                </div>
                <!-- /////////end of customer profile///////// -->
-               
+
                <!--/////////////start of new Booking////////// -->
                <div class="tab-pane assignments" id="upcomingRides" role="tabpanel">
                   <div class="row">
                      <h4 class="text-center tab-heading">Upcoming Booking</h4>
                      <br>
                   </div>
-                   <div class="col-sm-12 col-md-12">
-                     <div class="col-sm-1" class="listNumber">
+                   {% for ride in upcoming_rides %}
+                   <div class="col-sm-12 ">
+                     <div class="col-sm-1 listNumber" >
                         <h4>01</h4>
                      </div>
-                     <div class="col-sm-5 heading">
-                        <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                     <div class="col-sm-5 heading noPadding">
                            <h4>
-                              <span class="from">Faridabad</span>
-                              To 
-                              <span class="to">Chandigarh</span>
+                              <span class="from">{{ ride.pickup_city }}</span>
+                               To
+                              <span class="to">{{ ride.drop_city }}</span>
                            </h4>
-                        </a>
                         <h5 class="headingId">
                         Booking Id: <span class="bookingId">9874654</span></h5>
                         <h5 class="heading-type">
@@ -662,33 +659,33 @@ font-weight: bold;
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                      </div>
-                     <div class="col-sm-6 right-info">
-                        <div class="col-sm-5 date-labels">
+                     <div class="col-sm-6 right-info noPadding">
+                        <div class="col-sm-4 date-labels">
                            <h4>
                               <span>Start Trip</span>
                            </h4>
                            
                         </div>
-                         <div class="col-sm-7 labels-data">
+                         <div class="col-sm-8 labels-data noPadding">
                             <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
-                              <span>24-May-2020, Sunday</span>
+                              <span>{{ ride.booking_datetime }}</span>
                            </h4>
                             <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>10:20 A.M</span>
                            </h4>
                          </div>
-                         <div class="col-sm-5 date-labels">
+                         <div class="col-sm-4 date-labels">
                            <h4 style="margin-top: 0px;">
                               <span>End Trip</span>
                            </h4>
                          </div>
-                        <div class="col-sm-7 labels-data">
+                        <div class="col-sm-8 labels-data noPadding">
                            
                           
                            <h4 style="margin-top: 0px; ">
-                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">24-May-2020, Sunday</span>
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">{{ride.pickup_datetime}}</span>
                            </h4>
                            <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
@@ -708,37 +705,43 @@ font-weight: bold;
 
                   </div>
                   <div class="col-sm-12 extra-payment-icons" >
-                           <div class="col-sm-4">
+                           <div class="col-sm-4 ">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount <br> 
-                              <span class="amount large">2,200</span>
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount  
+                              <div class="col-sm-12" > 
+                              <span class="amount large">{{ ride.total}}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Advanced Paid <br> 
-                              <span class="amount large">2,200</span>
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Advanced Paid  
+                              <div class="col-sm-12" > 
+                              <span class="amount large">{{ ride.get_advance }}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Pending Amount <br> 
-                              <span class="amount large">2,200</span>
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Pending Amount 
+                              <div class="col-sm-12" > 
+                              <span class="amount large">{{ ride.amount_due }}</span></div>
                            </h5>
-                           </div>
-                            
-                           
+                           </div> 
                         </div>
-                  <div class="col-sm-12 col-md-12">
-                     <div class="col-sm-6">
-                        <h5><div class="color-box" style="background-color: #ffc000;"></div>Pickup Address</h5><p>1,Vigyan Vihar,Sector 56 Gurugram,Haryana 122001 ,India</p>
+                  <div class="col-sm-12 col-md-12 noPadding">
+                     <div class="col-sm-6 ">
+                        <h5 class="boldBlack"><div class="color-box" style="background-color: #169d16;"></div>Pickup Address</h5>
+                        <div class="col-sm-12">
+                        <p>{{ ride.pickup }}</p></div>
                      </div>
                      <div class="col-sm-6">
-                        <h5><div class="color-box" style="background-color: #ffc000;"></div>Drop Address</h5><p>1156,Block C ,D Block Sainil Colony Sector 49, faridabad,Haryana 12011,India</p>
+                        <h5 class="boldBlack"><div class="color-box" style="background-color: orange;"></div>Drop Address</h5>
+                        <div class="col-sm-12">
+                           <p>{{ ride.drop }}</p>
+                        </div>
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-12 specialreq">
-                     <h4>Special Requirements</h4>
+                     <h4 class="boldBlack">Special Requirements</h4>
                      <div class="col-sm-4">
                         <span><span class="check">&#10004 </span>Need one hour of halt at</span>
                      </div>
@@ -777,55 +780,59 @@ font-weight: bold;
                         <span class="electricAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
                      </h5>
-                     <div style="height: 20px">
+                     <!-- <div style="height: 20px">
                         <hr style="height : 10px">
-                     </div>
+                     </div> -->
                      <div class="col-sm-12 col-md-12" style="padding: 0px;">
-                        <div class="heading">
+                        <div class="heading" style="margin-bottom: 10px;">
                            <h4><span>
                               <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="5%"> Assigned Car and Driver</span>
                            </h4>
                         </div>
                         <div class="col-sm-6">
-                           <div class="col-sm-3"><img src="{% static 'images/fleet-carousel-img3.png' %}" width="100%">
+                           <div class="col-sm-3"><img class="roundImage" src="{% static 'images/comment_img2.jpg' %}" >
                            </div>
                            <div class="col-sm-9 extra-payment-icons">
                                <h5>Driver Name:<span> Chetan Rana</span> </h5>
                                <h5>Phone Number:<span> 9876543210</span> </h5>
-                               <h5>Phone Number:<span> <span class="fa fa-star checked"></span>
+                               <h5>Rating:<span> <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star"></span>
                                  <span class="fa fa-star"></span></span> </h5>
-                                 <br>
-                                 <h5>Ride Start:<span class="amount"> 24 May</span> </h5>
+                                 
+                                 <h5 >Ride Start:<span class="amount"> 24-May-2020 10:30am</span> </h5>
                                  <h5>
-                                    <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount <br> 
-                                    <span class="amount">2,200</span>
+                                    <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Actual to be Paid<br> 
+                                    <span class="amount large">2,200</span>
                                  </h5>
                            </div>
                         </div>
                         <div class="col-sm-6 extra-payment-icons">
-                           <div class="col-sm-4">
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="100%">
+                           <div class="col-sm-4 noPadding">
+                              <img class="roundImage" src="{% static 'images/icons/Payment-inactive.png' %}">
                            </div>
-                           <div class="col-sm-8">
-                              <h5>Driver Name:<span> Chetan Rana</span> </h5>
+                           <div class="col-sm-8 noPadding">
+                              <h5>Car No:<span>HR 38 4005</span> </h5>
                            </div>
                            
-                           <br>
-                           <h5>Ride Start:<span class="amount"> 24 May</span> </h5>
-                           <h5>Driver Name:<span> Chetan Rana</span> </h5>
-                               <h5>Phone Number:<span> 9876543210</span> </h5>
+                           <div class="col-sm-12">
+                               <h5>Ride Finished:<span class="amount"> 24-May-2020 10:30pm</span> </h5>
+                           <h5>Extra KM Charges:<span> 1,500 INR</span> </h5>
+                               <h5>Additional Charges:<span> 500 INR</span> </h5>
+                           </div>
+                          
                         </div>
                         
                      </div>
                   </div>
 
                   <div>
-                     <button class="btn btn-block" style="background-color: #4CAF50;">PAY ONLINE</button>
+                     <button class="btn btn-block" style="background-color: #4CAF50;">Pay Online</button>
+                     <br>
+                     <button class="btn btn-block" style="background-color: #AC4800;">SOS/Call Customer Care</button>
                   </div>
-
+                  {% endfor %}
                   <!-- <div class="col-sm-12 col-md-12 container2">
                      <div id="products" class="row list-group ">
                         {% for ride in upcoming_rides %}
@@ -882,7 +889,7 @@ font-weight: bold;
                    
                   </div> -->
                </div>
-               <!--///////////end of new Booking///////////////////  -->
+               <!--////////end of new Booking//////////////  -->
                <!-- //////////start of history//////////// -->
                <div class="tab-pane" id="rideHistory" role="tabpanel">
                   <div class="row">

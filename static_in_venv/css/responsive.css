@@ -398,7 +398,14 @@ line-height: 1vw;
 	
 
 }
-
+@media(min-width: 768px){
+	/*for cards*/
+	.noPadding{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.assignments .right-info .date-labels {text-align: right; }
+}
 @media( min-width:768px ) and ( max-width:991px ) {
 	
 
