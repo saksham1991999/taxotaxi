@@ -426,7 +426,7 @@ font-weight: bold;
                         </li>
                         <li class="row row1" id="list3-3">
                            <a href="#canceledRides" data-toggle="tab">
-                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Canceled Rides</a>
+                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Your Places</a>
                         </li>
                   <li class="row row1" id="list4">
                      <a href="#customerProfile" data-toggle="tab">
@@ -707,21 +707,21 @@ font-weight: bold;
                   <div class="col-sm-12 extra-payment-icons" >
                            <div class="col-sm-4 ">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Total Amount  
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Total Amount  
                               <div class="col-sm-12" > 
                               <span class="amount large">{{ ride.total}}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Advanced Paid  
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Advanced Paid  
                               <div class="col-sm-12" > 
                               <span class="amount large">{{ ride.get_advance }}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
-                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Pending Amount 
+                              <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Pending Amount 
                               <div class="col-sm-12" > 
                               <span class="amount large">{{ ride.amount_due }}</span></div>
                            </h5>
@@ -803,8 +803,8 @@ font-weight: bold;
                                  
                                  <h5 >Ride Start:<span class="amount"> 24-May-2020 10:30am</span> </h5>
                                  <h5>
-                                    <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%">Actual to be Paid<br> 
-                                    <span class="amount large">2,200</span>
+                                    <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Actual to be Paid<br> 
+                                   <div class="col-sm-12"><span class="amount large">2,200</span></div> 
                                  </h5>
                            </div>
                         </div>

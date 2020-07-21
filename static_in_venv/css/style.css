@@ -6001,11 +6001,15 @@ height: 34px;
 }
 .assignments .extra-payment-icons .amount{
    color: #ffc000;
-   margin: 10px 0px;
+   
+}
+.extra-payment-icons{
+	margin: 10px 0px;
 }
 .large{
    font-size: x-large;
    font-weight: 600;
+   margin-left: 20px;
 }
 
 .check{
