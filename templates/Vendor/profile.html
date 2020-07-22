@@ -29,54 +29,50 @@
                   <div class="tab-content">
                      <div class="tab-pane active" id="editProfile">
                         <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <input name="type" type="hidden" value="profile">
+                           {% csrf_token %}
+                           <input name="type" type="hidden" value="profile">
                            <div class="col-sm-7">
-                                <div style="display: none">
-                                    {% render_field profile_form.total_compact %}
-                                    {% render_field profile_form.total_sedan %}
-                                    {% render_field profile_form.total_suv %}
-                                </div>
+                              <div style="display: none">
+                                 {% render_field profile_form.total_compact %}
+                                 {% render_field profile_form.total_sedan %}
+                                 {% render_field profile_form.total_suv %}
+                              </div>
                               <div class="dash_foam">
                                  <label>Full Name</label>
                                  {% render_field profile_form.full_name %}
                               </div>
-                               <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
-
+                              <div class="errorSpace">{{ profile_form.full_name.errors }}</div>
                               <div class="dash_foam">
                                  <label>Father's Name</label>
                                  {% render_field profile_form.father_name %}
                               </div>
-                               <div class="errorSpace">{{ profile_form.father_name.errors }}</div>
-
+                              <div class="errorSpace">{{ profile_form.father_name.errors }}</div>
                               <div class="dash_foam">
                                  <label>Date Of Birth</label>
-                                  {% render_field profile_form.dob id="datepicker1" readonly='true' class="input-group date" %}
+                                 {% render_field profile_form.dob id="datepicker1" readonly='true' class="input-group date" %}
                                  <i class="dateIconVProfile dateIcon glyphicon glyphicon-calendar"></i>
                               </div>
-                               <div class="errorSpace">{{ profile_form.dob.errors }}
-                               </div>
+                              <div class="errorSpace">{{ profile_form.dob.errors }}
+                              </div>
                               <div class="dash_foam">
                                  <label>Email address*</label>
                                  {% render_field profile_form.email %}
                               </div>
-                               <div class="errorSpace">{{ profile_form.email.errors }}</div>
-
+                              <div class="errorSpace">{{ profile_form.email.errors }}</div>
                               <div class="dash_foam">
                                  <label>Phone No 1*</label>
                                  {% render_field profile_form.contact1 pattern="[1-9]{1}[0-9]{9}" %}
                               </div>
-                               <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
+                              <div class="errorSpace">{{ profile_form.contact1.errors }}</div>
                               <div class="dash_foam">
                                  <label>Phone No 2</label>
                                  {% render_field profile_form.contact2 pattern="[1-9]{1}[0-9]{9}" %}
                               </div>
-                               <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
+                              <div class="errorSpace">{{ profile_form.contact2.errors }}</div>
                               <div class="dash_foam">
                                  <label>Address*</label>
-                                  {% render_field profile_form.address rows="3" cols="50" %}
+                                 {% render_field profile_form.address rows="3" cols="50" %}
                               </div>
-
                               <div class="dash_foam">
                                  <label>KYC Proof*</label>
                               </div>
@@ -89,8 +85,7 @@
                                     </p>
                                  </div>
                               </div>
-                               <div class="errorSpace">{{ profile_form.pancard.errors }}</div>
-
+                              <div class="errorSpace">{{ profile_form.pancard.errors }}</div>
                               <div class="foam-field ">
                                  <label class="uploadStyle">Upload Aadhar Card*</label>
                                  <div class="vendorFile uploadFile2">
@@ -136,77 +131,75 @@
                                     </p>
                                  </div>
                               </div>
-
-                               <div id="bank-details">
-                               {{ bank_formset.management_form }}
-                                   {% for form in bank_formset %}
-                                   <div>
-                                      <div class="dash_foam">
-                                         <label>Bank Details*</label>
-                                          {% render_field form.account_no placeholder="Account Number" pattern="[0-9]{8,18}" type="text"%}
-                                      </div>
-                                      <div class="dash_foam">
-                                         <label> </label>
-                                          {% render_field form.bank_name placeholder="Bank Name" %}
-                                      </div>
-                                      <div class="dash_foam">
-                                         <label></label>
-                                          {% render_field form.ifsc placeholder="IFSC" %}
-                                      </div>
-                                   </div>
-                                   {% for field in form.hidden_fields %}
-                                        {{ field }}
-                                    {% endfor %}
-                                    {{ form.errors }}
-                                   {% endfor %}
-                               </div>
-                               <div class="dash_foam">
-                                   <label></label>
-                                   <input type="button" id="add_more" value=" Add New Account">
-                               </div>
+                              <div id="bank-details">
+                                 {{ bank_formset.management_form }}
+                                 {% for form in bank_formset %}
+                                 <div>
+                                    <div class="dash_foam">
+                                       <label>Bank Details*</label>
+                                       {% render_field form.account_no placeholder="Account Number" pattern="[0-9]{8,18}" type="text"%}
+                                    </div>
+                                    <div class="dash_foam">
+                                       <label> </label>
+                                       {% render_field form.bank_name placeholder="Bank Name" %}
+                                    </div>
+                                    <div class="dash_foam">
+                                       <label></label>
+                                       {% render_field form.ifsc placeholder="IFSC" %}
+                                    </div>
+                                 </div>
+                                 {% for field in form.hidden_fields %}
+                                 {{ field }}
+                                 {% endfor %}
+                                 {{ form.errors }}
+                                 {% endfor %}
+                              </div>
+                              <div class="dash_foam">
+                                 <label></label>
+                                 <input type="button" id="add_more" value=" Add New Account">
+                              </div>
                               <div class="dash_foam">
                                  <label>Company Name (if any)</label>
-                                  {% render_field profile_form.company_name %}
+                                 {% render_field profile_form.company_name %}
                               </div>
                               <div class="dash_foam">
                                  <label>GST Details*</label>
                                  {% render_field profile_form.gst_no %}
                               </div>
                            </div>
-                        {% if vendor.image %}
+                           {% if vendor.image %}
                            <div class="col-sm-5" style="margin-top: 24px;">
-                                 <div class="row text-center" class="">
-                                    <img src="{{ vendor.image.url }}" width="50%" alt="">
-                                 </div>
-                                 <div class="row text-center" style="margin-top: 20px;">
-                                    {% render_field profile_form.image class="input-file" id='my-file' %}
-                                    <!-- <input type="file" class="input-file" id="my-file"> -->
-                                    <button type="button" id="my-button" class="btn btn-outline-primary">Browse Files</button>
-                                    <div class="label-right-allign" style="text-align: center;">
-                                       Select your profile image and click update<br>
-                                       <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                    </div>
+                              <div class="row text-center" class="">
+                                 <img src="{{ vendor.image.url }}" width="50%" alt="">
+                              </div>
+                              <div class="row text-center" style="margin-top: 20px;">
+                                 {% render_field profile_form.image class="input-file" id='my-file' %}
+                                 <!-- <input type="file" class="input-file" id="my-file"> -->
+                                 <button type="button" id="my-button" class="btn btn-outline-primary">Browse Files</button>
+                                 <div class="label-right-allign" style="text-align: center;">
+                                    Select your profile image and click update<br>
+                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
                                  </div>
                               </div>
-                            <!-- profile field -->
-                        {% else %}
-                             <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
-                                 <div class="drag-drop">
-                                    {% render_field profile_form.image class="input-file" onchange="readURL(this);" %}
-                                    <img id="blah" src="" alt="" />
-                                    <p class="p23">
-                                       <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
-                                       </i><br> Drag&Drop files here<br> or<br>
-                                       <button type="button" class="btn btn-outline-primary">Browse Files</button> 
-                                    </p>
-                                    <div class="label-right-allign" style="text-align: center;">
-                                       Select your profile image and click update<br>
-                                       <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
-                                    </div>
+                           </div>
+                           <!-- profile field -->
+                           {% else %}
+                           <div class="col-sm-5 adjustButton col-md-5 text-center" style="margin-top: 24px;">
+                              <div class="drag-drop">
+                                 {% render_field profile_form.image class="input-file" onchange="readURL(this);" %}
+                                 <img id="blah" src="" alt="" />
+                                 <p class="p23">
+                                    <i style="margin-top: 10px;color: #e6e3e3;" class="fas fa-cloud-upload-alt fa-4x">
+                                    </i><br> Drag&Drop files here<br> or<br>
+                                    <button type="button" class="btn btn-outline-primary">Browse Files</button> 
+                                 </p>
+                                 <div class="label-right-allign" style="text-align: center;">
+                                    Select your profile image and click update<br>
+                                    <p style="font-size: x-small;color: #e61616;font-style: italic;"> Size must be 200KB </p>
                                  </div>
                               </div>
-                            {% endif %}
-
+                           </div>
+                           {% endif %}
                            <div class="col-sm-12 booking-frm dashButton"> 
                               <button class="book-btn" type="submit">Update
                               </button>&nbsp;&nbsp;
@@ -216,47 +209,46 @@
                      </div>
                      <div class="tab-pane" id="changePassword">
                         <form class="booking-frm" id="change-passwordform" method="post">
-                            {% csrf_token %}
+                           {% csrf_token %}
                            <input type="hidden" name="type" value="change_password">
-                           <div class="col-sm-9" >
-                              <div class="row">
-                                 <label class="col-sm-4">Enter Current Password</label>
+                           <div class="col-sm-9" style="margin-top: 10px;">
+                              <div class="form-group row input1">
+                                 <label class="col-sm-4 col-form-label label-right-allign">Enter Current Password</label>
                                  <div class="col-sm-8">
                                     <input type="password" id="current-pass" class="form-control" name="current_password">
                                  </div>
                               </div>
-                              <div class="row">
-                                 <label class="col-sm-4">Enter New Password</label>
-                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" id="password1" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
-                                    <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password">
-                                    <span class="tooltiptext">Click to see password</span></span>
+                              <div class="form-group row input1">
+                                 <label class="col-sm-4 col-form-label label-right-allign">Enter New Password</label>
+                                 <div class="col-sm-8 passInputfield">
+                                    <input type="password" class="" id="password1" placeholder="Enter New Password" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
+                                    <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                     <span class="form-text" id="password_strength"></span>
                                     <small class="form-text" id="password">Error message</small>
                                  </div>
                               </div>
-                              <div class="row ">
-                                 <label class="col-sm-4">Confirm New Password</label>
+                              <div class="form-group row input1 passInputfield">
+                                 <label class="col-sm-4 col-form-label label-right-allign">Confirm New Password</label>
                                  <div class="col-sm-8">
-                                    <input type="Password" class="form-control" name="new_password" id="passwordConfirm1" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                    <input type="Password" class="" name="new_password" id="passwordConfirm1" placeholder="Confirm New Password" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
                                     <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                     <small class="form-text" id="password2">Error message</small>
                                  </div>
                               </div>
-                              <div class="col-md-12 booking-frm col-sm-12 dashButton">
-                                 <button type="submit" class="book-btn">Update</button>
+                              <div class=" col-sm-12 ">
+                                 <button type="submit" id="button1" class="book-btn customerBtn">Update</button>
                               </div>
                            </div>
                         </form>
                      </div>
                      <div class="tab-pane" id="referral">
-                       {% for referral_code in request.user.user_referral_set.all %}
+                        {% for referral_code in request.user.user_referral_set.all %}
                         <div class="col-md-12 col-sm-12">
                            <div class="row">
                               <label class="col-sm-4">Your Referal code</label>
                               <div class="col-sm-5" style="display: flex;">
-                                  <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
-                                  <div class="copytooltip button1">
+                                 <input type="text" id="refferral-input" class="form-control" value="{{ referral_code.promotional_code }}" readonly>
+                                 <div class="copytooltip button1">
                                     <button style="width: 88px;height: 35px;" onclick="copyFunction()" onmouseout="outFunc()">
                                     <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
                                     Copy text
@@ -269,18 +261,20 @@
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
                               <button class="btn btn-default" style="color: #2cb930;font-weight: bolder;width: 100%;" onclick="location.href='https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi'"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button>
                            </div>
-                           <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
-                             <!--  <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" > -->
-                                <button class="btn btn-default" onclick="location.href='mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com'" style="color: #1971bf;font-weight: bolder;width: 100%;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
+                           <div class="col-sm-4" style="padding-bottom: 10px">
+                              &nbsp;&nbsp;
+                              <!--  <a href="mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com" > -->
+                              <button class="btn btn-default" onclick="location.href='mailto:?subject=friend invitation&body=Hi friend please try this awesome platfoam to plan your trip www.taxotaxi.com'" style="color: #1971bf;font-weight: bolder;width: 100%;"><i class="far fa-envelope"></i>&nbsp;Reffer on Email</button>
                               <!-- </a>&nbsp;&nbsp; -->
                            </div>
-                           <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
+                           <div class="col-sm-4" style="padding-bottom: 10px">
+                              &nbsp;&nbsp;
                               <!-- <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" > -->
-                                <button class="btn btn-default" onclick="location.href='sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com'" style="color: #f7df24;font-weight: bolder;width: 100%;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button>
+                              <button class="btn btn-default" onclick="location.href='sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com'" style="color: #f7df24;font-weight: bolder;width: 100%;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button>
                               <!-- </a> -->
                            </div>
                         </div>
-                          {% endfor %}
+                        {% endfor %}
                         <!-- <div class="col-sm-12 col-md-12" style="border-bottom: silver solid 2px;padding: 25px ">
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
                               <a href="https://wa.me/?text=Try%20this%20awesome%20ride%20with%20Taxotaxi" ><button class="btn btn-default" style="color: #2cb930;font-weight: bolder;"><i class="fab fa-whatsapp"></i>&nbsp;Reffer on whatsapp</button></a>
@@ -292,7 +286,7 @@
                            <div class="col-sm-4" style="padding-bottom: 10px">&nbsp;&nbsp;
                               <a href="sms:?body=Try%20new%20awesome%20platfoam%20Taxotaxi%20for%20awesome%20ride%20experience%20www.taxotaxi.com" ><button class="btn btn-default" style="color: #f7df24;font-weight: bolder;"><i class="far fa-comment"></i>&nbsp;Reffer on Message</button></a>
                            </div>
-                        </div> -->
+                           </div> -->
                      </div>
                   </div>
                </div>
@@ -301,40 +295,35 @@
       </div>
    </div>
 </div>
-
-
-    <div hidden id="empty_form">
-        <div data-repeater-item="" class="row">
-
-              <div class="dash_foam">
-                 <label>Bank Details*</label>
-                  {% render_field bank_formset.empty_form.account_no placeholder="Account Number" type="text" pattern="[0-9]{8,18}" %}
-              </div>
-              <div class="dash_foam">
-                 <label> </label>
-                  {% render_field bank_formset.empty_form.bank_name placeholder="Bank Name" %}
-              </div>
-              <div class="dash_foam">
-                 <label></label>
-                  {% render_field bank_formset.empty_form.ifsc placeholder="IFSC" %}
-              </div>
-
-            {% for field in bank_formset.empty_form.hidden_fields %}
-                {{ field }}
-            {% endfor %}
-            {{  bank_formset.empty_form.errors }}
-        </div>
-    </div>
+<div hidden id="empty_form">
+   <div data-repeater-item="" class="row">
+      <div class="dash_foam">
+         <label>Bank Details*</label>
+         {% render_field bank_formset.empty_form.account_no placeholder="Account Number" type="text" pattern="[0-9]{8,18}" %}
+      </div>
+      <div class="dash_foam">
+         <label> </label>
+         {% render_field bank_formset.empty_form.bank_name placeholder="Bank Name" %}
+      </div>
+      <div class="dash_foam">
+         <label></label>
+         {% render_field bank_formset.empty_form.ifsc placeholder="IFSC" %}
+      </div>
+      {% for field in bank_formset.empty_form.hidden_fields %}
+      {{ field }}
+      {% endfor %}
+      {{  bank_formset.empty_form.errors }}
+   </div>
+</div>
 {% endblock content %}
 {% block extra_scripts %}
 <script>
-    $('#add_more').click(function() {
-        var form_idx = $('#id_bank_detail_set-TOTAL_FORMS').val();
-        $('#bank-details').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-        $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
-    });
+   $('#add_more').click(function() {
+       var form_idx = $('#id_bank_detail_set-TOTAL_FORMS').val();
+       $('#bank-details').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+       $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+   });
 </script>
-
 <script type="text/javascript">
    $(document).ready(function(){
     var d = new Date();
@@ -520,7 +509,7 @@
     function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
+   
                 reader.onload = function (e) {
                     $('#blah').attr('src', e.target.result);
                     $('#blah').css("width","auto");
@@ -528,7 +517,7 @@
                     $('#blah').css("border-radius","10px");
                     $('.p23').css("height","auto");
                 };
-
+   
                 reader.readAsDataURL(input.files[0]);
             }
         }
