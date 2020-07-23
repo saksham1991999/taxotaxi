@@ -7,6 +7,9 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
+   .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+      background-color: transparent!important;
+   }
    /*.vendorTab{
    padding: 8px 0px 28px 0px;
    border: 1px #eee solid;
@@ -908,13 +911,13 @@
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                      </div>
-                     <div class="col-sm-6 right-info noPadding">
+                     <div class="col-sm-6 right-info noPadding1">
                         <div class="col-sm-4 date-labels">
                            <h4>
                               <span>Start Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>20 May, 2020</span>
@@ -929,7 +932,7 @@
                               <span>End Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">20 May,2020 Sunday</span>
                            </h4>
@@ -1196,13 +1199,13 @@
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                      </div>
-                     <div class="col-sm-6 right-info noPadding">
+                     <div class="col-sm-6 right-info noPadding1">
                         <div class="col-sm-4 date-labels">
                            <h4>
                               <span>Start Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>20 May, 2020</span>
@@ -1217,7 +1220,7 @@
                               <span>End Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">20 May,2020 Sunday</span>
                            </h4>
@@ -1314,12 +1317,25 @@
                            <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
                               <input type="text" style="margin-bottom: 0px; padding: 0px;">
                            </div>
+                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
+                              <input type="text" style="margin-bottom: 0px; padding: 0px;">
+                           </div>
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;" >
+<!--                   <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
+                     <div class="" style="text-align: left;">
+                        <div style="padding: 20px; background-color: #ffc000; text-align: left;">
+                           <span style="padding-left: 40px; color: white;">Enter Odometer Reading</span> 
+                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
+                              <input type="text" style="margin-bottom: 0px; padding: 0px;">
+                           </div>
+                        </div>
+                     </div>
+                  </div> -->
+                  <!-- <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;" >
                      <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Start Ride</button>
-                  </div>
+                  </div> -->
                   <div class="booking-frm">
                      <button class="btn book-btn btn-block" type="button" onclick="DisplayStopRide()" style="padding: 5px auto; background-color: #e61616;color:whitesmoke ;">
                      Stop Ride
@@ -1362,9 +1378,9 @@
                         </form>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
+                  <!-- <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
                      <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #636863;color:whitesmoke ;">Reject Trip</button>
-                  </div>
+                  </div> -->
 
 
                   
@@ -1390,13 +1406,13 @@
                         <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
                      </div>
-                     <div class="col-sm-6 right-info noPadding">
+                     <div class="col-sm-6 right-info noPadding1">
                         <div class="col-sm-4 date-labels">
                            <h4>
                               <span>Start Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
                               <span>20 May, 2020</span>
@@ -1411,7 +1427,7 @@
                               <span>End Trip</span>
                            </h4>
                         </div>
-                        <div class="col-sm-8 labels-data noPadding">
+                        <div class="col-sm-8 labels-data noPadding1">
                            <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">20 May,2020 Sunday</span>
                            </h4>
@@ -1505,9 +1521,6 @@
                      <div class="" style="text-align: left;">
                         <div style="padding: 20px; background-color: #ffc000; text-align: left;">
                            <span style="padding-left: 40px; color: white;">Enter Odometer Reading</span> 
-                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
-                              <input type="text" style="margin-bottom: 0px; padding: 0px;">
-                           </div>
                            <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
                               <input type="text" style="margin-bottom: 0px; padding: 0px;">
                            </div>
@@ -1570,7 +1583,7 @@
                               </div>
                            </div>
                            <div class="row CardFooter">
-                              <div class="col-xs-6 col-md-4 col-sm-4">
+                              <div class="col-sm-4">
                                  <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
                                  <span class="fa fa-star checked styletext"></span>
                                  <span class="fa fa-star checked styletext"></span>
@@ -1578,7 +1591,7 @@
                                  <span class="fa fa-star styletext"></span>
                                  <span class="fa fa-star styletext"></span></span>
                               </div>
-                              <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                              <div class=" col-sm-8" style="text-align: right;">
                                  <strong>Feedback</strong>&nbsp;&nbsp;Test feedback
                               </div>
                            </div>
@@ -1618,13 +1631,13 @@
                            <div class="col-sm-7" style="background-color: #f4f3f3;padding: 40px;">
                               <div class="dash_foam">
                                  <label>Collect Amount From the Customer</label>
-                                 <div class="col-sm-7 noPadding">
+                                 <div class="col-sm-7 noPadding1">
                                     <input type="text" name="">
                                  </div>
                               </div>
                               <br>
                               <div class="dash_foam">
-                                 <div class="col-sm-7 noPadding">
+                                 <div class="col-sm-7 noPadding1">
                                     <label>Driver Collection</label>
                                     <input type="text" name="">
                                  </div>

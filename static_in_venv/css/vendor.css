@@ -754,7 +754,7 @@ font-weight: bold;
 
 .assignments .heading .heading-type span {color: red;}
 
-.assignments .right-info .date-labels {text-align: right; padding-right: 0px; padding-top: 10px;}
+.assignments .right-info .date-labels { padding-top: 10px;}
 
 .assignments .right-info .date-labels > h4 {font-weight: 600; color: rgb(10, 10, 10);}
     

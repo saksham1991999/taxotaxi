@@ -400,9 +400,9 @@ line-height: 1vw;
 }
 @media(min-width: 768px){
 	/*for cards*/
-	.noPadding{
-		padding-left: 0px;
-		padding-right: 0px;
+	.noPadding1{
+		padding-left: 0px!important;
+		padding-right: 0px!important;
 	}
 	.assignments .right-info .date-labels {text-align: right; }
 }

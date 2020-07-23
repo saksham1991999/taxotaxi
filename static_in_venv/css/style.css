@@ -248,7 +248,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus{
-	background-color:transparent;
+	background-color:transparent!important;
 }
 .tj-nav-row .navbar-default .navbar-toggle .icon-bar{
 	background-color: #ddd;
