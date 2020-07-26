@@ -293,6 +293,19 @@
    .visible-dropdown{
    display:block ;
    }*/
+
+   .display-inputs{ 
+      margin-bottom: 0px; 
+      float: right; 
+      padding-right: 30px;
+   }
+   @media( max-width: 700px){
+      .display-inputs{
+         display: block;
+         float: none;
+         padding-top: 5px;
+      }
+   }
 </style>
 {% endblock extra_stylesheet %}
 {% block content %}
@@ -1314,10 +1327,10 @@
                      <div class="" style="text-align: left;">
                         <div style="padding: 20px; background-color: #ffc000; text-align: left;">
                            <span style="padding-left: 40px; color: white;">Enter Odometer Reading</span> 
-                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
+                           <div class="display-inputs">
                               <input type="text" style="margin-bottom: 0px; padding: 0px;">
                            </div>
-                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
+                           <div class="display-inputs">
                               <input type="text" style="margin-bottom: 0px; padding: 0px;">
                            </div>
                         </div>
@@ -1521,7 +1534,7 @@
                      <div class="" style="text-align: left;">
                         <div style="padding: 20px; background-color: #ffc000; text-align: left;">
                            <span style="padding-left: 40px; color: white;">Enter Odometer Reading</span> 
-                           <div style="display: inline-block; margin-bottom: 0px; float: right; padding-right: 30px;">
+                           <div class="display-inputs">
                               <input type="text" style="margin-bottom: 0px; padding: 0px;">
                            </div>
                         </div>
