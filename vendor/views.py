@@ -305,23 +305,39 @@ def PaymentsView(request):
     return render(request,'Vendor/payments.html' , context)
 
 
-def BookingsHistoryView(request):
-    context = {}
-    return render(request, 'Vendor/booking_history.html', context)
-
 
 def BookingsView(request):
-    context = {}
+    vendor = models.vendorprofile.objects.get(user= request.user)
+    bookings = coremodels.ride_booking.objects.filter(ride_status = "Selected Vendors", assign_vendor__vendors__in = [vendor])
+    # query = coremodels.assign_vendor.objects.filter(booking__ride_status = "Selected Vendors", vendors__in = [vendor])
+    context = {
+        "bookings":bookings,
+    }
     return render(request, 'Vendor/bookings.html', context)
 
 
 def AssignmentsView(request):
-    context = {}
+    vendor = models.vendorprofile.objects.get(user=request.user)
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).exclude(booking__ride_status = "Verified")
+    context = {
+        'final_rides':final_rides
+    }
     return render(request, 'Vendor/assignments.html', context)
+
+def BookingsHistoryView(request):
+    vendor = models.vendorprofile.objects.get(user=request.user)
+    final_rides = coremodels.final_ride_detail.objects.filter(vendor = vendor, booking__ride_status = "Verified")
+    context = {
+        'final_rides':final_rides
+    }
+    return render(request, 'Vendor/booking_history.html', context)
 
 
 def RideDetailsView(request, id):
-    context = {}
+    final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+    context = {
+        "final_ride":final_ride,
+    }
     return render(request, 'Vendor/ride_detail.html', context)
 
 

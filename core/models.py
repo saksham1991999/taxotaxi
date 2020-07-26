@@ -293,6 +293,10 @@ class assign_vendor(models.Model):
     vendors = models.ManyToManyField('vendor.vendorprofile')
     datetime = models.DateTimeField()
 
+    def vendor_recommended_amount(self):
+        amount = self.booking.final_ride_fare*(100-self.commission)/100
+        return int(amount)
+
 class vendorbids(models.Model):
     booking = models.ForeignKey(ride_booking, on_delete=models.DO_NOTHING)
     vendor = models.ForeignKey('vendor.vendorprofile', on_delete=models.CASCADE)
@@ -320,6 +324,10 @@ class final_ride_detail(models.Model):
 
     def remaining_rating(self):
         return range(int(5 - self.rating))
+
+    def driver_collect_amount(self):
+        amount = self.bid.bid - self.booking.advance
+        return amount
 
 class user_referral(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT, verbose_name='User to assign the referral code to')

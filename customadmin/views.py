@@ -98,14 +98,14 @@ def UpcomingRidesView(request):
     return render(request, 'ride_bookings/upcoming_rides.html', context)
 
 def OngoingRidesView(request):
-    bookings = coremodels.ride_booking.objects.filter(ride_status = 'Ongoing')
+    bookings = coremodels.ride_booking.objects.filter(ride_status__in = ['Ongoing', 'Completed'])
     context = {
         'bookings':bookings,
     }
     return render(request, 'ride_bookings/cancelled_rides.html', context)
 
 def CompletedRidesView(request):
-    bookings = coremodels.ride_booking.objects.filter(ride_status = 'Completed')
+    bookings = coremodels.ride_booking.objects.filter(ride_status = 'Verified')
     context = {
         'bookings':bookings,
     }

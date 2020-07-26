@@ -200,6 +200,7 @@ class ride_types_admin(ImportExportModelAdmin):
 
 class BookingAdmin(ImportExportModelAdmin):
     list_display = [
+                    'id',
                     'name',
                     'ride_type',
                     'car_type',
