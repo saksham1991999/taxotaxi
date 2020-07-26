@@ -30,8 +30,12 @@ urlpatterns = [
     path('completed-rides/', views.CompletedRidesView, name='completed_rides'),
 
     path('assign-vendors/<int:id>/', views.AssignVendorsView, name='assign_vendors'),
-    path('vendor-bids/<int:id>/', views.AssignVendorsView, name='vendor_bids'),
+    path('vendor-bids/<int:id>/', views.UpdateVendorBidsView, name='vendor_bids'),
     path('assign-final-vendor/<int:id>/', views.AssignFinalVendorView, name='assign_final_vendor'),
+    path('assign-driver-car/<int:id>/', views.AssignDriverCarView, name='assign_driver_car'),
+    path('start-ride/<int:id>/', views.StartRideView, name='start_ride'),
+    path('end-ride/<int:id>/', views.EndRideView, name='end_ride'),
+
     path('final-ride-details/', views.FinalRideDetailsView, name='final_ride_details'),
 
     # Popular Destinations Urls

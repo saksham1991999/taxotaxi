@@ -198,6 +198,24 @@ class ride_types_admin(ImportExportModelAdmin):
                     'comment',
                     ]
 
+class BookingAdmin(ImportExportModelAdmin):
+    list_display = [
+                    'name',
+                    'ride_type',
+                    'car_type',
+                    'ride_status',
+                    'final_ride_fare',
+                    ]
+    list_display_links = [
+                    'name',
+                    ]
+    list_filter = [
+                    'ride_status',
+                    ]
+    search_fields = [
+                    'name',
+                    ]
+
 class faq_admin(ImportExportModelAdmin):
     pass
 
@@ -228,5 +246,9 @@ admin.site.register(models.testimonials)
 admin.site.register(models.faq, faq_admin)
 admin.site.register(models.TermsAndConditions, terms_and_conditions_admin)
 admin.site.register(models.contact)
-admin.site.register(models.ride_booking)
+
+admin.site.register(models.ride_booking, BookingAdmin)
+admin.site.register(models.payment)
+admin.site.register(models.assign_vendor)
+admin.site.register(models.vendorbids)
 admin.site.register(models.final_ride_detail)

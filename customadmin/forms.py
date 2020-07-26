@@ -79,3 +79,15 @@ class PopularDestinationsForm(forms.ModelForm):
     class Meta:
         model = coremodels.popular_destinations
         fields = '__all__'
+
+
+
+class FinalRideForm(forms.ModelForm):
+    class Meta:
+        model = coremodels.final_ride_detail
+        fields = ['car', 'driver','initial_odometer_reading', 'final_odometer_reading', 'other_charges', 'collected_amount']
+
+class AssignDriverCar(forms.ModelForm):
+    class Meta:
+        model = coremodels.final_ride_detail
+        fields = ['car', 'driver']

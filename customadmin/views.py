@@ -91,11 +91,11 @@ def UpdateVendorBidsView(request, id):
         return render(request, 'ride_bookings/vendor_bids_formset.html', context)
 
 def UpcomingRidesView(request):
-    bookings = coremodels.ride_booking.objects.filter(assigned_final_vendor = True)
+    bookings = coremodels.ride_booking.objects.filter(ride_status__in = ['Assigned Vendor', 'Assigned Car/Driver'])
     context = {
         'bookings':bookings,
     }
-    return render(request, 'ride_bookings/cancelled_rides.html', context)
+    return render(request, 'ride_bookings/upcoming_rides.html', context)
 
 def OngoingRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(ride_status = 'Ongoing')
@@ -137,7 +137,81 @@ def AssignVendorsView(request, id):
 
 
 def AssignFinalVendorView(request, id):
-    pass
+    bid = get_object_or_404(coremodels.vendorbids, id=id)
+    final_ride, created = coremodels.final_ride_detail.objects.get_or_create(bid = bid, booking = bid.booking)
+    booking = bid.booking
+    booking.ride_status = "Assigned Vendor"
+    booking.save()
+    return redirect('customadmin:assign_vendor_ridess')
+
+def AssignDriverCarView(request, id):
+    final_ride = get_object_or_404(coremodels.final_ride_detail, id= id)
+    vendor = final_ride.bid.vendor
+    cars = vendormodels.vendor_cars.objects.filter(vendor = vendor)
+    drivers = vendormodels.driver.objects.filter(vendor = vendor)
+    if request.method == 'POST':
+        form = forms.AssignDriverCar(request.POST, request.FILES, instance = final_ride)
+        if form.is_valid():
+            form.save()
+            final_ride.booking.ride_status = "Assigned Car/Driver"
+            final_ride.booking.save()
+        return redirect('customadmin:upcoming_rides')
+    else:
+        form = forms.AssignDriverCar(instance = final_ride)
+        form.fields['car'].queryset = cars
+        form.fields['driver'].queryset = drivers
+        context = {
+            'form':form,
+        }
+        return render(request, 'ride_bookings/assign_driver_car_form.html', context=context)
+
+def StartRideView(request, id):
+    final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+    vendor = final_ride.bid.vendor
+    cars = vendormodels.vendor_cars.objects.filter(vendor=vendor)
+    drivers = vendormodels.driver.objects.filter(vendor=vendor)
+    if request.method == 'POST':
+        form = forms.FinalRideForm(request.POST, request.FILES, instance=final_ride)
+        if form.is_valid():
+            form.save()
+            final_ride.start_datetime = timezone.now()
+            final_ride.booking.ride_status = "Ongoing"
+            final_ride.booking.save()
+            final_ride.save()
+        return redirect('customadmin:upcoming_rides')
+    else:
+        form = forms.FinalRideForm(instance=final_ride)
+        form.fields['car'].queryset = cars
+        form.fields['driver'].queryset = drivers
+        context = {
+            'form': form,
+        }
+        return render(request, 'ride_bookings/start_ride_form.html', context=context)
+
+
+def EndRideView(request, id):
+    final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+    vendor = final_ride.bid.vendor
+    cars = vendormodels.vendor_cars.objects.filter(vendor=vendor)
+    drivers = vendormodels.driver.objects.filter(vendor=vendor)
+    if request.method == 'POST':
+        form = forms.FinalRideForm(request.POST, request.FILES, instance=final_ride)
+        if form.is_valid():
+            form.save()
+            final_ride.end_datetime = timezone.now()
+            final_ride.booking.ride_status = "Completed"
+            final_ride.booking.save()
+            final_ride.save()
+        return redirect('customadmin:upcoming_rides')
+    else:
+        form = forms.FinalRideForm(instance=final_ride)
+        form.fields['car'].queryset = cars
+        form.fields['driver'].queryset = drivers
+        context = {
+            'form': form,
+        }
+        return render(request, 'ride_bookings/start_ride_form.html', context=context)
+
 
 def FinalRideDetailsView(request, id):
     pass

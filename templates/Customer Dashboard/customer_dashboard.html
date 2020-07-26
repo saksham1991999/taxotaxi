@@ -641,7 +641,7 @@ font-weight: bold;
                    {% for ride in upcoming_rides %}
                    <div class="col-sm-12 noPadding1">
                      <div class="col-sm-1 listNumber" >
-                        <h4>01</h4>
+                        <h4>{{ forloop.counter }}</h4>
                      </div>
                      <div class="col-sm-5 heading noPadding1">
                            <h4>
@@ -650,14 +650,14 @@ font-weight: bold;
                               <span class="to">{{ ride.drop_city }}</span>
                            </h4>
                         <h5 class="headingId">
-                        Booking Id: <span class="bookingId">9874654</span></h5>
+                        Booking Id: <span class="bookingId">{{ ride.id }}</span></h5>
                         <h5 class="heading-type">
-                        One Way/ <span>SUV</span> </h5>
-                        <h5>Night Pick Allowance <span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
-                        <h5>Night Drop Allowance <span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span></h5>
-                        <h5>Driver Allowance <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
-                        <h5>Toll Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
-                        <h5>Sales Tax Included <span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span></h5>
+                            {{ ride.ride_type }}/ <span>{{ ride.car_type }}</span> </h5>
+                        <h5>Night Pick Allowance {% if ride.early_pickup_charges %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightPickAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Night Drop Allowance {% if ride.late_drop_charges %}<span class="nightDropAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Driver Allowance {% if ride.night_charges %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="driverAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Toll Tax Included <span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span></h5>
+                        <h5>Sales Tax Included <span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span></h5>
                      </div>
                      <div class="col-sm-6 right-info noPadding1">
                         <div class="col-sm-4 date-labels">
@@ -669,11 +669,11 @@ font-weight: bold;
                          <div class="col-sm-8 labels-data noPadding1">
                             <h4>
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
-                              <span>{{ ride.booking_datetime }}</span>
+                              <span>{{ ride.pickup_datetime|date:"j-M-Y, l" }}</span>
                            </h4>
                             <h4 style="margin-top: 0px; ">
                               <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%">
-                              <span>10:20 A.M</span>
+                              <span>{{ ride.pickup_datetime|time:"h:i A" }}</span>
                            </h4>
                          </div>
                          <div class="col-sm-4 date-labels">
@@ -685,15 +685,15 @@ font-weight: bold;
                            
                           
                            <h4 style="margin-top: 0px; ">
-                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">{{ride.pickup_datetime}}</span>
+                              <img src="{% static 'images/icons/Assignment-inactive.png' %}" alt="" width="10%"> <span class="date">{{ ride.drop_datetime|date:"j-M-Y, l" }}</span>
                            </h4>
                            <h4 style="margin-top: 0px; ">
-                              <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">12:00 P.M.</span>
+                              <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">{{ ride.drop_datetime|time:"h:i A" }}</span>
                            </h4>
                            <div>
                               <h4>
                                  <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
-                                 <span style="font-weight: 600;">KM Limit : 350</span>
+                                 <span style="font-weight: 600;">KM Limit : {{ ride.distance }}</span>
                                  <small style="visibility: visible;"> km</small><br>
                                  <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs10/-</small>
                               </h4>
@@ -709,14 +709,14 @@ font-weight: bold;
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Total Amount  
                               <div class="col-sm-12" > 
-                              <span class="amount large">{{ ride.total}}</span></div>
+                              <span class="amount large">{{ ride.final_ride_fare }}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Advanced Paid  
                               <div class="col-sm-12" > 
-                              <span class="amount large">{{ ride.get_advance }}</span></div>
+                              <span class="amount large">{{ ride.advance }}</span></div>
                            </h5>
                            </div>
                            <div class="col-sm-4">
@@ -742,35 +742,18 @@ font-weight: bold;
                   </div>
                   <div class="col-sm-12 col-md-12 specialreq">
                      <h4 class="boldBlack">Special Requirements</h4>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Need one hour of halt at</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Carrier on car required</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Travelling with pet</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Require Additonal Pickup Drop</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Kids on board</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Women Travelling</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Senior citizen travelling</span>
-                     </div>
-                     <div class="col-sm-4">
-                        <span><span class="check">&#10004 </span>Required English speaking driver</span>
-                     </div>
+                      {% for choice in ride.additional_choices.all %}
+                         <div class="col-sm-4">
+                            <span><span class="check">&#10004 </span>{{ choice.name }}</span>
+                         </div>
+                      {% endfor %}
                   </div>
                   <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;">
+                    {% if ride.note %}
                      <div>
-                        <small style="visibility: visible; color: red;">* Note Additionanl Information from admin or customer</small>
+                        <small style="visibility: visible; color: red;">* Note : {{ ride.note }}</small>
                      </div>
+                      {% endif %}
                      <h5>
                         <span class="cngAllowed">
                         <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
@@ -783,6 +766,7 @@ font-weight: bold;
                      <!-- <div style="height: 20px">
                         <hr style="height : 10px">
                      </div> -->
+                    {% if ride.ride_status == 'Completed' %}
                      <div class="col-sm-12 col-md-12" style="padding: 0px;">
                         <div class="heading" style="margin-bottom: 10px;">
                            <h4><span>
@@ -793,15 +777,15 @@ font-weight: bold;
                            <div class="col-sm-3"><img class="roundImage" src="{% static 'images/comment_img2.jpg' %}" >
                            </div>
                            <div class="col-sm-9 extra-payment-icons">
-                               <h5>Driver Name:<span> Chetan Rana</span> </h5>
-                               <h5>Phone Number:<span> 9876543210</span> </h5>
+                               <h5>Driver Name:<span>{{ ride.final_ride_detail.driver.full_name }}</span> </h5>
+                               <h5>Phone Number:<span> {{ ride.final_ride_detail.driver.contact1 }}</span> </h5>
                                <h5>Rating:<span> <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star"></span>
                                  <span class="fa fa-star"></span></span> </h5>
                                  
-                                 <h5 >Ride Start:<span class="amount"> 24-May-2020 10:30am</span> </h5>
+                                 <h5 >Ride Start:<span class="amount">{{ ride.final_ride_detail.start_datetime|date:"j-M-Y, l" }}{{ ride.final_ride_detail.start_datetime|time:"h:i A" }}</span> </h5>
                                  <h5>
                                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Actual to be Paid<br> 
                                    <div class="col-sm-12"><span class="amount large">2,200</span></div> 
@@ -813,26 +797,30 @@ font-weight: bold;
                               <img class="roundImage" src="{% static 'images/icons/Payment-inactive.png' %}">
                            </div>
                            <div class="col-sm-8 noPadding1">
-                              <h5>Car No:<span>HR 38 4005</span> </h5>
+                              <h5>Car No:<span>{{ ride.final_ride_detail.car.registration_no }}</span> </h5>
                            </div>
                            
                            <div class="col-sm-12">
-                               <h5>Ride Finished:<span class="amount"> 24-May-2020 10:30pm</span> </h5>
-                           <h5>Extra KM Charges:<span> 1,500 INR</span> </h5>
+                               <h5>Ride Finished:<span class="amount">{{ ride.final_ride_detail.end_datetime|date:"j-M-Y, l" }}{{ ride.final_ride_detail.end_datetimesss|time:"h:i A" }}</span> </h5>
+                               <h5>Extra KM Charges:<span> 1,500 INR</span> </h5>
                                <h5>Additional Charges:<span> 500 INR</span> </h5>
                            </div>
                           
                         </div>
                         
                      </div>
+                  {% endif %}
                   </div>
 
+                       {% if ride.ride_status == 'Completed' %}
                   <div>
                      <button class="btn btn-block" style="background-color: #4CAF50;">Pay Online</button>
                      <br>
                      <button class="btn btn-block" style="background-color: #AC4800;">SOS/Call Customer Care</button>
                   </div>
+                       {% endif %}
                   {% endfor %}
+
                   <!-- <div class="col-sm-12 col-md-12 container2">
                      <div id="products" class="row list-group ">
                         {% for ride in upcoming_rides %}
@@ -897,7 +885,7 @@ font-weight: bold;
                   </div>
                   <div class="col-sm-12 col-md-12 container2">
                      <div id="products" class="row list-group ">
-                         {% comment %}
+                            {% comment %}
                             <div class="item  col-xs-4 col-lg-4">
                                <div class="row CardHeader">
                                   <div class="col-md-12 col-sm-12">
@@ -1079,57 +1067,123 @@ font-weight: bold;
                                   </div>
                                </div>
                             </div>
-                        {% endcomment %}
+                            {% endcomment %}
+
+
                         {% for ride in completed_rides %}
-                        <div class="item  col-xs-4 col-lg-4">
-                           <div class="row CardHeader">
-                              <div class="col-xs-8 col-md-8 col-sm-8">
-                                 <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
-                                    class="styletext fas fa-map-marker-alt"></span></strong>
-                              </div>
-                              <!-- <div class="col-md-4 col-xs-4 col-sm-4" >
-                                 <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
-                                   <span class="fa fa-star checked styletext"></span>
-                                 <span class="fa fa-star checked styletext"></span>
-                                 <span class="fa fa-star checked styletext"></span>
-                                 <span class="fa fa-star styletext"></span>
-                                 <span class="fa fa-star styletext"></span></span>
-                                 </div> -->
-                           </div>
-                           <div class="row">
-                              <div class="col-md-3 col-xs-12">
-                                 <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
-                              </div>
-                              <div class="col-md-5 col-xs-12 col-sm-12">
-                                 <h4>
-                                    {{ ride.name }}
-                                 </h4>
-                                 <p>
-                                    <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
-                                    <span class="trip_est">Email : {{ request.user.email }}</span><br>
-                                    <span class="trip_est">Booked On : {{ ride.booking_datetime }}</span><br>
-                                    <span class="trip_est">Pickup Date : {{ ride.pickup_datetime }}</span>
-                                 </p>
-                              </div>
-                              <div class="col-md-4 col-xs-12">
-                                 <p>
-                                    <strong>Total Amount:&nbsp;&nbsp;<span
-                                       class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
-                                    <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
-                                    <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance }}</span></strong><br>
-                                    <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
-                                    <a style="color: green;" href="">Proceed to Payment</a>
-                                 </p>
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-xs-12 col-md-8">
-                                 <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
-                                 <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
-                                 <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
-                              </div>
-                           </div>
-                        </div>
+                            {% if ride.final_ride_detail.rating %}
+                            <div class="item  col-xs-4 col-lg-4">
+                               <div class="row CardHeader">
+                                  <div class="col-md-12 col-sm-12">
+
+                                     <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }} - {{ ride.drop }} </span><span
+                                        class="styletext fas fa-map-marker-alt"></span></strong>
+                                  </div>
+                               </div>
+                               <div class="row">
+                                  <div class="col-md-3 col-xs-12">
+                                     <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                                  </div>
+                                  <div class="col-md-5 col-xs-12 col-sm-12">
+                                     <h4>
+                                         {{ ride.name }}
+                                     </h4>
+                                     <p>
+                                        <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                                        <span class="trip_est">Email : {{ ride.user.email }}</span><br>
+                                        <span class="trip_est">Booked On : {{ ride.booking_datetime|date:"j-M-Y" }}{{ ride.booking_datetime|time:"h:i A" }}</span><br>
+                                        <span class="trip_est">Pickup Date : {{ ride.pickup_datetime|date:"j-M-Y" }}{{ ride.pickup_datetime|time:"h:i A" }}</span>
+                                     </p>
+                                  </div>
+                                  <div class="col-md-4 col-xs-12">
+                                     <p>
+                                        <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
+                                        <strong>Credit Used:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
+                                        <strong>Advance Payment:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.advance }}</span></strong><br>
+                                        <strong>Amount Due:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                                        <a style="color: green;" href="">Download Invoice</a>
+                                     </p>
+                                  </div>
+                               </div>
+                               <div class="row">
+                                  <div class="col-xs-12 col-md-8">
+                                     <strong>Cab Number:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.car.registration_no }}</span></strong>&nbsp;&nbsp;
+                                     <strong>Cartype:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.car.car_type }}</span></strong>&nbsp;&nbsp;
+                                     <strong>Driver:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.driver.full_name }}</span></strong>
+                                  </div>
+                               </div>
+                               <div class="row CardFooter">
+                                  <div class="col-xs-6 col-md-4 col-sm-4">
+                                     <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                                      {% for i in ride.final_ride_detail.get_rating_list %}
+                                         <span class="fa fa-star checked styletext"></span>
+                                      {% endfor %}
+                                      {% for i in ride.final_ride_detail.remaining_rating %}
+                                         <span class="fa fa-star styletext"></span>
+                                      {% endfor %}
+                                  </span>
+                                  </div>
+                                  <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                                     <strong>Feedback</strong>&nbsp;&nbsp;{{ ride.final_ride_detail.review }}
+                                     <!--  <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button> -->
+                                  </div>
+                               </div>
+                            </div>
+                            {% else %}
+                            <div class="item  col-xs-4 col-lg-4">
+                               <div class="row CardHeader">
+                                  <div class="col-md-12 col-sm-12">
+                                     <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }} - {{ ride.drop }} </span><span
+                                        class="styletext fas fa-map-marker-alt"></span></strong>
+                                  </div>
+                               </div>
+                               <div class="row">
+                                  <div class="col-md-3 col-xs-12">
+                                     <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                                  </div>
+                                  <div class="col-md-5 col-xs-12 col-sm-12">
+                                     <h4>
+                                         {{ ride.name }}
+                                     </h4>
+                                     <p>
+                                        <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                                        <span class="trip_est">Email : {{ ride.user.email }}</span><br>
+                                        <span class="trip_est">Booked On : {{ ride.booking_datetime|date:"j-M-Y" }}{{ ride.booking_datetime|time:"h:i A" }}</span><br>
+                                        <span class="trip_est">Pickup Date : {{ ride.pickup_datetime|date:"j-M-Y" }}{{ ride.pickup_datetime|time:"h:i A" }}</span>
+                                     </p>
+                                  </div>
+                                  <div class="col-md-4 col-xs-12">
+                                     <p>
+                                        <strong>Total Amount Paid:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
+                                        <strong>Credit Used:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
+                                        <strong>Advance Payment:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.advance }}</span></strong><br>
+                                        <strong>Amount Due:&nbsp;&nbsp;<span
+                                           class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                                        <a style="color: green;" href="">Download Invoice</a>
+                                     </p>
+                                  </div>
+                               </div>
+                               <div class="row">
+                                  <div class="col-xs-12 col-md-8">
+                                     <strong>Cab Number:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.car.registration_no }}</span></strong>&nbsp;&nbsp;
+                                     <strong>Cartype:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.car.car_type }}</span></strong>&nbsp;&nbsp;
+                                     <strong>Driver:&nbsp;<span class="trip_est">{{ ride.final_ride_detail.driver.full_name }}</span></strong>
+                                  </div>
+                               </div>
+                               <div class="row CardFooter">
+                                  <div class="col-md-8 col-xs-6 col-sm-8" style="text-align: right;">
+                                     <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button>
+                                  </div>
+                               </div>
+                            </div>
+                            {% endif %}
                         {% empty %}
                         <div style="height: 280px">
                            <h1>You have no booking history.</h1>

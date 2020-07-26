@@ -64,9 +64,9 @@ def DashboardView(request):
     else:
         payments = coremodels.payment.objects.filter(booking__user=request.user)
 
-        upcoming_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Booked')
+        upcoming_rides = coremodels.ride_booking.objects.filter(user=request.user).exclude(ride_status = 'Cancelled').exclude(ride_status = 'Verified')
         cancelled_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Cancelled')
-        completed_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Completed')
+        completed_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Verified')
 
         try:
             referral_code = models.customer_promotional.objects.filter(customer__user=request.user, is_activated=True)[0]

@@ -1,0 +1,85 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extra_stylesheet %}
+
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0 font-size-18">Assign Driver and Car Form</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Bookings</a></li>
+                                <li class="breadcrumb-item active">Assign Driver and Car Form</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"></h4>
+                        <p class="card-title-desc"></p>
+
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-md-2 col-form-label">Vendor Drivers</label>
+                                <div class="col-md-10">
+                                    {% render_field form.driver class="form-control" %}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-md-2 col-form-label">Vendor Cars</label>
+                                <div class="col-md-10">
+                                    {% render_field form.car class="form-control" %}
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-lg btn-success waves-effect waves-light">
+                                    <i class="bx bx-check-double font-size-16 align-middle mr-2"></i> Submit
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+</div>
+
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+
+{% endblock extra_scripts %}

@@ -211,8 +211,10 @@ ride_status_choices = (
     ('Rejected', 'Rejected'),
     ('Selected Vendors', 'Selected Vendors'),
     ('Assigned Vendor', 'Assigned Vendor'),
+    ('Assigned Car/Driver', 'Assigned Car/Driver'),
     ('Ongoing', 'Ongoing'),
     ('Completed', 'Completed'),
+    ('Verified', 'Verified'),
     ('Cancelled', 'Cancelled'),
 )
 class ride_booking(models.Model):
@@ -237,8 +239,8 @@ class ride_booking(models.Model):
     booking_datetime = models.DateTimeField(auto_now_add=True)
     pickup_datetime = models.DateTimeField()
     drop_datetime = models.DateTimeField()
-    exact_pickup = models.CharField(max_length=512)
-    exact_drop = models.CharField(max_length=512)
+    exact_pickup = models.CharField(max_length=512, blank = True, null = True)
+    exact_drop = models.CharField(max_length=512, blank = True, null = True)
 
     initial_charges = models.IntegerField()
     additional_charges = models.PositiveSmallIntegerField()
@@ -261,6 +263,8 @@ class ride_booking(models.Model):
     assigned_vendors = models.BooleanField(default=False)
     assigned_final_vendor = models.BooleanField(default=False)
 
+    note = models.TextField(blank=True, null=True)
+
     def get_advance(self):
         return float(self.final_ride_fare * 0.15)
 
@@ -268,7 +272,10 @@ class ride_booking(models.Model):
         return float(self.final_ride_fare - self.advance)
 
     def __str__(self):
-        return str(self.user) + str(self.id)
+        return  str(self.id) + " " + str(self.user)
+
+    def get_final_ride_detail(self):
+        return final_ride_detail.objects.get(booking = self)
 
     class Meta:
         verbose_name_plural = 'User Bookings'
@@ -294,17 +301,25 @@ class vendorbids(models.Model):
     rejection_reason = models.CharField(max_length=256, blank=True, null=True)
 
 class final_ride_detail(models.Model):
-    booking = models.OneToOneField('core.ride_booking', on_delete=models.DO_NOTHING)
+    booking = models.OneToOneField('core.ride_booking', on_delete=models.DO_NOTHING, related_name = 'final_ride_detail')
     bid = models.ForeignKey('core.vendorbids', on_delete=models.DO_NOTHING)
     car = models.ForeignKey('vendor.vendor_cars', on_delete=models.DO_NOTHING, blank=True, null=True)
     driver = models.ForeignKey('vendor.driver', on_delete=models.DO_NOTHING, blank=True, null=True)
-    initial_odometer_reading = models.FloatField()
-    final_odometer_reading = models.FloatField()
-    other_charges = models.PositiveSmallIntegerField()
-    collected_amount = models.PositiveIntegerField()
+    initial_odometer_reading = models.FloatField(blank=True, null=True)
+    final_odometer_reading = models.FloatField(blank=True, null=True)
+    other_charges = models.PositiveSmallIntegerField(blank=True, null=True)
+    collected_amount = models.PositiveIntegerField(blank=True, null=True)
     start_datetime = models.DateTimeField(blank=True, null=True)
     end_datetime = models.DateTimeField(blank=True, null=True)
 
+    rating = models.PositiveSmallIntegerField(blank=True, null=True)
+    review = models.TextField(blank=True, null=True)
+
+    def get_rating_list(self):
+        return range(self.rating)
+
+    def remaining_rating(self):
+        return range(int(5 - self.rating))
 
 class user_referral(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT, verbose_name='User to assign the referral code to')

@@ -25,16 +25,6 @@ class VendorBidsForm(forms.ModelForm):
         model = models.vendorbids
         exclude = ['booking', 'vendor', 'datetime']
 
-class FinalVendorForm(forms.ModelForm):
-    class Meta:
-        model = models.final_ride_detail
-        fields = ['bid']
-
-class AssignDriverCar(forms.ModelForm):
-    class Meta:
-        model = models.final_ride_detail
-        fields = ['car', 'driver']
-
 
 
 

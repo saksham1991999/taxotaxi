@@ -30,6 +30,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Bids</th>
                                     <th>Name</th>
                                     <th>Phone No</th>
                                     <th>Ride Type</th>
@@ -43,12 +44,17 @@
                                     <th>Duration</th>
                                     <th>Pickup</th>
                                     <th>Drop</th>
+                                    <th>Additional Choices</th>
+                                    <th>Additional Hault</th>
+                                    <th>Drop Datetime</th>
+                                    <th>Advance</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for booking in bookings %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
+                                    <td><input type="radio" name="booking" value="bids-{{ booking.id }}"></td>
                                     <td>{{ booking.name }}</td>
                                     <td>{{ booking.phone_no }}</td>
                                     <td>{{ booking.ride_type }}</td>
@@ -62,6 +68,10 @@
                                     <td>{{ booking.duration }} Min</td>
                                     <td>{{ booking.pickup }}</td>
                                     <td>{{ booking.drop }}</td>
+                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %}, &ensp;</td>
+                                    <td>{{ booking.additional_hault }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
+                                    <td>{{ booking.advance }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
@@ -73,13 +83,13 @@
             </div> <!-- end row -->
 
         {% for booking in bookings %}
-            <div class="row">
+            <div class="row booking-details" id="bids-{{ booking.id }}" style="display: none">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">
                                 Bids
-                                <a href="">
+                                <a href="{% url 'customadmin:vendor_bids' booking.id %}">
                                     <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
                                         <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
                                     </button>
@@ -98,7 +108,7 @@
                                 <tbody>
                                 {% for bid in booking.vendorbids_set.all %}
                                 <tr>
-                                    <td>Select Vendor</td>
+                                    <td><a href="{% url 'customadmin:assign_final_vendor' bid.id %}">Assign</a></td>
                                     <td>{{ bid.vendor }}</td>
                                     <td>{{ bid.bid }}</td>
                                     <td>{{ bid.datetime }}</td>
@@ -142,4 +152,14 @@
     <!-- Datatable init js -->
     <script src="{% static 'admin/js/pages/datatables.init.js' %}"></script>
 
+    <script>
+    $(document).ready(function(){
+        $('input[type=radio]').change(function(){
+            $('.booking-details').hide();
+            id = $(this).val()
+            str = '#' + id;
+            $(str).show();
+        });
+    });
+    </script>
 {% endblock extra_scripts %}

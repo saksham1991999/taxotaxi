@@ -46,6 +46,10 @@
                                     <th>Duration</th>
                                     <th>Pickup</th>
                                     <th>Drop</th>
+                                    <th>Additional Choices</th>
+                                    <th>Additional Hault</th>
+                                    <th>Drop Datetime</th>
+                                    <th>Advance</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -67,6 +71,10 @@
                                     <td>{{ booking.duration }} Min</td>
                                     <td>{{ booking.pickup }}</td>
                                     <td>{{ booking.drop }}</td>
+                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %}, &ensp;</td>
+                                    <td>{{ booking.additional_hault }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
+                                    <td>{{ booking.advance }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>

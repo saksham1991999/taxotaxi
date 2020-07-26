@@ -111,7 +111,7 @@ class vendor_cars(models.Model):
     pollution_certificate = models.ImageField(blank=True, null=True)
 
     def __str__(self):
-        return str(self.id) + str(self.car_type)
+        return str(self.car_type) + ": " + str(self.registration_no)
 
     class Meta:
         verbose_name_plural = 'Vendor Cars'
@@ -159,3 +159,6 @@ class driver(models.Model):
     legal_accidental_case = models.BooleanField(default=False)
     legal_accidental_case_details = models.TextField(blank=True, null=True)
     legal_accidental_case_document = models.ImageField(blank=True, null=True)
+
+    def __str__(self):
+        return str(self.full_name) + " (" + str(self.contact1) + ")"

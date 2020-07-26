@@ -32,7 +32,8 @@
          </div>
          <!-- end page title -->
          <form method="post" id="vendorStatus">
-            <div class="row">
+            {% csrf_token %}
+             <div class="row">
                <div class="col-6">
                   <div class="card">
                      <div class="card-body">
