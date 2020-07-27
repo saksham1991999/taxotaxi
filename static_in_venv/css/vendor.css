@@ -796,4 +796,10 @@ font-weight: bold;
 .visible-dropdown{
    display:block ;
 }
+.cardGreyStyle{
+  margin: 0px auto;
+   background-color: #eee; 
+   /*margin-bottom: 0px;*/
+   padding: 5px;
+}
 /*---------Booking CSS END-------------*/

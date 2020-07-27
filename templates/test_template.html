@@ -563,16 +563,16 @@
                         <div class="tab-pane" id="changePassword">
                            <form class="booking-frm" id="change-passwordform">
                               <input type="hidden" name="type" value="change_password">
-                              <div class="col-sm-9" style="margin-top: 10px;">
+                              <div class="col-sm-10" style="margin-top: 10px;">
                                  <div class="form-group row input1">
-                                    <label class="col-sm-4 col-form-label label-right-allign">Enter Current Password</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-sm-5 col-form-label label-right-allign">Enter Current Password</label>
+                                    <div class="col-sm-7">
                                        <input type="password" id="current-pass" class="form-control" name="current_password">
                                     </div>
                                  </div>
                                  <div class="form-group row input1">
-                                    <label class="col-sm-4 col-form-label label-right-allign">Enter New Password</label>
-                                    <div class="col-sm-8 passInputfield">
+                                    <label class="col-sm-5 col-form-label label-right-allign">Enter New Password</label>
+                                    <div class="col-sm-7 passInputfield">
                                        <input type="password" class="" id="password1" placeholder="Enter New Password" style="margin-bottom: 0px;" onkeydown="remove1(this.Element)">
                                        <span style="top: 24px" toggle="#password1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                        <span class="form-text" id="password_strength"></span>
@@ -580,9 +580,9 @@
                                     </div>
                                  </div>
                                  <div class="form-group row input1 passInputfield">
-                                    <label class="col-sm-4 col-form-label label-right-allign">Confirm New Password</label>
-                                    <div class="col-sm-8">
-                                       <input type="Password" class="" name="new_password" id="passwordConfirm1" placeholder="Confirm New Password" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
+                                    <label class="col-sm-5 col-form-label label-right-allign">Confirm New Password</label>
+                                    <div class="col-sm-7">
+                                       <input type="password" class="" name="new_password" id="passwordConfirm1" placeholder="Confirm New Password" style="margin-bottom: 0px;" onkeydown="remove2(this.Element)">
                                        <span style="top: 24px" toggle="#passwordConfirm1" class="fa fa-fw fa-eye field-icon toggle-password"><span class="tooltiptext">Click to see password</span></span>
                                        <small class="form-text" id="password2">Error message</small>
                                     </div>
@@ -974,22 +974,15 @@
                   <div class="col-sm-12 col-md-12">
                      <hr style="height : 5px">
                   </div>
-                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
-                     <!-- <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Neeraj Kumar Sharma</h5>
-                        <h5>Mobile: <span>9876543210</span></h5>
-                        </div> -->
-                     <div class="col-sm-3">
-                        <h5 style="font-weight: bold;color: black;">Pickup Location</h5>
+                  <div class="col-sm-12 cardGreyStyle ">
+                     <div class="col-sm-6">
+                        <h5 class="boldBlack">Pickup Location</h5>
                         <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
                      </div>
-                     <div class="col-sm-3">
-                        <h5 style="font-weight: bold;color: black;">Drop Location</h5>
+                     <div class="col-sm-6">
+                        <h5 class="boldBlack">Drop Location</h5>
                         <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
                      </div>
-                     <!-- <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
-                        <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
-                        </div> -->
                   </div>
                   <div class="col-sm-12 col-md-12 specialreq">
                      <h4>Special Requirements</h4>
@@ -1513,20 +1506,20 @@
                         <hr style="height : 10px">
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12" style="margin: 5px auto; background-color: #f0eeee; margin-bottom: 0px;">
+                  <div class="col-sm-12 col-md-12 cardGreyStyle" >
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Neeraj Kumar Sharma</h5>
+                        <h5 class="boldBlack">Neeraj Kumar Sharma</h5>
                         <h5>Mobile: <span>9876543210</span></h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Pickup Location</h5>
+                        <h5 class="boldBlack">Pickup Location</h5>
                         <h5>Faridabad, Delhi Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis, expedita!</h5>
                      </div>
                      <div class="col-sm-3">
-                        <h5 style="font-weight: 500;color: black;">Drop Location</h5>
+                        <h5 class="boldBlack">Drop Location</h5>
                         <h5>Gurgaon Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, quo.</h5>
                      </div>
-                     <div class="col-sm-3 booking-frm" style="margin-top: 5%;">
+                     <div class="col-sm-3 booking-frm" style="padding: 5%;">
                         <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
                      </div>
                   </div>
@@ -2299,10 +2292,10 @@
    
    $(this).toggleClass("fa-eye fa-eye-slash");
    var input = $($(this).attr("toggle"));
-   if (input.attr("type") == "password") {
-     input.attr("type", "text");
-   } else {
+   if (input.attr("type") == "text") {
      input.attr("type", "password");
+   } else {
+     input.attr("type", "text");
    }
    });
 </script>
