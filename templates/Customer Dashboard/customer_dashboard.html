@@ -653,9 +653,9 @@ font-weight: bold;
                         Booking Id: <span class="bookingId">{{ ride.id }}</span></h5>
                         <h5 class="heading-type">
                             {{ ride.ride_type }}/ <span>{{ ride.car_type }}</span> </h5>
-                        <h5>Night Pick Allowance {% if ride.early_pickup_charges %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightPickAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                        <h5>Night Drop Allowance {% if ride.late_drop_charges %}<span class="nightDropAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                        <h5>Driver Allowance {% if ride.night_charges %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="driverAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Night Pick Allowance {% if ride.early_pickup_charges %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightPickAllowance check">&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Night Drop Allowance {% if ride.late_drop_charges %}<span class="nightDropAllowance cross">&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
+                        <h5>Driver Allowance {% if ride.night_charges %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
                         <h5>Toll Tax Included <span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span></h5>
                         <h5>Sales Tax Included <span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span></h5>
                      </div>
