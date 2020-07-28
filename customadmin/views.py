@@ -102,14 +102,14 @@ def OngoingRidesView(request):
     context = {
         'bookings':bookings,
     }
-    return render(request, 'ride_bookings/cancelled_rides.html', context)
+    return render(request, 'ride_bookings/ongoing_rides.html', context)
 
 def CompletedRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(ride_status = 'Verified')
     context = {
         'bookings':bookings,
     }
-    return render(request, 'ride_bookings/cancelled_rides.html', context)
+    return render(request, 'ride_bookings/completed_rides.html', context)
 
 def AssignVendorsView(request, id):
     booking = coremodels.ride_booking.objects.get(id=id)
@@ -138,11 +138,13 @@ def AssignVendorsView(request, id):
 
 def AssignFinalVendorView(request, id):
     bid = get_object_or_404(coremodels.vendorbids, id=id)
-    final_ride, created = coremodels.final_ride_detail.objects.get_or_create(bid = bid, booking = bid.booking)
+    final_ride, created = coremodels.final_ride_detail.objects.get_or_create(booking = bid.booking)
+    final_ride.bid = bid
+    final_ride.save()
     booking = bid.booking
     booking.ride_status = "Assigned Vendor"
     booking.save()
-    return redirect('customadmin:assign_vendor_ridess')
+    return redirect('customadmin:assign_vendor_rides')
 
 def AssignDriverCarView(request, id):
     final_ride = get_object_or_404(coremodels.final_ride_detail, id= id)

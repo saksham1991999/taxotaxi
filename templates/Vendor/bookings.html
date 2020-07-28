@@ -84,7 +84,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                   {{ forloop.counter }}
               </div>
               <div class="col-sm-7 heading">
-                 <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                 <a data-toggle="collapse" href="#booking-detail-{{ booking.id }}" aria-expanded="false" aria-controls="booking-detail-{{ booking.id }}">
                     <h4>
                        <span class="from">{{ booking.pickup_city }}</span>
                        To 
@@ -128,16 +128,16 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
              </div>
            </div>
            <div class="col-sm-12 col-md-12 card-collapse">
-              <div class="collapse" id="collapseExample">
+              <div class="collapse" id="booking-detail-{{ booking.id }}">
                  <div class="card card-body">
                     <div class="col-sm-12 col-md-12">
                        <div class="col-sm-4">
                           <h4>Pickup Location</h4>
-                          <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim fugiat, temporibus architecto, tenetur officia laboriosam, dolore veniam distinctio aut quae vero sint nobis doloribus molestias delectus saepe magni. Sapiente voluptatum laborum quos natus at modi, accusamus saepe cum cupiditate atque alias aliquam animi ut, illum, quas esse eum? Maxime, rerum.</h5>
+                          <h5>{{ booking.pickup }}</h5>
                        </div>
                        <div class="col-sm-4">
                           <h4>Drop Location</h4>
-                          <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur dolorem eveniet iusto? Architecto, laboriosam, maxime est optio aperiam rem excepturi quaerat earum cum officiis quibusdam. Tenetur temporibus quis sed voluptas quidem neque ducimus consequatur sapiente aliquid commodi maiores tempore, totam tempora eligendi nesciunt alias modi id. Pariatur aliquid ratione ipsam.</h5>
+                          <h5>{{ booking.drop }}</h5>
                        </div>
                     </div>
                     <div class="col-sm-12 col-md-12">
@@ -145,22 +145,15 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                           <h4>Special Requirements</h4>
                        </div>
                        <div class="col-sm-12 col-md-12">
-                          <div class="col-sm-3">
-                             <h6>asdjfsdfsdf</h6>
-                          </div>
-                          <div class="col-sm-3">
-                             <h6>asdjfsdfsdf</h6>
-                          </div>
-                          <div class="col-sm-3">
-                             <h6>asdjfsdfsdf</h6>
-                          </div>
-                          <div class="col-sm-3">
-                             <h6>asdjfsdfsdf</h6>
-                          </div>
+                           {% for choice in booking.additional_choices.all %}
+                              <div class="col-sm-3">
+                                 <h6>{{ choice.name }}</h6>
+                              </div>
+                           {% endfor %}
                        </div>
                     </div>
                     <div class="col-sm-12 col-md-12">
-                       <small style="visibility: visible; color: red;">Note: Additional Information from admin or customer</small>
+                       <small style="visibility: visible; color: red;">Note: {{ booking.note }}</small>
                     </div>
                  </div>
               </div>
