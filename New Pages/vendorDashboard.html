@@ -305,7 +305,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
 
 .your-booking .list .card-date > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;}
 
-.card-collapse > div > div > div { background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;}
+.card-collapse > div > div > div { background-image: linear-gradient(#f2efde, #fffdf0);padding-bottom: 10px;}
 
 .card-buttons {margin-top: 10px;}
 
@@ -1296,13 +1296,22 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                            <h5>Night Pick Allowance <span class="nightPickAllowance cross"><i class="fas fa-times"></i></span></h5>
                            <h5>Night Drop Allowance <span class="nightDropAllowance check"></span></h5>
                            <h5>Driver Allowance <span class="driverAllowance cross"><i class="fas fa-times"></i></span></h5>
-                           <h5><span class="cngAllowed">
-                              <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
-                              </span>
-                              <span class="dieselAllowed">
-                                  <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                              <span class="electricAllowed">
-                                  <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                           <h5>
+                              <div class="row">
+                                 <div class="col-sm-4 nopadding1"><span class="cngAllowed">
+                                    <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
+                                    </span></div>
+                                 <div class="col-sm-4">
+                                    <span class="dieselAllowed">
+                                       <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Diesel Only</span>
+                                 </div>
+                                 <div class="col-sm-4">
+                                    <span class="electricAllowed">
+                                       <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Electric Allowed</span>
+                                 </div>
+                              </div>
+                              
+                              
                           </h5>
                         </div>
                         <div class="col-sm-4 card-date">
@@ -1367,14 +1376,14 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                         <div class="col-sm-1">
                         </div>
                         <div class="col-sm-11 booking-frm">
-                           <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                              <div style="display: flex;width:fit-content;">
+                           <div class="col-md-6" style="margin-bottom: 10px;padding-left: 0px;">
+                              <div style="display: flex;">
                                  <button class="book-btn" type="submit">Bid Your Amount</button>
                                  <input type="text" name="" id="" style="margin-bottom: 0px;">
                               </div>
                            </div>
-                           <div class="col-sm-6" style="margin-bottom: 10px;">
-                              <div style="display: flex;width:fit-content;">
+                           <div class="col-md-6" style="margin-bottom: 10px;">
+                              <div class="text-center" style="display: flex; justify-content: center;">
                                  <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
                                  <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
                               </div>
