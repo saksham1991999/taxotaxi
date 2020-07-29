@@ -2685,6 +2685,22 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
       }
    }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
 
+$(document).ready(function(){
+   form.submit(function (e) {
+    e.preventDefault();
+    $.post("demo_test_post.asp",
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+</script>
 {% endblock extra_scripts %}
 
