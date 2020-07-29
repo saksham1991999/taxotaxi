@@ -457,44 +457,44 @@
       placeholder="{{ drop_datetime|date:"j-M-Y" }} &ensp;{{ drop_datetime|time:"h:i A" }}">
       </div>
       </div>
-      <div class="row">
-      <label for="staticEmail" class="col-sm-4 col-form-label">Halt, If Required 
-      <span class="icon1"> <span class="fas fa-info-circle">
-      </span>
+      <!-- <div class="row">
+         <label for="staticEmail" class="col-sm-4 col-form-label">Halt, If Required 
+         <span class="icon1"> <span class="fas fa-info-circle">
+         </span> -->
       <!-- Ride Fair BreakDown -->
-      <span class="fair-breakdown">
-      Initial Charges : {{ initial_charges }}<br>
-      {% if additional_charges %}
-      Additional Taxes : {{ additional_charges }}<br>
-      {% endif %}
-      {% if driver_allowances %}
-      Driver Allowances : {{ driver_allowances }}<br>
-      {% endif %}
-      {% if checkbox_charges %}
-      Chargeable Additions : {{ checkbox_charges }}<br>
-      {% endif %}
-      {% if gst_charges %}
-      GST : {{ gst_charges }}<br>
-      {% endif %}
-      Total : {{ ride_total }}
-      </span>
-      </span>
-      </label>
-      <div class="col-sm-8" style="display: flex;">
-      <select name="subject" class="input-field1" id="halt" style="">
-      <option Selected>--Select City--</option>
-      <option value="0" > Gurgaon </option>
-      <option value="1">Faridabad</option>
-      <option value="2">Delhi</option>                     
-      </select>
-      <select name="subject" class="input-field2" id="halt">
-      <option Selected>--Time Duration--</option>
-      <option value="0" > 30 min </option>
-      <option value="1"> 1 hour </option>
-      <option value="2"> 2 hour </option>                     
-      </select>
-      </div>
-      </div>
+      <!--  <span class="fair-breakdown">
+         Initial Charges : {{ initial_charges }}<br>
+         {% if additional_charges %}
+         Additional Taxes : {{ additional_charges }}<br>
+         {% endif %}
+         {% if driver_allowances %}
+         Driver Allowances : {{ driver_allowances }}<br>
+         {% endif %}
+         {% if checkbox_charges %}
+         Chargeable Additions : {{ checkbox_charges }}<br>
+         {% endif %}
+         {% if gst_charges %}
+         GST : {{ gst_charges }}<br>
+         {% endif %}
+         Total : {{ ride_total }}
+         </span>
+         </span>
+         </label>
+         <div class="col-sm-8" style="display: flex;">
+         <select name="subject" class="input-field1" id="halt" style="">
+         <option Selected>--Select City--</option>
+         <option value="0" > Gurgaon </option>
+         <option value="1">Faridabad</option>
+         <option value="2">Delhi</option>                     
+         </select>
+         <select name="subject" class="input-field2" id="halt">
+         <option Selected>--Time Duration--</option>
+         <option value="0" > 30 min </option>
+         <option value="1"> 1 hour </option>
+         <option value="2"> 2 hour </option>                     
+         </select>
+         </div>
+         </div> -->
       <div class="row">
       <label for="staticEmail" class="col-sm-4 col-form-label">Travel Distance</label>
       <div class="col-sm-8">
@@ -607,4 +607,3 @@
           });
 </script>
 {% endblock extra_scripts %}
-
