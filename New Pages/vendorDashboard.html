@@ -1298,14 +1298,14 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                            <h5>Driver Allowance <span class="driverAllowance cross"><i class="fas fa-times"></i></span></h5>
                            <h5>
                               <div class="row">
-                                 <div class="col-sm-4 nopadding1"><span class="cngAllowed">
+                                 <div class="col-sm-4 noPadding1"><span class="cngAllowed">
                                     <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
                                     </span></div>
-                                 <div class="col-sm-4">
+                                 <div class="col-sm-4 noPadding1">
                                     <span class="dieselAllowed">
                                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Diesel Only</span>
                                  </div>
-                                 <div class="col-sm-4">
+                                 <div class="col-sm-4 noPadding1">
                                     <span class="electricAllowed">
                                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Electric Allowed</span>
                                  </div>
@@ -1931,13 +1931,13 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                   </div>
                   <div class="col-sm-12 col-md-12">
                      <div class="row vendorPayments">
-                        <div class="col-sm-12 noPadding" >
-                           <div class="col-sm-5 noPadding">
-                              <div class="col-sm-1 noPadding"><h4>1</h4> </div>
+                        <div class="col-sm-12 noPadding1" >
+                           <div class="col-sm-5 noPadding1">
+                              <div class="col-sm-1 noPadding1"><h4>1</h4> </div>
                               <div class="col-sm-6 "><h5>Booking Date:<p>24-May-2020, Sunday</p></h5><!-- <p>24-May-2020, Sunday</p> --> </div>
                               <div class="col-sm-5"><h5>Booking ID:<p>20200524</p></h5></div>
                            </div>
-                           <div class="col-sm-7 noPadding">
+                           <div class="col-sm-7 noPadding1">
                               <div class="col-sm-4"><h5>Booking Amount:<p>3330&nbsp;<span>INR</span></p></h5></div>
                               <div class="col-sm-4"><h5>Cash Collection:<p>4520&nbsp;<span>INR</span></p></h5></div>
                               <div class="col-sm-4"><h5>Amount Due:<p>330&nbsp;<span>INR</span></p></h5></div>
@@ -2685,6 +2685,22 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
       }
    }
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
 
+$(document).ready(function(){
+   form.submit(function (e) {
+    e.preventDefault();
+    $.post("demo_test_post.asp",
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+</script>
 {% endblock extra_scripts %}
 

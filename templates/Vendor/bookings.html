@@ -7,7 +7,7 @@
  
 <style>
     /* ///////////////////////// Your Booking Css///////////////////////////////// */
-.your-booking .list .heading h4{
+/*.your-booking .list .heading h4{
  text-decoration: underline;
  color: rgb(45, 45, 46);
 }
@@ -26,15 +26,12 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
 
 .your-booking .list .card-date > div > h4 > span {font-weight: 600;}
 
-.your-booking .list .card-date > h5 > span {font-size: x-large;
-    font-weight: 600;
-    color: darkorange;
-    padding-left: 20px;}
+.your-booking .list .card-date > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;}
 
-.card-collapse > div > div > div { background-image: linear-gradient(#feceab, #ffebdc);padding-bottom: 10px;}
+.card-collapse > div > div > div { background-image: linear-gradient(#f2efde, #fffdf0);padding-bottom: 10px;}
 
 .card-buttons {margin-top: 10px;}
-
+*/
 /* /////////////////////////end of your booking CSS */
 </style>
 {% endblock extra_stylesheet %}
@@ -101,13 +98,19 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                  <h5>Night Pick Allowance {% if ride.early_pickup_charges %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightPickAllowance check">&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
                  <h5>Night Drop Allowance {% if ride.late_drop_charges %}<span class="nightDropAllowance cross">&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
                  <h5>Driver Allowance {% if ride.night_charges %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                  <h5><span class="cngAllowed">
-                    <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> CNG Allowed
-                    </span>
-                    <span class="dieselAllowed">
-                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Diesel Only</span>
-                    <span class="electricAllowed">
-                        <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="10%"> Electric Allowed</span>
+                  <h5>                                                                 <div class="row">
+                                 <div class="col-sm-4 noPadding1"><span class="cngAllowed">
+                                    <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
+                                    </span></div>
+                                 <div class="col-sm-4 noPadding1">
+                                    <span class="dieselAllowed">
+                                       <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Diesel Only</span>
+                                 </div>
+                                 <div class="col-sm-4 noPadding1">
+                                    <span class="electricAllowed">
+                                       <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> Electric Allowed</span>
+                                 </div>
+                              </div>
                 </h5>
               </div>
               <div class="col-sm-4 card-date">

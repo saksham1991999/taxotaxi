@@ -803,3 +803,31 @@ font-weight: bold;
    padding: 5px;
 }
 /*---------Booking CSS END-------------*/
+
+    /* ///////////////////////// Your Booking Css///////////////////////////////// */
+.your-booking .list .heading h4{
+ text-decoration: underline;
+ color: rgb(45, 45, 46);
+}
+
+.your-booking .list .heading .heading-Id{
+ color: blue;
+}
+
+.your-booking .list .heading .heading-type span{
+font-weight: 600;
+ color: red;
+}
+
+.your-booking .list .card-date > h4{
+font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
+
+.your-booking .list .card-date > div > h4 > span {font-weight: 600;}
+
+.your-booking .list .card-date > h5 > span {font-size: x-large; font-weight: 600; color: darkorange;}
+
+.card-collapse > div > div > div { background-image: linear-gradient(#f2efde, #fffdf0);padding-bottom: 10px;}
+
+.card-buttons {margin-top: 10px;}
+
+/* /////////////////////////end of your booking CSS */
