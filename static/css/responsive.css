@@ -12,6 +12,27 @@
       }
  }*/
 @media(max-width: 355px){
+	.tj-form2-tabs .nav-tabs {
+    overflow-x: auto;
+    height: 57px;
+}
+.airport-section .tabwidth {
+    width: 100%!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs {
+    overflow-x: unset;
+    height: 57px;
+}
+/*.airport-section .tj-form2-tabs .nav-tabs {
+    overflow-x: unset;
+    height: 57px;
+}*/
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -4vw !important;
+        line-height: 1vw;
+	}
 	.airport-section .tj-form2-tabs .nav-tabs > li.active > a{
         font-size: 12px !important;
 	}
@@ -19,8 +40,31 @@
 		font-size: 12px !important;
 	}
 }
+@media(max-width: 400px){
+	.tj-form2-tabs {
+    margin-top: -55.5px!important;
+}
+    .tj-form2-tabs .nav-tabs {
+     display: flex;
+}
+.airport-section .tj-form2-tabs {
+    margin-top: -23px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs {
+     display: block;
+}
+}
+@media(min-width: 355px) and (max-width: 534px){
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -3vw !important;
+        line-height: 1vw;
+	}
+}
 
 @media (max-width: 534px){
+	
     .aditionalinfo-list{
        padding-inline-start: 10px;
        display: grid; 
@@ -47,13 +91,13 @@ bottom: 0px !important;
 	/*.container .col-md-3{
     width: 100%;
 }*/
-.tj-form2-tabs .nav-tabs li a{
+/*.tj-form2-tabs .nav-tabs li a{
 		font-size:13px !important;
-		/*padding: 13px 12px;*/
+		
 		width:90px!important;
 		bottom: -14px !important;
 line-height: 1vw;
-	}
+	}*/
 
 	.tj-form2-tabs .nav-tabs li.active a {
     /*font-size: 15px;*/
@@ -70,6 +114,37 @@ line-height: 1vw;
 	}
    
 }
+@media (min-width: 535px) and (max-width: 665px){
+	.tj-form2-tabs .nav-tabs li a{
+		font-size: 2.4vw!important;
+        width: 18vw;
+        bottom: -2vw !important;
+        line-height: 1vw;
+	}
+	.tj-form2-tabs .nav-tabs li.active a {
+    /*font-size: 15px;*/
+    bottom: -10px !important;
+    height: 50px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs > li.active > a {
+   bottom: 8px !important;
+    height: 50px!important;
+}
+.airport-section .tj-form2-tabs .nav-tabs li a{
+  
+    bottom: 3px !important;
+    padding: 14px 3px !important;
+    height: 45px !important;
+}
+}
+
+@media (min-width: 665px) and (max-width: 992px){
+.tj-form2-tabs .nav-tabs li a{
+		font-size:16px!important;
+		width:125px;
+	}	
+}
+
 @media (max-width: 992px)
 {    
 
@@ -77,7 +152,8 @@ line-height: 1vw;
     padding: 24px 0px;
    }
 	.tj-banner-form2 {
-    margin-top: 8px;}
+    margin-top: 40px;
+    }
     #nav-destinations .service-box{
     	text-align: center;
         width: 100%;
@@ -89,6 +165,7 @@ line-height: 1vw;
    	min-height: 370px;
    }
 }
+
 @media (min-width: 1920px){
 	
 	/*.slide-item .slide-caption{
@@ -321,8 +398,15 @@ line-height: 1vw;
 	
 
 }
-
-@media(min-width:768px) and (max-width:991px){
+@media(min-width: 768px){
+	/*for cards*/
+	.noPadding1{
+		padding-left: 0px!important;
+		padding-right: 0px!important;
+	}
+	.assignments .right-info .date-labels {text-align: right; }
+}
+@media( min-width:768px ) and ( max-width:991px ) {
 	
 
 	.remove-padding-left{
@@ -369,7 +453,7 @@ line-height: 1vw;
 		width:100%;
 	}
 	.trip-outer .tab-content{
-		padding:30px 20px
+		padding:30px 20px;
 	}
 	.trip-type-frm .search-btn{
 		width: 200px;
@@ -385,7 +469,7 @@ line-height: 1vw;
 		font-size:18px;
 	}
 	.cab-service-box .service-desc{
-		padding:35px 25px
+		padding:35px 25px;
 	}
 	.deal-thumb img{
 		width:100%;
@@ -607,7 +691,7 @@ line-height: 1vw;
 		padding: 20px 20px 15px 20px;
 	}
 	.booking-summary .booking-info{
-		padding: 35px 20px 15px 20px
+		padding: 35px 20px 15px 20px;
 	}
 	.booking-summary .booking-info li{
 		width:auto;
@@ -619,7 +703,7 @@ line-height: 1vw;
 	}
 	.booking-summary .journey-info{
 		width:auto;
-		padding:0 20px 0 20px
+		padding:0 20px 0 20px;
 	}
 	.journey-info i{
 		padding-left:10px;
@@ -770,6 +854,9 @@ line-height: 1vw;
 }
 
 @media(max-width:767px){
+	.footerHomeImage{
+		height: 390px;
+	}
 	.paddingleft-list{
     padding-left: 15px !important;
   }
@@ -1337,11 +1424,10 @@ line-height: 1vw;
 		float:none;
 		margin-top:15px;
 	}
-	.tj-form2-tabs .nav-tabs li a{
+	/*.tj-form2-tabs .nav-tabs li a{
 		font-size:16px!important;
-		/*padding: 13px 12px;*/
 		width:125px;
-	}
+	}*/
 	.tj-book-services .tj-heading-style h3,
 	.tj-cab-filter .tj-heading-style h3{
 		font-size:28px;
@@ -1374,12 +1460,12 @@ line-height: 1vw;
 	.tj-form-map .form-box{
 		padding: 50px 20px;
 	}
-	.tj-form-map .no-padl{
+	/*.tj-form-map .no-padl{
 		padding-left:15px;
 	}
 	.tj-form-map .no-padr{
 		padding-right:15px;
-	}
+	}*/
 	.contact_frm .frm-field input[type="text"]{
 		margin-right: 0;
 		margin-bottom: 10px;
@@ -1424,7 +1510,7 @@ line-height: 1vw;
 	/* User Account Styles */
 	
 	.tj-account-frm .tab-content{
-		padding:55px 20px
+		padding:55px 20px;
 	}
 	.tj-account-frm .nav-tabs > li{
 		float:none;
