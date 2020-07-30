@@ -2,6 +2,17 @@
 {% load static %}
 {% load widget_tweaks %}
 {% block extra_stylesheet %}
+<style type="text/css">
+   @media (max-width: 1200px){
+    .assignments .right-info .labels-data > h4{
+      font-size: 16px!important;
+    }
+    .assignments .right-info .date-labels > h4{
+      font-size: 16px!important;
+    }
+
+}
+</style>
 <!-- <style type="text/css">
    .passInputfield input{
    width: 100%;
@@ -639,7 +650,8 @@ font-weight: bold;
                      <br>
                   </div>
                    {% for ride in upcoming_rides %}
-                   <div class="col-sm-12 noPadding1">
+                <div class="col-sm-12 noPadding1" id="
+                   UpcommingCard">
                      <div class="col-sm-1 listNumber" >
                         <h4>{{ forloop.counter }}</h4>
                      </div>
@@ -755,7 +767,7 @@ font-weight: bold;
                      </div>
                       {% endif %}
                      <h5>
-                                                                                         <div class="row">
+                           <div class="row">
                                  <div class="col-sm-4 noPadding1"><span class="cngAllowed">
                                     <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
                                     </span></div>

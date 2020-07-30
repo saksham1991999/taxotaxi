@@ -1653,7 +1653,16 @@ line-height: 1vw;
     	width: 22%!important;
     }
     
+    
 }
+
+@media(max-width: 1200px){
+	.extra-payment-icons img{
+		width: auto;
+	}
+	/*.assignments .right-info .labels-data > h4 img{
+      width: auto;
+    }*/
 }
 @media(min-width:1026px) and (max-width:1285px){
     .tj-banner-form2 {
@@ -1684,11 +1693,11 @@ line-height: 1vw;
 @media (max-width: 1400px)
 {.set-image {
     height: auto !important;
-}
+}}
 @media (min-width: 2000px){
 	.tj-cab-slider .slider-item img{
     height: 530px !important;
-}
+}}
 @media (min-width: 3000px){
 	.nav-width{
 		width: 25% !important;
