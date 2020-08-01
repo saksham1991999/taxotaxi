@@ -1381,4 +1381,58 @@
       });
      
 </script>
+
+<script>
+
+   // /////// For One Way //////////////////
+   $("#one-way > #ride-bform").submit(function(e){
+      
+      // e.preventDefault();
+
+      if( ($("#one_way_pickup_city").val().trim() == "") || (($("#one_way_pickup_location").val().trim() == "")) || (($("#one_way_drop_city").val().trim() == "")) || (($("#one_way_drop_location").val().trim() == ""))){
+         alert("Please fill the required fields")
+         return false;
+         
+      }else{
+
+         return true;
+      }
+   })
+
+/// from-airport form validations//////
+   $("#from-airport > #ride-bform").submit(function(e){
+      
+      // e.preventDefault();
+
+      if( ($("#from_airport_pickup_city").val().trim() == "") || (($("#from_airport_pickup_location").val().trim() == "")) || (($("#from_airport_drop_city").val().trim() == "")) || (($("#from_airport_drop_location").val().trim() == ""))){
+         alert("Please fill the required fields")
+         return false;
+         
+      }else{
+
+         return true;
+      }
+   })
+
+
+
+// ///// to airport validators
+   $("#to-airport > #ride-bform").submit(function(e){
+      
+      // e.preventDefault();
+
+      if( ($("#to_airport_pickup_city").val().trim() == "") || (($("#to_airport_pickup_location").val().trim() == "")) || (($("#to_airport_drop_city").val().trim() == "")) || (($("#to_airport_drop_location").val().trim() == ""))){
+         alert("Please fill the required fields")
+         return false;
+         
+      }else{
+
+         return true;
+      }
+   })
+
+
+</script>
+
+
 {% endblock extra_scripts %}
