@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-
 class User(AbstractUser):
     is_vendor = models.BooleanField(default=False)
     is_driver = models.BooleanField(default = False)
@@ -303,6 +302,9 @@ class vendorbids(models.Model):
     bid = models.FloatField(blank=True, null=True)
     datetime = models.DateTimeField(blank=True, null=True, auto_now_add=True)
     rejection_reason = models.CharField(max_length=256, blank=True, null=True)
+
+    def profit(self):
+        return int(self.booking.final_ride_fare - self.bid)
 
 class final_ride_detail(models.Model):
     booking = models.OneToOneField('core.ride_booking', on_delete=models.DO_NOTHING, related_name = 'final_ride_detail')

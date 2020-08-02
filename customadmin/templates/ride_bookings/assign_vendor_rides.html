@@ -102,6 +102,7 @@
                                     <th>#</th>
                                     <th>Vendor</th>
                                     <th>Bid Amount</th>
+                                    <th>Profit</th>
                                     <th>Date</th>
                                 </tr>
                                 </thead>
@@ -111,6 +112,7 @@
                                     <td><a href="{% url 'customadmin:assign_final_vendor' bid.id %}">Assign</a></td>
                                     <td>{{ bid.vendor }}</td>
                                     <td>{{ bid.bid }}</td>
+                                    <td>{{ bid.profit }}</td>
                                     <td>{{ bid.datetime }}</td>
                                 </tr>
                                 {% endfor %}

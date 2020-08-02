@@ -10,7 +10,7 @@ from django.utils import timezone
 from . import models, forms
 import requests
 from django.contrib.auth import authenticate, login, logout
-
+from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from core import models as coremodels
 from core import forms as coreforms
 
@@ -86,6 +86,19 @@ def DashboardView(request):
             'completed_rides':completed_rides,
         }
         return render(request, 'Customer Dashboard/customer_dashboard.html', context)
+
+def CustomerFeedback(request):
+    if request.method == "POST":
+        final_ride_id = request.POST.get('final_ride_id')
+        comment = request.POST.get('comment')
+        feedback = request.POST.getlist("feedback")
+        total = 6
+        avg = len(feedback)/total
+        final_ride = get_object_or_404(coremodels.final_ride_detail, id=final_ride_id)
+        final_ride.review = comment
+        final_ride.rating = avg
+        final_ride.save()
+        return HttpResponse({"Status": "Feedback Submitted Successfuly!"}, status = HTTP_200_OK)
 
 
 '''
