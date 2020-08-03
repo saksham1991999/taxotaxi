@@ -1,4 +1,4 @@
-l,{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
 {% load fullurl %}
@@ -6,6 +6,12 @@ l,{% extends 'base.html' %}
 {% block extra_stylesheet %}
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .card-collapse > div > div > div{
+        background-image: linear-gradient(#fa9c9c, #fa9c9c);
+    }
+</style>
 {% endblock extra_stylesheet %}
 
 {% block content %}
