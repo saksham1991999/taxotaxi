@@ -425,5 +425,21 @@
    //      });
    
 </script>
+<script>
+   $(document).ready(function(){
+    
+   
+
+   $("form").submit(function(e){
+      const optionArray = document.getElementsByClassName('choice');
+      if(optionArray.length == 0){
+         alert("Please select a car !!!!")
+         return false;
+      }else{
+        return true;
+      }
+   })
+   })
+</script>
 {% endblock extra_scripts %}
 
