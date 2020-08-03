@@ -136,21 +136,40 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
            <div class="col-sm-12 col-md-12 card-collapse">
               <div class="collapse" id="booking-detail-{{ booking.id }}">
                  <div class="card card-body">
-                    <div class="col-sm-12 col-md-12">
+                     <div class="col-sm-12 col-md-12 cardGreyStyle" >
+                        <div class="col-sm-1">
+
+                        </div>
+                        <div class="col-sm-4">
+                           <h5 class="boldBlack">Pickup Location</h5>
+                           <h5>{{ booking.pickup }}</h5>
+                        </div>
+                        <div class="col-sm-4">
+                           <h5 class="boldBlack">Drop Location</h5>
+                           <h5>{{ booking.drop }}</h5>
+                        </div>
+                     </div>
+                    <!-- <div class="col-sm-12 col-md-12">
                        <div class="col-sm-4">
-                          <h4>Pickup Location</h4>
+                          <h4 class="boldBlack">Pickup Location</h4>
                           <h5>{{ booking.pickup }}</h5>
                        </div>
                        <div class="col-sm-4">
-                          <h4>Drop Location</h4>
+                          <h4 class="boldBlack">Drop Location</h4>
                           <h5>{{ booking.drop }}</h5>
                        </div>
-                    </div>
+                    </div> -->
                     <div class="col-sm-12 col-md-12">
+                     <div class="col-sm-1">
+                           
+                     </div>
                        <div class="col-sm-4">
-                          <h4>Special Requirements</h4>
+                          <h4 class="boldBlack">Special Requirements</h4>
                        </div>
                        <div class="col-sm-12 col-md-12">
+                        <div class="col-sm-1">
+                           
+                        </div>
                            {% for choice in booking.additional_choices.all %}
                               <div class="col-sm-3">
                                  <h6>{{ choice.name }}</h6>
@@ -159,6 +178,9 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                        </div>
                     </div>
                     <div class="col-sm-12 col-md-12">
+                     <div class="col-sm-1">
+                           
+                     </div>
                        <small style="visibility: visible; color: red;">Note: {{ booking.note }}</small>
                     </div>
                  </div>
