@@ -94,7 +94,7 @@
                                         <a href="{% url 'customadmin:banner_edit' banner.id %}">
                                             <i class="bx bx-edit-alt font-size-16 align-middle"></i>
                                         </a>
-                                        <a href="{% url 'customadmin:banner_delete' banner.id %}">
+                                        <a href="{% url 'customadmin:banner_delete' banner.id %}" onclick="delFunc('{% url 'customadmin:banner_delete' banner.id %}')">
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
                                     </td>
@@ -140,7 +140,8 @@
                                         <a href="{% url 'customadmin:testimonial_edit' testimonial.id %}">
                                             <i class="bx bx-edit-alt font-size-16 align-middle"></i>
                                         </a>
-                                        <a href="{% url 'customadmin:testimonial_delete' testimonial.id %}">
+                                        <a onclick="delFunc('{% url 'customadmin:testimonial_delete' testimonial.id %}')">
+                                            
                                             <i class="bx bxs-trash font-size-16 align-middle"></i>
                                         </a>
                                     </td>
@@ -262,16 +263,16 @@
 
         <!-- for the delete option  -->
         <script>
-            $(document).ready(function(){
-                $(".bxs-trash").click(function(){
+            
+                function delFunc(url){
                     if(confirm("are you sure you want to delete ?")){
                         // write the url you want to request for here
-                        location.href = ""
+                        location.href = url;
                     }else{
 
                     }
-                })
-            })
+                }
+            
         </script>
 
 {% endblock extra_scripts %}

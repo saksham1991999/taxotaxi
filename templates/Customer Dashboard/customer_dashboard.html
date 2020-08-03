@@ -716,7 +716,7 @@ font-weight: bold;
                      </div>
 
                   </div>
-                  <div class="col-sm-12 extra-payment-icons" >
+                  <div class="col-sm-12 extra-payment-icons" style="margin-left: 8.3%; padding-left: 0px; margin-bottom: 30px;">
                            <div class="col-sm-4 ">
                               <h5>
                               <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Total Amount  
@@ -740,19 +740,20 @@ font-weight: bold;
                            </div> 
                         </div>
                   <div class="col-sm-12 col-md-12 noPadding1">
-                     <div class="col-sm-6 ">
+                     <div class="col-sm-1"></div>
+                     <div class="col-sm-5" style="padding-left: 0px;">
                         <h5 class="boldBlack"><div class="color-box" style="background-color: #169d16;"></div>Pickup Address</h5>
                         <div class="col-sm-12">
                         <p>{{ ride.pickup }}</p></div>
                      </div>
-                     <div class="col-sm-6">
+                     <div class="col-sm-5">
                         <h5 class="boldBlack"><div class="color-box" style="background-color: orange;"></div>Drop Address</h5>
                         <div class="col-sm-12">
                            <p>{{ ride.drop }}</p>
                         </div>
                      </div>
                   </div>
-                  <div class="col-sm-12 col-md-12 specialreq">
+                  <div class="col-sm-12 col-md-12 specialreq" style="margin-left: 8.3%;">
                      <h4 class="boldBlack">Special Requirements</h4>
                       {% for choice in ride.additional_choices.all %}
                          <div class="col-sm-4">
@@ -767,7 +768,7 @@ font-weight: bold;
                      </div>
                       {% endif %}
                      <h5>
-                           <div class="row">
+                           <div class="row" style="margin-left: 8.3%; margin-bottom: 30px;">
                                  <div class="col-sm-4 noPadding1"><span class="cngAllowed">
                                     <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
                                     </span></div>
@@ -831,10 +832,10 @@ font-weight: bold;
                   </div>
 
                        {% if ride.ride_status == 'Completed' %}
-                  <div>
-                     <button class="btn btn-block" style="background-color: #4CAF50;">Pay Online</button>
+                  <div class="booking-frm">
+                     <button class="btn btn-block book-btn" style="background-color: #4CAF50;">Pay Online</button>
                      <br>
-                     <button class="btn btn-block" style="background-color: #AC4800;">SOS/Call Customer Care</button>
+                     <button class="btn btn-block book-btn" style="background-color: #AC4800;">SOS/Call Customer Care</button>
                   </div>
                        {% endif %}
                   {% endfor %}
