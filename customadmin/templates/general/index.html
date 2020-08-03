@@ -259,4 +259,19 @@
         <!-- Datatable init js -->
         <script src="{% static 'admin/js/pages/datatables.init.js' %}"></script>
 
+
+        <!-- for the delete option  -->
+        <script>
+            $(document).ready(function(){
+                $(".bxs-trash").click(function(){
+                    if(confirm("are you sure you want to delete ?")){
+                        // write the url you want to request for here
+                        location.href = ""
+                    }else{
+
+                    }
+                })
+            })
+        </script>
+
 {% endblock extra_scripts %}
