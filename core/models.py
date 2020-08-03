@@ -229,6 +229,7 @@ class ride_booking(models.Model):
     drop = models.CharField(max_length=512)
     distance = models.FloatField()
     duration = models.FloatField()
+    price_kkm = models.PositiveSmallIntegerField(default = 10)
 
     additional_choices = models.ManyToManyField('core.ride_choices')
     additional_hault = models.PositiveSmallIntegerField(default=0)
@@ -255,7 +256,7 @@ class ride_booking(models.Model):
     final_ride_fare = models.PositiveSmallIntegerField()
     advance = models.PositiveSmallIntegerField()
 
-    ride_status = models.CharField(max_length=16, choices=ride_status_choices)
+    ride_status = models.CharField(max_length=32, choices=ride_status_choices)
     extra_remarks = models.TextField(blank=True, null=True)
     advance_payment_received = models.BooleanField(default=False)
     advance_15 = models.BooleanField(default=True)

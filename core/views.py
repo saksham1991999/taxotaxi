@@ -778,6 +778,9 @@ def CheckoutView(request):
                 mobile = request.user.mobile
             pickup_location = request.POST['pickup_location']
             drop_location = request.POST['drop_location']
+            advance_percent = request.POST['advance']
+            print("Selected Advance Payment Option " + str(advance_percent))
+            request.session['advance_percent'] = advance_percent
             request.session['name'] = name
             request.session['mobile'] = mobile
             request.session['pickup_location'] = pickup_location
@@ -895,7 +898,9 @@ def PaymentView(request):
     driver_allowances = early_pickup_charges + late_drop_charges + night_charges
 
     gst_charges = request.session['gst_charges']
-    advance = int(final_ride_fair * 0.15)
+    advance_percent = request.session['advance_percent']
+
+    advance = int(final_ride_fair * int(advance_percent) / 100)
 
     name = request.session['name']
     mobile = request.session['mobile']
@@ -959,7 +964,7 @@ def PaymentView(request):
         'txnid': payu.generate_txnid(), 'amount': str(int(advance)), 'productinfo': str(ride_type),
         'firstname': str(request.user.first_name), 'email': str(request.user.email), 'udf1': str(booking.id),
     }
-    print(data)
+    # print(data)
     payu_data = payu.initiate_transaction(data)
     print('--------------------PAYMENT VIEW Rendering ----------------------------')
     return render(request, 'payments/payu_checkout.html', {"posted": payu_data})

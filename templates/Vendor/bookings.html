@@ -95,10 +95,10 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                  Booking Id: <span class="bookingId">{{ booking.id }}</span></h5>
                  <h5 class="heading-type">
                  {{ booking.ride_type }}/ <span>{{ booking.car_type }}</span></h5>
-                 <h5>Night Pick Allowance {% if ride.early_pickup_charges %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightPickAllowance check">&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                 <h5>Night Drop Allowance {% if ride.late_drop_charges %}<span class="nightDropAllowance cross">&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                 <h5>Driver Allowance {% if ride.night_charges %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% else %}<span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span>{% endif %}</h5>
-                  <h5>                                                                 <div class="row">
+                 <h5>Night Pick Allowance {% if booking.early_pickup_charges %}<span class="nightPickAllowance check">&nbsp;&nbsp;&nbsp;&#10004</span>{% else %}<span class="nightPickAllowance cross">&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% endif %}</h5>
+                <h5>Night Drop Allowance {% if booking.late_drop_charges %}<span class="nightDropAllowance check">&nbsp;&nbsp;&#10004</span>{% else %}<span class="nightDropAllowance cross">&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% endif %}</h5>
+                <h5>Driver Allowance {% if booking.night_charges %}<span class="driverAllowance check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10004</span>{% else %}<span class="driverAllowance cross">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-times"></i></span>{% endif %}</h5>
+                <h5>                                                                 <div class="row">
                                  <div class="col-sm-4 noPadding1"><span class="cngAllowed">
                                     <img src="{% static 'images/fleet-carousel-img3.png' %}" alt="" width="20%"> CNG Allowed
                                     </span></div>
@@ -115,9 +115,9 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
               </div>
               <div class="col-sm-4 card-date">
                  <h4>
-                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>{{ ride.pickup_datetime|date:"j-M-Y, l" }}<span id="day"></span></h4>
+                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="10%"> <span class="date"></span>{{ booking.pickup_datetime|date:"j-M-Y, l" }}<span id="day"></span></h4>
                  <h4>
-                     <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">{{ ride.pickup_datetime|time:"h:i A" }}</span></h4>
+                     <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="10%"> <span class="time">{{ booking.pickup_datetime|time:"h:i A" }}</span></h4>
                  <div>
                      
                      <h4>

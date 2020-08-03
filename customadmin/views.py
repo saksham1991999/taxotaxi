@@ -138,10 +138,12 @@ def AssignVendorsView(request, id):
 
 def AssignFinalVendorView(request, id):
     bid = get_object_or_404(coremodels.vendorbids, id=id)
-    final_ride, created = coremodels.final_ride_detail.objects.get_or_create(booking = bid.booking)
-    final_ride.bid = bid
-    final_ride.save()
     booking = bid.booking
+    try:
+        final_ride = coremodels.final_ride_detail.objects.get(booking = booking)
+    except:
+        final_ride = coremodels.final_ride_detail.objects.create(booking=booking, bid = bid)
+    final_ride.save()
     booking.ride_status = "Assigned Vendor"
     booking.save()
     return redirect('customadmin:assign_vendor_rides')
@@ -204,7 +206,7 @@ def EndRideView(request, id):
             final_ride.booking.ride_status = "Completed"
             final_ride.booking.save()
             final_ride.save()
-        return redirect('customadmin:upcoming_rides')
+        return redirect('customadmin:ongoing_rides')
     else:
         form = forms.FinalRideForm(instance=final_ride)
         form.fields['car'].queryset = cars
@@ -212,7 +214,7 @@ def EndRideView(request, id):
         context = {
             'form': form,
         }
-        return render(request, 'ride_bookings/start_ride_form.html', context=context)
+        return render(request, 'ride_bookings/end_ride_form.html', context=context)
 
 
 def FinalRideDetailsView(request, id):
