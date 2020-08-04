@@ -930,6 +930,7 @@ def PaymentView(request):
         drop=drop,
         distance = distance,
         duration = duration,
+        price_km = price_km,
 
         booking_datetime=datetime.datetime.now(),
         pickup_datetime = pickup_datetime,

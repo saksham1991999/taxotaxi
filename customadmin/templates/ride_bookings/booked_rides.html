@@ -19,12 +19,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">
-                                Cities
-                                <a href="{% url 'customadmin:cities_update' %}">
-                                    <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                                    </button>
-                                </a>
+                                Booked Rides
                             </h4>
 
                             <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -41,6 +36,7 @@
                                     <th>Final Fare</th>
                                     <th>Advance</th>
                                     <th>Pickup Date-Time</th>
+                                    <th>Drop Datetime</th>
                                     <th>Booking Date-Time</th>
                                     <th>Distance</th>
                                     <th>Duration</th>
@@ -48,7 +44,6 @@
                                     <th>Drop</th>
                                     <th>Additional Choices</th>
                                     <th>Additional Hault</th>
-                                    <th>Drop Datetime</th>
                                     <th>Advance</th>
                                 </tr>
                                 </thead>
@@ -66,14 +61,14 @@
                                     <td>{{ booking.final_ride_fare }}</td>
                                     <td>{{ booking.advance }}</td>
                                     <td>{{ booking.pickup_datetime }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
                                     <td>{{ booking.booking_datetime }}</td>
                                     <td>{{ booking.distance }} Km</td>
                                     <td>{{ booking.duration }} Min</td>
                                     <td>{{ booking.pickup }}</td>
                                     <td>{{ booking.drop }}</td>
-                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %}, &ensp;</td>
+                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %} | &ensp;</td>
                                     <td>{{ booking.additional_hault }}</td>
-                                    <td>{{ booking.drop_datetime }}</td>
                                     <td>{{ booking.advance }}</td>
                                 </tr>
                                 {% endfor %}

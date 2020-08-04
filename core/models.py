@@ -229,7 +229,7 @@ class ride_booking(models.Model):
     drop = models.CharField(max_length=512)
     distance = models.FloatField()
     duration = models.FloatField()
-    price_kkm = models.PositiveSmallIntegerField(default = 10)
+    price_km = models.PositiveSmallIntegerField(default = 10)
 
     additional_choices = models.ManyToManyField('core.ride_choices')
     additional_hault = models.PositiveSmallIntegerField(default=0)
@@ -295,6 +295,10 @@ class assign_vendor(models.Model):
 
     def vendor_recommended_amount(self):
         amount = self.booking.final_ride_fare*(100-self.commission)/100
+        return int(amount)
+
+    def comission_amount(self):
+        amount = self.booking.final_ride_fare*(self.commission)/100
         return int(amount)
 
 class vendorbids(models.Model):
