@@ -707,7 +707,7 @@ font-weight: bold;
                                  <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                                  <span style="font-weight: 600;">KM Limit : {{ ride.distance }}</span>
                                  <small style="visibility: visible;"> km</small><br>
-                                 <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs10/-</small>
+                                 <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs {{ ride.price_km }}/-</small>
                               </h4>
                            </div>
                            

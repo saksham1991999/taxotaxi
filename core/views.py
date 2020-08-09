@@ -286,6 +286,7 @@ def CarSpecificationsView(request):
         final_prices = request.session['final_prices_list']
         ride_total = final_prices[car_type_id - 1]
 
+        price_km = price_km[car_type_id - 1]
         initial_charges = request.session['initial_charges_list'][car_type_id - 1]
         additional_charges = request.session['additional_charges_list'][car_type_id - 1]
         early_pickup_charges = request.session['early_pickup_charges_list'][car_type_id - 1]
@@ -779,8 +780,7 @@ def CheckoutView(request):
             pickup_location = request.POST['pickup_location']
             drop_location = request.POST['drop_location']
             advance_percent = request.POST['advance']
-            print("Selected Advance Payment Option " + str(advance_percent))
-            request.session['advance_percent'] = advance_percent
+            request.session['advance_percent'] = int(advance_percent)
             request.session['name'] = name
             request.session['mobile'] = mobile
             request.session['pickup_location'] = pickup_location
@@ -896,10 +896,9 @@ def PaymentView(request):
     late_drop_charges = request.session['late_drop_charges']
     night_charges = request.session['night_charges']
     driver_allowances = early_pickup_charges + late_drop_charges + night_charges
-
     gst_charges = request.session['gst_charges']
-    advance_percent = request.session['advance_percent']
 
+    advance_percent = request.session['advance_percent']
     advance = int(final_ride_fair * int(advance_percent) / 100)
 
     name = request.session['name']
@@ -917,6 +916,11 @@ def PaymentView(request):
 
     pickup_city = models.city.objects.get(name=pickup_city)
     drop_city = models.city.objects.get(name=drop_city)
+
+    # print(name, mobile, ride_type_qs, car_type_qs, pickup_city, drop_city, pickup,drop, distance, duration, price_km)
+    # print(datetime.datetime.now(), pickup_datetime, drop_datetime, pickup_location, drop_location)
+    # print(initial_charges, additional_charges, early_pickup_charges, late_drop_charges, night_charges, gst_charges, ride_total, final_ride_fair)
+    # print(coupon_qs, advance)
     booking = models.ride_booking.objects.create(
         user = request.user,
         name = name,
@@ -951,7 +955,7 @@ def PaymentView(request):
 
         final_ride_fare =final_ride_fair,
         advance =advance,
-        ride_status='Cancelled'
+        ride_status="Cancelled"
     )
 
     if 'ride_checkboxes' in request.session:
