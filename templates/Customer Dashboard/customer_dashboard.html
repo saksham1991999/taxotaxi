@@ -793,22 +793,25 @@ font-weight: bold;
                            </h4>
                         </div>
                         <div class="col-sm-6">
-                           <div class="col-sm-3"><img class="roundImage" src="{% static 'images/comment_img2.jpg' %}" >
+                           <div class="col-sm-3"><img class="roundImage" src="{{ ride.final_ride_detail.driver.image.url }}" height="100">
                            </div>
                            <div class="col-sm-9 extra-payment-icons">
-                               <h5>Driver Name:<span>{{ ride.final_ride_detail.driver.full_name }}</span> </h5>
-                               <h5>Phone Number:<span> {{ ride.final_ride_detail.driver.contact1 }}</span> </h5>
-                               <h5>Rating:<span> <span class="fa fa-star checked"></span>
+                               <h5>Driver Name: &ensp;<span>{{ ride.final_ride_detail.driver.full_name }}</span> </h5>
+                               <h5>Phone Number: &ensp;<span> {{ ride.final_ride_detail.driver.contact1 }}</span> </h5>
+                               <h5>Rating: &ensp;<span> <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star checked"></span>
                                  <span class="fa fa-star"></span>
                                  <span class="fa fa-star"></span></span> </h5>
                                  
-                                 <h5 >Ride Start:<span class="amount">{{ ride.final_ride_detail.start_datetime|date:"j-M-Y, l" }}{{ ride.final_ride_detail.start_datetime|time:"h:i A" }}</span> </h5>
-                                 <h5>
+                                 <h5 >Ride Start: &ensp;<span class="amount">{{ ride.final_ride_detail.start_datetime|date:"j-M-Y, l" }}{{ ride.final_ride_detail.start_datetime|time:"h:i A" }}</span> </h5>
+                                 {% if ride.ride_status == "Completed" %}
+                               <h5>
                                     <img src="{% static 'images/icons/Payment-inactive.png' %}" alt="" width="15%">Actual to be Paid<br> 
-                                   <div class="col-sm-12"><span class="amount large">2,200</span></div> 
+                                   <div class="col-sm-12"><span class="amount large">{{ ride.final_ride_detail.get_driver_collect_amount }}</span></div>
                                  </h5>
+                                     {% endif %}
+
                            </div>
                         </div>
                         <div class="col-sm-6 extra-payment-icons">
@@ -816,14 +819,16 @@ font-weight: bold;
                               <img class="roundImage" src="{% static 'images/icons/Payment-inactive.png' %}">
                            </div>
                            <div class="col-sm-8 noPadding1">
-                              <h5>Car No:<span>{{ ride.final_ride_detail.car.registration_no }}</span> </h5>
+                              <h5>Car No: &ensp;<span>{{ ride.final_ride_detail.car.registration_no }}</span> </h5>
                            </div>
-                           
+
+                           {% if ride.ride_status == "Completed" %}
                            <div class="col-sm-12">
                                <h5>Ride Finished:<span class="amount">{{ ride.final_ride_detail.end_datetime|date:"j-M-Y, l" }}{{ ride.final_ride_detail.end_datetimesss|time:"h:i A" }}</span> </h5>
-                               <h5>Extra KM Charges:<span> 1,500 INR</span> </h5>
-                               <h5>Additional Charges:<span> 500 INR</span> </h5>
+                               <h5>Extra KM Charges:<span> {{  ride.final_ride_detail.get_extra_km_price }} INR</span> </h5>
+                               <h5>Additional Charges:<span> {{  ride.final_ride_detail.other_charges }} INR</span> </h5>
                            </div>
+                           {% endif %}
                           
                         </div>
                         

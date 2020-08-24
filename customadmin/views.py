@@ -92,8 +92,10 @@ def UpdateVendorBidsView(request, id):
 
 def UpcomingRidesView(request):
     bookings = coremodels.ride_booking.objects.filter(ride_status__in = ['Assigned Vendor', 'Assigned Car/Driver'])
+    late_bookings = coremodels.ride_booking.objects.filter(ride_status__in = ['Assigned Vendor', 'Assigned Car/Driver'], pickup_datetime__lt =datetime.datetime.today())
     context = {
         'bookings':bookings,
+        'late_bookings':late_bookings,
     }
     return render(request, 'ride_bookings/upcoming_rides.html', context)
 
@@ -198,6 +200,7 @@ def EndRideView(request, id):
     vendor = final_ride.bid.vendor
     cars = vendormodels.vendor_cars.objects.filter(vendor=vendor)
     drivers = vendormodels.driver.objects.filter(vendor=vendor)
+
     if request.method == 'POST':
         form = forms.FinalRideForm(request.POST, request.FILES, instance=final_ride)
         if form.is_valid():
@@ -213,9 +216,16 @@ def EndRideView(request, id):
         form.fields['driver'].queryset = drivers
         context = {
             'form': form,
+            'final_ride':final_ride,
         }
         return render(request, 'ride_bookings/end_ride_form.html', context=context)
 
+def VerifyRideView(request, id):
+    final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+    booking = final_ride.booking
+    booking.ride_status = "Verified"
+    booking.save()
+    return redirect('customadmin:ongoing_rides')
 
 def FinalRideDetailsView(request, id):
     pass
@@ -374,9 +384,9 @@ def ContactUsView(request):
     return render(request, 'general/contact_us.html', context)
 
 def PaymentsView(request):
-    payments = coremodels.payment.objects.all()
+    bookings = coremodels.ride_booking.objects.filter(ride_status='Verified')
     context = {
-        'payments':payments,
+        'bookings': bookings,
     }
     return render(request, 'general/payments.html', context)
 
@@ -414,7 +424,7 @@ def UpdateCarAttributes(request):
                         value = coremodels.car_attr_comparison.objects.get(car_type=car_type,
                                                                               attr_name=car_attribute)
                     except:
-                        value = coremodels.car_attr_comparison.objects.create(car_type=car_type, attr_name = car_attribute, value=' ')
+                        value = coremodels.car_attr_comparison.objects.create(car_type=car_type, attr_name = car_attribute, value='-')
 
         return redirect( 'customadmin:car_type')
     else:
@@ -426,11 +436,15 @@ def UpdateCarAttributes(request):
 
 def UpdateCarAttributeValueView(request):
     CarAtrributeValueFormset = modelformset_factory(coremodels.car_attr_comparison, fields = '__all__', can_delete=False, extra=0)
+
+
     if request.method == 'POST':
         formset = CarAtrributeValueFormset(request.POST, request.FILES)
         if formset.is_valid():
             formset.save()
-        return redirect( 'customadmin:car_type')
+            return redirect( 'customadmin:car_type')
+        else:
+            return redirect('customadmin:update_car_attribute_values')
     else:
         formset = CarAtrributeValueFormset()
         qs = coremodels.car_attr_comparison.objects.all()
@@ -458,7 +472,6 @@ def UpdateCarAttributeValueView(request):
             'selected_car_types':selected_car_types,
             'selected_attributes':selected_attributes,
         }
-
         return render(request, 'car_type/car_attribute_value_formset.html', context)
 
 def UpdateRideAdditionalChoices(request):

@@ -35,6 +35,7 @@ urlpatterns = [
     path('assign-driver-car/<int:id>/', views.AssignDriverCarView, name='assign_driver_car'),
     path('start-ride/<int:id>/', views.StartRideView, name='start_ride'),
     path('end-ride/<int:id>/', views.EndRideView, name='end_ride'),
+    path('verify-ride/<int:id>/', views.VerifyRideView, name='verify_ride'),
 
     path('final-ride-details/', views.FinalRideDetailsView, name='final_ride_details'),
 

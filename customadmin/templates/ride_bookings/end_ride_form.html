@@ -18,12 +18,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Start Ride</h4>
+                        <h4 class="mb-0 font-size-18">End Ride</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Bookings</a></li>
-                                <li class="breadcrumb-item active">Start Ride</li>
+                                <li class="breadcrumb-item active">End Ride</li>
                             </ol>
                         </div>
 
@@ -41,39 +41,90 @@
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
 
-                            <div style="display: none">
+                            <div style="">
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Vendor Drivers</label>
                                     <div class="col-md-10">
-                                        {% render_field form.driver class="form-control" %}
+                                        {% render_field form.driver class="form-control" disabled="" %}
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Vendor Cars</label>
                                     <div class="col-md-10">
-                                        {% render_field form.car class="form-control" %}
+                                        {% render_field form.car class="form-control" disabled="" %}
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Initial Odometer Reading</label>
                                     <div class="col-md-10">
-                                        {% render_field form.initial_odometer_reading class="form-control" %}
+                                        {% render_field form.initial_odometer_reading class="form-control"  disabled="" %}
                                     </div>
                                 </div>
                             </div>
                             <div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Ride Total</label>
+                                    <div class="col-md-10">
+                                        <p>{{ final_ride.booking.final_ride_fare }}</p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Advance</label>
+                                    <div class="col-md-10">
+                                        <p>{{ final_ride.booking.advance }}</p>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Final Odometer Reading</label>
                                     <div class="col-md-10">
                                         {% render_field form.final_odometer_reading class="form-control" %}
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Extra KM</label>
+                                    <div class="col-md-10">
+                                        <p id="extra_km">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Extra KM Charges</label>
+                                    <div class="col-md-10">
+                                        <p id="extra_km_charges">-</p>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Other Charges</label>
                                     <div class="col-md-10">
                                         {% render_field form.other_charges class="form-control" %}
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Extra Charges</label>
+                                    <div class="col-md-10">
+                                        <p id="extra_charges">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">GST</label>
+                                    <div class="col-md-10">
+                                        <p id="gst">-</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-md-2 col-form-label">Total Extra Charges</label>
+                                    <div class="col-md-10">
+                                        <p id="total_extra_charges">-</p>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-md-2 col-form-label">Collected Amount</label>
                                     <div class="col-md-10">
@@ -109,5 +160,52 @@
 
 
 {% block extra_scripts %}
+
+<script>
+$( document ).ready(function() {
+    var initial_km = parseFloat({{ final_ride.booking.distance }});
+    var price_km = parseInt({{ final_ride.booking.distance }});
+    var extra_km = 0;
+    var extra_km_charges = 0;
+    var other_charges = 0;
+    var gst = 0;
+    var total_extra_amount = 0;
+    var collectable_amount = 0;
+
+    $('#id_final_odometer_reading').keyup(function(){
+        var initial_odometer_reading = parseInt($('#id_initial_odometer_reading').val());
+        var final_odometer_reading = parseInt($('#id_final_odometer_reading').val());
+        var total_km = parseFloat(final_odometer_reading - initial_odometer_reading);
+        if(total_km > initial_km){
+            extra_km = parseInt(total_km - initial_km);
+        }
+        extra_km_charges = parseInt(extra_km*price_km);
+        total_extra_amount = parseInt(extra_km_charges + other_charges);
+        gst = parseInt(total_extra_amount*(0.05));
+        collectable_amount = parseInt(total_extra_amount * (1.05));
+        $("#extra_km").text(extra_km);
+        $("#extra_km_charges").text(extra_km_charges);
+        $("#extra_charges").text(total_extra_amount);
+        $("#gst").text(gst);
+        $("#total_extra_charges").text(collectable_amount);
+    });
+
+    $('#id_other_charges').keyup(function(){
+
+        other_charges = parseInt($('#id_other_charges').val());
+
+        total_extra_amount = parseInt(extra_km_charges + other_charges);
+        gst = parseInt(total_extra_amount*(0.05));
+        collectable_amount = parseInt(total_extra_amount * (1.05));
+        $("#extra_charges").text(total_extra_amount);
+        $("#gst").text(gst);
+        $("#total_extra_charges").text(collectable_amount);
+
+    });
+
+    console.log( "ready!" );
+});
+</script>
+
 
 {% endblock extra_scripts %}

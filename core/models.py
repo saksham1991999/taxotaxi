@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+import datetime
 
 class User(AbstractUser):
     is_vendor = models.BooleanField(default=False)
@@ -231,7 +231,7 @@ class ride_booking(models.Model):
     duration = models.FloatField()
     price_km = models.PositiveSmallIntegerField(default = 10)
 
-    additional_choices = models.ManyToManyField('core.ride_choices')
+    additional_choices = models.ManyToManyField('core.ride_choices', null=True)
     additional_hault = models.PositiveSmallIntegerField(default=0)
     additional_pickup = models.CharField(max_length=256, blank=True, null=True)
     addtional_drop = models.CharField(max_length=256, blank=True, null=True)
@@ -276,6 +276,12 @@ class ride_booking(models.Model):
 
     def get_final_ride_detail(self):
         return final_ride_detail.objects.get(booking = self)
+
+    def get_is_late_started(self):
+        if self.pickup_datetime < datetime.datetime.today():
+            return True
+        else:
+            return False
 
     class Meta:
         verbose_name_plural = 'User Bookings'
@@ -332,9 +338,101 @@ class final_ride_detail(models.Model):
     def remaining_rating(self):
         return range(int(5 - self.rating))
 
-    def driver_collect_amount(self):
-        amount = self.bid.bid - self.booking.advance
-        return amount
+    def get_total_distance(self):
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            return int(self.final_odometer_reading - self.initial_odometer_reading)
+        else:
+            return self.booking.distance
+
+    def get_extra_km(self):
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                return int(total - initial)
+            else:
+                return 0
+        return 0
+
+    def get_extra_km_price(self):
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                price = (extra*int(self.booking.price_km))
+                return price
+            else:
+                return 0
+        return 0
+
+    def get_total_extra_charges(self):
+        total = 0
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                total += (extra*int(self.booking.price_km))
+        if self.other_charges:
+            total += int(self.other_charges)
+        return total
+
+    def get_total_extra_gst(self):
+        total = 0
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                total += (extra*int(self.booking.price_km))
+        if self.other_charges:
+            total += int(self.other_charges)
+        return (total*0.05)
+
+    def get_total_extra_charges_with_gst(self):
+        total = 0
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                total += (extra * int(self.booking.price_km))
+        if self.other_charges:
+            total += int(self.other_charges)
+        return (total * 1.05)
+
+    def get_final_ride_charges(self):
+        final = self.booking.final_ride_fare
+        total = 0
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                total += (extra * int(self.booking.price_km))
+        if self.other_charges:
+            total += int(self.other_charges)
+        final += (total * 1.05)
+        return final
+
+    def get_driver_collect_amount(self):
+        final = self.booking.final_ride_fare
+        total = 0
+        if self.final_odometer_reading and self.initial_odometer_reading:
+            total = int(self.final_odometer_reading - self.initial_odometer_reading)
+            initial = self.booking.distance
+            if total > initial:
+                extra = int(total - initial)
+                total += (extra * int(self.booking.price_km))
+        if self.other_charges:
+            total += int(self.other_charges)
+        final += (total * 1.05)
+
+        ans = final - self.booking.advance
+        return int(ans)
+
+
 
 class user_referral(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT, verbose_name='User to assign the referral code to')

@@ -93,6 +93,85 @@
                 </div> <!-- end col -->
             </div> <!-- end row -->
 
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Late Rides
+
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Assign Car-Driver / Start Ride</th>
+                                    <th>Name</th>
+                                    <th>Phone No</th>
+                                    <th>Ride Type</th>
+                                    <th>Car Type</th>
+                                    <th>Pickup City</th>
+                                    <th>Final Bid</th>
+                                    <th>Drop City</th>
+                                    <th>Final Fare</th>
+                                    <th>Advance</th>
+                                    <th>Pickup Date-Time</th>
+                                    <th>Booking Date-Time</th>
+                                    <th>Distance</th>
+                                    <th>Duration</th>
+                                    <th>Pickup</th>
+                                    <th>Drop</th>
+                                    <th>Additional Choices</th>
+                                    <th>Additional Hault</th>
+                                    <th>Drop Datetime</th>
+                                    <th>Advance</th>
+                                    <th>Vendor</th>
+                                    <th>Bid Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for booking in late_bookings %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>
+                                        {% if booking.ride_status == "Assigned Vendor" %}
+                                            <a href="{% url 'customadmin:assign_driver_car' booking.final_ride_detail.id %}">Assign Car and Driver</a>
+                                        {% elif booking.ride_status == "Assigned Car/Driver" %}
+                                            <a href="{% url 'customadmin:start_ride' booking.final_ride_detail.id %}">Start Ride</a>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ booking.name }}</td>
+                                    <td>{{ booking.phone_no }}</td>
+                                    <td>{{ booking.ride_type }}</td>
+                                    <td>{{ booking.car_type }}</td>
+                                    <td>{{ booking.pickup_city }}</td>
+                                    <td>{{ booking.final }}</td>
+                                    <td>{{ booking.drop_city }}</td>
+                                    <td>{{ booking.final_ride_fare }}</td>
+                                    <td>{{ booking.advance }}</td>
+                                    <td>{{ booking.pickup_datetime }}</td>
+                                    <td>{{ booking.booking_datetime }}</td>
+                                    <td>{{ booking.distance }} Km</td>
+                                    <td>{{ booking.duration }} Min</td>
+                                    <td>{{ booking.pickup }}</td>
+                                    <td>{{ booking.drop }}</td>
+                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %} | &ensp;</td>
+                                    <td>{{ booking.additional_hault }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
+                                    <td>{{ booking.advance }}</td>
+                                    <td><a href="{% url 'customadmin:vendor' booking.final_ride_detail.bid.vendor.id %}">{{ booking.final_ride_detail.bid.vendor }}</a></td>
+                                    <td>{{ booking.final_ride_detail.bid.bid }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
         </div>
     </div>
 </div>

@@ -54,7 +54,11 @@
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td>
+                                        {% if booking.ride_status == "Completed" %}
+                                        <a href="{% url 'customadmin:verify_ride' booking.final_ride_detail.id %}">Verify Ride</a>
+                                        {% else %}
                                         <a href="{% url 'customadmin:end_ride' booking.final_ride_detail.id %}">End Ride</a>
+                                        {% endif %}
                                     </td>
                                     <td>{{ booking.name }}</td>
                                     <td>{{ booking.phone_no }}</td>

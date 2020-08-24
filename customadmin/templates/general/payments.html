@@ -18,12 +18,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                        <h4 class="mb-0 font-size-18">Contact Us Tables</h4>
+                        <h4 class="mb-0 font-size-18">Payments</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">General</a></li>
-                                <li class="breadcrumb-item active">Contact Us Tables</li>
+                                <li class="breadcrumb-item active">Payments</li>
                             </ol>
                         </div>
 
@@ -39,14 +39,6 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-
-                            <h4 class="card-title"> Category     
-                                <button type="button" style="float: right;" class="btn btn-success waves-effect waves-light mb-2">
-                                   <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Add
-                               </button>
-                               <button type="button" style="float: right;" class="btn btn-warning mr-2 waves-effect waves-light mb-2">
-                                   <i class="bx bx-add-to-queue font-size-16 align-middle"></i> Update
-                               </button></h4>
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
@@ -54,25 +46,36 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Phone Number</th>
-                                    <th>Mail Id</th>
-                                    <th>Address</th>
-                                    <th></th>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Total Amount</th>
+                                    <th>Vendor</th>
+                                    <th>Driver</th>
+                                    <th>Car</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Advance</th>
+                                    <th>Collected by Driver</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                             
+                                {% for booking in bookings %}
                                 <tr>
-                                    <td>1</td>
-                                    <td>Abhinav</td>
-                                    <td>9876543210</td>
-                                    <td>abc@gmail.com</td>
-                                    <td>Delhi</td>
-                                    
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ booking.id }}</td>
+                                    <td>{{ booking.name }} ({{ booking.phone_no }})</td>
+                                    <td>{{ booking.final_ride_detail.get_final_ride_charges }}</td>
+                                    <td>{{ booking.final_ride_detail.bid.vendor.full_name }} ({{ booking.final_ride_detail.bid.vendor.contact1 }})</td>
+                                    <td>{{ booking.final_ride_detail.driver.full_name }} ({{ booking.final_ride_detail.driver.contact1 }})</td>
+                                    <td>{{ booking.final_ride_detail.car.car_type }} ({{ booking.final_ride_detail.car.registration_no }})</td>
+                                    <td>{{ booking.pickup_city }}</td>
+                                    <td>{{ booking.drop_city }}</td>
+                                    <td>{{ booking.advance }}</td>
+                                    <td>{{ booking.final_ride_detail.collected_amount }}</td>
+
                                 </tr>
-                               
+                               {% endfor %}
 
                                 </tbody>
                             </table>
