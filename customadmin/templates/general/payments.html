@@ -52,10 +52,18 @@
                                     <th>Vendor</th>
                                     <th>Driver</th>
                                     <th>Car</th>
+                                    <th>Initial Final Fare</th>
+                                    <th>Advance</th>
+                                    <th>Final Bid</th>
+                                    <th>Final Calculated Fare</th>
+                                    <th>Driver Collected Amount</th>
+                                    <th>Extra KM Charges</th>
+                                    <th>Other Charges</th>
+                                    <th>Extra GST</th>
+                                    <th>Collected by Driver</th>
                                     <th>From</th>
                                     <th>To</th>
-                                    <th>Advance</th>
-                                    <th>Collected by Driver</th>
+
                                 </tr>
                                 </thead>
 
@@ -69,6 +77,14 @@
                                     <td>{{ booking.final_ride_detail.bid.vendor.full_name }} ({{ booking.final_ride_detail.bid.vendor.contact1 }})</td>
                                     <td>{{ booking.final_ride_detail.driver.full_name }} ({{ booking.final_ride_detail.driver.contact1 }})</td>
                                     <td>{{ booking.final_ride_detail.car.car_type }} ({{ booking.final_ride_detail.car.registration_no }})</td>
+                                    <td>{{ booking.final_ride_fare }}</td>
+                                    <td>{{ booking.advance }}</td>
+                                    <td>{{ booking.final_ride_detail.bid.bid }}</td>
+                                    <td>{{ booking.final_ride_detail.get_final_ride_charges }}</td>
+                                    <td>{{ booking.final_ride_detail.collected_amount }}</td>
+                                    <td>{{ booking.final_ride_detail.get_extra_km_price }}</td>
+                                    <td>{{ booking.final_ride_detail.other_charges }}</td>
+                                    <td>{{ booking.final_ride_detail.get_total_extra_gst }}</td>
                                     <td>{{ booking.pickup_city }}</td>
                                     <td>{{ booking.drop_city }}</td>
                                     <td>{{ booking.advance }}</td>
