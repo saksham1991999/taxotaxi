@@ -82,7 +82,8 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Vendor</th>
+                    <th>Vendor<button type="button" onclick="sortTable()" class="btn btn-success waves-effect waves-light ml-1">
+                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Sort</button></th>
                     <th>Bid Amount<button type="button" onclick="sortTable()" class="btn btn-success waves-effect waves-light ml-1">
                         <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Sort</button></th>
                     <th>Profit</th>
@@ -94,7 +95,7 @@
                 
                 <tr>
                     <td><a href="">Assign</a></td>
-                    <td></td>
+                    <td>Abhinav</td>
                     <td>100</td>
                     <td></td>
                     <td></td>
@@ -102,7 +103,7 @@
                 </tr>
                 <tr>
                     <td><a href="">Assign</a></td>
-                    <td></td>
+                    <td>Saksham</td>
                     <td>300</td>
                     <td></td>
                     <td></td>
@@ -110,7 +111,7 @@
                 </tr>
                 <tr>
                     <td><a href="">Assign</a></td>
-                    <td></td>
+                    <td>Rahul</td>
                     <td>200</td>
                     <td></td>
                     <td></td>
@@ -177,7 +178,20 @@
 
 {% block extra_scripts %}
 <script>
-    function sortTable() {
+    check = 0;
+
+    function sortTable(){
+        if( check == 0 ){
+             sortTableAsec();
+             check = 1;
+         }else{
+             sortTableDesc();
+             check = 0;
+         }
+    }
+    
+    
+    function sortTableAsec() {
       var table, rows, switching, i, x, y, shouldSwitch;
       table = document.getElementById("myTable");
       switching = true;
@@ -211,6 +225,44 @@
         }
       }
     }
+
+    function sortTableDesc() {
+      var table, rows, switching, i, x, y, shouldSwitch;
+      table = document.getElementById("myTable");
+      switching = true;
+      /*Make a loop that will continue until
+      no switching has been done:*/
+      while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 1; i < (rows.length - 1); i++) {
+          //start by saying there should be no switching:
+          shouldSwitch = false;
+          /*Get the two elements you want to compare,
+          one from current row and one from the next:*/
+          x = rows[i].getElementsByTagName("TD")[2];
+          y = rows[i + 1].getElementsByTagName("TD")[2];
+          //check if the two rows should switch place:
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            //if so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+        if (shouldSwitch) {
+          /*If a switch has been marked, make the switch
+          and mark that a switch has been done:*/
+          rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+          switching = true;
+        }
+      }
+    }
+
+
+
     </script>
 
     <!-- Required datatable js -->
