@@ -42,7 +42,7 @@
                             <p class="card-title-desc">
                             </p>
                             <div class="table-responsive">
-                                <table id="" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100% !important;">
+                                <table id="datatable" class="table table-striped dt-responsive table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100% !important;">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -60,9 +60,9 @@
                                     <th>Extra KM Charges</th>
                                     <th>Other Charges</th>
                                     <th>Extra GST</th>
-                                    <th>Collected by Driver</th>
                                     <th>From</th>
                                     <th>To</th>
+
 
                                 </tr>
                                 </thead>
@@ -87,8 +87,7 @@
                                     <td>{{ booking.final_ride_detail.get_total_extra_gst }}</td>
                                     <td>{{ booking.pickup_city }}</td>
                                     <td>{{ booking.drop_city }}</td>
-                                    <td>{{ booking.advance }}</td>
-                                    <td>{{ booking.final_ride_detail.collected_amount }}</td>
+
 
                                 </tr>
                                {% endfor %}
@@ -119,6 +118,25 @@
 
 
 {% block extra_scripts %}
+    <!-- Required datatable js -->
+    <script src="{% static 'admin/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <!-- Buttons examples -->
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/libs/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'admin/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'admin/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+
+    <!-- Responsive examples -->
+    <script src="{% static 'admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <!-- Datatable init js -->
+    <script src="{% static 'admin/js/pages/datatables.init.js' %}"></script>
 
 {% endblock extra_scripts %}
 
