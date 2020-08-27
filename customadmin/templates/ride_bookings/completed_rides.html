@@ -26,44 +26,50 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>End Ride</th>
-                                    <th>Name</th>
-                                    <th>Phone No</th>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Total Amount</th>
+                                    <th>Vendor</th>
+                                    <th>Driver</th>
+                                    <th>Car</th>
                                     <th>Ride Type</th>
-                                    <th>Car Type</th>
+                                    <th>Initial Final Fare</th>
+                                    <th>Advance</th>
+                                    <th>Final Bid</th>
+                                    <th>Final Calculated Fare</th>
+                                    <th>Driver Collected Amount</th>
+                                    <th>Extra KM Charges</th>
+                                    <th>Other Charges</th>
+                                    <th>Extra GST</th>
+                                    <th>Collected by Driver</th>
                                     <th>Pickup City</th>
                                     <th>Drop City</th>
-                                    <th>Final Fare</th>
-                                    <th>Advance</th>
                                     <th>Drop Datetime</th>
-                                    <th>Advance</th>
-                                    <th>Vendor</th>
-                                    <th>Bid Amount</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for booking in bookings %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>
-                                        {% if booking.ride_status == "Completed" %}
-                                        <a href="{% url 'customadmin:verify_ride' booking.final_ride_detail.id %}">Verify Ride</a>
-                                        {% else %}
-                                        <a href="{% url 'customadmin:end_ride' booking.final_ride_detail.id %}">End Ride</a>
-                                        {% endif %}
-                                    </td>
-                                    <td>{{ booking.name }}</td>
-                                    <td>{{ booking.phone_no }}</td>
+                                    <td>{{ booking.id }}</td>
+                                    <td>{{ booking.name }} ({{ booking.phone_no }})</td>
+                                    <td>{{ booking.final_ride_detail.get_final_ride_charges }}</td>
+                                    <td><a href="{% url 'customadmin:vendor' booking.final_ride_detail.bid.vendor.id %}">{{ booking.final_ride_detail.bid.vendor.full_name }} ({{ booking.final_ride_detail.bid.vendor.contact1 }})</a></td>
+                                    <td>{{ booking.final_ride_detail.driver.full_name }} ({{ booking.final_ride_detail.driver.contact1 }})</td>
+                                    <td>{{ booking.final_ride_detail.car.car_type }} ({{ booking.final_ride_detail.car.registration_no }})</td>
                                     <td>{{ booking.ride_type }}</td>
-                                    <td>{{ booking.car_type }}</td>
-                                    <td>{{ booking.pickup_city }}</td>
-                                    <td>{{ booking.drop_city }}</td>
                                     <td>{{ booking.final_ride_fare }}</td>
                                     <td>{{ booking.advance }}</td>
-                                    <td>{{ booking.drop_datetime }}</td>
-                                    <td>{{ booking.advance }}</td>
-                                    <td><a href="{% url 'customadmin:vendor' booking.final_ride_detail.bid.vendor.id %}">{{ booking.final_ride_detail.bid.vendor }}</a></td>
                                     <td>{{ booking.final_ride_detail.bid.bid }}</td>
+                                    <td>{{ booking.final_ride_detail.get_final_ride_charges }}</td>
+                                    <td>{{ booking.final_ride_detail.collected_amount }}</td>
+                                    <td>{{ booking.final_ride_detail.get_extra_km_price }}</td>
+                                    <td>{{ booking.final_ride_detail.other_charges }}</td>
+                                    <td>{{ booking.final_ride_detail.get_total_extra_gst }}</td>
+                                    <td>{{ booking.final_ride_detail.collected_amount }}</td>
+                                    <td>{{ booking.pickup_city }}</td>
+                                    <td>{{ booking.drop_city }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>
