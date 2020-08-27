@@ -78,7 +78,7 @@
             </div> <!-- end row -->
 
 
-            <table id="myTable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+            <!-- <table id="myTable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -119,7 +119,7 @@
                 </tr>
                 
                 </tbody>
-            </table>
+            </table> -->
 
 
 
@@ -137,12 +137,14 @@
                                 </a>
                             </h4>
 
-                            <table id="datatable1" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Vendor</th>
-                                    <th class="sortStyle">Bid Amount</th>
+                                    <th>Vendor<button type="button" onclick="sortTable('bids-{{ booking.id }}', 1)" class="btn btn-success waves-effect waves-light ml-1">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Sort</button></th>
+                                    <th>Bid Amount<button type="button" onclick="sortTable('bids-{{ booking.id }}', 2)" class="btn btn-success waves-effect waves-light ml-1">
+                                        <i class="bx bx-add-to-queue font-size-16 align-middle"></i>Sort</button></th>
                                     <th>Profit</th>
                                     <th>Comission</th>
                                     <th>Date</th>
@@ -159,6 +161,13 @@
                                     <td>{{ bid.datetime }}</td>
                                 </tr>
                                 {% endfor %}
+                                <tr>
+                                    <td><a href="">Assign</a></td>
+                                    <td>Rahul</td>
+                                    <td>200</td>
+                                    <td></td>
+                                    <td></td>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -177,23 +186,31 @@
 
 
 {% block extra_scripts %}
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+  crossorigin="anonymous"></script>
 <script>
     check = 0;
 
-    function sortTable(){
+    function sortTable(id, index){
+        console.log(id, index);
+        console.log("In thr sort table function")
         if( check == 0 ){
-             sortTableAsec();
+             sortTableAsec(id, index);
              check = 1;
          }else{
-             sortTableDesc();
+             sortTableDesc(id, index);
              check = 0;
          }
     }
     
     
-    function sortTableAsec() {
+    function sortTableAsec(id, index) {
       var table, rows, switching, i, x, y, shouldSwitch;
-      table = document.getElementById("myTable");
+      table = document.querySelector(`#${id} .table`);
+    // table = $(`#${id} .table`);
+        // console.log($(`#${id}`).innerHTML )
       switching = true;
       /*Make a loop that will continue until
       no switching has been done:*/
@@ -208,8 +225,8 @@
           shouldSwitch = false;
           /*Get the two elements you want to compare,
           one from current row and one from the next:*/
-          x = rows[i].getElementsByTagName("TD")[2];
-          y = rows[i + 1].getElementsByTagName("TD")[2];
+          x = rows[i].getElementsByTagName("TD")[`${index}`];
+          y = rows[i + 1].getElementsByTagName("TD")[`${index}`];
           //check if the two rows should switch place:
           if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
             //if so, mark as a switch and break the loop:
@@ -226,9 +243,9 @@
       }
     }
 
-    function sortTableDesc() {
+    function sortTableDesc(id, index) {
       var table, rows, switching, i, x, y, shouldSwitch;
-      table = document.getElementById("myTable");
+      table = document.querySelector(`#${id} .table`);
       switching = true;
       /*Make a loop that will continue until
       no switching has been done:*/
@@ -243,8 +260,8 @@
           shouldSwitch = false;
           /*Get the two elements you want to compare,
           one from current row and one from the next:*/
-          x = rows[i].getElementsByTagName("TD")[2];
-          y = rows[i + 1].getElementsByTagName("TD")[2];
+          x = rows[i].getElementsByTagName("TD")[`${index}`];
+          y = rows[i + 1].getElementsByTagName("TD")[`${index}`];
           //check if the two rows should switch place:
           if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
             //if so, mark as a switch and break the loop:
