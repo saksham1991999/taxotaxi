@@ -118,9 +118,7 @@ def VendorRegistrationView(request):
 
 @login_required(login_url='/login/')
 def DashboardView(request):
-
     try:
-
         vendorprofile = get_object_or_404(models.vendorprofile, user = request.user)
         VendorBankFormset = inlineformset_factory(models.vendorprofile,
                                                            models.bank_detail, exclude=['vendor'],
@@ -310,6 +308,14 @@ def BookingsView(request):
     vendor = models.vendorprofile.objects.get(user= request.user)
     bookings = coremodels.ride_booking.objects.filter(ride_status = "Selected Vendors", assign_vendor__vendors__in = [vendor])
     # query = coremodels.assign_vendor.objects.filter(booking__ride_status = "Selected Vendors", vendors__in = [vendor])
+
+    if "sort" in request.GET:
+        sort = request.GET["sort"]
+        if sort.lower() == "date":
+            bookings = bookings.order_by('-pickup_datetime')
+        else:
+            bookings = bookings.order_by('-id')
+
     context = {
         "bookings":bookings,
     }
@@ -318,7 +324,7 @@ def BookingsView(request):
 
 def AssignmentsView(request):
     vendor = models.vendorprofile.objects.get(user=request.user)
-    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).exclude(booking__ride_status = "Verified")
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).filter(booking__ride_status__in = ["Assigned Vendor","Assigned Car/Driver"] )
     context = {
         'final_rides':final_rides
     }
@@ -340,4 +346,54 @@ def RideDetailsView(request, id):
     }
     return render(request, 'Vendor/ride_detail.html', context)
 
+def AssignCarDriverView(request, id):
+    if request.method == "POST":
+        final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+        form = forms.AssignCarDriverForm(request.POST, instance = final_ride)
+        if form.is_valid():
+            form.save()
+            final_ride.booking.ride_status = "Assigned Car/Driver"
+            messages.success(
+                request,
+                'Car and Driver Assigned.',
+                extra_tags='alert alert-success alert-dismissible'
+            )
+            return redirect('vendor:assignments')
+        print(form.errors)
+        messages.error(
+            request,
+            "Couldn't Assign Car and Driver",
+            extra_tags='alert alert-danger alert-dismissible'
+        )
+        return redirect('vendor:assignments')
 
+def RejectBookingView(request, id):
+    if request.method == "POST":
+        final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+        rejection_reason = request.POST['rejection_reason']
+
+        bid = final_ride.bid
+        bid.rejection_reason = rejection_reason
+        bid.save()
+        booking = final_ride.booking
+        booking.ride_status = "Selected Vendors"
+        booking.save()
+        final_ride.delete()
+
+        messages.success(
+            request,
+            'Assignment Rejected',
+            extra_tags='alert alert-success alert-dismissible'
+        )
+        return redirect('vendor:assignments')
+
+def VendorBookingBidView(request):
+    if request.method == "POST":
+        user = int(request.POST["user_id"])
+        vendor = get_object_or_404(models.vendorprofile, user__id = user)
+        booking_id = int(request.POST["booking_id"])
+        booking = get_object_or_404(coremodels.ride_booking, id = booking_id)
+        bid = int(request.POST["bid"])
+        bid_qs, created = coremodels.vendorbids.objects.get_or_create(vendor=vendor, booking=booking, bid=bid)
+        bid_qs.save()
+        return JsonResponse({"status": "success"}, status=200)

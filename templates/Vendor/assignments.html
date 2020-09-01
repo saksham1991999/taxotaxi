@@ -147,54 +147,82 @@
                                     <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="5%"> Assigned Car and Driver</span>
                                 </h4>
                             </div>
+                        <form action="{% url 'vendor:assign_car_driver' ride.id %}" method="post">
+                        {% csrf_token %}
                             <div class="col-sm-12 options">
-                                <div class="col-sm-2">
+                                <div class="col-sm-4">
                                     <h5>Select car</h5>
-                                    <input type="text" style="width: 80%;">
+
+                                    <select name="car" class="form-control" id="id_car" style="width: 80%" required>
+                                        {% if ride.car %}
+                                            <option value="{{ ride.car.id }}" selected="">{{ ride.car.car_type }} ({{ ride.car.registration_no }})</option>
+                                        {% else %}
+                                            <option value="" selected="">Select a Car</option>
+                                        {% endif %}
+
+                                        {% for car in ride.bid.vendor.get_approved_cars %}
+                                            <option value="{{ car.id }}">{{ car.car_type }} ({{ car.registration_no }})</option>
+                                        {% endfor %}
+                                    </select>
+
                                 </div>
-                                <div class="col-sm-2">
-                                    <h5>Car Details</h5>
-                                    <input type="text" style="width: 80%;">
-                                </div>
-                                <div class="col-sm-2">
+
+                                <div class="col-sm-4">
                                     <h5>Select Driver</h5>
-                                    <input type="text" style="width: 80%;">
-                                </div>
-                                <div class="col-sm-3">
-                                    <h5>Driver Phone Number</h5>
-                                    <input type="text" style="width: 80%;">
+                                    <select name="driver" class="form-control" id="id_driver" style="width: 80%" required >
+                                        {% if ride.driver %}
+                                            <option value="{{ ride.driver.id }}" selected="">{{ ride.driver.full_name }} ({{ ride.driver.contact1 }})</option>
+                                        {% else %}
+                                            <option value="" selected="">Select a Driver</option>
+                                        {% endif %}
+
+                                        {% for driver in ride.bid.vendor.get_approved_drivers %}
+                                            <option value="{{ driver.id }}">{{ driver.full_name }} ({{ driver.contact1 }})</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
                                 <div class="col-sm-3 booking-frm">
-                                    <button class="book-btn" type="submit" style="padding: 0px auto;">Edit Details</button>
+                                    <button class="book-btn" type="submit" style="padding: 0px auto;">{% if ride.car and ride.driver %}Edit Details{% else %}Assign{% endif %}</button>
                                 </div>
+
                             </div>
+                        </form>
                         </div>
                     </div>
+
+                    {% if ride.car or ride.driver %}
+
+
+                    {% else %}
                     <div class="col-sm-12 col-md-12 buttons"  style="padding: 0px;padding-top: 20px;">
                         <div class="col-sm-3 booking-frm">
-                            <button class="book-btn" type="submit">Accept</button>
-                        </div>
-                        <div class="col-sm-3 booking-frm">
-                            <button class="book-btn" type="submit" data-toggle="collapse" data-target="#collapseExample12" aria-expanded="false" aria-controls="collapseExample12">Reject</button>
+                            <button class="book-btn" type="submit" data-toggle="collapse" data-target="#collapseExample-{{ ride.id }}" aria-expanded="false" aria-controls="collapseExample12">Reject</button>
                         </div>
                     </div>
                     <div class="col-sm-12 card-collapse">
-                        <div class="collapse" id="collapseExample12">
+                        <form method="post" action="{% url 'vendor:reject_assignment' ride.id %}">
+                            {% csrf_token %}
+                            <div class="collapse" id="collapseExample-{{ ride.id }}">
+
                             <div class="card card-body" style="padding: 20px;">
                                 <div class="row">
-                                    <input type="checkbox"> Car is not Available
+                                    <input type="radio" name="rejection_reason" value="Car is not Available">
+                                    <label for="Car is not Available">Car is not Available</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox"> Booking amount is less
+                                    <input type="radio" name="rejection_reason" value="Booking amount is less">
+                                    <label for="Car is not Available">Booking amount is less</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox"> Unavoidable conditions
+                                    <input type="radio" name="rejection_reason" value="Unavoidable conditions">
+                                    <label for="Car is not Available">Unavoidable conditions</label><br>
                                 </div>
                                 <div class="row">
-                                    <input type="checkbox"> Other Reasons
+                                    <input type="radio" name="rejection_reason" value="Unavoidable conditions">
+                                    <label for="Car is not Available">Other Reasons</label><br>
                                 </div>
                                 <div class="row">
-                                    <textarea name="" id="" cols="30" rows="10" style="width:-webkit-fill-available;"></textarea>
+                                    <textarea name="rejection_reason" id="" cols="30" rows="10" style="width:-webkit-fill-available;"></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-3 booking-frm">
@@ -203,7 +231,9 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>

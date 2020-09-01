@@ -42,3 +42,7 @@ class AddDriverForm(forms.ModelForm):
             raise forms.ValidationError('Mobile Number is already registered')
         return mobile
 
+class AssignCarDriverForm(forms.ModelForm):
+    class Meta:
+        model = coremodels.final_ride_detail
+        fields = ['car', 'driver']

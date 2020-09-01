@@ -124,7 +124,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                          <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                          <span>KM Limit : {{ booking.distance }}</span>
                          <small style="visibility: visible;"> km</small><br>
-                     <small style="visibility: visible;">Extra km Charges: Rs10/-</small>
+                     <small style="visibility: visible;">Extra km Charges: Rs {{ booking.per_km }}/-</small>
                      </h4>
                  </div>
                  <h5 style="visibility: visible;">
@@ -190,18 +190,23 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
               <div class="col-sm-1">
               </div>
               <div class="col-sm-11 booking-frm">
-                 <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
-                    <div style="display: flex;width:fit-content;">
-                       <button class="book-btn" type="submit">Bid Your Amount</button>
-                       <input type="text" name="" id="" style="margin-bottom: 0px;">
-                    </div>
-                 </div>
-                 <div class="col-sm-6" style="margin-bottom: 10px;">
+                  <form class="booking-form" method="post">
+                      {% csrf_token %}
+                     <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
+                        <div style="display: flex;width:fit-content;">
+                           <button class="book-btn" type="submit">Bid Your Amount</button>
+                           <input type="number" name="bid" style="margin-bottom: 0px;">
+                           <input type="number" name="booking_id" value="{{ booking.id }}" style="margin-bottom: 0px;" hidden>
+                           <input type="number" name="user_id" value="{{ request.user.id }}" style="margin-bottom: 0px;" hidden>
+                        </div>
+                     </div>
+                     <div class="col-sm-6" style="margin-bottom: 10px;">
                     <div style="display: flex;width:fit-content;">
                        <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
                        <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
                     </div>
                  </div>
+                  </form>
               </div>
            </div>
         </div>
@@ -218,6 +223,32 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
 
 
 {% block extra_scripts %}
+
+<script>
+    $(".booking-form").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+    console.log("Hi")
+
+    var form = $(this);
+
+    $.ajax({
+           type: "POST",
+           url: "{% url 'vendor:booking_vendor_bid' %}",
+           data: form.serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+
+            // $("#event_form")[0].reset();
+             alert('Bid Amount Updated Successfully.');
+
+            //  setTimeout(function(){// wait for 5 secs(2)
+               //location.reload(); // then reload the page.(3)
+          //  }, 2000);
+
+           }
+         });
+    });
+    </script>
 
 
 {% endblock extra_scripts %}

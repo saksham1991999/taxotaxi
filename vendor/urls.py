@@ -15,7 +15,13 @@ urlpatterns = [
 
     path('payments/', views.PaymentsView, name='payments'),
     path('booking-history/', views.BookingsHistoryView, name='booking_history'),
+
     path('bookings/', views.BookingsView, name='bookings'),
+    path('booking-bid/', views.VendorBookingBidView, name='booking_vendor_bid'),
+
     path('assignments/', views.AssignmentsView, name='assignments'),
+    path('assign-car-driver/<int:id>', views.AssignCarDriverView, name='assign_car_driver'),
+    path('reject/<int:id>', views.RejectBookingView, name='reject_assignment'),
+
     path('ride/<int:id>/', views.RideDetailsView, name='booking_detail'),
 ]

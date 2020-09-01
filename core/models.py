@@ -349,7 +349,7 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                return int(total - initial)
+                return (total - initial)
             else:
                 return 0
         return 0
@@ -359,8 +359,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                price = (extra*int(self.booking.price_km))
+                extra = (total - initial)
+                price = (1.0*extra*int(self.booking.price_km))
                 return price
             else:
                 return 0
@@ -372,8 +372,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                total += (extra*int(self.booking.price_km))
+                extra = (total - initial)
+                total += (1.0*extra*int(self.booking.price_km))
         if self.other_charges:
             total += int(self.other_charges)
         return total
@@ -384,8 +384,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                total += (extra*int(self.booking.price_km))
+                extra = (total - initial)
+                total += (1.0*extra*int(self.booking.price_km))
         if self.other_charges:
             total += int(self.other_charges)
         return (total*0.05)
@@ -396,8 +396,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                total += (extra * int(self.booking.price_km))
+                extra = (total - initial)
+                total += (1.0*extra*int(self.booking.price_km))
         if self.other_charges:
             total += int(self.other_charges)
         return (total * 1.05)
@@ -409,8 +409,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                total += (extra * int(self.booking.price_km))
+                extra = (total - initial)
+                total += (1.0*extra*int(self.booking.price_km))
         if self.other_charges:
             total += int(self.other_charges)
         final += (total * 1.05)
@@ -423,8 +423,8 @@ class final_ride_detail(models.Model):
             total = int(self.final_odometer_reading - self.initial_odometer_reading)
             initial = self.booking.distance
             if total > initial:
-                extra = int(total - initial)
-                total += (extra * int(self.booking.price_km))
+                extra = (total - initial)
+                total += (1.0*extra*int(self.booking.price_km))
         if self.other_charges:
             total += int(self.other_charges)
         final += (total * 1.05)
