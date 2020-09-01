@@ -101,7 +101,7 @@
                     <div class="col-sm-12 col-md-12">
                         <hr style="height : 10px">
                     </div>
-                    <div class="col-sm-12 col-md-12 cardGreyStyle" >
+                    <div class="col-sm-12 col-md-12 cardGreyStyle ml-5" >
                      <div class="col-sm-4">
                         <h5 class="boldBlack">Pickup Location</h5>
                         <h5>{{ ride.booking.pickup }}</h5>
@@ -119,7 +119,7 @@
                          </div>
                         {% endfor %}
                     </div>
-                    <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;padding-left: 30px;">
                         <div>
                             <small style="visibility: visible; color: red;">* Note {{ ride.booking.note }}</small>
                         </div>
@@ -182,7 +182,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-3 booking-frm">
-                                    <button class="book-btn" type="submit" style="padding: 0px auto;">{% if ride.car and ride.driver %}Edit Details{% else %}Assign{% endif %}</button>
+                                    <button class="book-btn" type="submit" style="padding: 0px auto; margin-top: 17px;">{% if ride.car and ride.driver %}Edit Details{% else %}Assign{% endif %}</button>
                                 </div>
 
                             </div>
