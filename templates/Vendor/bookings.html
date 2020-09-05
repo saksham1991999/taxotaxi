@@ -89,6 +89,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                        <span class="from">{{ booking.pickup_city }}</span>
                        To 
                        <span class="to">{{ booking.drop_city }}</span>
+                        <span>v</span>
                     </h4>
                  </a>
                  <h5 class="heading-Id">
@@ -124,7 +125,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                          <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                          <span>KM Limit : {{ booking.distance }}</span>
                          <small style="visibility: visible;"> km</small><br>
-                     <small style="visibility: visible;">Extra km Charges: Rs {{ booking.per_km }}/-</small>
+                     <small style="visibility: visible;">Extra km Charges: Rs {{ booking.price_km }}/-</small>
                      </h4>
                  </div>
                  <h5 style="visibility: visible;">

@@ -63,15 +63,19 @@ def VendorRegistrationView(request):
             driver_password = str(driver_fullname[:4]) + str(driver_mobile[-4:])
 
             # year instead of Full Name
-            driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
-            driver.is_driver = True
-            driver.save()
+            if 'same' in request.POST:
+                driver = vendor
+            else:
+                driver = coremodels.User.objects.create_user(username=driver_mobile, email = driver_email, password = driver_password)
+                driver.is_driver = True
+                driver.save()
+                referal_code = coremodels.user_referral.objects.create(user=driver, promotional_code=str(driver_mobile),
+                                                                       referralbenefit=50,
+                                                                       customerbenefit=50, is_activated=True)
             new_driver_form.status = "Hold"
             new_driver_form.user = driver
             new_driver_form.save()
-            referal_code = coremodels.user_referral.objects.create(user=driver, promotional_code=str(driver_mobile),
-                                                                   referralbenefit=50,
-                                                                   customerbenefit=50, is_activated=True)
+
             text = 'Thanks for registering on TaxoTaxi, We will verify and contact you soon!'
             SMS(driver_mobile, text)
             car = car_form.save(commit=False)
@@ -324,7 +328,7 @@ def BookingsView(request):
 
 def AssignmentsView(request):
     vendor = models.vendorprofile.objects.get(user=request.user)
-    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).filter(booking__ride_status__in = ["Assigned Vendor","Assigned Car/Driver"] )
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).filter(booking__ride_status = "Assigned Vendor" )
     context = {
         'final_rides':final_rides
     }
