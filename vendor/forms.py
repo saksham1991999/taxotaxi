@@ -46,3 +46,9 @@ class AssignCarDriverForm(forms.ModelForm):
     class Meta:
         model = coremodels.final_ride_detail
         fields = ['car', 'driver']
+
+
+class FinalRideForm(forms.ModelForm):
+    class Meta:
+        model = coremodels.final_ride_detail
+        fields = ['initial_odometer_reading', 'final_odometer_reading', 'other_charges', 'collected_amount']

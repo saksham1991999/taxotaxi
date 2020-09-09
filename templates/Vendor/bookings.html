@@ -2,6 +2,7 @@
 {% load static %}
 {% load fullurl %}
 {% block extra_stylesheet %}
+{% load template_tag %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{% static 'css/vendor.css' %}" rel="stylesheet">
  
@@ -51,28 +52,24 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
            </h4>
         </div>
         <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
-           <div class="col-sm-3">
-              <div class="foam-field">
-                 <!-- <label>Saving/ Current</label> -->
-                 <select name="subject" id="">
-                    <option Selected>Search By Date</option>
-                    <option value="0" >Saving</option>
-                    <option value="1">Current</option>
-                 </select>
-              </div>
-           </div>
-           <div class="col-sm-3">
-              <div class="foam-field">
-                 <!-- <label>Saving/ Current</label> -->
-                 <select name="subject" id="">
-                    <option Selected>Search By Booking</option>
-                    <option value="0" >Saving</option>
-                    <option value="1">Current</option>
-                 </select>
-              </div>
-           </div>
-           <div class="col-sm-3">
-           </div>
+            <form>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="radio" id="date" name="sort" value="date">
+                        <label for="male">Sort By Date</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="radio" id="booking" name="sort" value="booking">
+                        <label for="female">Sort By Booking</label><br>
+                    </div>
+                    <div class="col-3">
+                        <input type="checkbox" id="other" name="your-bookings" value=1>
+                        <label for="other">Your Bookings</label>
+                    </div>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+
            <div class="col-sm-3">
               <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
            </div>
@@ -196,7 +193,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                      <div class="col-sm-6" style="margin-bottom: 10px;padding-left: 0px;">
                         <div style="display: flex;width:fit-content;">
                            <button class="book-btn" type="submit">Bid Your Amount</button>
-                           <input type="number" name="bid" style="margin-bottom: 0px;">
+                           <input type="number" name="bid" value="{{ request.user|latest_bid:booking }}" style="margin-bottom: 0px;">
                            <input type="number" name="booking_id" value="{{ booking.id }}" style="margin-bottom: 0px;" hidden>
                            <input type="number" name="user_id" value="{{ request.user.id }}" style="margin-bottom: 0px;" hidden>
                         </div>
@@ -204,7 +201,7 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
                      <div class="col-sm-6" style="margin-bottom: 10px;">
                     <div style="display: flex;width:fit-content;">
                        <button class="book-btn" type="submit">Submit</button>&nbsp;&nbsp;
-                       <button style="background-color: #7f7f7f;" class="book-btn" type="Cancel">Cancel</button><br>
+                       <button style="background-color: #7f7f7f;" class="book-btn" type="button">Cancel</button><br>
                     </div>
                  </div>
                   </form>

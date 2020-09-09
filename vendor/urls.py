@@ -20,8 +20,10 @@ urlpatterns = [
     path('booking-bid/', views.VendorBookingBidView, name='booking_vendor_bid'),
 
     path('assignments/', views.AssignmentsView, name='assignments'),
-    path('assign-car-driver/<int:id>', views.AssignCarDriverView, name='assign_car_driver'),
-    path('reject/<int:id>', views.RejectBookingView, name='reject_assignment'),
+    path('assign-car-driver/<int:id>/', views.AssignCarDriverView, name='assign_car_driver'),
+    path('reject/<int:id>/', views.RejectBookingView, name='reject_assignment'),
 
-    path('ride/<int:id>/', views.RideDetailsView, name='booking_detail'),
+    path('ride-detail/', views.RideDetailsView, name='booking_detail'),
+    path('ride-detail/start/<int:id>/', views.StartRideView, name='start_ride'),
+    path('ride-detail/end/<int:id>/', views.EndRideView, name='end_ride'),
 ]

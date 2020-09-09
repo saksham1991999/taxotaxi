@@ -3,6 +3,77 @@ from . import models
 # Register your models here.
 admin.site.site_header = 'TaxoTaxi'
 from import_export.admin import ImportExportModelAdmin
+from import_export import resources
+
+class CalCityAttrValueResource(resources.ModelResource):
+
+    class Meta:
+        model = models.calc_city_attr_value
+        fields = ('id', 'city1__name', 'city1', 'city2__name', 'city2', 'car_type__name', 'car_type', 'attr__name', 'attr', 'value')
+        export_order = ('id', 'city1__name', 'city1', 'city2__name', 'city2', 'car_type__name', 'car_type', 'attr__name', 'attr', 'value')
+
+class FinalRideResource(resources.ModelResource):
+
+    class Meta:
+        model = models.final_ride_detail
+        fields = (
+            "booking__name",
+            "booking__phone_no",
+            "booking__ride_type__name",
+            "booking__car_type__name",
+            "booking__pickup_city__name",
+            "booking__pickup",
+            "booking__exact_pickup",
+            "booking__drop_city__name",
+            "booking__drop",
+            "booking__exact_drop",
+            "booking__price_km",
+            "booking__booking_datetime",
+
+            "booking__initial_charges",
+            "booking__additional_charges",
+            "booking__early_pickup_charges",
+            "booking__late_drop_charges",
+            "booking__night_charges",
+            "booking__gst_charges",
+            "booking__final_fare",
+            "booking__coupon__promotional_code",
+            "booking__balance_used",
+            "booking__balance_used",
+            "booking__final_ride_fare",
+            "booking__advance",
+
+            "bid__vendor__full_name",
+            "bid__vendor__contact1",
+            "bid__bid",
+            "driver__full_name",
+            "driver__contact1",
+            "car__car_type",
+            "car__registration_no",
+
+            "initial_odometer_reading",
+            "final_odometer_reading",
+
+            "get_total_distance",
+            "get_extra_km",
+            "get_extra_km_price",
+            "get_total_extra_charges",
+            "get_total_extra_gst",
+            "get_total_extra_charges_with_gst",
+            "get_final_ride_charges",
+
+
+            "other_charges",
+            "collected_amount",
+
+            "start_datetime",
+            "end_datetime",
+            "rating",
+            "review",
+        )
+
+
+
 
 class car_attr_comparison_admin(ImportExportModelAdmin):
     list_display = [
@@ -56,6 +127,8 @@ class city_admin(ImportExportModelAdmin):
                     'drop',
                     ]
 class calc_city_attr_value_admin(ImportExportModelAdmin):
+    resource_class = CalCityAttrValueResource
+
     list_display = [
                     'city1',
                     'city2',
@@ -223,6 +296,36 @@ class faq_admin(ImportExportModelAdmin):
 class terms_and_conditions_admin(ImportExportModelAdmin):
     pass
 
+class PaymentAdmin(ImportExportModelAdmin):
+    list_display = [
+                    'id',
+                    'booking',
+                    'txn_id',
+                    'datetime',
+                    'amount',
+                    'mode',
+                    ]
+    list_display_links = [
+                    'id',
+                    'booking',
+                    'txn_id',
+                    'datetime',
+                    ]
+    list_filter = [
+                    'datetime',
+                    'mode',
+                    ]
+    search_fields = [
+                    'booking',
+                    'txn_id',
+                    'datetime',
+                    'amount',
+                    'mode',
+                    ]
+
+class FinalRideDetail(ImportExportModelAdmin):
+    resource_class = FinalRideResource
+
 admin.site.register(models.ride_types, ride_types_admin)
 admin.site.register(models.User)
 admin.site.register(models.user_referral)
@@ -252,4 +355,4 @@ admin.site.register(models.ride_booking, BookingAdmin)
 admin.site.register(models.payment)
 admin.site.register(models.assign_vendor)
 admin.site.register(models.vendorbids)
-admin.site.register(models.final_ride_detail)
+admin.site.register(models.final_ride_detail, FinalRideDetail)

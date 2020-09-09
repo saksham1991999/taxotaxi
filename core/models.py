@@ -72,6 +72,7 @@ class city(models.Model):
 
     class Meta:
         verbose_name_plural = 'Cities'
+        unique_together = [['name', 'state']]
 
 class location(models.Model):
     name = models.CharField(max_length=200)

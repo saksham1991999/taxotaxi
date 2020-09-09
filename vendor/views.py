@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils import timezone
 from django.forms import modelformset_factory, inlineformset_factory
 
-
+import datetime
 from . import models, forms
 from core import models as coremodels
 import requests
@@ -318,7 +318,12 @@ def BookingsView(request):
         if sort.lower() == "date":
             bookings = bookings.order_by('-pickup_datetime')
         else:
-            bookings = bookings.order_by('-id')
+            bookings = bookings.order_by('id')
+
+    if "your-bookings" in request.GET:
+        bookings_id = coremodels.vendorbids.objects.filter(vendor = vendor).values('booking').distinct()
+        bookings = coremodels.ride_booking.objects.filter(id__in = bookings_id)
+        bookings = bookings.filter(ride_status = "Selected Vendors", assign_vendor__vendors__in = [vendor])
 
     context = {
         "bookings":bookings,
@@ -343,12 +348,66 @@ def BookingsHistoryView(request):
     return render(request, 'Vendor/booking_history.html', context)
 
 
-def RideDetailsView(request, id):
-    final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+def RideDetailsView(request):
+    vendor = models.vendorprofile.objects.get(user=request.user)
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor).filter(booking__ride_status__in = ["Assigned Car/Driver", "Ongoing"] )
+    form = forms.FinalRideForm()
     context = {
-        "final_ride":final_ride,
+        'final_rides':final_rides,
+        'form':form,
     }
     return render(request, 'Vendor/ride_detail.html', context)
+
+def StartRideView(request, id):
+    if request.method == "POST":
+        final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+        form = forms.FinalRideForm(request.POST, instance = final_ride )
+        if form.is_valid():
+            form.save()
+            final_ride.start_datetime = datetime.datetime.now()
+            booking = final_ride.booking
+            booking.ride_status = "Ongoing"
+            final_ride.save()
+            booking.save()
+            messages.success(
+                request,
+                'Ride Started',
+                extra_tags='alert alert-success alert-dismissible'
+            )
+            return redirect('vendor:booking_detail')
+        else:
+            print(form.errors)
+            messages.error(
+                request,
+                'Please Fill Details Correctly',
+                extra_tags='alert alert-danger alert-dismissible'
+            )
+            return redirect('vendor:booking_detail')
+
+def EndRideView(request, id):
+    if request.method == "POST":
+        final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
+        form = forms.FinalRideForm(instance = final_ride)
+        if form.is_valid():
+            form.save()
+            final_ride.end_datetime = datetime.datetime.now()
+            booking = final_ride.booking
+            booking.ride_status = "Completed"
+            final_ride.save()
+            booking.save()
+            messages.success(
+                request,
+                'Ride Ended',
+                extra_tags='alert alert-success alert-dismissible'
+            )
+            return redirect('vendor:booking_detail')
+        else:
+            messages.error(
+                request,
+                'Please Fill Details Correctly',
+                extra_tags='alert alert-danger alert-dismissible'
+            )
+            return redirect('vendor:booking_detail')
 
 def AssignCarDriverView(request, id):
     if request.method == "POST":
@@ -356,14 +415,16 @@ def AssignCarDriverView(request, id):
         form = forms.AssignCarDriverForm(request.POST, instance = final_ride)
         if form.is_valid():
             form.save()
-            final_ride.booking.ride_status = "Assigned Car/Driver"
+            booking = final_ride.booking
+            booking.ride_status = "Assigned Car/Driver"
+            final_ride.save()
+            booking.save()
             messages.success(
                 request,
                 'Car and Driver Assigned.',
                 extra_tags='alert alert-success alert-dismissible'
             )
             return redirect('vendor:assignments')
-        print(form.errors)
         messages.error(
             request,
             "Couldn't Assign Car and Driver",
