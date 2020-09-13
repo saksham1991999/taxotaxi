@@ -25,7 +25,7 @@
           <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;&nbsp;Assignments
         </a>
       </li>
-      <li >
+      <li {% if request.resolver_match.view_name == 'vendor:booking_detail' %}class="active"{% endif %}>
         <a href="{% url 'vendor:booking_detail' %}">
           <i><img src="{% static 'images/icons/Ride-details-active.png' %}" alt=""></i>&nbsp;&nbsp;Ride Details
         </a>

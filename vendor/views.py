@@ -341,7 +341,8 @@ def AssignmentsView(request):
 
 def BookingsHistoryView(request):
     vendor = models.vendorprofile.objects.get(user=request.user)
-    final_rides = coremodels.final_ride_detail.objects.filter(vendor = vendor, booking__ride_status = "Verified")
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor = vendor, booking__ride_status = "Verified")
+    # final_rides = coremodels.final_ride_detail.objects.all()
     context = {
         'final_rides':final_rides
     }
