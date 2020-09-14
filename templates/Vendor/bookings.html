@@ -53,27 +53,31 @@ font-weight: 600; color: #17a017; padding-bottom: 0px !important; }
         </div>
         <div class="col-sm-12 col-md-12" style="margin-top: 20px;">
             <form>
-                <div class="row">
-                    <div class="col-3">
+                <div class="row booking-frm">
+                   <div class="col-sm-1">
+
+                   </div>
+                    <div class="col-sm-3">
                         <input type="radio" id="date" name="sort" value="date">
                         <label for="male">Sort By Date</label><br>
                     </div>
-                    <div class="col-3">
+                    <div class="col-sm-3">
                         <input type="radio" id="booking" name="sort" value="booking">
                         <label for="female">Sort By Booking</label><br>
                     </div>
-                    <div class="col-3">
+                    <div class="col-sm-3">
                         <input type="checkbox" id="other" name="your-bookings" value=1>
                         <label for="other">Your Bookings</label>
                     </div>
-                    <input type="submit" value="Submit">
+                    <button class="book-btn" style="min-width: 100px; padding: 5px 0;" type="submit">Submit</button>
                 </div>
             </form>
 
-           <div class="col-sm-3">
-              <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
-           </div>
+           
         </div>
+        <div class="col-sm-12" style="margin-left: 80%; margin-top: 5px; margin-bottom: 5px;">
+         <div style="font-size: large;"><a href=""> &#8635 Refresh Info</a></div>
+         </div>
         {% for booking in bookings %}
         <div id="listitem1" class="list">
            <div class="col-sm-12 col-md-12">
