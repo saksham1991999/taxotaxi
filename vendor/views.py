@@ -303,7 +303,11 @@ def DeleteDriverView(request, id):
         return redirect('core:dashobard')
 
 def PaymentsView(request):
-    context = {}
+    vendor = models.vendorprofile.objects.get(user=request.user)
+    final_rides = coremodels.final_ride_detail.objects.filter(bid__vendor=vendor, booking__ride_status="Verified")
+    context = {
+        'final_rides': final_rides
+    }
     return render(request,'Vendor/payments.html' , context)
 
 
