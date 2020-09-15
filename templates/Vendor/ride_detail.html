@@ -284,35 +284,35 @@
                         <div class="" style="width: -webkit-fill-available;" id="stopRideDropdown">
                             <form class="booking-frm" method="post" action="{% url 'vendor:end_ride' ride.id %}">
                                 {% csrf_token %}
-                                <div class="col-sm-5" style="padding-left: 5%; padding-right: 5%;
-                                    padding-top: 10px">
-                                    <div class="dash_foam">
+                                <div class="col-sm-5 autofiller" style="padding-left: 5%; padding-right: 5%;
+                                    padding-top: 10px"  onkeyup="AutoFillFunc('{{ ride.id }}')" id="{{ ride.id }}first">
+                                    <div class="dash_foam odometerreading">
                                         <label>Enter Odometer Reading</label>
                                         {% render_field form.final_odometer_reading required='' %}
                                     </div>
-                                    <div class="dash_foam">
+                                    <div class="dash_foam extrakm">
                                         <label>Extra KM</label>
                                         <input type="text" name="">
                                     </div>
-                                    <div class="dash_foam">
+                                    <div class="dash_foam extrakmamount">
                                         <label>Extra KM Amount</label>
                                         <input type="text" name="">
                                     </div>
-                                    <div class="dash_foam">
+                                    <div class="dash_foam extrahourlycharges">
                                         <label>Extra Hourly Charges</label>
                                         <input type="text" name="">
                                     </div>
-                                    <div class="dash_foam">
+                                    <div class="dash_foam othercharges">
                                         <label>Other Charges</label>
                                         {% render_field form.other_charges required='' %}
                                     </div>
                                 </div>
-                                <div class="col-sm-7" style="background-color: #eee; height: 70vh;padding-top: 10px">
-                                    <div class="dash_foam">
+                                <div class="col-sm-7" style="background-color: #eee; height: 70vh;padding-top: 10px" id="{{ ride.id }}second">
+                                    <div class="dash_foam collectionamount">
                                         <label>Collect Amount from Customer</label>
                                         <input type="text" name="">
                                     </div>
-                                    <div class="dash_foam">
+                                    <div class="dash_foam drivercollection">
                                         <label>Driver Collection</label>
                                         {% render_field form.collected_amount required='' %}
                                     </div>
@@ -331,6 +331,27 @@
 {% endblock content %}
 
 {% block extra_scripts %}
+    <script>
+        function AutoFillFunc(ele){
+            // console.log(ele)
+            // console.log($(`#${ele}`).text())
+
+            var odometerreading = $(`#${ele}first`).children(".odometerreading").children("input").val();
+
+            
+            $(`#${ele}first`).children(".extrakm").children("input").val("100");
+            $(`#${ele}first`).children(".extrakmamount").children("input").val("200");
+            $(`#${ele}first`).children(".extrahourlycharges").children("input").val("300");
+            $(`#${ele}first`).children(".othercharges").children("input").val("400")
+
+            $(`#${ele}second`).children(".collectionamount").children("input").val("500")
+            $(`#${ele}second`).children(".drivercollection").children("input").val("600")
+            console.log(odometerreading)
+        }
+        
+    </script>
+
+
     <script>
     $( document ).ready(function() {
         var initial_km = parseFloat({{ final_ride.booking.distance }});
