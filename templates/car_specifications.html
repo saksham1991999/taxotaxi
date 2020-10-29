@@ -211,25 +211,31 @@
 {% endblock extra_stylesheet %}
 {% block content %}
 <!--Slider Section Start-->
-<div class="tj-slider">
-   <div class="tj-cab-slider" id="cab-slider">
-      {% for banner in banners %}
-      <!--Slider Item Content Start-->
-      <div class="slide-item">
-         <img class="set-image" src="{{ banner.image.url }}" alt="">
-         <div class="slide-caption" style="bottom: 138px!important;">
-            <div class="container">
-               <div class="slide-inner">
-                  <h2>{{ banner.h5|linebreaks|escape }}</h2>
-                  <!-- <h2>{{ banner.h2|linebreaks|escape }}</h2> -->
-               </div>
-            </div>
-         </div>
-      </div>
-      <!--Slider Item Content End-->
-      {% endfor %}
-   </div>
-</div>
+{#<div class="tj-slider">#}
+{#   <div class="tj-cab-slider" id="cab-slider">#}
+{#      {% for banner in banners %}#}
+{#      <div class="slide-item">#}
+{#         <img class="set-image" src="{{ banner.image.url }}" alt="">#}
+{#         <div class="slide-caption" style="bottom: 138px!important;">#}
+{#            <div class="container">#}
+{#               <div class="slide-inner">#}
+{#                  <h2>{{ banner.h5|linebreaks|escape }}</h2>#}
+{#                  <!-- <h2>{{ banner.h2|linebreaks|escape }}</h2> -->#}
+{#               </div>#}
+{#            </div>#}
+{#         </div>#}
+{#      </div>#}
+{##}
+{#      {% endfor %}#}
+{#   </div>#}
+{#</div>#}
+
+
+    <div>
+    <img class="set-image" src="{% static "images/banner1_bg.jpg" %}" alt="" style="max-height: 300px; width: 100%">
+    </div>
+
+
 <!--Slider Section End-->
 <form method="post" class="booking-frm">
    {% csrf_token %}
@@ -252,7 +258,9 @@
                                  {% for attr in car_attrs %}
                                  <li style="height:35px !important;box-shadow: none;color: #1c2b39;padding: 19px 17px;">{{ attr.name }}</li>
                                  {% endfor %}
-                                 <li style="height: 115px;box-shadow: none;font-size: 20px;font-weight: bold;padding: 43px 15px;">Base Fare</li>
+                                  <li style="height: 115px;box-shadow: none;font-size: 20px;font-weight: bold;padding: 43px 15px;"><big>Base Fare</big></li>
+
+
                                  <!-- <li style="height:0px;box-shadow: none;"></li> -->
                               </ul>
                            </div>

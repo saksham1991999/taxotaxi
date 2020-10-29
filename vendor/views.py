@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 def SMS(mobile, message):
     mobile = '91' + str(mobile)
     message = str(message)
-    url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fsdCr1FyckqYrndE63halg&senderid=SMSTST&channel=2&DCS=0&flashsms=0&number='+mobile+'&text='+message+'&route=1'
+    url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fsdCr1FyckqYrndE63halg&senderid=TAXOTR&channel=2&DCS=0&flashsms=0&number='+mobile+'&text='+message+'&route=1'
     print(url)
     r = requests.post(url = url)
     x = r.text
@@ -48,7 +48,7 @@ def VendorRegistrationView(request):
             referal_code = coremodels.user_referral.objects.create(user=vendor, promotional_code=str(vendor_mobile),
                                                                referralbenefit=50,
                                                                customerbenefit=50, is_activated=True)
-            text = 'Thanks for registering on TaxoTaxi, We will verify and contact you soon!'
+            text = 'Thank you for submitting details. We”ll get back to you soon.'
             SMS(vendor_mobile, text)
 
             bank_account = bank_form.save(commit=False)
@@ -424,6 +424,11 @@ def AssignCarDriverView(request, id):
             booking.ride_status = "Assigned Car/Driver"
             final_ride.save()
             booking.save()
+            customer_message = "We have assigned Driver Name: " + str(final_ride.driver.full_name) + " (" + str(final_ride.driver.contact1) + ") " + "and Car Number: " + str(final_ride.car.registration_no)
+            SMS(str(booking.phone_no), customer_message)
+
+            driver_message = "You have been assigned to " + str(booking.name) + " (" + str(booking.phone_no) + " ) for " + str(booking.ride_type) + " ride, on dated " + str(booking.pickup_datetime) + " from " + str(booking.pickup_city) + " to " + str(booking.drop_city)
+            SMS(str(final_ride.driver.contact1), driver_message)
             messages.success(
                 request,
                 'Car and Driver Assigned.',
@@ -440,16 +445,18 @@ def AssignCarDriverView(request, id):
 def RejectBookingView(request, id):
     if request.method == "POST":
         final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
-        rejection_reason = request.POST['rejection_reason']
 
+        rejection_reason = request.POST['rejection_reason']
         bid = final_ride.bid
         bid.rejection_reason = rejection_reason
         bid.save()
-        booking = final_ride.booking
-        booking.ride_status = "Selected Vendors"
-        booking.save()
-        final_ride.delete()
 
+        booking = final_ride.booking
+        booking.ride_status = "Booked"
+        booking.save()
+
+        booking.assign_vendor.delete()
+        final_ride.delete()
         messages.success(
             request,
             'Assignment Rejected',

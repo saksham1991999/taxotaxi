@@ -50,11 +50,11 @@
                                     <td>{{ booking.car_type }}</td>
                                     <td>{{ booking.pickup_city }}</td>
                                     <td>{{ booking.drop_city }}</td>
-                                    <td>{{ booking.final_ride_fare }}</td>
+                                    <td>{{ booking.final_ride_fare|floatformat:2 }}</td>
                                     <td>{{ booking.pickup_datetime }}</td>
                                     <td>{{ booking.booking_datetime }}</td>
-                                    <td>{{ booking.distance }} Km</td>
-                                    <td>{{ booking.duration }} Min</td>
+                                    <td>{{ booking.distance|floatformat:2 }} Km</td>
+                                    <td>{{ booking.duration|floatformat:2 }} Min</td>
                                     <td>{{ booking.pickup }}</td>
                                     <td>{{ booking.drop }}</td>
                                 </tr>

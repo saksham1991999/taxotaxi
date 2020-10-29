@@ -1,0 +1,16 @@
+## One Time
+docker-compose build
+docker exec -it django bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+## or
+docker-compose up -d --build
+docker-compose exec django python manage.py makemigrations
+docker-compose exec django python manage.py migrate --noinput
+docker-compose exec django python manage.py migrate flush
+docker-compose exec postgres psql --username=hello_django --dbname=hello_django_dev
+
+
+## everytime
+docker-compose up

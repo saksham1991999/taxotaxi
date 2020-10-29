@@ -333,6 +333,10 @@ class final_ride_detail(models.Model):
     rating = models.PositiveSmallIntegerField(blank=True, null=True)
     review = models.TextField(blank=True, null=True)
 
+    itr_deduction = models.PositiveIntegerField(blank=True, null=True)
+    amount_paid = models.PositiveIntegerField(blank=True, null=True)
+    payment_reference = models.CharField(max_length = 128, blank=True, null=True)
+
     def get_rating_list(self):
         return range(self.rating)
 
@@ -433,7 +437,8 @@ class final_ride_detail(models.Model):
         ans = final - self.booking.advance
         return int(ans)
 
-
+    def get_amount_due(self):
+        return self.get_final_ride_charges() - self.collected_amount - self.booking.advance
 
 class user_referral(models.Model):
     user = models.ForeignKey('core.User', on_delete=models.PROTECT, verbose_name='User to assign the referral code to')

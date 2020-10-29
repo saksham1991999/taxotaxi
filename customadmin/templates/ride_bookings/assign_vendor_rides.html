@@ -155,7 +155,7 @@
                                 <tr>
                                     <td><a href="{% url 'customadmin:assign_final_vendor' bid.id %}">Assign</a></td>
                                     <td>{{ bid.vendor }}</td>
-                                    <td>{{ bid.bid }}</td>
+                                    <td>{{ bid.bid|floatformat:2 }}</td>
                                     <td>{{ bid.profit }}</td>
                                     <td>{{ bid.booking.assign_vendor.comission_amount }}</td>
                                     <td>{{ bid.datetime }}</td>

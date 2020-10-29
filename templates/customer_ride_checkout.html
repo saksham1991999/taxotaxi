@@ -313,7 +313,8 @@
                      <p style="margin: 76px 20px 0px 0px;
                         background-color: #eee;
                         height: 85px;
-                        padding: 33px 0;text-align: center;"> ₹ {{ checkbox_charges|intcomma  }} </p>
+                        padding: 33px 0;text-align: center; font-weight: bold;
+"><big> ₹ {{ checkbox_charges|intcomma  }} </big></p>
                   </div>
                   <div class="col-sm-12 booking-frm " style="padding: 8px 0px 15px;left: 35%;">
                      <button class="book-btn" type="submit">&nbsp; Update Add-ons &nbsp;</button>
@@ -370,7 +371,7 @@
                      </span>
                      <!-- Ride Fair BreakDown -->
                      <span class="fair-breakdown">
-                     Initial Charges : {{ initial_charges|intcomma  }}<br>
+                     Base Fare : {{ initial_charges|intcomma  }}<br>
                      {% if additional_charges %}
                      Additional Taxes : {{ additional_charges|intcomma  }}<br>
                      {% endif %}
@@ -378,7 +379,7 @@
                      Driver Allowances : {{ driver_allowances|intcomma  }}<br>
                      {% endif %}
                      {% if checkbox_charges %}
-                     Chargeable Additions : {{ checkbox_charges|intcomma  }}<br>
+                     Add-on Charges : {{ checkbox_charges|intcomma  }}<br>
                      {% endif %}
                      {% if gst_charges %}
                      GST : {{ gst_charges|intcomma  }}<br>
@@ -405,17 +406,17 @@
          <form method="post">
             {% csrf_token %}
             <input type="hidden" value="details" name="type">
-            <div class="row">
-               <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>
-               <div class="col-sm-8">
-                  <div class="inputlayout " >
-                     <div style="width: 80%">{{ request.user.wallet_balance|intcomma  }} INR</div>
-                     <div class="icon1 icon-style">
-                        <input type="checkbox" class="my-auto" style="display: inline-blocks;">
-                     </div>
-                  </div>
-               </div>
-            </div>
+{#            <div class="row">#}
+{#               <label for="staticEmail" class="col-sm-4 col-form-label">Wallet Balance</label>#}
+{#               <div class="col-sm-8">#}
+{#                  <div class="inputlayout " >#}
+{#                     <div style="width: 80%">{{ request.user.wallet_balance|intcomma  }} INR</div>#}
+{#                     <div class="icon1 icon-style">#}
+{#                        <input type="checkbox" class="my-auto" style="display: inline-blocks;">#}
+{#                     </div>#}
+{#                  </div>#}
+{#               </div>#}
+{#            </div>#}
             <div class="row">
                <label for="staticEmail" class="col-sm-4 col-form-label">Payable Amount</label>
                <div class="col-sm-8">
@@ -463,7 +464,7 @@
          </span> -->
       <!-- Ride Fair BreakDown -->
       <!--  <span class="fair-breakdown">
-         Initial Charges : {{ initial_charges }}<br>
+         Base Fare : {{ initial_charges }}<br>
          {% if additional_charges %}
          Additional Taxes : {{ additional_charges }}<br>
          {% endif %}
@@ -518,7 +519,7 @@
       <div class="inputlayout input-field1" style="width: 40%" >
       <div >{{ request.user.first_name }}</div>
       </div>
-      <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Traveler Name (optional)">   
+      <input style="width: 60%" class="input-field input-field2" type="text" name="name" placeholder="Co-passenger Name (optional)">
       </div>
       </div>
       <div class="row">
@@ -528,7 +529,7 @@
       <div class="inputlayout input-field1" style="width: 40%">
       <div >{{ request.user.mobile }}</div>
       </div>
-      <input style="width: 60%" class="input-field input-field2" type="text" name="mobile" placeholder="Traveler Phone No. (optional)">
+      <input style="width: 60%" class="input-field input-field2" type="text" name="mobile" placeholder="Co-passenger Phone No. (optional)">
       </div>
       </div>
       <div class="row">

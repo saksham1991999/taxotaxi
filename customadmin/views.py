@@ -10,6 +10,8 @@ from django.forms import modelformset_factory, inlineformset_factory
 from django.shortcuts import get_list_or_404, get_object_or_404
 import requests, datetime
 from django.contrib.auth import authenticate, login, logout
+from django.db.models import Count
+
 
 from . import models, forms
 from core import models as coremodels
@@ -19,7 +21,20 @@ from vendor import models as vendormodels
 
 
 def HomeView(request):
-    context = {}
+
+    late_running_rides = coremodels.ride_booking.objects.filter(ride_status__in = ['Assigned Car/Driver'], pickup_datetime__lt =datetime.datetime.today())
+    last_minute_rides = coremodels.ride_booking.objects.filter(ride_status__in = ['Assigned Car/Driver'], pickup_datetime__lt =(datetime.datetime.today()+datetime.timedelta(hours = 4)))
+    upcoming_rides = coremodels.ride_booking.objects.filter(ride_status__in = ['Booked', 'Selected Vendors', 'Assigned Vendor'], pickup_datetime__lt =datetime.datetime.today())
+    top_pickup_cities = coremodels.ride_booking.objects.values('pickup_city__name').order_by("-pickup_city__count").annotate(Count('pickup_city'))[:5]
+    top_drop_cities = coremodels.ride_booking.objects.values('drop_city__name').order_by("-drop_city__count").annotate(Count('drop_city'))[:5]
+
+    context = {
+        'late_running_rides':late_running_rides,
+        'last_minute_rides':last_minute_rides,
+        'upcoming_rides':upcoming_rides,
+        'top_drop_cities':top_drop_cities,
+        'top_pickup_cities':top_pickup_cities,
+    }
     return render(request, 'custom_admin/index.html',context)
 
 def TestView1(request):
@@ -161,6 +176,16 @@ def AssignDriverCarView(request, id):
             form.save()
             final_ride.booking.ride_status = "Assigned Car/Driver"
             final_ride.booking.save()
+
+            customer_message = "We have assigned Driver Name: " + str(final_ride.driver.full_name) + " (" + str(
+                final_ride.driver.contact1) + ") " + "and Car Number: " + str(final_ride.car.registration_no)
+            SMS(str(booking.phone_no), customer_message)
+
+            driver_message = "You have been assigned to " + str(booking.name) + " (" + str(
+                booking.phone_no) + " ) for " + str(booking.ride_type) + " ride, on dated " + str(
+                booking.pickup_datetime) + " from " + str(booking.pickup_city) + " to " + str(booking.drop_city)
+            SMS(str(final_ride.driver.contact1), driver_message)
+
         return redirect('customadmin:upcoming_rides')
     else:
         form = forms.AssignDriverCar(instance = final_ride)

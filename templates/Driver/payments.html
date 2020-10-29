@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load fullurl %}
+
+{% block extra_stylesheet %}
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock extra_stylesheet %}
+
+{% block content %}
+<div class="tj-wrapper">
+    <div class="container">
+        <div class="row">
+            {% include 'Driver/vendorSidebar.html' %}
+            <!-- --------Begning of navigation tabs---------- -->
+            <div class="col-md-9">
+                <div class="col-md-12 col-sm-12 vendorHeader">
+                    <h4 class="text-center">Payments</h4>
+                </div>
+                <div class="col-sm-12 col-md-12">
+
+                    {% for ride in final_rides %}
+                    <div class="row vendorPayments">
+                        <div class="col-sm-12 noPadding" >
+                            <div class="col-sm-5 noPadding">
+                                <div class="col-sm-1 noPadding">
+                                    <h4>{{ forloop.counter }}</h4>
+                                </div>
+                                <div class="col-sm-6 ">
+                                    <h5>
+                                        Booking Date:
+                                        <p>{{ ride.booking_datetime|date:"j-M-Y" }}{{ ride.booking_datetime|time:"h:i A" }}</p>
+                                    </h5>
+                                    <!-- <p>24-May-2020, Sunday</p> -->
+                                </div>
+                                <div class="col-sm-5">
+                                    <h5>
+                                        Booking ID:
+                                        <p>{{ ride.booking.id }}</p>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 noPadding">
+                                <div class="col-sm-4">
+                                    <h5>
+                                        Booking Amount:
+                                        <p>{{ ride. }}&nbsp;<span>INR</span></p>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5>
+                                        Cash Collection:
+                                        <p>{{ ride.collected_amount }}&nbsp;<span>INR</span></p>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5>
+                                        Amount Due:
+                                        <p>330&nbsp;<span>INR</span></p>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="col-sm-5">
+                                <div class="col-sm-12">
+                                    <h5>
+                                        ITR Deduction:
+                                        <p>000&nbsp;<span>INR</span></p>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="col-sm-4">
+                                    <h5>
+                                        Amount Paid:
+                                        <p>330&nbsp;<span>INR</span></p>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-8">
+                                    <h5>
+                                        Reference:
+                                        <p>Online transaction no.<span>TX2420ICICI</span></p>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block extra_scripts %}
+{% endblock extra_scripts %}
+

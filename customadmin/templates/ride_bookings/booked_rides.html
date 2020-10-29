@@ -44,7 +44,7 @@
                                     <th>Drop</th>
                                     <th>Additional Choices</th>
                                     <th>Additional Hault</th>
-                                    <th>Advance</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,18 +58,17 @@
                                     <td>{{ booking.car_type }}</td>
                                     <td>{{ booking.pickup_city }}</td>
                                     <td>{{ booking.drop_city }}</td>
-                                    <td>{{ booking.final_ride_fare }}</td>
-                                    <td>{{ booking.advance }}</td>
+                                    <td>{{ booking.final_ride_fare|floatformat:2 }}</td>
+                                    <td>{{ booking.advance|floatformat:2 }}</td>
                                     <td>{{ booking.pickup_datetime }}</td>
                                     <td>{{ booking.drop_datetime }}</td>
                                     <td>{{ booking.booking_datetime }}</td>
-                                    <td>{{ booking.distance }} Km</td>
-                                    <td>{{ booking.duration }} Min</td>
+                                    <td>{{ booking.distance|floatformat:2 }} Km</td>
+                                    <td>{{ booking.duration|floatformat:2 }} Min</td>
                                     <td>{{ booking.pickup }}</td>
                                     <td>{{ booking.drop }}</td>
                                     <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %} | &ensp;</td>
                                     <td>{{ booking.additional_hault }}</td>
-                                    <td>{{ booking.advance }}</td>
                                 </tr>
                                 {% endfor %}
                                 </tbody>

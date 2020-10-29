@@ -17,11 +17,11 @@
 <div class="tj-wrapper">
     <div class="container">
         <div class="row">
-            {% include 'Vendor/vendorSidebar.html' %}
+            {% include 'Driver/vendorSidebar.html' %}
             <!-- --------Begning of navigation tabs---------- -->
             <div class="col-md-9 assignments">
                 <div class="col-md-12 col-sm-12 vendorHeader">
-                    <h4 class="text-center ">Ride Details</h4>
+                    <h4 class="text-center">Assignments</h4>
                 </div>
                 {% for ride in final_rides %}
                 <div>
@@ -82,7 +82,7 @@
                                         <img src="{% static 'images/icons/Car-details--inactive.png' %}" alt=""  width="10%">
                                         <span style="font-weight: 600;">KM Limit : {{ ride.booking.distance }}</span>
                                         <small style="visibility: visible;"> km</small><br>
-                                        <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs  {{ ride.booking.price_km }}/-</small>
+                                        <small style="visibility: visible;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extra km Charges: Rs10/-</small>
                                     </h4>
                                 </div>
                                 <h5>
@@ -117,9 +117,9 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;">
+                    <div class="col-sm-12 col-md-12 car-driver"  style="padding: 0px;padding-left: 30px;">
                         <div>
-                            <small style="visibility: visible; color: red;">* Note Additionanl Information from admin or customer</small>
+                            <small style="visibility: visible; color: red;">* Note {{ ride.booking.note }}</small>
                         </div>
                         <h5>
                             <div class="row">
@@ -146,7 +146,6 @@
                                     <img src="{% static 'images/icons/Assignments-inactive.png' %}" alt="" width="5%"> Assigned Car and Driver</span>
                                 </h4>
                             </div>
-
                             <form action="{% url 'vendor:assign_car_driver' ride.id %}" method="post">
                                 {% csrf_token %}
                                 <div class="col-sm-12 options">
@@ -159,9 +158,7 @@
                                             <option value="" selected="">Select a Car</option>
                                             {% endif %}
                                             {% for car in ride.bid.vendor.get_approved_cars %}
-                                                {% if car != ride.car %}
-                                                    <option value="{{ car.id }}">{{ car.car_type }} ({{ car.registration_no }})</option>
-                                                {% endif %}
+                                            <option value="{{ car.id }}">{{ car.car_type }} ({{ car.registration_no }})</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -174,9 +171,7 @@
                                             <option value="" selected="">Select a Driver</option>
                                             {% endif %}
                                             {% for driver in ride.bid.vendor.get_approved_drivers %}
-                                                {% if driver != rid.driver %}
-                                                    <option value="{{ driver.id }}">{{ driver.full_name }} ({{ driver.contact1 }})</option>
-                                                {% endif %}
+                                            <option value="{{ driver.id }}">{{ driver.full_name }} ({{ driver.contact1 }})</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -187,46 +182,14 @@
                             </form>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-12 cardGreyStyle" >
-                        <div class="col-sm-3">
-                            <h5 class="boldBlack">{{ ride.booking.name }}</h5>
-                            <h5>Mobile: <span>{{ ride.booking.phone_no }}</span></h5>
-                        </div>
-                        <div class="col-sm-3">
-                            <h5 class="boldBlack">Pickup Location</h5>
-                            <h5>{{ ride.booking.pickup }}</h5>
-                        </div>
-                        <div class="col-sm-3">
-                            <h5 class="boldBlack">Drop Location</h5>
-                            <h5>{{ ride.booking.drop }}</h5>
-                        </div>
-                        <div class="col-sm-3 booking-frm" style="padding: 5%;">
-                            <button class="book-btn" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Pickup</button>
+                    {% if ride.car or ride.driver %}
+                    {% else %}
+                    <div class="col-sm-12 col-md-12 buttons"  style="padding: 0px;padding-top: 20px;">
+                        <div class="col-sm-3 booking-frm">
+                            <button class="book-btn" type="submit" data-toggle="collapse" data-target="#collapseExample-{{ ride.id }}" aria-expanded="false" aria-controls="collapseExample12">Reject</button>
                         </div>
                     </div>
-
-                    {% if ride.booking.ride_status == "Assigned Car/Driver" %}
-                    <div>
-                        <form method="post" action="{% url 'vendor:start_ride' ride.id %}">
-                            {% csrf_token %}
-                            <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                                <div class="" style="text-align: left;">
-                                    <button class="book-btn btn-block" type="button" style="padding: 5px auto; background-color: #ffc000;">
-                                        Enter Odometer Reading
-                                        <div style="display: inline-block; margin-bottom: 0px">
-                                            {% render_field form.initial_odometer_reading style="margin-bottom: 0px; padding: 0px;" required="" %}
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                                <button class="book-btn btn-block" type="submit" style="padding: 5px auto; background-color: #4CAF50;">Start Ride</button>
-                            </div>
-                        </form>
-                        <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                            <button class="book-btn btn-block" type="submit" data-toggle="collapse" data-target="#collapseExample-{{ ride.id }}" aria-expanded="false" aria-controls="collapseExample12" style="padding: 5px auto; background-color: #131313;color:whitesmoke ;">Reject Trip</button>
-                        </div>
-                        <div class="col-sm-12 card-collapse">
+                    <div class="col-sm-12 card-collapse">
                         <form method="post" action="{% url 'vendor:reject_assignment' ride.id %}">
                             {% csrf_token %}
                             <div class="collapse" id="collapseExample-{{ ride.id }}">
@@ -259,166 +222,14 @@
                             </div>
                         </form>
                     </div>
-                    </div>
-                    {% elif ride.booking.ride_status == "Ongoing" %}
-                    <div class="booking-frm">
-
-                        <div class="col-sm-12 col-md-12 booking-frm" style="padding: 0px;">
-                            <div class="" style="text-align: left;">
-                                <button class="book-btn btn-block" type="button" style="padding: 5px auto; background-color: #ffc000;">
-                                    Enter Odometer Reading
-                                    <div style="display: inline-block; margin-bottom: 0px">
-                                        <input type="text" style="margin-bottom: 0px; padding: 0px;" value="{{ ride.initial_odometer_reading }}" readonly>
-                                    </div>
-                                    <div style="display: inline-block; margin-bottom: 0px">
-                                        <input type="text" style="margin-bottom: 0px; padding: 0px;" value="{{ ride.start_datetime }}" readonly>
-                                    </div>
-                                </button>
-                            </div>
-                        </div>
-
-                        <button class="btn book-btn btn-block" type="button" onclick="DisplayStopRide()" style="padding: 5px auto; background-color: #e61616;color:whitesmoke ;">
-                            Stop Ride
-                        </button>
-
-                        <div class="" style="width: -webkit-fill-available;" id="stopRideDropdown">
-                            <form class="booking-frm" method="post" action="{% url 'vendor:end_ride' ride.id %}">
-                                {% csrf_token %}
-                                <div class="col-sm-5 autofiller" style="padding-left: 5%; padding-right: 5%;
-                                    padding-top: 10px"  onkeyup="AutoFillFunc('{{ ride.id }}', {{ ride.booking.distance }}, {{ ride.booking.price_km }}, {{ ride.initial_odometer_reading }})" id="{{ ride.id }}first">
-                                    <div class="dash_foam odometerreading">
-                                        <label>Enter Odometer Reading</label>
-                                        {% render_field form.final_odometer_reading required='' %}
-                                    </div>
-                                    <div class="dash_foam extrakm">
-                                        <label>Extra KM</label>
-                                        <input type="text" name="">
-                                    </div>
-                                    <div class="dash_foam extrakmamount">
-                                        <label>Extra KM Amount</label>
-                                        <input type="text" name="">
-                                    </div>
-                                    <div class="dash_foam extrahourlycharges">
-                                        <label>Extra Hourly Charges</label>
-                                        <input type="text" name="">
-                                    </div>
-                                    <div class="dash_foam othercharges">
-                                        <label>Other Charges</label>
-                                        {% render_field form.other_charges required='' value=0 %}
-                                    </div>
-                                </div>
-                                <div class="col-sm-7" style="background-color: #eee; height: 70vh;padding-top: 10px" id="{{ ride.id }}second">
-                                    <div class="dash_foam collectionamount">
-                                        <label>Collect Amount from Customer</label>
-                                        <input type="text" name="">
-                                    </div>
-                                    <div class="dash_foam drivercollection">
-                                        <label>Driver Collection</label>
-                                        {% render_field form.collected_amount required='' %}
-                                    </div>
-                                    <button class="book-btn" type="submit" style="padding: 10px; background-color: #ffc000;">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                     {% endif %}
                 </div>
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 {% endblock content %}
-
 {% block extra_scripts %}
-    <script>
-        function AutoFillFunc(ele, initial_km, price_km, initial_odometer_reading){
-            // console.log(ele)
-            // console.log($(`#${ele}`).text())
-            initial_km = parseInt(initial_km)
-            price_km = parseInt(price_km)
-            initial_odometer_reading = parseInt(initial_odometer_reading)
-            var extra_km = 0;
-            var extra_km_charges = 0;
-            var other_charges = 0;
-            var gst = 0;
-            var total_extra_amount = 0;
-            var collectable_amount = 0;
-            console.log(initial_km, price_km, initial_odometer_reading);
-            var odometerreading = $(`#${ele}first`).children(".odometerreading").children("input").val();
-
-            odometerreading = parseInt(odometerreading)
-            var total_km = parseFloat(odometerreading - initial_odometer_reading);
-            if(total_km > initial_km){
-             extra_km = parseInt(total_km - initial_km);
-            }
-            extra_km_charges = parseInt(extra_km*price_km);
-            console.log(extra_km, total_km);
-
-            $(`#${ele}first`).children(".extrakm").children("input").val(extra_km);
-            $(`#${ele}first`).children(".extrakmamount").children("input").val(extra_km_charges);
-            $(`#${ele}first`).children(".extrahourlycharges").children("input").val("0");
-
-            other_charges = $(`#${ele}first`).children(".othercharges").children("input").val();
-            other_charges = parseInt(other_charges)
-            total_extra_amount = parseInt(extra_km_charges + other_charges);
-            gst = parseInt(total_extra_amount*(0.05));
-            collectable_amount = parseInt(total_extra_amount * (1.05));
-
-            $(`#${ele}second`).children(".collectionamount").children("input").val(collectable_amount)
-            {#$(`#${ele}second`).children(".drivercollection").children("input").val("600")#}
-            console.log(odometerreading)
-        }
-        
-    </script>
-
-
-    <script>
-    // $( document ).ready(function() {
-    //     var initial_km = parseFloat({{ final_ride.booking.distance }});
-    //     var price_km = parseInt({{ final_ride.booking.distance }});
-    //     var extra_km = 0;
-    //     var extra_km_charges = 0;
-    //     var other_charges = 0;
-    //     var gst = 0;
-    //     var total_extra_amount = 0;
-    //     var collectable_amount = 0;
-
-    //     $('#id_final_odometer_reading').keyup(function(){
-    //         var initial_odometer_reading = parseInt($('#id_initial_odometer_reading').val());
-    //         var final_odometer_reading = parseInt($('#id_final_odometer_reading').val());
-    //         var total_km = parseFloat(final_odometer_reading - initial_odometer_reading);
-    //         if(total_km > initial_km){
-    //             extra_km = parseInt(total_km - initial_km);
-    //         }
-    //         extra_km_charges = parseInt(extra_km*price_km);
-    //         total_extra_amount = parseInt(extra_km_charges + other_charges);
-    //         gst = parseInt(total_extra_amount*(0.05));
-    //         collectable_amount = parseInt(total_extra_amount * (1.05));
-    //         $("#extra_km").text(extra_km);
-    //         $("#extra_km_charges").text(extra_km_charges);
-    //         $("#extra_charges").text(total_extra_amount);
-    //         $("#gst").text(gst);
-    //         $("#total_extra_charges").text(collectable_amount);
-    //     });
-
-    //     $('#id_other_charges').keyup(function(){
-
-    //         other_charges = parseInt($('#id_other_charges').val());
-
-    //         total_extra_amount = parseInt(extra_km_charges + other_charges);
-    //         gst = parseInt(total_extra_amount*(0.05));
-    //         collectable_amount = parseInt(total_extra_amount * (1.05));
-    //         $("#extra_charges").text(total_extra_amount);
-    //         $("#gst").text(gst);
-    //         $("#total_extra_charges").text(collectable_amount);
-
-    //     });
-
-    //     console.log( "ready!" );
-
-  
-    // });
-    </script>
 {% endblock extra_scripts %}
 

@@ -1,0 +1,37 @@
+{% load static %}
+ 
+<div class="col-md-3 " style="margin-top: 80px">
+    <ul class="vendorTab">
+      <li {% if request.resolver_match.view_name == 'driver:dashboard' %}class="active"{% endif %} >
+        <a href="{% url 'driver:dashboard' %}">
+          <i><img src="{% static 'images/icons/Vendor-Profile-Active.png' %}" alt=""></i>&nbsp;&nbsp;Driver Profile</a>
+      </li>
+      <li {% if request.resolver_match.view_name == 'driver:drivers' %}class="active"{% endif %}>
+        <a href="{% url 'driver:upcoming' %}">
+          <i><img src="{% static 'images/icons/Driver--Active.png' %}" alt=""></i>&nbsp;&nbsp;&nbsp;Upcoming
+        </a>
+      </li>
+      <li {% if request.resolver_match.view_name == 'driver:booking_detail' %}class="active"{% endif %}>
+        <a href="{% url 'driver:booking_detail' %}">
+          <i><img src="{% static 'images/icons/Ride-details-active.png' %}" alt=""></i>&nbsp;&nbsp;Ride Details
+        </a>
+      </li>
+      <li {% if request.resolver_match.view_name == 'driver:booking_history' %}class="active"{% endif %} >
+        <a href="{% url 'driver:booking_history' %}">
+          <i><img src="{% static 'images/icons/History-Active.png' %}" alt=""></i>&nbsp;&nbsp;Booking History
+        </a>
+      </li>
+      <li {% if request.resolver_match.view_name == 'driver:payments' %}class="active"{% endif %} >
+        <a href="{% url 'driver:payments' %}">
+          <i><img src="{% static 'images/icons/Payment-Active.png' %}" alt=""></i>&nbsp;&nbsp;Incentive Earn
+        </a>
+      </li>
+
+      <li {% if request.resolver_match.view_name == 'driver:assignments' %}class="active"{% endif %}>
+        <a href="{% url 'driver:dashboard' %}">
+          <i><img src="{% static 'images/icons/Assignments-Active.png' %}" alt=""></i>&nbsp;&nbsp;Sell a Ride
+        </a>
+      </li>
+
+    </ul>
+</div>

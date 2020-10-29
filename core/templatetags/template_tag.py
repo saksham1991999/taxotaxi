@@ -120,7 +120,7 @@ def full_name(user):
 
 @register.filter
 def latest_bid(user, booking):
-    bids = models.vendorbids.objects.filter(booking = booking, vendor__user = user)
+    bids = models.vendorbids.objects.filter(booking = booking, vendor__user = user).order_by('-datetime')
     if bids.exists():
         latest_bid_qs = bids[0]
         return int(latest_bid_qs.bid)

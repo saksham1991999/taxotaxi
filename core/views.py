@@ -56,7 +56,7 @@ def TestView(request):
 def SMS(mobile, message):
     mobile = '91' + str(mobile)
     message = str(message)
-    url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fsdCr1FyckqYrndE63halg&senderid=SMSTST&channel=2&DCS=0&flashsms=0&number='+mobile+'&text='+message+'&route=1'
+    url = 'https://www.smsgatewayhub.com/api/mt/SendSMS?APIKey=fsdCr1FyckqYrndE63halg&senderid=TAXOTR&channel=2&DCS=0&flashsms=0&number='+mobile+'&text='+message+'&route=1'
     print(url)
     r = requests.post(url = url)
     x = r.text
@@ -456,7 +456,9 @@ def LogoutView(request):
 @login_required(login_url='/login/')
 def DashboardView(request):
     if request.user.is_vendor:
-        return redirect('vendor:dashboard')
+        return redirect('vendor:bookings')
+    elif request.user.is_driver:
+        return redirect('driver:dashboard')
     else:
         return redirect('customer:dashboard')
 
@@ -756,8 +758,8 @@ def CheckoutView(request):
         if type == 'coupon':
             coupon_code = request.POST['coupon_code']
             try:
-                coupon_code_qs = customermodels.customer_promotional.objects.filter(promotional_code=coupon_code, is_activated=True)[0]
-                print(coupon_code_qs)
+                coupon_code_qs = models.user_referral.objects.filter(promotional_code=coupon_code, is_activated=True).exclude(user=request.user)[0]
+                # print(coupon_code_qs)
                 request.session['coupon_code_id'] = coupon_code_qs.id
                 print(coupon_code_qs.id)
                 ride_total = request.session['ride_total']
@@ -1025,6 +1027,7 @@ def checkout2(request):
 def payu_success(request):
     data = dict(zip(request.POST.keys(), request.POST.values()))
     response = payu.check_hash(data)
+
     data = response['data']
     booking_id = data['udf1']
     booking_qs = models.ride_booking.objects.get(id=booking_id)
@@ -1048,6 +1051,11 @@ def payu_success(request):
 def payu_failure(request):
     data = dict(zip(request.POST.keys(), request.POST.values()))
     response = payu.check_hash(data)
+    data = response['data']
+    booking_id = data['udf1']
+    booking_qs = models.ride_booking.objects.get(id=booking_id)
+    message = 'Sorry for the inconvenience. Your payment is incomplete.'
+    SMS(booking_qs.phone_no, message)
     context = response['data']
     return render(request, 'payments/payu_success.html', context)
 

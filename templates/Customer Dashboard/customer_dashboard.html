@@ -437,7 +437,7 @@ font-weight: bold;
                         </li>
                         <li class="row row1" id="list3-3">
                            <a href="#canceledRides" data-toggle="tab">
-                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Your Places</a>
+                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Incomplete Booking</a>
                         </li>
                   <li class="row row1" id="list4">
                      <a href="#customerProfile" data-toggle="tab">
@@ -607,7 +607,7 @@ font-weight: bold;
                         </div>
                         <div class="tab-pane" id="referral" role="tabpanel">
                            <div class="col-md-12 col-sm-12">
-                               {% for refferal_code in request.user.user_referral_set.all %}
+                               {% for referral_code in referral_codes %}
                               <div class="adjustYellowButtonsSecond row input1">
                                  <label class="col-sm-4 col-form-label label-right-allign">Your Referal code</label>
                                  <div class="col-sm-5" style="display: flex;">
@@ -1183,13 +1183,13 @@ font-weight: bold;
                                   <div class="col-md-4 col-xs-12">
                                      <p>
                                         <strong>Total Amount Paid:&nbsp;&nbsp;<span
-                                           class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
+                                           class="trip_est styletext">{{ ride.final_ride_detail.get_final_ride_charges }}</span></strong><br>
                                         <strong>Credit Used:&nbsp;&nbsp;<span
                                            class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
                                         <strong>Advance Payment:&nbsp;&nbsp;<span
                                            class="trip_est styletext">{{ ride.advance }}</span></strong><br>
                                         <strong>Amount Due:&nbsp;&nbsp;<span
-                                           class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                                           class="trip_est styletext">{{ ride.final_ride_detail.get_amount_due }}</span></strong><br>
                                         <a style="color: green;" href="">Download Invoice</a>
                                      </p>
                                   </div>
@@ -1361,7 +1361,7 @@ font-weight: bold;
                <!-- /////////////////end of history//////////////////// -->
                <div class="tab-pane" id="canceledRides" role="tabpanel">
                   <div class="row">
-                     <h4 class="text-center tab-heading">Canceled Booking</h4>
+                     <h4 class="text-center tab-heading">Incomplete Bookings</h4>
                      <br>
                   </div>
                   <div class="col-sm-12 col-md-12 container2">
@@ -1392,10 +1392,10 @@ font-weight: bold;
                               <div class="col-md-4 col-xs-12">
                                  <p>
                                     <strong>Total Amount:&nbsp;&nbsp;<span
-                                       class="trip_est styletext">{{ ride.final_ride_fare }}</span></strong><br>
-                                    <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used }}</span></strong><br>
-                                    <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance }}</span></strong><br>
-                                    <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due }}</span></strong><br>
+                                       class="trip_est styletext">{{ ride.final_ride_fare|floatformat }}</span></strong><br>
+                                    <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used|floatformat }}</span></strong><br>
+                                    <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance|floatformat }}</span></strong><br>
+                                    <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due|floatformat }}</span></strong><br>
                                     {#<a style="color: green;" href="">Proceed to Payment</a>#}
                                  </p>
                               </div>

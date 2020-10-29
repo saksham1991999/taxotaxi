@@ -3,46 +3,27 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from . import models
+from vendor import models as vendormodels
 from core import models as coremodels
 
 
-class VendorProfileForm(forms.ModelForm):
+
+class DriverProfileForm(forms.ModelForm):
     class Meta:
-        model = models.vendorprofile
-        exclude = ['user', 'status']
-
-    def clean_contact1(self):
-        mobile = self.cleaned_data.get('contact1')
-        if mobile:
-            try:
-                user = coremodels.User.objects.get(username = mobile)
-                raise forms.ValidationError('Mobile Number is already registered')
-            except:
-                return mobile
-
-
-class BankAccountForm(forms.ModelForm):
-    class Meta:
-        model = models.bank_detail
+        model = vendormodels.driver
         exclude = ['vendor', 'status']
 
+    # def clean_contact1(self):
+    #     mobile = self.cleaned_data.get('contact1')
+    #     if mobile:
+    #         try:
+    #             user = coremodels.User.objects.get(username = mobile)
+    #             raise forms.ValidationError('Mobile Number is already registered')
+    #         except:
+    #             return mobile
 
-class AddCarForm(forms.ModelForm):
+
+class FinalRideForm(forms.ModelForm):
     class Meta:
-        model = models.vendor_cars
-        exclude = ['vendor', 'status']
-
-
-class AddDriverForm(forms.ModelForm):
-    class Meta:
-        model = models.driver
-        exclude = ['vendor', 'status']
-
-    def clean_contact1(self):
-        mobile = self.cleaned_data.get('contact1')
-        if mobile:
-            try:
-                user = coremodels.User.objects.get(username = mobile)
-                raise forms.ValidationError('Mobile Number is already registered')
-            except:
-                return mobile
+        model = coremodels.final_ride_detail
+        fields = ['initial_odometer_reading', 'final_odometer_reading', 'other_charges', 'collected_amount']

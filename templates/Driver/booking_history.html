@@ -1,0 +1,94 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extra_stylesheet %}
+<link href="{% static 'css/vendor.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock extra_stylesheet %}
+{% block content %}
+<div class="tj-wrapper">
+   <div class="container">
+      <div class="row">
+
+         {% include 'Driver/vendorSidebar.html' %}
+         <!-- --------Begning of navigation tabs---------- -->
+         <div class="col-md-9">
+            <div class="col-md-12 col-sm-12 vendorHeader">
+               <h4 class="text-center">Booking History</h4>
+            </div>
+
+             {% for ride in final_rides %}
+                <div class="col-sm-12 col-md-12 bookingHistory">
+               <div class="row list-group">
+                  <div class="item  col-sm-12">
+                     <div class="row CardHeader">
+                        <div class="col-md-12 col-sm-12">
+                           <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.booking.pickup }} - {{ ride.booking.drop_city }} </span><span
+                              class="styletext fas fa-map-marker-alt"></span></strong>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                           <img style="max-height: 95px" src="{{ ride.car.image_front.url }}" alt="" />
+                        </div>
+                        <div class="col-md-5 col-xs-12 col-sm-12">
+                           <h5 class="boldH5">
+                              Booking ID: <span>{{ ride.booking.id }}</span>
+                           </h5>
+                           <p>
+                              <span class="trip_est">{{ ride.booking.ride_type }} / {{ ride.booking.car_type }}</span><br>
+                              <span class="trip_est">Start Ride: {{ ride.pickup_datetime|date:"j-M-Y" }}{{ ride.pickup_datetime|time:"h:i A" }}</span><br>
+                              <span class="trip_est">Finish Ride: {{ ride.drop_datetime|date:"j-M-Y" }}{{ ride.drop_datetime|time:"h:i A" }}</span><br>
+                           </p>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <p>
+                              <strong>Booking Amount:&nbsp;&nbsp;<span
+                                 class="trip_est styletext">1700.50</span></strong><br>
+                              <strong>Cash Collection:&nbsp;&nbsp;<span
+                                 class="trip_est styletext">{{ ride.collected_amount }}</span></strong><br>
+                           <h5 class="boldH5"><i class="fas fa-tachometer-alt"></i> Total KM: {{ ride.get_total_distance }} KM</h5>
+                           </p>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                           <strong>Cab Number:&nbsp;<span class="trip_est">{{ ride.car.registration_no }}</span></strong>&nbsp;&nbsp;
+                           <strong>Cartype:&nbsp;<span class="trip_est">{{ ride.car.car_type }}</span></strong>&nbsp;&nbsp;
+                           <strong>Driver:&nbsp;<span class="trip_est">{{ ride.driver.full_name }}</span></strong>
+                        </div>
+                     </div>
+                     <div class="row CardFooter">
+                         {% if ride.rating %}
+                        <div class="col-sm-4">
+                           <strong>Review</strong>&nbsp;&nbsp;<span class="trip_est">
+                           {% for i in ride.get_rating_list %}
+                             <span class="fa fa-star checked styletext"></span>
+                          {% endfor %}
+                          {% for i in ride.remaining_rating %}
+                             <span class="fa fa-star styletext"></span>
+                          {% endfor %}
+                        </div>
+                        <div class="col-sm-8" style="text-align: right;">
+                           <strong>Feedback</strong>&nbsp;&nbsp;{{ ride.review }}
+                           <!--  <button type="button" class="btn btn-info " value="1211" data-toggle="modal" data-target="#myModal" onclick="passRide(this.value)">Give Feedback</button> -->
+                        </div>
+                         {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+             {% endfor %}
+
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+
+
+{% block extra_scripts %}
+{% endblock extra_scripts %}
+
