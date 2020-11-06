@@ -72,7 +72,7 @@ class VendorCarForm(forms.ModelForm):
 class VendorDriverForm(forms.ModelForm):
     class Meta:
         model = vendormodels.driver
-        exclude = ['vendor']
+        exclude = ['vendor', 'user']
 
 # Popular Destinations Form
 class PopularDestinationsForm(forms.ModelForm):

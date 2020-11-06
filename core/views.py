@@ -62,6 +62,7 @@ def SMS(mobile, message):
     x = r.text
     print(x)
 
+
 def distance_time(pickup, drop):
     api_key = 'AIzaSyAkvnTgO3zgaBKBSGNLKi7H5YPSOFYfrmU'
     url = 'https://maps.googleapis.com/maps/api/distancematrix/json?'
@@ -366,7 +367,8 @@ def LoginView(request):
                 if user.mobile_verified:
                     login(request, user)
                     if user.is_vendor:
-                        redirect('vendor:dashboard')
+
+                        return redirect('vendor:dashboard')
                     else:
                         return redirect('customer:dashboard')
                 else:

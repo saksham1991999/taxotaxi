@@ -891,13 +891,16 @@ def EditVendorDriver(request, id):
         form = forms.VendorDriverForm(request.POST, request.FILES, instance=driver)
         if form.is_valid():
             form.save()
-        return redirect('customadmin:vendor', driver.vendor.id)
-    else:
-        form = forms.VendorDriverForm(instance=driver)
-        context = {
-            'form':form,
-        }
-        return render(request, 'vendors/driver_form.html', context)
+            messages.success(request, 'Details updated successfully')
+            return redirect('customadmin:vendor', driver.vendor.id)
+        else:
+            messages.error(request, 'Please check the details.')
+
+    form = forms.VendorDriverForm(instance=driver)
+    context = {
+        'form':form,
+    }
+    return render(request, 'vendors/driver_form.html', context)
 
 def DeleteVendorDriver(request, id):
     driver = get_object_or_404(vendormodels.driver, id=id)
