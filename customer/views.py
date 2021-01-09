@@ -13,7 +13,8 @@ from django.contrib.auth import authenticate, login, logout
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from core import models as coremodels
 from core import forms as coreforms
-
+from core.payu import PAYU
+payu = PAYU()
 
 
 @login_required(login_url='/login/')
@@ -64,8 +65,9 @@ def DashboardView(request):
     else:
         payments = coremodels.payment.objects.filter(booking__user=request.user)
 
-        upcoming_rides = coremodels.ride_booking.objects.filter(user=request.user).exclude(ride_status = 'Cancelled').exclude(ride_status = 'Verified')
-        cancelled_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Cancelled')
+        upcoming_rides = coremodels.ride_booking.objects.filter(user=request.user).exclude(ride_status__in = ['Cancelled', 'Verified', "User Cancelled"])
+        cancelled_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='User Cancelled')
+        incomplete_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Cancelled')
         completed_rides = coremodels.ride_booking.objects.filter(user=request.user, ride_status='Verified')
 
         try:
@@ -84,6 +86,7 @@ def DashboardView(request):
             'upcoming_rides':upcoming_rides,
             'cancelled_rides':cancelled_rides,
             'completed_rides':completed_rides,
+            'incomplete_rides':incomplete_rides,
         }
         return render(request, 'Customer Dashboard/customer_dashboard.html', context)
 
@@ -99,6 +102,23 @@ def CustomerFeedback(request):
         final_ride.rating = avg
         final_ride.save()
         return HttpResponse({"Status": "Feedback Submitted Successfuly!"}, status = HTTP_200_OK)
+
+def CancelRideView(request, id):
+    booking = get_object_or_404(coremodels.ride_booking, id=id)
+    booking.ride_status = 'User Cancelled'
+    booking.save()
+    return redirect('customer:dashboard')
+
+def CompletePayment(request, id):
+    booking = get_object_or_404(coremodels.ride_booking, id=id)
+    data = {
+        'txnid': payu.generate_txnid(), 'amount': str(int(booking.advance)), 'productinfo': str(booking.ride_type),
+        'firstname': str(request.user.first_name), 'email': str(request.user.email), 'udf1': str(booking.id),
+    }
+    # print(data)
+    payu_data = payu.initiate_transaction(data)
+    print('--------------------PAYMENT VIEW Rendering ----------------------------')
+    return render(request, 'payments/payu_checkout.html', {"posted": payu_data})
 
 
 '''

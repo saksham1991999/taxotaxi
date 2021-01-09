@@ -392,7 +392,7 @@ def StartRideView(request, id):
 def EndRideView(request, id):
     if request.method == "POST":
         final_ride = get_object_or_404(coremodels.final_ride_detail, id=id)
-        form = forms.FinalRideForm(instance = final_ride)
+        form = forms.FinalRideForm(request.POST, instance = final_ride)
         if form.is_valid():
             form.save()
             final_ride.end_datetime = datetime.datetime.now()

@@ -436,8 +436,12 @@ font-weight: bold;
                            <i class="fa fa-calendar"></i>&nbsp;&nbsp;History</a>
                         </li>
                         <li class="row row1" id="list3-3">
-                           <a href="#canceledRides" data-toggle="tab">
+                           <a href="#incompleteRides" data-toggle="tab">
                            <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Incomplete Booking</a>
+                        </li>
+                        <li class="row row1" id="list3-3">
+                           <a href="#canceledRides" data-toggle="tab">
+                           <i class="fa fa-suitcase"></i>&nbsp;&nbsp;Cancelled Booking</a>
                         </li>
                   <li class="row row1" id="list4">
                      <a href="#customerProfile" data-toggle="tab">
@@ -833,6 +837,13 @@ font-weight: bold;
                         </div>
                         
                      </div>
+                        {% else %}
+                        <div class="col-sm-12 col-md-12 buttons"  style="padding: 0px;padding-top: 20px;">
+                            <div class="col-sm-3 booking-frm">
+                                <a onclick="confirmReject('{% url 'customer:cancel_ride' ride.id %}')"><button href="{% url 'customer:cancel_ride' ride.id %}" class="book-btn" type="button" style="background-color: red">Reject</button>
+                                    </a>
+                            </div>
+                        </div>
                   {% endif %}
                   </div>
 
@@ -1359,9 +1370,78 @@ font-weight: bold;
                   </div>
                </div>
                <!-- /////////////////end of history//////////////////// -->
-               <div class="tab-pane" id="canceledRides" role="tabpanel">
+               <div class="tab-pane" id="incompleteRides" role="tabpanel">
                   <div class="row">
                      <h4 class="text-center tab-heading">Incomplete Bookings</h4>
+                     <br>
+                  </div>
+                  <div class="col-sm-12 col-md-12 container2">
+                     <div id="products" class="row list-group ">
+                        {% for ride in incomplete_rides %}
+                        <div class="item  col-xs-4 col-lg-4">
+                           <div class="row CardHeader">
+                              <div class="col-xs-8 col-md-8 col-sm-8">
+                                 <strong>Your Ride:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.pickup }}-{{ ride.drop }} </span><span
+                                    class="styletext fas fa-map-marker-alt"></span></strong>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-md-3 col-xs-12">
+                                 <img style="max-height: 95px" src="http://placehold.it/400x250/000/fff" alt="" />
+                              </div>
+                              <div class="col-md-5 col-xs-12 col-sm-12">
+                                 <h4>
+                                    {{ ride.name }}
+                                 </h4>
+                                 <p>
+                                    <span class="trip_est">Mobile : {{ ride.phone_no }}</span><br>
+                                    <span class="trip_est">Email : {{ request.user.email }}</span><br>
+                                    <span class="trip_est">Booked On : {{ ride.booking_datetime }}</span><br>
+                                    <span class="trip_est">Pickup Date : {{ ride.pickup_datetime }}</span>
+                                 </p>
+                              </div>
+                              <div class="col-md-4 col-xs-12">
+                                 <p>
+                                    <strong>Total Amount:&nbsp;&nbsp;<span
+                                       class="trip_est styletext">{{ ride.final_ride_fare|floatformat }}</span></strong><br>
+                                    <strong>Credit Used:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.balance_used|floatformat }}</span></strong><br>
+                                    <strong>Advance Payment:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.advance|floatformat }}</span></strong><br>
+                                    <strong>Amount Due:&nbsp;&nbsp;<span class="trip_est styletext">{{ ride.amount_due|floatformat }}</span></strong><br>
+                                    {#<a style="color: green;" href="">Proceed to Payment</a>#}
+                                 </p>
+                                   <div class="col-sm-12 col-md-12 buttons">
+                                    <div class="col-sm-3 booking-frm">
+                                        <a href="{% url 'customer:complete_payment' ride.id %}"><button href="{% url 'customer:cancel_ride' ride.id %}" class="book-btn" type="button" style="background-color: green;">Proceed to Pay <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+                                    </a>
+                            </div></div>
+                              </div>
+
+{#                               <button class="book-btn" type="submit" style="font-weight: 700;">Proceed To Pay &nbsp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>#}
+                           </div>
+                           {% comment %}
+                           <div class="row">
+                              <div class="col-xs-12 col-md-8">
+                                 <strong>Cab Number:&nbsp;<span class="trip_est">HR36-KL-2364</span></strong>&nbsp;&nbsp;
+                                 <strong>Cartype:&nbsp;<span class="trip_est">Toyota Innova</span></strong>&nbsp;&nbsp;
+                                 <strong>Driver:&nbsp;<span class="trip_est">Chetan Rana</span></strong>
+                              </div>
+                           </div>
+                           {% endcomment %}
+                        </div>
+                        {% empty %}
+                        <div style="height: 280px">
+                           <h1>You have no Incomplete rides.</h1>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+               <!--////////////////// End of Cancel Ride ////////////// -->
+
+                <!-- /////////////////end of history//////////////////// -->
+               <div class="tab-pane" id="canceledRides" role="tabpanel">
+                  <div class="row">
+                     <h4 class="text-center tab-heading">Cancelled Bookings</h4>
                      <br>
                   </div>
                   <div class="col-sm-12 col-md-12 container2">
@@ -1419,6 +1499,8 @@ font-weight: bold;
                   </div>
                </div>
                <!--////////////////// End of Cancel Ride ////////////// -->
+
+
                <!-- //////////start of Reffer a friend//////////////////// -->
                <div class="tab-pane" id="referFriend" role="tabpanel">
                   <h4 class="text-center tab-heading">Refer a friend</h4>
@@ -2101,7 +2183,21 @@ font-weight: bold;
    DisplayList(list_items, list_element, rows, current_page);
    SetupPagination(list_items, pagination_element, rows);
    
-   
+
+
+
+
+    function confirmReject(url){
+        if(confirm("Do you want to reject the ride?")){
+            // write the url you want to request for here
+            location.href = url;
+        }else{
+
+        }
+    }
+
+
+
 </script>
 {% endblock extra_scripts %}
 

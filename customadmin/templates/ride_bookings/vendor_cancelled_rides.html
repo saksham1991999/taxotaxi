@@ -1,0 +1,112 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+
+{% block extra_stylesheet %}
+
+{% endblock extra_stylesheet %}
+
+
+
+{% block content %}
+
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Vendorss Cancelled Rides
+                            </h4>
+
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Select Vendors</th>
+                                    <th>Name</th>
+                                    <th>Phone No</th>
+                                    <th>Ride Type</th>
+                                    <th>Car Type</th>
+                                    <th>Pickup City</th>
+                                    <th>Drop City</th>
+                                    <th>Final Fare</th>
+                                    <th>Advance</th>
+                                    <th>Pickup Date-Time</th>
+                                    <th>Drop Datetime</th>
+                                    <th>Booking Date-Time</th>
+                                    <th>Distance</th>
+                                    <th>Duration</th>
+                                    <th>Pickup</th>
+                                    <th>Drop</th>
+                                    <th>Additional Choices</th>
+                                    <th>Additional Hault</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for booking in bookings %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><a href="{% url 'customadmin:assign_vendors' booking.id %}">Select Vendors</a></td>
+                                    <td>{{ booking.name }}</td>
+                                    <td>{{ booking.phone_no }}</td>
+                                    <td>{{ booking.ride_type }}</td>
+                                    <td>{{ booking.car_type }}</td>
+                                    <td>{{ booking.pickup_city }}</td>
+                                    <td>{{ booking.drop_city }}</td>
+                                    <td>{{ booking.final_ride_fare|floatformat:2 }}</td>
+                                    <td>{{ booking.advance|floatformat:2 }}</td>
+                                    <td>{{ booking.pickup_datetime }}</td>
+                                    <td>{{ booking.drop_datetime }}</td>
+                                    <td>{{ booking.booking_datetime }}</td>
+                                    <td>{{ booking.distance|floatformat:2 }} Km</td>
+                                    <td>{{ booking.duration|floatformat:2 }} Min</td>
+                                    <td>{{ booking.pickup }}</td>
+                                    <td>{{ booking.drop }}</td>
+                                    <td>{% for choice in booking.additional_choices.all %}{{ choice.name }}{% endfor %} | &ensp;</td>
+                                    <td>{{ booking.additional_hault }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div> <!-- end col -->
+            </div> <!-- end row -->
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+{% block extra_scripts %}
+    <!-- Required datatable js -->
+    <script src="{% static 'admin/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <!-- Buttons examples -->
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin/libs/jszip/jszip.min.js' %}"></script>
+    <script src="{% static 'admin/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'admin/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-buttons/js/buttons.colVis.min.js' %}"></script>
+
+    <!-- Responsive examples -->
+    <script src="{% static 'admin/libs/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'admin/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <!-- Datatable init js -->
+    <script src="{% static 'admin/js/pages/datatables.init.js' %}"></script>
+
+{% endblock extra_scripts %}

@@ -1056,7 +1056,7 @@ def payu_failure(request):
     data = response['data']
     booking_id = data['udf1']
     booking_qs = models.ride_booking.objects.get(id=booking_id)
-    message = 'Sorry for the inconvenience. Your payment is incomplete.'
+    message = 'Sorry for the inconvenience. Your payment is incomplete. Please complete your payment under Incomplete Rides section.'
     SMS(booking_qs.phone_no, message)
     context = response['data']
     return render(request, 'payments/payu_success.html', context)

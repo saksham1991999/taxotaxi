@@ -285,10 +285,13 @@
                             <form class="booking-frm" method="post" action="{% url 'vendor:end_ride' ride.id %}">
                                 {% csrf_token %}
                                 <div class="col-sm-5 autofiller" style="padding-left: 5%; padding-right: 5%;
-                                    padding-top: 10px"  onkeyup="AutoFillFunc('{{ ride.id }}', {{ ride.booking.distance }}, {{ ride.booking.price_km }}, {{ ride.initial_odometer_reading }})" id="{{ ride.id }}first">
+                                    padding-top: 10px"  onkeyup="AutoFillFunc('{{ ride.id }}', {{ ride.booking.distance }}, {{ ride.booking.price_km }}, {{ ride.initial_odometer_reading }}, {{ ride.booking.amount_due }})" id="{{ ride.id }}first">
                                     <div class="dash_foam odometerreading">
                                         <label>Enter Odometer Reading</label>
                                         {% render_field form.final_odometer_reading required='' %}
+                                    </div>
+                                    <div style="display: none">
+                                        {% render_field form.initial_odometer_reading %}
                                     </div>
                                     <div class="dash_foam extrakm">
                                         <label>Extra KM</label>
@@ -332,11 +335,12 @@
 
 {% block extra_scripts %}
     <script>
-        function AutoFillFunc(ele, initial_km, price_km, initial_odometer_reading){
+        function AutoFillFunc(ele, initial_km, price_km, initial_odometer_reading, amount_due){
             // console.log(ele)
             // console.log($(`#${ele}`).text())
             initial_km = parseInt(initial_km)
             price_km = parseInt(price_km)
+            amount_due = parseInt(amount_due)
             initial_odometer_reading = parseInt(initial_odometer_reading)
             var extra_km = 0;
             var extra_km_charges = 0;
@@ -363,7 +367,7 @@
             other_charges = parseInt(other_charges)
             total_extra_amount = parseInt(extra_km_charges + other_charges);
             gst = parseInt(total_extra_amount*(0.05));
-            collectable_amount = parseInt(total_extra_amount * (1.05));
+            collectable_amount = parseInt(total_extra_amount * (1.05) + amount_due);
 
             $(`#${ele}second`).children(".collectionamount").children("input").val(collectable_amount)
             {#$(`#${ele}second`).children(".drivercollection").children("input").val("600")#}

@@ -152,6 +152,19 @@ def AssignVendorsView(request, id):
         }
         return render(request, 'ride_bookings/assign_vendors_form.html', context)
 
+def UserCancelledRides(request):
+    bookings = coremodels.ride_booking.objects.filter(ride_status = 'User Cancelled')
+    context = {
+        'bookings':bookings,
+    }
+    return render(request, 'ride_bookings/user_cancelled_rides.html', context)
+
+def VendorCancelledRides(request):
+    bookings = coremodels.ride_booking.objects.filter(ride_status = 'Rejected')
+    context = {
+        'bookings':bookings,
+    }
+    return render(request, 'ride_bookings/vendor_cancelled_rides.html', context)
 
 def AssignFinalVendorView(request, id):
     bid = get_object_or_404(coremodels.vendorbids, id=id)

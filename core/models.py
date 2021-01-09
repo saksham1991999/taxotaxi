@@ -216,6 +216,7 @@ ride_status_choices = (
     ('Completed', 'Completed'),
     ('Verified', 'Verified'),
     ('Cancelled', 'Cancelled'),
+    ('User Cancelled', 'User Cancelled'),
 )
 class ride_booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

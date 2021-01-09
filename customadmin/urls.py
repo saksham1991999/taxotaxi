@@ -28,6 +28,8 @@ urlpatterns = [
     path('upcoming-rides/', views.UpcomingRidesView, name='upcoming_rides'),
     path('ongoing-rides/', views.OngoingRidesView, name='ongoing_rides'),
     path('completed-rides/', views.CompletedRidesView, name='completed_rides'),
+    path('user-cancelled-rides/', views.UserCancelledRides, name='user_cancelled_rides'),
+    path('vendor-cancelled-rides/', views.UserCancelledRides, name='vendor_cancelled_rides'),
 
     path('assign-vendors/<int:id>/', views.AssignVendorsView, name='assign_vendors'),
     path('vendor-bids/<int:id>/', views.UpdateVendorBidsView, name='vendor_bids'),
