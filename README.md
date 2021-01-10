@@ -1,4 +1,4 @@
-[![Visits Badge](https://badges.pufler.dev/visits/saksham1991999/taxotaxi)](https://badges.pufler.dev)
+[![Visits Badge](https://badges.pufler.dev/visits/saksham1991999/taxotaxi)](https://badges.pufler.dev) [![Created Badge](https://badges.pufler.dev/created/saksham1991999/taxotaxi)](https://badges.pufler.dev) [![Updated Badge](https://badges.pufler.dev/updated/saksham1991999/taxotaxi)](https://badges.pufler.dev)
 
 # [TaxoTaxi.com](https://xunbao.elementsculmyca.com/)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)  [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
